@@ -46,7 +46,7 @@ Design patterns are reusable solutions to
   each programming language has its own 
   way of implementing them. In the 
   explanations of all these design patterns 
-  below, i provide examples in PHP. If you 
+  below, i provide examples in JavaScript. If you 
   program in another language, you just 
   have learn how each of the patterns are 
   implemented in that language. I can assure 
