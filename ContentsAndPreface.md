@@ -191,7 +191,7 @@ Chapter 5 - Control Flow
                 -The Do...while loop
                 -The For...in loop (objects and arrays)
                 -The For...of loop (for Arrays, Strings, Maps, Sets, etc)
-                -The Foreach loop (for arrays)
+                -The forEach() loop (for arrays)
 
           -Loop control statements
           -the break statement

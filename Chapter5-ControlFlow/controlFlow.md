@@ -47,7 +47,7 @@
              -The Do...while loop
              -The For...in loop (objects and arrays)
              -The For...of loop (for Arrays, Strings, Maps, Sets, etc)
-             -The Foreach loop (for arrays)
+             -The forEach() loop (for arrays)
 
 	     -Loop control statements
 			-the break statement
@@ -624,11 +624,10 @@ Each of these loop types has its own structure and best use case, and we’ll go
 
 	-1) The For loop
 	————
-	Used a for loop when you know how 
-    many times the loop should run. It is by far the most commonly used loop, and it has a very simple and easy to read syntax. The action inside its curly braces is only run if the condition in its parentheses is true, and it also restrains the number of iterations to the number of elements in the array. Here is the syntax:
+	Use a for loop when you know how 
+    many times the loop should run. It is by far the most commonly used loop, and it has a very simple and easy to read syntax. The action inside its curly braces is only run while the condition in its parentheses is true. That condition is entirely up to you: very often it counts up to the number of elements in an array, but as the example below shows, it does not have to involve an array at all. Here is the syntax:
 
-	  for (initialisation; condition; increment/
-              decrement) { 
+	  for (initialisation; condition; increment or decrement) { 
 		// Code to execute 
 	  }
 
@@ -638,13 +637,19 @@ Each of these loop types has its own structure and best use case, and we’ll go
 		console.log(i); 
 	 }
 
-    The output will be: 0 1 2 3 4
+    The output will be each number printed on its own line:
+
+	0
+	1
+	2
+	3
+	4
 
 
 
    -2) The While loop
    ————
-    Used when you don’t know how many times the loop should run and depends on a condition. The while loop is very similar to the for loop in that it runs only when a condition is true. The key difference is flexibility: unlike the for loop, which often checks the number of elements in an array, the while loop can check any condition at all. That means you can use it in a wide variety of situations—not just for arrays, but for any kind of condition you want to keep checking.
+    Used when you don’t know how many times the loop should run, because that depends on a condition. The while loop is very similar to the for loop in that it runs only when a condition is true. The key difference is flexibility: unlike the for loop, which often checks the number of elements in an array, the while loop can check any condition at all. That means you can use it in a wide variety of situations—not just for arrays, but for any kind of condition you want to keep checking.
 
 Here is the syntax:
 
@@ -723,10 +728,10 @@ Here, the while loop runs while i is less than the number of fruits in the array
 	-3) The Do...while loop
 	———————
 
-  A do...while loops are less common than other types of loops, but they are useful in situations where a block of code needs to run at least once before a condition is checked.
+  do...while loops are less common than other types of loops, but they are useful in situations where a block of code needs to run at least once before a condition is checked.
   A good example would be a website where every user must have at least one profile picture, but can optionally upload more. You might want to display the first picture by default, and then show any extra ones only if they exist. A do...while loop is perfect for this, because it will always run once—showing the first picture—before checking whether additional pictures are available to display.
 Syntax
-The syntax for a do...while loop is slightly different from a regular while loop. In a while loop, the condition comes before the block of code. In a do...while loop, the block runs first, and then the condition is checked afterward:
+The syntax for a do...while loop is slightly different from a regular while loop. In a while loop, the condition comes before the block of code. In a do...while loop, the block runs first, and then the condition is checked afterwards:
 
 	Here is the syntax:
 
@@ -742,7 +747,7 @@ Example:
 		let fruit = ['banana', 'apple', 'kiwi'];
 
 		do {
-  			console.log(‘The fruit is ' + fruit[i]);
+  			console.log('The fruit is ' + fruit[i]);
   			i++;
 		} while (i < fruit.length);
 
@@ -761,7 +766,7 @@ This loop runs once to display the first fruit, then continues checking if more 
 	-4) The For...in loop (Used for Objects and Arrays)
 	————————
 
-	Used to loop over object properties. A word of caution; It can also loop 
+	Used to loop over object properties. A word of caution: it can also loop 
 	over arrays, but it is not recommended because it may include inherited 
 	properties.
 
@@ -809,11 +814,13 @@ This loop runs once to display the first fruit, then continues checking if more 
 
 			The output will be:
 
-				Apple Banana Cherry
+				Apple
+				Banana
+				Cherry
 
 
 
-	-6) The foreach() Loop (Used for Arrays)
+	-6) The forEach() Loop (Used for Arrays)
 	————————————
 
 		         The forEach() method is an array method that executes a 
@@ -832,6 +839,12 @@ This loop runs once to display the first fruit, then continues checking if more 
 				numbers.forEach(num => { 
 					console.log(num); 
 				});
+
+			The output will be:
+
+				10
+				20
+				30
 
 
 
@@ -856,7 +869,7 @@ forEach()	When iterating over an array with a function callback.
 
 * Exit early, even if the condition hasn’t finished yet, or
 * Skip one turn in the loop and go to the next round?
-* 
+
 This is where loop control statements come in. These are special keywords in JavaScript that give you, the programmer, more control over how a loop behaves.
 There are two main loop control statements, and these are the break, and the continue statements.
 
@@ -864,7 +877,7 @@ There are two main loop control statements, and these are the break, and the con
 	The break statement 
 	—————————
   The break statement tells the loop to stop running completely and jump out of the loop when a certain condition is met. This is useful when you're looking for something, and once you've found it, there's no need to keep looping.
-It exits the loop immediately when a condition is met. You as the programmer will place this statement inside the loop at the spot where you expect the loop to have achieved its objective-usually in a conditional statement in which case the condition would have matched a target case. You therefore want the program to exit the loop.
+It exits the loop immediately when a condition is met. You as the programmer will place this statement inside the loop at the spot where you expect the loop to have achieved its objective—usually in a conditional statement in which case the condition would have matched a target case. You therefore want the program to exit the loop.
 
 Here is an example:
 
@@ -891,13 +904,13 @@ As you can see, the loop stops as soon as i becomes 5. The number 5 is never pri
 
 	The continue statement 
 	—————————
-  The continue statement is a little different. It doesn’t stop the whole loop-it just skips the current iteration and goes straight to the next one.
+  The continue statement is a little different. It doesn’t stop the whole loop—it just skips the current iteration and goes straight to the next one.
 This is helpful when you want to ignore certain values but still finish the loop.
 
 
 			for (let i = 0; i < 5; i++) { 
 				if (i === 2) { 
-					continue; // Skip printing when i is 
+					continue; // Skip printing when i is 2
 				} 
 					
 				console.log(i); 
