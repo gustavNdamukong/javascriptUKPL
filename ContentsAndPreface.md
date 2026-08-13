@@ -241,8 +241,8 @@ Chapter 7 - Functions
 
 Chapter 8 - Cookies
     -How cookies work
-      -Security considerations
-      -Managing cookies
+    -Security considerations
+    -Managing cookies
         -Setting a cookie
         -Retrieving a cookie
         -Get a specific cookie by name

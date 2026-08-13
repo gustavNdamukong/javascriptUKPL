@@ -15,25 +15,28 @@
 
   A cookie is a small piece of data stored in a user's browser that helps websites remember information between visits. It plays a key role in frontend-server communication, allowing websites to track user sessions, store preferences, and manage authentication. Cookies are commonly used for:
 
-- [ ] User authentication – Keeping users logged in across pages.
-- [ ] Session management – Tracking shopping cart items or user actions.
-- [ ] Personalisation – Storing user preferences like themes or language settings.
+	-User authentication — keeping users logged in across pages.
+	-Session management — tracking shopping cart items or user actions.
+	-Personalisation — storing user preferences like themes or language settings.
 
 
 
-How Cookies Work
-——————
+How cookies work
+————————
   When a user visits a website, the server or client-side JavaScript can set a cookie in the browser. On subsequent requests, the browser automatically includes the cookie, enabling the server to recognise returning users.
 
 
 
-Security Considerations
-——————
+Security considerations
+————————————
   	-Same-Origin Policy. Cookies are only accessible to the 
 		domain that set them.
-	-Secure & HttpOnly Flags. These prevent cookies from 
-		being accessed via JavaScript and ensure they are 
-		only sent over HTTPS.
+	-The HttpOnly flag. This stops a cookie from being 
+		read by JavaScript at all, which protects it from 
+		scripts running on the page.
+	-The Secure flag. This is a different job: it makes the 
+		browser send the cookie only over HTTPS, never over 
+		plain HTTP.
 	-Expiration & Storage Limits – Cookies have expiration 
 		times and are limited in size (~4KB).
 
@@ -44,18 +47,18 @@ While cookies are useful for storing small amounts of data, they are not suitabl
 Managing cookies
 ———————
 Let us look at how to work with cookies.
-Cookies are written and read differently from how localStorage and sessionStorage are beaten and read from the browser. Here is how to create a cookie and its value.
+Cookies are written and read differently from how localStorage and sessionStorage are written to and read from the browser (we come to those in Chapter 13, Databases and Storage). Here is how to create a cookie and its value.
 
 Setting a cookie
 —————-
 
-	document.cookie = "username=JohnDoe; expires=Fri, 31 
-		Dec 2025 23:59:59 GMT; path=/";
+	document.cookie =
+		"username=JohnDoe; expires=Fri, 31 Dec 2027 23:59:59 GMT; path=/";
 
 	What this does is
 		-Sets a cookie named "username" with the value 
 		    "JohnDoe".
-		-The cookie expires on Dec 31, 2025 (after this, it will 
+		-The cookie expires on 31 Dec 2027 (after this, it will 
 		    be deleted automatically).
 		-The path=/ makes the cookie accessible across the 
 		    entire site.
@@ -67,8 +70,14 @@ Setting a cookie
 	// make it expire in 7 days
 	expiryDate.setDate(expiryDate.getDate() + 7); 
 
-	document.cookie = `username=JohnDoe; expires=$
-		{expiryDate.toUTCString()}; path=/`;
+	document.cookie =
+		`username=JohnDoe; expires=${expiryDate.toUTCString()}; path=/`;
+
+	Take care to keep the ${ ... } together on one line. If the $
+	and the { get separated, JavaScript stops seeing it as a slot
+	to fill in and just treats the whole thing as ordinary text,
+	so your cookie ends up with a literal ${expiryDate...} in it
+	rather than the date.
 
 This code does the following:
 	-gets the current date.
@@ -92,7 +101,7 @@ The output will be something like this:
 
 	"username=JohnDoe; theme=dark; loggedIn=true"
 
-Each cookie will be separated by a semicolon (;)
+Each cookie is separated from the next by a semicolon and a space ("; ").
 
 
 
@@ -130,12 +139,12 @@ So, what the code does is:
 
 
 
-Deleting a cookie	
-———————
+Delete a cookie by name
+———————————————
   To delete a cookie, you simply set its expiration date to a past date. This makes the browser automatically remove it. For example:
 
-	document.cookie = "username=; expires=Thu, 01 Jan 1970 
-		00:00:00 UTC; path=/";
+	document.cookie =
+		"username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
 
 This code does the following:
 	-Sets the cookie's value to an empty string ("").
@@ -144,13 +153,13 @@ This code does the following:
 	-Uses path=/ to ensure it deletes the cookie from all paths 
 		on the site.
 
-It would be nice to create a re-usable function to delete any cookie by name. We can make it even better and get it to first of all check if he cookie exists before deleting it. Here it is:
+It would be nice to create a re-usable function to delete any cookie by name. We can make it even better and get it to first of all check whether the cookie exists before deleting it. Here it is:
 
 	function deleteCookie(name) {
     		if (document.cookie.split("; ").some(cookie => 
 			cookie.startsWith(name + "="))) {
-        			document.cookie = `${name}=; expires=Thu, 
-				01 Jan 1970 00:00:00 UTC; path=/`;
+        			document.cookie =
+				`${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/`;
         
 				console.log(`Cookie "${name}" deleted.`);
     		} else {
@@ -167,7 +176,7 @@ Here is how to use it:
 	// Outputs: Cookie "nonExistingCookie" not found.
 	deleteCookie("nonExistingCookie"); 
 
-What is does is:
+What it does is:
 	-Retrieves all cookies as a string (document.cookie).
 	-Splits them into an array using "; " as the separator.
 	-Checks if any cookie starts with name=.
