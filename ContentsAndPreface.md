@@ -203,14 +203,14 @@ Chapter 6 - Regular Expressions
     Features
     Grouping
     Classes
-    Range
-    Negation
+       Range
+       Negation
     Anchor characters
     Shorthand meta characters
     Quantifiers
     Modifiers
+       The difference between g and m
     Regular expressions in JavaScript
-    Practical examples and solutions
 
 Chapter 7 - Functions
     -Introduction
