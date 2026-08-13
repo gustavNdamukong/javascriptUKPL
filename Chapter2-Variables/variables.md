@@ -6,11 +6,12 @@
             -What is a block
             -Types of blocks
             -Blocks are not objects
-             -Blocks are not data structures
+            -Blocks are not data structures
             -The practical use of blocks
             -Global scope
             -Two differences between var vs let 
               and const in the global scope
+            -Hoisting and the temporal dead zone
             -Best practices for variables
 	     -JavaScript modules and variable scope
 	-Exercises with variables
@@ -171,18 +172,20 @@ A block in JavaScript is any section of code enclosed within curly braces {}. Bl
                using the keywords ‘let’ and 
                ‘const’. This means that when 
                these variables are defined, they 
-               cannot be accessed from outside 
+               cannot be accessed from outside
                the block they are defined in. Any 
-               attempt will lead to an error of 
-               undefined. Variables created 
-               using the ‘var’ keyword or 
-               functions on the other hand are   
+               attempt will lead to a 
+               ReferenceError, which is the 
+               browser telling you it cannot 
+               find that name at all. Variables 
+               created using the ‘var’ keyword 
+               on the other hand are 
                not block scoped, or in other 
                words, do not respect blocks. This 
                means that variables created with 
                the ‘var’ keyword inside a block 
                can be accessed from outside that 
-               block they are defined in, except 
+               block they are defined in, unless 
                the block is a function block. In 
                other words, their values leak 
                through the block.
@@ -199,16 +202,16 @@ A block in JavaScript is any section of code enclosed within curly braces {}. Bl
 
 Even though x is declared inside the if block, it is still accessible outside because var does not respect block scope. Using let or const resolves the issue:
 
-  if (true) {
-    let y = 20; // Block-scoped
-    const z = 30; // Block-scoped
-}
+    if (true) {
+        let y = 20; // Block-scoped
+        const z = 30; // Block-scoped
+    }
 
-// ❌ ReferenceError: y is not defined
-console.log(y);
+    // Error: ReferenceError: y is not defined
+    console.log(y);
 
-// ❌ ReferenceError: z is not defined
-console.log(z);
+    // Error: ReferenceError: z is not defined
+    console.log(z);
 
 Here, both y and z are restricted to the block because let and const follow block scope rules.
 
@@ -219,7 +222,7 @@ Here, both y and z are restricted to the block because let and const follow bloc
         var a = 100;
     }
 
-    // ❌ ReferenceError: a is not defined
+    // Error: ReferenceError: a is not defined
     console.log(a);
 
 Here, a is restricted to the function, so it behaves as expected.
@@ -228,7 +231,7 @@ Here, a is restricted to the function, so it behaves as expected.
 
 Types of blocks
 ——————————-
-  Remember we have established that a block in JavaScript is a group of code enclosed within a pair of curly braces. There are four (4) types of blocks in JavaScript; a standalone block, an if statement, a loop (for or while loop), and a function. Here they are with examples:
+  Remember we have established that a block in JavaScript is a group of code enclosed within a pair of curly braces. The main types of block you will meet in JavaScript are: a standalone block, an if statement, a loop (for or while loop), and a function. There are others besides these, such as try/catch and switch blocks, which we will meet in later chapters. Here they are with examples:
 
 -a) Standalone block
 —————
@@ -291,7 +294,7 @@ Types of blocks
 
 Blocks are not objects
 —————————————
-  An object literal { key: value } is NOT a block—it’s just an object. Dont worry, we will talk more on objects under the section on OOP (Object Oriented Programming). Blocks are structural elements of JavaScript’s syntax, while objects are data structures. For example:
+  An object literal { key: value } is NOT a block—it’s just an object. Don’t worry, we will talk more on objects in Chapter 16 (Object Oriented Programming). Blocks are structural elements of JavaScript’s syntax, while objects are data structures. For example:
 
       let obj = {
            name: "Alice",
@@ -307,7 +310,7 @@ Even though an object uses {}, it does not create a new scope. The variables ins
 
 Blocks are not data structures
 —————————————————
-  A block {} is not a data structure in JavaScript. A block is just a syntactic structure used to group code together and define scope, particularly for let and const. It does not store data like arrays or objects do. Lets demonstrate that a little bit:
+  A block {} is not a data structure in JavaScript. A block is just a syntactic structure used to group code together and define scope, particularly for let and const. It does not store data like arrays or objects do. Let’s demonstrate that a little bit:
 
     {
         let x = 10;
@@ -317,7 +320,7 @@ Blocks are not data structures
     // ReferenceError: x is not defined
      console.log(x);
 
-This {} simply defines a scope. It doesn’t store values like an object or an array. Basically, an object { key: value } is a data structure because it stores and organizes data. In programming in general, there are different types of data structures, with each one having its unique way of storing and organising data. In the case of objects, its data is stored as key-value pairs. See the Data structures section  to learn more about data structures in JavaScript. Here is an example of an object:
+This {} simply defines a scope. It doesn’t store values like an object or an array. Basically, an object { key: value } is a data structure because it stores and organises data. In programming in general, there are different types of data structures, with each one having its unique way of storing and organising data. In the case of objects, its data is stored as key-value pairs. See Chapter 11 (Data Structures) to learn more about data structures in JavaScript. Here is an example of an object:
 
      let person = {
          name: "Alice",
@@ -327,7 +330,7 @@ This {} simply defines a scope. It doesn’t store values like an object or an a
 // This will write to the console: Alice
 console.log(person.name);
 
-This {} is an object literal, which is used to store data. Lets look at some key differences to help us distinguish between a block and an object: 
+This {} is an object literal, which is used to store data. Let’s look at some key differences to help us distinguish between a block and an object: 
   -A block does not have keys—it just 
     defines a scope for let and const 
     variables.
@@ -350,16 +353,22 @@ While they aren’t the most common feature, they can be useful in certain scena
   -When you want to isolate (separate) 
      execution logic without defining a 
      function. This means, the code will be 
-     parsed ran at the line where it is, without 
-     you having to call it explicitly. 
+     parsed and run at the line where it is, 
+     without you having to call it explicitly. 
   -When you want to logically group code 
      within a function for better readability.
 
-Le us see some code examples:
+Let us see some code examples:
  -1) Using a Block to Process Temporary 
        Data Without Polluting Scope
 
-Here is an example of fetching and processing API data in an isolated block:
+Here is an example of fetching and processing API data in an isolated block.
+  Before you read it, a word of reassurance. This example, and the one after it, 
+  deliberately reach ahead of where we are. They use tools we have not covered 
+  yet, such as fetch, async and await for talking to a server (Chapters 21 and 22), 
+  and commands for reaching into the web page itself (Chapter 15). Do not try to 
+  understand every line. Look only at the curly braces, and at which variables 
+  survive outside them. That is the single point being made here.
 
    async function fetchUserData() 
    {
@@ -367,8 +376,7 @@ Here is an example of fetching and processing API data in an isolated block:
 
          // start of block
         {
-            let response = await fetch("https://
-                  api.example.com/user");
+            let response = await fetch("https://api.example.com/user");
             let data = await response.json();
 
             let username = data.name;
@@ -388,7 +396,7 @@ Here is an example of fetching and processing API data in an isolated block:
 
 fetchUserData();
 
-The fetchUserData() function has a block inside of it. Outside that block, the blocked-scoped variables ‘response’, ‘data’, ‘username’, and ‘age’ no longer exist. This is because they are out of scope, and that is the idea. This behavior reduces memory usage.
+The fetchUserData() function has a block inside of it. Outside that block, the blocked-scoped variables ‘response’, ‘data’, ‘username’, and ‘age’ no longer exist. This is because they are out of scope, and that is the idea. The benefit is a tidier program, where a name only exists for as long as it is actually needed.
 
 
  -2) Isolating Temporary DOM Elements 
@@ -419,10 +427,10 @@ The fetchUserData() function has a block inside of it. Outside that block, the b
             } // end of block 
         });
 
-This example demonstrates JavaScript’s prowess in manipulating the DOM. Here we create an HTML div element and store it in a variable named messageBox), and insert it into the DOM so it can be seen in the browser. It then sets a timer so that the div is removed from the DOM again after 3 minutes. Working with the Document is something that may be new to you now, but we will dive deeper into it and demystify everything when we come to talk about DOM Manipulation under the DOM Frontend/UI & assets management section.
+This example demonstrates JavaScript’s prowess in manipulating the DOM. Here we create an HTML div element and store it in a variable named messageBox, and insert it into the DOM so it can be seen in the browser. It then sets a timer so that the div is removed from the DOM again after 3 seconds. Working with the Document is something that may be new to you now, but we will dive deeper into it and demystify everything when we come to talk about DOM Manipulation in Chapter 15.
   In this code, the messageBox element is only used inside the block. Once it’s appended and scheduled for removal, there’s no need to keep the variable around.
 
-Therefore you can see how when using a block, you can place code in them that perform actual logic like fetching data, modifying the DOM, handling calculations, etc. The key idea is:
+Therefore you can see how when using a block, you can place code in them that performs actual logic like fetching data, modifying the DOM, handling calculations, etc. The key idea is:
      -a) Do the necessary work inside the 
             block.
      -b) Let the variables automatically 
@@ -464,26 +472,23 @@ Global scope
      const variables inside a block within 
      the function, they will only be defined 
      and local to that block within the 
-     function but be undefined outside of the 
-     block in the function.
+     function, and reaching for them outside 
+     that block gives a ReferenceError.
 
-  Regardless of the limitations the three types of variables can have when they are scoped, they can all still be used as  global variables. Do this simply by not scoping them. So, if a variable is declared with var, let or const outside of any block or function, they are global and can be used throughout your entire script. Let’s demonstrate in code.
+  Regardless of the limitations the three types of variables can have when they are scoped, they can all still be used as global variables. Do this simply by not scoping them. So, if a variable is declared with var, let or const outside of any block or function, they are global and can be used throughout your entire script. Let’s demonstrate in code.
 
   const fee = 20;  // Global constant
   const price = 100; // Global constant
-  let count = 0;  // Global var
-  var shopName = “OvalFoods”; // Global var
+  let count = 0;  // Global variable
+  var shopName = "OvalFoods"; // Global variable
 
-    function getAmount(count = 1)  
+    function getAmount(quantity = 1)  
     {
-       count += count; 
-
         // Using global price and fee
-       var total = (price * count) + fee;
-       count = 0;
+       var total = (price * quantity) + fee;
 
-       console.log(“Total paid at “+ 
-                      shopName + “ is: “ + total);
+       console.log("Total paid at " + 
+                      shopName + " is: " + total);
 
        return total;
     }
@@ -492,11 +497,11 @@ Global scope
 
 The fee and price variables are declared with const at the top level, making them global constants.
 
-The count and shopName variables are declared with let and var respectively at the top level, making them global variables as well.
+The count and shopName variables are declared with let and var respectively at the top level, making them global variables as well. Notice that getAmount() names its own parameter quantity rather than count. Had we named it count too, it would have hidden the global count from view inside the function, which is a trap we look at in a moment under shadowing.
 
 The function getAmount() is able to access these global variables, and so will any other code on this page whether they are in a function, a block or neither.
 
-  We have not talked about a variable declared with neither of the keywords var, let or const. This is also possible when you are running JavaScript in non-strict mode. Normally strict mode will force you to add those keywords (declarations), but non-strict mode will not. So in non-strict mode, a variable declared without any of those keywords is automatically a global variable. 
+  We have not talked about a variable declared with neither of the keywords var, let or const. This is also possible when you are running JavaScript in non-strict mode. Strict mode is a stricter set of rules that you can switch on by putting the line "use strict"; at the top of your file, and which JavaScript modules turn on automatically. Normally strict mode will force you to add those keywords (declarations), but non-strict mode will not. So in non-strict mode, a variable declared without any of those keywords is automatically a global variable. 
 
     var appStatus = true;
 
@@ -514,7 +519,7 @@ In this example, appStatus is declared outside of any function, making it a glob
 
 However, the variable testLocalVar inside updateStatus() is not explicitly declared using var, let, or const. In this case, JavaScript implicitly assigns it as a global variable when updateStatus() is called. This happens because, in non-strict mode, any variable assigned a value without a declaration (var, let, or const) is automatically added to the global scope. That’s why console.log(testLocalVar) works without throwing an error.
 
-Another thing we need to remember about global variables is that; It is possible to declare a local variable with the same name as a global variable. When this happens, the local variable shadows the global one within its function. That means it overrides the global one locally. Consider this example:
+Another thing we need to remember about global variables is that it is possible to declare a local variable with the same name as a global variable. When this happens, the local variable shadows the global one within its function. That means it overrides the global one locally. Consider this example:
 
     var item = 'shoe';
 
@@ -530,45 +535,51 @@ The output will be :
     dress
     shoe
 
-Inside displayItem(), the local item variable with the value 'dress' overrides the global item within that function’s scope. However, the global item remains 'shoe' when accessed outside the function.
+Inside displayItem(), the local item variable with the value 'dress' shadows the global item within that function’s scope. However, the global item remains 'shoe' when accessed outside the function.
 
 
 Two differences between var vs let and const in the global scope
 ————————————————
-  There is two important difference between the behaviour of var and let or const in the global scope. Even though let and const can be used globally, they do not behave exactly like var in the global scope. Here are the differences:
+  There are two important differences between the behaviour of var and let or const in the global scope. Even though let and const can be used globally, they do not behave exactly like var in the global scope. Here are the differences:
 
 -a) var attaches to the window object (in 
-       browsers), let and const do not.
+       browsers), let and const do not. The 
+       window object is the browser’s own 
+       global object, where it keeps everything 
+       that is available everywhere on the 
+       page. We look at it properly in 
+       Chapter 15.
 
       var x = 10;
       let y = 20;
       const z = 30;
 
-      // ✅ 10 (var attached to the global obj)
+      // OK: 10 (var attached to the global obj)
       console.log(window.x);
-     // ❌ undefined (let is not attached)
-     console.log(window.y);
-     // ❌ undefined (const is not attached)
-     console.log(window.z);
+      // undefined (let is not attached)
+      console.log(window.y);
+      // undefined (const is not attached)
+      console.log(window.z);
 
-var becomes a property of window (or globalThis in Node.js), while let and const remain block-scoped to the script.
+var becomes a property of window, while let and const do not. They still work everywhere on the page, but they are not stored on the window object.
 
 -b) Re-declaring var globally is allowed, 
        but let and const are not. For example:
 
      var a = 100;
-     var a = 200; // ✅ Works fine
+     var a = 200; // OK: works fine
 
      let b = 300;
 
-     // ❌ SyntaxError: Identifier 'b'
-     let b = 400; has already been declared
+     // Error: SyntaxError: Identifier 'b' has
+     // already been declared
+     let b = 400;
 
 Note that re-declaring is not re-assigning. 
-Re-declaring is same as in the above example where we use the var, or let or const keyword (declaration) as if declaring the the variable for the first time like so:
+Re-declaring is the same as in the above example where we use the var, or let or const keyword (declaration) as if declaring the variable for the first time like so:
 
    let b = 300;
-   let b =  400;
+   let b = 400;
 
 Re-assigning is when you simply update the value of an already existing variable, for example: 
 
@@ -576,6 +587,44 @@ Re-assigning is when you simply update the value of an already existing variable
    count = 1;
 
 The assigning code references the variable name (count) without needing to re-declare it (using let) and updates its value. 
+
+
+
+Hoisting and the temporal dead zone
+————————————————————
+  There is one more difference between var and let or const, and it explains a 
+lot of otherwise baffling behaviour. It is called hoisting.
+  Before your code runs, JavaScript takes a quick first pass over it and makes a 
+note of every variable you have declared. In effect, the declarations are lifted 
+to the top of their scope. This is what is meant by hoisting: the declaration is 
+hoisted up, even though the line you wrote it on stays where it is.
+  The catch is that var and let behave very differently when this happens.
+  A var variable is hoisted and given the value undefined straight away. So you 
+can refer to it before the line that declares it, and instead of an error you 
+simply get undefined:
+
+    console.log(price); // undefined, not an error
+    var price = 100;
+
+  That is rarely what anybody wants. It hides mistakes, because a typo or a line 
+in the wrong order fails quietly instead of telling you about it.
+  A let or const variable is also hoisted, but it is NOT given a starting value. 
+It sits in what is called the temporal dead zone: it exists, but it refuses to be 
+touched until the line that declares it has actually run. Reaching for it before 
+then gives you a clear error:
+
+    // Error: ReferenceError: Cannot access
+    // 'total' before initialization
+    console.log(total);
+    let total = 100;
+
+  "Temporal" simply means "to do with time", and the dead zone is the stretch of 
+time between the top of the block and the line where the variable is declared.
+  This is a good example of let being stricter than var, and of that strictness 
+being a kindness. The var version lets a mistake slide by silently. The let 
+version stops and tells you exactly what went wrong, which is far easier to fix.
+  The practical lesson is a simple one: declare your variables before you use 
+them, and prefer let and const so that JavaScript tells you when you have not.
 
 
 

@@ -90,6 +90,7 @@ Chapter 2 - Variables
                 -Global scope
                 -Two differences between var vs let 
                   and const in the global scope
+                -Hoisting and the temporal dead zone
                 -Best practices for variables
       -JavaScript modules and variable scope
       -Exercises with variables
