@@ -1349,11 +1349,11 @@ In this case, you should do your regular loop on the first (outer) array using a
 		}; 
 
 		// Loop through the outer object 
-		for (var row in myObject) 
+		for (let row in myObject) 
 		{ 
 			// Loop through the inner object 
                   	// properties & display each value
-		     	for (var key in myObject[row]) 
+		     	for (let key in myObject[row]) 
 		     	{ 
 			 	console.log(myObject[row][key]); 
 			} 
@@ -1437,7 +1437,7 @@ In this case, you should do your regular loop on the first (outer) array using a
 	// Output: [1, 2, 3, 4, 5, 6]
 	console.log(mergedArray); 
 
-	As you can see; Spread allows easy 
+	As you can see, spread allows easy 
 	array merging without modifying the 
 	original arrays.
 
@@ -1458,11 +1458,11 @@ In this case, you should do your regular loop on the first (outer) array using a
     	let array2 = [1, 2, 3, 4, 5, 6];
 
     	(function() {
-        	array2 = array1 ;
+        	array2 = array1;
     
         	// modify array2
         	array2[0] = "word";
-    	}) ();
+    	})();
     	console.log(array2);
     	console.log(array1);
 
@@ -1474,15 +1474,16 @@ In this case, you should do your regular loop on the first (outer) array using a
 
 	But surprisingly, both arrays array1 and 
 	array2 are now: ['word', 'b', 'c', 'd', 'e', 'f'] 
-	This is simply because, of the way arrays 
-	work-if you remember. Arrays are 
-	reference types, which means when you 
+	This is simply because of the way arrays 
+	work. Arrays are what is called a 
+	reference type, which means that when you 
 	assigned array1 to array2, array1 was not 
 	copied to array2. Rather, both arrays were 
 	simply made to point to the same memory 
 	location where the array1 data is stored. 
-	That is why changing one of them will change
-	 both of them at the same time.
+	That is why changing one of them will change 
+	both of them at the same time. (There is more on 
+	reference types in Chapter 10, Data Types.)
 
 	To fix that and create an independent 
 	copy of array1 into array2, change the 
@@ -1505,10 +1506,11 @@ In this case, you should do your regular loop on the first (outer) array using a
 	console.log(obj2);
 
 	This will log to the console the following:
-		{ a: 1, b: 2, c: 3 };
+		{ a: 1, b: 2, c: 3 }
 
 	-When to Use the Spread Operator?
-		-When converting an array into a string.
+		-When converting a string into an array 
+		  of its characters, e.g. [..."abc"].
 		-In function calls. When passing array elements as 
 		  individual arguments to a function.
 		-When merging or copying arrays 
@@ -1518,11 +1520,11 @@ In this case, you should do your regular loop on the first (outer) array using a
 
 Are Rest Parameters and the Spread Operator Opposites?
 	Yes! They can be thought of as performing opposite functions. They 
-	use the same triple dots (…) syntax, but they serve opposite purposes 
+	use the same triple dots (...) syntax, but they serve opposite purposes 
 	depending on where they are used. Here are their key characteristics:
 	
 	Rest Parameters (...rest) 
-        * collect or capture values into an array. They only work in function parameter lists. Think of the word ‘Rest’ in ‘Rest parameters’ to mean that they work best in variadic functions (functions that accept an unspecified number of arguments), so that any arguments passed in as represented by the three dots (…) and the rest of it, will be captured into an array. 
+        * collect or capture values into an array. They only work in function parameter lists. Think of the word ‘Rest’ in ‘Rest parameters’ to mean that they work best in variadic functions (functions that accept an unspecified number of arguments), Whatever arguments are passed in, the three dots (...) sweep up all the rest of them into an array. 
         * The rest parameter must be the last one in the function’s parameter list.
 	Spread Operator (...spread) 
         * Expands an array into individual values. Think of the word 
@@ -1554,7 +1556,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 		an array of numbers nums. However, we know that the sum() 
 		function needs numbers, not an array. We therefore use the 
 		spread operator on the nums array as we pass it as the 
-		arguments to sum(0 when we call it.  
+		arguments to sum() when we call it. 
 
 	 As you can see, Spread (...nums) 
 	 expands an array, while rest 
@@ -1568,12 +1570,12 @@ Are Rest Parameters and the Spread Operator Opposites?
 
   -Array properties
  //———————————
-  JavaScript arrays come with several built-in properties that help in working with them efficiently. Here, we will cover the most commonly used ones that every programmer should know. Let’s look at 4 of them: length, prototype, constructor and prototype.length.
+  JavaScript arrays come with several built-in properties that help in working with them efficiently. Here, we will cover the most commonly used ones that every programmer should know. Let’s look at four of them: length, prototype, constructor and prototype.length.
 		   
 	-length
 	——————
 	The length property returns the number of 
-	Elements in an array. It tells us how 
+	elements in an array. It tells us how 
 	many elements are in an array. It is 	
 	modifiable, meaning we can use it to 
 	truncate an array. It can be useful with 
@@ -1589,7 +1591,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 	based count. So if it is 4, then the array literally contains 4 items and 
 	not 5 items. This is worth remembering, so you do not confuse that 
 	with the index/key numbering of arrays which are numbered from 
-	zero(0).
+	zero (0).
 	
 	Let’s use it to truncate an array, or in other words, modify the length 
 	of the array:
@@ -1609,8 +1611,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 	-prototype
 	——————
-	prototype allows Adding Properties and 
-	Methods to Arrays. It lets us add new 
+	prototype allows you to add properties and 
+	methods to arrays. It lets us add new 
 	methods that apply to all arrays, thereby 
 	extending the functionality of arrays.
 	Example: Adding a Custom Method to 
@@ -1624,6 +1626,14 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 	// Output: 3
 	console.log(nums.last()); 
+
+	A word of caution though. Adding your own 
+	methods to Array.prototype affects every 
+	array in your whole program, including ones 
+	created by any library you are using. It is 
+	generally frowned upon for that reason. It is 
+	worth knowing that it is possible, but reach 
+	for an ordinary function instead.
 
 
 
@@ -1667,8 +1677,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 
    Array methods
    ———————-
-  These are built-in functions provided in JavaScript for use in manipulating arrays. A method is a function that is defined on an object. If the concept of methods or functions is new to you, do not worry. We will soon learn all about them. Right now, we will look at the most important array methods and how they work. I will describe them, and demonstrate their use with examples.
-  To fully grasp array methods, there are a few things to know about them. They are all similar in the way they work. For example, most of them take a function to be ran on every item in the array they are called on. This is logical because there is not much else to do with an array if not to do something with each of its elements. They are all therefore some sort of loop, and as array functions, they have to be called on an array. Here is the syntax of their use:
+  These are built-in functions provided in JavaScript for use in manipulating arrays. A method is a function that is defined on an object. If the concept of methods or functions is new to you, do not worry. Chapter 7 is devoted entirely to them. Right now, we will look at the most important array methods and how they work. I will describe them, and demonstrate their use with examples.
+  To fully grasp array methods, there are a few things to know about them. They are all similar in the way they work. For example, most of them take a function to be run on every item in the array they are called on. This is logical because there is not much else to do with an array if not to do something with each of its elements. They are all therefore some sort of loop, and as array functions, they have to be called on an array. Here is the syntax of their use:
  
 		arrayName.arrayMethod();
 
@@ -1714,27 +1724,32 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 	-every()	
 	—————
-	It is similar to the some() method, except that it rather than just 
-	one element, it checks if every element in an array passes the test/
-	condition in the function you pass to it. The syntax is the same as 
+	It is similar to the some() method further down, except that rather 
+	than just one element, it checks whether every element in an array 
+	passes the test or condition in the function you pass to it. The syntax is the same as 
 	with the some() method. Pass it a function and it will run that 
 	function on all the elements in the array you call it on. If any of the 
 	elements fails the test, it will return false, otherwise it will return true.
 		For example:
 
-			var ages = [32, 33,16,40];			
-			function checkAdult(age) {				return age >= 18;			}			document.write(ages.every(checkAdult));
+			let ages = [32, 33, 16, 40];
 
-	This example will return false because not all ages inside ages are 
-	greater than 18.
+			function checkAdult(age) {
+				return age >= 18;
+			}
+
+			console.log(ages.every(checkAdult));
+
+	This example will return false because not every age inside ages is 
+	18 or over.
 
 				
 
 	-fill()
 	———-
 		Fills an array with a value. The new 
-		value or values added in overwrites 
-		the array’s values.
+		value overwrites whatever was in 
+		those positions before.
 
 		const arr = [1, 2, 3, 4];
 		arr.fill(0, 1, 3); 
@@ -1834,7 +1849,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 		const arr = [1, 2, 3];
 
-		// Output: 2, 4, 6
+		// Prints 2, then 4, then 6,
+		// each on its own line
 		arr.forEach(
 			num => console.log(num * 2)
 		);
@@ -1873,12 +1889,10 @@ Are Rest Parameters and the Spread Operator Opposites?
 		 // Output: -1
 		console.log(arr.indexOf(50));
 
-		// returns false
-		if (arr.indexOf(100) !== -1) {
-			return true;
-		} else {
-			return false;
-		}
+		// A common way to test for presence.
+		// This prints false, because 100 is
+		// not in the array
+		console.log(arr.indexOf(100) !== -1);
 		
 		
 	
@@ -1901,15 +1915,15 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 	-join()	
 	————
-		It converts an array into a string. I 
+		It converts an array into a string. It 
 		joins the array elements with a 
 		specified separator. This means that 
 		you have to tell it what to separate 
 		the elements in the array by, and you 
-		do so by passing the separator 
-		character as an argument to join() eg 
-		“” for blank spaces, “,” for a comma 
-		etc
+		do so by passing the separator as an 
+		argument to join(), e.g. " " for a 
+		space, "," for a comma, or "" for no 
+		separator at all.
 
 		const words = ["Hello", "World"];
 
@@ -1936,11 +1950,17 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 	-map()	
 	—————
-     		Here is how to use a map. 
+     		map() runs a function on every element of an array and hands 
+     		back a brand new array of the results. The original array is left 
+     		untouched, and the new array always has the same number of 
+     		elements as the old one. It is the method you reach for when you 
+     		want to turn a list of one thing into a list of another thing.
 
-     		books = [
-       			{ id: 1, name: ‘Macbeth’ },
-       			{ id: 2, name: ‘Oliver Twist’ }
+     		Here it is turning a list of book objects into a block of HTML:
+
+     		const books = [
+       			{ id: 1, name: 'Macbeth' },
+       			{ id: 2, name: 'Oliver Twist' }
       		];
 
       		<div id="books"></div>
@@ -1968,9 +1988,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 	you wish to place items into (the target array). It accepts the element 
 	or item you wish to put in the array in question. The good thing about 
 	it is, it does not override anything previously in the target array, but 
-	rather adds the new data to END of it. Here is an example:
+	rather adds the new data to the END of it. Here is an example:
 
-		myArray = [
+		let myArray = [
 			[1, 2, 3]
 		]; 
 
@@ -1979,7 +1999,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 		console.log(myArray);
 
 	This will have added an array containing the two strings 'John' and 
-	‘Peter' and so the output of the contents of the target array myArray 
+	'Peter' and so the output of the contents of the target array myArray 
 	will now be:
 			
 		[[1, 2, 3], ['John', 'Peter']]
@@ -1992,9 +2012,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 		This pop() function is a built-in function in JavaScript used to remove the last 
 		element in an array. Here is an example:
 
-			myArray = [
+			let myArray = [
 				[1, 2, 3],
-				['John', 'Peter']
+				['John', 'Peter']
 			]; 
 
 			myArray.pop();
@@ -2002,22 +2022,22 @@ Are Rest Parameters and the Spread Operator Opposites?
 			console.log(myArray);
 
 		This will have removed the last element from myArray, which is the sub array 
-		containing names ([‘John', 'Peter’]), and so the output of the contents of the 
+		containing names (['John', 'Peter']), and so the output of the contents of the 
 		myArray will end up being:
 			
 			[[1, 2, 3]]
 
 		You may decide to pop the last item out and capture it in a separate variable 
-		of its own if you need to use it, For example:
+		of its own if you need to use it. For example:
 
-			myArray = [
+			let myArray = [
 				[1, 2, 3],
 				['John', 'Peter']
 			]; 
 
-			var names = myArray.pop();
+			let names = myArray.pop();
 
-		The new array names will now contain ['John', 'Peter']
+		The new array names will now contain ['John', 'Peter'].
 	
 
 
@@ -2030,10 +2050,10 @@ Are Rest Parameters and the Spread Operator Opposites?
 	The reduce() method accepts a function or closure that takes not 
 	just the item to iterate over like most of the other array methods do, 
 	but it takes a property of what you want to reduce everything into 
-	(the final result-let's call it the snow ball), and then the item (each 
+	(the final result—let's call it the snowball), and then the item (each 
 	element in the iteration). With each iteration over the array, the value 
 	of the snowball (first argument) of the closure is updated, and it is 
-	his value that is returned at the end of the method. Let us see it in 
+	this value that is returned at the end of the method. Let us see it in 
 	action:
 
 		const items = [
@@ -2047,6 +2067,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 			return item.price + currentTotal;
 		}, 0);
 
+		// Output: 1305
+		console.log(total);
+
 	The second argument of reduce() is your starting point, in this case, 
 	it is the initial starting price of 0. To explain again one more time how 
 	it works, the function or closure you pass to reduce() as its first 
@@ -2056,7 +2079,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 	argument the snowball since it accumulates as it goes along. The 
 	second argument of the closure is each item in the array during the 
 	iteration. This is the same item that is used in closures in other array 
-	methods like map() or foreEach() etc.  
+	methods like map() or forEach() etc. 
 	  The second argument of the reduce() method (which comes 
 	after the closure) is the initial value of the snowball to start the 
 	iteration with, and this is the value that will be incremented and 
@@ -2079,8 +2102,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 		const numbers = [1, 2, 3, 4, 5];
 
-		// Modifies the original 
-		numbers.reverse(); array
+		// Modifies the original array
+		numbers.reverse();
 
 		// Output: [5, 4, 3, 2, 1]
 		console.log(numbers); 
@@ -2095,9 +2118,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 	unlike pop() which is used to remove the last item in an array, shift() 
 	is used to remove the first element in an array. Here is an example:
 
-		myArray = [
+		let myArray = [
 			[1, 2, 3],
-			['John', 'Peter']
+			['John', 'Peter']
 		]; 
 
 		myArray.shift();
@@ -2111,39 +2134,39 @@ Are Rest Parameters and the Spread Operator Opposites?
 			[['John', 'Peter']]
 
 	You may decide to remove that first item and capture it in a separate 
-	variable of its own if you need to use it, For example:
+	variable of its own if you need to use it. For example:
 
-		myArray = [
+		let myArray = [
 			[1, 2, 3],
 			['John', 'Peter']
 		]; 
 
-		var numbers = myArray.shift();
+		let numbers = myArray.shift();
 
-	The new array numbers will now contain [1, 2, 3]
+	The new array numbers will now contain [1, 2, 3].
 
 	
 					
 	-unshift()	
 	—————-
 	The unshift() function is a direct opposite of the push() function 
-	because unlike push() which is used to add the last item in an array, 
-	unshift() is used to add an element at the beginning of an array. Here 
+	because unlike push() which adds an item to the end of an array, 
+	unshift() adds an element at the beginning of an array. Here 
 	is an example:
 
-		names = [
-			['John', 'Peter']
+		let names = [
+			['John', 'Peter']
 		]; 
 
-		myArray.unshift([“Jimmy”, “Jack”]);
+		names.unshift(["Jimmy", "Jack"]);
 
-		console.log(myArray);
+		console.log(names);
 
-	This will have added a sub array containing more names ([“Jimmy”, 
-	“Jack”]) as the first element of the names array. The output of the 
+	This will have added a sub array containing more names (["Jimmy", 
+	"Jack"]) as the first element of the names array. The output of the 
 	contents of the names array will now be:
 			
-		[['John', 'Peter’], [“Jimmy”, “Jack”]]
+		[["Jimmy", "Jack"], ['John', 'Peter']]
 
 	Note that similarly to the push() function, the unshift() function 
 	accepts an argument, which should be the element or item you wish 
@@ -2165,7 +2188,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 		console.log(arr.slice(1, 4)); 
 
 		This slices the array from index 1 up 
-		until but not including index 4
+		to but not including index 4.
 		
 	
 
@@ -2193,7 +2216,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 		Sorts an array alphabetically or numerically. By default, JavaScript’s 
 		sort() method converts all elements to strings and sorts them 
 		alphabetically in ascending order.
-		But when it comes to strings, it has no way of 	detecting which 
+		But when it comes to numbers, it has no way of detecting which 
 		number is bigger than the other. The solution with numbers is to pass 
 		to sort() a compare function. It will run this function on elements in 
 		pairs from left to right, subtracting one number from the other and 
@@ -2207,14 +2230,14 @@ Are Rest Parameters and the Spread Operator Opposites?
 		then to [1, 100, 2, 20] instead of [1, 2, 20, 100]
 
 		JavaScript doesn’t know that "100" should come after "2", because 
-		it compares them as strings, character-by-character. The Fix is to 
+		it compares them as strings, character-by-character. The fix is to 
 		pass a compare function to sort(). This allows you to control how 
-		items are compared-typically by subtracting one from the other for 
+		items are compared—typically by subtracting one from the other for 
 		numeric sorting:
 
 			[1, 100, 2, 20].sort((a, b) => a - b); 
 
-		This will result the correct sorting: [1, 2, 20, 100]
+		This will result in the correct sorting: [1, 2, 20, 100]
 
 		This works because:
 			If a - b results in a negative number, a comes before b
@@ -2247,29 +2270,33 @@ Are Rest Parameters and the Spread Operator Opposites?
 		Sort numbers in an array in descending order
 
 		Pass a function to sort() that assumes that the later number is 
-		greater than the one before it-take note of the b-a it returns.
+		greater than the one before it—take note of the b-a it returns.
 				
-			var points = [20,80,1,8,25,10];			points.sort(function(a, b){return b-a});
+			let points = [20, 80, 1, 8, 25, 10];
+			points.sort(function(a, b) { return b - a; });
 			
 			This will produce [80, 25, 20, 10, 8, 1]
 
 
 		Get the highest or lowest value in an array
 
-		To get the highest number in an array of numbers, the simple trick is 			to sort them in descending order and grab the number at the first 			index. You would do the opposite to get the lowest number. For 		
+		To get the highest number in an array of numbers, the simple trick is 
+		to sort them in descending order and grab the number at the first 
+		index. You would do the opposite to get the lowest number. For 
 		example:
 
-			var points = [20,80,1,8,25,10];			points.sort(function(a, b){return b-a});	
+			let points = [20, 80, 1, 8, 25, 10];
+			points.sort(function(a, b) { return b - a; });
 
 		The highest number will be found at points[0]
 		The lowest number can be found using any of the following 
 		techniques:
 
-			 points[points.length -1]
-			or
-			 points.slice(-1)[0]
-			or
-			 points.slice(-1).pop()
+			points[points.length - 1]
+			// or
+			points.slice(-1)[0]
+			// or
+			points.slice(-1).pop()
 
 
 
@@ -2278,8 +2305,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 	—————
 		It adds to, or removes elements from an array and returns the 
 		removed items. In doing so, it modifies the original array.
-			It takes at least two (2) arguments, but it can take any number 
-		beyond that.;
+			It takes one required argument and any number of optional ones 
+		after it:
 			   -i) The index at which to remove an element (required)
 			   -ii) The number of elements to remove (optional). If it's 0, 
 					nothing will be removed from the array
@@ -2293,16 +2320,17 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 		In this example, it removes 2 
 		elements beginning from index 1 and 
-		inserts "a" and “b”, hence we end 
+		inserts "a" and "b", hence we end 
 		with the original array having the new 
 		value of: [1, "a", "b", 4].
-			Any number of arguments after the first two will be added to the 		array starting from the index specified in the first argument. 
+			Any number of arguments after the first two will be added to the 
+		array starting from the index specified in the first argument. 
 
 			const arr = [1, 2, 3, 4];
-			arr.splice(1, 2, "a", “b”, “c”, “d”, “z”);
+			arr.splice(1, 2, "a", "b", "c", "d", "z");
 
 			// will result in arr having the value:
-			[1, "a", “b”, “c”, “d”, “z”, 4]
+			[1, "a", "b", "c", "d", "z", 4]
 			
 	
 
@@ -2310,8 +2338,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 	——————
 		It converts an array to a string. It is 
 		similar to join(), but always uses 
-		commas to separate the array 
-		elements by.	
+		commas as the separator.	
 
 		const arr = [1, 2, 3];
 
