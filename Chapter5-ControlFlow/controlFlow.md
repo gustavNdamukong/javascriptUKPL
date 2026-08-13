@@ -2,7 +2,7 @@
 
 
 //————————————————————//
-	CHAPTER 5 - CONTROL FLOW (OCL)
+	CHAPTER 5 - CONTROL FLOW (OCLS)
 //————————————————————//
 
 -OCLS (Operators, Conditionals, Loops, Switch)
@@ -38,9 +38,9 @@
 	-Loops (6)
              -The For loop
              -The While loop
-             -The Do…while loop
-             -The For…in loop (objects and arrays)
-             -The For…of loop (for Arrays, Strings, Maps, Sets, etc)
+             -The Do...while loop
+             -The For...in loop (objects and arrays)
+             -The For...of loop (for Arrays, Strings, Maps, Sets, etc)
              -The Foreach loop (for arrays)
 
 	     -Loop control statements
@@ -59,11 +59,14 @@ For your program to handle events well, it needs two main abilities:
 * To detect that an event has happened
 * To decide what to do about it (and maybe consider other things too)
 This is what control flow is all about: giving your program the power to respond to things in smart, useful ways.
-In JavaScript, there are three main tools that help you build this kind of logic:
+In JavaScript, there are four main tools that help you build this kind of logic. I remember them by the abbreviation OCLS:
 
 	-1) Operators
 	-2) Conditionals
 	-3) Loops
+	-4) Switch
+
+  Strictly speaking, a switch is itself a kind of conditional, and you will see it described that way elsewhere. I have given it a section of its own because its syntax is different enough from if...else to be worth studying separately. Operators are in this list for a similar practical reason: they are not really control flow either, but you cannot write a condition without them.
 
 
 
@@ -77,7 +80,7 @@ OPERATORS
 ———————
 	Operators are very useful for performing things like mathematical 
  operations, assigning values to variables, performing logical operations 
-like comparing to values, adding up values etc.
+like comparing two values, adding up values etc.
 
 		
 
@@ -95,17 +98,28 @@ Operators give you the ability to perform calculations so you can make accurate 
 	/ 	division
 	% 	modulo (used to find remainders)
 	++	increment by 1
-	—	decrement by 1
+	--	decrement by 1
 	+=	short form of addition
 	-=	short form of subtraction
 	*= 	short form of multiplication
 	/=	short form of division
-	Ternary operators
-	Multiple ternary operators
+	%=	short form of modulo
+	>	greater than
+	<	less than
+	>=	greater than or equal to
+	<=	less than or equal to
+	!=	not equal
+	!==	strictly not equal
+	!	not
+	&&	and
+	||	or
+
+	There is also the ternary operator, which needs a little more explaining
+	than a single line, so it has a section of its own further down.
 
 
 		Addition operator
-	The addition operator + is like the addition sign in mathematics (represented 	by the plus sign) and it us used to add two numbers together. It should not be mistaken for the concatenation operator that binds variables to a string. For example:
+	The addition operator + is like the addition sign in mathematics (represented by the plus sign) and it is used to add two numbers together. It should not be mistaken for the concatenation operator that binds variables to a string. For example:
 
 		let sum = 2 + 2;
 			
@@ -113,7 +127,7 @@ The value of sum will be 4.
 	
 
 		Minus operator
-	The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For 			example:
+	The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
 				
 		let num = 3 - 2;
 			
@@ -137,7 +151,7 @@ The value of num will be 4.
 
 						
 		Modulo operator
-	The modulus operator % is used to get the remainder after dividing one number by another. Basically, it divides the number on the left by the 		number on the right, and returns whatever is left over. For example:
+	The modulus operator % is used to get the remainder after dividing one number by another. Basically, it divides the number on the left by the number on the right, and returns whatever is left over. For example:
 				
 		let num = 10 % 5;
 			
@@ -149,7 +163,11 @@ The value of num will be 0.
 
 		let num = 11 % 2;
 			
-The value of num will be 1.	A practical application of this will be to use it in checking if a number is even or odd. Here is an example:
+The value of num will be 1.
+
+  A practical application of this is to check whether a number is even or odd. Here is an example:
+
+		let number = 7;
 
 		if (number % 2 == 0) {
   			console.log("Even number");
@@ -164,15 +182,15 @@ The value of num will be 1.	A practical application of this will be to use it in
 
 	a) By using the addition operator
 
-		var count = 1;
-		var value = count + 1; // value is 2
+		let count = 1;
+		let value = count + 1; // value is 2
 
 	b) By using the incremental operator
 
-		var count = 1;
-		var value = count++; // value is 1, but count becomes 2
+		let count = 1;
+		let value = count++; // value is 1, but count becomes 2
 
-Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However,  if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
+Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However, if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
 
 
 		Decremental operator
@@ -180,24 +198,24 @@ Note: In count++ where the operator is on the right side of the variable being i
 
 	a) By using the subtraction operator
 
-		var count = 2;
-		var value = count - 1; // value is 1
+		let count = 2;
+		let value = count - 1; // value is 1
 
 	b) By using the decremental operator
 
-		var count = 2;
-		var value = count--; // value is 2, but count becomes 1
+		let count = 2;
+		let value = count--; // value is 2, but count becomes 1
 			
-Note: In count- - where the operator is on the right side of the variable being decremented (count), the value is assigned to the new variable (in this case value) before the decrementing happens. The value of the value variable will now still be 2, while that of count is 1. However,  if you want to decrement the value of count first before assigning it to value so that value will also have the decremented (updated) value of count, use - -count with the - - operator on the left side of the count variable.		
+Note: In count-- where the operator is on the right side of the variable being decremented (count), the value is assigned to the new variable (in this case value) before the decrementing happens. The value of the value variable will now still be 2, while that of count is 1. However, if you want to decrement the value of count first before assigning it to value so that value will also have the decremented (updated) value of count, use --count with the -- operator on the left side of the count variable.
 
 
 
 
 -2) Assignment operators
 ———————————————
-  The assignment operator is used to assign a value to something. We saw this 	when learning about variables. It is how we assign values to variables. It is used to assign the value on the right of the operator to the operand on the left of it
+  The assignment operator is used to assign a value to something. We saw this when learning about variables. It is how we assign values to variables. It is used to assign the value on the right of the operator to the operand on the left of it.
 				
-		let number = 10
+		let number = 10;
 			
 This assigns the value of 10 to the number variable. It looks like the equal sign (=) in mathematics, but in programming, it's used to assign a value.
 
@@ -207,12 +225,13 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
 
 
 -3) Comparison operators
+———————————————
 
 	Equality operator
 	————————
 	The equal operator == is used to check if a value is equal to another value. It checks if the values of both operands match (but not their types). A common mistake is to mistake this for the assignment operator. This equal operator is usually used in conditional statements to verify if the value of a 	variable for example is equal to a specific value. We will learn all about 	conditional statements shortly, when we come to look at conditionals. For now, just remember that you need two mathematical equal signs, not just one, to check if two values are the same. It looks like this:	
 
-		var colour = "green";
+		let colour = "green";
 
 		if (colour == "green") {
     			console.log("The colour is green");
@@ -222,6 +241,7 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
 
 	
 	Strict equality operator
+	————————————
 	Also sometimes referred to as the identical operator, it goes beyond the equal operator which only checks if their values are the same, and checks if both values are of the same type as well. It is therefore more strict, and is handy for situations when you need to know that both operands are not only of the same type, but have the same value as well. Here is an example of how their differences can be deceiving:
 			
 		let fiveString = '5';
@@ -236,7 +256,7 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
    			alert('fiveString and fiveNumber are NOT the same');
 		}
 
-	The above example will display an alert popup saying 'fiveString and 	fiveNumber are the same'. JavaScript has a good ability to convert a string 	of number to a number when it sees you are trying to use it as a number. This 	is handy, but it is good for situations when you want to be accurate. In such 	circumstances, just change the expression in the if statement to use an identical operator instead of an equal operator. For example:
+	The above example will display an alert popup saying 'fiveString and 	fiveNumber are the same'. JavaScript has a good ability to convert a string of digits into a number when it sees you are trying to use it as a number. This is handy, but it is not what you want in situations where you need to be precise. In such 	circumstances, just change the expression in the if statement to use an identical operator instead of an equal operator. For example:
 
 		let fiveString = '5';
 		let fiveNumber = 5;
@@ -259,7 +279,7 @@ So always remember that when the == (equal) operator does not seem to 	work, jus
  				
 		let greaterThan = 2 > 1;
 			
-The value of  greaterThan is true.
+The value of greaterThan is true.
 
 
 	Less than operator
@@ -267,21 +287,21 @@ The value of  greaterThan is true.
 			
 		let lessThan = 2 < 1;
 			
-The value of  lessThan is false because 2 is not less than 1		
+The value of lessThan is false because 2 is not less than 1.
 
 	Greater than or equal to operator
 	The greater than or equal to operator >= specifies that the value on the left is either greater than, or equal to the number on the right. It is the same as the greater than or equal to sign in math. For example:
 				
 	let greaterThanOrEqualTo = 2 >= 1;
 			
-The value of  greaterThanOrEqualTo is true because 2 is greater than 1				
+The value of greaterThanOrEqualTo is true because 2 is greater than 1.
 
 	Less than or equal to operator			
 	The less than or equal to operator <= specifies that the value on the left is either less than, or equal to the number on the right. It is the same as 		the less than or equal to sign in math. For example:
 
 			let lessThanOrEqualTo = 2 <= 2;
 			
-The value of  lessThanOrEqualTo is true because 2 is equal to 2	
+The value of lessThanOrEqualTo is true because 2 is equal to 2.
 			
 	
 
@@ -290,30 +310,31 @@ The value of  lessThanOrEqualTo is true because 2 is equal to 2
 	Logical operators are used to determine if the value of an expression is true or false.
 
 		-Not operator
-			-OR operator
-			-And operator
-			-Ternary operator
+		-OR operator
+		-And operator
+		-Ternary operator
 
-		-Not equal operator
-	The ! Also known as the Not, or the Logical Not operator is used to determine if an expression is not equal to a value. In can be used in three forms: 
-	! – Logical NOT
-	!= – Not Equal
-	!== – Strict Not Equal (value and type)
+		-Not operator
+	————————
+	The ! operator, also known as the Not or Logical Not operator, is used to determine whether an expression is not equal to a value. It comes in three forms: 
+	!	Logical NOT
+	!=	Not Equal
+	!==	Strict Not Equal (value and type)
 
 For example:
 			
 		let two = 2;
 		let isTwo = two != 1;
 			
-The value of the variable isTwo will be true. This is because the value of the 	variable two is 2 and not 1, so isTwo which states that two is not equal to 1 is 	correct, hence the result is true. != is known as the “Not Equal” operator. In the same way, you can check if a value is not a value or strictly equal to a value using the Logical Not (!) or the Strict Not Equal (!==) operators, respectively.
+The value of the variable isTwo will be true. This is because the value of the 	variable two is 2 and not 1, so isTwo which states that two is not equal to 1 is 	correct, hence the result is true. != is known as the “Not Equal” operator. In the same way, you can flip a true or false result round using the Logical Not (!), or check that two things differ in value or in type using the Strict Not Equal (!==).
 
 
 		OR operator
-	The OR operator or || works with two conditional expressions, one on either side of a double pipe characters. It states that if the conditional on either side of its double pipe characters (||) is true, then the result is true. It will only return false if both conditionals are false. Basically, as long as one conditional on either side of its pipe characters is true, then the whole expression is true. For example:
+	The OR operator or || works with two conditional expressions, one on either side of the double pipe characters. It states that if the conditional on either side of its double pipe characters (||) is true, then the result is true. It will only return false if both conditionals are false. Basically, as long as one conditional on either side of its pipe characters is true, then the whole expression is true. For example:
 				
 		if (trafficLightColor == 'green' || trafficLightColor == 'amber')
 		{
-			console.log(“You can go!”);
+			console.log("You can go!");
 		}			
 
 	
@@ -322,18 +343,18 @@ The value of the variable isTwo will be true. This is because the value of the 	
 				
 		if (trafficLightColor == 'red' && carStops == false)
 		{
-			console.log(“That car has committed a traffic offence!”);
+			console.log("That car has committed a traffic offence!");
 		}
 
 
 		Ternary operator
-	The ternary operator is a quick way to assign a value to a value based on a conditional statement. It is a shorthand version of the if...else statement that allows quick assignments. A ternary operator is very powerful and handy. You would typically use it in situations where there is not much code you need to write if an expression is true. The conditional could be as short as one line of code. If you had to write a lot of code, then the block ({}) that an if statement provides would be preferable. With a ternary operator, you probably just need to set a variable’s value depending on some condition, so its quick and short. Here is the syntax:
+	The ternary operator is a quick way to assign a value to a variable based on a conditional statement. It is a shorthand version of the if...else statement that allows quick assignments. A ternary operator is very powerful and handy. You would typically use it in situations where there is not much code you need to write if an expression is true. The conditional could be as short as one line of code. If you had to write a lot of code, then the block ({}) that an if statement provides would be preferable. With a ternary operator, you probably just need to set a variable’s value depending on some condition, so it is quick and short. Here is the syntax:
 
 	condition ? runIfTrue : runIfFalse;
 
 Ternary operators are great when you need to quickly choose between two options. Here is an example:
 				
-		let action = trafficLightColor == “red”? “Stop”: “Go”;
+		let action = trafficLightColor == "red" ? "Stop" : "Go";
 
 The code after the colon acts as the else clause in an if statement. You can see how a ternary operator is simple yet powerful. Using it will make your code very concise and readable.
 
@@ -358,7 +379,8 @@ Here, the value of light is 'red', so the last message, 'Stop', will be printed.
 
 		
 
-Combining Math operators with the assignment operator
+Combining math operators with the assignment operator
+————————————————————————————
 
   Sometimes, you will come across two operators being combined like this: += for example 
 
@@ -368,28 +390,37 @@ Combining Math operators with the assignment operator
 
 It is completely valid, and += means that the value on the right (after the = character) is added to the value on the left (before the + character), rather than used to replace it. Note and remember that the += operator also works for strings and adds to (extends) a string.
 
-=  e.g.  j=3		which means j=3
-+= e.g.  j+=2   	which means j=j+2
-+= e.g.  j+= ‘string’ 	which means j=j+’string’
--= e.g.  j-=2  		which means j=j-2
-*= e.g.   j*=4 		which means j=j*4
-/= e.g.  j/=4 		which means j=j/2
-%= e.g.  j%=6 	which means j=j%6
+=  e.g.  j = 3		which means j = 3
++= e.g.  j += 2		which means j = j + 2
++= e.g.  j += 'text'	which means j = j + 'text'
+-= e.g.  j -= 2		which means j = j - 2
+*= e.g.  j *= 4		which means j = j * 4
+/= e.g.  j /= 4		which means j = j / 4
+%= e.g.  j %= 6		which means j = j % 6
 
-  It is basically a shorthand way of using mathematical operators to assign values to variables, and it is worth knowing, as you are sure to come across it in code. It is effectively a compact and quick way to run an expression and assign its result to a variable in one operation. They are also sometimes referred to as short form operators, or compound  operators. It is better demonstrated than explained. For example, instead of saying 
+  It is basically a shorthand way of using mathematical operators to assign values to variables, and it is worth knowing, as you are sure to come across it in code. It is effectively a compact and quick way to run an expression and assign its result to a variable in one operation. They are also sometimes referred to as short form operators, or compound operators. It is better demonstrated than explained. For example, instead of saying 
 			
-		let num = 2;	
-		let num = 2 * 2;	// num is now 4
+		let num = 2;
+		num = num * 2;		// num is now 4
 		
 	You can quickly do that like so:
 	
 		let num = 2;
-		let num *= 2;		// num is now 4
+		num *= 2;		// num is now 4
 
 	Other examples:
-		1 += 5;	// resolves to 6
-		6 /= 2;	// resolves to 3
-		6 *= 2;	// resolves to 12
+		let a = 1;
+		a += 5;		// a is now 6
+
+		let b = 6;
+		b /= 2;		// b is now 3
+
+		let c = 6;
+		c *= 2;		// c is now 12
+
+	Note that these operators always work on a variable. You cannot write
+	1 += 5; because there is nothing there to update - 1 is just the number
+	1, and it will always be the number 1.
 
 
   The operator always goes before the equal sign:
@@ -572,10 +603,10 @@ There are 6 main types of loops to master:
 	-1) For loop – The most common type, great for running a block of code 
 		a specific number of times.
 	-2) While loop – Keeps running as long as a condition is true.
-	-3) Do…while loop – Similar to while, but runs the code at least once, 
+	-3) Do...while loop – Similar to while, but runs the code at least once, 
 		even if the condition is false.
-	-4) For…in loop – Used to loop through the properties of an object.
-	-5) For…of loop – Used to loop through values in arrays, strings, and 
+	-4) For...in loop – Used to loop through the properties of an object.
+	-5) For...of loop – Used to loop through values in arrays, strings, and 
 		other iterable objects.
 	-6) forEach loop – A special array method that loops through array 
 		items and lets you run a function on each one.
@@ -683,7 +714,7 @@ Here, the while loop runs while i is less than the number of fruits in the array
 
 
 			
-	-3) The Do…while loop
+	-3) The Do...while loop
 	———————
 
   A do...while loops are less common than other types of loops, but they are useful in situations where a block of code needs to run at least once before a condition is checked.
@@ -721,7 +752,7 @@ This loop runs once to display the first fruit, then continues checking if more 
 
 
 
-	-4) The For…in loop (Used for Objects and Arrays)
+	-4) The For...in loop (Used for Objects and Arrays)
 	————————
 
 	Used to loop over object properties. A word of caution; It can also loop 
@@ -750,7 +781,7 @@ This loop runs once to display the first fruit, then continues checking if more 
 
 
 
-	-5) The For…of loop (Used for Arrays, Strings, Maps, Sets, etc.)
+	-5) The For...of loop (Used for Arrays, Strings, Maps, Sets, etc.)
 	————————————
 
 	It offers a cleaner way to iterate over iterable objects like arrays 

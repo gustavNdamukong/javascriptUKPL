@@ -184,9 +184,9 @@ Chapter 5 - Control Flow
       -Loops (6)
                 -The For loop
                 -The While loop
-                -The Do…while loop
-                -The For…in loop (objects and arrays)
-                -The For…of loop (for Arrays, Strings, Maps, Sets, etc)
+                -The Do...while loop
+                -The For...in loop (objects and arrays)
+                -The For...of loop (for Arrays, Strings, Maps, Sets, etc)
                 -The Foreach loop (for arrays)
 
           -Loop control statements
