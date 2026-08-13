@@ -40,6 +40,7 @@ Chapter 21 - Extensions (APIs & Libraries)
 Chapter 22 - Networking
 Chapter 23 - Templates
 Chapter 24 - Event Handling
+Chapter 25 - Asset Management
 
 What next
 
@@ -694,6 +695,10 @@ Chapter 24 - Event Handling
     -Custom events
     -Conclusion
 
+Chapter 25 - Asset Management
+    -When and why assets management is needed
+    -Why you do not need it for vanilla JavaScript
+
 
 
 -What next
@@ -722,13 +727,17 @@ Here’s how to get the most out of it:
 * You should set up a simple local project with an index.html file, using the following skeleton:
 
 
-	<html>
-	<head><title>JavaScript Master</title></head>
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>JavaScript Master</title>
+	</head>
 	<body>
 
-  		<script type="text/javascript">
-    			// Your JavaScript code here
-  		</script>
+		<script>
+			// Your JavaScript code here
+		</script>
 	</body>
 	</html>
 
