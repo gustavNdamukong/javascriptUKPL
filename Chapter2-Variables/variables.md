@@ -226,6 +226,10 @@ Here, both y and z are restricted to the block because let and const follow bloc
 
 Here, a is restricted to the function, so it behaves as expected.
 
+![Figure 2.1 — How far each kind of variable can be seen](images/ch02-fig-01-scope-and-blocks.svg)
+
+*Figure 2.1 — How far each kind of variable can be seen*
+
 
 
 Types of blocks
@@ -624,6 +628,10 @@ being a kindness. The var version lets a mistake slide by silently. The let
 version stops and tells you exactly what went wrong, which is far easier to fix.
   The practical lesson is a simple one: declare your variables before you use 
 them, and prefer let and const so that JavaScript tells you when you have not.
+
+![Figure 2.2 — Reaching for a variable before you declare it](images/ch02-fig-02-hoisting-tdz.svg)
+
+*Figure 2.2 — Reaching for a variable before you declare it*
 
 
 
