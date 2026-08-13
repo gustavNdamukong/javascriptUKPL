@@ -1048,6 +1048,12 @@ The values without the keys actually result in the same output as the other loop
 	v) Using Object.entries() and forEach()
 	—————————————————————
 This works well and also provides the indexes of the values. 
+  The example below uses something you have not met before, so let us name it. The
+backticks in `${index}: ${value}` mark what is called a template literal. It is simply
+another way of writing a string, but with one very handy extra: anywhere you put ${...}
+inside it, JavaScript works out what is in the braces and drops the result into the text
+for you. It saves a good deal of joining strings together with + signs. We will look at
+template literals properly in Chapter 9 (Strings).
 
 	Object.entries(arr).forEach(
 		([index, value]) => { 

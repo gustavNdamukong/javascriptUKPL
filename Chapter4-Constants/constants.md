@@ -5,14 +5,14 @@
 //————————————————————//
 
 	   -Mutating a const array
+	   -Mutating a const object
 
 
 A constant is like a variable, but with one 
-   key difference: its value is immutable,   
-   meaning that once a constant is 
-    assigned a value,that value cannot be 
-    changed. It is created by declaring it 
-    with the const keyword, for example:
+   key difference: once a constant has been 
+   given a value, you cannot point it at a 
+   different one. It is created by declaring 
+   it with the const keyword, for example:
 
 	const fee = 20;
 
@@ -26,12 +26,12 @@ A constant is like a variable, but with one
   throughout the program, such as tax rates, 
   company names, or configuration settings.
 -Here are the key points about constants:
-    ✔ Use const when you never want the 
-           value to change.
-   ✔ Constants help make your code more 
-           predictable and error-free.
-   ✔ Trying to reassign a constant will 
-          cause an error.
+    - Use const when you never want the 
+      value to change.
+    - Constants help make your code more 
+      predictable and error-free.
+    - Trying to reassign a constant will 
+      cause an error.
 
 -Here’s a real-world example using 
    constants in a shopping cart scenario to 
@@ -57,8 +57,7 @@ A constant is like a variable, but with one
 
        // Example usage
        const itemPrice = 100;
-       console.log(`Final price: 
-           $${calculateTotalPrice(itemPrice)}`); 
+       console.log(`Final price: $${calculateTotalPrice(itemPrice)}`);
 
        // Output: Final price: $115
 
@@ -70,12 +69,24 @@ Why Use a Constant Here?
     -It prevents accidental changes that 
        could cause calculation errors.
 
+  You may have noticed something about the name TAX_RATE. Back in Chapter 2 we said that
+programmers normally name variables using camel casing, like taxAmount or itemPrice, and
+that is still true. Look at the example above and you will see that taxAmount, totalPrice
+and itemPrice all follow that rule, even though they are declared with const.
+  TAX_RATE is different because it is a fixed setting: a value written into the program
+once and never worked out from anything else. For those, the convention is to use capital
+letters with underscores between the words. It is a signal to anyone reading the code that
+this is a dial someone chose, not a value the program calculated. You will see the same
+style used for things like MAX_LOGIN_ATTEMPTS or API_URL.
+  So the rule of thumb is: camel case for almost everything, including most of your consts,
+and CAPITALS_WITH_UNDERSCORES only for fixed settings of this kind.
+
 
 
 Mutating a const array
 ————————————
-  I know we said above that the value of a 
-const variable is immutable. However there is an exception. Though you cannot re-assign the value of a const variable, if that value is an array, you can actually change the values of specific keys in that array. 
+  We said above that you cannot point a const 
+at a different value. That is true, and it is worth being precise about what it does and does not protect. const guards the name, not the contents. So although you cannot re-assign a const variable, if the value it holds is an array, you can still change the values at specific keys inside that array. 
 
 	const testData = [5, 10, 20, 25];
 
@@ -89,10 +100,10 @@ const variable is immutable. However there is an exception. Though you cannot re
 
 The output of this code will be an error like so:
 
-	TypeError: Assignment to constant 
+	TypeError: Assignment to constant 
        variable.
 
-But you can work around that since the const variable is an array and target and mutate the values of specific keys of it. Here is how; to modify the array key values, you would use the bracket notation.
+But since the const variable holds an array, you can target and change the values at specific keys inside it. Here is how: to modify the array key values, you use the bracket notation.
 
 	const testData = [5, 10, 20, 25];
 
@@ -105,6 +116,33 @@ But you can work around that since the const variable is an array and target and
 
 	tryToMutateConstVar();
 
-The output will return the changed contents of The array like so:
+The output will be the changed contents of the array, like so:
 
-	[200, 0, 20, 25]
+	[200, 0, 20, 25]
+
+
+Mutating a const object
+————————————
+  The very same thing is true of objects. If a const holds an object, you cannot point the
+name at a different object, but you can change what is inside the one it already holds.
+  Trying to replace the whole object fails:
+
+	const person = { name: "Alice", age: 30 };
+
+	// TypeError: Assignment to constant variable.
+	person = { name: "Bob", age: 25 };
+
+  But changing a property inside it works perfectly well:
+
+	const person = { name: "Alice", age: 30 };
+
+	person.name = "Bob";
+	person.age = 25;
+
+	// Output: { name: 'Bob', age: 25 }
+	console.log(person);
+
+  So it is worth holding on to this one sentence, because it catches almost everybody out at
+least once: const protects the name, not the contents. If you genuinely need the contents
+frozen too, JavaScript has a separate tool for that called Object.freeze(), which we will
+meet when we come to objects in Chapter 16.

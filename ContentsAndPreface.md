@@ -148,6 +148,7 @@ Chapter 3 - Arrays
 
 Chapter 4 - Constants
     -Mutating a const array
+    -Mutating a const object
 
 Chapter 5 - Control Flow
     -OCLS (Operators, Conditionals, Loops, Switch)
