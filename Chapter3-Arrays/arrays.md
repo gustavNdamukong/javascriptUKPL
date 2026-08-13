@@ -51,9 +51,10 @@
 	    -Array properties
 		   -length
 		   -prototype
+		   -constructor
+		   -prototype.length
 	   -Array methods
 	   -True array methods and associative arrays
-	   -Exercises with arrays
 
 
 
@@ -2360,7 +2361,7 @@ True array methods and associative arrays
     * And others…
 
 But here’s something very important to remember. Array methods only work on real arrays. JavaScript objects (which we often use as associative arrays) do not have these methods. That’s because they’re plain objects, not arrays under the hood.
-So what do we do when we want to loop through or work with objects the way we do with arrays? The trick is to use of three very special methods that JavaScript provides for this purpose. These three methods are:
+So what do we do when we want to loop through or work with objects the way we do with arrays? The trick is to use three very special methods that JavaScript provides for this purpose. These three methods are:
 
     * Object.keys()
     * Object.values()
@@ -2397,81 +2398,9 @@ Having converted an object into an array, you can now use .filter(), .map(), or 
 
 	console.log(person.length);
 
-The output will be undefined. But not to worry-now that you have learned about the ‘big’ KVE (Object.keys(), Object.values() and Object.entries()), you are covered, and you can use them effectively and easily to work around that. If you guessed that you can use the .length property and any true array method after converting the object into an array using any of the KVE methods, you are absolutely right. 
+The output will be undefined. But not to worry—now that you have learned about the ‘big’ KVE (Object.keys(), Object.values() and Object.entries()), you are covered, and you can use them effectively and easily to work around that. If you guessed that you can use the .length property and any true array method after converting the object into an array using any of the KVE methods, you are absolutely right. 
   To count how many properties are in an object, you can use Object.keys() like this:
 
 	console.log(Object.keys(person).length);
-  The output will be 3 
+  The output will be 3.
 This counts how many keys (i.e. properties) are inside the object. Hence the output is 3 for the 3 properties ‘name’, ‘age’, and ‘city’ of the person object.
-
-
-
-
-
-
-
-
-EXERCISES WITH ARRAYS
-———————————————
-  Read the following tasks carefully and try to decide how you would approach the problem and set about resolving it. Attempt to do so yourself like an exam, and then refer to the solution at the end of this book to see if yours is similar. Bear in mind that there are many approaches to the same problem in programming, so your will not necessarily be wrong if it is not the same way as others. However, certain approaches to certain problems in programming may be less effective than others. Anyway, the exercises in this book are simplified and straight forward, so you you should be able to follow along very easily. Experience has shown that the most effective way to learn is by going ahead and putting into practice what you have learned, in your own manner. This is what these exercises are meant to achieve with you. I urge you therefore to try solving the exercises before looking at my solutions at the back of the book.
-
-  -1) Loop through an array running a function on each element.
-	This can be accomplished with the map() utility function. The map() 
-	utility function is a handy and easy way to loop through an array. You call 
-	it on the array passing it two arguments; 
-
-		-i) the function to run on all elements of the array, and 
-		-ii) an iterator token e.g. I which will represent an incremented index 
-			number for each of the array elements in the loop.
-
-		displayNames function(name, i) {
-			return “<li>”name ”+i+”: “+name</li>”;
-		}
-
-		<ul className=’board’>
-		employeesList.map(this.displayNames)
-		</ul>
-
--2) Loop through an array of images and display the images on screen. 
-	Basically; create a div in your HTML code and maybe give it an ID.
-
-		-Within your JavaScript code, create an array
-		-Put in this array a number of elements which should be names of 
-			images as strings, including their image extensions. Make sure 
-			these are the names of actual images on your computer.
-		-Select the div you created in your HTML code. This is where you will 
-			be displaying the images whose names you have stored in the 
-			array. Let us refer to it as the target div.
-		-Loop though the array grabbing the names of the images in there 
-			one by one and, placing them within an <img /> tag, and then 
-			placing the image tag in the target div, essentially displaying the 
-			image in the div. 
-		-Use a timer function so that only one image is displayed at a time 
-			and then changes every 5 seconds.
-
--3) Create an array of numbers 1, 3, 2, 5, 2, 9, 2, 9, 2, 1, 
-
-		-then create another empty array. 		
-		-Loop through the array of numbers and check the numbers. If the 
-			number is a 2, or a 9, put it in the other empty array. Then 
-			display the contents of the initially empty array in an alert 
-			popup.  
-	
-		The popup should display 2, 2, 9, 2, 9, 2
-		This exercise should teach you how to loop through an array and 
-		scan its contents for specific values, and filter out what is not 
-		needed. In so doing, you will utilise the comparison operator to check 
-		if a value is equal to another value. We have not learned about 
-		comparison operators  yet, but this will serve as a gentle 
-		introduction to it. When we come to it in the next chapter, and you 
-		see that and many other operators in action, you will grasp their 
-		essence and poser in programming.
-
--4) Finally, we should not proceed without exercising with multi-dimensional 
-		arrays too. 
-
-		-Create an array called food which contains three arrays of different 
-			food types in it. Each of those three arrays have three elements 
-			in it. 
-	-Loop through this food array and display the elements of each of the 
-		arrays in the console on separate line. 

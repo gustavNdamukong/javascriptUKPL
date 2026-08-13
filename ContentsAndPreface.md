@@ -141,9 +141,10 @@ Chapter 3 - Arrays
           -Array properties
           -length
           -prototype
+          -constructor
+          -prototype.length
         -Array methods
         -True array methods and associative arrays
-        -Exercises with arrays
 
 Chapter 4 - Constants
     -Mutating a const array
