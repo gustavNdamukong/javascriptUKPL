@@ -455,9 +455,7 @@ Here are the key points on anonymous functions:
 	-It uses the function keyword.
 	-It has its own this context.
 
-  Arrow functions can be said to be the new and simplified way of writing functions in general that was introduced since ES6. An arrow function has a shorter syntax for writing functions using the arrow character =>. It has lexical this binding. The left side of the arrow has the argument(s) being passed to the 
-function, while the right side of the arrow 
-constitutes the return value. Let us simplify the above greet() anonymous function by converting it into an arrow function:
+  Arrow functions can be said to be the new and simplified way of writing functions in general that was introduced since ES6. An arrow function has a shorter syntax for writing functions using the arrow character =>. It has lexical this binding. The left side of the arrow has the argument(s) being passed to the function, while the right side of the arrow constitutes the return value. Let us simplify the above greet() anonymous function by converting it into an arrow function:
 
 const greet = (name) => `Hello, ${name}!`;
 
