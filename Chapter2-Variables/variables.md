@@ -167,7 +167,7 @@ called a parameter:
 		console.log("Hello " + name);
 	}
 
-	greet("Gustav");            // "Gustav" is the argument
+	greet("John");            // "John" is the argument
 
   JavaScript also comes with a good many functions already built in, ready for you to call.
 You have met console.log() already. Two more you will see shortly are alert(), which pops up

@@ -21,7 +21,7 @@ Chapter 2 - Variables
 Chapter 3 - Arrays
 Chapter 4 - Constants
 Chapter 5 - Control Flow
-Chapter 6 - Regex
+Chapter 6 - Regular Expressions
 Chapter 7 - Functions
 Chapter 8 - Cookies
 Chapter 9 - Strings
@@ -198,7 +198,7 @@ Chapter 5 - Control Flow
           -the continue statement
           -Switch statement
 
-Chapter 6 - Regex
+Chapter 6 - Regular Expressions
     Intro
     Features
     Grouping
