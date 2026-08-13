@@ -11,8 +11,8 @@ Intro
 Features
 Grouping
 Classes
-Range
-Negation
+   Range
+   Negation
 Anchor characters
 Shorthand meta characters
 Quantifiers
@@ -36,10 +36,10 @@ A regular expression (also referred to as regex) is a
          sequences in text. For example, finding 
          email addresses, phone numbers, or 
          validating formats like dates.
-     -ii) Search and Replace**: Regex can be 
+     -ii) Search and Replace: Regex can be 
          used to find occurrences of patterns in 
          text and replace them with new strings.
-     -iii) Flexible and Powerful**: It provides a 
+     -iii) Flexible and Powerful: It provides a 
          flexible way to define complex string 
          patterns using literals, wildcards, 
          quantifiers, and special characters.
@@ -61,6 +61,21 @@ A regular expression (also referred to as regex) is a
   Python, JavaScript, and many others. They 
   are widely used in text processing tasks for 
   pattern matching and validation.
+    One thing worth knowing early on is that
+  regular expressions are not a JavaScript
+  invention. The patterns themselves are much
+  the same wherever you go, which is why
+  learning them once pays off in every
+  language you ever pick up afterwards. What
+  differs from language to language is the
+  wrapper around them: how each one hands
+  you the tools to run a pattern against a
+  string. JavaScript gives you built-in
+  functions such as test() and replace(), which
+  we will come to later in this chapter. Other
+  languages have their own equivalents. The
+  pattern in the middle stays the same; only
+  the way you reach for it changes.
     Here are some of the most popular
   characters available:
 
@@ -69,7 +84,7 @@ A regular expression (also referred to as regex) is a
     With regular expressions, you can 
   construct a powerful pattern-matching 
   algorithm using just a single expression.
-    The syntax is simple, it starts with a 
+    The syntax is simple: it starts with a 
   forward slash and ends with a forward 
   slash. You have to place the pattern to be 
   matched between them. The pattern is 
@@ -79,9 +94,16 @@ A regular expression (also referred to as regex) is a
   with their meanings, and separate them 
   under topics according to their behaviours.
  
-  /*/        An asterisk character. It matches 
-              any number of characters or 
-              nothing
+  /.*/       An asterisk means "zero or more of
+              whatever comes just before it". This
+              is important, because it never works
+              on its own. Written by itself, /*/ is
+              not even a valid pattern, since there
+              is nothing in front of it to repeat.
+              Put it after a dot, as in /.*/, and you
+              get what people usually mean when
+              they say "match anything, or nothing
+              at all".
 
 /./          A dot character. It matches all kinds 
              of characters except a newline (\n).    
@@ -97,29 +119,30 @@ A regular expression (also referred to as regex) is a
              example + or * to expand its 
             capability.
 
-/+/        Matches at least one or more 
-            characters. It is therefore often used    
-            in a combination. Unlike the * 
-            (asterisk) character, it does not 
-            match nothing-as in, if no character 
-            appears in the subject string, it will 
-            not match.
+/.+/       Means "one or more of whatever
+            comes just before it". Like the
+            asterisk, it needs something in front
+            of it to work on, so it is always used
+            in a combination. Unlike the asterisk,
+            it will not match nothing—as in, if no
+            character appears in the subject
+            string at all, it will not match.
 
 /<.>/    It will match anything that comes 
             between ‘<‘ and ‘>’ characters. This 
             will match the beginning names of an 
-            HTML tag. It wont match blank tags 
+            HTML tag. It won't match blank tags 
             (<>). Another limitation which we 
             already know is; it will match only 
             tags with single letters. For example, 
             it will match <p> and <b> but will not 
             match <em>.
 
-/<.*>/   Expends the above pattern and fixing 
+/<.*>/   Extends the above pattern, fixing 
             its limitations. It will match blank 
             tags, and also tags with multiple 
             letters. This is because the 
-            *(asterisk) character can also  
+            *(asterisk) character can also 
             match nothing as well as anything. 
             Combining meta characters like this 
             therefore is useful because they are 
@@ -146,11 +169,15 @@ A regular expression (also referred to as regex) is a
 
                   /<[^>]+>/
 
-            This tells the system to match an 
-            opening tag (<) then ignore any 
-            number of closing tags (>) that come 
-            after that, until (except) the last ‘>’ 
-            character. 
+            Read it as: match an opening angle
+            bracket (<), then one or more
+            characters that are NOT a closing
+            angle bracket, then a closing one.
+            Because [^>] refuses to match a >, the
+            match is forced to stop at the very
+            first > it meets, rather than running on
+            to the last one on the line. That is
+            exactly what we wanted. 
                Note that the […] and the + 
            characters are a combination.
 
@@ -162,8 +189,8 @@ A regular expression (also referred to as regex) is a
     If you ever need to literally match a 
   character which happens to be regex meta 
   character, you can do that by simply 
-  placing a black slash in front of the 
-  character. This k own as escaping the 
+  placing a backslash in front of the 
+  character. This is known as escaping the 
   character so that your code parser does 
   not treat the character as a regex pattern 
   to use for matching, but to match the 
@@ -177,19 +204,19 @@ A regular expression (also referred to as regex) is a
   You may not be sure of how many 
   characters or digits will come after the dot 
   character. For example it could be 5.0, or 
-  5.00 or 5. 000 etc. The solution to this is to 
+  5.00 or 5.000 etc. The solution to this is to 
   simply add an asterisk after the last zero 
   like so
 
            /5\.0*/
 
-  The back slash can escape anything 
-  including a back slash itself, which is useful 
-  in case there is a back slash in the string 
-  you are matching.  
+  The backslash can escape anything 
+  including a backslash itself, which is useful 
+  in case there is a backslash in the string 
+  you are matching. 
     Note that there are some so-called 
   shorthand matching characters that start 
-  with a back slash. I will provide a list of 
+  with a backslash. I will provide a list of 
   these later below.
 
   In regular expressions, there are the 
@@ -197,6 +224,7 @@ A regular expression (also referred to as regex) is a
    -grouping
    -classes
    -ranges
+   -negation
 
          GROUPING
         ——————-
@@ -211,19 +239,30 @@ A regular expression (also referred to as regex) is a
   be a string of numbers. Here is an 
   example:
 
-          /1(,000)+ /  will match any of these:
+          /1(,000)+/  will match any of these:
              -1,000
-             -1,000, 000 etc
+             -1,000,000
+             -1,000,000,000 etc
 
-  Keep a space between the + character and
-  the last ‘/‘ character for better matching. 
-  You would then be able to match all digits 
-  like 1,000, 000 or 1,000, 000, 000 etc. 
-  Otherwise it will only be a match if the 
-  grouped digits ‘,000’ have no space 
-  between them like this:
-  
-       1,000,000 
+  The parentheses hold the group, and the +
+  after them says "one or more of that group".
+  So the pattern matches a 1 followed by any
+  number of ,000 groups.
+  Take care not to leave a space before the
+  closing slash. A space inside the pattern is
+  not decoration; it is a character that has to
+  be matched like any other. Writing
+  /1(,000)+ / would mean "...and then a
+  space", so it would no longer match 1,000
+  at all unless a space happened to follow it.
+  If you do want to allow an optional space
+  after each comma, say for numbers written
+  as 1,000, 000, then ask for it explicitly:
+
+       /1(,\s?000)+/
+
+  where \s means a space character and the ?
+  after it makes that space optional.
 
 
               CLASSES
@@ -242,21 +281,22 @@ A regular expression (also referred to as regex) is a
                    like /gr[ae]+y/ then it will match 
                    ‘greey’ and ‘graay’ and ‘greay’ 
                    and ‘graey’. Just understand that 
-                   without the + character adter the 
+                   without the + character after the 
                    square brackets, each character 
                    between the brackets will be 
                    matched only once.
 
     An alternative way to achieve the same 
-  out come is to use a pipe character like so:
+  outcome is to use a pipe character like so:
   /a|e/     You simply place a pipe character 
                between the characters you want 
                to match either of. This approach is 
-               not a class, but i am showing you 
+               not a class, but I am showing you 
                here just for informative purposes.
 
 
            RANGE
+           —————
 
               A range will match any character 
               within a range.
@@ -266,26 +306,37 @@ A regular expression (also referred to as regex) is a
               any number between 5 and 8.
 
 /\d/        Is a shorthand to match any single 
-             digit number. It’s exactly the 
-             equivalent if the pattern above (/ 
-             [0-9]/
+             digit number. It is exactly the 
+             equivalent of the pattern above, 
+             /[0-9]/.
 
 
 
           NEGATION
+          ————————
     You use this to create a pattern that the
   match must not be. Basically, you are 
-  saying g that a match should be everything 
+  saying that a match should be everything 
   but not this negation pattern. You create a 
   negation pattern by placing a caret 
   character as the first thing inside a pair of 
   square brackets. Every other character 
-  that follows the caret character i side the  
+  that follows the caret character inside the 
   brackets is a negation pattern.
     If the square bracket is followed by a 
-  meta characters eg eg +  or *, then the 
-  square bracket and the meta character are 
+  meta character, for example + or *, then the 
+  square bracket and the meta character are
   a combination.
+    Here is one you have already seen:
+
+       /[^0-9]/   matches any single character
+                  that is NOT a digit
+
+    And the tag pattern from earlier:
+
+       /<[^>]+>/  matches a < , then one or
+                  more characters that are not
+                  a > , then a >
 
 
 
@@ -436,13 +487,24 @@ A regular expression (also referred to as regex) is a
   not. Basically, it returns  boolean (true or 
   false). For example:
 
-    console.log(/cats/i.test(“Cats are fun. I 
-           like cats.”));
-    $n = preg_match(
-               “/cats/i”, $phrase, $match
-        );
+    console.log(/cats/i.test("Cats are fun. I
+           like cats."));
 
-    This will return true to the console
+    This will return true to the console.
+
+    If you want to see what was actually
+  found rather than just true or false, use
+  match() on the string instead:
+
+    console.log("Cats are fun. I like
+           cats.".match(/cats/i));
+
+    That one prints an array whose first item
+  is the text it matched, in this case "Cats".
+  Note the capital C: the i modifier made the
+  match case-insensitive, but what comes
+  back is the text exactly as it appeared in
+  the subject string.
 
 
 
@@ -462,8 +524,8 @@ A regular expression (also referred to as regex) is a
   string ‘cats’ and replace them with ‘dogs’, 
   do it like so:
 
-  console.log(“Cats are fun. I like 
-          cats”.replace(/cats/gi, “dogs”));
+  console.log("Cats are fun. I like 
+          cats".replace(/cats/gi, "dogs"));
 
     The limitation of replace() is that it 
   replaces the subject with exactly the text 
@@ -496,17 +558,17 @@ A regular expression (also referred to as regex) is a
          -\d{2} matches the next 2 digits.
          -\d{4} finally matches the last 4 digits.
 
-         In PHP you can use preg_match() to 
-         match a regular expression:
+         In JavaScript you can use test() to check
+         a string against a regular expression:
 
-           $pattern = "/\d{3}-\d{2}-\d{4}/";
-           $string = "My SSN is 123-45-6789";
+           const pattern = /\d{3}-\d{2}-\d{4}/;
+           const text = "My SSN is 123-45-6789";
 
-           if (preg_match($pattern, $string)) {
-               echo "Valid SSN!";
+           if (pattern.test(text)) {
+               console.log("Valid SSN!");
            } else {
-               echo "Invalid SSN.";
-          }
+               console.log("Invalid SSN.");
+           }
 
 
 
