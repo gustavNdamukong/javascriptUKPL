@@ -34,6 +34,12 @@
 		-Combining math operators with the assignment operator
 	-Conditionals
 		-if statements
+		-Checking Multiple Conditions
+			-a) Independent Conditions
+			-b) Mutually Exclusive Conditions
+			     (Two Choices)
+			-c) Mutually Exclusive Conditions
+			     (More Than Two Choices)
 		-Additional notes on conditionals
 	-Loops (6)
              -The For loop
@@ -448,7 +454,7 @@ In JavaScript, an if statement is a block, and its syntax is similar to that of 
  		 // code to run (action) if condition is true
 	}
 
-The condition is always some kind of expression that evaluates to true. The above syntax is the shortest version and works well if you have just one condition to check. Let’s consider a real-life example. Imagine your program controls a school bell that should ring when the time is exactly 9:00 AM. You’d use an if statement to check that time:
+The condition is always some kind of expression that evaluates to either true or false. It is the answer to that expression which decides whether the code inside the braces runs at all. The above syntax is the shortest version and works well if you have just one condition to check. Let’s consider a real-life example. Imagine your program controls a school bell that should ring when the time is exactly 9:00 AM. You’d use an if statement to check that time:
 
 	if (time == '09:00') {
   		// ring the bell then stop
@@ -465,7 +471,7 @@ There will be times when you have more than one condition to check. These multip
 a) Independent Conditions
 ———————————————
 Let’s say the bell should ring not only at 9:00 AM but also at 10:00 AM. The bell ringing at 10:00 has nothing to do with whether it rang at 09:00 or 
-not, they ringing just happens at both times very independently of each other. There are different ways to write the if statement, and they will all work.  
+not. The ringing just happens at both times, quite independently of each other. There are different ways to write the if statement, and they will all work. 
 You can either decide to make the one conditional expression check for both times in a single if statement or you can write two separate if statements, one for each time check, with each taking the action necessary. 
 
 Recommended – Single if statement using OR (||):
@@ -498,17 +504,17 @@ are conditions to handle (check for).
 b) Mutually Exclusive Conditions (Two Choices)
 —————————————————————————-
   In this case, you have two conditions that are mutually exclusive.
-It means if one event or condition happens, the other cannot happen at the same time.  Say for example, you are working with a barrier that opens when a light shows green, and closes when the light is red. In this case the light is the condition (expression) and the behaviour of the barrier (code your run) is the action you take based on the value of that light-which is what the expression resolves to. In this green or red light scenario, you are dealing with multiple conditions. 
+It means if one event or condition happens, the other cannot happen at the same time. Say for example, you are working with a barrier that opens when a light shows green, and closes when the light is red. In this case the light is the condition (expression) and the behaviour of the barrier (the code you run) is the action you take based on the value of that light—which is what the expression resolves to. In this green or red light scenario, you are dealing with multiple conditions. 
   For each condition, there is an action to be taken, which are to open 
-or close the barrier. JavaScript provides a system for checking for conditions in such multiple, mutually exclusive scenarios. That is the ‘else’ clause of if statement. 
+or close the barrier. JavaScript provides a system for checking for conditions in such multiple, mutually exclusive scenarios. That is the ‘else’ clause of the if statement. 
 Here is the syntax:
 
-	if (condition 1) {
-			// code to run if condition 1 is true
+	if (condition) {
+			// code to run if the condition is true
 	}
 	else
 	{
-		// code to run if condition 1 is false
+		// code to run if the condition is false
 	}
 
 Let’s see an example of how to use an if...else statement:
@@ -540,12 +546,12 @@ Use an if...else if...else chain:
 	} 
 	else 
 	{
-  		// no need to check again-light is red
+  		// no need to check again - the light is red
   		// close the barrier
 	}
 
-Note: when it comes to multiple conditions; whether it is two or more conditions, the last conditional check should always be an else clause. This else clause is the ‘catch-all’ clause. It takes no parenthesis because it needs no condition (expression) to check for. It should be the implicit value that the logic evaluates to when all above conditions  do not match. For example, once you have checked for the collar of the light and it is not 
-red or amber, then it is assumed to be red.
+Note: when it comes to multiple conditions, whether it is two of them or more, the last conditional check should always be an else clause. This else clause is the ‘catch-all’ clause. It takes no parentheses because it needs no condition (expression) to check for. It stands for whatever is left over once all the conditions above it have failed to match. In the example above, once you have checked the colour of the light and found it is neither 
+green nor amber, then it can only be red.
 
 
 

@@ -180,6 +180,10 @@ Chapter 5 - Control Flow
         -Combining math operators with the assignment operator
       -Conditionals
         -if statements
+        -Checking Multiple Conditions
+          -a) Independent Conditions
+          -b) Mutually Exclusive Conditions (Two Choices)
+          -c) Mutually Exclusive Conditions (More Than Two Choices)
         -Additional notes on conditionals
       -Loops (6)
                 -The For loop
