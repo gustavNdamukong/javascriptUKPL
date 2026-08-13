@@ -16,10 +16,10 @@
 	-Exercises with variables
 
 
-  A variable is like a virtual container in computer memory in which you can store things for later use in the runtime of your program. It is performance-efficient to use them rather than to read from memory every time.
-You can only store one item in a variable at a time. This means an attempt to store an item in a variable that already contains something will result in the value of that variable being reset to the new value and the old value being discarded. Some programming languages will try to help you by erroring about the variable already having been set, but others will not and let you override the variable. You just have to be careful and make sure that is your intension, because JavaScript will let you reassign the value of any variable.. 
+  A variable is like a virtual container in computer memory in which you can store things for later use while your program is running. It is far more efficient to work something out once and keep it in a variable than to work it out all over again every time you need it.
+You can only store one item in a variable at a time. This means an attempt to store an item in a variable that already contains something will result in the value of that variable being reset to the new value and the old value being discarded. Some programming languages will try to help you by erroring about the variable already having been set, but others will not and let you override the variable. You just have to be careful and make sure that is your intention, because JavaScript will let you reassign the value of any variable you created with var or let. (There is a third kind, created with const, which cannot be reassigned once it has been given a value. We will come to it shortly.) 
   A variable can contain any of the data types, for example, a number, a string 
-of text, a boolean, an array, a function, even another variable (not commonly used). 
+of text, a boolean, an array, a function, or the value held by another variable. (Do not worry if some of those words mean nothing to you yet. We will meet arrays in Chapter 3, functions in Chapter 7, and the full list of data types in Chapter 10.) 
 
 
 
@@ -27,10 +27,12 @@ Variable creation and naming rules
 -——————————————————
   Variable names should adhere to these rules:
 
--i) Variables may include a-z, A-Z, 0-9,the $ symbol and the underscore.
--ii) No other characters e.g. spaces, punctuations are allowed
--iii) First character of the variable name must only be the allowed characters 
-	i.e  a-z, A-Z, 0-9,the $ symbol and the underscore. However, the $ 
+-i) Variables may include a-z, A-Z, 0-9, the $ symbol and the underscore.
+-ii) No other characters are allowed. That means no spaces, and no punctuation.
+-iii) The first character of the variable name must be a letter (a-z or A-Z), 
+	the $ symbol, or the underscore. It may NOT be a digit, so a name like 
+	1stName is not allowed. Digits are fine anywhere after the first 
+	character, as in name1. However, the $ 
 	character should be avoided so that it is not mixed up with the $ 
 	character used in other scripting languages like PHP for variables, or any 
 	third party library you might be using now or in the future like jQuery 
@@ -40,82 +42,104 @@ Variable creation and naming rules
 
 	This means that these two variables are not the same:
 
-		var myCaseDetails;
-		var Mycasedetails;
+		let myCaseDetails;
+		let Mycasedetails;
 
 -v) There is no limit on variable name length. 
 
-  By convention, programmers usually name variables using camel casing. This is means that the variable name should start with a lowercase letter,  
+  By convention, programmers usually name variables using camel casing. This means that the variable name should start with a lowercase letter, 
 and any other word that makes up the name will be started in uppercase,
 with no spaces in-between. For example, the following are potential variable 
 names:
 
 	myRoundBall
-	NationalID
+	nationalId
 	myCaseDetails etc
 
-  A variable can be declared in three ways in JavaScript; 
-	-The var key word
-		One way is to use the var key word, for example:
+  A variable can be declared in three ways in JavaScript: 
+	-The var keyword
+		One way is to use the var keyword, for example:
 
-			var firstName = “John”;
+			var firstName = "John";
 
 	-The let keyword
 		There is the let keyword. Here is an example.
 
-			let mySurname = “Doe”;
+			let mySurname = "Doe";
 
 	-The const keyword
 		There is the const keyword. Here is an example:
 
-			const title = “The Day of The Jackal”;
+			const title = "The Day of The Jackal";
 
-  As for the const keyword, it is newly introduced only since ES6; it is a new way to create a blocked-scoped constant variable. A constant is a variable whose Value should never change. We will talk more about it shortly under the 
-Constants section.
+  As for the const keyword, it was introduced in ES6; it is a way to create a block-scoped constant variable. A constant is a variable whose value cannot be reassigned once it has been set. We will talk more about it in Chapter 4 (Constants).
 
 
 
 Initialising a variable
 ———————————-
-    This is when you create a variable but give it no value. Its value will then be null.
-  It can also be referred to as an empty variable, since it contains no value. You can 
-  then assign a value to it later.
-  Here is an example of an variable (a) being initialised with no value:
+    Declaring a variable means creating it. Initialising it means giving it its first 
+  value. You can do both in one go, or you can declare a variable now and give it a 
+  value later on.
+  Here is a variable being declared and initialised at the same time:
 
-	var a;
+	let greeting = "hello";
 
-	console.log(a); // will return null
+  And here is a variable (a) being declared with no value given to it yet:
 
-  You can assign a value of it using an assignment operator like so:
+	let a;
 
-	a = ‘dog’;
+	console.log(a); // will return undefined
 
-	console.log(a); // will return the string value ‘dog’
+  A variable that has been declared but not yet initialised holds the special value 
+  undefined. It can also be referred to as an empty variable, since it contains no 
+  value. Take note that undefined is not the same thing as null. They are two 
+  different values, and we will look at the difference between them in Chapter 10 
+  (Data Types).
+  You can assign a value to it later using an assignment operator like so:
+
+	a = 'dog';
+
+	console.log(a); // will return the string value 'dog'
+
+  By the way, console.log() is a built-in JavaScript command that prints a value so 
+  you can see it. It does not show up on the web page itself; it prints into the 
+  browser console, which you open with the developer tools in your browser (in most 
+  browsers, press F12, or right-click the page and choose Inspect, then click the 
+  Console tab). It is the tool you will reach for most often when you want to check 
+  what a variable holds. There is more on it in Chapter 20 (Error Debugging and 
+  Testing).
 
 
 Assigning values to variables
 ———————————————-
-	We do so using the assignment operator-more on operators in the Control 
-  Flow section. Here is an example of assigning a value to a variable:
+	We do so using the assignment operator—more on operators in Chapter 5 
+  (Control Flow). Here is an example of assigning a value to a variable:
 
-	var firstName = “John”;
+	let firstName = "John";
 
-  As we can see above, the assignment operator is “=”, and we 
-  Used it to assign the value of “John” to the firstName variable.
+  As we can see above, the assignment operator is "=", and we 
+  used it to assign the value of "John" to the firstName variable.
 
- You can however initialise a variable without assigning it a value yet. The variable 
-  Will ten be defined but its value will be null. You can then assign a value to it later.
- Here is how to initialise a variable with no value:
+ You can however declare a variable without assigning it a value yet. The variable 
+  will then exist but its value will be undefined. You can then assign a value to it 
+ later. Here is how to declare a variable with no value:
 
-var name ;
+let userName;
 let age;
 
 Once you have declared the variable, when assigning a value to it later, you will 
- No longer need to use the var or let keyword. For example, to assign values to 
-The initialised variables name and age above, do this:
+ no longer need to use the var or let keyword. For example, to assign values to 
+the declared variables userName and age above, do this:
 
-	name = “John Doe”;
-	age = “30”;
+	userName = "John Doe";
+	age = 30;
+
+  Notice that "John Doe" is wrapped in quotes but 30 is not. The quotes are what 
+  make something a string, that is to say a piece of text. A number is written 
+  without quotes. If you wrote age = "30"; you would be storing the text "30" 
+  rather than the number 30, and the two behave very differently once you start 
+  doing sums with them.
 
 
 
