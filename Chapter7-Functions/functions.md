@@ -10,13 +10,13 @@
 	-Rules for Naming Functions
 -Functions demonstrated
 -The arguments object
--Handling varied arguments as Rest 	
+-Handling varied arguments as Rest 
 	Parameters
 -Arguments with default values
--To do something or to return something 
+-To return something or to do something 
 -Functions and variable scope
 -Anonymous and arrow functions 
--Convert an anonymous function into a an 
+-Convert an anonymous function into an 
    arrow function
 -Quick object literals from function arguments
 -Anonymous and arrow functions and the 
@@ -51,7 +51,7 @@ For example:
 
 Giving Functions Tools to Work With (Parameters)
 ————————————————
-Sometimes, just like a person needs tools to do a job, a function may also need some information to do its task. This information is passed into the function through parameters, which go inside the parentheses () when you define or call the function.
+Sometimes, just like a person needs tools to do a job, a function may also need some information to do its task. This information is passed into the function through parameters, which go inside the parentheses () when you define the function. The actual values you hand over when you call it are known as arguments.
 
 	function greetUser(name) {
   		console.log("Hello, " + name + "!");
@@ -67,7 +67,7 @@ Here, "Sam" is an argument, and name is the parameter. You can pass multiple par
 
 	console.log(add(3, 4)); // Output: 7
 
-Parameters can be:
+The arguments you pass can be:
 
 * Literal values (like "hello" or 5)
 * Variables (like name or age)
@@ -106,11 +106,12 @@ This method is safer and works well in all modern browsers.
 Rules for Naming Functions
 —————————————
 When you create your own functions, JavaScript has some rules for naming them:
-	-A function name must start with a letter or underscore (_).
+	-A function name must start with a letter, an underscore (_) or a 
+		dollar sign ($). It may not start with a digit.
 	-After the first character, the name can include:
 
-        * Letters (a–z, A–Z)
-        * Digits (0–9)
+        * Letters (a-z, A-Z)
+        * Digits (0-9)
         * Underscores (_)
         * Dollar signs ($)
 
@@ -132,63 +133,63 @@ When you create your own functions, JavaScript has some rules for naming them:
 
   The syntax of a function is as follows: the keyword function, 
 followed by the name of the function, followed by a pair of 
-opening and closing parenthesis (), followed by another pair 
+opening and closing parentheses (), followed by another pair 
 of opening and closing curly brackets {}. Here is an example:
 
 	function greeting() {
-		console.log(“Hello”);
+		console.log("Hello");
 	}
 
 The code that you place in between the opening and closing curly
 braces is the thing/task that the function is meant to do. 
 
   Explained in layman terms, a function is like a program you create 
-To perform a task for you. That function then becomes in charge of 
+to perform a task for you. That function then becomes in charge of 
 that task. It will be the function you will call whenever you need that 
 task doing. That is why we give functions names, and that is why 
-You will always hear of the terminology ‘call’ or ‘function call’ when
-You hear programmers speak of functions. 
-  If the function was a person, a task master, depending on your 
-Agreement with them, may need to tell them what task to perform 
-Whenever you call them, unless they have a specific task, in which 
-case  you would not need to pass the task to them whenever you 
+you will always hear the terminology ‘call’ or ‘function call’ when 
+you hear programmers speak of functions. 
+  If the function were a person, a task master, then depending on your 
+agreement with them you may need to tell them what task to perform 
+whenever you call them, unless they have a specific task, in which 
+case you would not need to pass the task to them whenever you 
 call them. The task you pass to a function when you call it is known 
-As an argument. Imagine you asking your mathematician or calculator
+as an argument. Imagine you asking your mathematician or calculator
 to add some numbers up for you. You would pass to them the numbers 
 you want adding up, and then expect the results back. The numbers 
 you pass in are the arguments. A function argument can be one or 
 multiple depending on what you want done. 
 So in brief, a function is a program you write to do a task for you, 
-While function arguments are the parameters you provide to the function 
-to help it accomplish the thing it is it needs to do for you. Here is the 
-Same function above given an argument.
-  As I mentioned above, the task meant to be preformed by the 
+while function arguments are the values you provide to the function 
+to help it accomplish what it needs to do for you. Here is the 
+same function above, given an argument.
+  As I mentioned above, the task meant to be performed by the 
 greeting() function is the code that you put within the curly brackets 
-Of the function, also known as the body of the function. Our greeting() 
-Function above does not need an argument because it has a specific 
-task to respond with a “Hello”, and it will do just that for as often
-As you call it. You can call a function from anywhere in your code by
-Simply writing its name followed by the pair of parenthesis. Make the 
+of the function, also known as the body of the function. Our greeting() 
+function above does not need an argument because it has a specific 
+task, to respond with a “Hello”, and it will do just that as often 
+as you call it. You can call a function from anywhere in your code by 
+simply writing its name followed by the pair of parentheses. Make the 
 function call at exactly the part of your application where you want 
-Its response to be output. To call our greeting() function, do it like so:
+its response to be output. To call our greeting() function, do it like so:
 
 	greeting();
 
-Notice how we put a pair of parenthesis as we call off the function. This 
+Notice how we put a pair of parentheses as we call the function. This 
 has to be done even if you are not passing any arguments to the function, 
 else the function call will not work.
 
-  If you want the function to do anything other that return the text “Hello”,
+  If you want the function to do anything other than return the text “Hello”,
 and maybe say “Hello” addressed to whatever name you pass to it as 
-It’s argument, you can modify the function by passing it an argument. 
+its argument, you can modify the function by passing it an argument. 
 You would also need to then modify its body to use that argument in its 
-Result/output. Here is how to do it: 
+result. Here is how to do it: 
 
-	var username = "Gustav";
+	let username = "John";
 
-	function greeting(user_name) {
-        	console.log("Hello "+ username);
-   	 }
+	function greeting(userName) {
+		console.log("Hello " + userName);
+	}
 
 	// call the function 
 	greeting(username);
@@ -197,12 +198,13 @@ The output of this function call will be:
 
 	Hello Gustav
 
-Notice how the function uses the argument which is a variable 
-And in combining it with the string “Hello”, it first of all ends the string
-And combines it with the value of the variable using the operator “+”.
-The operator is not the plus operator used for addition in mathematical
-operations. Rather, this is known as a string concatenation operator used 
-for combining two strings into one. In this case, it combines the string 
+Notice how the function takes the value handed to it and, in combining 
+it with the string “Hello”, closes that string first and then joins it to 
+the value using the “+” character.
+  That is the same + you would use to add two numbers together, but 
+when it is given strings rather than numbers it does something 
+different: it joins them end to end. Used this way it is called the string 
+concatenation operator. In this case, it combines the string 
 “Hello” with the value of the username variable, which is also a string. 
 So string concatenation means combining two or more strings into one, 
 whether one or all of those strings are literal strings, or they are strings 
@@ -230,7 +232,7 @@ let result = sumAll(1, 2, 3, 4); // result will be 10
 Key Points:
 ————-
 -`arguments` Object: Inside any function, `arguments` is an array-like object that holds all the arguments passed to the function.
--I say “array-like” because It behaves like an array (you can access elements with `arguments[0]`, `arguments[1]`, etc.), but it doesn't have all the array methods like `.map()`, `.forEach()`, etc.
+-I say “array-like” because it behaves like an array (you can access elements with `arguments[0]`, `arguments[1]`, etc.), but it doesn't have all the array methods like `.map()`, `.forEach()`, etc.
   
 
 HANDLING VARIED ARGUMENTS AS REST PARAMETERS
@@ -238,11 +240,11 @@ HANDLING VARIED ARGUMENTS AS REST PARAMETERS
 Besides the arguments object, there is a more modern and flexible way to handle a variable number of arguments passed to a function when it is called—using rest parameters (...).
 Rest parameters (...rest) collect multiple arguments into an array. They are written inside the parentheses of a function, such as ...numbers or ...args, though ...rest is commonly used as a placeholder name.
 However, rest parameters do not "convert" function arguments into an array in the same way as Array.from(arguments). Instead, they create a true array of the collected arguments, making it more convenient to use array methods like .map(), .filter(), and .reduce().
-See the notes under the array section, where we discuss how rest parameters are useful for handling a variable number of function arguments and how they differ from the spread operator (...spread). The spread operator is used to expand an array (or other itterable) into individual elements rather than collecting elements into an array.
+See the notes in Chapter 3 (Arrays), where we discuss how rest parameters are useful for handling a variable number of function arguments and how they differ from the spread operator (...spread). The spread operator is used to expand an array (or other iterable) into individual elements rather than collecting elements into an array.
 It's important to note that the spread operator does not "convert" an array into a string of comma-separated items—instead, it breaks an array into separate values that can be passed into functions, array literals, or object literals. (For converting an array into a string, we use .join(",").)
 
   In a way, rest parameters can be seen as the opposite of the spread operator, since rest parameters collect multiple values into a single array while the spread operator takes an array and expands it into multiple values.
-  The main thing however, is to understand these points about rest parameters :
+  The main thing however, is to understand these points about rest parameters:
 	-They are used in function parameters 
 	  to collect multiple arguments into a 	
 	  single array. 
@@ -259,12 +261,12 @@ Here is an example:
 console.log(sum(1, 2, 3, 4)); // 10
 console.log(sum(5, 10));      // 15
 
-Rest gathers the multiple arguments passed to the function into an array for use within the function (numbers becomes [1, 2, 3, 4] in the first call). Now that numbers is an array, that’s why in this example, the array function reduce() is called on numbers. Again, be reminded that …numbers could just as well be …data or …rest and it will all still work in thew same way.
+Rest gathers the multiple arguments passed to the function into an array for use within the function (numbers becomes [1, 2, 3, 4] in the first call). Now that numbers is an array, that’s why in this example, the array function reduce() is called on numbers. Again, be reminded that ...numbers could just as well be ...data or ...rest and it will all still work in the same way.
   
 
 -A JavaScript function like this that accepts 
-rest parameters can be considered a variadic function. A variadic function in any programming is one which is capable of accepting a varying (or unknown) number of arguments. Hence the name variadic. Rest parameters is the specific javascript syntax 
-used to implement this capability. The keyword ‘rest’ in ‘rest parameters’ comes from the significance of the ‘…’ characters. They hint at the fact that the rest of the arguments will follow., thereby indicating that there can be multiple and an unknown number of arguments.
+rest parameters can be considered a variadic function. A variadic function in any programming language is one which is capable of accepting a varying (or unknown) number of arguments. Hence the name variadic. Rest parameters are the specific JavaScript syntax 
+used to implement this capability. The keyword ‘rest’ in ‘rest parameters’ comes from the significance of the ‘...’ characters. They hint at the fact that the rest of the arguments will follow, thereby indicating that there can be multiple and an unknown number of arguments.
   
 -In conclusion; the `arguments` object is useful, but in modern JavaScript, rest parameters (`...`) are generally preferred for better readability and functionality.
 
@@ -277,7 +279,7 @@ ARGUMENTS WITH DEFAULT VALUES
 	let member = {
     		name: "",
     		type: "member",
-    		setMember: function(name, type = 		             "member") {
+    		setMember: function(name, type = "member") {
        		     this.name = name;
         	     this.type = type;
     		}
@@ -292,15 +294,22 @@ ARGUMENTS WITH DEFAULT VALUES
 
 This code has a member object named member. Once a new member is created by calling setMember on the object, if a desired member type is not given, the type will be set to ‘member’. The creator of this code would do this because they want a minimum type of ‘member’ to be applied to all new users. The first time we run the function like so:
 
- 	setMember(“Dolph”); 
+ 	member.setMember("Dolph");
 
 we get ‘member’ written to the console.
 
 The second time we run the function like so:
 
- 	setMember(“Jim”, “admin’); 
+ 	member.setMember("Dolph", "admin");
 
 we get ‘admin’ written to the console.
+  Note that we call it as member.setMember(...) and not just 
+setMember(...). The function belongs to the member object, so you 
+have to reach for it through that object. Calling it on its own would 
+give you a ReferenceError.
+  You will also have spotted the word "this" inside the function. That is 
+a keyword meaning "the object I belong to", and it has a section of its 
+own later in this chapter.
 
 
 

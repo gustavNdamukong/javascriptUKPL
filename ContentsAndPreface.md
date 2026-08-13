@@ -223,10 +223,10 @@ Chapter 7 - Functions
     -Handling varied arguments as Rest  
       Parameters
     -Arguments with default values
-    -To do something or to return something 
+    -To return something or to do something 
     -Functions and variable scope
     -Anonymous and arrow functions 
-    -Convert an anonymous function into a an 
+    -Convert an anonymous function into an 
       arrow function
     -Quick object literals from function arguments
     -Anonymous and arrow functions and the 
