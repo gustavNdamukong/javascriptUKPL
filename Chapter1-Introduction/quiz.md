@@ -195,4 +195,11 @@ ANSWERS
 10) The extension is Live Server, made by Ritwick Dey. (Take care to pick that one — copycat
     extensions exist with very similar names, and some have been removed for being malicious.)
 
-    The 5500 is a port number. A port is a door into your computer that programs can use. The port number is a numbered door on your computer that a program running on your computer can listen at for any external program trying to connect with or communicate it, or through which it can make information available for other external programs to connect make use of. Live Server has opened door number 5500 and is serving your project files through it, which is why that number appears in the address.
+    The 5500 is a port number. A port is a door into your computer that programs can use. The
+    port number is a numbered door on your computer that a program running on your computer can
+    listen at for any other program trying to connect with or communicate with it, or through
+    which it can make information available for other programs to connect to and make use of.
+    Those other programs are often somewhere else on a network, but they can just as easily be
+    sitting on the very same computer — which is exactly what is happening here, since it is
+    your own browser doing the connecting. Live Server has opened door number 5500 and is
+    serving your project files through it, which is why that number appears in the address.

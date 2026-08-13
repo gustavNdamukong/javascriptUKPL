@@ -42,7 +42,9 @@ Chapter 23 - Templates
 Chapter 24 - Event Handling
 
 What next
-Solutions to chapter exercises
+
+(Every chapter ends with its own Quiz — the questions first, then the answers
+listed below them, numbered to match.)
 
 💡Blurb text for the back of the book
 //————————————————————//
@@ -696,7 +698,9 @@ Chapter 24 - Event Handling
 
 -What next
 	-Practice, practice, and practice
--Solutions to chapter exercises
+
+(Every chapter ends with its own Quiz — the questions first, then the answers
+listed below them, numbered to match.)
 
 -💡Blurb text for the back of the book
 //————————————————————//
@@ -707,14 +711,14 @@ PREFACE: HOW TO MAKE THE MOST OF THIS BOOK
 //————————————————————//
 
   What many beginners aren’t told loudly enough is this: you won’t become a great programmer by just reading about code—you become great by writing it. You can read every book on programming cover to cover, but until you roll up your sleeves and start coding, true understanding will remain out of reach.
-That’s why this book takes a hands-on, example-driven approach. While not every chapter ends with exercises, the ones that do have them are designed to help reinforce key concepts and accelerate your learning. These exercises are not random—they’re deliberately structured to build your skill step by step, and their solutions are provided toward the end of the book with detailed, line-by-line explanations.
-For chapters without exercises, you’ll still find concise, well-explained code examples throughout. These are just as valuable as exercises because they demonstrate real-life scenarios in which the concepts are applied. They’re not artificially complex or overly long, but are written to be clear and focused—so you can easily test them in your browser, see them in action, and truly understand what’s happening.
+That’s why this book takes a hands-on, example-driven approach. Every chapter ends with a quiz—a set of questions designed to help reinforce key concepts and accelerate your learning. Some of them are small exercises where you write a little code yourself to demonstrate a point. These questions are not random—they’re deliberately structured to build your skill step by step, and every one of them carries a clue, so you should never find yourself stuck. The answers are listed immediately below the questions, at the end of that same chapter, numbered to match, with detailed explanations.
+Alongside the quizzes, you’ll also find concise, well-explained code examples throughout every chapter. These are just as valuable as the quiz questions because they demonstrate real-life scenarios in which the concepts are applied. They’re not artificially complex or overly long, but are written to be clear and focused—so you can easily test them in your browser, see them in action, and truly understand what’s happening.
 The uniqueness of this book lies in its many practical examples and the thorough, beginner-friendly explanations that follow them. These examples are inspired by real-world programming problems, so you’ll always understand why the code matters and when to use it. As you progress, you’ll notice how the chapters build upon each other, connecting the dots and helping you grow from a novice into a confident, capable JavaScript developer.
 This approach is grounded in my own experience. When I first started out, I read many books, but when it came time to actually write code, I couldn’t produce anything useful. The problem wasn’t with the books themselves—it was with the lack of practical, interactive learning. Once I started solving real problems, documenting my own solutions, and revisiting them over time, everything began to make sense. That’s when I truly started to learn.
-This book follows the method I wish I had from the start: clear, example-rich, and practical. Whether a chapter includes exercises or not, you’re encouraged to take your time, run the code, and digest the explanations. This isn’t a book to skim through—it’s one to explore, code-along with, and return to.
+This book follows the method I wish I had from the start: clear, example-rich, and practical. In every chapter, you’re encouraged to take your time, run the code, and digest the explanations. This isn’t a book to skim through—it’s one to explore, code-along with, and return to.
 Here’s how to get the most out of it:
-* For chapters with exercises: pause and try them yourself first before checking the provided solutions at the back of the book.
-* For other chapters: run the code examples in your browser, play with the values, and observe how they work.
+* For the quiz at the end of each chapter: pause and work through every question yourself first, before looking at the answers listed below them.
+* Throughout each chapter: run the code examples in your browser, play with the values, and observe how they work.
 * You should set up a simple local project with an index.html file, using the following skeleton:
 
 
