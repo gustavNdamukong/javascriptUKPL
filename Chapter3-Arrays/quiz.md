@@ -319,6 +319,23 @@ ANSWERS
     function itself, not the result of calling it. At each turn of the loop, map() passes the
     current element into multiplier() as num.
 
+    One more thing worth knowing while we are here. map() itself takes just one argument, the
+    function. But the function it hands your elements to can accept a second parameter, and
+    JavaScript will fill that one in with the index of the current element. This is handy when
+    you need to know where in the array you are:
+
+        let names = ['Ada', 'Grace', 'Alan'];
+
+        let numbered = names.map(function(name, i) {
+            return (i + 1) + ": " + name;
+        });
+
+        console.log(numbered);
+        // ["1: Ada", "2: Grace", "3: Alan"]
+
+    We add 1 to i because the index starts at 0, and a numbered list that starts at 0 would
+    look odd to a reader. The same second parameter is available in forEach() and filter() too.
+
 
 12) Here is the whole page:
 

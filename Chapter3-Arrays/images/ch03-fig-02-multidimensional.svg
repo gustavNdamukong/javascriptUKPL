@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+
+  <text x="34" y="28" font-size="17" font-weight="bold" fill="#1c2b3a">One set of square brackets for each level you go down</text>
+
+  <text x="34" y="58" font-size="12.5" fill="#6b7a89" font-family="Menlo, Consolas, monospace">let food = [['tomatoes', 'pepper', 'cabbage'], ['apple', 'pineapple', 'banana'], ['rice', 'pasta', 'beans']];</text>
+
+  <!-- ============ outer array ============ -->
+  <rect x="34" y="76" width="700" height="248" rx="9" fill="#ffffff" stroke="#1c2b3a" stroke-width="2"/>
+  <text x="50" y="100" font-size="13" font-weight="bold" fill="#1c2b3a" font-family="Menlo, Consolas, monospace">food</text>
+  <text x="96" y="100" font-size="12" fill="#6b7a89">— the outer array. Its three elements are themselves arrays.</text>
+
+  <!-- row 0 -->
+  <rect x="52" y="112" width="664" height="60" rx="6" fill="#fbfcfd" stroke="#c9d3dc" stroke-width="1.5"/>
+  <rect x="64" y="128" width="34" height="28" rx="14" fill="#3d5266"/>
+  <text x="81" y="147" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">0</text>
+  <rect x="112" y="126" width="176" height="32" rx="4" fill="#eef2f5" stroke="#9aa8b5" stroke-width="1.2"/>
+  <text x="200" y="147" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'tomatoes'</text>
+  <rect x="296" y="126" width="176" height="32" rx="4" fill="#eef2f5" stroke="#9aa8b5" stroke-width="1.2"/>
+  <text x="384" y="147" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'pepper'</text>
+  <rect x="480" y="126" width="176" height="32" rx="4" fill="#eef2f5" stroke="#9aa8b5" stroke-width="1.2"/>
+  <text x="568" y="147" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'cabbage'</text>
+
+  <!-- row 1 : highlighted -->
+  <rect x="52" y="180" width="664" height="60" rx="6" fill="#fdeee0" stroke="#e8871a" stroke-width="2"/>
+  <rect x="64" y="196" width="34" height="28" rx="14" fill="#e8871a"/>
+  <text x="81" y="215" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <rect x="112" y="194" width="176" height="32" rx="4" fill="#ffffff" stroke="#e8871a" stroke-width="2"/>
+  <text x="200" y="215" font-size="12.5" fill="#b8640a" font-weight="bold" text-anchor="middle" font-family="Menlo, Consolas, monospace">'apple'</text>
+  <rect x="296" y="194" width="176" height="32" rx="4" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.2"/>
+  <text x="384" y="215" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'pineapple'</text>
+  <rect x="480" y="194" width="176" height="32" rx="4" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.2"/>
+  <text x="568" y="215" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'banana'</text>
+
+  <!-- inner index chips for row 1 -->
+  <text x="200" y="238" font-size="10.5" fill="#b8640a" text-anchor="middle" font-weight="bold">inner index 0</text>
+  <text x="384" y="238" font-size="10.5" fill="#9aa8b5" text-anchor="middle">1</text>
+  <text x="568" y="238" font-size="10.5" fill="#9aa8b5" text-anchor="middle">2</text>
+
+  <!-- row 2 -->
+  <rect x="52" y="254" width="664" height="56" rx="6" fill="#fbfcfd" stroke="#c9d3dc" stroke-width="1.5"/>
+  <rect x="64" y="268" width="34" height="28" rx="14" fill="#3d5266"/>
+  <text x="81" y="287" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <rect x="112" y="266" width="176" height="32" rx="4" fill="#eef2f5" stroke="#9aa8b5" stroke-width="1.2"/>
+  <text x="200" y="287" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'rice'</text>
+  <rect x="296" y="266" width="176" height="32" rx="4" fill="#eef2f5" stroke="#9aa8b5" stroke-width="1.2"/>
+  <text x="384" y="287" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'pasta'</text>
+  <rect x="480" y="266" width="176" height="32" rx="4" fill="#eef2f5" stroke="#9aa8b5" stroke-width="1.2"/>
+  <text x="568" y="287" font-size="12.5" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'beans'</text>
+
+  <!-- ============ the walk-down callouts ============ -->
+  <path d="M756 210 H730" stroke="#e8871a" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <rect x="756" y="150" width="110" height="34" rx="5" fill="#ffffff" stroke="#e8871a" stroke-width="1.6"/>
+  <text x="811" y="172" font-size="13" fill="#b8640a" font-weight="bold" text-anchor="middle" font-family="Menlo, Consolas, monospace">food[1]</text>
+  <text x="811" y="200" font-size="11.5" fill="#6b7a89" text-anchor="middle">step 1: pick the row</text>
+
+  <rect x="756" y="228" width="110" height="34" rx="5" fill="#ffffff" stroke="#e8871a" stroke-width="1.6"/>
+  <text x="811" y="250" font-size="13" fill="#b8640a" font-weight="bold" text-anchor="middle" font-family="Menlo, Consolas, monospace">food[1][0]</text>
+  <text x="811" y="278" font-size="11.5" fill="#6b7a89" text-anchor="middle">step 2: pick the item</text>
+  <text x="811" y="294" font-size="11.5" fill="#6b7a89" text-anchor="middle">inside that row</text>
+
+  <!-- ============ bottom summary ============ -->
+  <rect x="34" y="344" width="832" height="66" rx="8" fill="#eef2f5" stroke="#c9d3dc" stroke-width="1.5"/>
+  <text x="52" y="368" font-size="13" fill="#3d5266">
+    <tspan font-family="Menlo, Consolas, monospace" fill="#1c2b3a">food[1]</tspan>
+    <tspan> is the whole row: </tspan>
+    <tspan font-family="Menlo, Consolas, monospace" fill="#1c2b3a">['apple', 'pineapple', 'banana']</tspan>
+  </text>
+  <text x="52" y="392" font-size="13" fill="#3d5266">
+    <tspan font-family="Menlo, Consolas, monospace" fill="#1c2b3a">food[1][0]</tspan>
+    <tspan> reaches one level further in, and gives you </tspan>
+    <tspan font-family="Menlo, Consolas, monospace" fill="#b8640a" font-weight="bold">'apple'</tspan>
+    <tspan>. Two levels deep, two sets of brackets.</tspan>
+  </text>
+
+  <defs>
+    <marker id="arr3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8871a"/>
+    </marker>
+  </defs>
+</svg>

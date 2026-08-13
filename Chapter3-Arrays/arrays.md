@@ -72,6 +72,10 @@ Definition
 Each element in the array is referenced by a key which marks its spot in the array. For a numeric array, the key is a number (also referred to as an index) and for an associative array, that key is a small string of text, also referred to as a name.
   Let’s talk about the syntax, structure and application of the two array types.
 
+![Figure 3.1 — What marks the spot of each item](images/ch03-fig-01-numeric-vs-associative.svg)
+
+*Figure 3.1 — What marks the spot of each item*
+
      
 THE TWO TYPES OF ARRAYS
 ——————————————
@@ -633,6 +637,11 @@ So you can have a mix of both types of arrays in the same multi-dimensional stru
   Let me introduce to you certain terms often used when it comes to arrays and their levels, so you will understand them whenever you hear or read about them. Multi-dimensional arrays are also sometimes referred to as multi-level arrays. The regular array we dealt with above is a single-dimensional array, which is a flat array containing elements, none of which are arrays themselves. This has only one level, so-to-speak. But when we talk of multi-dimensional (multi-level) arrays, the levels can go deep, and we can have two-dimensional (2D), three-dimensional (3D) arrays and so on. 
   A two-dimensional array as you can probably guess from the name, is an array that contains elements, one of which is an array itself. Now we are talking about an array that goes two levels deep—one out, one in—hence the name two-dimensional. Any array (nested) inside another can also be referred to as a sub-array or a child array of the one it is inside of. There is also the three-dimensional array which is a structure where the sub array of the first array contains an element, and this element is also an array. It then becomes three levels deep. We can keep going deeper and deeper and the idea stays the same. It’s simple; with each level within the first outer array you need to go to find another (nested) array, the deeper the dimensions go.
   I will now break down what a multi-dimensional array looks like for both numeric and associative arrays.
+
+![Figure 3.2 — One set of square brackets for each level you go down](images/ch03-fig-02-multidimensional.svg)
+
+*Figure 3.2 — One set of square brackets for each level you go down*
+
 
 Multi-dimensional numeric
 ——————————
@@ -1495,6 +1504,10 @@ In this case, you should do your regular loop on the first (outer) array using a
 	array1 because array2 is a new array with 
 	its own new memory location, albeit with 
 	the copied over elements of array1.
+
+![Figure 3.3 — Why copying an array is not as simple as it looks](images/ch03-fig-03-reference-copy.svg)
+
+*Figure 3.3 — Why copying an array is not as simple as it looks*
 
 	You can also use the Spread operator to extract the contents of an 
 	object literal in the same way you would with true arrays. This is just 

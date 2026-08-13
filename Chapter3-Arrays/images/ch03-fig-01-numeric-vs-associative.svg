@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 430" width="900" height="430" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="430" fill="#ffffff"/>
+
+  <text x="34" y="28" font-size="17" font-weight="bold" fill="#1c2b3a">What marks the spot of each item</text>
+
+  <!-- ================= NUMERIC ================= -->
+  <text x="34" y="62" font-size="15" font-weight="bold" fill="#3d5266">Numeric array — the key is a number</text>
+  <text x="34" y="82" font-size="12.5" fill="#6b7a89" font-family="Menlo, Consolas, monospace">let fruits = ['mango', 'apple', 'guava', 'kiwi'];</text>
+
+  <g>
+    <rect x="34" y="98" width="176" height="52" rx="5" fill="#eef2f5" stroke="#3d5266" stroke-width="1.6"/>
+    <text x="122" y="130" font-size="14" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'mango'</text>
+    <rect x="210" y="98" width="176" height="52" rx="5" fill="#eef2f5" stroke="#3d5266" stroke-width="1.6"/>
+    <text x="298" y="130" font-size="14" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'apple'</text>
+    <rect x="386" y="98" width="176" height="52" rx="5" fill="#eef2f5" stroke="#3d5266" stroke-width="1.6"/>
+    <text x="474" y="130" font-size="14" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'guava'</text>
+    <rect x="562" y="98" width="176" height="52" rx="5" fill="#eef2f5" stroke="#3d5266" stroke-width="1.6"/>
+    <text x="650" y="130" font-size="14" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'kiwi'</text>
+  </g>
+
+  <!-- index chips -->
+  <g>
+    <rect x="98" y="158" width="48" height="24" rx="12" fill="#3d5266"/>
+    <text x="122" y="175" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">0</text>
+    <rect x="274" y="158" width="48" height="24" rx="12" fill="#3d5266"/>
+    <text x="298" y="175" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+    <rect x="450" y="158" width="48" height="24" rx="12" fill="#3d5266"/>
+    <text x="474" y="175" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+    <rect x="626" y="158" width="48" height="24" rx="12" fill="#3d5266"/>
+    <text x="650" y="175" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+  </g>
+  <text x="756" y="175" font-size="12.5" fill="#6b7a89">JavaScript numbers</text>
+  <text x="756" y="191" font-size="12.5" fill="#6b7a89">these for you</text>
+
+  <text x="34" y="212" font-size="13" fill="#1c2b3a" font-family="Menlo, Consolas, monospace">fruits[2]</text>
+  <text x="112" y="212" font-size="13" fill="#6b7a89">gives you 'guava'. Counting starts at 0, so the last item is at index 3.</text>
+  <text x="34" y="232" font-size="13" fill="#1c2b3a" font-family="Menlo, Consolas, monospace">fruits.length</text>
+  <text x="140" y="232" font-size="13" fill="#6b7a89">is 4 — a plain count, not zero-based.</text>
+
+  <path d="M34 256 H866" stroke="#c9d3dc" stroke-width="1.5" stroke-dasharray="6 5"/>
+
+  <!-- ================= ASSOCIATIVE ================= -->
+  <text x="34" y="288" font-size="15" font-weight="bold" fill="#b8640a">“Associative array” — the key is a name (really a plain object)</text>
+  <text x="34" y="308" font-size="12.5" fill="#6b7a89" font-family="Menlo, Consolas, monospace">let person = { name: 'Alice', age: 30, city: 'London' };</text>
+
+  <g>
+    <rect x="34" y="324" width="240" height="48" rx="5" fill="#fdeee0" stroke="#e8871a" stroke-width="1.6"/>
+    <text x="50" y="353" font-size="13.5" fill="#b8640a" font-weight="bold" font-family="Menlo, Consolas, monospace">name</text>
+    <text x="128" y="353" font-size="13.5" fill="#1c2b3a" font-family="Menlo, Consolas, monospace">'Alice'</text>
+
+    <rect x="286" y="324" width="240" height="48" rx="5" fill="#fdeee0" stroke="#e8871a" stroke-width="1.6"/>
+    <text x="302" y="353" font-size="13.5" fill="#b8640a" font-weight="bold" font-family="Menlo, Consolas, monospace">age</text>
+    <text x="380" y="353" font-size="13.5" fill="#1c2b3a" font-family="Menlo, Consolas, monospace">30</text>
+
+    <rect x="538" y="324" width="240" height="48" rx="5" fill="#fdeee0" stroke="#e8871a" stroke-width="1.6"/>
+    <text x="554" y="353" font-size="13.5" fill="#b8640a" font-weight="bold" font-family="Menlo, Consolas, monospace">city</text>
+    <text x="632" y="353" font-size="13.5" fill="#1c2b3a" font-family="Menlo, Consolas, monospace">'London'</text>
+  </g>
+  <text x="50" y="392" font-size="11.5" fill="#b8640a">you choose these names yourself</text>
+
+  <text x="34" y="416" font-size="13" fill="#6b7a89">
+    <tspan font-family="Menlo, Consolas, monospace" fill="#1c2b3a">person.age</tspan>
+    <tspan> is 30. But </tspan>
+    <tspan font-family="Menlo, Consolas, monospace" fill="#1c2b3a">person.length</tspan>
+    <tspan> is </tspan>
+    <tspan font-family="Menlo, Consolas, monospace" fill="#c0392b">undefined</tspan>
+    <tspan> — objects have no .length. Use Object.keys(person).length instead.</tspan>
+  </text>
+</svg>

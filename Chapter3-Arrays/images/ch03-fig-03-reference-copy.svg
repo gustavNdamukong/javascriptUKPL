@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="900" height="460" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="460" fill="#ffffff"/>
+
+  <text x="34" y="28" font-size="17" font-weight="bold" fill="#1c2b3a">Why copying an array is not as simple as it looks</text>
+
+  <!-- ===================== LEFT: the trap ===================== -->
+  <text x="34" y="62" font-size="15" font-weight="bold" fill="#c0392b">array2 = array1;</text>
+  <text x="34" y="80" font-size="12.5" fill="#6b7a89">one array, two names</text>
+
+  <rect x="34" y="94" width="396" height="290" rx="8" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.5"/>
+
+  <!-- name labels -->
+  <rect x="56" y="118" width="118" height="34" rx="5" fill="#3d5266"/>
+  <text x="115" y="140" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="Menlo, Consolas, monospace">array1</text>
+  <rect x="290" y="118" width="118" height="34" rx="5" fill="#3d5266"/>
+  <text x="349" y="140" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="Menlo, Consolas, monospace">array2</text>
+
+  <!-- both arrows point to the one box -->
+  <path d="M115 156 L200 218" stroke="#c0392b" stroke-width="2.5" marker-end="url(#arrRed)"/>
+  <path d="M349 156 L264 218" stroke="#c0392b" stroke-width="2.5" marker-end="url(#arrRed)"/>
+
+  <!-- the single array in memory -->
+  <rect x="80" y="228" width="304" height="86" rx="7" fill="#f9e9e7" stroke="#c0392b" stroke-width="2"/>
+  <text x="232" y="252" font-size="11.5" fill="#a03127" text-anchor="middle">ONE array, in one place in memory</text>
+  <rect x="96" y="262" width="86" height="34" rx="4" fill="#ffffff" stroke="#c0392b" stroke-width="1.6"/>
+  <text x="139" y="285" font-size="13" fill="#c0392b" font-weight="bold" text-anchor="middle" font-family="Menlo, Consolas, monospace">'word'</text>
+  <rect x="190" y="262" width="86" height="34" rx="4" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.2"/>
+  <text x="233" y="285" font-size="13" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'b'</text>
+  <rect x="284" y="262" width="86" height="34" rx="4" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.2"/>
+  <text x="327" y="285" font-size="13" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'c'</text>
+
+  <text x="232" y="340" font-size="12.5" fill="#c0392b" text-anchor="middle" font-weight="bold">array2[0] = "word" changed it for BOTH</text>
+  <text x="232" y="362" font-size="12" fill="#6b7a89" text-anchor="middle">because there was only ever one array to change</text>
+
+  <!-- ===================== RIGHT: the fix ===================== -->
+  <text x="470" y="62" font-size="15" font-weight="bold" fill="#1f5c39">array2 = [...array1];</text>
+  <text x="470" y="80" font-size="12.5" fill="#6b7a89">two separate arrays</text>
+
+  <rect x="470" y="94" width="396" height="290" rx="8" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.5"/>
+
+  <rect x="492" y="118" width="118" height="34" rx="5" fill="#3d5266"/>
+  <text x="551" y="140" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="Menlo, Consolas, monospace">array1</text>
+  <rect x="726" y="118" width="118" height="34" rx="5" fill="#3d5266"/>
+  <text x="785" y="140" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle" font-family="Menlo, Consolas, monospace">array2</text>
+
+  <path d="M551 156 V204" stroke="#2f7d4f" stroke-width="2.5" marker-end="url(#arrGreen)"/>
+  <path d="M785 156 V204" stroke="#2f7d4f" stroke-width="2.5" marker-end="url(#arrGreen)"/>
+
+  <!-- array 1 -->
+  <rect x="488" y="214" width="126" height="100" rx="7" fill="#e6f2ea" stroke="#2f7d4f" stroke-width="2"/>
+  <text x="551" y="234" font-size="11" fill="#1f5c39" text-anchor="middle">its own memory</text>
+  <rect x="500" y="242" width="102" height="24" rx="4" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.2"/>
+  <text x="551" y="259" font-size="12" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'a'</text>
+  <rect x="500" y="270" width="102" height="24" rx="4" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.2"/>
+  <text x="551" y="287" font-size="12" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'b', 'c'</text>
+
+  <!-- array 2 -->
+  <rect x="722" y="214" width="126" height="100" rx="7" fill="#e6f2ea" stroke="#2f7d4f" stroke-width="2"/>
+  <text x="785" y="234" font-size="11" fill="#1f5c39" text-anchor="middle">its own memory</text>
+  <rect x="734" y="242" width="102" height="24" rx="4" fill="#ffffff" stroke="#2f7d4f" stroke-width="1.6"/>
+  <text x="785" y="259" font-size="12" fill="#1f5c39" font-weight="bold" text-anchor="middle" font-family="Menlo, Consolas, monospace">'word'</text>
+  <rect x="734" y="270" width="102" height="24" rx="4" fill="#ffffff" stroke="#c9d3dc" stroke-width="1.2"/>
+  <text x="785" y="287" font-size="12" fill="#1c2b3a" text-anchor="middle" font-family="Menlo, Consolas, monospace">'b', 'c'</text>
+
+  <text x="668" y="340" font-size="12.5" fill="#1f5c39" text-anchor="middle" font-weight="bold">changing array2 leaves array1 alone</text>
+  <text x="668" y="362" font-size="12" fill="#6b7a89" text-anchor="middle">the three dots made a genuinely new array</text>
+
+  <!-- ===================== bottom note ===================== -->
+  <rect x="34" y="398" width="832" height="52" rx="8" fill="#eef2f5" stroke="#c9d3dc" stroke-width="1.5"/>
+  <text x="52" y="420" font-size="12.5" fill="#3d5266">An array is a reference type. The name does not hold the array itself, only a pointer to where it lives.</text>
+  <text x="52" y="438" font-size="12.5" fill="#3d5266">Copy the name and you copy the pointer, not the array.</text>
+
+  <defs>
+    <marker id="arrRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c0392b"/>
+    </marker>
+    <marker id="arrGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/>
+    </marker>
+  </defs>
+</svg>
