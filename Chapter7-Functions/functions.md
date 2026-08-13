@@ -565,7 +565,7 @@ console.log(
 
 This function return value will be the object:
 
-   {make: 'Toyota', model: 'Rav4', year: '2025'}
+   {make: 'Toyota', model: 'Rav4', year: '2025'}
 
 
   Notice that the keys of the object literal returned by the function exactly match the parameters of the function. This seems like a repetition of the same names, first in the function argument, and then again in the keys of the object literal being returned, as seen in make, model, and year in the createObject() function above. With the coming of arrow functions in ES6 (ECMAScript 2015), and as part of the code simplification effort, came the provision of a simplified way for this exact same situation. Basically, if you are creating a simple function that returns an object literal, and you know the object it will return is going to, or should have keys that exactly match the names of the arguments you are passing to the function, then you can really simplify the function return code in one line by placing the parameter names in curly braces separated by commas. Here is how:
@@ -591,7 +591,7 @@ This function return value will be the object:
  The return value of this simplified code is still the same:
 
 	  
-     {make: 'Toyota', model: 'Rav4', year: '2025'}
+     {make: 'Toyota', model: 'Rav4', year: '2025'}
 
 
 
@@ -630,7 +630,9 @@ const obj = {
         console.log(this.value); // Works: 10
     },
 
-    // Changed from arrow function to regular function
+    // Changed from an arrow function to a regular one.
+    // Note the name no longer really fits, but it is kept
+    // here so you can see exactly what changed.
     arrowFunction: function() { 
         // Works: 10
         console.log(this.value); 
@@ -638,13 +640,13 @@ const obj = {
 };
 
 obj.regularFunction(); // 10
-obj.arrowFunction();   // 10 ✅ Now it works!
+obj.arrowFunction();   // 10 - now it works
 
-Alternatively; If you still want to use an arrow function, 
-The secret is to capture (store) the ‘this’ word in  variable 
-(eg self) inside another function, then use an arrow inside 
-That function so that the arrow will be able to access that 
-variable. Here is an example:
+Alternatively, if you still want to use an arrow function, one 
+older trick is to capture (store) the ‘this’ word in a variable 
+(often called self) inside a regular function, then use an arrow 
+inside that function so that the arrow can reach that variable. 
+Here is an example:
 
 const obj = {
     value: 10,
@@ -659,10 +661,34 @@ const obj = {
 
 obj.fixUsingLexicalScope(); // 10
 
-Here is an anonymous function. It does not have a name:
+  That pattern is worth recognising, because you will meet it in
+older code written before arrow functions existed. These days you
+do not actually need it. An arrow function written inside a regular
+method already inherits that method's this, so the self variable is
+doing no work:
 
-var greet = function() {
-	return “Hello”);
+const obj = {
+    value: 10,
+    fixWithoutSelf: function() {
+        const arrowFunction = () => {
+            console.log(this.value); // Works: 10, no self needed
+        };
+        arrowFunction();
+    }
+};
+
+obj.fixWithoutSelf(); // 10
+
+  The thing to hold on to is that an arrow function takes its this
+from wherever it was written. Written directly on an object literal,
+that is the surrounding scope, not the object. Written inside a
+method, it is the method's this, which is what you usually want.
+
+As a reminder, here is an anonymous function again. It does not 
+have a name:
+
+let greet = function() {
+	return "Hello";
 }
 
 
@@ -673,22 +699,23 @@ Passing arguments to an arrow function
 —————————————————————
   Say we have a regular function as below:
 
-var addThemUp = function(arg1, arg2) {
+let addThemUp = function(arg1, arg2) {
 	return arg1 + arg2;
 }
 
-Console.log(addThemUp(4, 3));
+// Output: 7
+console.log(addThemUp(4, 3));
 
 To convert it into an arrow function and yet keep the arguments being passed to it, instead of replacing function() with () => as before, we need to keep the arguments passed. The right way to do it is this:
 
-var addThemUp = (arg1, arg2) => arg1 + arg2;
+let addThemUp = (arg1, arg2) => arg1 + arg2;
 
 Some functions in JavaScript accept functions as arguments for processing collections of data, for example higher order functions like map(), filter(), and reduce() etc. Whenever a function accepts another function as an argument, that is a good time to use an arrow function.
 
-  If the arrow function only accepts a single argument, then you do not even need to put the argument in a parenthesis-though it will still work if you do. For example, this function
+  If the arrow function only accepts a single argument, then you do not even need to put the argument in parentheses—though it will still work if you do. For example, this function
 
 	const square = function(num) {
-		 return  num * num;
+		 return num * num;
 	}
 
  Will become:
@@ -696,7 +723,7 @@ Some functions in JavaScript accept functions as arguments for processing collec
 const square = num => num * num; 
 
   Still on the subject of arguments being passed to arrow functions, there is a way arguments work when it comes to higher order functions that we need to understand too. First of all, let’s define what a higher order function in JavaScript is. A higher-order function (HOF) is a function that either takes one or more functions as arguments or returns a function as its result. Simply put, higher-order functions work with other functions, treating them as first-class citizens (meaning functions can be assigned to variables, passed as arguments, and returned from other functions). Again, as I said, examples of such functions are map(), filter(), and reduce() etc. We have already come across these functions before so I am not here to explain how they work. Rather, I mention them to demonstrate how such functions handle the arguments that they receive in a unique way.
-  These higher order functions all have something in common-they perform some kind of iteration on some data, while running the function on each one of them. I will take just one of them as an example; map(). Take a look at this example:
+  These higher order functions all have something in common—they perform some kind of iteration on some data, while running the function on each one of them. I will take just one of them as an example; map(). Take a look at this example:
 
 const data = [1, 2, 3, 4];
 const doubled = 
@@ -704,31 +731,38 @@ const doubled =
 
 console.log(doubled); // [2, 4, 6, 8]
 
-The way map() works with its arguments, it uses an arrow function. It iterates over the given data, which in this case is a series of numbers in an array. Note that the value in its parenthesis is an arrow function, and it looks like this:
+The way map() works with its arguments, it uses an arrow function. It iterates over the given data, which in this case is a series of numbers in an array. Note that the value in its parentheses is an arrow function, and it looks like this:
 
 num => num * 2
 
 It is important to note that num on the left side of the arrow (num =>) is always the argument, and in this case, num represents a different number in the data array at each iteration, which it passes in to be processed by the function or expression on the right side of the arrow (=> num * 2). 
 
-Note also that once the map() function has been called on data, which matches the value of the data array, num on the left side of the arrow can be anything and it will still work, as long as it matches the reference used in the expression on the right side of the arrow (=> num * 2). There for in the above example, either of the following lines would work the same: 
+Note also that the name num is entirely your choice. It can be anything you like and the code will still work, so long as the name on the left of the arrow matches the one used in the expression on the right of it (=> num * 2). Therefore, in the above example, either of the following lines would work the same: 
 
 num => num * 2
 dat => dat * 2
 
-I said everything above to talk about this num value on the left side of the array which is the argument map() passes into the arrow function at each iteration. Because num is only one argument, it is used without a parenthesis around it. However, if we were dealing with multiple arguments, we would have had to place them in parenthesis. map() only uses one argument in its iteration, hence we end up with the arrow function in its parenthesis looking like this-with no parenthesis around the single argument on the left side of the arrow:
+I said everything above to talk about this num value on the left side of the arrow, which is the value map() passes into the arrow function at each iteration. Because num is only one parameter, it is used without parentheses around it. However, if we were dealing with more than one, we would have had to place them in parentheses. map() passes only one value in its iteration, hence we end up with the arrow function looking like this, with no parentheses around the single parameter on the left side of the arrow:
 
 	num => num * 2;
 
-Working with reduce() on the other hand which takes a function as an argument and accumulates values into a single result, it ends up passing two arguments in its arrow function, as seen in ‘acc’ and ‘num’ below
+Working with reduce() on the other hand, which takes a function as an argument and accumulates values into a single result, the arrow function it is given has two parameters, as seen in ‘acc’ and ‘num’ below
 
 const numbers = [1, 2, 3, 4];
 const sum = numbers.reduce((acc, num) => acc + num, 0);
 
-Hence its arrow function ends up looking like this:
+console.log(sum); // 10
 
-	(acc, num) => acc + num, 0
+Hence its arrow function looks like this:
 
-Note that we keep the two arguments within parenthesis.
+	(acc, num) => acc + num
+
+Note that we keep the two parameters within parentheses, because 
+there is more than one of them.
+  Take care not to read that trailing , 0 as part of the arrow 
+function. It is not. It is reduce()'s own second argument, the value 
+the accumulator starts from, and it sits outside the arrow function 
+entirely.
 
 
 
@@ -757,12 +791,12 @@ We use it for the following reasons:
 	-It is useful for initialisation code – 
 	   meaning, it would make a good place to 
 	   run your application setup logic code 
-	   just once in.
+	   just once.
 
 
 Private Variables with IIFE
 ————————
-  Let’s see how you can have private variables that are only available within an IIFE
+  Let’s see how you can have private variables that are only available within an IIFE.
  
 	const result = (function() {
     		let secret = "Hidden Data"; 
@@ -792,7 +826,7 @@ IIFE with Parameters
 
 Arrow Function IIFE
 —————————-
-  With ES6, we can write IIFEs using arrow functions. We already know from studying arrow functions that you convert a regular function into an arrow one by replacing the “function” keyword with a pair of parenthesis and an arrow like so “() =>”, and that if there is any argument, that argument will go into the parenthesis on the left side of the arrow.
+  With ES6, we can write IIFEs using arrow functions. We already know from studying arrow functions that you convert a regular function into an arrow one by replacing the “function” keyword with a pair of parentheses and an arrow like so “() =>”, and that if there are any parameters, they will go into the parentheses on the left side of the arrow.
 
 	(() => {
     		console.log("Arrow function IIFE");
