@@ -17,6 +17,7 @@ Anchor characters
 Shorthand meta characters
 Quantifiers
 Modifiers
+   The difference between g and m
 Regular expressions in JavaScript
 Practical examples and solutions
 
@@ -502,6 +503,52 @@ A regular expression (also referred to as regex) is a
                through them.
 
 
+    The difference between g and m
+    ————————————————
+  These two get confused constantly, because
+  both of them sound as though they mean
+  "match more". They do quite different jobs,
+  and it is worth pinning down which is which.
+
+    g is about HOW MANY matches you get back.
+    m is about WHERE the ^ and $ anchors apply.
+
+  That is the whole of it. Here is a subject
+  string of three lines to try them on:
+
+     const text = "cat sat here\ndog barked\ncat slept";
+
+  First, g. Without it you get the first match
+  and nothing more. With it you get all of them:
+
+     text.match(/cat/)    // ["cat"]
+     text.match(/cat/g)   // ["cat", "cat"]
+
+  Now m. Our text has the word "here" at the
+  end of the FIRST line, but the string as a
+  whole ends with "slept". So $ on its own
+  finds nothing, because $ means the end of the
+  whole string. Add m and $ starts meaning the
+  end of any line, so it finds it:
+
+     text.match(/here$/)   // null
+     text.match(/here$/m)  // ["here"]
+
+  And because they do separate jobs, they
+  combine. Our text has "cat" at the start of
+  two different lines:
+
+     text.match(/^cat/g)    // ["cat"]
+     text.match(/^cat/gm)   // ["cat", "cat"]
+
+  With g alone you get one, because ^ still
+  means the start of the whole string, and
+  there is only one of those. Add m as well and
+  ^ applies to every line, so both are found.
+  A useful way to remember it: g asks "how many
+  times?", m asks "what counts as a line?".
+
+
 
 
 
@@ -595,6 +642,15 @@ A regular expression (also referred to as regex) is a
          -\d{2} matches the next 2 digits.
          -\d{4} finally matches the last 4 digits.
 
+         Notice that the solution above is
+         anchored with ^ and $, so it demands
+         that the WHOLE string be nothing but an
+         SSN. That is what you want when
+         validating a form field. If instead you
+         want to find an SSN sitting inside a
+         longer sentence, drop the anchors, which
+         is what the code below does.
+
          In JavaScript you can use test() to check
          a string against a regular expression:
 
@@ -609,12 +665,30 @@ A regular expression (also referred to as regex) is a
 
 
 
--2) Write a regex pattern to match a 5-letter 
-      word:
+-2) Write a regex pattern to match five word 
+      characters in a row:
 
      Solution:
 
-            /[\w]{5}/  
+            /\w{5}/
+
+     Explanation: \w means a word character,
+           which is a letter, a digit or an
+           underscore, and {5} asks for five of
+           them one after another.
+             Take care with the wording here. This
+           is not quite the same as "a five-letter
+           word". It will happily match the first
+           five characters of "helloworld", and it
+           will match "abc12" as well, since digits
+           count as word characters. If you really
+           want a five-letter word standing on its
+           own, you need to say so:
+
+            /\b[a-zA-Z]{5}\b/
+
+           where \b marks a word boundary at each
+           end, and [a-zA-Z] rules out the digits.
 
 
 -3) Write a regex pattern to match a word 
@@ -622,33 +696,59 @@ A regular expression (also referred to as regex) is a
 
       Solution:
 
-             /[\w]+/     
+             /\w+/
+
+      Explanation: the + asks for one or more
+            word characters. You will often see
+            this written as /[\w]+/ with square
+            brackets round it. That works too, but
+            the brackets add nothing here, since
+            \w is already a single class of its own.
 
 
 
 
--4) Write a regex pattern to match the first 
-      occurrence of ‘my’ in a subject string:
-
-     Solution:
-
-            /^my/  
-
-     Explanation: This will match only the first 
-           occurrence of the phrase ‘my’ within a 
-           text (even if there are many ‘my’ 
-           strings in the text).
-
-
-
-
--5) Write a regex pattern to match the last ‘cats’ in a subject string.
+-4) Write a regex pattern to match ‘my’ only 
+      when it begins the subject string:
 
      Solution:
 
-            /cats$/  
+            /^my/
 
-    Explanation: This will match only the last 
-          occurrence of ‘cats’ in the subject text 
-          (even if there are multiple ‘cats’ strings 
-          in the text).
+     Explanation: The ^ anchor pins the match to
+           the very start of the text. So this
+           matches "my cat is my pet", because
+           that begins with "my", but it does NOT
+           match "I love my cat" at all, even
+           though there is a "my" sitting in the
+           middle of it.
+             This is a distinction worth being
+           careful about. ^my does not mean "the
+           first my you come across". It means "my,
+           and only if it is right at the start".
+           If what you want is the first occurrence
+           wherever it happens to be, use /my/ with
+           no anchor at all, since a pattern
+           without the g modifier stops at the
+           first match anyway.
+
+
+
+
+-5) Write a regex pattern to match ‘cats’ only 
+      when it ends the subject string.
+
+     Solution:
+
+            /cats$/
+
+    Explanation: The $ anchor pins the match to
+          the very end of the text. So this matches
+          "I like cats", but it does NOT match
+          "cats are fun. I like cats too", because
+          that string ends with "too".
+            As with the previous example, $ is
+          about position, not about which
+          occurrence. It does not mean "the last
+          cats you come across"; it means "cats,
+          and only if it finishes the text".
