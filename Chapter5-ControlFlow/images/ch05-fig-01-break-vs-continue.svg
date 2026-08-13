@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="400" fill="#ffffff"/>
+
+  <text x="34" y="26" font-size="17" font-weight="bold" fill="#1c2b3a">Where each one sends you next</text>
+
+  <!-- ==================== LEFT : break ==================== -->
+  <text x="34" y="56" font-size="14" font-weight="bold" fill="#c0392b" font-family="Menlo, Consolas, monospace">break</text>
+  <text x="86" y="56" font-size="13" fill="#3d5266">— jumps right out of the loop</text>
+
+  <rect x="34" y="70" width="340" height="152" rx="8" fill="#fbfcfd" stroke="#c0392b" stroke-width="2"/>
+  <text x="48" y="90" font-size="10.5" fill="#a03127">THE LOOP</text>
+
+  <text x="48" y="116" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace">for (let i = 0; i &lt; 5; i++) {</text>
+  <text x="48" y="144" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace" xml:space="preserve">    if (i === 2) { <tspan fill="#c0392b" font-weight="bold">break;</tspan> }</text>
+  <text x="48" y="172" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace" xml:space="preserve">    console.log(i);</text>
+  <text x="48" y="200" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace">}</text>
+
+  <!-- arrow out through the wall -->
+  <path d="M244 144 H396 V248 H90" fill="none" stroke="#c0392b" stroke-width="2.5" marker-end="url(#aRed)"/>
+  <text x="404" y="196" font-size="11" fill="#c0392b" font-weight="bold">out</text>
+
+  <text x="48" y="254" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace" opacity="0">.</text>
+  <text x="90" y="272" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace">console.log("done");</text>
+  <text x="90" y="290" font-size="11" fill="#6b7a89">the first line after the loop</text>
+
+  <rect x="34" y="308" width="340" height="60" rx="7" fill="#f9e9e7" stroke="#c0392b" stroke-width="1.5"/>
+  <text x="48" y="330" font-size="12.5" fill="#a03127" font-weight="bold">Prints 0, then 1 — and stops.</text>
+  <text x="48" y="350" font-size="12" fill="#6b7a89">Turns 2, 3 and 4 never happen at all.</text>
+
+  <!-- ==================== RIGHT : continue ==================== -->
+  <text x="470" y="56" font-size="14" font-weight="bold" fill="#1f5c39" font-family="Menlo, Consolas, monospace">continue</text>
+  <text x="546" y="56" font-size="13" fill="#3d5266">— skips just this one turn</text>
+
+  <rect x="470" y="70" width="380" height="152" rx="8" fill="#fbfcfd" stroke="#2f7d4f" stroke-width="2"/>
+  <text x="484" y="90" font-size="10.5" fill="#1f5c39">THE LOOP</text>
+
+  <text x="484" y="116" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace">for (let i = 0; i &lt; 5; i++) {</text>
+  <text x="484" y="144" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace" xml:space="preserve">    if (i === 2) { <tspan fill="#2f7d4f" font-weight="bold">continue;</tspan> }</text>
+  <text x="484" y="172" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace" xml:space="preserve">    console.log(i);</text>
+  <text x="484" y="200" font-size="12" fill="#3d5266" font-family="Menlo, Consolas, monospace">}</text>
+
+  <!-- arrow looping back to the top, staying inside the wall -->
+  <path d="M706 140 H822 V112 H706" fill="none" stroke="#2f7d4f" stroke-width="2.5" marker-end="url(#aGreen)"/>
+  <text x="764" y="100" font-size="11" fill="#1f5c39" font-weight="bold" text-anchor="middle">back to the top</text>
+
+  <text x="484" y="272" font-size="12" fill="#9aa8b5" font-family="Menlo, Consolas, monospace">console.log("done");</text>
+  <text x="484" y="290" font-size="11" fill="#6b7a89">reached only once the loop finishes normally</text>
+
+  <rect x="470" y="308" width="380" height="60" rx="7" fill="#e6f2ea" stroke="#2f7d4f" stroke-width="1.5"/>
+  <text x="484" y="330" font-size="12.5" fill="#1f5c39" font-weight="bold">Prints 0, 1, 3, 4 — only 2 is missing.</text>
+  <text x="484" y="350" font-size="12" fill="#6b7a89">The loop runs all five turns; one is skipped.</text>
+
+  <defs>
+    <marker id="aRed" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c0392b"/>
+    </marker>
+    <marker id="aGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2f7d4f"/>
+    </marker>
+  </defs>
+</svg>

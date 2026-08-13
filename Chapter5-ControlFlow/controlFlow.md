@@ -922,6 +922,10 @@ This is helpful when you want to ignore certain values but still finish the loop
 			1 
 			3 
 			4
+
+![Figure 5.1 — Where break and continue send you next](images/ch05-fig-01-break-vs-continue.svg)
+
+*Figure 5.1 — Where break and continue send you next*
 	
 
 
