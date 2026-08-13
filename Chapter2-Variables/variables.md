@@ -102,13 +102,13 @@ Initialising a variable
 
 	console.log(a); // will return the string value 'dog'
 
-  By the way, console.log() is a built-in JavaScript command that prints a value so 
-  you can see it. It does not show up on the web page itself; it prints into the 
-  browser console, which you open with the developer tools in your browser (in most 
-  browsers, press F12, or right-click the page and choose Inspect, then click the 
-  Console tab). It is the tool you will reach for most often when you want to check 
-  what a variable holds. There is more on it in Chapter 20 (Error Debugging and 
-  Testing).
+  As a quick reminder from Chapter 1, console.log() is the built-in command that 
+  prints a value out so you can look at it, and what it prints goes into the browser 
+  console rather than onto the page itself. Open it with your browser’s developer 
+  tools (in most browsers, press F12, or right-click the page and choose Inspect, 
+  then click the Console tab). It is the tool you will reach for most often when you 
+  want to check what a variable is actually holding, so it is worth keeping that 
+  console open as you work through this chapter.
 
 
 Assigning values to variables

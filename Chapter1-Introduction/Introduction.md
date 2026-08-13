@@ -143,6 +143,17 @@ LANGUAGE SYNTAX
 		let x = 5; 
 		console.log(x);
 
+	That second line is your first sight of console.log(), so let’s say what it 
+	is before we go any further. It is a built-in JavaScript command that prints 
+	a value out so that you can look at it. What it prints does not appear on the 
+	web page itself; it goes into the browser console, which you open using your 
+	browser’s developer tools (in most browsers, press F12, or right-click the 
+	page and choose Inspect, then click the Console tab). Keep that console open 
+	while you work through this book, because console.log() is the tool you will 
+	reach for most often to check what your code is actually doing. We will look 
+	at it, and at the developer tools, more closely in Chapter 20 (Error 
+	Debugging and Testing).
+
 	You do not have to end every statement with a semicolon because JavaScript 
 	has a feature called Automatic Semicolon Insertion (ASI). 
 	This allows you to omit semicolons in many cases, as the interpreter 
