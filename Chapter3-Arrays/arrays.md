@@ -61,14 +61,14 @@ Definition
 ——————
   An array is similar to a variable in that it is like a virtual container in computer memory to store things, with the only difference that you can store multiple things at once.
   The elements you store in an array can be any data type e.g.
-   Numbers, Strings, Booleans, Functions, Arrays, Objects. These elements as well their keys (indexes) can also be stored in variables and passed into the array dynamically. Multiple elements should be separated by commas, with the trailing (last) comma (after the last element) being optional.
+   Numbers, Strings, Booleans, Functions, Arrays, Objects. These elements as well as their keys (indexes) can also be stored in variables and passed into the array dynamically. Multiple elements should be separated by commas, with the trailing (last) comma (after the last element) being optional.
   When an array contains another array, we have an array structure known as a multi-dimensional array. In such a structure, we refer to the inner array as a child, nested or sub array, while the outer array can be referred to as the parent array.
   There are two types of arrays and their differences lie in how the indexes (also known as keys) of the items they contain (known as elements) are allocated.
 
     1) Numeric arrays aka indexed arrays
-    2) Associative array
+    2) Associative arrays
 
-Each element in the array is referenced by a key which marks its spot in the array.  For a numeric array, the key is a number (also referred to as an index) and for an associative array, that key is a small string of text, also referred to as a name.
+Each element in the array is referenced by a key which marks its spot in the array. For a numeric array, the key is a number (also referred to as an index) and for an associative array, that key is a small string of text, also referred to as a name.
   Let’s talk about the syntax, structure and application of the two array types.
 
      
@@ -79,31 +79,31 @@ THE TWO TYPES OF ARRAYS
    —————————————————-
 
   Numerically-indexed arrays, also referred to as numeric arrays are arrays whose indexes, or keys are number based. JavaScript uses the so-called zero-based numbering of array indexes, which means that the numbering of the keys of arrays starts from zero. When creating an array, you do not need to specify the keys as JavaScript will do that for you automatically.
-  This numeric array is the true array of JavaScript, and its parent is Array.prototype i.e. the prototype of the Array constructor. Do not worry if you do not know what a constructor means right now. I will explain that in chapter 16 where you will learn all about objects and classes. Just bear with me, follow the code examples I provide as we go along now, and though they may include some objects, I will break it all down so that by the time you get to the object chapter, you will be a master of it. If you prefer to just to chapter 16 to read the introduction before coming back here, that will also be a wise idea, but you do not have to do so to follow along here. I need you however, to remember this important point; that the parent of a numeric array in JavaScript is the prototype (blueprint from which other objects are formed) property of JavaScript’s built-in Array object. This makes numeric arrays the true array in JavaScript, and I will explain more shortly how that makes numeric arrays behave differently from the other type of array-associative arrays, which are not true arrays in JavaScript because their parent is the prototype property of JavaScript’s (built-in) Object.prototype. Do not mistake this to mean that they are not related, because they are very related. Let me show you how.   
-  When we speak of objects in programming, also referred to as object-oriented programming (OOP), if an object extends another, it is said to be the child of the object it is extending, and it inherits properties from that parent. The parent of associative arrays is Object.prototype which is the parent of objects in JavaScript, while the parent of numeric arrays is Array.prototype. However, Array.prototype in turn inherits from Object.prototype. See associative arrays in JavaScript as the uncle of numeric arrays. There is no such official relationship in JavaScript or any programming language as uncle or nephew, but I am giving you this as a symbolic way to understand the relationship between these two array types better. If both Array.prototype and associative arrays both inherit from (have the same parent) Object.prototype, then both of them are like siblings. Also, since Array.prototype has a child that is a numeric array, a good way to remember their relationship is to see a numeric array as the nephew of an associative array, and a grand child of Object.prototype. Hold this thought as we proceed, and all will become crystal clear, I promise. Let’s proceed with learning how to create a numeric array.
+  This numeric array is the true array of JavaScript, and its parent is Array.prototype i.e. the prototype of the Array constructor. Do not worry if you do not know what a constructor means right now. I will explain that in Chapter 16 where you will learn all about objects and classes. Just bear with me, follow the code examples I provide as we go along now, and though they may include some objects, I will break it all down so that by the time you get to Chapter 16, you will be a master of it. If you prefer to just go to Chapter 16 to read the introduction before coming back here, that will also be a wise idea, but you do not have to do so to follow along here. I need you however, to remember this important point; that the parent of a numeric array in JavaScript is the prototype (blueprint from which other objects are formed) property of JavaScript’s built-in Array object. This makes numeric arrays the true array in JavaScript, and I will explain more shortly how that makes numeric arrays behave differently from the other type of array—associative arrays—which are not true arrays in JavaScript because their parent is the prototype property of JavaScript’s (built-in) Object.prototype. Do not mistake this to mean that they are not related, because they are very related. Let me show you how.   
+  When we speak of objects in programming, also referred to as object-oriented programming (OOP), if an object extends another, it is said to be the child of the object it is extending, and it inherits properties from that parent. The parent of associative arrays is Object.prototype which is the parent of objects in JavaScript, while the parent of numeric arrays is Array.prototype. However, Array.prototype in turn inherits from Object.prototype. See associative arrays in JavaScript as the uncle of numeric arrays. There is no such official relationship in JavaScript or any programming language as uncle or nephew, but I am giving you this as a symbolic way to understand the relationship between these two array types better. If Array.prototype and associative arrays both inherit from (have the same parent) Object.prototype, then the two of them are like siblings. Also, since Array.prototype has a child that is a numeric array, a good way to remember their relationship is to see a numeric array as the nephew of an associative array, and a grand child of Object.prototype. Hold this thought as we proceed, and all will become crystal clear, I promise. Let’s proceed with learning how to create a numeric array.
   There are two ways to create a numeric array, and these are either by using the constructor of the built-in Array class, or the easy shorthand way which is by using square brackets. 
 
 
       With the Array() constructor
       ——————————————-
 
-         	var fruits = new Array('mango', 'apple', 'guava');
+         	let fruits = new Array('mango', 'apple', 'guava');
 
 		console.log(fruits);
 
 		Outputs:
-			['mango', 'apple', 'guava']
+			['mango', 'apple', 'guava']
 
 
 
        With square brackets
       ———————
-       		var fruits = ['mango', 'apple', 'guava'];
+       		let fruits = ['mango', 'apple', 'guava'];
 
 		console.log(fruits);
 
 		Outputs:
-			['mango', 'apple', 'guava']
+			['mango', 'apple', 'guava']
 
 
 
@@ -118,24 +118,27 @@ THE TWO TYPES OF ARRAYS
 	in anticipation of data being available, and add them as they 
 	become available. 
 		Once you have created the empty array, there is a very handy 
-	function called push() which you will use to insert items into your 
-	array. The push() function can take a single or multiple items as 
-	strings, separated by commas. Let’s see how to do that:
+	method called push() which you will use to insert items into your 
+	array. (A method is simply a function that belongs to something, in 
+	this case to the array itself, which is why you write it after a dot: 
+	fruits.push().) The push() method can take a single item or several 
+	of them, separated by commas, and they can be of any type: strings, 
+	numbers, booleans, even other arrays. Let’s see how to do that:
 
 		// create an empty array as normal using the Array() constructor
 		// or the square brackets as we have seen above
-		var fruits = new Array();
-		OR
-		var fruits = [];
+		let fruits = new Array();
+		// OR
+		let fruits = [];
     
-		// add single of multiple items to the array
+		// add single or multiple items to the array
 		fruits.push('mango');
 		fruits.push('apple', 'guava', 'kiwi');
 
 		console.log(fruits);
 
 		Outputs:
-			['mango', 'apple', 'guava', 'kiwi']
+			['mango', 'apple', 'guava', 'kiwi']
 
 	You can also target a specific index/key to add a element to in an 
 	existing array. If there is no element at that key, the element will be 
@@ -157,21 +160,21 @@ THE TWO TYPES OF ARRAYS
 		Two items: apple,guava
 
 	We start by creating an array of fruits with one item 'mango' in it.
-	Next, we add an item 'apple' specifying that we need It at the first 
+	Next, we add an item 'apple' specifying that we need it at the first 
 	index. However, that first index already has the 'mango' since we 
 	know that being the only item in fruits, it will automatically be 
 	occupying index 0 (the first index). So, 'apple' replaces 'mango' at 
 	that index. When we check what’s inside fruits array, we see it has 
-	only one item, 'apple’.
+	only one item, 'apple'.
 	Next, we add a new item 'guava' and specify that we want it at the 
 	index 1, since there is nothing in fruits at that index (apple is at index 
-	0), guava is added at index 1. No when we view the contents of fruits, 
-	we see it has both apple and guava it it. 
+	0), guava is added at index 1. Now when we view the contents of fruits, 
+	we see it has both apple and guava in it. 
 	  Adding items to specific indices is okay when you know the positions 
 	of existing elements in the array, but there are times when it is hard to 
 	tell. You run the risk of unintentionally overriding an item in the array 
 	if you are not sure. In these cases, it’s better to use push() to have 
-	that item appended as the last element in the array
+	that item appended as the last element in the array.
 
 
 	
@@ -179,11 +182,11 @@ THE TWO TYPES OF ARRAYS
 
 
 
-	Retrieve values from an numeric array
+	Retrieve values from a numeric array
 	—————————————————————
-  To retrieve values from a numeric array, it depends on how you wish to retrieve the data. You may want to retrieve only a single element or you may wish to loop through the array and retrieve or display every element in it. If you just want to grab only a single element from an index in the array, it’s quicker to  use the bracket notation and the index number. The bracket notation will also work with strings too-more on this under strings. Here is how to use the bracket notation to retrieve array values:
+  To retrieve values from a numeric array, it depends on how you wish to retrieve the data. You may want to retrieve only a single element or you may wish to loop through the array and retrieve or display every element in it. If you just want to grab only a single element from an index in the array, it’s quicker to use the bracket notation and the index number. The bracket notation will also work with strings too—more on this in Chapter 9 (Strings). Here is how to use the bracket notation to retrieve array values:
 
-	var fruits = [];
+	let fruits = [];
     
 	fruits.push('mango');
 	fruits.push('apple', 'guava', 'kiwi');
@@ -191,11 +194,11 @@ THE TWO TYPES OF ARRAYS
 	console.log(fruits);
 
 Outputs:
-	['mango', 'apple', 'guava', 'kiwi']
+	['mango', 'apple', 'guava', 'kiwi']
 
 To grab the item at index 3, do it like so:
 		
-	 // this will give you ‘kiwi’.
+	 // this will give you 'kiwi'.
 	fruits[3];
 
 If you wish to grab everything in the array, whose content and length you may not always know, you have to use a loop statement to do so. You can 
@@ -203,16 +206,16 @@ look under the looping section for a full explanation and demonstration of
 how looping works and the types of loops. For now here is how to use the 
 for loop to extract all the items from the fruits array.
 
-	var fruits = [];
+	let fruits = [];
     
 	fruits.push('mango');
 	fruits.push('apple', 'guava', 'kiwi');
 
 	// prepare new array to store your retrieved fruit items in
-	var fruitBasket = [];
+	let fruitBasket = [];
 	
 	//console.log(fruits.length);
-	for (var i = 0; i < fruits.length; i++)
+	for (let i = 0; i < fruits.length; i++)
 	{
    		console.log("adding " + fruits[i] + " to my basket");
     		fruitBasket.push(fruits[i]);
@@ -223,15 +226,15 @@ for loop to extract all the items from the fruits array.
 
 Outputs:
 
-	['mango', 'apple', 'guava', 'kiwi’];
+	['mango', 'apple', 'guava', 'kiwi'];
 
 
 	Modify an array using indexes
 	————————————————
   This will not work with strings, but it will work with arrays. Here is how you can do that:
 
-	var myArray = [1, 5, 25];
-	myArray[1] = 45
+	let myArray = [1, 5, 25];
+	myArray[1] = 45;
 
 This means you have targeted the myArray array’s value at the index of
 1, which is 5, and changed its value to 45. The array myArray will now 
@@ -241,7 +244,7 @@ contain: [1, 45, 25];
             
      2) Associative arrays
        —————————————
-  Unlike a numeric array which is basically an ordered (numbered) list; an associative array is an array whose keys are named properties (strings), meaning, instead of numbers, the keys are strings. Unlike most other programming languages which have real associative arrays-arrays whose keys are strings, JavaScript does not have associative arrays. At least it does not have it in the real sense of the word. JavaScript arrays are designed for ordered lists using numbers as keys (called indexes). If you want to store values by name instead of number, you should use an object, not an array. This is a very common misconception that confuses programmers new to Javascript. So what has come to be known as an associative array in JavaScript is actually an object. That, and the fact that the parent of the associative array is JavaScript’s built-in Object.prototype and not Array.prototype, is the reason why associative arrays are not true arrays in JavaScript. The true arrays are numeric-indexed arrays, whose parent is Array.prototype.
+  Unlike a numeric array which is basically an ordered (numbered) list; an associative array is an array whose keys are named properties (strings), meaning, instead of numbers, the keys are strings. Unlike most other programming languages which have real associative arrays—arrays whose keys are strings, JavaScript does not have associative arrays. At least it does not have it in the real sense of the word. JavaScript arrays are designed for ordered lists using numbers as keys (called indexes). If you want to store values by name instead of number, you should use an object, not an array. This is a very common misconception that confuses programmers new to JavaScript. So what has come to be known as an associative array in JavaScript is actually an object. That, and the fact that the parent of the associative array is JavaScript’s built-in Object.prototype and not Array.prototype, is the reason why associative arrays are not true arrays in JavaScript. The true arrays are numeric-indexed arrays, whose parent is Array.prototype.
   Once again, associative arrays are simple plain objects and the keys are not numbers. Respect this distinction between the two, and you will be fine. For example, do not create an array in the numeric style using strings instead of numbers. Remember I mentioned earlier that because of their different parents, both array types behave differently. Let me explain why not understanding the difference between the two can cause problems for you. 
   While JavaScript would still let you assign named properties to an array, they don't behave like real array elements. For example, they won’t show up when you loop through the array, and no matter how many elements there are in the array, that number will not be reflected in the .length property. This is better demonstrated than explained. Here is an example of an associative array being created in the same way you would create a numeric (indexed) array, instead of using an object:
 
@@ -280,7 +283,7 @@ What happens is:
 	-Even worse, for loops, .map(), .forEach(), etc., which are meant to 
 	   work on real arrays, will ignore those named keys.
 
-The correct way to create an array with named keys in JavaScript is to use objects. We will learn all about objects in Chapter 16 when we learn about Object-Oriented Programming (OOP). For now just understand that to create a plain object in JavaScript, you assign a variable to a block of code ({}) in which you have key-value pairs, where the keys are on the left and their values is on the right. Each key is separated from its value by a colon (e.g. myKey: myValue), and multiple key-value pairs are separated by a commas. 
+The correct way to create an array with named keys in JavaScript is to use objects. We will learn all about objects in Chapter 16 when we learn about Object-Oriented Programming (OOP). For now just understand that to create a plain object in JavaScript, you assign a variable to a pair of curly braces ({}) inside which you list key-value pairs, where the keys are on the left and their values are on the right. Each key is separated from its value by a colon (e.g. myKey: myValue), and multiple key-value pairs are separated by commas. Take care not to confuse this with a block, which also uses curly braces but groups code rather than storing data. We drew that distinction in Chapter 2, under "Blocks are not objects". 
 
 Let’s convert the above faulty student example into an object:
 
@@ -299,12 +302,14 @@ The name of the array (object) is student. An example of a key is name, and its 
 	// Output is: 2
 	console.log(student.subjects.length); 
 
-	// Output is: Math, English
+	// Output is Math and English, each printed on its own line.
+	// (The => arrow is a short way of writing a function.
+	//  We come to those in Chapter 7.)
 	student.subjects.forEach(sub => console.log(sub)); 
 
 The length property will not work on this object, because it is a property of real (numeric) arrays, not objects. Notice that though we cannot use the .length property on the whole student object itself, we use it on the subjects property, which is a numeric array.
   If you ever find yourself giving an array "named properties" (like array["name"] = "value"), stop and ask: “Should this really be an object instead?” Arrays are for ordered lists (a list with numbers), and objects are for key-value pairs. Mixing them leads to bugs where your data won’t behave the way you expect.
-  In some javascript references, you will see associative arrays being defined as an array whose properties are strings, and in others, as an array with named properties, or arrays that have properties by name. These are all essentially describing JavaScript objects, not true arrays, and they're all saying the same thing in different words.
+  In some JavaScript references, you will see associative arrays being defined as an array whose properties are strings, and in others, as an array with named properties, or arrays that have properties by name. These are all essentially describing JavaScript objects, not true arrays, and they're all saying the same thing in different words.
   Having said all that, let us agree that when people say “associative array” in JavaScript, they are essentially speaking of a plain object with key-value pairs, even though it's not really an array. The keys of this object are strings (or symbols), and the values can be of any type. 
 Enough of this repetition, for I know you have got it now. Congratulations, you have hit a milestone and are well on your way towards JavaScript mastery. Let’s forge onwards and look at the syntactical aspects of an associative array.
   The property name of the object must be a valid identifier. Here are the syntax rules of an identifier:
@@ -328,7 +333,7 @@ Here is a valid example:
     		"home town": "London",  // valid (quoted)
 	};
 
-The property name "other-name" would otherwise be invalid if it was not quoted, because it it contains a hyphen. Similarly, the "home town" has a space in it, so it is quoted. These two properties break the identifier rules, and are fixed by quotes. However, because they are fixed by quotes, it changes the way their values can be retrieved. I will address that shortly when I talk about retrieving and updating the values of associative array properties.
+The property name "other-name" would otherwise be invalid if it was not quoted, because it contains a hyphen. Similarly, the "home town" has a space in it, so it is quoted. These two properties break the identifier rules, and are fixed by quotes. However, because they are fixed by quotes, it changes the way their values can be retrieved. I will address that shortly when I talk about retrieving and updating the values of associative array properties.
 
 With JavaScript objects, whether you quote the properties or not, it makes no difference — they're all stored as strings. That is why, to retrieve their values, doing it like so:
 
@@ -340,7 +345,7 @@ With JavaScript objects, whether you quote the properties or not, it makes no di
 
 will all work just fine.
 
-If you are wondering why person.name and person["name"] both work, it’s because in JavaScript you can use both bracket or dot notations to access object values. Notice that in this person object, some keys are quoted, like "name”, and some are not, like occupation. However, retrieving their values will work in the same way-which is by using the bracket or the dot notation. The only exception is with the keys that break the identifier rules and are quoted, whose values I will talk about how to retrieve shortly. 
+If you are wondering why person.name and person["name"] both work, it’s because in JavaScript you can use both bracket or dot notations to access object values. Notice that in this person object, some keys are quoted, like "name", and some are not, like occupation. However, retrieving their values will work in the same way-which is by using the bracket or the dot notation. The only exception is with the keys that break the identifier rules and are quoted, whose values I will talk about how to retrieve shortly. 
 
 Let’s look at how to retrieve values from objects (associative arrays) next.
 
@@ -357,7 +362,7 @@ Let’s look at how to retrieve values from objects (associative arrays) next.
 
 
 
-Let’s talk about these notations, and when to use which. Remember, above we saw how if your property name has spaces or special characters like - (hyphen), it's not a valid identifier, and must be quoted. Even if you use quotes to create the property (like “other-name"), it still isn't a valid identifier-so in that case, you cannot use dot notation to access it. Rather, you should use bracket notation, like this: 
+Let’s talk about these notations, and when to use which. Remember, above we saw how if your property name has spaces or special characters like - (hyphen), it's not a valid identifier, and must be quoted. Even if you use quotes to create the property (like "other-name"), it still isn't a valid identifier—so in that case, you cannot use dot notation to access it. Rather, you should use bracket notation, like this: 
 
 	obj["other-name"]
 
@@ -378,7 +383,7 @@ Let’s look at the differences between the two types of notations.
 	-It is required:
 -When the property name contains special characters or spaces. For example:
 
-		var obj = { 
+		const obj = { 
     				"first-name": "Tom",
     				"aunt": "Polly"
 			}; 
@@ -388,7 +393,7 @@ Let’s look at the differences between the two types of notations.
 
 -When the property name is stored in a variable. For example:
 
-		var key = "aunt"; 
+		let key = "aunt"; 
 		console.log(obj[key]); // will return Polly
 
 -When you need to access properties dynamically inside a loop or   
@@ -424,6 +429,7 @@ A dynamic key access is if you need to reference a key of the object by referenc
 The output will be:
 
 	Dynamic age value is: 30
+	Alice
 
 We referenced the key dynamically from a variable: person[key]. For this, we had to use the bracket notation as the dot notation like so:
 
@@ -461,16 +467,16 @@ Here is another example demonstrating how and when to use the two notations:
 
 But console.log(person.other-name);
 
-Will return an error of NaN, which in JavaScript is a special value meaning “Not a Number”. You can use dot notation (object.key) only if the property name is a valid JavaScript identifier (no spaces, no hyphens, no starting numbers). If the name contains symbols or spaces, you must use bracket notation. JavaScript interprets obj.other-name as a math expression: 
+Will not throw an error, but will hand you back NaN, which in JavaScript is a special value meaning “Not a Number”. You can use dot notation (object.key) only if the property name is a valid JavaScript identifier (no spaces, no hyphens, no starting numbers). If the name contains symbols or spaces, you must use bracket notation. JavaScript interprets obj.other-name as a math expression: 
 
 	person.other - name
 
 and since you're trying to subtract a variable name (which likely isn't a number) from person.other, the result is not a number — hence NaN.
 Instead, you must use a bracket notation, like this:
 
-	console.log(person[“other-name"]);
+	console.log(person["other-name"]);
 
-If you're ever unsure which to use-try bracket notation. It always works, even when dot notation does not.
+If you're ever unsure which to use, try bracket notation. It always works, even when dot notation does not.
 
 
 
@@ -478,7 +484,7 @@ If you're ever unsure which to use-try bracket notation. It always works, even w
 
   Assign and update values in an associative array
   ——————————————————
-   Same as with retrieving values, you can assign and update values in an associative array using either the Dot or Bracket operators. Which operator you use will depend on the nature of the key. Remember in the introduction to associative arrays above we saw how keys made of invalid identifiers should be wrapped in quotes, and how these have to therefore retrieved or referenced using square brackets. Well, ‘referencing’ applies to both when assigning and when updating the values of these keys.
+   Same as with retrieving values, you can assign and update values in an associative array using either the Dot or Bracket operators. Which operator you use will depend on the nature of the key. Remember in the introduction to associative arrays above we saw how keys made of invalid identifiers should be wrapped in quotes, and how these have to therefore be retrieved or referenced using square brackets. Well, ‘referencing’ applies to both when assigning and when updating the values of these keys.
 
 Using Dot notation
 ————————————
@@ -512,7 +518,7 @@ Using Bracket Notation
 
 Initialising the array with data
 ————————————
-  The above examples start an array from a blanc slate, but you can initialise (first create) an already already having elements.
+  The above examples start an array from a blank slate, but you can also create an array that already has elements in it from the outset.
 
 	const person = {
     		"name": "Alice",  
@@ -527,12 +533,12 @@ The output will be:
 	{
 		name: 'Alice', 
 		age: 30, 
-		favourite colour: 'blue’, 
+		'favourite colour': 'blue', 
 		country: 'Holland'
 	}
 
 
-In this example, we initialise an array with some data in it, then add a new key-value pair, country, that did not exist before. We also update the value of an already existing key ‘favourite colour’.
+In this example, we create an array with some data already in it, then add a new key-value pair, country, that did not exist before. Updating the value of a key that already exists is what we look at next.
 
 Updating values
 ————————
@@ -552,7 +558,7 @@ The output will be:
 	{
     		name: 'Alice', 
     		age: 30, 
-    		favourite colour: 'black', 
+    		'favourite colour': 'black', 
    	 	country: 'Holland'
 	}
 
@@ -560,7 +566,7 @@ The output will be:
 	{
     		name: 'Alice', 
     		age: 40, 
-   		 favourite colour: 'black', 
+    		'favourite colour': 'black', 
     		country: 'England'
 	}
 
@@ -587,7 +593,7 @@ The other identifiers like ‘country’ and ‘age’ are valid identifiers and
   object and an associative array in 
   JavaScript, though they can look similar. 
   As we learned above, an associative array 
-  in javascript is just a regular javascript 
+  in JavaScript is just a regular JavaScript 
   object.
     JSON (JavaScript Object Notation) is a 
   data format used for representing 
@@ -607,11 +613,8 @@ The other identifiers like ‘country’ and ‘age’ are valid identifiers and
 
         {"key": "value"}
 
-  JavaScript objects can use single or 
-  double quotes for strings, and their keys 
-  can be unquoted as long as they are valid 
-  identifiers (not be words that are already 
-  internally used by JavaScript.
+  JavaScript objects can use single or double quotes for strings, and their keys can be
+  unquoted as long as they are valid identifiers.
 
 
 
@@ -619,15 +622,15 @@ The other identifiers like ‘country’ and ‘age’ are valid identifiers and
 
    Multi-dimensional arrays
   —————————————-
-  The structure of the arrays we have seen so far-whether numeric or associative are single-dimensional, which means they are flat arrays or arrays containing no other arrays themselves-just items. In JavaScript, a multi-dimensional array is simply an array that contains one or more arrays as its elements. You can think of it as a “nested” array-an array within an array. Just like single-level arrays, multi-dimensional arrays can be made up of:
+  The structure of the arrays we have seen so far—whether numeric or associative—is single-dimensional, which means they are flat arrays, or arrays containing no other arrays themselves, just items. In JavaScript, a multi-dimensional array is simply an array that contains one or more arrays as its elements. You can think of it as a “nested” array—an array within an array. Just like single-level arrays, multi-dimensional arrays can be made up of:
 
-* Numeric (indexed) arrays-arrays where items are accessed by number.
-* Associative arrays-objects where values are accessed using named keys.
+* Numeric (indexed) arrays—arrays where items are accessed by number.
+* Associative arrays—objects where values are accessed using named keys.
 * A mix of both numeric and associative arrays
 
 So you can have a mix of both types of arrays in the same multi-dimensional structure. But it’s helpful to understand the difference before combining them in your code so you don’t get confused on how to handle them, since they all behave differently. 
   Let me introduce to you certain terms often used when it comes to arrays and their levels, so you will understand them whenever you hear or read about them. Multi-dimensional arrays are also sometimes referred to as multi-level arrays. The regular array we dealt with above is a single-dimensional array, which is a flat array containing elements, none of which are arrays themselves. This has only one level, so-to-speak. But when we talk of multi-dimensional (multi-level) arrays, the levels can go deep, and we can have two-dimensional (2D), three-dimensional (3D) arrays and so on. 
-  A two-dimensional array as you can probably guess from the name, is an array that contains elements, one of which is an array themselves. Now we are talking about an array that goes two levels deep-one out, one in, hence the name two-dimensional. Any array (nested) inside another can also be referred to as a sub-array or a child array of the one it is inside of. There is also the three-dimensional array which is a structure where the sub array of the first array contains an element, and this element is also an array. It then becomes three levels deep. We can keep going deeper and deeper and the idea stays the same. It’s simple; with each level within the first outer array you need to go to find another (nested) array, the deeper the dimensions go.
+  A two-dimensional array as you can probably guess from the name, is an array that contains elements, one of which is an array itself. Now we are talking about an array that goes two levels deep-one out, one in, hence the name two-dimensional. Any array (nested) inside another can also be referred to as a sub-array or a child array of the one it is inside of. There is also the three-dimensional array which is a structure where the sub array of the first array contains an element, and this element is also an array. It then becomes three levels deep. We can keep going deeper and deeper and the idea stays the same. It’s simple; with each level within the first outer array you need to go to find another (nested) array, the deeper the dimensions go.
   I will now break down what a multi-dimensional array looks like for both numeric and associative arrays.
 
 Multi-dimensional numeric
