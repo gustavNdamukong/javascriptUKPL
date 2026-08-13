@@ -178,7 +178,7 @@ A regular expression (also referred to as regex) is a
             first > it meets, rather than running on
             to the last one on the line. That is
             exactly what we wanted. 
-               Note that the […] and the + 
+               Note that the [...] and the + 
            characters are a combination.
 
 /?/      Matches an element zero or only 1 
@@ -349,16 +349,18 @@ A regular expression (also referred to as regex) is a
        -the ‘anchor’ (to establish start position 
            of) the search string, for a match to 
            occur. The anchor is made up of both 
-           the caret (^) and the ($) characters.
+           the caret (^) and the dollar ($) characters.
 
-  Without using squares brackets 
-  (containing the ^ character at the start), 
-  the pattern will be a negation character. 
-  If the caret character 
-  appears at the start of your regex pattern, 
-  then the text to be matched must be at the 
-  start of the subject text for a match to 
-  occur.
+  The caret does two quite different jobs
+  depending on where you put it. Inside a pair
+  of square brackets, as we saw a moment ago,
+  it means negation. Outside them, at the very
+  start of a pattern, it means "the match must
+  begin at the start of the subject text".
+  So if the caret character appears at the
+  start of your regex pattern, then the text to
+  be matched must be at the start of the
+  subject text for a match to occur.
     On the other hand, if the $ character is 
   placed at the end of your regex, then the 
   string being matched must be at the end of 
@@ -369,7 +371,17 @@ A regular expression (also referred to as regex) is a
   the two ends to make sure our text starts 
   and finishes the line like so:
 
-         /Le  *Guin$/  
+         /^Le *Guin$/
+
+  The ^ pins the match to the start of the text
+  and the $ pins it to the end, so the subject
+  must be exactly "Le Guin" and nothing more.
+  The * after the space allows for any extra
+  spaces between the two words, so "Le  Guin"
+  matches too. Leave the ^ off and the pattern
+  would happily find "Le Guin" at the end of a
+  longer sentence, which is not what we asked
+  for.
 
 
         Shorthand meta characters
@@ -378,26 +390,34 @@ A regular expression (also referred to as regex) is a
   frequently used characters, built into 
   regexes. 
 
-/|b/         matches a word boundary
+/\b/     matches a word boundary
 
-/|B/        matches no word boundary 
+/\B/     matches anywhere that is NOT a
+         word boundary
 
-/ \d/      single digit
+/\d/     single digit
 
-/ \D/     single non-digit
+/\D/     single non-digit
 
-/ \n/     newline character 
+/\n/     newline character
 
-/ \s/     white space character
+/\s/     white space character
 
-/ \S/    non-white space character
+/\S/     non-white space character
 
-/ \t/     tab character 
+/\t/     tab character
 
-/ \w/    word characters (a-zA-Z0-9_)
+/\w/     word characters (a-zA-Z0-9_)
 
-/ \W/   non-word character, so anything but 
-            any of these:  a-z, A-Z, 0-9 and _
+/\W/     non-word character, so anything but
+         any of these: a-z, A-Z, 0-9 and _
+
+  Note that every one of these begins with a
+  backslash, and that there is no space after
+  the opening slash. A space inside a pattern
+  is a character like any other, so / \d/ would
+  mean "a space followed by a digit", which is
+  not the same thing at all.
 
 
 
@@ -411,18 +431,24 @@ A regular expression (also referred to as regex) is a
     You can use a quantifier in 3 ways:
 
   -i) /[\w]{3}/  with ONE digit. This means you 
-                       wish to match word character 
-                       if it appears thrice.
+                       wish to match a word character 
+                       if it appears exactly three times.
 
   -ii) {3,}     with ONE digit and a comma. 
                    This means you wish to match 
                    the preceding character if it 
                    appears 3 or more times.
-  -iii) {2, 3}  with TWO digits separated by a 
-                   comma. This means you wish to 
-                   match the preceding character if 
-                   it appears any number of times 
-                   between two or 3.
+  -iii) {2,3}   with TWO digits separated by a
+                   comma. This means you wish to
+                   match the preceding character if
+                   it appears anything from two to
+                   three times.
+
+    Take care not to put a space after that
+  comma. {2,3} is a quantifier, but {2, 3} is
+  not one at all — JavaScript gives up on
+  reading it as a quantifier and looks for
+  those exact characters in the text instead.
 
 
           Modifiers
@@ -434,9 +460,9 @@ A regular expression (also referred to as regex) is a
   modifiers, global (g), case-insensitive (i), 
   and multiline (m). Let’s dive straight into 
   some examples, assuming that 
-  ‘/…/‘ contains your regex pattern:
+  /.../ contains your regex pattern:
 
-  /…/g      This will match in a global manner, 
+  /.../g    This will match in a global manner, 
                 rather than at the first match that 
                 is encountered. You could end up 
                 with multiple matches rather than 
@@ -447,22 +473,33 @@ A regular expression (also referred to as regex) is a
                 return all 4 occurrences rather 
                 than just 1 for the first one.
 
-/…/i        This makes the match case-
+/.../i      This makes the match case-
                insensitive. Matches are normally 
                case-sensitive, so having this will 
                make the following regex patterns 
                work in the same way:
           
-                 /[a-zA-Z/    and    /[a-z/i
+                 /[a-zA-Z]/   and   /[a-z]/i
 
                  or
 
-                /A-Z/      and    /[a-z]i
+                 /[A-Z]/i    and   /[a-z]/i
 
 
-/…/m      This enables multiline mode, 
-               meaning that the match will be 
-               made across multiple lines of text.
+/.../m    This enables multiline mode. It is
+               easy to misread this one, so it is
+               worth being careful. It does NOT
+               mean the match can run across
+               several lines of text. What it
+               changes is the meaning of the two
+               anchors: with m in place, ^ matches
+               at the start of every line rather
+               than only the start of the whole
+               text, and $ matches at the end of
+               every line rather than only the end.
+               So it is about where each line
+               begins and ends, not about matching
+               through them.
 
 
 
