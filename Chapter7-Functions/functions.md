@@ -327,7 +327,7 @@ has completed its job.
  	It is very common to capture that returned 
 data in a variable so that you can use it further in your 
 program. Here is an example of a function returning 
-Its result.
+its result.
 
 	function addNumbers(numOne, numTwo)
 	{
@@ -336,19 +336,19 @@ Its result.
 
 	// capture/store the result of calling addNumbers() in 
 	// a variable
-	var sum = addNumbers(5, 5);
+	let sum = addNumbers(5, 5);
 
 	//use the result
-	console.log(’The sum of the two numbers is: ’+ sum);
+	console.log('The sum of the two numbers is: ' + sum);
 
 
   However, there are times when you do not want a 
-function to do return anything. In these scenarios, you 
-just want the function to do something and do nothing else.
+function to return anything. In these scenarios, you 
+just want the function to do something and hand nothing back.
 Here is an example of a function that changes the value
 of a variable and does not return anything:
 
-	var appStatus = true;
+	let appStatus = true;
 
 	function updateStatus()
 	{
@@ -372,20 +372,20 @@ of a variable and does not return anything:
 FUNCTIONS AND VARIABLE SCOPE
 —————————————————————
   Scope relates to the visibility of a variable. We cover 
-everything about scopes in the Variables section, but I 
+everything about scopes in Chapter 2 (Variables), but I 
 will briefly hint at how it applies to code used within 
 functions. There are three scopes of variables you can 
-Use within a script. There is the global scope, there is 
+use within a script. There is the global scope, there is 
 the function scope (which is still a type of block) and 
 there is the block scope. Let and const variables can 
-only be made local (scoped) within blocks-which 
-are blocks and functions, because let and const variables 
-are block-scoped. Variables declared with the var keyword
+only be made local (scoped) within blocks—and remember 
+that a function is itself a kind of block—because let and 
+const variables are block-scoped. Variables declared with the var keyword
 can only be made local (scoped) within functions because 
 they are function-scoped. Any variable (var, let or const) 
 declared outside of a function or block is a global variable.
-Please see the Variables section for a thorough explanation
-of the concept of concepts and blocks. Let’s see this in an 
+Please see Chapter 2 (Variables) for a thorough explanation
+of the concept of scopes and blocks. Let’s see this in an 
 example:
 
 	var appStatus = true;
@@ -404,35 +404,36 @@ example:
 
 
   Because the variable appStatus is declared outside 
-of any function, it is a global function and can be 
+of any function, it is a global variable and can be 
 accessed from anywhere in your code, whether that 
 code is inside of a function or outside of it. That is 
-why the logging of the value of appStatus when done 
-both inside a function like in the updateStatus()
-function above, or outside of it results in the same
-output value; which is true, being displayed in the 
-console.
+why appStatus can be read from inside the 
+updateStatus() function just as easily as from outside 
+it. Wherever you log it from, you get the same value, 
+true, displayed in the console.
   If a variable is declared inside a function like 
 the testLocalVar variable that is declared using the 
 var keyword inside the function updateStatus(), it will 
 always be a variable local to the updateStatus() function. 
 This is because var variables are function-scoped. If the 
-testLocalVar variable was however not declared with the 
-var the keyword, it would still be a global variable. 
-When the variable is local, it cannot be seen from 
-outside that function, so therefore any attempt to use 
-that it from outside the function will result in 
-JavaScript throwing an error of ‘undefined’.  
+testLocalVar variable had not been declared with the 
+var keyword at all, it would instead have become a 
+global variable. When the variable is local, it cannot be 
+seen from outside that function, so any attempt to use 
+it from outside will result in JavaScript throwing a 
+ReferenceError, saying that testLocalVar is not defined. 
 It is always recommended not to declare global variables 
-Inside of functions or blocks because that will defeat the 
-whole purpose of encapsulating code within functions or
-Blocks. To respect the integrity of your code therefore, it 
-is the popular convention among JavaScript developers t
-o always precede all variables with the ‘var’ keyword, or 
-Better still, let or const so that the variables respect 
-The scope (local area) in which they have been declared.
-To learn everything about variable scopes, see the 
-Variables section.
+inside of functions or blocks, because that defeats the 
+whole purpose of encapsulating code within functions or 
+blocks. To respect the integrity of your code therefore, it 
+is the popular convention among JavaScript developers to 
+always declare variables with let or const, so that the 
+variables respect the scope (local area) in which they 
+have been declared. You will still meet the older var 
+keyword in existing code, which is why it is worth knowing, 
+but it is not what you should reach for in new code.
+To learn everything about variable scopes, see Chapter 2 
+(Variables).
 
 
 
@@ -445,18 +446,18 @@ const greet = function(name) {
     return `Hello, ${name}!`;
 };
 
-// Output: ”Hello, Alice!"
+// Output: "Hello, Alice!"
 console.log(greet("Alice")); 
 
 Here are the key points on anonymous functions:
-	-It can be stored in variable or passed as 
+	-It can be stored in a variable or passed as 
 	  an argument.
 	-It uses the function keyword.
 	-It has its own this context.
 
   Arrow functions can be said to be the new and simplified way of writing functions in general that was introduced since ES6. An arrow function has a shorter syntax for writing functions using the arrow character =>. It has lexical this binding. The left side of the arrow has the argument(s) being passed to the 
 function, while the right side of the arrow 
-constitutes the return value.Let us simplify the above greet() anonymous function by converting it into an arrow function:
+constitutes the return value. Let us simplify the above greet() anonymous function by converting it into an arrow function:
 
 const greet = (name) => `Hello, ${name}!`;
 
@@ -478,7 +479,15 @@ Here are the key points about arrow functions:
 	  function, while the right side of the arrow 
 	  constitutes the return value. 
 	
-	   (arguments) => return value;
+	   (arguments) => value;
+
+	  Note that there is no return keyword in that
+	  line. With a single expression the return is
+	  implied, and writing (arguments) => return value
+	  is a SyntaxError. If you do want to write return
+	  out in full, you need the curly braces around it:
+
+	   (arguments) => { return value; }
 
 
 
@@ -488,22 +497,23 @@ Here are the key points about arrow functions:
 Convert an anonymous function into an arrow function
 —————————————————————
 
-An anonymous can always be converted into an arrow function. Let’s convert the above anonymous function into an arrow function. To do so, simply replace ‘function()’ with ‘()  =>’:
+An anonymous function can always be converted into an arrow function. Let’s convert the above anonymous function into an arrow function. To do so, simply replace ‘function()’ with ‘()  =>’:
 
-var greet = function() {
-	return “Hello”);
+let greet = function() {
+	return "Hello";
 }
 
-//make the change
-var greet = ()  => {
-	return “Hello”);
+//make the change (this is the same greet, rewritten,
+//not a second one)
+let greet = () => {
+	return "Hello";
 }
 
-We can shorten the syntax even further. If all we are returning in the function is one line of code, then we do not need the opening and curly braces, nor do we even need the keyword. Here is what the function can be reduced to:
+We can shorten the syntax even further. If all we are returning in the function is one single expression, then we do not need the opening and closing curly braces, nor do we even need the return keyword. Here is what the function can be reduced to:
 
-var greet = ()  => “Hello”;
+let greet = () => "Hello";
 
-You therefore see how short and concise our code can be as a result. Always remember that  whatever comes after the arrow (=>) is automatically implied to be the return value of the function. What comes on the left side of the arrow will be any argument-if applicable, with or without parenthesis. 
+You therefore see how short and concise our code can be as a result. Always remember that whatever comes after the arrow (=>) is automatically implied to be the return value of the function. What comes on the left side of the arrow will be any parameters—if applicable—with or without parentheses. 
 
 
 
@@ -512,7 +522,10 @@ You therefore see how short and concise our code can be as a result. Always reme
 
 Quick object literals from function arguments
 —————————————————————————
-  You sometimes have a function in your code that simply needs to return an object literal from arguments passed to the function. If you do not know what object literals are, quickly hop over to the Object Oriented Programming (OOP) section and read about objects and object literals before hopping back here to continue. Here is an example of such a function. Since we are on the topic of functions, just for the purpose of better understanding of the differences, I will write three versions of the same function; one using the traditional function syntax, one in anonymous function syntax, and one in the arrow function syntax. The differences should be very subtle, and you should be able to distinguish between them by now:
+  You sometimes have a function in your code that simply needs to return an object literal from arguments passed to the function. If you do not know what object literals are, quickly hop over to Chapter 16 (Object Oriented Programming) and read about objects and object literals before hopping back here to continue. Here is an example of such a function. Since we are on the topic of functions, just for the purpose of better understanding of the differences, I will write three versions of the same function; one using the traditional function syntax, one in anonymous function syntax, and one in the arrow function syntax. The differences should be very subtle, and you should be able to distinguish between them by now:
+
+(These three are alternatives to each other, not three things
+to write out one after the other. Pick whichever you prefer.)
 
 // traditional function
 function createObject (make, model, year) {
@@ -555,7 +568,7 @@ This function return value will be the object:
    {make: 'Toyota', model: 'Rav4', year: '2025'}
 
 
-  Notice that the keys of the object literal returned by the function exactly match the arguments of the function. This seems like a repetition of the same names, first in the function argument, and then again in the keys of the object literal being returned, as seen in make, model, and year in the createObject() function above. With the coming of arrow functions in ES6 (ECMAScript 2015), and as part of the code simplification effort, came the provision of a simplified way for this exact same situation. Basically, if you are creating a simple function that returns an object literal, and you know the object it will return is going to, or should have keys that exactly match the names of the arguments you are passing to the function, then you can really simplify the function return code in one line by placing the arguments in curly braces separated by commas. Here is how :
+  Notice that the keys of the object literal returned by the function exactly match the parameters of the function. This seems like a repetition of the same names, first in the function argument, and then again in the keys of the object literal being returned, as seen in make, model, and year in the createObject() function above. With the coming of arrow functions in ES6 (ECMAScript 2015), and as part of the code simplification effort, came the provision of a simplified way for this exact same situation. Basically, if you are creating a simple function that returns an object literal, and you know the object it will return is going to, or should have keys that exactly match the names of the arguments you are passing to the function, then you can really simplify the function return code in one line by placing the parameter names in curly braces separated by commas. Here is how:
 
 	const createObject = 
 		(make, model, year) => 
@@ -564,6 +577,16 @@ This function return value will be the object:
 	console.log(
 		createObject('Toyota', 'Rav4', '2025')
 	);
+
+ One detail there is easy to miss and worth pausing on. The object
+ literal is wrapped in its own pair of round brackets:
+
+	({make, model, year})
+
+ Those brackets are not decoration. Without them, JavaScript reads the
+ curly braces as the function's body rather than as an object you want
+ back, and the function quietly returns undefined. The round brackets
+ are what tell it "this is a value, not a block".
 
  The return value of this simplified code is still the same:
 
