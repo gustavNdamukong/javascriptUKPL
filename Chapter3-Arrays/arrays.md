@@ -630,12 +630,12 @@ The other identifiers like ‘country’ and ‘age’ are valid identifiers and
 
 So you can have a mix of both types of arrays in the same multi-dimensional structure. But it’s helpful to understand the difference before combining them in your code so you don’t get confused on how to handle them, since they all behave differently. 
   Let me introduce to you certain terms often used when it comes to arrays and their levels, so you will understand them whenever you hear or read about them. Multi-dimensional arrays are also sometimes referred to as multi-level arrays. The regular array we dealt with above is a single-dimensional array, which is a flat array containing elements, none of which are arrays themselves. This has only one level, so-to-speak. But when we talk of multi-dimensional (multi-level) arrays, the levels can go deep, and we can have two-dimensional (2D), three-dimensional (3D) arrays and so on. 
-  A two-dimensional array as you can probably guess from the name, is an array that contains elements, one of which is an array itself. Now we are talking about an array that goes two levels deep-one out, one in, hence the name two-dimensional. Any array (nested) inside another can also be referred to as a sub-array or a child array of the one it is inside of. There is also the three-dimensional array which is a structure where the sub array of the first array contains an element, and this element is also an array. It then becomes three levels deep. We can keep going deeper and deeper and the idea stays the same. It’s simple; with each level within the first outer array you need to go to find another (nested) array, the deeper the dimensions go.
+  A two-dimensional array as you can probably guess from the name, is an array that contains elements, one of which is an array itself. Now we are talking about an array that goes two levels deep—one out, one in—hence the name two-dimensional. Any array (nested) inside another can also be referred to as a sub-array or a child array of the one it is inside of. There is also the three-dimensional array which is a structure where the sub array of the first array contains an element, and this element is also an array. It then becomes three levels deep. We can keep going deeper and deeper and the idea stays the same. It’s simple; with each level within the first outer array you need to go to find another (nested) array, the deeper the dimensions go.
   I will now break down what a multi-dimensional array looks like for both numeric and associative arrays.
 
 Multi-dimensional numeric
 ——————————
-  With a numeric multi-dimensional array, each element inside it is itself an array of elements, and each of those rows (arrays) of elements are automatically assigned index numbers beginning from zero (0). The key phrase to remember here is that; “each row (element) within this array is itself an array. Here is an example:
+  With a numeric multi-dimensional array, each element inside it is itself an array of elements, and each of those rows (arrays) of elements is automatically assigned an index number beginning from zero (0). The key phrase to remember here is this: “each row (element) within this array is itself an array”. Here is an example:
 
 	const numeric_2d = [
     		[1, 2, 3],
@@ -646,7 +646,7 @@ Multi-dimensional numeric
 
 console.log(numeric_2d[1]);
 
-This console statement writes the value of the second element in the numeric_2d array (numeric_2d[1])-counting the index from 0, to the console. The output will be 
+This console statement writes the value of the second element in the numeric_2d array (numeric_2d[1]), counting the index from 0, to the console. The output will be 
 	
 	[4, 5, 6]
 
@@ -656,9 +656,9 @@ Let’s dig deeper. The following code:
 
 Will output: 6 
 
-This is because numeric_2d[1][2] gets the value of the row at index 1  (numeric_2d[1] counting from 0), which we know is the second element 
+This is because numeric_2d[1][2] gets the value of the row at index 1 (numeric_2d[1] counting from 0), which we know is the second element 
 [4, 5, 6], and then gets the element at index 2 from that. This element at index 2 in [4, 5, 6] is 6 if we count the index from 0. This is why numeric_2d[1][2] results in 6. 
-  In the example above, numeric_2d is a 2D numeric array. It is said to be 2D (two-dimensional) because it has two levels deep-the array outside, and the ones inside. A 3D array will mean 3 levels deep. The following is a 3D array:
+  In the example above, numeric_2d is a 2D numeric array. It is said to be 2D (two-dimensional) because it is two levels deep—the array outside, and the ones inside. A 3D array will mean 3 levels deep. The following is a 3D array:
 
 	const matrix_3d = [
     		[1, 2, 3],
@@ -669,7 +669,7 @@ This is because numeric_2d[1][2] gets the value of the row at index 1  (numeric_
     		]
 	];
 
-	console.log(numeric_3d[2][1][2]);
+	console.log(matrix_3d[2][1][2]);
 
 This will output: 3
 
@@ -698,7 +698,7 @@ A very common confusion among developers is to mistake a structure like the foll
  		 { name: "David", country: "USA" }
 	];
 
-But that is wrong. This is a real JavaScript array, where each element is an object. You can loop over it directly using loops like for, for...of, .forEach(), .map(), etc. This is because each item in the array is indexed with a number: clients[0], clients[1], etc. It is not an "associative array" in the technical sense-but rather  just an array of objects.
+But that is wrong. This is a real JavaScript array, where each element is an object. You can loop over it directly using loops like for, for...of, .forEach(), .map(), etc. This is because each item in the array is indexed with a number: clients[0], clients[1], etc. It is not an "associative array" in the technical sense, but rather just an array of objects.
   Whereas the first structure above
 
 	let assoc_2d = {
@@ -712,11 +712,11 @@ But that is wrong. This is a real JavaScript array, where each element is an obj
     		}
 	};
 
-is a plain object, and not an array. It is a plain object ({}) with named keys (john, david).  Its keys are strings, not numbers. You cannot directly loop over it with .forEach() or for...of etc. To do so, you have to convert it into an array first of all, before you can loop through it. See Looping through arrays below for how this conversion of associative arrays and looping is done. 
-  Where the confusion comes from is the fact that programmers sometimes refer to plain objects as associative arrays-especially programmers from other languages, but in JavaScript they’re just plain objects with named keys. If you always keep that in mind, you will know how to manipulate the data, because the type of structure it has will determine how you interact with it.
-  Knowing that the last structure above is an “associative array”, we can therefore consider it to be a two-dimensional array. This is because it has two levels; the first level being the assoc_2d parent object itself, and the second level consisting of the two objects inside of it denoted (marked) by the John and David keys. 
+is a plain object, and not an array. It is a plain object ({}) with named keys (john, david). Its keys are strings, not numbers. You cannot directly loop over it with .forEach() or for...of etc. To do so, you have to convert it into an array first of all, before you can loop through it. See Looping through arrays below for how this conversion of associative arrays and looping is done. 
+  Where the confusion comes from is the fact that programmers sometimes refer to plain objects as associative arrays—especially programmers from other languages, but in JavaScript they’re just plain objects with named keys. If you always keep that in mind, you will know how to manipulate the data, because the type of structure it has will determine how you interact with it.
+  Knowing that the last structure above is an “associative array”, we can therefore consider it to be a two-dimensional array. This is because it has two levels; the first level being the assoc_2d parent object itself, and the second level consisting of the two objects inside of it denoted (marked) by the john and david keys. 
 
-To create a 3D associative array-that is, a group of nested objects, where the value of one of the keys of any of the nested (children) objects is itself another object. here is how to do it: 
+To create a 3D associative array—that is, a group of nested objects, where the value of one of the keys of any of the nested (children) objects is itself another object—here is how to do it: 
 
 	let assoc_3d = {
    		 john: {
@@ -739,16 +739,16 @@ To create a 3D associative array-that is, a group of nested objects, where the v
 
 	console.log("His dad is: " + assoc_3d["david"].parents.dad);
 
-When using an object literal ({ ... })-which is what an associative array is; you must have key-value pairs inside the curly brackets to denote new elements (objects). Here, the second element is marked by the david key, and this second object David has a property (key) parents, whose value is also an object. This makes the parents sub-array the third level that makes the assoc_3d array a 3D array. Running the above code results in the following being printed to the console:
+When using an object literal ({ ... })—which is what an associative array is—you must have key-value pairs inside the curly brackets to denote new elements (objects). Here, the second element is marked by the david key, and this second object David has a property (key) parents, whose value is also an object. This makes the parents sub-array the third level that makes the assoc_3d array a 3D array. Running the above code results in the following being printed to the console:
 
-	His dad is Mark
+	His dad is: Mark
 
 
 
 
 Mixed multi-dimensional arrays
 ————————————
-  In practice, you will not always get your data structured as plain objects, or as all numeric arrays. Quite often, you will come across data with complex structures, like an outer array, with objects inside of it, or nested plain objects that have arrays as the values of some of their keys. JavaScript is that flexible, that it will let you combine numeric arrays and associative arrays as much as you like, as long as you follow the written syntax correctly. Here are some examples:
+  In practice, you will not always get your data structured as plain objects, or as all numeric arrays. Quite often, you will come across data with complex structures, like an outer array, with objects inside of it, or nested plain objects that have arrays as the values of some of their keys. JavaScript is so flexible that it will let you combine numeric arrays and associative arrays as much as you like, as long as you follow the written syntax correctly. Here are some examples:
 
 	const mixed_2d = [
     		{ name: "Alice", age: 30 },
@@ -756,7 +756,7 @@ Mixed multi-dimensional arrays
     		{ name: "Charlie", age: 35 },
 		];
 
-Here, mixed_2d is an array of objects-each object holds name and age as key-value pairs. We use a numeric index from the outer array just like a numeric array to select an object, and then we use a named key to get the info we need from that specific object. For example:
+Here, mixed_2d is an array of objects—each object holds name and age as key-value pairs. We use a numeric index from the outer array just like a numeric array to select an object, and then we use a named key to get the info we need from that specific object. For example:
 
 	console.log(mixed_2d[1].name);
 
@@ -779,7 +779,7 @@ Here is another mixed example that involves a numeric array that contains a mix 
   	console.log(data[1].score); 
 
 
-This structure mixes both styles-the first and third items are numeric arrays, and the second is an object. The first console.log() displays the value of the first key of the first element in the data array (data[0][0]), which will be Math. The second console.log() statement displays the value of the ‘score’ key of the second element (data[1]. Running the above code results in the following being printed to the console:
+This structure mixes both styles—the first and third items are numeric arrays, and the second is an object. The first console.log() displays the value of the first key of the first element in the data array (data[0][0]), which will be Math. The second console.log() statement displays the value of the ‘score’ key of the second element (data[1].score). Running the above code results in the following being printed to the console:
 
 	Math
 	88
@@ -814,9 +814,9 @@ Let’s look at a bigger structure of mixed data
     		}
 	];
 
-The structure of this clients array is complex because it is mixed on several levels. However, it is nothing complicated once you take a closer look at the structure. It is simply a mix of plain objects and arrays, having the same syntax structure we have learned in this chapter. The key in mastering arrays lies in identifying the structure so u know how to manipulate it to get out the data you need. That is all what it is about. 
+The structure of this clients array is complex because it is mixed on several levels. However, it is nothing complicated once you take a closer look at the structure. It is simply a mix of plain objects and arrays, having the same syntax structure we have learned in this chapter. The key in mastering arrays lies in identifying the structure so you know how to manipulate it to get out the data you need. That is all it is about. 
   The only confusion as I mentioned above, is when programmers fail to make that distinction in data types and go ahead and put objects and arrays in the same pot, so-to-speak. Basically, as long as you understand that you can loop through a (true) array but you cannot directly loop through an object (‘associative’ array), then you will be fine.
-  I can hear you asking me how you would then loop through an array that has mixed structures, like an outer array, and a nested group of objects which in turn have properties (keys) whose values are arrays etc. The answer is the purpose of this section, and it is simple. The key is in knowing the structure of the data, and in programming, you will never have to worry about that because you will always be told what structure to expect your data to be in. Once you know the structure-say the outer-most part is an array, then you would start by looping through it like you would any array. Then as you iterate through each deeper level, if you know the data at that level is an object, you would reference the data as you would do with an object, or if you need to loop over it, you know you need to convert it to an array before running a loop on it. You have the tools at your disposal for looping through, and converting the data. Again, to see how to convert objects to arrays, visit the "Looping through arrays" section further below.
+  I can hear you asking me how you would then loop through an array that has mixed structures, like an outer array, and a nested group of objects which in turn have properties (keys) whose values are arrays etc. The answer is the purpose of this section, and it is simple. The key is in knowing the structure of the data, and in programming, you will never have to worry about that because you will always be told what structure to expect your data to be in. Once you know the structure—say the outer-most part is an array, then you would start by looping through it like you would any array. Then as you iterate through each deeper level, if you know the data at that level is an object, you would reference the data as you would do with an object, or if you need to loop over it, you know you need to convert it to an array before running a loop on it. You have the tools at your disposal for looping through, and converting the data. Again, to see how to convert objects to arrays, visit the "Looping through arrays" section further below.
 
 
   
@@ -827,10 +827,10 @@ The structure of this clients array is complex because it is mixed on several le
 		How to assign values to a 
                        multi-dimensional array 
 		———————————————
-  Working with multi-dimensional arrays is as simple as viewing them as  a parent-child structure-with the children being the nested arrays, and the outer array being the parent. Use the bracket notation to reference the keys and sub keys. Basically, you have to use one square bracket for each nested array, beginning with the outer (parent) array. 
-  Once you an access an element within an array, assigning a value to it is done in the same way as you would do for a normal (single-dimension) array. This is easier demonstrated than explained. What I will explain here will cover how to assign values as well as how to update values in multi-dimensional arrays. Take the following 2D array example:
+  Working with multi-dimensional arrays is as simple as viewing them as a parent-child structure—with the children being the nested arrays, and the outer array being the parent. Use the bracket notation to reference the keys and sub keys. Basically, you have to use one square bracket for each nested array, beginning with the outer (parent) array. 
+  Once you can access an element within an array, assigning a value to it is done in the same way as you would do for a normal (single-dimension) array. This is easier demonstrated than explained. What I will explain here will cover how to assign values as well as how to update values in multi-dimensional arrays. Take the following 2D array example:
 
-		var myArray = [
+		let myArray = [
 			[1, 2, 3],
 			[4, 5, 6],
 			[7, 8, 9]
@@ -838,17 +838,17 @@ The structure of this clients array is complex because it is mixed on several le
 
 		myArray[1].push(1, 2, 3);
 
-		var myData = myArray[1];
+		let myData = myArray[1];
 
-		// will return [4, 5, 6, 1, 2, 3]
+		// will return [4, 5, 6, 1, 2, 3]
 		console.log(myData); 
 
-		OR
+		// OR
 
-		// will return [4, 5, 6, 1, 2, 3]
+		// will return [4, 5, 6, 1, 2, 3]
 		console.log(myArray[1]); 
 
-In this case, we added three elements (numbers) to the second element (index 1) of the myArray array, which is a sub array. By placing 1 in the bracket, we indicate that we want the element at index 1 (counting from 0) of our myArray array, which is the array [4, 5, 6]. Having selected that child array, we then use the push() method to add some elements to it. When we then view the contents of that child array, we find that it has an updated value of [4, 5, 6, 1, 2, 3]
+In this case, we added three elements (numbers) to the second element (index 1) of the myArray array, which is a sub array. By placing 1 in the bracket, we indicate that we want the element at index 1 (counting from 0) of our myArray array, which is the array [4, 5, 6]. Having selected that child array, we then use the push() method to add some elements to it. When we then view the contents of that child array, we find that it has an updated value of [4, 5, 6, 1, 2, 3].
 
 To change the value of a child array entirely, we can do it like so:
 
@@ -856,9 +856,9 @@ To change the value of a child array entirely, we can do it like so:
 
 console.log(myArray[2]); 
 This will update the value of the 3rd element (index 2 counting from 0) of the 3rd child array of myArray. 
-	var myArray = [
-		…
-		…
+	let myArray = [
+		// ...
+		// ...
 		[7, 8, 9]
 	];
 
@@ -873,37 +873,37 @@ will return [7, 8, 10]
 	How to retrieve values from 
            a multi-dimensional array
 	———————————————
-  You may have noticed that I have already touched on how to access/retrieve data from multi-dimensional arrays when I introduced them above. Even when we looked at "Mixed multi-dimensional arrays”, I showed you how to access the data in the mixed structure. It was only normal for me to show how to access the nested arrays in order to show you what the parent-child hierarchy structure looked like. Let is refresh our minds again. I will start with a numeric nested array.
+  You may have noticed that I have already touched on how to access/retrieve data from multi-dimensional arrays when I introduced them above. Even when we looked at "Mixed multi-dimensional arrays", I showed you how to access the data in the mixed structure. It was only normal for me to show how to access the nested arrays in order to show you what the parent-child hierarchy structure looked like. Let us refresh our minds again. I will start with a numeric nested array.
 
-  	var myArray = [
+  	let myArray = [
 		[1, 2, 3],
 		[4, 5, 6],
 		[7, 8, 9]
 	];
 
-	var myData = myArray[1][0];
+	let myData = myArray[1][0];
 
 	console.log(myData); 
 The output of this code will be 4
 
-Notice how we use two square brackets. The first one references the index of 1, and this means we want the second element of our myArray array (counting index from 0), which is the array [4, 5, 6]. We then use a second square bracket which references the key 0. This tells the JavaScript engine that you wish to retrieve the value in this array that is at the key 0. The first element (at key 0) of the [4, 5, 6] array is 4.  
+Notice how we use two square brackets. The first one references the index of 1, and this means we want the second element of our myArray array (counting index from 0), which is the array [4, 5, 6]. We then use a second square bracket which references the key 0. This tells the JavaScript engine that you wish to retrieve the value in this array that is at the key 0. The first element (at key 0) of the [4, 5, 6] array is 4. 
 
-Let me repeat the example from above for the 2D associative array.
+Let me now repeat the mixed example from above, an array whose elements are objects. Note that I am naming it arrayOf2dObjects rather than assoc_2d, because as we established earlier this is a real numeric array, not an associative array. Only the elements inside it are objects.
 
-	const assoc_2d = [
+	const arrayOf2dObjects = [
   		{ name: "Alice", age: 30 },
   		{ name: "Bob", age: 25 },
   		{ name: "Charlie", age: 35 },
 	];
 
-	console.log(assoc_2d[1].name);
+	console.log(arrayOf2dObjects[1].name);
 
-The output here will be Bob. Here we get the second element of the assoc_2d array (assoc_2d[1])  counting index from 0, which is the sub-array 
+The output here will be Bob. Here we get the second element of the arrayOf2dObjects array (arrayOf2dObjects[1]), counting index from 0, which is the object 
 { name: "Bob", age: 25 }. Next, we get the value of its name property 
-assoc_2d[1].name using the Dot operator.
-  It’s time to look at an associative 3D array. For clarity and reference, I will repeat the same example from above.
+arrayOf2dObjects[1].name using the Dot operator.
+  It’s time to look at a structure that goes one level deeper, an array of objects where one of those objects holds an array of its own.
 
-	const assoc_3d = [
+	const arrayOf3dObjects = [
     		{ name: "Alice", age: 30 },
     		{ name: "Bob", age: 25 },
     		{
@@ -914,11 +914,11 @@ assoc_2d[1].name using the Dot operator.
     		},
 	];
 
-	console.log(assoc_3d[2].children[0].name); 
+	console.log(arrayOf3dObjects[2].children[0].name); 
 
 The output: John.
 
-This should be very clear to you now how to retrieve the values. In this example, we get the third element in the assoc_3d array, which is the  following object containing an array. This is the first level with two more levels to go:
+This should be very clear to you now how to retrieve the values. In this example, we get the third element in the arrayOf3dObjects array, which is the following object containing an array. This is the first level with two more levels to go:
 
 	{
         	children: [
@@ -927,7 +927,7 @@ This should be very clear to you now how to retrieve the values. In this example
         	]
     	},
 
-Basically, this sub-array contains another array ‘children’ which in turn is an array. Next, we grab this children sub-array, and say that we want to get the name property of its its first element (children[0].name). That first element (counting from 0) is this object: 
+Basically, this object contains a key ‘children’ whose value is an array. Next, we grab that children array, and say that we want to get the name property of its first element (children[0].name). That first element (counting from 0) is this object: 
 
 	{ name: "John", age: 40 }, 
 
@@ -947,17 +947,22 @@ We can see that the value of its name property is ‘John’, which is why we go
 			———————————————
   There are multiple ways to loop through an indexed (numeric) array in JavaScript. You can use:
 
-	-for loop (different from for…in)
+	-for loop (different from for...in)
 	-forEach()
 	-for...of 
+	-map() (Not common, but possible)
+
+  The three Object methods below also work on a numeric array, though they were
+  really designed for objects, and that is where you will normally reach for them.
+  They are shown here so you can see the whole picture in one place:
+
 	-Object.values() and forEach()
 	-Object.entries() and forEach()
 	-Object.keys() and forEach()
-	-map() (Not common, but possible)
 
 Take for example the following numeric array:
 
-	var arr = [
+	let arr = [
 		'Tom Sawyer', 
 		10, 
 		'Sid', 
@@ -967,7 +972,7 @@ Take for example the following numeric array:
 
 	i) Using a for loop
 	——————————
-  This is the traditional for loop, and it should not be confused with the for…in loop that is meant for looping through objects. Let’s see how to use it. Here is the syntax:
+  This is the traditional for loop, and it should not be confused with the for...in loop that is meant for looping through objects. Let’s see how to use it. Here is the syntax:
 
 	for (initialization; condition; increment/decrement) {
    		// Code to execute
@@ -995,20 +1000,20 @@ The output is:
 
 	arr.forEach(value => { console.log(value); });
 
-The output is the same as that of the for… loop above.
+The output is the same as that of the for loop above.
 
 				
 
-	iii) Using a for…of loop
+	iii) Using a for...of loop
 	————————————
-  This works well and is more readable than the forEach() loop
+  This works well and is more readable than the forEach() loop.
 
 	for (let value of arr) 
 	{ 
 		console.log(value); 
 	}
 
-The output is the same as the examples above
+The output is the same as the examples above.
 
 
 
@@ -1021,7 +1026,7 @@ This works well and returns only the values.
 		console.log(value); 
 	});
 
-The values without the keys results in actually the same output as the other loops above:
+The values without the keys actually result in the same output as the other loops above:
 
 	Tom Sawyer
 	10
@@ -1085,8 +1090,8 @@ On the other hand, if you are working with associative arrays, these are actuall
 	-Object.values(), and 
 	-Object.entries(). 
 
-Remember them-they will make your life easier. Learn more about how to use them in the section "True array methods and associative array" under Array methods, later in this chapter.
-  I am going to discuss below how you can use any of the following ways to look through associative arrays. So whenever you come across the use of the three methods listed above, just know that they are being used to first of all convert the object into an array, then another kind of array method for example forEach() or map() etc is used to loop over the resulting array. We are going to talk about the following approaches to perform the loops. 
+Remember them—they will make your life easier. Learn more about how to use them in the section "True array methods and associative arrays" later in this chapter.
+  I am going to discuss below how you can use any of the following ways to loop through associative arrays. So whenever you come across the use of the three methods listed above, just know that they are being used to first of all convert the object into an array, then another kind of array method for example forEach() or map() etc is used to loop over the resulting array. We are going to talk about the following approaches to perform the loops. 
 
 		-for...in loop
 		-Object.keys() and forEach()
@@ -1096,19 +1101,19 @@ Remember them-they will make your life easier. Learn more about how to use them 
 		-map() with Object.entries() (Not common, but possible)
 
 
-	i) Using a for…in loop
+	i) Using a for...in loop
 	——————————
 	Note that this should not be confused with the traditional for loop 
 	which is meant to be used with numeric (indexed) arrays.
 
-		var arr = { 
+		let arr = { 
 			name: 'Tom Sawyer', 
 			age: 10, 
 			brother: 'Sid', 
 			aunt: 'Polly' 
 		};
 
-	Loop through all the elements and display the values at each key
+	Loop through all the elements and display the value at each key:
 				
 		for (let key in arr) 
 		{ 
@@ -1129,7 +1134,7 @@ Remember them-they will make your life easier. Learn more about how to use them 
 	The Object.keys() method returns an array of an object's keys, which 
 	you can then iterate over using forEach(). Here is an example:
 
-		var arr = { 
+		let arr = { 
 			name: 'Tom Sawyer', 
 			age: 10, 
 			brother: 'Sid', 
@@ -1151,7 +1156,7 @@ Remember them-they will make your life easier. Learn more about how to use them 
 	————————————————————
 	If you only need the values and don’t care about the keys, you can 
 	use Object.values(). It also returns an array, which you can then loop 
-	over using any of the (true) array methods e.g. forReach() in this 
+	over using any of the (true) array methods e.g. forEach() in this 
 	case. Here’s an example:
 
 		Object.values(arr).forEach(
@@ -1249,21 +1254,31 @@ You can do it in any of the following ways:
 
 	-i) Nested for loop
 
-		var myArray = [ 
+		let myArray = [ 
 			[1, 2, 3], 
 			[4, 5, 6], 
 			[7, 8, 9] 
 		]; 
 
-		for (var i = 0; i < myArray.length; i++) 
+		for (let i = 0; i < myArray.length; i++) 
 		{ 
-			for (var j = 0; j < myArray[i].length; j++) 
+			for (let j = 0; j < myArray[i].length; j++) 
 			{ 
 				console.log(myArray[i][j]); 
 			} 
 		}
 
-		The result will be 123456789
+		The result is each number printed on its own line:
+
+			1
+			2
+			3
+			4
+			5
+			6
+			7
+			8
+			9
 
 
 	-ii) Using the forEach() method
@@ -1276,18 +1291,18 @@ You can do it in any of the following ways:
 			}
 		);
 
-		The result will be 123456789
+		The result is the same, each number on its own line.
 
 
 	-iii) Using the flat() method
-		This method is for if you just need a single loop. Basically;
-		If you don't need to maintain the structure and just want to 
+		This method is for when you just need a single loop, that is,
+		if you don't need to maintain the structure and just want to 
 		iterate over all the elements. This method flattens the array into 	
 		a single-dimensional array before iterating through it.
 
 		myArray.flat().forEach(element => console.log(element));
 
-		The result will be 123456789
+		The result is again the same, each number on its own line.
 
 
 
@@ -1299,8 +1314,8 @@ JavaScript does not have true multi-dimensional associative arrays like other pr
 
 		An array of objects
 		——————————-
-The outer array is a true array (with number indexes) while the inner elements are objects (associative arrays). The way to loop through this as we saw before in the Mixed multi-dimensional arrays section is to interact with the dat as its structure guides you. Take for example the following array:
-		var myArray = [ 
+The outer array is a true array (with number indexes) while the inner elements are objects (associative arrays). The way to loop through this as we saw before in the Mixed multi-dimensional arrays section is to interact with the data as its structure guides you. Take for example the following array:
+		let myArray = [ 
 			{ a: 1, b: 2, c: 3 }, 
 			{ a: 4, b: 5, c: 6 }, 
 			{ a: 7, b: 8, c: 9 } 
@@ -1310,24 +1325,24 @@ In this case, you should do your regular loop on the first (outer) array using a
 
 		// Loop through the array and access object properties 
 		myArray.forEach(obj => { 
-			for (var key in obj) { 
+			for (let key in obj) { 
 				// Display each value
 				console.log(obj[key]);  
 			} 
 		});
 
-		The result will be 123456789
+		The result is each number printed on its own line, 1 through 9.
 
 
 		A nested object
 		————————
 		If you structure it as a nested 
                     object, you'd need a different 
-                   approach. You should use the for…in loop designed for looping 
+                   approach. You should use the for...in loop designed for looping 
 		through objects. We are going to nest the loop for each nested 
 		level. Here is an example:
 
-		var myObject = { 
+		let myObject = { 
 			row1: { a: 1, b: 2, c: 3 }, 
 			row2: { a: 4, b: 5, c: 6 }, 
 			row3: { a: 7, b: 8, c: 9 } 
