@@ -1468,12 +1468,12 @@ In this case, you should do your regular loop on the first (outer) array using a
 
 
 	You would think that array2 will now be: 
-		['word', 'b', 'c', 'd', 'e', 'f']
+		['word', 'b', 'c', 'd', 'e', 'f']
 	while array1 will remain: 
 		['a', 'b', 'c', 'd', 'e', 'f']
 
 	But surprisingly, both arrays array1 and 
-	array2 are now: ['word', 'b', 'c', 'd', 'e', 'f'] 
+	array2 are now: ['word', 'b', 'c', 'd', 'e', 'f'] 
 	This is simply because of the way arrays 
 	work. Arrays are what is called a 
 	reference type, which means that when you 
@@ -2002,7 +2002,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 	'Peter' and so the output of the contents of the target array myArray 
 	will now be:
 			
-		[[1, 2, 3], ['John', 'Peter']]
+		[[1, 2, 3], ['John', 'Peter']]
 
 	
 
@@ -2025,14 +2025,14 @@ Are Rest Parameters and the Spread Operator Opposites?
 		containing names (['John', 'Peter']), and so the output of the contents of the 
 		myArray will end up being:
 			
-			[[1, 2, 3]]
+			[[1, 2, 3]]
 
 		You may decide to pop the last item out and capture it in a separate variable 
 		of its own if you need to use it. For example:
 
 			let myArray = [
 				[1, 2, 3],
-				['John', 'Peter']
+				['John', 'Peter']
 			]; 
 
 			let names = myArray.pop();
@@ -2131,14 +2131,14 @@ Are Rest Parameters and the Spread Operator Opposites?
 	sub array containing numbers ([1,2,3]), and so the output of the 
 	contents of the myArray will now end up being:
 			
-			[['John', 'Peter']]
+			[['John', 'Peter']]
 
 	You may decide to remove that first item and capture it in a separate 
 	variable of its own if you need to use it. For example:
 
 		let myArray = [
 			[1, 2, 3],
-			['John', 'Peter']
+			['John', 'Peter']
 		]; 
 
 		let numbers = myArray.shift();
