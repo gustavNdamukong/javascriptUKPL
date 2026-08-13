@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 440" width="900" height="440" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="440" fill="#ffffff"/>
+
+  <!-- ================= PANEL A : script in the head ================= -->
+  <text x="30" y="34" font-size="17" font-weight="bold" fill="#1c2b3a">Script in the &lt;head&gt;</text>
+  <text x="30" y="56" font-size="13" fill="#6b7a89">the page is only half built when the code runs</text>
+
+  <!-- browser frame -->
+  <rect x="30" y="72" width="380" height="320" rx="8" fill="#ffffff" stroke="#1c2b3a" stroke-width="2"/>
+  <path d="M30 100 H410" stroke="#1c2b3a" stroke-width="2"/>
+  <circle cx="48" cy="86" r="4.5" fill="#c9d3dc"/>
+  <circle cx="64" cy="86" r="4.5" fill="#c9d3dc"/>
+  <circle cx="80" cy="86" r="4.5" fill="#c9d3dc"/>
+
+  <!-- script badge -->
+  <rect x="52" y="116" width="132" height="30" rx="5" fill="#e8871a"/>
+  <text x="118" y="136" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">&lt;script&gt; runs</text>
+
+  <!-- rendered part of the page -->
+  <rect x="52" y="162" width="200" height="16" rx="3" fill="#3d5266"/>
+  <rect x="52" y="188" width="330" height="9" rx="3" fill="#c9d3dc"/>
+  <rect x="52" y="204" width="300" height="9" rx="3" fill="#c9d3dc"/>
+
+  <!-- the fold: everything below is not built yet -->
+  <path d="M40 236 H400" stroke="#9aa8b5" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="220" y="256" font-size="12" font-style="italic" fill="#6b7a89" text-anchor="middle">not built yet</text>
+
+  <!-- the button that does not exist -->
+  <rect x="150" y="290" width="140" height="42" rx="6" fill="none" stroke="#9aa8b5" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="220" y="316" font-size="13" fill="#9aa8b5" text-anchor="middle">button</text>
+
+  <!-- arrow reaching down for it -->
+  <path d="M118 150 C118 210 118 240 205 285" fill="none" stroke="#e8871a" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+
+  <!-- null tag -->
+  <rect x="296" y="296" width="86" height="30" rx="15" fill="#fdeee0" stroke="#e8871a" stroke-width="1.5"/>
+  <text x="339" y="316" font-size="14" font-weight="bold" fill="#b8640a" text-anchor="middle">null</text>
+
+  <text x="220" y="368" font-size="13" fill="#b8640a" text-anchor="middle" font-weight="bold">Cannot read properties of null</text>
+
+  <!-- ================= PANEL B : script before /body ================= -->
+  <text x="490" y="34" font-size="17" font-weight="bold" fill="#1c2b3a">Script before &lt;/body&gt;</text>
+  <text x="490" y="56" font-size="13" fill="#6b7a89">the whole page exists before the code runs</text>
+
+  <rect x="490" y="72" width="380" height="320" rx="8" fill="#ffffff" stroke="#1c2b3a" stroke-width="2"/>
+  <path d="M490 100 H870" stroke="#1c2b3a" stroke-width="2"/>
+  <circle cx="508" cy="86" r="4.5" fill="#c9d3dc"/>
+  <circle cx="524" cy="86" r="4.5" fill="#c9d3dc"/>
+  <circle cx="540" cy="86" r="4.5" fill="#c9d3dc"/>
+
+  <!-- fully rendered page -->
+  <rect x="512" y="126" width="200" height="16" rx="3" fill="#3d5266"/>
+  <rect x="512" y="152" width="330" height="9" rx="3" fill="#c9d3dc"/>
+  <rect x="512" y="168" width="300" height="9" rx="3" fill="#c9d3dc"/>
+  <rect x="512" y="184" width="318" height="9" rx="3" fill="#c9d3dc"/>
+
+  <!-- the real button -->
+  <rect x="610" y="216" width="140" height="42" rx="6" fill="#3d5266"/>
+  <text x="680" y="242" font-size="13" fill="#ffffff" text-anchor="middle">button</text>
+
+  <!-- script badge at the bottom -->
+  <rect x="512" y="330" width="132" height="30" rx="5" fill="#e8871a"/>
+  <text x="578" y="350" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">&lt;script&gt; runs</text>
+
+  <!-- arrow up to the real button -->
+  <path d="M578 326 C578 280 590 262 660 252" fill="none" stroke="#e8871a" stroke-width="2.5" marker-end="url(#arrowOrange)"/>
+
+  <!-- found tick -->
+  <circle cx="778" cy="237" r="16" fill="#2f7d4f"/>
+  <path d="M770 237 l6 6 l11 -13" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="680" y="382" font-size="13" fill="#2f7d4f" text-anchor="middle" font-weight="bold">the element is found</text>
+
+  <defs>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8871a"/>
+    </marker>
+  </defs>
+</svg>

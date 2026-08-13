@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 400" width="900" height="400" font-family="Helvetica, Arial, sans-serif">
+  <rect width="900" height="400" fill="#ffffff"/>
+
+  <text x="40" y="38" font-size="17" font-weight="bold" fill="#1c2b3a">How your local development setup fits together</text>
+
+  <!-- ============ 1. the project folder ============ -->
+  <rect x="40" y="76" width="230" height="196" rx="8" fill="#ffffff" stroke="#1c2b3a" stroke-width="2"/>
+  <rect x="40" y="76" width="230" height="32" rx="8" fill="#3d5266"/>
+  <rect x="40" y="98" width="230" height="10" fill="#3d5266"/>
+  <text x="155" y="98" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">your project folder</text>
+
+  <text x="64" y="140" font-size="14" fill="#1c2b3a">js-projects/</text>
+  <path d="M78 152 V176 H96" fill="none" stroke="#9aa8b5" stroke-width="1.5"/>
+  <text x="104" y="181" font-size="13" fill="#1c2b3a">index.html</text>
+  <path d="M78 176 V206 H96" fill="none" stroke="#9aa8b5" stroke-width="1.5"/>
+  <text x="104" y="211" font-size="13" fill="#1c2b3a">index.js</text>
+  <text x="64" y="246" font-size="12" font-style="italic" fill="#6b7a89">you write code here</text>
+
+  <!-- ============ 2. VS Code + Live Server ============ -->
+  <rect x="335" y="76" width="230" height="196" rx="8" fill="#ffffff" stroke="#1c2b3a" stroke-width="2"/>
+  <rect x="335" y="76" width="230" height="32" rx="8" fill="#3d5266"/>
+  <rect x="335" y="98" width="230" height="10" fill="#3d5266"/>
+  <text x="450" y="98" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">VS Code</text>
+
+  <rect x="360" y="130" width="180" height="60" rx="6" fill="#fdeee0" stroke="#e8871a" stroke-width="1.5"/>
+  <text x="450" y="155" font-size="14" font-weight="bold" fill="#b8640a" text-anchor="middle">Live Server</text>
+  <text x="450" y="176" font-size="12" fill="#6b7a89" text-anchor="middle">serves your folder</text>
+
+  <rect x="378" y="208" width="144" height="30" rx="15" fill="#e8871a"/>
+  <text x="450" y="228" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">Go Live</text>
+  <text x="450" y="260" font-size="12" font-style="italic" fill="#6b7a89" text-anchor="middle">click this to start</text>
+
+  <!-- ============ 3. the browser ============ -->
+  <rect x="630" y="76" width="230" height="196" rx="8" fill="#ffffff" stroke="#1c2b3a" stroke-width="2"/>
+  <rect x="630" y="76" width="230" height="32" rx="8" fill="#3d5266"/>
+  <rect x="630" y="98" width="230" height="10" fill="#3d5266"/>
+  <text x="745" y="98" font-size="13" font-weight="bold" fill="#ffffff" text-anchor="middle">your browser</text>
+
+  <rect x="652" y="126" width="186" height="24" rx="12" fill="#eef2f5" stroke="#c9d3dc" stroke-width="1"/>
+  <text x="745" y="143" font-size="11" fill="#3d5266" text-anchor="middle">127.0.0.1:5500</text>
+
+  <rect x="670" y="170" width="150" height="52" rx="6" fill="#3d5266"/>
+  <text x="745" y="202" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Hello world</text>
+  <text x="745" y="252" font-size="12" font-style="italic" fill="#6b7a89" text-anchor="middle">your page, running</text>
+
+  <!-- arrows between the three -->
+  <path d="M272 174 H331" stroke="#1c2b3a" stroke-width="2.5" marker-end="url(#arrowDark)"/>
+  <path d="M567 174 H626" stroke="#1c2b3a" stroke-width="2.5" marker-end="url(#arrowDark)"/>
+  <text x="596" y="198" font-size="11" fill="#1c2b3a" text-anchor="middle">port 5500</text>
+
+  <!-- the reload loop -->
+  <path d="M745 292 C745 340 450 348 155 316" fill="none" stroke="#e8871a" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrowOrange2)"/>
+  <rect x="352" y="322" width="248" height="28" rx="14" fill="#fdeee0" stroke="#e8871a" stroke-width="1.5"/>
+  <text x="476" y="341" font-size="13" font-weight="bold" fill="#b8640a" text-anchor="middle">save a file, the page refreshes</text>
+
+  <defs>
+    <marker id="arrowDark" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#1c2b3a"/>
+    </marker>
+    <marker id="arrowOrange2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e8871a"/>
+    </marker>
+  </defs>
+</svg>
