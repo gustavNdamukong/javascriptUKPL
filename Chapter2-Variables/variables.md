@@ -14,7 +14,6 @@
             -Hoisting and the temporal dead zone
             -Best practices for variables
 	     -JavaScript modules and variable scope
-	-Exercises with variables
 
 
   A variable is like a virtual container in computer memory in which you can store things for later use while your program is running. It is far more efficient to work something out once and keep it in a variable than to work it out all over again every time you need it.
@@ -703,56 +702,3 @@ Now everything defined in index.js becomes globally available by default. So, he
     - If you need HTML or other scripts to access your functions, attach them to window, or don't use type="module".
 
 Using modules is recommended for modern apps, but if you're just starting out or building simple pages, you can safely skip type="module" for now. As you advance, understanding how scope works in modules will help you write cleaner, more secure code.
-
-
-
-
-
-
-
-
-
-
-
-
-EXERCISES WITH VARIABLES
-————————————————
-  The exercises in this section will aim to make you versed in the purposes behind displaying information to the user on screen, asking for and retrieving information from the user to use, the power of variables and also give you a teaser on how to modify the value of an HTML element. These are all routines that should become natural to you as a programmer and are reasons why JavaScript really shines at making otherwise static web pages interactive.
-  
-	Exercise 1: 	
-	This exercise will teach you how to generate HTML elements in JavaScript and insert them in the HTML section of your code.
-
-	-a) Create a div element in your HTML with a specific ID
-	-b) Within your JavaScript tag, create a variable assigning it a paragraph 
-		HTML element. 	
-	-c) Dynamically (using JavaScript) grab the div and insert that <p> tag 
-		inside of it.
-
-	
-
-	Exercise 2:
-	This exercise will teach you how to get the user to supply some information to your application and take and use that information.
-		
-	-a) Display a prompt on screen asking the user to enter their forename
-	-b) Display a prompt on screen asking the user to enter their surname
-	-c) Store those values in variables, then 
-	-d) Show an alert with a text telling them what their forename and 
-		surnames are.
-	
-  When you refresh your web page in the browser, you should see two prompt dialog popups one after the other; one asking you to enter your forename, and if you enter the value for your forename and press enter or hit OK, another popup will appear asking you to enter your surname. After entering the value for your surname, you will get an alert popup on screen with text saying something like “Your forename is theForenameYouEntered, and your surname is theSurnameYouEntered”. 
-
-	
-	Exercise 3:
-	This one will show you how to modify the value of an HTML element.
-
-		-a) Create a div in your HTML and give it an ID
-		-b) Place a p tag with some text manually in the div in your HTML. 
-			Refresh your web page in the browser and you should see the 
-			text in the p tag displayed on screen. 
-		-c) Next, create a variable in JavaScript and assign an image tag to 
-			it
-		-d) Dynamically grab the div, remove the p tag with text inside of it 
-			and replace it with the image you have created in JavaScript. 
-
-	When you refresh your web page, the image should be displaying in the 
-	place of the text that was being displayed before.

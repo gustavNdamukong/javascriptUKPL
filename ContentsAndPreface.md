@@ -93,7 +93,6 @@ Chapter 2 - Variables
                 -Hoisting and the temporal dead zone
                 -Best practices for variables
       -JavaScript modules and variable scope
-      -Exercises with variables
 
 Chapter 3 - Arrays
     -Definition
