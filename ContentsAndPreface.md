@@ -197,7 +197,6 @@ Chapter 5 - Control Flow
           -the break statement
           -the continue statement
           -Switch statement
-      -Exercises with control flow
 
 Chapter 6 - Regex
     Intro

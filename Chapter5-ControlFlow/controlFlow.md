@@ -53,7 +53,6 @@
 			-the break statement
 			-the continue statement
        -Switch statement
-	-Exercises with control flow
 
 
 
@@ -931,8 +930,8 @@ This is helpful when you want to ignore certain values but still finish the loop
  
 
 
-    Switch/case statements
-//——————————————-
+    Switch statement
+    ————————————
   The switch statement in JavaScript is used for conditional 
 branching. It allows you to execute different blocks of code 
 based on the value of an expression, making it a cleaner 
@@ -959,7 +958,7 @@ This is how it works:
 * Its value is compared with each case.
 * If a match is found, the block of code in that matching case runs.
 * The break statement prevents fall-through (executing the next case unintentionally). This will cause the code execution to stop checking the other case statements when a match has already been found.
-* The default case (optional) runs if no match is found. It acts as the fall  back default, just as its name indicates.
+* The default case (optional) runs if no match is found. It acts as the fallback default, just as its name indicates.
 
   Here is an example switch statement. Let’s 
   write one that checks for days of the week.
@@ -976,10 +975,10 @@ This is how it works:
         		break;
     		case 3:
         		console.log("Wednesday");
-       			 break;
+        		break;
     		case 4:
         		console.log("Thursday");
-       	 		break;
+        		break;
     		case 5:
         		console.log("Friday");
         		break;
@@ -999,48 +998,3 @@ This will be the output:
 	Wednesday
 
 We got that output because we initialised the value of the ‘day’ variable to 3. Note that you could place this switch statement inside a function that accepts the variable to test for in the case statements as its argument. In such a case you would create or set a variable within the case blocks so that it stores some data that you need in the case that a match is made. You would then return that variable at the end of the function.
-
-
-
-
-
-Exercises with control flow
-	
--1) Create an array in a constant containing people names. Use a while loop 
-	to loop through the array and display the elements on screen. This will 
-	help you practice working with while loops.
-
--2) Create a numbers array containing numbers from 1-10 stored in a 
-	constant. In a while loop, loop through the numbers and use the 
-	modulus operator to check if each of the numbers is an even number, 
-	and if so display it on screen. 
-	This will help you practise using while loops 
-	and the less-commonly used but powerful modulus operator.
-
--3) Create a numbers array containing numbers from 1-10 stored in a 
-	constant. Create three empty arrays: evenNumbers, divisibleBy3, and 
-	otherNumbers. Loop with a while loop through the numbers array and 
-	while in the loop, using if...else if conditional statement and the modulus 
-	operator, do the following checks: 
-			
-	-i) check if a specific number is divisible by 2 and put it in the 
-		evenNumbers array if it is.
-	-ii) check if a specific number is divisible by 3 and put it in the 
-		divisibleBy3 	array if it is.
-	-iii) otherwise put the number in the otherNumbers array
-		Once out of the loop, display the contents of all the three arrays you 			created (the evenNumbers, divisibleBy3 and otherNumbers 
-		arrays)
-		This exercise is meant to master how if...else if statements work. 
-
--4) Practise the do...while loop.
-	Create an array called names containing names.
-	Use a do...while loop to iterate over the names array and display them 
-	on screen.
-
--5) Practise using the ternary operator.
-	Create an array with one string 'green' in it.
-	Create an 'action' variable and use a ternary operator to assign it a 
-	value of 'Go' if the string in a light array is 'green', or 'stop' if the string 
-	in the light array is 'red'.
-		
-	Use an alert popup to display the value of the 'action' variable.
