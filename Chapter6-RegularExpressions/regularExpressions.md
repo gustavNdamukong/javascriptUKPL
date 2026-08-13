@@ -570,8 +570,9 @@ A regular expression (also referred to as regex) is a
   not. Basically, it returns  boolean (true or 
   false). For example:
 
-    console.log(/cats/i.test("Cats are fun. I
-           like cats."));
+    console.log(
+        /cats/i.test("Cats are fun. I like cats.")
+    );
 
     This will return true to the console.
 
@@ -579,8 +580,9 @@ A regular expression (also referred to as regex) is a
   found rather than just true or false, use
   match() on the string instead:
 
-    console.log("Cats are fun. I like
-           cats.".match(/cats/i));
+    console.log(
+        "Cats are fun. I like cats.".match(/cats/i)
+    );
 
     That one prints an array whose first item
   is the text it matched, in this case "Cats".
@@ -607,8 +609,9 @@ A regular expression (also referred to as regex) is a
   string ‘cats’ and replace them with ‘dogs’, 
   do it like so:
 
-  console.log("Cats are fun. I like 
-          cats".replace(/cats/gi, "dogs"));
+  console.log(
+      "Cats are fun. I like cats".replace(/cats/gi, "dogs")
+  );
 
     The limitation of replace() is that it 
   replaces the subject with exactly the text 

@@ -445,8 +445,8 @@ The fetchUserData() function has a block inside of it. Outside that block, the b
             {
                  let messageBox =   
                      document.createElement("div");
-                 messageBox.textContent = "Action 
-                     completed!";
+                 messageBox.textContent =
+                     "Action completed!";
                  messageBox.style.color = 
                      "green";
               
