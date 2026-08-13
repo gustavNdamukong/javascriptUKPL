@@ -19,7 +19,7 @@
   A variable is like a virtual container in computer memory in which you can store things for later use while your program is running. It is far more efficient to work something out once and keep it in a variable than to work it out all over again every time you need it.
 You can only store one item in a variable at a time. This means an attempt to store an item in a variable that already contains something will result in the value of that variable being reset to the new value and the old value being discarded. Some programming languages will try to help you by erroring about the variable already having been set, but others will not and let you override the variable. You just have to be careful and make sure that is your intention, because JavaScript will let you reassign the value of any variable you created with var or let. (There is a third kind, created with const, which cannot be reassigned once it has been given a value. We will come to it shortly.) 
   A variable can contain any of the data types, for example, a number, a string 
-of text, a boolean, an array, a function, or the value held by another variable. (Do not worry if some of those words mean nothing to you yet. We will meet arrays in Chapter 3, functions in Chapter 7, and the full list of data types in Chapter 10.) 
+of text, a boolean, an array, a function, or the value held by another variable. (Do not worry if some of those words mean nothing to you yet. We will meet arrays in Chapter 3 and the full list of data types in Chapter 10. Functions get a chapter of their own, Chapter 7, though we will need a quick working idea of them a little later on in this one.) 
 
 
 
@@ -145,7 +145,38 @@ the declared variables userName and age above, do this:
 
 Variable scope and blocks
 ————————
-  Before we understand the scope of variables, we have to first of all understand the concept of blocks in JavaScript. 
+  A quick word about functions first, because they are about to matter a great deal.
+  A function is a parcel of code that you give a name to, so that you can run it whenever
+you like, rather than only at the moment you wrote it. You create one with the word
+function, a name, a pair of round brackets, and then the code itself inside curly braces:
+
+	function sayHello() {
+		console.log("Hello");
+	}
+
+  Writing that out does not run anything. It only puts the parcel aside under the name
+sayHello. To actually run it, you call it, by writing its name followed by round brackets:
+
+	sayHello();   // now it runs, and prints Hello
+
+  Those round brackets can also carry values into the function. A value you hand over in
+this way is called an argument, and the name the function uses for it on the inside is
+called a parameter:
+
+	function greet(name) {      // name is the parameter
+		console.log("Hello " + name);
+	}
+
+	greet("Gustav");            // "Gustav" is the argument
+
+  JavaScript also comes with a good many functions already built in, ready for you to call.
+You have met console.log() already. Two more you will see shortly are alert(), which pops up
+a message box, and prompt(), which pops up a box asking the user to type something in and
+hands back whatever they typed.
+  That is as much as you need for this chapter. Functions have a great deal more to them,
+and Chapter 7 is devoted entirely to them.
+
+  Now, before we understand the scope of variables, we have to first of all understand the concept of blocks in JavaScript. 
 
 
 What is a block

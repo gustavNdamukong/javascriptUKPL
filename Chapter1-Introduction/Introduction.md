@@ -399,7 +399,9 @@ Step 5: Create an HTML File to Run
 		alert("JavaScript is working!");
 
 		This will display a popup box saying: "JavaScript is working!"
-		when your index.html page loads.
+		when your index.html page loads. alert() is one of JavaScript's 
+		built-in commands, and its whole job is to pop up a message box 
+		like that.
 
 
 Step 6: Start the Live Server
