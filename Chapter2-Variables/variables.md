@@ -631,7 +631,7 @@ them, and prefer let and const so that JavaScript tells you when you have not.
 Best practices for variables
 ———————————————
   It is recommended to always declare variables using let or const instead of relying on var, as they provide better scoping rules and avoid accidental global variable leaks.
-  Using const ensures immutability for values that should never change, and you can use let when reassignment (updating) of the value of a variable is needed. let allows reassignments without polluting the window object (useful for things like counters, flags which are only needed temporarily). Let variables as we have seen also prevent accidental redeclaration, which var allows.
+  Use const for a value that should never be reassigned, and let when you do need to update the value later on. One word of warning about const, because it catches almost everybody out: const stops you from reassigning the variable, but it does not freeze what is inside it. If a const holds an array or an object, you can still change the contents; what you cannot do is point that name at something else entirely. We look at this properly in Chapter 4 (Constants). let allows reassignments without polluting the window object (useful for things like counters, flags which are only needed temporarily). Let variables as we have seen also prevent accidental redeclaration, which var allows.
   Avoid implicit global variables (i.e., variables declared without var, let, or const), as they can lead to unintended side effects.
   Keep variable scope as limited as possible to avoid conflicts and unexpected behaviour.
 
@@ -643,7 +643,7 @@ By following these practices, you can write cleaner, more maintainable JavaScrip
 
 JavaScript modules and variable scope
 ————————————————————
-  As your code grows larger, it's common to split it into multiple files to keep things organized. These files can be treated as modules — reusable blocks of JavaScript code. But JavaScript handles modules a little differently than regular scripts.
+  As your code grows larger, it's common to split it into multiple files to keep things organised. These files can be treated as modules — reusable, self-contained pieces of JavaScript code. (Take care not to confuse this use of the word with the code blocks we met earlier in this chapter. They are unrelated.) But JavaScript handles modules a little differently than regular scripts.
 To declare a JavaScript file as a module, you use the type="module" attribute in your HTML in the <script> tag as you reference the specific JavaScript file:
 
 	<script type="module" src="index.js"></script>
@@ -658,8 +658,7 @@ Let’s say you define a function like this in your index.js file:
 
    // index.js
    async function fetchPhotos() {
-  	const response = await axios.get('https://
-		jsonplaceholder.typicode.com/photos', {
+  	const response = await axios.get('https://jsonplaceholder.typicode.com/photos', {
     			params: { albumId: 1 }
   	});
 
@@ -667,9 +666,8 @@ Let’s say you define a function like this in your index.js file:
 		JSON.stringify(response.data, null, 2);
    }
 
-Do not worry about understanding what the code does for not. It uses an external library called Axios to make an AJAX request to fetch photos from the following URL: 'https://
-		jsonplaceholder.typicode.com/photos'
-We will review this same exercise later and I will explain how it all works. So, let’s say in your HTML code you do:
+Do not worry about understanding what the code does for now. It uses an external library called Axios to make an AJAX request to fetch photos from the URL 'https://jsonplaceholder.typicode.com/photos'.
+We will come back to this same example in Chapter 21 (Extensions - APIs & Libraries), where I will explain how it all works. So, let’s say in your HTML code you do:
 
 	<script type="module" src="index.js"></script>
 	
@@ -681,7 +679,7 @@ If you run this code in your browser, you’ll get an error like:
 	Uncaught ReferenceError: fetchPhotos is not defined
 
 That’s because fetchPhotos() exists inside the module, not in the global scope where HTML's onclick can see it. 
-  To resolve this issue? You have two options:
+  So how do you resolve this issue? You have two options:
 
 Option 1: Attach the function to the global window object.
 	Inside your index.js, just add:
@@ -698,11 +696,11 @@ Option 2: Remove the type="module" attribute from your
 
 	<script src="index.js"></script>
 
-Now everything defined in index.js becomes globally available by default. So, here is the take-away points of learning:
+Now everything defined in index.js becomes globally available by default. So, here are the take-away points of learning:
 
-    - If you want to use import/export and keep code modular; Use type="module" and export what you need.
+    - If you want to use import/export and keep code modular, use type="module" and export what you need. (import and export are the commands modules use to share code between files. We cover them in Chapter 16.)
 
-    - If you need HTML or other scripts to access your functions; Attach them to window, or don't use type="module"
+    - If you need HTML or other scripts to access your functions, attach them to window, or don't use type="module".
 
 Using modules is recommended for modern apps, but if you're just starting out or building simple pages, you can safely skip type="module" for now. As you advance, understanding how scope works in modules will help you write cleaner, more secure code.
 
@@ -719,7 +717,7 @@ Using modules is recommended for modern apps, but if you're just starting out or
 
 EXERCISES WITH VARIABLES
 ————————————————
-  The exercises in this section will aim to make you versed with the purposes behind displaying information to the user on screen, asking for and retrieving information from the user to use, the power of variables and also give you a teaser on how to modify the value of an HTML element. This are all routines that should become natural to you as a programmer and are reasons why JavaScript really shines at making otherwise static web pages interactive.
+  The exercises in this section will aim to make you versed in the purposes behind displaying information to the user on screen, asking for and retrieving information from the user to use, the power of variables and also give you a teaser on how to modify the value of an HTML element. These are all routines that should become natural to you as a programmer and are reasons why JavaScript really shines at making otherwise static web pages interactive.
   
 	Exercise 1: 	
 	This exercise will teach you how to generate HTML elements in JavaScript and insert them in the HTML section of your code.
@@ -741,7 +739,7 @@ EXERCISES WITH VARIABLES
 	-d) Show an alert with a text telling them what their forename and 
 		surnames are.
 	
-  When you refresh your web page in the browser, you should see two prompt dialog popups one after the other; one asking you to enter your forename, and if you enter the value for your forename and press enter or hit ok, another popup will appear asking you to enter your surname. After entering the value for your surname, you will get an alert popup on screen with text saying something like “Your forename is theForenameYouEntered, and your surname is theSurnameYouEntered”. 
+  When you refresh your web page in the browser, you should see two prompt dialog popups one after the other; one asking you to enter your forename, and if you enter the value for your forename and press enter or hit OK, another popup will appear asking you to enter your surname. After entering the value for your surname, you will get an alert popup on screen with text saying something like “Your forename is theForenameYouEntered, and your surname is theSurnameYouEntered”. 
 
 	
 	Exercise 3:
@@ -756,5 +754,5 @@ EXERCISES WITH VARIABLES
 		-d) Dynamically grab the div, remove the p tag with text inside of it 
 			and replace it with the image you have created in JavaScript. 
 
-	When you replace your web page, the image should be displaying in the 
+	When you refresh your web page, the image should be displaying in the 
 	place of the text that was being displayed before.
