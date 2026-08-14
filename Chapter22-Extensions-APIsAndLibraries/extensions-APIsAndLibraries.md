@@ -174,8 +174,8 @@ So why learn about SOAP in a JavaScript book? Because understanding SOAP helps y
 This section will show you how SOAP works, what its XML messages look like, and how you'd parse a SOAP response using JavaScript's XML tools—not necessarily to run it in your browser, but to prepare you for when you’ll encounter it in the real world.
   SOAP messages are typically sent over HTTP and have a predefined envelope structure that looks like this:
 
-	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/
-		envelope/">
+	<soap:Envelope
+		xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   		<soap:Body>
     			<GetPriceResponse>
       				<Price>29.99</Price>
@@ -193,8 +193,7 @@ This XML structure is what you parse when working with SOAP responses.
   In XML, namespaces are used to avoid name conflicts when different elements share the same name. They do this by associating elements with a unique URI (a web-like address).
 For example:
 
-	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/		
-		envelope/">
+	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   			...
 	</soap:Envelope>
 
@@ -244,8 +243,7 @@ For example, the WSDL might tell you:
 
 Always check if the service provides a .wsdl file or documentation. It helps you to build the correct SOAP message. Here’s a simple SOAP request message structure:
 
-	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/	
-		envelope/">
+	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   		<soap:Body>
     			<GetWeather>
       				<City>London</City>
@@ -268,8 +266,7 @@ Let us look at a complete example of how you would prepare and send a SOAP reque
 
 	// Build your SOAP XML string
 	const soapMessage = `
-	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/	
-		envelope/">
+	<soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   		<soap:Body>
     			<GetPriceRequest/>
   		</soap:Body>
@@ -385,12 +382,12 @@ As I indicated earlier, setting up such a backend server is beyond the scope of 
 
 	Setting up a local SOAP server with Node.js 
 	—————————————————————————
-  If you have a local server and hosted a SOAP API on your local server, it will be possible to access this SOAP API from frontend code running on the same server. Let us just say you host a SOAP API on your local server (e.g., localhost:3000/soap-api) and your frontend code (HTML/JS) is also served from the same origin (e.g., `localhost:3000/index.html`), you can access the SOAP API without CORS issues. The reason why it works is simple; 
+  If you have a local server and hosted a SOAP API on your local server, it will be possible to access this SOAP API from frontend code running on the same server. Let us just say you host a SOAP API on your local server (e.g., localhost:3000/soap-api) and your frontend code (HTML/JS) is also served from the same origin (e.g., `localhost:3000/index.html`), you can access the SOAP API without CORS issues. The reason why it works is simple; 
 
 	-The Same-Origin Policy (SOP) allows frontend code to freely interact 
-	   with APIs on the same domain/port/protocol.  
+	   with APIs on the same domain/port/protocol.  
 	-There are no CORS restrictions applicable, since there’s no cross-
-	   origin request.  
+	   origin request.  
 
 Let’s see how to set a Node.js server on your local machine to host a simple SOAP API that we can send a request to from the frontend and get a response back. In this example, we will be using Express, a very popular Node.js framework that makes setting up and working with servers in Node.js very easy. It comes packed with libraries that provide services to handle most things to do with servers so that you don’t have to build them by yourself-like security, validation, receiving and responding to HTTP requests, and much, much more. This is not a book on Node.js, but I want to leave you with a clear understanding of what happens on the side of a server when it comes to APIs. If you ever decide to go on and learn Node.js, it will be a great choice after mastering vanilla JavaScript. Node.js is a JavaScript engine that runs on a server. Thanks to it, JavaScript is no longer limited to a browser. It is one of the biggest reason’s for JavaScript’s popularity soaring in the last decade. It means with your current JavaScript knowledge, you will be able to build a full stack (frontend and backend) application that is fast and reliable. You will even be able to build backend systems for mobile applications as APIs, and much more. It’s very powerful. Let’s get right into building our SOAP API. Follow these steps, and remember, you should be in the root of your project in the Terminal when you run all of these commands:
   
@@ -857,7 +854,7 @@ You don’t need to know the server-side code. Just know that it’s doing the w
 
 	HTTP Status Codes
 	————————————
-  When your code talks to a server, it gets back a status code-also known as response codes, to indicate how the request went. Here is a list of the most common HTTP response codes, and what they mean:
+  When your code talks to a server, it gets back a status code—also known as a response code—to indicate how the request went. Here is a list of the most common HTTP response codes, and what they mean:
 
            HTTP Code	          Meaning
 200	OK (everything worked)
@@ -880,8 +877,8 @@ fetch('https://api.example.com/users')
   .catch(error => console.error(error));
 
 
-  In conclusion, the take-away points on APIs can be summed up as such. APIs allow your JavaScript code to talk to external systems (like databases or services). JavaScript uses HTTP requests (usually through fetch(), but also using the old way XMLHTTPRequest) to send or get data.
-GET and POST are the most common request methods. The server code-which can be written in a different language processes your request and sends back a response. JavaScript reads that response (usually in JSON format) and can uses it to update the web page.
+  In conclusion, the take-away points on APIs can be summed up as such. APIs allow your JavaScript code to talk to external systems (like databases or services). JavaScript uses HTTP requests (usually through fetch(), but also using the older XMLHttpRequest) to send or get data.
+GET and POST are the most common request methods. The server code—which may well be written in a different language—processes your request and sends back a response. JavaScript reads that response (usually in JSON format) and can use it to update the web page.
 As a developer, you can use console.log() or browser tools to inspect the results and debug your requests.
 
 
@@ -897,13 +894,13 @@ How Does AJAX Relate to JavaScript?
 AJAX is not a programming language. It’s just a way of using JavaScript to send and receive data from a server in the background.
 JavaScript provides different tools to implement AJAX, such as:
 
-   -XMLHttpRequest (XHR)-The old way (still 
+   -XMLHttpRequest (XHR) — the old way (still 
 	works).
-   -Fetch API-a modern, simpler way to make 
+   -Fetch API — a modern, simpler way to make 
 	requests.
-   -Axios-a popular external library that simplifies 
+   -Axios — a popular external library that simplifies 
 	AJAX requests.
-   -Promises & Async/Await-tools that help 
+   -Promises and async/await — tools that help 
 	manage asynchronous AJAX requests more 
 	easily.
 
@@ -919,8 +916,11 @@ Let's say we want to fetch user data from a server and display it on a webpage w
 
 	let xhr = new XMLHttpRequest();
 
-	xhr.open("GET", "https:// 
-             jsonplaceholder.typicode.com/users", true);
+	xhr.open(
+		"GET",
+		"https://jsonplaceholder.typicode.com/users",
+		true
+	);
 	xhr.onload = function () {
     		if (xhr.status === 200) {
 		    // Logs the response from the server
@@ -1150,8 +1150,11 @@ Basically, the property that will contain the returned data always depends on th
 
 	let xhr = new XMLHttpRequest();
 
-	xhr.open("GET", "https:// 
-             jsonplaceholder.typicode.com/users", true);
+	xhr.open(
+		"GET",
+		"https://jsonplaceholder.typicode.com/users",
+		true
+	);
 	xhr.responseType = 'document'; // specifying doc type wanted back
 	xhr.onload = function () {
     		if (xhr.status === 200) {
@@ -1171,7 +1174,7 @@ Here we are specifying that the data type of the response we expect back should 
   When you use the XMLHttpRequest object to fetch data from a server, the browser usually treats the response as plain text by default. But sometimes, you may want the response to be treated as a different type of data, like XML or JSON. That’s where the .responseType property comes in. Setting xhr.responseType tells the browser how to handle and interpret the response. For example If you are loading an XML file, and you want the browser to automatically parse it into a usable document (just like an HTML or XML page), you can do it like this:
 
 	const xhr = new XMLHttpRequest();
-	xhr.open('GET', ‘books.xml');
+	xhr.open('GET', 'books.xml');
 
 	// Ask the browser to treat the response as a document
 	xhr.responseType = 'document'; 
@@ -1381,14 +1384,18 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 -1) setTimeout() – Runs a function after a delay (already 
 		mentioned).
 
-		setTimeout(() => console.log("This runs after 2 
-			seconds"), 2000);
+		setTimeout(
+			() => console.log("This runs after 2 seconds"),
+			2000
+		);
 
 
 -2) setInterval() – Repeats a function at a fixed time interval.
 
-		let interval = setInterval(() => console.log("Runs every 
-			second"), 1000);
+		let interval = setInterval(
+			() => console.log("Runs every second"),
+			1000
+		);
 
 		// Stops it when needed.
 		clearInterval(interval); 
@@ -1431,8 +1438,9 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 -7) async/await functions – Used to simplify Promises.
 
 		async function getData() {
-    			let response = await fetch("https://	
-				jsonplaceholder.typicode.com/posts");
+    			let response = await fetch(
+				"https://jsonplaceholder.typicode.com/posts"
+			);
     
 			let data = await response.json();
     			console.log(data);
@@ -1463,7 +1471,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
     			{ title: 'post two', body: 'This is two'}
 		];
     
-		let ul = document.querySelector("#gusOneUl");
+		let ul = document.querySelector("#gusUl");
 
 		function getPosts()
 		{
@@ -1494,7 +1502,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 
   You have here two functions, getPosts() that reads data from an array posts, and renders it as HTML list tags to display the posts. The other function, createPost() adds more data to the posts array.
-  If you ran the code now and looked in your HTML you would find that only post one and post two are displayed as <li> elements. Though we first of all call createPost() before we call getPosts(), you would think that we will get three tags displayed, but we only get two. The <li> element post three created by createPost() above did not appear because the code in createPost() runs in a setTimeout() function which ensures that its task is only executed after a two seconds delay. The issue is that setTimeout() is asynchronous, meaning getPosts() returns before it completes. This means that the next function we call getPosts() function runs and fetches the current posts data before the additional post is created, hence, it only finds two items in the posts array.
+  If you ran the code now and looked in your HTML you would find that only post one and post two are displayed as <li> elements. Though we first of all call createPost() before we call getPosts(), you would think that we will get three tags displayed, but we only get two. The <li> element post three created by createPost() above did not appear because the code in createPost() runs in a setTimeout() function which ensures that its task is only executed after a two seconds delay. The issue is that setTimeout() is asynchronous, meaning getPosts() returns before it completes. This means that the next function we call, getPosts(), runs and fetches the current posts data before the additional post is created, hence, it only finds two items in the posts array.
   To resolve this issue, you need to use callbacks, Promises, or async/await. Let’s see how a callback can fix the issue. We will modify the createPost() function to accept a callback function as its second argument. This callback function is getPosts() which should then be called by createPost() after it has finished doing its task of adding data to the posts array. This is to ensure that after updating the data in posts, the list of posts displayed on screen is refreshed by getPosts() to reflect that update. 
   Be sure to pass the getPosts() function then as the second argument to createPost() when you call it. The modified code will look like this:
 
@@ -1621,8 +1629,7 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 				}
 				else
 				{
-					reject('Error: Something 
-						went wrong');
+					reject('Error: Something went wrong');
 				}
 			}, 2000);
 				
@@ -1645,8 +1652,7 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 		-Promise.all()
   The promise.all() function is used to handle several promises, for example, replace the call to createPosts() above with the following:
 		
-		const promise1 = Promise.resolve('Hello 
-			world');
+		const promise1 = Promise.resolve('Hello world');
 		const promise2 = 10;
 		const promise3 = new Promise(
 		  (resolve, reject)
@@ -1691,7 +1697,7 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
     		{ title: 'post two', body: 'This is two'}
 	];
     
-	let ul = document.querySelector("#gusOneUl");
+	let ul = document.querySelector("#gusUl");
 
 	function getPosts()
 	{
@@ -1789,7 +1795,7 @@ be able to correctly pause execution until the Promise resolves.
 			{ title: 'post three', body: 'This is three' }
 		); 
     
-		let ul = document.querySelector("#gusOneUl");
+		let ul = document.querySelector("#gusUl");
     
 		// Wait for posts and update UI
     		ul.innerHTML = await getPosts(); 
@@ -1939,8 +1945,9 @@ Here is another example of using Axios with async/await:
 	async function fetchPhotos() {
       try {
         const response = 
-		await axios.get('https://jsonplaceholder.typicode.com/
-			photos');
+		await axios.get(
+			'https://jsonplaceholder.typicode.com/photos'
+		);
 
         // Display in the page
         document.getElementById('output')
@@ -1954,18 +1961,21 @@ window.fetchPhotos = fetchPhotos;
 
 In this example, we use Axios to access the publicly available endpoint for API testing. We specify that the data we want to get back as a response is photos. This is because we know the endpoint has that resource, and the API providers or their documentation has told us so. It is the same endpoint  we saw in a previous example which returned a collection of dummy users’ data. 
 
-	const response = await axios.get('https://
-		jsonplaceholder.typicode.com/users');
+	const response = await axios.get(
+		'https://jsonplaceholder.typicode.com/users'
+	);
 
   In this case, however, we wanted to get data on photos, hence we used this endpoint:
 
-	await axios.get('https://jsonplaceholder.typicode.com/
-			photos');
+	await axios.get(
+			'https://jsonplaceholder.typicode.com/photos'
+		);
 
-Notice that for axios to work, we needed to reference the library’s Content Distribution Network (CDN) in our HTML code (index.html) like this:
+Notice that for axios to work, we needed to reference the library’s Content Delivery Network (CDN) in our HTML code (index.html) like this:
 
-	<script src="https://cdn.jsdelivr.net/npm/axios/dist/
-		axios.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+	</script>
 
 If you test this in your browser, you will find that it gets and returns all photos, that the endpoint can return. You can narrow down the result you get back by optionally passing an extra parameter or parameters to the axios.get() method. How you pass the parameter depends on what you want to get from the API. The following are two ways to pass in parameters with the API request, which determine the response returned.
 
@@ -1976,8 +1986,9 @@ If you test this in your browser, you will find that it gets and returns all pho
 		literal ({…}) as the second argument to the axios.get() 
 		function. For example:
 
-		const response = await axios.get('https://
-			jsonplaceholder.typicode.com/photos', {
+		const response = await axios.get(
+			'https://jsonplaceholder.typicode.com/photos',
+			{
           			params: { albumId }
         		});
 
@@ -1993,8 +2004,9 @@ If you test this in your browser, you will find that it gets and returns all pho
 		which in this case is /photos. Change it to the id of the 
 		photo eg /3 if the id is 3. For example:
 
-		const response = await axios.get('https://
-			jsonplaceholder.typicode.com/photos/3’)
+		const response = await axios.get(
+			'https://jsonplaceholder.typicode.com/photos/3'
+		)
 
 		Or, if you have the id of the photo as a variable, you can 
 		pass it in dynamically like so:
@@ -2023,8 +2035,9 @@ If you test this in your browser, you will find that it gets and returns all pho
 		can also simply concatenate the variable to the end of 
 		the string like so, and it will work just the same:
 
-		const response = await axios.get('https://
-			jsonplaceholder.typicode.com/photos/'+photoId);
+		const response = await axios.get(
+			'https://jsonplaceholder.typicode.com/photos/' + photoId
+		);
 
 Now you know how to pass data to an API endpoint when using Axios. Remember that if you have many variables to send through, it’s usually easier for you to send that data in the second argument of axios.get() as an object literal. This is usually the case with POST requests when you want to create some resource on the server you are passing data to. This data could be user data you have collected from a signup form on your website, or their shopping cart data after they click on Checkout etc. This data, which is sent as an object literal, also known as a request configuration object can also just contain different kinds of data to be used by the receiving server to determine how it will respond to the request. Whatever the case, it is up to the creators of the API to determine what kind of data, or format of it is to be sent as data in requests to the API endpoints, and which endpoints (URLs) to use for each request type.
   Once more, here is how to fetch only one piece of data, the data of a photo with the id of 8:
@@ -2033,8 +2046,9 @@ Now you know how to pass data to an API endpoint when using Axios. Remember that
       try {
         const photoId = 8;
 
-        const response = await axios.get('https://
-		jsonplaceholder.typicode.com/photos/'+photoId); 
+        const response = await axios.get(
+			'https://jsonplaceholder.typicode.com/photos/' + photoId
+		); 
 
         // Display in the page
         document.getElementById('output').textContent = 
@@ -2119,5 +2133,4 @@ LIBRARIES
    the user of something in the browser like 
    so:
 
-     notify(“Thanks dor confirming”, 
-        “success”);
+     notify("Thanks for confirming", "success");

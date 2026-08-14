@@ -1105,7 +1105,7 @@ Built-in utility functions for type checking
 	It is important to understand this distinction because this behavior 	
 	can be confusing. Let’s take this other example
 
-		isNaN("123”);
+		isNaN("123");
 
 	Will return false-because "123" becomes the number 123 which is a 
 	number, so it is not considered to be a NaN. So, it is the conversion it 

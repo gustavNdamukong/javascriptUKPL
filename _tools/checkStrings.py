@@ -5,8 +5,8 @@ Catches: string literals split across lines, curly quotes in code, non-breaking
 spaces, en/em dashes in code, emoji, and capitalised globals (Console.log)."""
 import io, re, glob, os, sys
 NB, EN, EM = chr(0xA0), chr(0x2013), chr(0x2014)
-CODEY = re.compile(r'(console\.|document\.|\.textContent|\.innerHTML|alert\(|prompt\(|\breturn\s+["\'\u2018\u201c]|=\s*["\'\u2018\u201c]|\.push\(|\.log\(|\bnew\s+\w+\(\s*["\'\u2018\u201c]|\w\(\s*[\u2018\u201c])')
-ANY    = re.compile(r'(console\.|function\s|=>|\breturn\b|document\.|alert\(|\.log\(|=\s*[\[\{\'"]|\bnew\s+\w+\(\s*["\'\u2018\u201c]|\w\(\s*[\u2018\u201c])')
+CODEY = re.compile(r'(console\.|document\.|\.textContent|\.innerHTML|alert\(|prompt\(|\breturn\s+["\'\u2018\u201c]|=\s*["\'\u2018\u201c]|\.push\(|\.log\(|\bnew\s+\w+\(\s*["\'\u2018\u201c]|\w\(\s*["\'\u2018\u201c])')
+ANY    = re.compile(r'(console\.|function\s|=>|\breturn\b|document\.|alert\(|\.log\(|=\s*[\[\{\'"]|\bnew\s+\w+\(\s*["\'\u2018\u201c]|\w\(\s*["\'\u2018\u201c])')
 
 def strip_comment(s):
     """Return s with any // line comment removed - but only when the // sits
