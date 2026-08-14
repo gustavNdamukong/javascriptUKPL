@@ -284,6 +284,11 @@ Next, place the following code in your JavaScript file eg index.js which should 
 	-This is a good demonstration of how to load and show file 
 		content without uploading to a server—all done in the browser.
 
+![Figure 18.1 — Reading a file takes time, so the work happens in a callback](images/ch18-fig-01-filereader-flow.svg)
+
+*Figure 18.1 — Reading a file takes time, so the work happens in a callback*
+
+
 
 
 
@@ -880,7 +885,12 @@ The following is an example of sending a Video File in Binary Chunks over WebSoc
   		});
 	});
 
-This code reads the file chunk by chunk and sends each piece over the WebSocket connection as binary data. Here is an in-depth explanation of how it works:
+This code reads the file chunk by chunk and sends each piece over the WebSocket connection as binary data.
+
+![Figure 18.2 — Sending a large file in chunks](images/ch18-fig-02-chunked-upload.svg)
+
+*Figure 18.2 — Sending a large file in chunks*
+ Here is an in-depth explanation of how it works:
 
 We start by creating a WebSocket connection to the server running at localhost (your computer) on port 3000. This sets up a 2-way chat pipe between your browser and the server.
 

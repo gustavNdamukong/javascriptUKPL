@@ -1449,7 +1449,12 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 		getData();
 
 
-  Before we look at promises and async/await, it’s essential to understand the concept of a call back, which existed to solve more or less the same problem that they are solving. Let us dive right in, and demonstrate with examples, a callback, then move on to show how a promise would be used, and finally, how Async/Await would be used to solve the same problem.
+  Before we look at promises and async/await, it’s essential to understand the concept of a call back, which existed to solve more or less the same problem that they are solving.
+
+![Figure 22.1 — The same wait, written three ways](images/ch22-fig-01-three-async-styles.svg)
+
+*Figure 22.1 — The same wait, written three ways*
+ Let us dive right in, and demonstrate with examples, a callback, then move on to show how a promise would be used, and finally, how Async/Await would be used to solve the same problem.
 
 
 	-a) Callback

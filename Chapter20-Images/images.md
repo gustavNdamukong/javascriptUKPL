@@ -231,6 +231,11 @@ This exercise is a great example for interactive photo editors, or for learning 
 	———————————————————————
   The grayscale effect using CSS filters (like in the previous example) only affects how the image looks in the browser. It doesn’t actually modify the image data itself. So, that effect isn’t permanent and can’t be saved as-is.
 However, as I mentioned above, it is a great example for interactive photo editors, or for learning about CSS filters through JavaScript.
+
+![Figure 20.1 — A CSS filter changes the view; a canvas changes the pixels](images/ch20-fig-01-css-vs-canvas.svg)
+
+*Figure 20.1 — A CSS filter changes the view; a canvas changes the pixels*
+
 But if you want to make the grayscale change—or any change to an image file—permanent, so that the user can download or upload the edited image, you have to use the <canvas> element. This is because, the canvas API’s context which is the thing the image is built on, and all the changes you make on it are saved, makes the changes persist. You just have to then make the image downloadable as a new image file. Always remember that because of JavaScript’s restriction on local files, what essentially happens is this; you read an (original) image, re-create it as a new image on the canvas, then download the new image as a new, separate file. The original file remains unmodified. Back to our greyscale example, here is what the <canvas> element will do:
 
 	-Draw the image to the canvas,
@@ -300,6 +305,11 @@ Add the following code to your JavaScript file (eg index.js)
         			}
 
         			ctx.putImageData(imageData, 0, 0);
+
+![Figure 20.2 — Why the pixel loop counts in fours](images/ch20-fig-02-pixel-array.svg)
+
+*Figure 20.2 — Why the pixel loop counts in fours*
+
 
         			// Make it downloadable
         			const finalImage = canvas.toDataURL('image/png');

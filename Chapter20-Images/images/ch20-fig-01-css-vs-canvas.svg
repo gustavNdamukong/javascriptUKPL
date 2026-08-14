@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 345" width="740" height="345" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="m4" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
+  <rect width="740" height="345" fill="#ffffff"/>
+  <text x="370" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">A CSS filter changes the view. A canvas changes the pixels.</text>
+
+  <text x="24" y="66" font-size="13" font-weight="bold" fill="#111">CSS FILTER — temporary</text>
+  <rect x="24" y="80" width="140" height="56" rx="5" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="94" y="113" text-anchor="middle" font-size="12" fill="#111">the image file</text>
+  <line x1="168" y1="108" x2="200" y2="108" stroke="#222" stroke-width="2" marker-end="url(#m4)"/>
+  <rect x="206" y="80" width="150" height="56" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="281" y="105" text-anchor="middle" font-size="11" font-family="Courier, monospace" fill="#111">style.filter</text>
+  <text x="281" y="125" text-anchor="middle" font-size="10.5" fill="#444">painted differently</text>
+  <text x="380" y="106" font-size="11.5" fill="#444">The file is untouched. Save it and</text>
+  <text x="380" y="124" font-size="11.5" fill="#444">you get the original back.</text>
+
+  <line x1="24" y1="164" x2="716" y2="164" stroke="#ccc" stroke-width="1"/>
+
+  <text x="24" y="192" font-size="13" font-weight="bold" fill="#111">CANVAS — permanent</text>
+  <rect x="24" y="206" width="120" height="52" rx="5" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="84" y="237" text-anchor="middle" font-size="11.5" fill="#111">the image file</text>
+  <line x1="148" y1="232" x2="176" y2="232" stroke="#222" stroke-width="2" marker-end="url(#m4)"/>
+  <rect x="182" y="206" width="120" height="52" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="242" y="230" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">drawImage()</text>
+  <text x="242" y="248" text-anchor="middle" font-size="10" fill="#444">onto a canvas</text>
+  <line x1="306" y1="232" x2="334" y2="232" stroke="#222" stroke-width="2" marker-end="url(#m4)"/>
+  <rect x="340" y="206" width="134" height="52" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="407" y="230" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">putImageData()</text>
+  <text x="407" y="248" text-anchor="middle" font-size="10" fill="#444">real pixels changed</text>
+  <line x1="478" y1="232" x2="506" y2="232" stroke="#222" stroke-width="2" marker-end="url(#m4)"/>
+  <rect x="512" y="206" width="204" height="52" rx="5" fill="#ffffff" stroke="#111" stroke-width="2.5"/>
+  <text x="614" y="230" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">toDataURL()</text>
+  <text x="614" y="248" text-anchor="middle" font-size="10" fill="#444">a NEW file, downloadable</text>
+
+  <text x="24" y="292" font-size="12" fill="#333">Note the shape of it: you never modify the original. You read it, rebuild it on a canvas, and</text>
+  <text x="24" y="312" font-size="12" fill="#333">save that as a separate file. JavaScript cannot write over a file on the visitor's disk, so the</text>
+  <text x="24" y="332" font-size="12" fill="#333">"edited image" is always a new one sitting beside the old.</text>
+</svg>

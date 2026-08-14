@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 360" width="740" height="360" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="m3" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
+  <rect width="740" height="360" fill="#ffffff"/>
+  <text x="370" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">Three routes to the same field — and which attribute each uses</text>
+
+  <rect x="250" y="60" width="240" height="66" rx="6" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="370" y="84" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">&lt;input</text>
+  <text x="370" y="102" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">id="username"</text>
+  <text x="370" y="120" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">name="username"&gt;</text>
+
+  <line x1="120" y1="200" x2="290" y2="132" stroke="#222" stroke-width="2" marker-end="url(#m3)"/>
+  <line x1="370" y1="200" x2="370" y2="132" stroke="#222" stroke-width="2" marker-end="url(#m3)"/>
+  <line x1="620" y1="200" x2="450" y2="132" stroke="#222" stroke-width="2" marker-end="url(#m3)"/>
+
+  <rect x="24" y="206" width="196" height="96" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="122" y="230" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#111">getElementById</text>
+  <text x="122" y="252" text-anchor="middle" font-size="11" fill="#666">uses the id</text>
+  <text x="122" y="274" text-anchor="middle" font-size="9.5" font-family="Courier, monospace" fill="#111">document.getElementById</text>
+  <text x="122" y="290" text-anchor="middle" font-size="9.5" font-family="Courier, monospace" fill="#111">("username").value</text>
+
+  <rect x="272" y="206" width="196" height="96" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="370" y="230" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#111">form.elements</text>
+  <text x="370" y="252" text-anchor="middle" font-size="11" fill="#666">uses the name</text>
+  <text x="370" y="276" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">form.elements</text>
+  <text x="370" y="292" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">.username.value</text>
+
+  <rect x="520" y="206" width="196" height="96" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="618" y="230" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#111">FormData</text>
+  <text x="618" y="252" text-anchor="middle" font-size="11" fill="#666">uses the name</text>
+  <text x="618" y="276" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">formData</text>
+  <text x="618" y="292" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">.get("username")</text>
+
+  <text x="24" y="332" font-size="12" fill="#333">A field with no NAME is invisible to the last two — it will not appear in FormData at all, even</text>
+  <text x="24" y="352" font-size="12" fill="#333">though it looks perfectly normal on the page. So: id for finding one element, name for submitting.</text>
+</svg>

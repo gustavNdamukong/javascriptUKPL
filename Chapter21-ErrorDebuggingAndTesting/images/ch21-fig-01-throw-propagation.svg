@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 400" width="740" height="400" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="m5" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
+  <rect width="740" height="400" fill="#ffffff"/>
+  <text x="370" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">A throw travels out of the function, into the catch</text>
+  <text x="370" y="52" text-anchor="middle" font-size="12.5" fill="#333">One piece of code notices the problem. A different piece decides what to do about it.</text>
+
+  <rect x="40" y="80" width="290" height="180" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="185" y="104" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#111">the function — NOTICES</text>
+  <rect x="66" y="120" width="238" height="60" rx="5" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="185" y="143" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">if (b === 0) {</text>
+  <text x="185" y="163" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">  throw new Error(...)</text>
+  <text x="185" y="204" text-anchor="middle" font-size="11.5" fill="#444">the function stops here —</text>
+  <text x="185" y="222" text-anchor="middle" font-size="11.5" fill="#444">nothing after the throw runs,</text>
+  <text x="185" y="240" text-anchor="middle" font-size="11.5" fill="#444">and it returns no value</text>
+
+  <rect x="410" y="80" width="290" height="180" rx="8" fill="#ffffff" stroke="#111" stroke-width="1.5"/>
+  <text x="555" y="104" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#111">the caller — DECIDES</text>
+  <rect x="436" y="120" width="238" height="42" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="555" y="146" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">try { divide(10, 0); }</text>
+  <rect x="436" y="172" width="238" height="42" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2.5"/>
+  <text x="555" y="198" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">catch (error) { ... }</text>
+  <rect x="436" y="224" width="238" height="26" rx="5" fill="#ffffff" stroke="#111" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="555" y="242" text-anchor="middle" font-size="11" font-family="Courier, monospace" fill="#111">finally { ... }</text>
+
+  <line x1="336" y1="150" x2="430" y2="150" stroke="#222" stroke-width="3" marker-end="url(#m5)"/>
+  <rect x="330" y="112" width="106" height="18" fill="#ffffff"/>
+  <text x="383" y="126" text-anchor="middle" font-size="11" fill="#111">the thrown Error</text>
+
+  <line x1="40" y1="292" x2="700" y2="292" stroke="#ccc" stroke-width="1"/>
+  <text x="40" y="316" font-size="12" fill="#333">try runs until something throws, then abandons the rest of its block.</text>
+  <text x="40" y="338" font-size="12" fill="#333">catch receives the thrown value — use error.message, and instanceof to tell types apart.</text>
+  <text x="40" y="360" font-size="12" fill="#333">finally runs EITHER WAY, which is why cleanup belongs there and not in the other two.</text>
+  <text x="40" y="386" font-size="12" fill="#333">If nothing throws, catch is skipped entirely — it is not an "else".</text>
+</svg>

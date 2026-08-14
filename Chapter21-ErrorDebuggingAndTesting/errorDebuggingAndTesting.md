@@ -523,6 +523,11 @@ Here is how you can use one of these in-built exceptions. Let’s take the TypeE
 
 Exceptions work in both synchronous and asynchronous (Promises, async/await) code.
 
+![Figure 21.1 — A throw travels out of the function, into the catch](images/ch21-fig-01-throw-propagation.svg)
+
+*Figure 21.1 — A throw travels out of the function, into the catch*
+
+
 
 
 

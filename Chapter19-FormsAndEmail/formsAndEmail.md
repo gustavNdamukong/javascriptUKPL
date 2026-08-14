@@ -281,6 +281,11 @@ Mastering FormData and form fields
   Now that you have a full understanding of the working of the FormData object, I should go a bit deeper and show you some potential pitfalls. For the most part, the FormData.get("fieldName") syntax works for retrieving values submitted through nearly all types of form fields.
 But there are a few subtle points and exceptions worth understanding. First of all, you would have noticed that unlike the usual targeting of the id attribute, FormData uses the name attribute instead. Take note of that, because as simple as it is, it can lead to confusion sometimes. This also means that if a form element has no name, it will be ignored by FormData. Be on the lookout for that.
 
+![Figure 19.1 — Three routes to the same field, and which attribute each uses](images/ch19-fig-01-three-routes.svg)
+
+*Figure 19.1 — Three routes to the same field, and which attribute each uses*
+
+
 Multiple checkboxes with the same name
 ———————————
 If you have several checkboxes like this:
