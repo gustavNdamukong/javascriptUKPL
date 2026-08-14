@@ -100,9 +100,7 @@ CHAPTER 15 - DOM AND URL MANIPULATION
 Introduction to the DOM
 —————————
 
--This is about HTML’s Document Object Model (DOM) and the ability of your application to pass data to and from the frontend directly, or via URL parameters, template engines, performs redirections to different views (routing), and handles the generation and management of assets (like CSS, JavaScript, libraries etc) for view layout files. This also involves the ability of your program to do DOM manipulation (create, display, modify, delete HTML elements) and traverse through these DOM elements on the fly.
--The JavaScript programming language 
- really shines in this domain. 
+-The JavaScript programming language really shines in this domain.
 
 The DOM is an abbreviation for Document Object Model. It refers to the concept that JavaScript sees everything on an HTML document as an object. These objects are known as elements and like any object in programming, they have properties. A property is basically a part of what makes an object, for example, a door is a property of a car, just like its engine, or a tyre. A person or user object will have the following properties: username, name, age, address, etc 
   So JavaScript regards a web page as an object (the document object), and all the elements on this document object are also objects themselves having their own properties. For example; a web document has a form element, an unordered list or ordered list, a div element etc. The div element (object) has properties like style, class, id etc. 
