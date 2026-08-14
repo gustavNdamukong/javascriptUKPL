@@ -1501,7 +1501,7 @@ The following is a small example of how you can use JavaScript to listen for a u
 In this example, we tell JavaScript:
 "When the user clicks on the button, run this function that shows a message."
 This shows the basic idea of event handling — listening for an action, and responding to it by changing something on the page (or doing anything else you want).
-We'll dive much deeper into how events work, the different types of events, and powerful ways to control them in the dedicated Events chapter, Chapter 25.
+We'll dive much deeper into how events work, the different types of events, and powerful ways to control them in the dedicated Events chapter, Chapter 24.
 
 
 

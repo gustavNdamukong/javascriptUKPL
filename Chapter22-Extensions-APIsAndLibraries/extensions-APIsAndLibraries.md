@@ -36,6 +36,9 @@ CHAPTER 22 - Extensions (APIs & Libraries)
 -WebSockets
 	-Why Use WebSockets
 	-Why it works
+-Where networking actually lives
+	-Networking in the browser
+	-Networking in Node.js
 -Libraries
 	-notie
 
@@ -2029,7 +2032,7 @@ If you test this in your browser, you will find that it gets and returns all pho
 		whenever you wish to display a string that contains 
 		dynamic variable, and you want to make it clear to 
 		the JavaScript parser (interpreter) which of the elements 
-		in the string are variables. See chapter 24 (Templates), 
+		in the string are variables. See chapter 23 (Templates), 
 		where I talk in depth about String Literals & Template 
 		Strings. The variables must be wrapped in ${} like so: 
 
@@ -2111,6 +2114,61 @@ Think of it like opening a tunnel between your app and the server where they can
 
 
 
+Where networking actually lives
+———————————————————
+  We have now met every tool this chapter set out to cover — fetch(),
+XMLHttpRequest, Axios and WebSockets — so this is a good moment to step back
+and ask a question that is easy to get wrong: which of these is actually part
+of JavaScript?
+  The answer is none of them. JavaScript itself has no networking. The
+language has no way to open a socket, no way to send a packet, nothing that
+knows what HTTP is. What it has instead is the ability to use whatever
+networking the surrounding platform hands it — and that platform is either
+the browser or Node.js.
+  This matters more than it sounds, because it explains why the same language
+can feel so different in the two places.
+
+
+	Networking in the browser
+	——————————————
+  In the browser, every networking tool you have used in this chapter is
+supplied by the browser itself:
+
+    * fetch() — for making HTTP requests
+    * XMLHttpRequest — the older way of doing the same
+    * WebSocket — for a two-way connection that stays open
+    * <script src="..."> — loading an external script
+
+  Notice what is missing from that list. There is no way to open a raw TCP or
+UDP connection, no way to listen on a port, no way to act as a server. The
+browser deliberately does not give you those, because a web page is untrusted
+code running on somebody else's machine. Everything you are allowed to do
+goes through the browser, and the browser applies its rules — which is exactly
+why CORS kept turning up earlier in this chapter.
+
+
+	Networking in Node.js
+	————————————
+  On a server, the restrictions fall away. Node.js gives JavaScript the same
+networking a language like Python or Go would have:
+
+    * open TCP and UDP sockets
+    * run HTTP and HTTPS servers, not just make requests to them
+    * call other servers' APIs
+    * use modules such as http, net, dns and ws for full control
+
+  This is why the SOAP examples earlier had to be routed through a Node.js
+server, and why the WebSocket server in Chapter 18 was a Node.js program
+rather than a browser one. In Node.js, JavaScript can act as a full
+networking language.
+  So the honest summary is this: JavaScript is not a networking language, and
+it is also not not one. It borrows the networking of wherever it is running.
+In the browser you get a careful, guarded subset, and everything in this
+chapter has been about using that subset well.
+
+
+
+
 LIBRARIES
 ———————-
 -Notie, is an easy to use notification library
@@ -2129,8 +2187,8 @@ LIBRARIES
   {
       notie.alert({
         type: msgType,
-        text: msg,
-     )}
+        text: msg
+      });
   }
 
  -Finally; wherever you wish to use it in your 

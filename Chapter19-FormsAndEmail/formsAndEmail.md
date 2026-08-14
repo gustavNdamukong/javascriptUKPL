@@ -202,7 +202,7 @@ You do this for as many fields on your form as you wish to retrieve values for.
     		}
 	}
 
-Notice how we have used the get() method of the FormData object to retrieve the values submitted by the user of our form. The event listened for was a ‘submit’ event, which is the first argument passed to the addEventListener() method of the HTMLElement object, which is the method used in listening for events. The second argument to addEventListener() is your desired action (the thing you want done) in response to that event occurring. This is usually a named function in your code which will automatically be run, or a closure (anonymous function) which is run in the same way. See Chapter 25 (Events Handling) to learn more about how events work in JavaScript. 
+Notice how we have used the get() method of the FormData object to retrieve the values submitted by the user of our form. The event listened for was a ‘submit’ event, which is the first argument passed to the addEventListener() method of the HTMLElement object, which is the method used in listening for events. The second argument to addEventListener() is your desired action (the thing you want done) in response to that event occurring. This is usually a named function in your code which will automatically be run, or a closure (anonymous function) which is run in the same way. See Chapter 24 (Events Handling) to learn more about how events work in JavaScript. 
   Notice also that inside myFunction, we invoke the FormData() object, passing it a reference (selection) of our form-which was selected by its id like so: document.getElementById("myForm") before adding the submit event listener to it.
 
 document.getElementById("myForm")

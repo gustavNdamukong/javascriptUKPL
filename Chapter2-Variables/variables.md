@@ -1,4 +1,8 @@
 
+//————————————————————//
+	CHAPTER 2 - VARIABLES
+//————————————————————//
+
 -Variable creation and naming rules
 -Initialising a variable
     -Assigning values to variables

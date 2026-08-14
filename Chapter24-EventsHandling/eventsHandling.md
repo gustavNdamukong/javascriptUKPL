@@ -1,6 +1,6 @@
 
 //————————————————————//
-	CHAPTER 25 - Event Handling
+	CHAPTER 24 - Event Handling
 //————————————————————//
 
     	-Event listeners

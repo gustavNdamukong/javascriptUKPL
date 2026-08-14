@@ -38,10 +38,9 @@ Chapter 19 - Forms and Email
 Chapter 20 - Images
 Chapter 21 - Error Debugging and Testing
 Chapter 22 - Extensions (APIs & Libraries)
-Chapter 23 - Networking
-Chapter 24 - Templates
-Chapter 25 - Event Handling
-Chapter 26 - Asset Management
+Chapter 23 - Templating
+Chapter 24 - Events Handling
+Chapter 25 - Asset Management
 
 What next
 
@@ -670,23 +669,22 @@ Chapter 22 - Extensions (APIs & Libraries)
       -c) Async/Await
       -Using Axios (External Library)
     -WebSockets
-    -Why Use WebSockets
-    -Why it works
+      -Why Use WebSockets
+      -Why it works
+    -Where networking actually lives
+      -Networking in the browser
+      -Networking in Node.js
     -Libraries
-    -notie
+      -notie
 
-Chapter 23 - Networking
-    -Networking in the browser
-    -Networking in Node.js
-
-Chapter 24 - Templates
+Chapter 23 - Templating
     -Introduction to Templates
     -String Literals & Template Strings
     -JavaScript Templating Engines
     -Popular Modern Approaches
     -Implementing Handlebars.js with Mustache
 
-Chapter 25 - Event Handling
+Chapter 24 - Events Handling
     -Event listeners
     -Inline event listener attribute 
     -The addEventListener() method
@@ -708,7 +706,7 @@ Chapter 25 - Event Handling
     -Custom events
     -Conclusion
 
-Chapter 26 - Asset Management
+Chapter 25 - Asset Management
     -When and why assets management is needed
     -Why you do not need it for vanilla JavaScript
 
