@@ -33,12 +33,12 @@
 
 
   The managing of files is a very important part of every software application. This topic will demonstrate how your programming language is able to manage files (create, view, modify, delete, and transmit them through local/remote networks).
-  When we talk about file management, we're usually referring to the ability to read, write, or manipulate files-things like text documents, images, or data files-either on a local machine or in a web application.
-In a separate chapter on images, we will talk about how JavaScript can interact with images in the browser, but in this chapter, we will talk about what JavaScript can do with text files or data files. Just keep in mind that the techniques you will learn here will be very similar to the ones you will use when handling images as you will see. JavaScript does not have full access to the file system of your computer. Its access is read-only. This is for security reasons. It can also access files (read-only) on your local machine only in two ways; either via a file upload input field: 
+  When we talk about file management, we're usually referring to the ability to read, write, or manipulate files—things like text documents, images, or data files—either on a local machine or in a web application.
+In Chapter 20 (Images) we will talk about how JavaScript can interact with images in the browser, but in this chapter, we will talk about what JavaScript can do with text files or data files. Just keep in mind that the techniques you will learn here will be very similar to the ones you will use when handling images as you will see. JavaScript does not have full access to the file system of your computer. Its access is read-only. This is for security reasons. It can also access files (read-only) on your local machine only in two ways; either via a file upload input field: 
 
-	<input type=“file”>
+	<input type="file">
 
-or by using a a drag and drop feature. Nonetheless, JavaScript can still do quite a lot when it comes to file handling as we will see. Just to give you a hint; being given only read access to a file does not mean those contents cannot be read and used on a web page, or used in another generated file for download. This is the approach we will be using when handling both files and images, as you will see. Here are some of the things you can do with files in JavaScript:
+or by using a drag and drop feature. Nonetheless, JavaScript can still do quite a lot when it comes to file handling as we will see. Just to give you a hint; being given only read access to a file does not mean those contents cannot be read and used on a web page, or used in another generated file for download. This is the approach we will be using when handling both files and images, as you will see. Here are some of the things you can do with files in JavaScript:
 
     * Read local files that users upload via an <input type="file"> element or by dragging and dropping them into the browser window.
     * Preview file contents, such as displaying an image or reading the text content of a file.
@@ -64,21 +64,23 @@ The File Reader API
 
   The tool which JavaScript uses to manage files is the File Reader API. This API which comes built into JavaScript, allows web applications to read the contents of files selected by users via a file type input field, or drag-and-drop. However, it does not provide full filesystem access due to security restrictions. It is fully supported by all modern browsers. Let’s start by talking about the shortcomings of the API. The File Reader API has a few limitations. Here is a list of them:
 
-    * The API cannot arbitrarily read or write files on the user’s filesystem, at least not without user interaction (again, eg via clicking to upload a file or drag-and-drop. This means it only works with files that the user has explicitly selected to upload via a file input field, or using drag-and-drop. Outside of these two ways, it has no access to files on a local machine.
+    * The API cannot arbitrarily read or write files on the user’s filesystem, at least not without user interaction (again, eg via clicking to upload a file, or drag-and-drop). This means it only works with files that the user has explicitly selected to upload via a file input field, or using drag-and-drop. Outside of these two ways, it has no access to files on a local machine.
     * The API only has read-only access to these files. This means it is not able to modify or delete the files from disk.
     * It doesn't support file streaming or heavy-duty file I/O the way server-side languages like Node.js, Python, or PHP can do.
     * It is not meant for very large files. Reading very large files may cause performance issues. 
 
-For more capabilities with files, there is also a newer File System Access API which allows more advanced file operations (read/write). However, it needs the computer owner’s permission, which will make the process very manual, and it also has very limited support (not cross-browser yet). It is currently experimental in Chrome, and also only supported in Edge and Opera, but not in Firefox and Safari.
+For more capabilities with files, there is also a newer File System Access API which allows more advanced file operations (read/write). However, it needs the computer owner’s permission each time, which makes the process very manual, and its support is still uneven. It works in the Chromium browsers — Chrome, Edge and Opera — while Firefox does not support it at all and Safari supports only part of it. That is enough of a gap to keep it out of anything you want working everywhere.
 
 
 Use-cases for the File Reader API
 ———————————————————
 Despite its limitations, the API is still very powerful. It is supported by all browsers, and is thus very reliable. Here is a list of the awesome things you can do with the API.
-    - [ ] It works well when used  to upload and preview files before saving it for later use, or uploading it to a server.
-    - [ ] Convert images and media files into base64 format.
-    - [ ] Read binary data or raw bytes using ArrayBuffers.
-    - [ ] You can use it to process CSV, text, JSON, XML files etc in the browser.   The steps to edit a file are as follows. After uploading a file and capturing the uploaded file using the File Reader API, to edit it, you create a textarea input field dynamically, next, you place the content (eg text) of the file inside of this textarea, then append the textarea to the DOM. In all of this, you are not able to save any changes you have made to the original file-as that will mean overriding the original file in its location in your computer’s filesystem-which, as we know, JavaScript is unable to do. To workaround this restriction on file modification so that you can save the changes resulting from you processing of a file in the browser, you should make your changes downloadable, as a file. This way the user can download it to their local machine. To do this in JavaScript, after reading the file with the File Reader API’s readAsText() method for example, you would use the URL object’s createObjectURL() method (URL.createObjectURL()) to create a link to the processed file, and make that link a download trigger for the file to be saved to the downloads directory of the user’s machine. Note that if you were working with the canvas API, after reading the image file with the API’s readAsDataURL(), you would convert it into a download link using the toDataURL() method of the canvas object (canvas.toDataURL()). I will show all of this in action using some demo examples. By creating this downloadable version of the edited file, the original file stays unmodified. The only way JavaScript would have been able to modify the original file by saving changes to it is if you used the new File System Access API, which allows updating a file in its original file location. Using the File System Access API is not recommended since it requires user permission and is currently only supported in Chromium browsers.  
+    * It works well when used to upload and preview files before saving them for later use, or uploading them to a server.
+    * Convert images and media files into base64 format.
+    * Read binary data or raw bytes using ArrayBuffers.
+    * You can use it to process CSV, text, JSON, XML files etc in the browser.
+
+  The steps to edit a file are as follows. After uploading a file and capturing the uploaded file using the File Reader API, to edit it, you create a textarea input field dynamically, next, you place the content (eg text) of the file inside of this textarea, then append the textarea to the DOM. In all of this, you are not able to save any changes you have made to the original file-as that will mean overriding the original file in its location in your computer’s filesystem-which, as we know, JavaScript is unable to do. To workaround this restriction on file modification so that you can save the changes resulting from you processing of a file in the browser, you should make your changes downloadable, as a file. This way the user can download it to their local machine. To do this in JavaScript, after reading the file with the File Reader API’s readAsText() method for example, you would use the URL object’s createObjectURL() method (URL.createObjectURL()) to create a link to the processed file, and make that link a download trigger for the file to be saved to the downloads directory of the user’s machine. Note that if you were working with the canvas API, after reading the image file with the API’s readAsDataURL(), you would convert it into a download link using the toDataURL() method of the canvas object (canvas.toDataURL()). I will show all of this in action using some demo examples. By creating this downloadable version of the edited file, the original file stays unmodified. The only way JavaScript would have been able to modify the original file by saving changes to it is if you used the new File System Access API, which allows updating a file in its original file location. Using the File System Access API is not recommended since it requires user permission and is currently only supported in Chromium browsers.  
 
 Key methods
 ———————
@@ -87,7 +89,7 @@ The following are the methods the File Reader API provides to read files with. T
     * readAsText(). This will read the contents of a file as plain text.
     * readAsDataURL() will read the contents of a file as a Base64-encoded string. This is very useful for images. We will see this in action when dealing with images.
     * readAsArrayBuffer() will read the contents of a file as binary data
-    * readAsBinaryString() is a legacy method which is not widely supported, and thus, not recommended. 
+    * readAsBinaryString() is a legacy method. Browsers still support it, but it is deprecated and you should not reach for it in new code — use readAsArrayBuffer() instead. 
 
 I think it’s time to jump into some examples. Don’t you just love examples? 
 The following examples are carefully chosen to give you enough information on various file handling operations, that you will gain the confidence to do much more with files with JavaScript. We will implement them all in one HTML page, so first, let’s style the page and define the HTML elements:
@@ -97,6 +99,7 @@ The HTML (eg index.html)
 ——————————————
 
 	<!DOCTYPE html>
+	<html>
     	<head>
         	<title>The JavaScript Blueprint</title>
         	<link rel="stylesheet" href="index.css">
@@ -241,12 +244,12 @@ Next, place the following code in your JavaScript file eg index.js which should 
 
 		fileInput.addEventListener('change', function () {
 			// any code in this block will run when a file is uploaded
-		}
+		});
 
 	-Once that upload event fires (occurs), we capture the uploaded file 
 		from the .files property of the input field element object. 
 		Remember that this is the standard way to retrieve uploaded 
-		files. Refer back to the topic on forms where it is explained in 
+		files. Refer back to Chapter 19 (Forms and Email), explained there in 
 		depth.
 
 	-Optionally, we apply some validation to ensure that the file uploaded 
@@ -254,7 +257,7 @@ Next, place the following code in your JavaScript file eg index.js which should 
 		message telling the user that only a text file is accepted.
 
 			if (file && file.type === 'text/plain') {
-				…
+				// ...
 			}
 
 	-The FileReader object is used to read the file as plain text with 
@@ -266,20 +269,20 @@ Next, place the following code in your JavaScript file eg index.js which should 
       				output.textContent = e.target.result;
     			};
 
-		Note that the code within this block is only ran when the file read 
+		Note that the code within this block is only run when the file read 
 		has been completed. It is therefore very necessary to wrap that 
 		code within that event (onload()) block, so that being an 
 		asynchronous call, it only runs when the file is successfully read. 
 		Once it is read, the code within that block processes the 
-		contents of the file. In this case, we extract the file’s contents-
-		which is store in e.target.result, and assign it to the value of the 
+		contents of the file. In this case, we extract the file’s contents—
+		which is stored in e.target.result, and assign it to the value of the 
 		<pre> tag in the DOM. 
 	
 	-When reading is complete, the file content is displayed inside a 
 		<pre> block using textContent.
 
 	-This is a good demonstration of how to load and show file 
-		content without uploading to a server-all done in the browser.
+		content without uploading to a server—all done in the browser.
 
 
 
@@ -287,10 +290,10 @@ Next, place the following code in your JavaScript file eg index.js which should 
 
 Drag and drop a file, modify and download it
 ————————————————————————
-  This demo lets a user drag a text file, then the contents of the file will be read, modified by appending a line of text to it, and bundled into a downloadable separate file which can then be downloaded by the user. To download the modified (new) file, the user has to click on the ‘Download Modified File’ button and the file will be downloaded to their machine.  The uploaded file has to be a text file, otherwise it will not work, as we have a check (validation) in place making sure it only does what it is meant to do if the dragged-and-dropped file is of type ‘text/plain’ (a text file). The validation looks like this:
+  This demo lets a user drag a text file, then the contents of the file will be read, modified by appending a line of text to it, and bundled into a downloadable separate file which can then be downloaded by the user. To download the modified (new) file, the user has to click on the ‘Download Modified File’ button and the file will be downloaded to their machine. The uploaded file has to be a text file, otherwise it will not work, as we have a check (validation) in place making sure it only does what it is meant to do if the dragged-and-dropped file is of type ‘text/plain’ (a text file). The validation looks like this:
 
 	if (file && file.type === 'text/plain') {
-		…
+		// ...
 	}
 
 As seen in the example HTML code above, here is the section element that holds the HTML code for this exercise:
@@ -330,7 +333,7 @@ Here is the full JavaScript code:
   		if (file && file.type === 'text/plain') {
     			const reader = new FileReader();
     				reader.onload = function (e) {
-      					modifiedText = e.target.result + '\n\n--- File Modified! 							---';
+      					modifiedText = e.target.result + '\n\n--- File Modified! ---';
       					modifiedContent.textContent = modifiedText;
       					downloadBtn.style.display = 'inline-block';
     				};
@@ -367,26 +370,26 @@ Here is the full JavaScript code:
 		content read from the file, while the ‘downloadBtn’ is the button 
 		the user clicks to download the contents of the file.
 	-Next, we go ahead and set a couple of event listeners on the 
-		'dropZone’ div to handle the drag and drop, and this will teach 
+		‘dropZone’ div to handle the drag and drop, and this will teach 
 		you how dragging and dropping works in JavaScript. For it to 
 		work, we need exactly three event listeners, and they are:
 
-            * 'dragover'
-            *  ‘dragleave’
+            * ‘dragover’
+            * ‘dragleave’
             * ‘drop’
 
 	   This is how we add the event listeners:
 
 		dropZone.addEventListener('dragover', (e) => {
-  			…
+  			// ...
 		});
 
 		dropZone.addEventListener('dragleave', () => {
-  			…
+  			// ...
 		});
 
 		dropZone.addEventListener('drop', (e) => {
-			…
+			// ...
 		});
 
 		I will now explain what we do in the event blocks, which each
@@ -418,7 +421,7 @@ Here is the full JavaScript code:
 		dragged-and-dropped file instead of a file input.
 		
 		When a file is dragged into the #dropZone area, we use 
-		JavaScript to prevent the default browser behavior and read the 
+		JavaScript to prevent the default browser behaviour and read the 
 		file. Next, we revert the border colour of the dropZone from 
 		green to what it was before.
 	-Next, we get the file, but notice carefully an important difference 
@@ -444,7 +447,7 @@ Here is the full JavaScript code:
 		onload event on the reader when it is done
 
 			reader.onload = function (e) {
-				…
+				// ...
 			}
 
 		Once this onload event fires, we know the file has been read, so 
@@ -460,7 +463,7 @@ Here is the full JavaScript code:
 		event listener on that button to trigger the download. 
 
 			downloadBtn.addEventListener('click', () => {
-				…
+				// ...
 			}
 
 		Once the download button is clicked, the code in the function 
@@ -875,14 +878,14 @@ We start by creating a WebSocket connection to the server running at localhost (
 Next, we wait until the WebSocket connection is fully open—like waiting for a phone call to connect before talking.
 
 	socket.addEventListener("open", () => {
-		…
+		// ...
 	});
 
 We listen for when the user selects a file (like a video) using a file input (<input type="file" id="videoUploader">). When they do, the code inside this function runs.
 
 	document.getElementById("videoUploader")
 	.addEventListener("change", (e) => {
-		…
+		// ...
 	});
 
 We get the first file they selected, and store it in a variable called file.
@@ -904,13 +907,13 @@ We grab the FileReader-the specialised tool for reading files in our browser.
 Next, we set up what happens every time the FileReader finishes reading a chunk. When it’s done, the code inside here runs.
 
 	reader.onload = function(event) {
-		…
+		// ...
 	}
 
 We make sure the WebSocket connection is still open before trying to send data.
 
 	if (socket.readyState === WebSocket.OPEN) {
-		…
+		// ...
 	}
 
 We send the chunk of binary data (from the file) over the WebSocket to the server.
@@ -1480,7 +1483,7 @@ As you can see, it uses the FileReader in combination with the DOMParser. The wo
 
 		document.getElementById('xmlFileInput')
   		.addEventListener('change', (e) => {
-			…
+			// ...
 
 	This line listens for when the user chooses a file from an <input 	
 	type="file" id="xmlFileInput">. When that happens, the code inside 
