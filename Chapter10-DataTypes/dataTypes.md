@@ -581,9 +581,9 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
   variable as an int, and if you later re-
   assign num to a string eg:
 
-      num = ‘Welcome’;
+      num = 'Welcome';
 
-  It internally converts the data type of $a to
+  It internally converts the data type of num to
   a string. This behaviour of second-
   guessing (implying) the datatype you 
   desire and automatically converting 
@@ -899,9 +899,9 @@ Output: [ 'name', 'age' ] — no sign of the Symbol key
 	
 Output: This is a hidden value
 
-Let me explain of the above example. Symbol('secret') in JavaScript is how you create a unique identifier. Each time you if you call Symbol('secret’), the value it returns will be different. So:
+Let me explain the above example. Symbol('secret') in JavaScript is how you create a unique identifier. Each time you call Symbol('secret'), the value it returns will be different. So:
 
-	-we use Symbol(‘) to create a unique value which we want to use as 
+	-we use Symbol('secret') to create a unique value which we want to use as 
 	   the value of a property which we want to create on our object 
 	   called secretKey.
 	-The great thing is; when you run Object.keys(user), the symbol-

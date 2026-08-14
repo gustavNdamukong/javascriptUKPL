@@ -32,7 +32,7 @@ CHAPTER 19 - Forms & Email
 	value="JohnDoe">
 
     <input type="email" 
-	id=“email”
+	id="email"
 	name="email" 
 	value="john@example.com">
 
@@ -53,7 +53,7 @@ let username =
 	document.getElementById("username").value;
 
 let email = 	
-	document.getElementById(“email”).value;
+	document.getElementById("email").value;
 
   This works, but it is not flexible because it requires you to manually select each field and get its value. It could be tedious and hard to maintain for large forms with many fields, especially if some of those form fields may be dynamically added.
   If you have a file field to process, for example:
@@ -66,14 +66,14 @@ You would select the field as normal, like so:
 	let file = fileInput.files[0]; 
 
 Note very carefully that even though you select the field and it is stored in the variable fileInput, you still need to access the .files property of that element to get the uploaded file. The .files property will give you a File object of the uploaded file.
-  Do not make the common mistake use a .value property which is means to be used to retrieve values of other input fields, because this will just give you the file path string-which is usually fake for privacy reasons.
-  Here is a bonus tip for you; the .file.length property eg:
+  Do not make the common mistake of using the .value property, which is meant for retrieving the values of other input fields. On a file field it just gives you a path string—and browsers deliberately fake that path, for privacy reasons.
+  Here is a bonus tip for you; the .files.length property eg:
 
 	fileInput.files.length 
 
 will tell you how many files were selected.
 
-If your file field supports multiple uploads-meaning it has the ‘multiple’ attribute eg:
+If your file field supports multiple uploads—meaning it has the ‘multiple’ attribute eg:
 
 	<input type="file" id="myFiles" name="myFiles" multiple />
 
@@ -81,14 +81,14 @@ You will retrieve the values via the .files property of the field all the same:
 
 	let files = document.getElementById("myFiles").files; 
 
-The only difference is that what you get back will be a FileList object instead of the (single) File object you would have gotten if only one file was uploaded.
+It is worth being precise about what comes back, because this catches people out: .files ALWAYS gives you a FileList, whether the field allows one file or many. A FileList is a list even when it holds a single item. What changes with the multiple attribute is only how many items can be in it. The File object itself is what you get when you reach into that list — files[0].
 	
 
 
 
 -ii) Using the elements property of HTMLFormElement 
 —————————————
-  JavaScript also provides an elements property to be used for event handling when working with forms. It's a property of the HTMLFormElement interface that allows you to easily access every single form control (input, select, textarea fields, etc.) inside a <form> element. Therefore note that the e.target.elements property is only available to be referenced on <form> elements. That is because the ‘elements’ property belongs to the HTMLFormElement object and not the HTMLElement object. The HTMLFormElement is the parent object of the form element. Uniquely, access to fields is obtained by using the name attributes of form elements (like so: form.elements.name), and not the id, class attributes or tag names like the selector properties of the HTMLElement object. 
+  JavaScript also provides an elements property to be used for event handling when working with forms. It's a property of the HTMLFormElement interface that allows you to easily access every single form control (input, select, textarea fields, etc.) inside a <form> element. Therefore note that the e.target.elements property is only available to be referenced on <form> elements. That is because the ‘elements’ property belongs to the HTMLFormElement object and not the HTMLElement object. HTMLFormElement is the interface a <form> element is an instance of, which is why the property lives there and not on HTMLElement. Uniquely, access to fields is obtained by using the name attributes of form elements (like so: form.elements.name), and not the id, class attributes or tag names like the selector properties of the HTMLElement object. 
 
 When an event (like submit) is triggered on a form, e.target refers to the <form> element. The .elements property on that form gives you a collection of all input fields inside it.
 
@@ -156,14 +156,14 @@ Using the FormData object
 
 	myForm = new FormData(form);
 
-Here is an example of how you would use it to retrieve the values of our myForm example above. We will first of all set an event listener on the form, to detect a submit event. This way, once the form is submitted, our custom function will be called to process the form submission. Pay careful attention to see how we get the values of the form fields submitted, first, we create a FormData object instance by passing to its (FormData object) constructor the object that triggered the ’submit’ event-which is our form. Here is where the object instance is created:
+Here is an example of how you would use it to retrieve the values of our myForm example above. We will first of all set an event listener on the form, to detect a submit event. This way, once the form is submitted, our custom function will be called to process the form submission. Pay careful attention to see how we get the values of the form fields submitted, first, we create a FormData object instance by passing to its (FormData object) constructor the object that triggered the ‘submit’ event-which is our form. Here is where the object instance is created:
 
 	let formData = new FormData(e.target);
 
 The e.target is our form, because it is the element on which the submit event was triggered. To then retrieve values from any of the form fields, it’s easy-we call the get() method of the form object, passing it the name attribute of our form field as a string. Here is the syntax:
 
-	let myField1 = formData.get(“myField1Name”);
-	let myField2 = formData.get(“myField2Name”);
+	let myField1 = formData.get("myField1Name");
+	let myField2 = formData.get("myField2Name");
 
 You do this for as many fields on your form as you wish to retrieve values for. 
 	
@@ -202,7 +202,7 @@ You do this for as many fields on your form as you wish to retrieve values for.
     		}
 	}
 
-Notice how we have used the get() method of the FormData object to retrieve the values submitted by the user of our form. The event listened for was a ‘submit’ event, which is the first argument passed to the addEventListener() method of the HTMLElement object, which is the method used in listening for events. The second method of addEventListener() is your desired action (thing you want to be done) in response to that event occurring. This is usually a custom, an in-built function in your code which will automatically be ran, or a closure (anonymous function) which is automatically ran. See the Events section to learn more about how events work in JavaScript.  
+Notice how we have used the get() method of the FormData object to retrieve the values submitted by the user of our form. The event listened for was a ‘submit’ event, which is the first argument passed to the addEventListener() method of the HTMLElement object, which is the method used in listening for events. The second argument to addEventListener() is your desired action (the thing you want done) in response to that event occurring. This is usually a named function in your code which will automatically be run, or a closure (anonymous function) which is run in the same way. See Chapter 25 (Events Handling) to learn more about how events work in JavaScript. 
   Notice also that inside myFunction, we invoke the FormData() object, passing it a reference (selection) of our form-which was selected by its id like so: document.getElementById("myForm") before adding the submit event listener to it.
 
 document.getElementById("myForm")
@@ -213,7 +213,7 @@ The reference passed to FormData() is written as e.target which always refers to
 
 	-iv)The FormData object and files
 	————————————————-
-  The FormData object handles file inputs too. It is built for working with all kinds of form fields-including file fields, and it treats them intelligently. Notice in our example above, we have a file field with the name attribute of “myFile”. We retrieve its value after the form submission like so:
+  The FormData object handles file inputs too. It is built for working with all kinds of form fields—including file fields, and it treats them intelligently. Notice in our example above, we have a file field with the name attribute of “myFile”. We retrieve its value after the form submission like so:
 
 	let file = formData.get("myFile");
 
@@ -226,7 +226,7 @@ The reference passed to FormData() is written as e.target which always refers to
       		console.log("No file selected.");
     	}
 
-This File object is not just a string or file name-it is a real JavaScript object that include the following properties:
+This File object is not just a string or file name—it is a real JavaScript object that includes the following properties:
 
 * file.name - the file name
 * file.size - file size in bytes
@@ -236,8 +236,8 @@ This File object is not just a string or file name-it is a real JavaScript objec
 Let me explain how to pass a retrieved uploaded file to the File Reader API. The trick lies in these lines of code, as above:
 
 	let file = formData.get("myFile");
-	…
-	…
+	// ...
+	// ...
 
       	const reader = new FileReader();
 	reader.onload = function (event) {
@@ -251,7 +251,7 @@ The code on this line:
 
 	reader.onload …
 
-Is run asynchronously. This means that it will not be ran immediately, and in fact, it will be triggered by this line after it:
+Is run asynchronously. This means that it will not be run immediately, and in fact, it will be triggered by this line after it:
 
 	reader.readAsText(file); 
 
@@ -259,7 +259,7 @@ I know it may at first seem confusing to see that the line after (below) the rea
 	
 	reader.readAsText(file);
 
-Basically; we call the readAsText() method on the File Reader API passing it the reference to the uploaded file-which was retrieved and stored in the file variable. The readAsText() method is what triggers the reading of the uploaded file. Because the reading of the file may take a while, we have to wrap the code to process that file in an unload event block like so:
+Basically; we call the readAsText() method on the File Reader API passing it the reference to the uploaded file—which was retrieved and stored in the file variable. The readAsText() method is what triggers the reading of the uploaded file. Because the reading of the file may take a while, we have to wrap the code to process that file in an onload event block like so:
 
 	reader.onload = function (event) {
         	console.log("File content:", event.target.result);
@@ -271,7 +271,7 @@ Bear in mind that readAsText() does what it says, it is meant for reading and re
 In summary, 
 	-the formData.get("fieldName") syntax works for text inputs, 
 		checkboxes, selects, and file inputs.
-	-For file fields, the returned value is a File object-not a string.
+	-For file fields, the returned value is a File object—not a string.
 		You can read from the file using FileReader, or send it via fetch() or 
 		AJAX without any extra steps.
 
@@ -288,22 +288,22 @@ If you have several checkboxes like this:
 	<input type="checkbox" name="fruits" value="apple" />
 	<input type="checkbox" name="fruits" value="banana" />
 
-formData.get("fruits") will return only the first checked value. To get all selected values, use its getall() method:
+formData.get("fruits") will return only the first checked value. To get all selected values, use its getAll() method — note the capital A, because JavaScript is case-sensitive and getall() does not exist:
 
 	formData.getAll("fruits"); // will return ['apple', 'banana']
 
 
 Multiple File Uploads
 ———————————
-If your form’s file field allows multiple files-meaning its file field has the multiple attribute; formData.get("photos") will get just the first selected file. Here is an example of a file field that accepts multiple file uploads. Notice it spots the ‘multiple’ attribute.
+If your form’s file field allows multiple files—meaning its file field has the multiple attribute; formData.get("photos") will get just the first selected file. Here is an example of a file field that accepts multiple file uploads. Notice it has the ‘multiple’ attribute.
 
 	<input type="file" name="photos" multiple />
 
-To get all the files; use its getall() method like so:
+To get all the files, use its getAll() method like so:
 
 	formData.getAll("photos"); // will return [File, File, File…]
 
-Using getall() will return for you a FileList object, instead of the single File object that you get what you use the get() method.
+Using getAll() gives you an ordinary ARRAY of File objects, rather than the single File object that get() returns. That is worth remembering, because an array means you can go straight to .map(), .filter() and the rest without converting anything first.
 
 
 
@@ -458,17 +458,17 @@ If you're just learning vanilla JavaScript, EmailJS is a great beginner-friendly
 
 	App Passwords
 	———————————
-  I said above, that If you are using Gmail, you may need to generate an App Password and enable 'Less secure apps' (or use OAuth2 for production). To understand what I mean by 'generate an App Password’,  let’s break it down. 
+  You will have noticed the comment in the Nodemailer code above saying to use an App Password if 2FA is on. Let us break down what that means, because it is no longer optional for most people. 
   An App Password is a special password you generate from your Google Account that allows a specific app (like your Node.js script using Nodemailer) to access your Gmail account without using your main Google password.
 This is especially useful — and often required — when:
 
     * Your Google account has 2-Step Verification (2FA) turned on (which is highly recommended).
     * You want to connect a less secure app or script (like a Node.js app) to Gmail safely.
 
-Google no longer supports "Less Secure Apps" for most accounts. Instead, App Passwords are the secure alternative. 
+You may still find older tutorials telling you to switch on a setting called "Less Secure Apps". Do not go looking for it — Google withdrew it for most accounts, and App Passwords are the replacement. 
 Here is a step-by-step guide on how to generate an App Password for Gmail. First of all, you must have 2-Step Verification enabled on your Google account before generating App Passwords.
 
-	a) Go to your Google Account settings-here:
+	a) Go to your Google Account settings—here:
 
 		Visit: https://myaccount.google.com
 
@@ -508,4 +508,4 @@ You can now send emails securely from your Node.js app without giving out your r
 
 	Why use an App Password
 	———————————————
-  A huge reason is security. Your real password stays private. It’s safe to use-you can revoke or delete the App Password at any time. Compatibility is also a good factor. App Password works with apps that can’t handle Google’s full sign-in flow (like scripts, terminal apps, etc.).
+  A huge reason is security. Your real password stays private. It’s safe to use—you can revoke or delete the App Password at any time. Compatibility is also a good factor. App Password works with apps that can’t handle Google’s full sign-in flow (like scripts, terminal apps, etc.).
