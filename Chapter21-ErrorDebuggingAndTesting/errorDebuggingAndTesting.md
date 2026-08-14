@@ -60,9 +60,9 @@ We will be using them a lot in the code examples in this book to show the result
 	To write text on screen, use the write() method on the document 
 	object:
 
-		document.write(“String to write here”);
+		document.write("String to write here");
 
-	❌ However, using document.write() to write text to a web 
+	However, using document.write() to write text to a web 
 	document is considered bad practice in modern JavaScript. This is 
 	because there is a good risk that document.write() can overwrite 
 	(erase) the entire page if it's called after the page has finished 
@@ -70,11 +70,11 @@ We will be using them a lot in the code examples in this book to show the result
 	What is recommended is the innerHTML property of HTML elements. 
 	For example, instead of doing:
 
-		document.document.write(“My data here”);
+		document.write("My data here");
 
 	It is better to append the content like this:
 
- 		document.body.innerHTML +=  “My data here”.
+ 		document.body.innerHTML += "My data here";
 
 	Take note of the += that is used instead of just =. This ensures that if 
 	you are looping for example, and wish to display several values on 
@@ -88,7 +88,7 @@ We will be using them a lot in the code examples in this book to show the result
 	web page, you can use the very popular innerHTML property of 
 	document elements:
 
-	selectedElement.innerHTML = “String to display in that element”;
+	selectedElement.innerHTML = "String to display in that element";
 
 	As explained above, it is recommended over using document.write(). 
 	Using document.body.innerHTML lets you safely update the page 
@@ -114,21 +114,21 @@ We will be using them a lot in the code examples in this book to show the result
 	and have them click OK to dismiss the popup, use the alert() 
 	function:
 
-		alert(“String to display here”);
+		alert("String to display here");
 
 -iv) confirm()
 	To display a popup that will require a user to confirm an action by 
-	clicking on 'Confirm’ in order to proceed, or abort the action by 
-	clicking on Cancel’, to use the confirm() function. Ideally, you will 
+	clicking on 'Confirm' in order to proceed, or abort the action by 
+	clicking on 'Cancel', use the confirm() function. Ideally, you will 
 	capture (store) the user's response by assigning confirm() to a 
-	variable. We will learn all about variables shortly. 
+	variable. 
 	The value of that variable will then contain true if they clicked on 
 	'Confirm', or false if they clicked on 'Cancel'. Your program will then 
 	check for the value (of this variable) in order to know how to proceed. 
 	  Create a confirm popup and store the user’s response to this in a 
 	variable called response like so:
 
-		var response = confirm("Are you sure?");
+		let response = confirm("Are you sure?");
 
 	Check for the value of response and act accordingly:
 	
@@ -147,19 +147,23 @@ We will be using them a lot in the code examples in this book to show the result
 	you can capture what the user enters by assigning the prompt to a 
 	variable like so:
 
-		var idNumber = prompt(“Write some text for the user like: What 
-			is your ID number”);
+		let idNumber = prompt(
+			"Write some text for the user like: What is your ID number"
+		);
 
-  	You can optionally pass a second parameter as a string which will be 
-	displayed to the user in the text field as a guide on what they need to 
-	enter and where e.g. prompt('Enter surname', 'Enter surname 
-	here');
+  	You can optionally pass a second parameter as a string, which fills 
+	the text field in with a starting value, e.g.
+
+		prompt('Enter surname', 'Enter surname here');
 
 	The text 'Enter surname' will be shown to the user above the data 
-	input field in the same way a label text is displayed beside the input 
-	field of an HTML form. Also, the text 'Enter surname here' is 
-	displayed in the first in the same way a placeholder attribute’s text is 
-	shown in the field of an HTML form.
+	input field, in the same way a label is displayed beside the input 
+	field of an HTML form. The second string, 'Enter surname here', is 
+	the DEFAULT VALUE of the field. Be careful not to think of it as a 
+	placeholder. A placeholder is grey hint text that vanishes the 
+	moment you type; a default is real text already sitting in the box, 
+	and if the user presses OK without touching it, that is exactly what 
+	you get back.
 
 -vi) The console object.
 	Another means to display information and much more, to yourself as 
@@ -407,7 +411,7 @@ Stopping code execution for debug
 
 Throwing and handling exceptions
 ————————————————————
-  In the real world, things go wrong all the time—and programming is no different. Files might not load, users might type unexpected things, and network requests may fail. Vanilla JavaScript (I.e., JavaScript without any external libraries) gives us a way to catch and handle errors using what is known as a try…catch statement. This involves the throwing and handling of exceptions using try, catch, finally. This mechanism allows you to manage runtime errors gracefully. This means that-and this is the whole essence of exceptions, when errors occur in your code, instead of your software stalling and breaking up, which will annoy or frustrate your users, you can ‘catch’ these errors, so that you can deal with the error in a better way. Dealing with the error in a better or graceful way could mean, informing other parts of your code that use that functionality (function or service), so that they can offer the user an alternative result, or it could mean informing the developer (you or your team) of the issue in the code, so it can be fixed as soon as possible. Instead of your whole program crashing when something goes wrong, try...catch lets you:
+  In the real world, things go wrong all the time—and programming is no different. Files might not load, users might type unexpected things, and network requests may fail. Vanilla JavaScript (i.e. JavaScript without any external libraries) gives us a way to catch and handle errors using what is known as a try…catch statement. This involves the throwing and handling of exceptions using try, catch, finally. This mechanism allows you to manage runtime errors gracefully. This means that-and this is the whole essence of exceptions, when errors occur in your code, instead of your software stalling and breaking up, which will annoy or frustrate your users, you can ‘catch’ these errors, so that you can deal with the error in a better way. Dealing with the error in a better or graceful way could mean, informing other parts of your code that use that functionality (function or service), so that they can offer the user an alternative result, or it could mean informing the developer (you or your team) of the issue in the code, so it can be fixed as soon as possible. Instead of your whole program crashing when something goes wrong, try...catch lets you:
 write some code to do something. If something goes wrong, catch the error, and handle it without breaking everything. Here is the syntax of try…catch:
 
 		try {
@@ -431,11 +435,11 @@ Here is how it works:
 		if (products) {
 			let item = products[0];
 		} else {
-			alert(“Sorry, that item is out of stock!”);
+			alert("Sorry, that item is out of stock!");
 		}
 
 This works well for simple checks to prevent standard errors in your code. Exceptions are more powerful because they go deeper than that. There are errors that you either just may not be able to anticipate, or sections in your program that are mission-critical, meaning, your program will just not be able to work when such errors occur. Such an error, can be someone trying to access your banking software, and submitting a bank account number that does not match the password or date of birth they are using. For such errors, you want to definitely capture them when they occur and halt the script execution, then show the user a meaningful message, rather than letting them through. Another type of mission-critical error may be your bank’s server is down, and rather than let the application just crash and blackout-which will confuse or even upset your customers/users, you will want to always check if the server is up and running before trying to access it. If it is then found to be down, you can inform the users in a friendly way to try again later, and then inform your technical department immediately to fix the issue. These are situations where exceptions in programming come in. They really get into the engineering of a software application, and you can see how different they are to simple conditional statements. Your take-home key point here should be that conditional statements are for anticipating standard programming errors, while exceptions are for anticipating mission-critical errors in your application.
-  All programming languages have exception handling built right into them, and they let your create your own custom exceptions as per the needs of your software application. Speaking of objects, if you are new to objects and classes, do not worry, you will come to understand all this when we get to Object-oriented programming (OOP) in chapter 17.   
+  All programming languages have exception handling built right into them, and they let you create your own custom exceptions as per the needs of your software application. Speaking of objects, if you are new to objects and classes, do not worry, you will come to understand all this when we get to Object-oriented programming (OOP) in Chapter 17.   
   The way it works is, when creating a service or function, in parts where potential errors may occur (eg a mission-critical error), you will check for this situation so that if your code encounters such an error,  it should use a throw statement to create an exception. Then, in other parts of your code that make use of that service or function that will potentially throw an exception, you will call such services or functions within a try…catch block. Basically, within the try block, you place code to access the service/function, then in the catch block, which is where any exception that would be thrown by that service/function will be captured (caught) and made available to you, you will deal with (handle) the exception. This means that your application will run smoothly without unexpectedly stalling and confusing your users. Any potential issues will be captured in the catch block, so that you can deal with them in a manner befitting of a well-thought-through, and user-friendly application. JavaScript uses two types of block constructs to capture and deal with (handle) the thrown exceptions-more on this shortly. Here is an example:
 
 		// create the service/function
@@ -445,18 +449,18 @@ This works well for simple checks to prevent standard errors in your code. Excep
 			if (account.user_id != user_id)
 			{
 				// throw an Error object (JavaScript in-built or custom)
-				throw new Error(“User ” +user_id+ “ trying to access 
-					account not theirs”);
+				throw new Error(
+					"User " + user_id + " trying to access account not theirs"
+				);
 
 				/*
 				OR 
-					// throw a string literal (object)
-					throw { code: 401, message: “Account not theirs”};
+					// throw an object literal
+					throw { code: 401, message: "Account not theirs" };
 
 				OR 
 					// throw a simple string error (less common)
-					throw “User ” +user_id+ “ trying to access account 
-						not theirs”;
+					throw "User " + user_id + " trying to access account not theirs";
 				*/
 			} 
 			else
@@ -474,25 +478,25 @@ This works well for simple checks to prevent standard errors in your code. Excep
 		catch (error) 
 		{
 			// handle the error - respond accordingly
-			console.error(“An error occurred: ”, error.message);
+			console.error("An error occurred: ", error.message);
 		} 
 		finally 
 		{
 			// Optional: runs regardless of success or failure
-			console.log(“The viewAccount() was called”);
+			console.log("The viewAccount() was called");
 		}
 
-If the viewAccount(…) function determines the user to be the right owner of the account, the user gets their account details shown to them, if not an Error exception is thrown. The API code 401 refers to an unauthorised access attempt, which is usually due to invalid user credentials to access a resource. We will learn more about API response codes when we come to learn about APIs in chapter 22 (Extensions). The Error exception is a JavaScript (in-built) exception. You pass to its constructor a string, which will be available to any code that catches this exception on its message property like so:
+If the viewAccount() function determines the user to be the right owner of the account, the user gets their account details shown to them, if not an Error exception is thrown. The API code 401 refers to an unauthorised access attempt, which is usually due to invalid user credentials to access a resource. We will learn more about API response codes when we come to learn about APIs in Chapter 22 (Extensions). The Error exception is a JavaScript (in-built) exception. You pass to its constructor a string, which will be available to any code that catches this exception on its message property like so:
 
 	error.message
 
  If no exception is thrown, then all is well, and the viewAccount() did not throw any exception. The code in the try {} block where this viewAccount() function is called will therefore work, while the code in the catch {} block will not be run. 
-  The finally {} block is optional, and you will rarely see it being used. But when it is used in code, the code in that block will always be ran regardless of if an exception was thrown by the service/function or not. Use it therefore in your code only when there is an action you want to take in no matter the outcome of calling the function or service. 
+  The finally {} block is optional, and you will rarely see it being used. But when it is used in code, the code in that block will always be run, regardless of whether an exception was thrown by the service or function. Use it therefore only when there is an action you want to take no matter the outcome of calling that function or service. 
   Every programming language has built-in exceptions but you can write your own. Let’s start by looking at some of the exceptions provided to you by JavaScript. JavaScript has the following built-in error constructors:
 
-    * Error (for generic errors (used in the above example)
+    * Error (for generic errors — the one used in the example above)
     * SyntaxError (for parsing errors)
-    * TypeError (for wrong type errors eg “undefined is not a function” which is an exception you’ll get if you try to use a function that does not exist)
+    * TypeError (for wrong type errors eg "undefined is not a function" which is an exception you’ll get if you try to use a function that does not exist)
     *  ReferenceError (thrown each time you try to use an undefined variable)
     * RangeError (invalid range, e.g. toFixed(-1))
 
@@ -509,11 +513,11 @@ Here is how you can use one of these in-built exceptions. Let’s take the TypeE
 			// handle the error - respond accordingly
 			if (error instanceof TypeError)
 			{
-				console.error(“TypeError caught”);
+				console.error("TypeError caught");
 			}
 			else
 			{
-				console.error(“Other error”);
+				console.error("Other error");
 			}
 		} 
 
@@ -526,10 +530,11 @@ Exceptions work in both synchronous and asynchronous (Promises, async/await) cod
 
 The throw statement
 ———————————-
-  The throw statement happens in the try {} block. What is thrown can be one of the following three data types: 
+  A throw statement lives inside the function that detects the problem — not in the try block. The try block is where you CALL that function, and the catch block is where the thrown value arrives. Look back at the example above and you will see the throw sitting inside viewAccount(), while the try/catch sits around the call to it.
+  What is thrown can be one of the following three data types: 
 
     * an Error object which can be a JavaScript in-built error object, or your custom error object).
-    * a string literal-which is another kind of object. For example:     throw { code: 401, message: “Account not theirs”};
+    * an object literal. For example:     throw { code: 401, message: "Account not theirs" };
     *  a simple string error (less common) For example:                       throw “User ” +user_id+ “ trying to access account not theirs”;
 
 
@@ -545,19 +550,19 @@ Custom exceptions
 	class CustomError extends Error {
 		constructor(message) {
 			super(message);
-			this.name = “CustomError”;
+			this.name = "CustomError";
 		}
 	}
 
 
 	try {
-		throw new CustomError(“Oops, something went wrong”);
+		throw new CustomError("Oops, something went wrong");
 	}
 	catch(error) {
 		console.error(error.name, error.message);
 	}
 
-This code will return “CustomError Oops, something went wrong”
+This code will print: CustomError Oops, something went wrong
 
 
 
@@ -565,7 +570,7 @@ This code will return “CustomError Oops, something went wrong”
 
 Asynchronous exception handling
 ———————————————
-  When dealing with promises that you know can potentially throw exceptions, use .catch() or try…catch with async/wait. Here is an example:
+  When dealing with promises that you know can potentially throw exceptions, use .catch() or try...catch with async/await. Here is an example:
 
 	Using .catch()
 	————————
@@ -574,7 +579,7 @@ Asynchronous exception handling
 		.then((result) => 
 			console.log(result))
 		.catch((error) => )
-			console.error(“Failed:”, error));
+			console.error("Failed:", error));
 
 Let’s explain what is happening here. Here, we are calling an asynchronous function that we know will throw an exception, which is why we have the .catch() block. If not, we wouldn’t have needed the catch() block. We handle the potential error exception thrown within this catch block.
 
@@ -588,7 +593,7 @@ Let’s explain what is happening here. Here, we are calling an asynchronous fun
 			const data = await someAsyncFunction();
 		}
 		catch(error) {
-			console.error(“Fetch failed:”, error);
+			console.error("Fetch failed:", error);
 		}
 	}
 
@@ -764,8 +769,9 @@ Example 5: Re-throwing and Handling at a Higher Level
    			}
     
 			if (username.length < 4) {
-      				throw new Error("Username must be at least 4 
-				characters");
+      				throw new Error(
+					"Username must be at least 4 characters"
+				);
     			}
     			console.log("Username is valid!");
   		} catch (error) {
@@ -826,7 +832,7 @@ This pattern is useful when a lower-level function detects an error but wants a 
 
 TESTING
 ——————
-  Testing is possible in vanilla JavaScript-without using external libraries. But in practice, it's usually manual or involves building minimal custom test setups. At its most basic, you can write simple if statements and console.assert() calls to check expected values:
+  Testing is possible in vanilla JavaScript—without using external libraries. But in practice, it's usually manual or involves building minimal custom test setups. At its most basic, you can write simple if statements and console.assert() calls to check expected values:
 
 	function add(a, b) {
   		return a + b;
@@ -834,15 +840,16 @@ TESTING
 
 	// Manual test
 	if (add(2, 3) === 5) {
- 		 console.log('✅ Test passed');
+ 		 console.log('Test passed');
 	} else {
-  		console.log('❌ Test failed');
+  		console.log('Test failed');
 	}
 
-// This throws error if condition is false
+// This LOGS an error if the condition is false. Note that it does not
+// throw - the lines after it still run
 console.assert(add(1, 2) === 3, 'Test failed: add(1, 2) should equal 3');
 
-Using console.assert() will log an error to the console and display the message string that you pass as its second argument (in this case above: 'Test failed: add(1, 2) should equal 3’), if the expression in its first argument evaluates to false.
+Using console.assert() will log an error to the console and display the message string that you pass as its second argument (in this case above: 'Test failed: add(1, 2) should equal 3'), if the expression in its first argument evaluates to false.
   While manual testing like this is fine for beginners or toy projects, and for learning logic and debugging, it is not scalable for large or real-world apps. In professional JavaScript development, we use libraries like:
 
     * Jest (very popular for both frontend and backend)
