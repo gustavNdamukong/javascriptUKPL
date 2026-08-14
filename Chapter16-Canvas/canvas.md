@@ -556,56 +556,62 @@ Here is the modified code to implement pixel erasing using clearRect():
   	let penSize = 4; 
   	let canvasBackground = "white";
 
-  	// Painting state
-  	let painting = false;
- 	 let isErasing = false; 
+  	// Two separate pieces of state. This is the important bit: whether
+  	// the button is held down is a different question from which tool
+  	// is selected, so we keep them in two different variables.
+  	let mouseDown = false;   // is the mouse button being held?
+  	let isErasing = false;   // which tool are we using?
 
-  	// Start drawing
+  	// Start drawing or erasing
   	canvas.addEventListener("mousedown", () => {
-     		painting = !isErasing ? true : false; 
-      		isErasing = !painting ? true : false; 
+      		mouseDown = true;
   	});
 
-  	// Stop drawing
+  	// Stop drawing or erasing
   	canvas.addEventListener("mouseup", () => {
-      		painting = !isErasing ? true : false;
-      		isErasing = !painting ? true : false;
+      		mouseDown = false;
 
-    		// reset path to avoid drawing a line when mouse is moved   
+    		// reset path to avoid drawing a line when mouse is moved
     		// without holding click
       		ctx.beginPath(); 
   	});
 
-  	// Draw on canvas
-  	canvas.addEventListener("mousemove", (e) => {
-      		if (painting) { 
-        		// Get mouse coordinates relative to canvas
-        		const x = e.offsetX;
-        		const y = e.offsetY;
+  	// If the pointer leaves the canvas we stop too, otherwise letting go
+  	// outside the canvas would leave mouseDown stuck on true
+  	canvas.addEventListener("mouseleave", () => {
+      		mouseDown = false;
+      		ctx.beginPath();
+  	});
 
-        		// make it thicker when it's an eraser
+  	// Draw or erase on canvas
+  	canvas.addEventListener("mousemove", (e) => {
+      		// nothing to do unless the button is being held
+      		if (!mouseDown) return;
+
+      		// Get mouse coordinates relative to canvas
+      		const x = e.offsetX;
+      		const y = e.offsetY;
+
+      		if (isErasing) {
+          		// Erase a square under the cursor, the size of the pen
+          		ctx.clearRect(
+              			x - penSize / 2, y - penSize / 2, penSize, penSize
+          		);
+      		}
+      		else {
         		ctx.lineWidth = penSize;
         		ctx.lineCap = "round";
         		ctx.strokeStyle = paintColor; 
 
         		// Draw line to current position
         		ctx.lineTo(x, y);
-       	 		ctx.stroke();     // Render it
+        		ctx.stroke();     // Render it
 
 			// Begin a new path so lines don’t all connect
         		ctx.beginPath();  
 
 			// Move the pen to the current mouse position
         		ctx.moveTo(x, y); 
-      		}
-      		else if (isErasing)
-      		{
-          		const rect = canvas.getBoundingClientRect();
-          		const x = e.clientX - rect.left;
-          		const y = e.clientY - rect.top;
-      
-          		// Erase a small square under the cursor
-          		ctx.clearRect(x - 5, y - 5, 10, 10);
       		}
   	});
 
@@ -663,10 +669,10 @@ Here is the modified code to implement pixel erasing using clearRect():
 	// show user the active color
 	let eraser = document.getElementById("eraser");
 	eraser.addEventListener("click", (e) => {
+    		// switch tool only - whether the button is down is not our business
     		isErasing = true; 
-    		painting = false; 
-    		
-		// make the pen size thicker
+
+		// make the eraser square bigger than the pen
     		penSize = 20;
 
     		// change indicated pen color to the eraser 
