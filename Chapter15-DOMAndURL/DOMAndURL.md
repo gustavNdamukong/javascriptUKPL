@@ -2965,7 +2965,7 @@ Here are some common and useful properties and methods of window:
 
 
 
--I) Window Size & Position
+-1) Window Size & Position
 ——————————
 window.innerWidth / window.innerHeight 
 	They get the viewport size
@@ -2987,10 +2987,10 @@ Here is an example:
 -2) Alerts & User Interaction
 ——————————
 
-window.alert(“message”) 
+window.alert("message")
 	This displays an alert box
 
-window.confirm(“message”) 
+window.confirm("message")
 	Returns true or false
 
 window.prompt(message, default) 
@@ -3002,10 +3002,10 @@ window.prompt(message, default)
 
   Example alert():
 
-	let message = “This is an alert?”;
+	let message = "This is an alert?";
 
 	// displays an alert popup
-	window.alert(message) 
+	window.alert(message);
 
 
 Example confirm():
@@ -3020,9 +3020,9 @@ Example confirm():
     		console.log('You said no');
 	}
 
-	This will display a popup with the message "Are you sure?”,
+	This will display a popup with the message "Are you sure?",
 	and two buttons, one a ‘Cancel’, and another ‘Ok’.
-	The variable response that the confirm()… is assigned to 
+	The variable response that confirm() is assigned to 
 	will have a value of false if you clicked on Cancel, or a value 
 	of true if you clicked on Ok. You can then use a conditional 
 	expression to check for this value as in the example above, 
@@ -3083,7 +3083,7 @@ Example prompt():
 
 -3) Reloading a window, and navigating to other windows
 ———————————————————————————
-  In other words, you could also say refreshing a web page, and redirecting to another browser URL (Uniform Resource Locator). For these, the window object has a property called ‘location’ which has two useful members of its own; a property named ‘href’ and a method named ‘reload()’. The href property refers to the path of the current web page, also known as the browser URL. This is what you will find in the browser’s search bar. It looks something like this: ‘http://my-website.com/index.html'. To get or know the path of a web page, so you can create a link to it, for example, here is how to get it dynamically:
+  In other words, you could also say refreshing a web page, and redirecting to another browser URL (Uniform Resource Locator). For these, the window object has a property called ‘location’ which has two useful members of its own; a property named ‘href’ and a method named ‘reload()’. The href property refers to the path of the current web page, also known as the browser URL. This is what you will find in the browser’s search bar. It looks something like this: "http://my-website.com/index.html". To get or know the path of a web page, so you can create a link to it, for example, here is how to get it dynamically:
 
 	let url = window.location.href;
 	console.log("The URL of your web page is: "+url);
@@ -3094,7 +3094,7 @@ This will write the following to your console:
 		index.html
 
 
-How do you reload/refresh a web page, use the reload() property. Here is how to du it:
+To reload or refresh a web page, use the reload() method. Here is how to do it:
 
 	window.location.reload(); 
 
@@ -3109,11 +3109,11 @@ You can navigate to another page in multiple ways. Let’s see some ways:
 
   Using the location.href property
   —————————————
-     You can redirect the browser from the current browser path  
+     You can redirect the browser from the current browser path 
    to another web page by assigning a new web page path as a 
    string to the href property of window.location like so:
 
-	window.location.href = "http://example.com/about.html”; 
+	window.location.href = "http://example.com/about.html";
 
    This will change your web page to ‘http://example.com/
    about.html’.
@@ -3123,9 +3123,11 @@ You can navigate to another page in multiple ways. Let’s see some ways:
   Using the location.assign() method
   ——————————————
      You can also redirect your browser using the assign() method 
-   of the location property. This method is similar to href, but it is 
-   more secure. Just pass it the string of the new URL as its 
-   argument. Here is an example:
+   of the location property. It does the same job as assigning to 
+   href, and the two are interchangeable—some developers simply 
+   prefer a method call to a property assignment, and a method is 
+   easier to stub out in tests. Just pass it the string of the new URL 
+   as its argument. Here is an example:
 
 	window.location.assign("https://example.com");
 
@@ -3133,7 +3135,7 @@ You can navigate to another page in multiple ways. Let’s see some ways:
 
   Using the location.replace() method
   ————————————————————
-     This replaces the current page in a such a way that there is no history of the previous page-hence you will see no back button in the browser (to go to previous pages). This can have its own uses, in situations where you intentionally do not want the visitor or user accessing any previous view of your application. Just pass it the new URL string as an argument. Here is how to do it:
+     This replaces the current page in such a way that there is no history of the previous page—hence you will see no back button in the browser (to go to previous pages). This can have its own uses, in situations where you intentionally do not want the visitor or user accessing any previous view of your application. Just pass it the new URL string as an argument. Here is how to do it:
 
 	window.location.replace("https://example.com");
 
@@ -3151,9 +3153,9 @@ You can navigate to another page in multiple ways. Let’s see some ways:
 	http://my-api.com/shoes
 	http://my-api.com/clothes
 
-The above example URLs all lead to the same domain but all have a different endpoint, one to shoes, and the other to clothes. In API speak, a URL is referred to as an endpoint. There is a lot more to making API requests besides using an endpoint URL, for example, you have to specify the request method by passing in the right method in the request header. This will tell the receiving (endpoint) server the action you want taken on the endpoint. The request methods in a request header are universal and consist of the following: GET, POST, UPDATE, PUT and DELETE for fetching, submitting, updating, replacing, and deleting resources, respectively, on the end point.  Understanding APIs is a whole other topic of its own, and beyond the scope of this book. However, I just needed you now, to understand how important a URL is to web development. 
+The above example URLs all lead to the same domain but all have a different endpoint, one to shoes, and the other to clothes. In API speak, a URL is referred to as an endpoint. There is a lot more to making API requests besides using an endpoint URL, for example, you have to specify the request method by passing in the right method in the request header. This will tell the receiving (endpoint) server the action you want taken on the endpoint. The request methods in a request header are universal and consist of the following: GET, POST, PUT, PATCH and DELETE for fetching, submitting, replacing, updating and deleting resources, respectively, on the endpoint.  Understanding APIs is a whole other topic of its own, and beyond the scope of this book. However, I just needed you now, to understand how important a URL is to web development. 
 
-  Working with URLs is part of working with web applications. Visiting a web page involves typing a URL string into the search bar of a browser. APIs need URLs as target paths, also known as endpoints, to send requests to. These requests can either be to fetch data from, or send data to these endpoints. That is why URLs are not only used to visit web pages (through the browser), but are used in JavaScripts AJAX calls using fetch() or axios calls. They are also used in routing by frontend frameworks like React.js, Vue.js, and Angular.js etc to manage navigation.  URLs are also very used in handling validation to prevent attacks like phishing to various applications. This makes sense because, a browser URL path is ultimately the access point (door) to your application. With all this being said, there is therefore the clear need for developers to be able to manipulate browser URL strings, whatever their purpose may be. Let us talk about the tools in JavaScript has in its tool kit for you to achieve this.
+  Working with URLs is part of working with web applications. Visiting a web page involves typing a URL string into the search bar of a browser. APIs need URLs as target paths, also known as endpoints, to send requests to. These requests can either be to fetch data from, or send data to these endpoints. That is why URLs are not only used to visit web pages (through the browser), but are used in JavaScript’s AJAX calls using fetch() or axios. They are also used in routing by frontend frameworks like React.js, Vue.js, and Angular.js etc to manage navigation.  URLs are also very widely used in handling validation to prevent attacks like phishing to various applications. This makes sense because, a browser URL path is ultimately the access point (door) to your application. With all this being said, there is therefore the clear need for developers to be able to manipulate browser URL strings, whatever their purpose may be. Let us talk about the tools JavaScript has in its tool kit for you to achieve this.
   The URL API is part of the modern JavaScript improvements. It was introduced in HTML5 and became widely supported in modern browsers around 2014. It provides the URL constructor (new URL()) to parse, manipulate, and construct URLs easily. This API is now a standard part of JavaScript and works across major browsers.
   The API was developed as part of the WHATWG (Web Hypertext Application Technology Working Group) standards, which also maintains the HTML Living Standard. WHATWG is a collaboration between major browser vendors like Google, Mozilla, Apple, and Microsoft, aiming to improve web technologies. Its main purpose was to replace older, less efficient ways of handling URLs, such as window.location string parsing.
   A URL string consists of several parts that a developer might need to work with individually. These include the following list:
@@ -3185,7 +3187,9 @@ Key components of a URL
 ——————
   A URL can be broken down into parts, which JavaScript can parse and manipulate using the built-in URL API. Let us see this API in action by demonstrating using an example URL string, to see how it can detect the various components accurately. 
 
-	const url = new URL(“https://www.example.com:8080/path/to/page?query=123#section”);
+	const url = new URL(
+		"https://www.example.com:8080/path/to/page?query=123#section"
+	);
 
 	console.log("The URL is: "+url);
 	console.log("Protocol: "+url.protocol);
@@ -3207,7 +3211,7 @@ When you place this code in your JavaScript and run it in the browser, you will 
 	Query string: ?query=123
 	Hash/fragment: #section
 
-You find that the URL object successfully extracts the value of all the various components of the long and complex URL string. This is better that you could ever try to extract it yourself, manually. Let’s pick out a few lessons about how to identify URL string components from here. We can see the path refers to the section after the hostname and the port number.  It is always separated from them by a forward slash (‘/path/to/page/). Note that a query string is the part that comes in your URL after a ‘?’ character, and its syntax is always ‘key’=‘value’. In this example, URL, the query string is ‘query’, and its value is ‘123’. A fragment is always the value that follows a hash (#) character, which is ‘section’ in this case. 
+You find that the URL object successfully extracts the value of all the various components of the long and complex URL string. This is better than you could ever manage by extracting it yourself, manually. Let’s pick out a few lessons about how to identify URL string components from here. We can see the path refers to the section after the hostname and the port number.  It is always separated from them by a forward slash (‘/path/to/page’). Note that a query string is the part that comes in your URL after a ‘?’ character, and its syntax is always ‘key=value’. In this example URL, the query string is ‘query’, and its value is ‘123’. A fragment is always the value that follows a hash (#) character, which is ‘section’ in this case. 
 
 
  
@@ -3216,8 +3220,9 @@ Parsing a URL
 ——————
   Let us see another example of the URL API in action. Let us use it to quickly extract the value of a specific query string.
 
-	const url = new URL("https://www.example.com/search?
-		q=JavaScript");
+	const url = new URL(
+		"https://www.example.com/search?q=JavaScript"
+	);
 
 	console.log(url.searchParams.get('q'));
 
@@ -3225,9 +3230,9 @@ The result of this code is the following being written to the console:
 
 	JavaScript
 
-We learn here that once you instantiate a URL object, we have a property for handling with query strings, and that searchParams. To then get the value of any query string in that URL, we simply need to pass that query string as a string to the set() method of searchParams like so: 
+We learn here that once you instantiate a URL object, you get a property for handling query strings, and that property is searchParams. To then read the value of any query string in that URL, we simply pass that query string’s name to the get() method of searchParams like so: 
 	
-	url.searchParams.get(‘queryStringName’);
+	url.searchParams.get("queryStringName");
 
 
 
@@ -3270,11 +3275,11 @@ This will reload the current web page, and it will now have a query string of �
 
 Understanding Blobs
 ————————————
-  Let’s talk about what Blobs mean in JavaScript. It is a concept which is worth understanding, as we will come across it when we come to deal with  the management of files, and the handling of various resources in memory. If it does not make sense now, do not worry, it will do when we come to look at it in action. 
-  Imagine you’re working with a container full of stuff-this could be text, images, or even video data. In JavaScript, this kind of container is called a Blob, which stands for "Binary Large Object". Let’s forget its fancy name for a second and focus on what it really does. Think of a blob as a lunchbox. Let’s say you just modified a version of a text file in your browser. Now you want to let the user download it. You can’t just hand them the text—you need to package it up neatly.
+  Let’s talk about what Blobs mean in JavaScript. It is a concept which is worth understanding, as we will come across it when we come to deal with the management of files, and the handling of various resources in memory. If it does not make sense now, do not worry, it will do when we come to look at it in action. 
+  Imagine you’re working with a container full of stuff—this could be text, images, or even video data. In JavaScript, this kind of container is called a Blob, which stands for "Binary Large Object". Let’s forget its fancy name for a second and focus on what it really does. Think of a blob as a lunchbox. Let’s say you just modified a version of a text file in your browser. Now you want to let the user download it. You can’t just hand them the text—you need to package it up neatly.
 That's where a Blob comes in. 
 
-  A Blob is like a lunchbox where you put your file contents (like a sandwich 🥪, juice 🧃, and apple 🍎).
+  A Blob is like a lunchbox where you put your file contents (a sandwich, a juice carton and an apple).
 Once it’s packed, the browser knows how to hand it over to the user as a downloadable file. In more technical terms, but still simple; a Blob lets you store and treat raw data (text, images, anything!) like a file. You can create it in JavaScript like so:
 
 	const blob = new Blob([data], { type: "text/plain" });
@@ -3290,8 +3295,8 @@ Then, you can generate a download link using:
 
 Generating links to assets created in memory
 —————————-
-  Sometimes you will have assets like files or images that were dynamically created in memory-meaning they are not yet physically stored in your file system yet. Javascript as we will come to learn under the chapter on Files Management, is restricted from accessing your computer’s file system for security reasons. When you create files therefore-which you definitely can in JavaScript, they will be stored as objects in memory. Being in memory, they are temporal, so JavaScript has provided a way for you to make such objects downloadable if the user wants to keep them. 
-  The  URL API has a method named createObjectURL() which is used to create a URL that represents a Blob or File object, allowing you to generate a temporary URL that can be used, for example via a button or link, to reference the object from the browser. Here is how createObjectURL() works:
+  Sometimes you will have assets like files or images that were dynamically created in memory—meaning they are not physically stored in your file system. JavaScript, as we will come to learn in Chapter 18 (File Management), is restricted from accessing your computer’s file system for security reasons. When you create files therefore—which you definitely can in JavaScript—they will be stored as objects in memory. Being in memory, they are temporary, so JavaScript has provided a way for you to make such objects downloadable if the user wants to keep them. 
+  The URL API has a method named createObjectURL() which is used to create a URL that represents a Blob or File object, allowing you to generate a temporary URL that can be used, for example via a button or link, to reference the object from the browser. Here is how createObjectURL() works:
    -Takes a Blob/File as input: You pass a ‘Blob’,    
         ‘File’, or ‘MediaSource’ object to 
         ‘URL.createObjectURL()’
@@ -3312,7 +3317,7 @@ Generating links to assets created in memory
          URL.createObjectURL() in order to prevent 
          memory leaks.
 
-Let us look at a very common use case for the createObjectURL() method, which is to generate a downloadable file from text content. We will see more examples like this under Files Management, but i need you to see the createObjectURL() method in action here so you can understand its practical use.
+Let us look at a very common use case for the createObjectURL() method, which is to generate a downloadable file from text content. We will see more examples like this in Chapter 18 (File Management), but I need you to see the createObjectURL() method in action here so you can understand its practical use.
 
 // Create a Blob from text content
 const text = "Hello, world! This is a downloadable file.";
@@ -3332,7 +3337,7 @@ a.textContent = 'Download File';
 // Append the link to the DOM (optional)
 document.body.appendChild(a);
 
-Elsewhere in your code, make sure to clean up the URL link created in memory when its no longer needed by revoking the URL when done. This will prevent memory leaks. A memory leak in programming occurs when a computer program fails to release memory it no longer needs, causing unnecessary memory consumption over time. This can slow down or crash the system as available memory gets exhausted.
+Elsewhere in your code, make sure to clean up the URL link created in memory when it is no longer needed by revoking the URL when done. This will prevent memory leaks. A memory leak in programming occurs when a computer program fails to release memory it no longer needs, causing unnecessary memory consumption over time. This can slow down or crash the system as available memory gets exhausted.
   If you created a link or button in the browser to reference the URL (link) to the object as we did in the example above, then the best way to clear that from memory by implementing the revoke action (after the file is downloaded) is to add an event listener to that same button or link. Let’s add one for our example:
 
       a.addEventListener('click', () => {
@@ -3340,7 +3345,7 @@ Elsewhere in your code, make sure to clean up the URL link created in memory whe
                  URL.revokeObjectURL(url), 300);
       });
 
-Here, we are saying; once the button is clicked, we use the setTimeout() function to wait 3 seconds before getting rid of the object’s URL from memory. The idea is that 3 seconds will be enough time for the file download to be completed. You get to see the setTimeout() function again, which we talked about in Chapter 14 (Dates and Time). As a reminder, it accepts two arguments, a function which contains the action it needs to take, and the second argument is time in milliseconds. This time is the amount of time it needs to wait before executing the function/action.
+Here, we are saying; once the button is clicked, we use the setTimeout() function to wait 300 milliseconds—that is, three tenths of a second—before getting rid of the object’s URL from memory. The idea is that this is enough of a gap for the browser to have started the download. You get to see the setTimeout() function again, which we talked about in Chapter 14 (Dates and Time). As a reminder, it accepts two arguments, a function which contains the action it needs to take, and the second argument is time in milliseconds. This time is the amount of time it needs to wait before executing the function/action.
   Hopefully you can see how useful the createObjectURL() method of the URL API can be. Again, some of its use cases are:
      -Generating downloadable files dynamically.
      -Displaying images/videos from user-
@@ -3352,10 +3357,10 @@ Here, we are saying; once the button is clicked, we use the setTimeout() functio
 
 -5) Navigating Through Browser History
 ——————————————————————
-  JavaScript gives access to the browser's session history. For this is uses the window.history property. Let’s just dive straight into code examples as it should all be self-explanatory to you by now.
+  JavaScript gives access to the browser's session history. For this it uses the window.history property. Let’s just dive straight into code examples as it should all be self-explanatory to you by now.
 
 
-Go back or forward in browser History
+Go back or forward in browser history
 ———————
   Go back to a previous page with history.back(), or forwards with the history.forward() method. 
 
@@ -3369,8 +3374,8 @@ Go back or forward in browser History
 
 Go multiple steps in history
 ———————
-  There is a way for you to dynamically allow the user or visitor to jump (even multiple pages) to a specific page, going back a step number in history. This can have its own uses, for example, in a scenario where a user is completing a multi-page form, and you want the user to be able to click on a button to turn to a specific page previous step in the form. Anyway, for that, you can use the go() method of the history property, which accepts a number as its argument. 
-  That number is the number of steps in history to go, where a positive number means forward in history, while a negative number will take the user back that many pages back in their browsing history. Here is how to do it:
+  There is a way for you to dynamically allow the user or visitor to jump (even multiple pages) to a specific page, going back a step number in history. This can have its own uses, for example, in a scenario where a user is completing a multi-page form, and you want the user to be able to click on a button to return to a specific earlier step in the form. Anyway, for that, you can use the go() method of the history property, which accepts a number as its argument. 
+  That number is the number of steps in history to go, where a positive number means forward in history, while a negative number will take the user that many pages back in their browsing history. Here is how to do it:
 
 	// Go two pages back
 	window.history.go(-2);  
@@ -3400,9 +3405,9 @@ When testing this, your web page might be set to block popups, but it will usual
 
 
 
-Security issues with multiple tab navigation 
+Security issues with multiple tab navigation
 ————————
-  I must say that relying on window.open() for inserting content dynamically is not a good idea. There are quite a few reasons for this. Pop-up Blocking; modern browsers often block window.open() calls unless triggered by direct user interaction (like a button click) on the page. Another issue comes from browser Security Restrictions. Some browsers prevent writing to a newly opened window immediately. There is also an issue with third-party browser extensions. Some of them may block pop-ups. 
+  I must say that relying on window.open() for inserting content dynamically is not a good idea. There are quite a few reasons for this. Pop-up blocking: modern browsers often block window.open() calls unless triggered by direct user interaction (like a button click) on the page. Another issue comes from browser Security Restrictions. Some browsers prevent writing to a newly opened window immediately. There is also an issue with third-party browser extensions. Some of them may block pop-ups. 
   Some browsers restrict document.write() on new windows, especially if noopener or noreferrer attributes are used.
 If the new window has a different domain, it may also be blocked by some browsers due to cross-origin restrictions.
 Most modern browsers block pop-ups unless triggered directly by a user interaction (e.g., clicking a button).
