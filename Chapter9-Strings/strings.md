@@ -5,11 +5,14 @@
 
 	-Escaping nested quotes
 	-Single vs double quotes
-	-Escape Sequence characters
+	-Escape sequence characters
+		-Examples of usage
 	-Concatenating strings
 	-Template literals and string 
           interpolation
 	-String properties and functions
+		-length
+		-charAt()
 
 
 -A string in computer programming refers to 
@@ -19,8 +22,9 @@
   marks or backticks. In JavaScript, you can create a string by wrapping the text within either 
   Double quotes, single quotes, or backticks. For example:
 
-	var first name = “John”;
-	var surname = ‘Doe’;
+	let firstName = "John";
+	let surname = 'Doe';
+	let nickname = `Johnny`;
 
 
 
@@ -29,18 +33,18 @@ Escaping nested quotes
   You cannot nest a string inside another using the same type of quotes. This will 
   cause a conflict and you will get an error. For example this is wrong:
 
-	const sentence = “He said hello to “her””;
+	const sentence = "He said hello to "her"";
 
   To prevent the error, you should use a different type of quote for the sub string.
   For example, this will work.
 
-	const sentence = “He said hello to ‘her’”;
+	const sentence = "He said hello to 'her'";
 
   The only way you can nest strings using the same type of quotes is if you escape the nested string. There is something in JavaScript called the escape character, and it is simply a back slash (\). The way to use it is to place it right before the opening quote that you know will cause a conflict (because that quote type is already in use) and also just before the closing quote. Here is an example that will work:
 
-	const sentence = “He said hello to \”her\””;
+	const sentence = "He said hello to \"her\"";
 
-  The escape character (\) will tell the javaScript parser to ignore the character that follows it.
+  The escape character (\) tells the JavaScript parser not to treat the character that follows it as part of the syntax, but to take it as an ordinary character belonging to the text.
   When a string contains quotes of one type, using the opposite type for the string helps avoid escaping.
 
   Many coding styles and linters (like ESLint) recommend sticking to one quote style for 
@@ -51,14 +55,14 @@ Escaping nested quotes
 
 
 
- Single vs Double quotes
+ Single vs double quotes
  —————————————
   At the end of the day, the type of quotes you use comes down to choice, and which ever you 
 use will not affect performance or functionality. Both single and double quotes represent strings and behave identically in JavaScript.
 
 
 
- Escape Sequence Characters
+ Escape sequence characters
  ——————————
  These are characters that you can use in your program to escape characters in different 
 scenarios as shown below. They are basically a combination of the escape character (\) and 
@@ -66,9 +70,9 @@ one or more characters that represent a specific character or behaviour. They ar
 
   \n  a newline character
   \t   a tab
-  \’  escape single quotes
-  \”  escape double quotes
-  \\  escape a backlash if you want the backslash to be treated as code and not as an escape character
+  \'  escape a single quote
+  \"  escape a double quote
+  \\  escape a backslash, when you want the backslash itself to appear in the text rather than act as an escape character
   \r   carriage return 
   \b  a backspace
   \uXXXX escape a unicode character
@@ -138,46 +142,41 @@ one or more characters that represent a specific character or behaviour. They ar
   This refers to how you can programmatically join two or more strings together. Different languages do it in different ways. 
   In JavaScript, we use the + character which is also known as the concatenation operator, to do this. The syntax is this; say you are combining two strings, you start by opening and closing the quotes wrapping the first string, then type in the concatenation operator, followed by another opening and closing quotes containing the second string. 
 
-	“String one” + “string two”;
+	"String one" + "string two";
 
 Here is an example:
 
-	var stringOne = “string one and ”;
-	var stringTwo = “string two”; 
-	var oneString = stringOne + stringTwo;
+	let stringOne = "string one and ";
+	let stringTwo = "string two"; 
+	let oneString = stringOne + stringTwo;
 
 	console.log(oneString);
-	console.log(“This is another example of 
-		concatenating strings ”+ “without 
-		variables”);
+	console.log("This is another example of concatenating "
+		+ "strings without variables");
 
 	Outputs:
 		string one and string two
 
-		This is another example of 
-		concatenating strings without 	
-		variables
+		This is another example of concatenating strings without variables
 
   You can also concatenate strings using the += operator. However, though the += operator is mostly used for adding up numbers (see notes under operators), when used with strings, it simply appends a new string to the end of another. Here is an example:
 
-	var oneString = “string one and ”;
-	oneString += “string two”; 
+	let oneString = "string one and ";
+	oneString += "string two"; 
 	
 	console.log(oneString);
-	console.log(oneString + “ make up one 
-		long string”);
+	console.log(oneString + " make up one long string.");
 
 	Outputs:
 		string one and string two
 
-		string one and string two make up 
-		one long string.
+		string one and string two make up one long string.
  
- Notice how it is possible to combine literal strings variables containing strings, or two variables containing strings, as seen in the example above:
+ Notice how it is possible to combine literal strings, variables containing strings, or two variables containing strings, as seen in the example above:
 
 	var oneString = stringOne + stringTwo;
 Or
-	oneString + “ make up one long string”
+	oneString + " make up one long string"
 
  I leave a space at the end of the first string and the start of the following string in order to have some space between the last word of the first string and first word of the following string when the two strings are joined together and displayed on screen.
  So you see that, whether the strings are stored in variables or not, it works in the same way.
@@ -188,7 +187,7 @@ Or
 
 Template literals and string interpolation
 ——————————————————————-
-  Template literals are a modern way of handling strings in JavaScript, introduced in ES6 (ECMAScript 2015). They allow us to create multi-line strings, embed expression, and make string formatting more readable and convenient. Unlike normal strings which use single quotes (') or double quotes ("), template literals use backticks (``). Here is a basic syntax of template literals:
+  Template literals are a modern way of handling strings in JavaScript, introduced in ES6 (ECMAScript 2015). They allow us to create multi-line strings, embed expressions, and make string formatting more readable and convenient. Unlike normal strings which use single quotes (') or double quotes ("), template literals use backticks (``). Here is a basic syntax of template literals:
 
 	const message = `Hello, world!`;
 
@@ -201,17 +200,21 @@ Template literals and string interpolation
 	const name = "Alice";
 	const age = 25;
 
-	const greeting = `My name is ${name} 
-		and I am ${age} years old.`;
+	const greeting = `My name is ${name} and I am ${age} years old.`;
 
-	// Output: My name is Alice and I am 25 
-	// years old.
+	// Output: My name is Alice and I am 25 years old.
 	console.log(greeting);
+
+	Keep that one on a single line. A template literal is allowed to 
+	run across several lines, but if you let it, the line break and 
+	the indentation become part of the text - which is exactly what 
+	the next example puts to good use, but is rarely what you want 
+	in the middle of a sentence.
 
 Without template literals, we would have to use string concatenation, like so:
 
-	const greeting = "My name is " + name + " 
-		and I am " + age + " years old.";
+	const greeting = "My name is " + name
+		+ " and I am " + age + " years old.";
 
 You can see how messy that can be. String interpolation therefore makes it much cleaner, readable and less error prone. Here are the benefits of template literals:
 
@@ -243,19 +246,19 @@ Let’s look at an example on how to write multi-line strings in a template lite
 
 	// Output:
 	// This is line 1.
-	// This is line 2.
-	// This is line 3.
+	//		This is line 2.
+	//		This is line 3.
 	console.log(multiline);
 
 You can see how the multiple (separate) lines are displayed without you having had to write any \n character in the code. Just press enter to create new lines when you write the code.
+  Look closely at that output though. Lines 2 and 3 come out indented, because the tabs you typed in front of them inside the backticks are part of the text too. A template literal keeps everything exactly as you laid it out, spaces and all. That is its strength when you want it, and a trap when you do not.
 
 Let’s look at another example on how to embed expressions within a template literal. So, just like when adding variables (string interpolation), you can do calculations (expressions) inside a template literal by using the ${} syntax. Here is how: 
 
 	const a = 5, b = 10;
 
 	// Output: The sum of 5 and 10 is 15.
-	console.log(`The sum of ${a} and ${b} is 
-		${a + b}.`);
+	console.log(`The sum of ${a} and ${b} is ${a + b}.`);
 
 
 
@@ -271,11 +274,11 @@ Let’s look at another example on how to embed expressions within a template li
 
   length
   ————
-	var name = “John Doe”;
-	var stringLength = name.length
+	let fullName = "John Doe";
+	let stringLength = fullName.length;
 	console.log(stringLength);
 
-	The out is:
+	The output is:
 		8
 
 	This is because length counts the blank space between the two parts of the name.
@@ -291,8 +294,8 @@ Let’s look at another example on how to embed expressions within a template li
 	Another quick way to get the character at an index is to use the bracket notation.
 	Here is how to do it:
 
-		var sport = “Boxing”;
-		var firstLetterOfSport = sport[0];
+		let sport = "Boxing";
+		let firstLetterOfSport = sport[0];
 		console.log(firstLetterOfSport);
 
 	Outputs:
@@ -304,22 +307,22 @@ Let’s look at another example on how to embed expressions within a template li
 	get a character of the string from. For example, to get the last character of the string,
 	you can do this:
 
-		var sport = "Boxing";
-		var lastLetterOfSport = sport[sport.length - 1];
+		let sport = "Boxing";
+		let lastLetterOfSport = sport[sport.length - 1];
 		console.log(lastLetterOfSport);
 
 		Outputs:
 		g
 
       In the same way, to get the last but one character of a string, just increase the number 
-      You are deducting, eg:
+      you are deducting, eg:
 
-		var sport = "Boxing";
-		var lastButOneLetterOfSport = sport[sport.length - 2];
+		let sport = "Boxing";
+		let lastButOneLetterOfSport = sport[sport.length - 2];
 		console.log(lastButOneLetterOfSport);
 
 		Outputs:
-		I
+		n
 
 
 

@@ -250,12 +250,15 @@ Chapter 8 - Cookies
 
 Chapter 9 - Strings
     -Escaping nested quotes
-      -Single vs double quotes
-      -Escape Sequence characters
-      -Concatenating strings
-      -Template literals and string 
+    -Single vs double quotes
+    -Escape sequence characters
+        -Examples of usage
+    -Concatenating strings
+    -Template literals and string 
               interpolation
-      -String properties and functions
+    -String properties and functions
+        -length
+        -charAt()
 
 Chapter 10 - Data Types
     -Intro
