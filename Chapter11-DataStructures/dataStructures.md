@@ -23,7 +23,7 @@
     The topic of data structures is like an 
   extended study of data types. When we 
   studied data types; we learned about the 
-  two groups that make them-primitive and 
+  two groups that make them: primitive and 
   reference types. Data structures are 
   closely related to reference types in 
   programming because they often deal with   
@@ -48,8 +48,8 @@
   involve any structure or organization 
   beyond the basic storage of a single piece 
   of data. There is the other group known as 
-  reference types which much closer to data 
-  structures. Let us see why.
+  reference types, which are much closer to 
+  data structures. Let us see why.
     Data structures are ways of organizing 
   and storing data so that they can be 
   accessed and modified efficiently. Since 
@@ -124,8 +124,10 @@
   different data structures. There are some 
   things to keep in mind. Some data 
   structures exist in certain languages but do 
-  not exist in others. For example, 
-  dictionaries exist in Python but not in PHP. 
+  not exist in others. For example, C and Go 
+  have structs, while JavaScript has none, and 
+  Python has a real tuple type where JavaScript 
+  has to make do with an array. 
     Some data structures come built into 
   a programming language, while in other 
   languages, you would have to create them 
@@ -139,7 +141,7 @@
   help you know which one to use in which 
   scenario when solving problems in 
   programming.
-    We will proceed with the list if data 
+    We will proceed with the list of data 
   structures by listing each one and 
   examining everything about it from which 
   language uses it, how is it implemented, 
@@ -150,505 +152,467 @@
   structure from any new language you are 
   learning and master them, if we have not 
   covered them here already.
-    The focus of code examples will be in 
-  Python, JavaScript and PHP, except that 
-  data structure does not exist in any of 
-  these three languages-in which case i will 
-  give a code example in the relevant 
-  language.
+    All the code examples here are in
+  JavaScript. For each structure I will say
+  plainly whether JavaScript has it built in or
+  not. Where it does not, the code is there to
+  show you how the structure behaves, built
+  out of the pieces JavaScript does give you,
+  rather than something the language hands
+  you ready made. I will also say where each
+  one actually turns up in real JavaScript
+  work, because knowing a structure exists is
+  only half of it; knowing when you would
+  reach for it is the other half.
 
 
            ARRAYS
            ————
-    Arrays are a collection of elements of the 
-  same data type, stored in contiguous 
-  memory locations. They provide quick 
-  access to elements using an index and are 
-  a foundational structure in most 
-  programming languages.
-  
-   Languages: PHP, JavaScript, Python
-     Implementation: Stored in contiguous 
-         memory, accessed by index.
-   Problems it solves: Efficient storage and 
-         access of fixed-size data collections.
-   Limitations: Fixed size in some languages 
-         (e.g., arrays in JavaScript can be 
-         resized dynamically).
+    Arrays are a collection of elements, stored
+  one after another and reached by an index.
+  They provide quick access to any element by
+  its position, and are a foundational structure
+  in most programming languages.
 
-       Python example:
-           # Creating an array (list in Python)
-           arr = [1, 2, 3, 4]
+   In JavaScript: built in. Arrays are part of the
+         language and you have been using them
+         since Chapter 3.
+   Implementation: elements held in order and
+         reached by index, counting from 0.
+   Problems it solves: efficient storage and
+         access of a list of values.
+   Limitations: in many languages an array has a
+         fixed size. JavaScript arrays grow and
+         shrink freely, which is convenient, but it
+         also means an array can hold a mixture
+         of types, which other languages would
+         not allow.
 
-       JavaScript example:
-           // Creating an array in JavaScript
-           let arr = [1, 2, 3, 4];
+       // Creating an array
+       let arr = [1, 2, 3, 4];
 
-       PHP example:
-           // Creating an array in PHP
-          $arr = array(1, 2, 3, 4);
-  
+       arr.push(5);        // add to the end
+       console.log(arr[0]); // 1
+       console.log(arr.length); // 5
 
-  
+   Used in JavaScript for: almost everything.
+         Lists of items, results from an API,
+         collections of DOM elements, and as
+         the building block for several of the
+         structures below.
+
+
           LINKED LISTS
+          ——————————
 
-    Linked lists are data structures consisting 
-  of nodes where each node contains a 
-  value and a pointer to the next node. They 
-  allow dynamic resizing but require 
-  traversal to access elements.
-  
-     Languages: Python, PHP (manually 
-           implemented), JavaScript (manually 
-           implemented)
-     Implementation: A series of nodes, where 
-           each node points to the next.
-     Problems it solves: Efficient insertion and 
-           deletion, especially in the middle of 
-           the list.
-      Limitations: Slower access compared to 
-            arrays due to the need to traverse 
-            nodes.
+    Linked lists are made of nodes, where each
+  node holds a value and a pointer to the next
+  node. They allow easy insertion and removal
+  anywhere in the list, but you have to walk
+  through them from the start to find anything.
 
-         Python example
-         ———————
-        # Simple linked list node class in Python
-        class Node:
-               def __init__(self, data):
-                       self.data = data
-                       self.next = Non
+     In JavaScript: NOT built in. There is no
+           linked list type, so you build one
+           yourself out of objects or classes. The
+           code below is a demonstration of how
+           the structure works, not something the
+           language hands you.
+     Implementation: a series of nodes, each
+           pointing to the next.
+     Problems it solves: efficient insertion and
+           deletion, especially in the middle.
+     Limitations: slower access than an array,
+           because you must traverse the nodes
+           to reach one.
 
-        JavaScript example
-        —————————-
-        // Linked list implementation in 
-        // JavaScript
+        // A node, built by hand
         class Node {
-                   constructor(data) {
-                          this.data = data;
-                          this.next = null;
-                   }
-          }
- 
-
-        PHP example
-        ———————
-        // Linked list implementation in PHP
-        class Node {
-            public $data;
-            public $next;
-
-            public function __construct($data)      
-            {
-                     $this->data = $data;
-                     $this->next = null;
-             }
+            constructor(data) {
+                this.data = data;
+                this.next = null;
+            }
         }
-  
+
+        // Joining three of them into a chain
+        let first = new Node(10);
+        first.next = new Node(20);
+        first.next.next = new Node(30);
+
+        // Walking the chain from the start
+        let current = first;
+
+        while (current !== null) {
+            console.log(current.data);
+            current = current.next;
+        }
+
+        // Output: 10, 20, 30, each on its own line
+
+     Used in JavaScript for: very little, in
+           practice. An ordinary array does the
+           same job with less effort, so you will
+           rarely build one. It is worth
+           understanding because it comes up in
+           technical interviews, and because the
+           idea of one thing pointing to the next
+           turns up everywhere, including in the
+           tree structure further down.
 
 
           STACKS
           ————-
-    Stacks are LIFO (Last In, First Out) data
-  structures, meaning that the last element 
-  added is the first to be removed. They are 
-  useful for operations such as undo 
-  functionality or managing function calls in 
-  recursion.
-  
-     Languages: PHP, JavaScript, Python
-     Implementation: Can be implemented 
-           using arrays or linked lists.
-     Problems it solves: Undo operations, 
-           function call management, and 
+    Stacks are LIFO (Last In, First Out)
+  structures, meaning the last item added is
+  the first one removed. Think of a stack of
+  plates: you take from the top.
+
+     In JavaScript: no separate stack type, but
+           you do not need one. An ordinary array
+           already behaves as a stack, because
+           push() adds to the end and pop() takes
+           from the end.
+     Implementation: usually an array, sometimes
+           a linked list.
+     Problems it solves: undo operations,
+           managing function calls, and
            backtracking.
-     Limitations: Restricted access (only the 
-            top element can be accessed).
+     Limitations: restricted access, since you
+            can only reach the top item.
 
-     Python example
-     ————————-
-     # Stack implemented using list in Python
-     stack = []
-     stack.append(1)  # Push
-     stack.pop()      # Pop
-  
+     // A stack, using a plain array
+     let stack = [];
 
-    JavaScript example
-    ——————————-
-    // Stack using an array in JavaScript
-    let stack = [];
-    stack.push(1);    // Push
-    stack.pop();      // Pop
+     stack.push(1);       // push
+     stack.push(2);
+     console.log(stack.pop());  // 2 - last in, first out
+     console.log(stack);        // [1]
 
-    PHP example
-    ———————
-    // Stack using an array in PHP
-    $stack = array();
-    array_push($stack, 1);  // Push
-    array_pop($stack);      // Pop
-  
+     Used in JavaScript for: undo and redo
+           features, "go back" navigation, and
+           checking that brackets or tags are
+           properly nested. JavaScript itself uses
+           one internally, the call stack, which
+           keeps track of which function called
+           which - it is the thing you see listed
+           when an error is thrown.
+
 
              QUEUES
              —————
+    Queues are FIFO (First In, First Out)
+  structures, meaning the first item added is
+  the first one removed. Think of a queue at a
+  till: first come, first served.
 
-    Queues are FIFO (First In, First Out) data 
-  structures, meaning that the first element 
-  added is the first to be removed. They are 
-  commonly used for task scheduling and 
-  handling ordered data processing.
-  
-      Languages: Python, PHP, JavaScript
-      Implementation: Implemented using 
-             arrays or linked lists.
-      Problems it solves: Ideal for handling 
-             tasks in the order they are added 
-             (e.g., print jobs, task scheduling).
-      Limitations: Restricted access (only front 
-              and rear elements can be 
-              accessed).
+      In JavaScript: no separate queue type, but
+             an array does the job. push() adds to
+             the back and shift() takes from the
+             front.
+      Implementation: usually an array or a
+             linked list.
+      Problems it solves: handling tasks in the
+             order they arrived, such as print jobs
+             or scheduled work.
+      Limitations: restricted access, since you
+              can only reach the front and the
+              back. Also, shift() has to renumber
+              every remaining element, so on a
+              very large array it is slower than it
+              looks.
 
-      Python example
-      ————————-
-      # Queue implemented using deque in     
-      # Python
-      from collections import deque
-      queue = deque()
-      queue.append(1)  # Enqueue
-      queue.popleft()  # Dequeue
-  
-
-      JavaScript example
-      ——————————
-      // Queue implemented using array in   
-      // JavaScript
+      // A queue, using a plain array
       let queue = [];
-      queue.push(1);    // Enqueue
-      queue.shift();    // Dequeue
-  
 
-      PHP example
-      ———————-
-      // Queue using an array in PHP
-      $queue = array();
-      array_push($queue, 1);  // Enqueue
-      array_shift($queue);    // Dequeue
-  
+      queue.push("first");    // enqueue
+      queue.push("second");
+      console.log(queue.shift());  // "first" - first in, first out
+      console.log(queue);          // ["second"]
+
+      Used in JavaScript for: anything that must
+             happen in order - a list of jobs
+             waiting to run, messages waiting to
+             be sent, or walking through a tree
+             level by level. JavaScript's own event
+             loop works on a queue, which is why
+             things you schedule run in the order
+             you scheduled them.
 
 
              TUPLES
              ————-
+    Tuples are ordered collections of a fixed
+  size, often holding values of different types,
+  which cannot be changed once created.
 
-    Tuples are immutable, ordered collections 
-  of elements, often of different types. They 
-  are useful for returning multiple values 
-  from functions or creating fixed records of 
-  data.
-  
-        Languages: Python (native tuples), 
-               JavaScript, PHP (as array-like 
-               structures)
-       Implementation: Immutable collections, 
-               often used for storing multiple 
+        In JavaScript: NOT built in. There is no
+               tuple type, so an array is used
+               instead. The code below is a
+               demonstration of the idea rather
+               than a real tuple, because nothing
+               stops you changing an array
+               afterwards - unless you freeze it.
+       Implementation: a small, fixed group of
                related values.
-       Problems it solves: Useful for returning 
-              multiple values from functions, or 
-              representing fixed groups of values.
-       Limitations: Immutable, meaning you 
-              cannot modify them once created.
+       Problems it solves: returning more than
+              one value from a function, or
+              representing a fixed record.
+       Limitations: in languages that have real
+              tuples they cannot be modified at
+              all. JavaScript only gets close to
+              that with Object.freeze().
 
-       Python example:
-       ————————-
-            # Tuple in Python
-            tup = (1, "apple", 3.14)
-
-      JavaScript example:
-      —————————
-           // No native tuple in JavaScript, arrays 
-           // can be used for similar purposes
+           // An array standing in for a tuple
            let tup = [1, "apple", 3.14];
-  
-      PHP example:
-      ———————-
-           // PHP doesn’t have native tuples, but 
-           // you can use arrays
-           $tuple = array(1, 'apple', 3.14);
 
+           // Pulling the values back out, using
+           // destructuring from Chapter 16
+           let [count, fruit, price] = tup;
+           console.log(fruit);   // "apple"
+
+           // Freezing it, to get closer to a
+           // real tuple
+           const frozen = Object.freeze([1, "apple"]);
+           frozen[0] = 99;            // silently ignored
+           console.log(frozen[0]);    // still 1
+
+       Used in JavaScript for: returning several
+              values from one function. You will
+              meet this constantly in modern
+              JavaScript, where a function hands
+              back a small array and the caller
+              unpacks it in one line.
 
 
       Dictionaries (Maps/HashMaps)
       ————————————————
-    Dictionaries, or hash maps, store data in 
-  key-value pairs. They offer fast lookup, 
-  insertion, and deletion by key and are used 
-  for tasks such as caching or implementing 
-  key-value stores.
-  
-        Languages: Python, PHP, JavaScript
-        Implementation: Typically implemented 
-               with hash tables.
-        Problems it solves: Fast data retrieval 
-               based on unique keys, useful for 
-               tasks like lookups, caching, and 
-               indexing.
-        Limitations: Keys must be unique, 
-               because hash collisions can affect 
-               performance.
+    Dictionaries, also called maps or hash maps,
+  store data as key-value pairs. They offer fast
+  lookup, insertion and deletion by key.
 
-        Python example:
-       ————————-
-       # Dictionary in Python
-       my_dict = {'name': 'Alice', 'age': 30}
-  
-      JavaScript example:
-      ——————————-
-      // Object as dictionary in JavaScript
-      let my_dict = {'name': 'Alice', 'age': 30};
-  
+        In JavaScript: built in, and in two forms.
+               A plain object gives you key-value
+               pairs with string keys, and the Map
+               type gives you the same thing with
+               keys of any type at all.
+        Implementation: typically a hash table
+               under the surface.
+        Problems it solves: fast retrieval of a
+               value when you know its key. Useful
+               for lookups, caching and indexing.
+        Limitations: keys must be unique. With a
+               plain object, keys are always text,
+               so a number key quietly becomes a
+               string.
 
-      PHP example:
-      ———————-
-      // Associative array in PHP (like a 
-      // dictionary)
-      $my_dict = array('name' => 'Alice', 'age'   
-           => 30);
-  
+      // As a plain object
+      let person = { name: "Alice", age: 30 };
+      console.log(person.name);      // "Alice"
+
+      // As a Map, which allows any type of key
+      let scores = new Map();
+      scores.set("alice", 10);
+      scores.set(42, "the answer");
+
+      console.log(scores.get("alice"));  // 10
+      console.log(scores.size);          // 2
+
+        Used in JavaScript for: settings and
+               configuration, counting how often
+               something appears, caching results
+               so they are not worked out twice,
+               and any time you want to look
+               something up by name rather than
+               by position. Reach for a Map when
+               your keys are not strings, or when
+               you need to know how many entries
+               there are.
 
 
                   Sets
                 ————
-    Sets are unordered collections of unique
-  elements. They are commonly used for 
-  removing duplicates or performing set 
-  operations like union or intersection.
-  
-        Languages: Python, JavaScript, PHP   
-               (array can be used)
-        Implementation: Typically backed by a 
-               hash table or balanced tree.
-        Problems it solves: Efficient 
-               membership testing, removing 
-               duplicates.
-        Limitations: Unordered and doesn’t 
-               allow duplicate values.
+    Sets are collections of unique values. Adding
+  something twice has no effect the second
+  time.
 
-        Python example:
-               # Set in Python
-               my_set = {1, 2, 3, 4}
-  
-        JavaScript example:
-               // Set in JavaScript
-              let my_set = new Set([1, 2, 3, 4]);
-  
-        PHP example:
-             // No native set type in PHP, but 
-             // arrays can be used
-             $my_set = array_unique(array(1, 2, 
-                   3, 4));
-  
+        In JavaScript: built in, as the Set type.
+        Implementation: typically backed by a
+               hash table.
+        Problems it solves: checking quickly
+               whether something is present, and
+               removing duplicates.
+        Limitations: values must be unique, and
+               you cannot reach an item by index
+               the way you can in an array.
+
+        // A Set
+        let mySet = new Set([1, 2, 3, 4]);
+
+        mySet.add(4);       // already there, ignored
+        console.log(mySet.size);       // 4
+        console.log(mySet.has(3));     // true
+
+        // The neatest use: removing duplicates
+        // from an array
+        let withDuplicates = [1, 2, 2, 3, 3, 3];
+        let unique = [...new Set(withDuplicates)];
+        console.log(unique);   // [1, 2, 3]
+
+        Used in JavaScript for: stripping
+               duplicates out of a list, which is
+               the one-line trick shown above, and
+               keeping track of things you have
+               already seen or already processed.
+
 
                    Structs
                ———————
-    Structs are user-defined data types that 
-  group different types of data together. 
-  They are commonly used in languages like   
-  C and Go to create records of related 
-  fields.
-  
-        Languages: C, Go
-        Implementation: A collection of fields 
-              that group data types together.
-        Problems it solves: Useful for grouping 
-              related data like a simple record.
-        Limitations: No built-in methods like 
-              objects in OOP languages.
+    Structs are user-defined types that group
+  several related pieces of data together into
+  one record.
 
-        Go example:
-               // Struct in Go
-               type Person struct {
-                    name string
-                    age  int
-               }
-  
+        In JavaScript: NOT built in. There is no
+               struct keyword. JavaScript uses an
+               object literal, or a class when you
+               want the same shape made
+               repeatedly. The code below is
+               therefore the JavaScript equivalent
+               of a struct rather than a struct
+               itself.
+        Implementation: a group of named fields
+              held together as one value.
+        Problems it solves: keeping related data
+              together as a single record instead
+              of loose separate variables.
+        Limitations: in languages like C and Go a
+              struct holds only data, with no
+              methods. A JavaScript object has no
+              such restriction, which makes it more
+              flexible but also less strict.
+
+        // The JavaScript equivalent: an object
+        // literal
+        let person = {
+            name: "Alice",
+            age: 30
+        };
+
+        // Or a class, when you need to make many
+        // of the same shape
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+
+        let alice = new Person("Alice", 30);
+        console.log(alice.name);   // "Alice"
+
+        Used in JavaScript for: any time you have
+              several facts about one thing and
+              want to keep them together - a user,
+              a product, a setting. This is so
+              ordinary in JavaScript that you will
+              do it constantly without ever calling
+              it a struct.
 
 
          Trees (Binary Trees, AVL Trees, etc.)
-         —————————————————— 
-    Trees are hierarchical data structures 
-  that store data in nodes, with each node 
-  having child nodes. They are useful for 
-  representing hierarchical data like file 
-  systems or organizational structures.
-  
-        Languages: Python, PHP, JavaScript
-        Implementation: Nodes that point to 
-               child nodes.
-        Problems it solves: Efficient searching 
-               and sorting of hierarchical data, 
-               used in things like file systems or 
-               databases.
-         Limitations: Trees can become 
-               unbalanced, leading to inefficient 
-               operations.
+         ——————————————————
+    Trees are hierarchical structures that store
+  data in nodes, where each node has child
+  nodes. They suit anything shaped like a family
+  tree or a folder structure.
 
-         Python example:
-                # Binary tree node in Python
-                class Node:
-                        def __init__(self, data):
-                               self.data = data
-                               self.left = None
-                               self.right = None
+        In JavaScript: NOT built in as a type, but
+               you meet trees constantly all the
+               same. You build your own out of
+               objects or classes, as below.
+        Implementation: nodes that point to child
+               nodes.
+        Problems it solves: efficient searching
+               and sorting of hierarchical data.
+        Limitations: a tree can become
+               lopsided, which makes searching it
+               slower.
 
-                # Example usage
-                root = Node(10)
-                root.left = Node(5)
-                root.right = Node(20)
-  
+         // A binary tree node, built by hand
+         class Node {
+             constructor(data) {
+                 this.data = data;
+                 this.left = null;
+                 this.right = null;
+             }
+         }
 
-         JavaScript example:
-                // Binary tree node in JavaScript
-                class Node {
-                       constructor(data) {
-                              this.data = data;
-                              this.left = null;
-                              this.right = null;
-                       }
-                }
+         // Example usage
+         let root = new Node(10);
+         root.left = new Node(5);
+         root.right = new Node(20);
 
-               // Example usage
-               let root = new Node(10);
-               root.left = new Node(5);
-               root.right = new Node(20);
+         console.log(root.left.data);   // 5
 
- 
-        PHP example
-              // Binary tree node in PHP
-              class Node {
-                      public $data;
-                      public $left;
-                      public $right;
+        Used in JavaScript for: more than you
+               might expect. The DOM - the
+               structure of the web page itself,
+               which we come to in Chapter 15 - is
+               a tree, where every element has a
+               parent and may have children. Any
+               nested JSON you get back from an
+               API is a tree too. So although you
+               will rarely build one from scratch,
+               you will spend a great deal of time
+               walking through them.
 
-                  public function  
-                      __construct($data) {
-                              $this->data = $data;
-                              $this->left = null;
-                              $this->right = null;
-                      }
-                }
-
-           // Example usage
-           $root = new Node(10);
-           $root->left = new Node(5);
-           $root->right = new Node(20);
-
-        In these examples, we created a simple 
-      binary tree with a root node and two 
-      children (left and right). This basic 
-      structure can be extended to support 
-      more complex tree operations such as 
-      traversal, insertion, and deletion.
-
+        In the example above, we created a simple
+      binary tree with a root node and two
+      children, left and right. This basic structure
+      can be extended to support more complex
+      tree operations such as traversal, insertion
+      and deletion.
 
 
                 COLLECTIONS
                 ———————-
-    Collections are a broad category of data 
-  structures that provide a way to group 
-  multiple values into a single entity. They 
-  abstract away how the data is stored and 
-  offer various operations for adding, 
-  removing, or modifying the data. They can 
-  store data of the same type (homogeneous 
-  collections) or different types 
-  (heterogeneous collections).
+    Collections are a broad category rather than
+  a single structure. The word covers any
+  structure that groups multiple values into one
+  thing and offers ways to add, remove and
+  modify them.
 
-         Languages: Python, JavaScript, PHP 
-                (Collections can be implemented 
-                using arrays, sets, dictionaries, 
-                etc.)
-         Implementation: Collections can be 
-                implemented as arrays, 
-                dictionaries, sets, and other 
-                structures, each with specific 
-                behaviors and performance 
-                characteristics.
-         Problems it solves: Efficient storage, 
-                retrieval, and manipulation of 
-                multiple elements in a structured 
-                way.
-         Limitations: Depending on the 
-                collection type, some may impose 
-                limitations like immutability, lack of 
-                random access, or performance 
-                constraints for certain operations.
+         In JavaScript: built in. Array, Map, Set,
+                WeakMap and WeakSet are all
+                collections. You have met the first
+                three already in this chapter.
+         Implementation: each collection type
+                stores its data differently, with its
+                own strengths.
+         Problems it solves: storing, retrieving
+                and manipulating several values in
+                a structured way.
+         Limitations: each type has its own. A Set
+                holds only unique values, an array
+                is ordered but slower to search, a
+                Map keeps insertion order but
+                takes more memory than a plain
+                object.
 
+           // The three collections you will use most
+           let arr = [1, 2, 3];      // Array
+           arr.push(4);
 
-        Python example:
-              # Collections in Python (using the 
-              # collections module)
-              from collections import deque, 
-                   defaultdict
+           let myMap = new Map();    // Map
+           myMap.set("key", "value");
 
-              # Deque (Double-ended queue) as 
-              # a collection
-              my_deque = deque([1, 2, 3])
+           let mySet = new Set([1, 2, 3]);  // Set
+           mySet.add(4);
 
-              # Add to the right
-              my_deque.append(4) 
+           console.log(arr.length, myMap.size, mySet.size);
+           // Output: 4 1 4
 
-              # Add to the left
-              my_deque.appendleft(0) 
-
-              # Defaultdict as a collection that   
-              # defaults to list
-              my_dict = defaultdict(list)
-              my_dict['key'].append('value')
-
-        JavaScript example:
-        ——————————
-           // Collections in JavaScript (using 
-           // Array, Map, Set)
-           let arr = [1, 2, 3];  // Array collection
-          arr.push(4);
-
-          // Map collection
-          let myMap = new Map(); 
-          myMap.set('key', 'value');
-
-          // Set collection
-          let mySet = new Set([1, 2, 3]); 
-          mySet.add(4);
-
-
-      PHP example:
-      ———————-
-          // Collections in PHP (using arrays,        
-          // collections class from Laravel for 
-          // example. An Array collection
-         $my_array = array(1, 2, 3); 
-         array_push($my_array, 4);
-
-          // Associative array as a collection
-          $my_assoc_array = 
-                          array('key' => 'value'); 
-
-          // Using the Laravel Collections class 
-          // (if using Laravel)
-          use Illuminate\Support\Collection;
-
-          $collection = collect([1, 2, 3]);
-          $collection->push(4);
-
-          In summary, Collections provide a 
-          flexible way to manage data. In    
-          Python, the ‘collections’ module offers 
-          specialized data structures like 
-          ‘deque’ and ‘defaultdict’. In JavaScript, 
-          collections can be implemented using 
-          arrays, maps, or sets, depending on 
-          the need. PHP provides arrays, and 
-          frameworks like Laravel offer more 
-          robust collection handling. 
-
-     Limitations: Some collections like sets 
-           only store unique values, while others, 
-           like arrays, have ordered but slower 
-           search performance.
+         Used in JavaScript for: choosing the right
+                one for the job. Use an array for an
+                ordered list, a Set when every value
+                must be unique, and a Map when
+                you want to look things up by a key
+                that is not a string.
