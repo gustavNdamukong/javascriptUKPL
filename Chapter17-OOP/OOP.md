@@ -88,8 +88,9 @@ broken down in detail.
 
 	Relationship between the object data type and Object
 	————————————————————————
-	I mentioned before under the topic of data types that JavaScript has a built-in object named Object that is the parent of all objects in your code. Well, the built-in Object in JavaScript is a constructor function and 
-it serves as the prototype from which all objects in JavaScript are derived. 
+	I mentioned before under the topic of data types that JavaScript has a built-in object named Object that is the parent of all objects in your code. Well, the built-in Object in JavaScript is a constructor function, and its
+prototype—Object.prototype—is what every object in JavaScript ultimately
+derives from. 
 It provides the foundation for the object data type by offering essential 
 methods and properties that every object can inherit. Here’s how the built-in Object relates to the object data type:
 	First of all as a reminder; any value in JavaScript that is not a primitive (like string, number, boolean, undefined, null, bigInt, or symbol) is an object. The relationship between an object data type and Object can best be described in the following ways:
@@ -133,8 +134,8 @@ Objects can be created in various ways
 	The Object Constructor
 	—————————————
 	The built-in Object is a constructor that allows creating objects explicitly. 
-It also provides static methods for working with objects. To prove to that 
-all objects inherit from (are children of) the built-in JavaScript Object, here is 
+It also provides static methods for working with objects. To prove to you that 
+all objects inherit from the built-in JavaScript Object, here is 
 an example:
 
 		const obj1 = {}; // Object literal 
@@ -148,7 +149,7 @@ an example:
 		// outputs true
 		console.log(obj2 instanceof Object); 
 
-You can clearly see that in spite of both obj1 and obj2 being created in different ways-one as an object literal and the other via the Object() constructor; both are still children of the JavaScript Object.
+You can clearly see that in spite of both obj1 and obj2 being created in different ways—one as an object literal and the other via the Object() constructor—both still inherit from the JavaScript Object.
 
 
 
@@ -170,12 +171,12 @@ Objects:
 	 // will output true 
 	console.log(myObject.hasOwnProperty('name'));
 
-	// will output “[object Object]"
+	// will output "[object Object]"
 	console.log(myObject.toString()); 
 
 
 
-	Static methods of Object
+	Static Methods of Object
 	——————————————
 	The Object constructor includes static methods for object manipulation.
 
@@ -215,7 +216,7 @@ Here are examples of how these static methods can be used:
 
 	const clone = Object.assign({}, original); 
 	console.log(clone); // { name: 'John', age: 30 }
-	 console.log(clone === original); // false (new reference)
+	console.log(clone === original); // false (new reference)
 	————————————-
 
 
@@ -268,7 +269,7 @@ Here are examples of how these static methods can be used:
 	toString(), hasOwnProperty(), etc. In this case it didn’t, 
 	which is fine if you wanted a prototype-less object.
 	Accessing toString returns undefined because the object 
-	has no prototype-meaning it does not inherit toString from 
+	has no prototype—meaning it does not inherit toString from 
 	Object.prototype. Accessing name works because it's a 
 	direct property added to the object.
 
@@ -296,7 +297,7 @@ Here are examples of how these static methods can be used:
 		age: { value: 25, writable: true }, 
 	}); 
 
-	console.log(person.describe()); // "Alice is 25 years old"
+	console.log(person.describe()); // "Alice is 25 years old."
 	————————————-
 
 
@@ -305,12 +306,51 @@ Here are examples of how these static methods can be used:
 
 
     Understanding how to use the prototype property
-	Javascript objects work differently from the typical objects in languages like Java of the C family of languages. They use a unique property known as prototypes. All objects in JavaScript have a prototype property which contains a reference to the object that the object is inheriting from. This is what JavaScript uses to keep track of what object is inheriting from what. This is also referred to as the prototype chain. The prototype property of an object contains its immediate parent (object it is inheriting from). The prototype property of that parent object in turn contains a reference to its own parent object and so forth until it gets to the top most object of the prototype chain whose prototype property contains null, to indicate that it does not inherit from any object. In JavaScript this top dog of objects is the 	Object object. Again, this prototype-based inheritance mechanism is unique to the JavaScript programming language. The term prototype refers to the object an object is 	created from. It is the mold, the boilerplate, the blueprint if you like. Hopefully you get the idea.
+	Javascript objects work differently from the typical objects in languages like Java of the C family of languages. They use a unique mechanism known as prototypes. Every object in JavaScript carries an internal link to the object it is inheriting from. This is what JavaScript uses to keep track of what object is inheriting from what. This is also referred to as the prototype chain. The prototype property of an object contains its immediate parent (object it is inheriting from). The prototype property of that parent object in turn contains a reference to its own parent object and so forth until it gets to the top most object of the prototype chain, whose own link contains null to indicate that it does not inherit from any object. In JavaScript this top dog of objects is Object.prototype. Again, this prototype-based inheritance mechanism is unique to the JavaScript programming language. The term prototype refers to the object an object is 	created from. It is the mold, the boilerplate, the blueprint if you like. Hopefully you get the idea.
 		To see the prototype of an object, check the value of the __proto__ property like so: 
 		personObject2.__proto__ 
-	assuming that there is a personObject2 you had created. Alternatively, since ES2015 you can check it using the getPrototypeOf() method of Object like so
+	assuming that there is a personObject2 you had created. Alternatively, and more safely, you can check it using the getPrototypeOf() method of Object, which has been available since ES5 in 2009, like so
 		Object.getPrototypeOf(new Person()); 
-	So we have established that all objects come with a prototype property built into them, and 	their parent at the top of the prototype chain is the JavaScript Object. But there is another second type of prototype property in JavaScript which must not be confused with the prototype of objects. This prototype is specifically available ONLY to functions so that they can be used to create objects in their capacity as constructor functions. 
+	So we have established that every object carries a link to its parent, and that at the top of the prototype chain sits Object.prototype. But there is a second thing in JavaScript also called "prototype", and it must not be confused with the first. It is specifically available ONLY to functions, so that they can be used to create objects in their capacity as constructor functions.
+		This is the single biggest source of confusion in JavaScript objects, so let us settle it now, before we go any further. There are two different things wearing the same name:
+
+		-.prototype  — a real, visible property that ONLY functions have.
+		   It holds the object that instances made from that function
+		   will inherit from.
+
+		-__proto__   — the internal link that EVERY object has, pointing
+		   at the object it actually inherits from. (Its proper name in
+		   the specification is [[Prototype]]. You read it with
+		   Object.getPrototypeOf(), and modern browser consoles now show
+		   it as [[Prototype]] rather than __proto__.)
+
+		They are not two kinds of the same thing. They are the two ends of one
+	relationship, and this single line of code shows how they meet:
+
+		function Person(firstName) {
+		    this.firstName = firstName;
+		}
+
+		let person1 = new Person('Tom');
+
+		// The link on the INSTANCE points at the property on the FUNCTION
+		console.log(person1.__proto__ === Person.prototype);  // true
+
+		// And the instance itself has no .prototype property at all
+		console.log(person1.prototype);                       // undefined
+
+		Read those last two lines together and the whole thing falls into
+	place. Person.prototype is the mould. person1.__proto__ is the arrow
+	pointing back at the mould it was pressed from. A function owns a
+	mould; an object remembers which mould it came from. Objects do not
+	have a .prototype property, and functions do not need a __proto__ link
+	to do their job as constructors.
+		For the rest of this chapter, whenever you see the word prototype, ask
+	yourself which of the two is meant. It will nearly always be obvious
+	from whether it is written after a function name (Person.prototype) or
+	fetched from an object (person1.__proto__).
+
+
 		Such functions are special objects that you create as a developer so that other objects can inherit from. They are known as constructor functions. This distinction is very 	important to be understood as many developers get it confused. Very uniquely to JavaScript, the syntax of a regular function is very similar to a constructor function which is basically a class. The best way to get a grasp of this is to recognise that JavaScript is a unique language of its own, in terms of classes and objects, and agree with yourself not to try to compare it with any other language. Once you do that, you will find it becomes easier to put things into context and understand. Don't worry, by the end of this chapter you will have mastered the creation of objects in JavaScript. Even in JavaScript, regular functions and objects, as identical as they look, have their distinctions if only you are observant. I will proceed to show you now. To make it easier for you to see the visual differences, I will demonstrate with an object and a function below.
 
 	function person(firstName, lastName)
@@ -324,10 +364,11 @@ Here are examples of how these static methods can be used:
 		this.lastname = lastName;
 	}
 
-	As you can see, regular functions and objects are created in exactly the same way, or so it seems. However, you can still make clear distinctions between the two. First of all, in the above examples, the second one is the object, while the first one above it is a regular function. You can see that the object Person has properties in which it stores the arguments passed to it so that they can then be used internally, while the person() function has no internal property. You can tell it uses properties because it uses the this keyword to refer to these properties within itself. Only objects make use of the this keyword, so whenever you see it being used, you can safely say that you are dealing with an object.  
-		Secondly; whenever you see the . (dot) operator being used, you can also safely say that you are looking at an object. The dot operator is how you refer to members (properties or methods) of an object. 
+	As you can see, regular functions and objects are created in exactly the same way, or so it seems. However, you can still make clear distinctions between the two. First of all, both of these are functions — that is worth saying plainly, because in JavaScript a constructor is a function, not a separate kind of thing. What differs is how you intend to CALL them. The second one is meant to be called with new, which makes it a constructor function; the first is meant to be called normally. You can see that Person sets properties on itself in which it stores the arguments passed to it, so that they can then be used later, while person() just returns a value and keeps nothing. Person uses the this keyword to refer to those properties.
+		Be careful with that last clue, though. It is a hint, not a rule. Ordinary functions can use this too — its value simply depends on how the function was called rather than on what the function is. So seeing this suggests you are probably looking at a constructor or a method, but it does not prove it.  
+		Secondly; the . (dot) operator is how you reach members (properties or methods) of an object, so seeing it is another hint. Again it is not proof: JavaScript lets you use the dot on primitives too, wrapping them in a temporary object for you. That is why "hello".length and (5).toFixed(2) both work, even though neither a string nor a number is an object. 
 		Lastly, to make a distinction between functions and objects, developers have a convention of always starting the name of the object with an uppercase letter. This is just a convention and you will certainly still see a lot of constructor function objects spelled beginning in lowercase, but it is a useful practice to follow that convention to make code readable, both for yourself, and your fellow developers.
-		So, going back to where we were speaking of prototype properties, there are two types of prototype properties; one for children of the JavaScript Object, and one for constructor objects. These two are not to be confused with each other because the constructor function prototype is specifically available only to constructor functions (classes). Once you create a constructor function, a prototype property becomes available to that constructor function. It contains an empty object waiting for you to add members to it on the fly that other inheriting instances can use. 
+		So, going back to the two prototypes we separated earlier: the .prototype property belongs only to functions, while the __proto__ link belongs to every object. Once you create a constructor function, a .prototype property becomes available on it. It holds an object that is very nearly empty — it starts with just one property, constructor, pointing back at the function itself, which is where the constructor property we look at later comes from. Everything else is yours to add on the fly, and whatever you add becomes available to every inheriting instance. 
 		The powerful thing about prototypes and constructor functions is that you can create an object (a constructor function) and have other objects extend from it, then you can use the prototype property to add members to your constructor on the fly which will automatically be accessible to all the other inheriting objects. Here is an example:
 
 	function Person(firstName, lastName)
@@ -362,14 +403,14 @@ Here are examples of how these static methods can be used:
 	person2.showFullName(); 
 
 	The above code works, and displays the following:
-		The last name is Bands
-		The last name is Jones
+		Last name is Bands
+		Last name is Jones
 		
 		Full name is Tom Bands
 		Full name is John Jones
 
-	You see how by having one object you can have multiple instances inherit from it, as well as add functionality to the blueprint (the boilerplate, the template, the protototype), which will make all other inheriting instances automatically get access to the newly added feature. 
-	Think of a huge tech giant like BMW producing a version of the car say i3. There are going to be millions of customers worldwide purchasing units of this vehicle, and so they cannot afford to be recreating the exact same car type from scratch a copy every time someone orders for a piece. That 	will be counter-productive and very expensive. Their work will also be prone to errors, as an artist or engineer being human, cannot guarantee that some product or part they made following 	certain steps can be accurately identically replicated. Rather, what they do is automate the 	production of the first prototype (aka blueprint, boilerplate, template) from which thousands 	an be remade effortlessly. They have to be able to vary some properties of the specimen, like the colour, size etc to fulfil the custom demand of specific clients. To achieve this; they will have a way to change certain parameters being passed to whatever automation system is being used to churn out those vehicles. The parameters (arguments) passed will make sure the variable aspects not related to the core functionality of the cars are taken care of; like, the colour, the type of rims for the wheels, etc etc
+	You see how by having one object you can have multiple instances inherit from it, as well as add functionality to the blueprint (the boilerplate, the template, the prototype), which will make all other inheriting instances automatically get access to the newly added feature. 
+	Think of a huge tech giant like BMW producing a version of the car say i3. There are going to be millions of customers worldwide purchasing units of this vehicle, and so they cannot afford to be recreating the exact same car type from scratch a copy every time someone orders for a piece. That 	will be counter-productive and very expensive. Their work will also be prone to errors, as an artist or engineer being human, cannot guarantee that some product or part they made following 	certain steps can be accurately identically replicated. Rather, what they do is automate the 	production of the first prototype (aka blueprint, boilerplate, template) from which thousands can be remade effortlessly. They have to be able to vary some properties of the specimen, like the colour, size etc to fulfil the custom demand of specific clients. To achieve this; they will have a way to change certain parameters being passed to whatever automation system is being used to churn out those vehicles. The parameters (arguments) passed will make sure the variable aspects not related to the core functionality of the cars are taken care of; like, the colour, the type of rims for the wheels, etc etc
 	In the same way, when we generate new instances of objects from our blueprint Person constructor function, we just make sure it is a different person every time by passing in 	arguments of firstName and lastName to the constructor e.g. 
 
 		let person1 = new Person('Tom', 'Bands');
@@ -391,7 +432,7 @@ Here are examples of how these static methods can be used:
 
 		let obj = {}
 
-	In this object you can assign members. Initialiser objects are useful when you are manipulating data somewhere in code and you need to have some quick data access object. It is almost a temporal way of storing data that you need to use there and then, and which 	you are sure you would not need anywhere else in your code. This means in such a case, there is no need to create a constructor object. It is a very handy way to create an object on the fly for direct use. This is also often referred to as an object literal. The syntax goes like this:
+	In this object you can assign members. Initialiser objects are useful when you are manipulating data somewhere in code and you need to have some quick data access object. It is almost a temporary way of storing data that you need to use there and then, and which 	you are sure you would not need anywhere else in your code. This means in such a case, there is no need to create a constructor object. It is a very handy way to create an object on the fly for direct use. This is also often referred to as an object literal. The syntax goes like this:
 
 		let person = {
 			name: 'Steve',
@@ -409,8 +450,8 @@ You can access the values like so:
 
 
 This prints out 'His surname is Johnson'
-The Object object is JavaScript's topmost parent object. It is the parent or prototype of all inbuilt JavaScript objects as well as the ones you will create, unless 	
-you  choose to create an object that does not inherit from Object-which is possible, as we saw above. The prototype of an object literal is Object.prototype. Let 
+The built-in Object sits at the top of JavaScript's object world, and its prototype, Object.prototype, is what all inbuilt JavaScript objects as well as the ones you create ultimately inherit from — unless
+you choose to create an object that does not inherit from it—which is possible, as we saw above. The prototype of an object literal is Object.prototype. Let 
 us prove this. Consider the following code:
 
 		let piero = {};
@@ -425,28 +466,33 @@ prototype (parent) of all objects, and its value in this case will be Object:
 
 		let collection = [];
 		let colours = ['red', 'orange', 'blue'];
-		for(i =0; i<colours.length;i++)
+		for(let i = 0; i < colours.length; i++)
 		{
    			let temporal = {}
    			temporal.name = colours[i];
    			collection.push(temporal);
 		}
 
-		document.body.innerHTML = 'HERE IS THE collection: '+collection+'<br>';
-		document.body.innerHTML = 'HERE IS THE NAME OF THE FIRST OBJECT IN collection: 			'+collection[0].name+'<br>';
-		document.body.innerHTML = 'HERE IS THE NAME OF THE SECOND OBJECT IN collection: 			'+collection[1].name+'<br>';
-		document.body.innerHTML = 'HERE IS THE NAME OF THE THIRD OBJECT IN collection: 			'+collection[2].name;
+		// note the += on each line. A plain = would REPLACE what is
+		// already there, so only the last line would ever be seen
+		document.body.innerHTML += 'HERE IS THE collection: '+collection+'<br>';
+		document.body.innerHTML += 'FIRST OBJECT IN collection: '+collection[0].name+'<br>';
+		document.body.innerHTML += 'SECOND OBJECT IN collection: '+collection[1].name+'<br>';
+		document.body.innerHTML += 'THIRD OBJECT IN collection: '+collection[2].name;
 
 	The output will be:
-		HERE IS THE collection: [object Object],[object Object],[object Object]		HERE IS THE NAME OF THE FIRST OBJECT IN collection: red		HERE IS THE NAME OF THE SECOND OBJECT IN collection: orange		HERE IS THE NAME OF THE THIRD OBJECT IN collection: blue
+		HERE IS THE collection: [object Object],[object Object],[object Object]
+		FIRST OBJECT IN collection: red
+		SECOND OBJECT IN collection: orange
+		THIRD OBJECT IN collection: blue
 
 	So we have three objects in the collection array, and each of these objects has a name property whose value is the colour that this object represents.
-	Creating object literals like this is the equivalent of creating an empty object using the new Object() method in JavaScript. The prototype of this new object created using new Object() is Object.prototype, the same prototype of object literals
+	Creating object literals like this is the equivalent of creating an empty object using the new Object() method in JavaScript. The prototype of this new object created using new Object() is Object.prototype, exactly the same as for object literals.
 
 
 
 		ii) Constructor functions
-	Constructor objects as we have seen above are like a boilerplate from which you anticipate to generate other unique but related objects from. You do it when you expect to need multiple objects; possibly in several different places in your application. You create an instance of a constructor function using the keyword new and the class name like so:
+	Constructor objects as we have seen above are like a boilerplate from which you expect to generate other unique but related objects. You do it when you expect to need multiple objects; possibly in several different places in your application. You create an instance of a constructor function using the keyword new and the class name like so:
 
 		let student = new Student();
 
@@ -471,25 +517,25 @@ prototype (parent) of all objects, and its value in this case will be Object:
 					
 					if (this.id == 'girl')
 					{
-						let img = “<img src='girlImg.png' />”;
+						let img = "<img src='girlImg.png' />";
 						div.innerHTML = img;
 					}
 
 					if (this.id == 'boy')
 					{
-						let img = “<img src='boyImg.png' />”;
+						let img = "<img src='boyImg.png' />";
 						div.innerHTML = img;
 					}
 
 					if (this.id == 'mum')
 					{
-						let img = “<img src='mumImg.png' />”;
+						let img = "<img src='mumImg.png' />";
 						div.innerHTML = img;
 					}
 
 					if (this.id == 'dad')
 					{
-						let img = “<img src='dadImg.png' />”;
+						let img = "<img src='dadImg.png' />";
 						div.innerHTML = img;
 					}
 
@@ -512,18 +558,35 @@ prototype (parent) of all objects, and its value in this case will be Object:
 		</body>
 		</html>
 
-	In this example, we instantiate objects from the constructor object PersonDiv() and depending on if it is a girl, we grab  the div from the DOM having the ID of 'girl' and we 	give the div a background color of pink, and we place the image of the girl in it.
+	In this example, we instantiate objects from the constructor object PersonDiv() and depending on if it is a girl, we grab the div from the DOM having the ID of 'girl' and we give the div a background colour of pink, and we place the image of the girl in it.
 	If it is a boy, we grab the div from the DOM with the ID of 'boy' and give it a blue 	background color and so on for the 'mum' and 'dad' divs as well.
 		Once more, we use the new keyword to create objects from constructor functions, but 	it would also work on JavaScript's built-in constructor objects like Object, Array, String, 	Date, RegExp etc. You would instantiate objects from these like so:
 
 		new Object(), new Array(), new Date(), new RegExp() etc
 
-	When it comes to prototypes and objects created from a constructor function, it is important to know that the resulting objects will have the constructor function as their prototype, while the constructor functions themselves will have Object.prototype as their prototype. When it comes to using JavaScript’s built-in functions, you may see one child object having two other objects as its prototype, and that’s fine. Just understand that the prototype property always points to which object it inherits from. For example, the prototype of an object created from the built-in Date object is both Date.prototype and Object.prototype. This linking or association of objects by their prototype properties, as we already know, is known as the prototype chain.
+	When it comes to prototypes and objects created from a constructor function, it is important to get the relationship exactly right, because it is easy to state it one step out. The object you get back from new Person() does NOT have the Person function as its prototype. It has Person.prototype — the object hanging off the function, which is the mould we talked about earlier.
+	So for let person1 = new Person('Tom'), the chain runs like this:
+
+		person1  →  Person.prototype  →  Object.prototype  →  null
+
+	You can walk it yourself and watch it end:
+
+		console.log(Object.getPrototypeOf(person1) === Person.prototype);
+		// true
+
+		console.log(Object.getPrototypeOf(Person.prototype) === Object.prototype);
+		// true
+
+		console.log(Object.getPrototypeOf(Object.prototype));
+		// null - the end of the chain
+
+	Notice that an object has exactly ONE prototype, never two. When you hear that a Date "inherits from both Date.prototype and Object.prototype", what is really meant is that both of them are in its chain — Date.prototype directly, and Object.prototype one step further up. That distinction matters, because inheritance in JavaScript is a single line of links, not a bundle of parents.
+	This linking or association of objects, as we already know, is what we call the prototype chain, and it is how JavaScript answers every property lookup: it checks the object itself, then its prototype, then its prototype's prototype, until it either finds what you asked for or reaches null.
 
 
 
 		iii) The new way to create objects and the prototype
-	There is a modern way to create an object in JavaScript. Since ES2015 you can now create an object using the create() method of the JavaScript Object passing it the name of the object's prototype (the object you want to create an instance of). Here is how you would do it:
+	There is a more modern way to create an object in JavaScript. Since ES5, released in 2009, you can create an object using the create() method of the JavaScript Object passing it the name of the object's prototype (the object you want to create an instance of). Here is how you would do it:
 
 		let girl = Object.create(Person);
 
@@ -545,7 +608,7 @@ prototype (parent) of all objects, and its value in this case will be Object:
 
 	will display Joan Langley
 
- 	Let's see how you would use the create() method to create objects from the Person constructor object. In doing that, we will will pass in the arguments that the constructor object needs to set itself up.
+ 	Let's see how you would use the create() method to create objects from the Person constructor object. In doing that, we will pass in the arguments that the constructor object needs to set itself up.
 
 	let girl = Object.create(Object.create(Person, { firstName: {value: 'Josephine'}, lastName: { value: 'Kindjo'} }));
 	let boy = Object.create(Object.create(Person, { firstName: {value: 'Jim'}, lastName: { value: 'Kindjo'} }));
