@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 340" width="740" height="340" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="u" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
+  <rect width="740" height="340" fill="#ffffff"/>
+  <text x="370" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">One moment in time, three clocks</text>
+  <text x="370" y="52" text-anchor="middle" font-size="12.5" fill="#333">Alice posts once. Nothing about the post changes — only how it is displayed.</text>
+
+  <rect x="245" y="76" width="250" height="66" rx="6" fill="#eeeeee" stroke="#111" stroke-width="2.5"/>
+  <text x="370" y="100" text-anchor="middle" font-size="12" fill="#444">stored on the server, in UTC</text>
+  <text x="370" y="126" text-anchor="middle" font-size="14" font-family="Courier, monospace" font-weight="bold" fill="#111">2025-03-20 14:00 UTC</text>
+
+  <line x1="290" y1="148" x2="150" y2="200" stroke="#222" stroke-width="2" marker-end="url(#u)"/>
+  <line x1="370" y1="148" x2="370" y2="200" stroke="#222" stroke-width="2" marker-end="url(#u)"/>
+  <line x1="450" y1="148" x2="590" y2="200" stroke="#222" stroke-width="2" marker-end="url(#u)"/>
+
+  <rect x="40" y="206" width="200" height="86" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="140" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">Alice — New York</text>
+  <text x="140" y="250" text-anchor="middle" font-size="11" fill="#666">UTC-4</text>
+  <text x="140" y="276" text-anchor="middle" font-size="15" font-family="Courier, monospace" fill="#111">10:00 AM</text>
+
+  <rect x="270" y="206" width="200" height="86" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="370" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">Bob — London</text>
+  <text x="370" y="250" text-anchor="middle" font-size="11" fill="#666">UTC+0</text>
+  <text x="370" y="276" text-anchor="middle" font-size="15" font-family="Courier, monospace" fill="#111">2:00 PM</text>
+
+  <rect x="500" y="206" width="200" height="86" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="600" y="230" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">Charlie — Tokyo</text>
+  <text x="600" y="250" text-anchor="middle" font-size="11" fill="#666">UTC+9</text>
+  <text x="600" y="276" text-anchor="middle" font-size="15" font-family="Courier, monospace" fill="#111">11:00 PM</text>
+
+  <text x="370" y="322" text-anchor="middle" font-size="12.5" fill="#333">A Date holds one number. Local time is a way of showing it, not a different value.</text>
+</svg>

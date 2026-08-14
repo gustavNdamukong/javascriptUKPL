@@ -1289,6 +1289,11 @@ The different interpretations of true or false
   in one of those places, it works out whether to treat it as true or false. Values that come
   out as false are called falsy, and everything else is truthy.
     There are exactly eight falsy values in JavaScript, and it is worth learning the list,
+
+![Figure 10.1 — The eight falsy values, and everything else](images/ch10-fig-01-falsy-values.svg)
+
+*Figure 10.1 — The eight falsy values, and everything else*
+
   because everything not on it is truthy:
 
         -i)    false          the boolean itself

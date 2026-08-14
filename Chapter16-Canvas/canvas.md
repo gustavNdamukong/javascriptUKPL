@@ -949,6 +949,11 @@ Save that and if you click in the canvas, you will see the message written to th
 
 There you have it; the x and y coordinates of the exact spot in the canvas element on which you clicked.
 
+![Figure 16.1 — Canvas coordinates start at the top left](images/ch16-fig-01-coordinates.svg)
+
+*Figure 16.1 — Canvas coordinates start at the top left*
+
+
 
 
 
@@ -1263,11 +1268,17 @@ So in the very worst case, coming in at exactly 45 degrees, the ball stops
 around 6 pixels early. On a 500 pixel canvas that is small enough that
 most people never notice.
   So why use it? Because it is four simple comparisons. No square roots,
+
 no multiplication, nothing expensive. When you have a hundred objects on
 screen and you are checking every one of them against every other, sixty
 times a second, that cheapness is the whole game. Real game engines use
 AABB as a first, fast pass, and only do the precise, expensive maths on
 the few pairs that the boxes say might be touching.
+
+![Figure 16.2 — Why the ball sometimes stops just short of the rock](images/ch16-fig-02-bounding-box.svg)
+
+*Figure 16.2 — Why the ball sometimes stops just short of the rock*
+
 
 
 	The precise version, if you need it

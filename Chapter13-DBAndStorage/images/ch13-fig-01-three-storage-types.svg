@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 360" width="740" height="360" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="t" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
+  <rect width="740" height="360" fill="#ffffff"/>
+  <text x="370" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">Three ways to keep data in the browser</text>
+
+  <rect x="24" y="58" width="470" height="188" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="259" y="80" text-anchor="middle" font-size="12.5" font-weight="bold" fill="#111">THE VISITOR'S BROWSER</text>
+
+  <rect x="44" y="96" width="200" height="64" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="144" y="119" text-anchor="middle" font-size="13" font-family="Courier, monospace" fill="#111">localStorage</text>
+  <text x="144" y="140" text-anchor="middle" font-size="11" fill="#444">stays until you delete it</text>
+
+  <rect x="274" y="96" width="200" height="64" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="374" y="119" text-anchor="middle" font-size="13" font-family="Courier, monospace" fill="#111">sessionStorage</text>
+  <text x="374" y="140" text-anchor="middle" font-size="11" fill="#444">gone when the tab closes</text>
+
+  <rect x="44" y="172" width="430" height="60" rx="6" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="259" y="195" text-anchor="middle" font-size="13" font-family="Courier, monospace" fill="#111">cookies</text>
+  <text x="259" y="216" text-anchor="middle" font-size="11" fill="#444">you set the expiry — and they leave the browser</text>
+
+  <rect x="560" y="140" width="150" height="70" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="635" y="170" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">THE SERVER</text>
+  <text x="635" y="190" text-anchor="middle" font-size="11" fill="#444">never sees the other two</text>
+
+  <line x1="480" y1="202" x2="554" y2="184" stroke="#222" stroke-width="2.5" marker-end="url(#t)"/>
+  <text x="516" y="228" text-anchor="middle" font-size="10.5" fill="#111">sent with</text>
+  <text x="516" y="242" text-anchor="middle" font-size="10.5" fill="#111">every request</text>
+
+  <text x="24" y="288" font-size="12.5" font-weight="bold" fill="#111">Choosing between them</text>
+  <text x="34" y="312" font-size="12" fill="#333">Need it after today?</text>
+  <text x="230" y="312" font-size="12" font-family="Courier, monospace" fill="#111">localStorage</text>
+  <text x="34" y="332" font-size="12" fill="#333">Only for this tab?</text>
+  <text x="230" y="332" font-size="12" font-family="Courier, monospace" fill="#111">sessionStorage</text>
+  <text x="400" y="312" font-size="12" fill="#333">Server needs it?</text>
+  <text x="560" y="312" font-size="12" font-family="Courier, monospace" fill="#111">cookies</text>
+  <text x="400" y="332" font-size="11.5" fill="#666">Sensitive? None of them.</text>
+</svg>

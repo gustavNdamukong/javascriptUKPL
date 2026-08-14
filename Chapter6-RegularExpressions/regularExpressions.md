@@ -551,6 +551,11 @@ A regular expression (also referred to as regex) is a
 
 
 
+![Figure 6.1 — g and m answer two different questions](images/ch06-fig-01-g-vs-m.svg)
+
+*Figure 6.1 — g and m answer two different questions*
+
+
        Regular expressions in JavaScript
       ——————————————-
     Regular expressions are used in 

@@ -76,6 +76,11 @@ sessionStorage:
 
 So, the take-away from this is this: if you need to store data permanently, use localStorage, if you only need it for a single session, use sessionStorage, and if you need the server to access the data, use cookies.
 
+![Figure 13.1 — Three ways to keep data in the browser](images/ch13-fig-01-three-storage-types.svg)
+
+*Figure 13.1 — Three ways to keep data in the browser*
+
+
 
     Persisting data with localStorage
   

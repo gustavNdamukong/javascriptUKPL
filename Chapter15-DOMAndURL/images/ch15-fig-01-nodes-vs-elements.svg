@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 400" width="740" height="400" font-family="Helvetica, Arial, sans-serif">
+  <rect width="740" height="400" fill="#ffffff"/>
+  <text x="370" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">Every element is a node. Not every node is an element.</text>
+
+  <text x="24" y="64" font-size="12" font-weight="bold" fill="#111">Your markup:</text>
+  <rect x="24" y="72" width="300" height="92" rx="5" fill="#f4f4f4" stroke="#111" stroke-width="1.5"/>
+  <text x="34" y="92" font-size="11.5" font-family="Courier, monospace" fill="#111">&lt;div id="parent"&gt;</text>
+  <text x="34" y="110" font-size="11.5" font-family="Courier, monospace" fill="#111">    Text Node</text>
+  <text x="34" y="128" font-size="11.5" font-family="Courier, monospace" fill="#111">    &lt;p&gt;Paragraph 1&lt;/p&gt;</text>
+  <text x="34" y="146" font-size="11.5" font-family="Courier, monospace" fill="#111">    &lt;p&gt;Paragraph 2&lt;/p&gt;</text>
+  <text x="34" y="160" font-size="11.5" font-family="Courier, monospace" fill="#111">&lt;/div&gt;</text>
+
+  <text x="370" y="64" font-size="12" font-weight="bold" fill="#111">What the DOM actually holds inside that div:</text>
+  <rect x="370" y="72" width="346" height="200" rx="5" fill="#ffffff" stroke="#111" stroke-width="1.5"/>
+  <rect x="384" y="84" width="318" height="26" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1"/>
+  <text x="394" y="102" font-size="11.5" font-family="Courier, monospace" fill="#111">[0] #text</text>
+  <text x="530" y="102" font-size="10.5" fill="#666">the line break + "Text Node"</text>
+  <rect x="384" y="114" width="318" height="26" rx="3" fill="#ffffff" stroke="#111" stroke-width="1.5"/>
+  <text x="394" y="132" font-size="11.5" font-family="Courier, monospace" fill="#111">[1] &lt;p&gt;</text>
+  <text x="530" y="132" font-size="10.5" fill="#666">an ELEMENT</text>
+  <rect x="384" y="144" width="318" height="26" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1"/>
+  <text x="394" y="162" font-size="11.5" font-family="Courier, monospace" fill="#111">[2] #text</text>
+  <text x="530" y="162" font-size="10.5" fill="#666">the line break between them</text>
+  <rect x="384" y="174" width="318" height="26" rx="3" fill="#ffffff" stroke="#111" stroke-width="1.5"/>
+  <text x="394" y="192" font-size="11.5" font-family="Courier, monospace" fill="#111">[3] &lt;p&gt;</text>
+  <text x="530" y="192" font-size="10.5" fill="#666">an ELEMENT</text>
+  <rect x="384" y="204" width="318" height="26" rx="3" fill="#eeeeee" stroke="#888" stroke-width="1"/>
+  <text x="394" y="222" font-size="11.5" font-family="Courier, monospace" fill="#111">[4] #text</text>
+  <text x="530" y="222" font-size="10.5" fill="#666">the line break before &lt;/div&gt;</text>
+  <text x="384" y="252" font-size="11" fill="#444">Three of the five are whitespace you never typed on purpose.</text>
+
+  <line x1="24" y1="296" x2="716" y2="296" stroke="#ccc" stroke-width="1"/>
+  <text x="24" y="322" font-size="12" font-family="Courier, monospace" fill="#111">parent.childNodes</text>
+  <text x="230" y="322" font-size="12" font-weight="bold" fill="#111">5</text>
+  <text x="270" y="322" font-size="11.5" fill="#666">— everything, including the text nodes</text>
+  <text x="24" y="346" font-size="12" font-family="Courier, monospace" fill="#111">parent.children</text>
+  <text x="230" y="346" font-size="12" font-weight="bold" fill="#111">2</text>
+  <text x="270" y="346" font-size="11.5" fill="#666">— elements only</text>
+  <text x="24" y="378" font-size="12.5" fill="#333">Want elements only? Use children, firstElementChild, nextElementSibling.</text>
+</svg>

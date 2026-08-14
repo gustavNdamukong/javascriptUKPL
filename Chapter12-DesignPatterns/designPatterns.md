@@ -40,6 +40,11 @@ Design patterns are reusable solutions to
          -COMMAND PATTERN
          -ITERATOR PATTERN
 
+![Figure 12.1 — The three families of design pattern](images/ch12-fig-01-three-groups.svg)
+
+*Figure 12.1 — The three families of design pattern*
+
+
 
     These design patterns are global and 
   programming-language agnostic, however, 

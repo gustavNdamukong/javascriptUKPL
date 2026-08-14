@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 340" width="740" height="340" font-family="Helvetica, Arial, sans-serif">
+  <defs><marker id="v" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#222"/></marker></defs>
+  <rect width="740" height="340" fill="#ffffff"/>
+  <text x="370" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">Canvas coordinates start at the TOP left, and y grows downwards</text>
+
+  <rect x="70" y="60" width="330" height="220" fill="#fafafa" stroke="#111" stroke-width="2"/>
+  <text x="60" y="56" text-anchor="end" font-size="12" font-family="Courier, monospace" fill="#111">0,0</text>
+  <circle cx="70" cy="60" r="4" fill="#111"/>
+  <line x1="70" y1="60" x2="380" y2="60" stroke="#222" stroke-width="2" marker-end="url(#v)"/>
+  <text x="230" y="50" text-anchor="middle" font-size="12" font-family="Courier, monospace" fill="#111">x grows right</text>
+  <line x1="70" y1="60" x2="70" y2="262" stroke="#222" stroke-width="2" marker-end="url(#v)"/>
+  <text x="52" y="170" text-anchor="middle" font-size="12" font-family="Courier, monospace" fill="#111" transform="rotate(-90 52 170)">y grows DOWN</text>
+
+  <rect x="150" y="120" width="140" height="60" fill="#cccccc" stroke="#111" stroke-width="1.5"/>
+  <circle cx="150" cy="120" r="3.5" fill="#111"/>
+  <text x="156" y="114" font-size="11" font-family="Courier, monospace" fill="#111">80,60</text>
+  <text x="220" y="156" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">fillRect(80,60,140,60)</text>
+
+  <circle cx="330" cy="220" r="40" fill="none" stroke="#111" stroke-width="2"/>
+  <circle cx="330" cy="220" r="3.5" fill="#111"/>
+  <line x1="330" y1="220" x2="370" y2="220" stroke="#111" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="350" y="214" text-anchor="middle" font-size="10.5" font-family="Courier, monospace" fill="#111">r</text>
+  <text x="330" y="278" text-anchor="middle" font-size="11.5" font-family="Courier, monospace" fill="#111">arc(260,160,40,...)</text>
+
+  <text x="430" y="92" font-size="12.5" font-weight="bold" fill="#111">Two shapes, two ways of being placed</text>
+  <text x="430" y="120" font-size="12" font-family="Courier, monospace" fill="#111">fillRect(x, y, w, h)</text>
+  <text x="440" y="140" font-size="11.5" fill="#444">x,y is the TOP-LEFT corner</text>
+  <text x="430" y="172" font-size="12" font-family="Courier, monospace" fill="#111">arc(x, y, r, 0, 2*Math.PI)</text>
+  <text x="440" y="192" font-size="11.5" fill="#444">x,y is the CENTRE, and r</text>
+  <text x="440" y="208" font-size="11.5" fill="#444">reaches out from it</text>
+  <text x="430" y="244" font-size="11.5" fill="#444">Mixing these two up is the</text>
+  <text x="430" y="260" font-size="11.5" fill="#444">commonest reason a shape</text>
+  <text x="430" y="276" font-size="11.5" fill="#444">lands somewhere unexpected.</text>
+
+  <text x="370" y="322" text-anchor="middle" font-size="12.5" fill="#333">This is upside down compared to the graphs you drew at school, where y grows upwards.</text>
+</svg>

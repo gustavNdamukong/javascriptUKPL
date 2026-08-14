@@ -175,6 +175,11 @@ It is important to be able to tell when you're dealing with a Node and when you 
 
 Why does p.children return empty? Because the p tag has no element children, just a text node.
 
+![Figure 15.1 — Every element is a node; not every node is an element](images/ch15-fig-01-nodes-vs-elements.svg)
+
+*Figure 15.1 — Every element is a node; not every node is an element*
+
+
 
   Here are some properties of nodes and elements that you MUST know:
 
@@ -531,6 +536,11 @@ I had to show you which DOM methods return an HTMLCollection, and which returns 
 
     * HTMLCollection is a live collection of only HTMLElement objects.
     * NodeList is a list of Node objects, which may include HTML elements, but also other things like text nodes, or comments etc.
+
+![Figure 15.2 — Live HTMLCollection vs static NodeList](images/ch15-fig-02-live-vs-static.svg)
+
+*Figure 15.2 — Live HTMLCollection vs static NodeList*
+
 
 
 

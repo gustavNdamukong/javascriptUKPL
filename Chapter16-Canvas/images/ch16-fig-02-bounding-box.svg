@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 340" width="740" height="340" font-family="Helvetica, Arial, sans-serif">
+  <rect width="740" height="340" fill="#ffffff"/>
+  <text x="370" y="28" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">Why the ball sometimes stops just short of the rock</text>
+
+  <!-- the rock -->
+  <rect x="290" y="150" width="160" height="110" fill="#dddddd" stroke="#111" stroke-width="2"/>
+  <text x="370" y="212" text-anchor="middle" font-size="13" fill="#111">the rock</text>
+
+  <!-- the ball, its box corner exactly touching the rock corner -->
+  <rect x="230" y="90" width="60" height="60" fill="none" stroke="#111" stroke-width="1.5" stroke-dasharray="5 3"/>
+  <circle cx="260" cy="120" r="30" fill="none" stroke="#111" stroke-width="2"/>
+  <circle cx="260" cy="120" r="3" fill="#111"/>
+
+  <!-- labels, all placed clear of the shapes -->
+  <text x="150" y="104" text-anchor="end" font-size="12" fill="#111">the ball</text>
+  <line x1="155" y1="100" x2="234" y2="112" stroke="#777" stroke-width="1"/>
+  <text x="150" y="140" text-anchor="end" font-size="11.5" fill="#444">its invisible</text>
+  <text x="150" y="155" text-anchor="end" font-size="11.5" fill="#444">bounding box</text>
+  <line x1="155" y1="146" x2="228" y2="146" stroke="#777" stroke-width="1"/>
+
+  <circle cx="290" cy="150" r="4.5" fill="none" stroke="#111" stroke-width="2"/>
+  <line x1="290" y1="150" x2="248" y2="284" stroke="#777" stroke-width="1"/>
+  <text x="244" y="300" text-anchor="middle" font-size="11.5" fill="#111">the box corner touches here,</text>
+  <text x="244" y="315" text-anchor="middle" font-size="11.5" fill="#111">while the ball is still 6px away</text>
+
+  <!-- the numbers -->
+  <text x="500" y="86" font-size="12.5" font-weight="bold" fill="#111">The numbers, for a 15px ball</text>
+  <text x="500" y="114" font-size="12" fill="#333">circle reaches out</text>
+  <text x="676" y="114" font-size="12" font-family="Courier, monospace" fill="#111">15px</text>
+  <text x="500" y="136" font-size="12" fill="#333">box corner reaches</text>
+  <text x="676" y="136" font-size="12" font-family="Courier, monospace" fill="#111">21px</text>
+  <text x="500" y="158" font-size="12" font-weight="bold" fill="#111">so it stops early by</text>
+  <text x="676" y="158" font-size="12" font-family="Courier, monospace" font-weight="bold" fill="#111">6px</text>
+  <text x="500" y="182" font-size="11.5" fill="#666">(21 is 15 × the square root of 2)</text>
+  <text x="500" y="216" font-size="11.5" fill="#444">Against the rock's FLAT sides the</text>
+  <text x="500" y="232" font-size="11.5" fill="#444">two agree exactly, so nothing</text>
+  <text x="500" y="248" font-size="11.5" fill="#444">looks wrong. Only the corners</text>
+  <text x="500" y="264" font-size="11.5" fill="#444">show the gap.</text>
+
+  <text x="370" y="334" text-anchor="middle" font-size="12" fill="#333">We accept it because four comparisons are far cheaper than square roots — real game engines do the same.</text>
+</svg>

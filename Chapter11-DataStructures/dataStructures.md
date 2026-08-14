@@ -337,6 +337,11 @@
              things you schedule run in the order
              you scheduled them.
 
+![Figure 11.1 — Stack and queue: same array, different end](images/ch11-fig-01-stack-vs-queue.svg)
+
+*Figure 11.1 — Stack and queue: same array, different end*
+
+
 
              TUPLES
              ————-
