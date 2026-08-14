@@ -259,8 +259,27 @@ This one is going to be more complex than the three examples above, but it reall
 	let painting = false;
 
 	// Start drawing
-	canvas.addEventListener("mousedown", () => {
+	canvas.addEventListener("mousedown", (e) => {
   		painting = true;
+
+		// Where exactly did the user press?
+		const x = e.offsetX;
+		const y = e.offsetY;
+
+		// Set the pen up before we put it down on the paper
+		ctx.lineWidth = penSize;
+		ctx.lineCap = "round";
+		ctx.strokeStyle = paintColor;
+
+		// Start a fresh path, and place the pen on that exact spot
+		ctx.beginPath();
+		ctx.moveTo(x, y);
+
+		// Now draw a line from that spot to itself. That sounds like a
+		// pointless thing to do, but because lineCap is "round" it paints
+		// one round dot. This is what makes a plain click leave a mark.
+		ctx.lineTo(x, y);
+		ctx.stroke();
 	});
 
 	// Stop drawing
@@ -395,9 +414,50 @@ The following is a step-by-step explanation of how it all works:
 
 		When the mouse is pressed down on the canvas, start drawing:
 
-			canvas.addEventListener("mousedown", () => {
+			canvas.addEventListener("mousedown", (e) => {
   				painting = true;
+
+  				const x = e.offsetX;
+  				const y = e.offsetY;
+
+  				ctx.lineWidth = penSize;
+  				ctx.lineCap = "round";
+  				ctx.strokeStyle = paintColor;
+
+  				ctx.beginPath();
+  				ctx.moveTo(x, y);
+  				ctx.lineTo(x, y);
+  				ctx.stroke();
 			});
+
+		There is more going on here than you might expect from "start
+		drawing", so let us take it slowly.
+		  The beginPath() and moveTo() put the pen down at the exact spot
+		the mouse was pressed. Leave them out and the line only starts
+		from the SECOND mouse move, which quietly loses the first few
+		pixels of every stroke.
+		  The lineTo(x, y) and stroke() then draw a line from that spot to
+		itself. A line from a point to the same point has no length at all,
+		so you would think it draws nothing. But we set lineCap to "round",
+		and a round cap on a zero-length line is simply a circle. So we get
+		one round dot, the width of the pen, exactly where the user
+		pressed. Without it, clicking once without moving the mouse leaves
+		no mark at all, which is not what anyone expects from a drawing
+		app - try dotting the letter i and you will see the problem.
+
+		  If drawing a line from a point to itself feels like too much of a
+		trick, you can paint that dot directly instead. This is the more
+		advanced way of writing the same four lines, using the arc() method
+		you met when we drew a circle earlier:
+
+			ctx.fillStyle = paintColor;
+			ctx.beginPath();
+			ctx.arc(x, y, penSize / 2, 0, 2 * Math.PI);
+			ctx.fill();
+
+		Both produce the same dot. Use whichever reads more clearly to you
+		- though remember that the arc() version fills, so it needs
+		fillStyle rather than strokeStyle.
 
 		When the mouse is released, stop drawing. ctx.beginPath() 
 		clears the current drawing path to avoid unwanted lines:
@@ -563,8 +623,28 @@ Here is the modified code to implement pixel erasing using clearRect():
   	let isErasing = false;   // which tool are we using?
 
   	// Start drawing or erasing
-  	canvas.addEventListener("mousedown", () => {
+  	canvas.addEventListener("mousedown", (e) => {
       		mouseDown = true;
+
+      		const x = e.offsetX;
+      		const y = e.offsetY;
+
+      		if (isErasing) {
+          		// A click on its own should rub out that spot
+          		ctx.clearRect(x - penSize / 2, y - penSize / 2, penSize, penSize);
+      		}
+      		else {
+          		// Set the pen up, put it down, and mark the spot so that a
+          		// click on its own still leaves a dot
+          		ctx.lineWidth = penSize;
+          		ctx.lineCap = "round";
+          		ctx.strokeStyle = paintColor;
+
+          		ctx.beginPath();
+          		ctx.moveTo(x, y);
+          		ctx.lineTo(x, y);
+          		ctx.stroke();
+      		}
   	});
 
   	// Stop drawing or erasing
