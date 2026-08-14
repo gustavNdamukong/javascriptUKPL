@@ -473,10 +473,16 @@ Chapter 16 - The Canvas Element
     -The Canvas element—for drawing on the web
       -Draw a rectangle
       -Draw a circle
-      -Write some text
+      -Printing text on the canvas
       -Create a drawing app
+        -The paintbox setup
+        -Detecting colour selection
+        -Eraser functionality
       -Positioning, animation and collision detection
-        -Detecting the collision of two shapes
+        -Positioning
+        -Animation
+        -Collision detection
+          -Detecting the collision of two shapes
 
 Chapter 17 - Object Oriented Programming (OOP)
     -Introduction

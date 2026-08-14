@@ -6,10 +6,16 @@ CHAPTER 16 - THE CANVAS ELEMENT
 	-The Canvas element—for drawing on the web
 		-Draw a rectangle
 		-Draw a circle
-		-Write some text
+		-Printing text on the canvas
 		-Create a drawing app
+			-The paintbox setup
+			-Detecting colour selection
+			-Eraser functionality
 		-Positioning, animation and collision detection
-			-Detecting the collision of two shapes
+			-Positioning
+			-Animation
+			-Collision detection
+				-Detecting the collision of two shapes
 
 
 The Canvas element—for drawing on the web
@@ -26,7 +32,7 @@ The Canvas element—for drawing on the web
     * Drawing apps
     * Data visualisations	
 
-In this section, we will build a drawing application, with which you can draw things on the canvas, and used different colours for the strokes, just like coloured pencils of a sketch book, only, you will be doing this using on the web, by holding and dragging your mouse. In Chapter 19 where we look at working with Images, I will also show you how to use the HTML5 Canvas API to create an image editing application. This is what a canvas element looks like on an HTML page:
+In this section, we will build a drawing application, with which you can draw things on the canvas, and use different colours for the strokes, just like the coloured pencils of a sketchbook—only you will be doing this on the web, by holding and dragging your mouse. In Chapter 20 where we look at working with Images, I will also show you how to use the HTML5 Canvas API to create an image editing application. This is what a canvas element looks like on an HTML page:
 
 	<canvas id="myCanvas" width="300" height="150" 
 		style="border:1px solid black;">
@@ -40,7 +46,7 @@ In this section, we will build a drawing application, with which you can draw th
 	-style it with CSS	
 	-control it with JavaScript
 
-But unlike an <img>, canvas doesn't have content on its own-you draw everything using a special drawing tool called the canvas context, which comes as part of the Canvas itself. This is why in all Canvas operations in code, you will notice they all begin with a setup of the context, followed by the process of building stuff upon that context.
+But unlike an <img>, canvas doesn't have content on its own—you draw everything using a special drawing tool called the canvas context, which comes as part of the Canvas itself. This is why in all Canvas operations in code, you will notice they all begin with a setup of the context, followed by the process of building stuff upon that context.
 Let’s see some examples of the Canvas in action. I think the best way for you to get introduced to the canvas is if I show you practical examples in code, and then explain what the various properties and methods do.
 
 	
@@ -74,12 +80,13 @@ Draw a rectangle
 Explanation:
 	-The line getContext("2d") is how you access the 2D drawing tools of 
 		canvas.
-	-The .fillStyle property of the context is the colour of the whole 
-		element itself-like an element’s background colour in CSS.
+	-The .fillStyle property of the context sets the colour that any 
+		subsequent filling will use—rather like choosing which pot of 
+		paint your brush is about to go into.
 	-The .fillRect() method of the context, actually draws the filled 
 		rectangle. The 4 arguments it takes are very clear from the 
 		names; the x and y coordinates where you want the element to 
-		placed in the canvas. The next 2 are for the width and height you 
+		be placed in the canvas. The next 2 are for the width and height you 
 		want for the rectangle. The rectangle created in this example will 
 		be one 200 pixels wide and 60 pixels high.
 
@@ -123,22 +130,22 @@ Explanation:
 	-ctx.arc(150, 75, 40, 0, 2 * Math.PI)
 		It defines a circle by drawing an arc:
             * 150 and 75 represent the x and y coordinates, respectively, of the center of the circle.
-            * The third argument (4) is its radius, which is how wide the circle should be.
-            * he last two arguments (start angle and end angle) where 0 is the standard starting angle (in radians) while 2 * Math.PI is the standard ending angle (where a full circle = 360° or 2π radians).
+            * The third argument (40) is its radius, which is how far the circle reaches out from its centre.
+            * The last two arguments (start angle and end angle), where 0 is the standard starting angle (in radians) while 2 * Math.PI is the standard ending angle (where a full circle = 360° or 2π radians).
 		It is important to note that ctx.arc() only defines the path of the 
 		circle. It doesn't actually draw or color it yet. It just traces the 
-		shape’s outline (like drawing with a pencil.
+		shape’s outline (like drawing with a pencil).
 	-The .fillStyle property is what declares that the circle will be red in 
 		color when it is filled. Note that it does not do the filling 
 		(colouring) itself.
 	-The .fill() method of the context, actually draws the circle. In doing 
-		so, It works with .arc(0 and .fillStyle to draw the shape following 
+		so, it works with .arc() and .fillStyle to draw the shape following 
 		the path you just defined with arc, while filling (colouring) it with 
 		the colour defined by the .fillStyle property. It actually paints the 
 		inside of the shape (like coloring it with a brush).
 
-  In this example we draw a circle with a filled in color. If you wanted to have stroke circle, which means, a drawn circle outline, with no colour filling, you can achieve that by using the combination of the following two properties: 
-	-ctx.strokeStyle e.g. ctx.StrokeStyle = "red";
+  In this example we draw a circle with a filled in color. If you wanted a stroked circle, which means a drawn circle outline with no colour filling, you can achieve that by using the combination of the following two properties: 
+	-ctx.strokeStyle e.g. ctx.strokeStyle = "red";
 	-ctx.stroke()
 instead of:
 	-ctx.fillStyle
@@ -188,7 +195,7 @@ Explanation:
 			-.fillText() to write the text.
 
 	Note that you pass in the text to be written to .fillText() as a string, 
-	and then tell it the x and y coordinated for where you wish to position 
+	and then tell it the x and y coordinates for where you wish to position 
 	the text on the canvas.
 
 			ctx.fillText("Hello Canvas!", 70, 50);
@@ -201,7 +208,7 @@ Explanation:
 
 Create a drawing app
 —————————————
-This one is going to be more complex than the two exercises above, but it really is not hard to understand. I will try to explain what every line of code does, and it should all become clear to you. 
+This one is going to be more complex than the three examples above, but it really is not hard to understand. I will try to explain what every line of code does, and it should all become clear to you. 
 
 	HTML code
 	——————
@@ -344,21 +351,24 @@ This one is going to be more complex than the two exercises above, but it really
 
   		// change indicated pen color to the eraser 
 		// color-which is canvas background-color
-  		colorIndicator.style.backgroundColor = canvasBackground
+  		colorIndicator.style.backgroundColor = canvasBackground;
   		indicatorName.textContent = "Eraser";
-
 	});
 
  
 Explanation:
-  This is an application where you can draw with your mouse, and see the coloured strokes on your screen as the mouse moves. You can change the color of the pen by clicking on your desired colour circle in the palette (smaller canvas) next to the main drawing canvas. In the color canvas which we named PaintBox, you can choose from the colours: black, red, blue, dodgerblue, green, yellow, and grey. You can easily add a new colour to the application by adding another color object to the paint_colors array, and it will just work:
+  This is an application where you can draw with your mouse, and see the coloured strokes on your screen as the mouse moves. You can change the color of the pen by clicking on your desired colour circle in the palette (smaller canvas) next to the main drawing canvas. In the color canvas which we named paintBox, you can choose from the colours: black, red, blue, dodgerblue, green, yellow, and grey. You can easily add a new colour to the application by adding another color object to the paint_colors array, and it will just work:
 
-	paint_colors = [
-		…
+	const paint_colors = [
+		// ...the existing colours...
     		{ x: 480, y: 55, radius: 20, color: "purple" },
 	];
 
-Keep in mind that the value of the x property of all the colours are incremented by 50 pixels with each new color. This is to make sure that along the x-axis-which is horizontally, the color circles are lined up nicely next to each other without any overlapping.
+Add the new entry inside the array where it is declared. Do not try to
+reassign paint_colors afterwards—it is a const, so that would throw
+"Assignment to constant variable".
+
+Keep in mind that the value of the x property of each colour is incremented by 50 pixels with each new color. This is to make sure that along the x-axis—which is to say horizontally—the color circles are lined up nicely next to each other without any overlapping.
 The following is a step-by-step explanation of how it all works:
 	-We start by setting up the variables 
 
@@ -452,7 +462,7 @@ The following is a step-by-step explanation of how it all works:
 		});
 
 
-	Detecting color selection
+	Detecting colour selection
 	———————————————
 	When user clicks the color canvas, set the pen mode and reset the 
 	pen size to normal:
@@ -494,13 +504,13 @@ The following is a step-by-step explanation of how it all works:
 	———————————
   There are two common ways to add an eraser to your canvas drawing app, and both are effective. One way is to draw with a white background, or whatever the background color of your canvas is. This is the simplest way to mimic an eraser: Just change the ctx.strokeStyle to "white" (or the canvas background color), and keep drawing. It looks like you're erasing, but you're actually painting over the drawing. Here is an example code:
 
-	eraserButton.addEventListener("click", () => {
+	eraser.addEventListener("click", () => {
 		 // Use background color
   		ctx.strokeStyle = "white";
 	});
 
 If you're using a brush with a line width, make the eraser slightly thicker.
-This is the approach we took for the eraser in our example above. Here is how we did it; 
+This is the approach we took for the eraser in our example above. Here is how we did it: 
 	-we set an event listener for a click on the eraser div element, then increased the brush size (penSize = 20), set the painting color to the same color as the background of our canvas (canvasBackground), and finally we changed the text beside the eraser div from “Pen” to “Eraser” like this: 
 
 	indicatorName.textContent = "Eraser";
@@ -516,7 +526,7 @@ just so the user is made aware that they are now in erasing mode. The example er
 	});
 
 	Here is how it works:
-		-It’s not a separate tool-it’s just a pen with a thicker size that 
+		-It’s not a separate tool—it’s just a pen with a thicker size that 
 		   draws using the background color (white), so it appears to 
 		   "erase".
 		-This method is simple and fast, especially for programmers. 
@@ -661,12 +671,12 @@ Here is the modified code to implement pixel erasing using clearRect():
 
     		// change indicated pen color to the eraser 
     		// color-which is canvas background-color
-      		colorIndicator.style.backgroundColor = canvasBackground
+      		colorIndicator.style.backgroundColor = canvasBackground;
       		indicatorName.textContent = "Eraser";
 
   	});
 
-  Hopefully you have learned a lot about the HTLM5 canvas from this chapter. Visit the document on line, experiment and play with it to see its full power.
+  Hopefully you have learned a lot about the HTML5 canvas from this chapter. Visit the documentation online, experiment and play with it to see its full power.
 
 
 
