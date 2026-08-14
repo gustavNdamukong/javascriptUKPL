@@ -33,7 +33,6 @@ CHAPTER 10 - DATA TYPES
        -Undefined vs null values
        -Convert the datatype of a variable
 	-Built-in utility functions for type checking
-       -Reading data from an xml file using javaScript XPATH
 -Booleans
      -The different interpretations of true or 
        false
@@ -55,7 +54,7 @@ CHAPTER 10 - DATA TYPES
   covered on this-it will all become 
   clear in a minute.
 
-    The concept of data types can be confusing for new programmers. When i started out, the sources of information i consulted, which were mostly books and online materials did not seem to correlate. The data types (primitives and reference types) in Java, seemed to be different from data types in python, and those in Javascript also seemed different. The more i tried to piece the data together to make sense, the more some questions came to mind, which i found so many developers were wondering about too. The first question was whether the concept of data types is programming-language-agnostic, or if they are different for each language. Secondly, i wanted to know the best way to study data types. Do you have to study them for each programming language, or is it possible to master the topic in a way that applies correctly to all languages? I finally got the answers. Let’s talk about what i found.
+    The concept of data types can be confusing for new programmers. When I started out, the sources of information I consulted, which were mostly books and online materials did not seem to correlate. The data types (primitives and reference types) in Java, seemed to be different from data types in python, and those in Javascript also seemed different. The more i tried to piece the data together to make sense, the more some questions came to mind, which i found so many developers were wondering about too. The first question was whether the concept of data types is programming-language-agnostic, or if they are different for each language. Secondly, i wanted to know the best way to study data types. Do you have to study them for each programming language, or is it possible to master the topic in a way that applies correctly to all languages? I finally got the answers. Let’s talk about what i found.
   The concept of data types exists in all programming languages, but how they are implemented and categorized can differ between languages. Broadly, data types define what kind of data a variable can hold, but the specific details of types—especially primitive types—can vary across languages.
 
 
@@ -731,7 +730,7 @@ types.
 	———————
   These are immutable (meaning they what they are in value and are not 
 references, so they cannot be changed), and represent single values. Their values are literally what they appear to be. In JavaScript 
-there are 5 primitive data types, plus two types Symbols and BigInt added in later specifications of Javascript. Here is an abbreviation I came up with-use it or find your own way to remember them: SNBUNSB (SN BUN SB).
+there are 5 primitive data types, plus two types Symbols and BigInt added in later specifications of JavaScript. Here is an abbreviation I came up with-use it or find your own way to remember them: SNBUNSB (SN BUN SB).
 
 	-i) String (literal value like ‘hello world’)
 	-ii) Number (represents both integers and floating-point numbers, like 
@@ -927,18 +926,51 @@ A Symbol is useful for the following reasons;
        -Undefined vs null values
 	—————————————-
 
-  -undefined and null are equal in value but different in type, hence the following results:
-	null === undefined // returns false since both are not 						
-					//identical	null == undefined // returns true since both are equal in 					
-					//value
-	typeof null // returns “object” since null is an object
+  Both null and undefined mean "there is nothing here", which is why they
+are so often confused. The difference is in who put the nothing there.
+  undefined is JavaScript's way of saying "nobody has given this a value
+yet". You get it when you declare a variable without assigning to it,
+when you read a property that does not exist, or when a function
+returns nothing at all.
+  null is a value you set deliberately. It is a programmer saying "this
+is empty, and I meant it to be". JavaScript will never hand you null on
+its own.
+
+	let notSetYet;              // undefined - nobody assigned anything
+	let deliberatelyEmpty = null;   // null - we chose this
+
+	console.log(notSetYet);         // undefined
+	console.log(deliberatelyEmpty); // null
+
+  A useful way to hold on to it: undefined is the absence of a value,
+null is the presence of an empty one.
+  Now to how they compare, which is where the three results below often
+surprise people:
+
+	// false - loose in value, but not the same type
+	console.log(null === undefined);
+
+	// true - loosely equal, because == treats them as
+	// two ways of saying "nothing"
+	console.log(null == undefined);
+
+	// "object" - see the note below
+	console.log(typeof null);
+
+  That last one is not a mistake in the book. typeof null really does
+return "object", even though null is not an object at all. It is a bug
+that has been in JavaScript since the very first version, and it can
+never be fixed now because too much existing code depends on it. Just
+remember it, and test for null with === null rather than with typeof.
 
 
 
 
        -Convert the datatype of a variable
 	———————————————————
-  To convert the data type of a variable to another data type, you can 	use JavaScript's parseInt() function. Here is how you would use it:
+  One way to convert a value from one type to another is JavaScript's
+parseInt() function, which turns a string into a whole number. Here is
+how you would use it:
 
 	let num = "5";
 	alert('The type of '+num+' is '+typeof num);
@@ -946,17 +978,25 @@ A Symbol is useful for the following reasons;
 	num = parseInt(num);
 	alert('Now the type of '+num+' is '+typeof num);
 
-	The first alert popup will display: “The type of 5 is string”	
-	The second alert popup will display: “Now the type of 5 is number”.
+	The first alert popup will display: "The type of 5 is string"
+	The second alert popup will display: "Now the type of 5 is number".
+
+  Two things to know about parseInt() before you reach for it. It gives
+you whole numbers only, so parseInt("3.9") is 3, not 3.9 - use Number()
+if you want the decimals. And if the text is not a number at all,
+parseInt("abc") gives you NaN rather than an error.
+  parseInt() is only one of several ways to convert between types. The
+full set, covering strings, numbers, booleans, objects and arrays, is in
+the Explicit casting section earlier in this chapter.
 
   You can also display the contents of a variable containing 
 an object or array in JavaScript. You just have to convert that data 
 Into a string so you can display it on screen or write it to the console.
 Here is how you do it:
 
-	var testData = [5, 10, 20, 25];
+	let testData = [5, 10, 20, 25];
 
-	var customer = {
+	let customer = {
     		name: 'Tom Sawyer', 
     		age: 10, 
    		brother: 'Sid', 
@@ -1134,11 +1174,22 @@ Built-in utility functions for type checking
 	primitives and objects. It returns a string showing the type of the 
 	value. For example: 
 
-		typeof “”; //returns “string”
-		typeof “John”; //will return “string”
-		 typeof 3 //will return “number”
-		 typeof 2 + 2; //will return “number”
-		typeof true // will return "boolean"		typeof false // will return "boolean"
+		typeof "";        // returns "string"
+		typeof "John";    // returns "string"
+		typeof 3;         // returns "number"
+		typeof true;      // returns "boolean"
+		typeof false;     // returns "boolean"
+
+		Take care with typeof and arithmetic. It binds more
+		tightly than +, so this does not do what it looks like:
+
+		typeof 2 + 2;     // "number2", not "number"
+
+		That is (typeof 2) + 2, which is the string "number"
+		joined to the number 2. Put brackets round the sum if
+		that is what you meant:
+
+		typeof (2 + 2);   // "number"
 		console.log(typeof "hello");   // "string"
 		console.log(typeof 42);        // "number"
 		console.log(typeof true);      // "boolean"
@@ -1173,7 +1224,7 @@ Built-in utility functions for type checking
 	accurately check for null, use strict comparison instead. For example:
 
 	if (value === null) {
-  		console.log("It’s really null!");
+  		console.log("It is really null!");
 	}
 
 
@@ -1205,194 +1256,136 @@ Built-in utility functions for type checking
 
 
 
-       -Reading data from an xml file using javaScript XPATH
-	
-  		<?xml version="1.0" encoding="UTF-8"?><bookstore><book category="cooking">	<title lang="en">Everyday Italian</title>	<author>Giada De Laurentiis</author>	<year>2005</year>	<price>30.00</price></book><book category="children">	<title lang="en">Harry Potter</title>	<author>J K. Rowling</author>	<year>2005</year>	<price>29.99</price></book><book category="web">	<title lang="en">XQuery Kick Start</title>	<author>James McGovern</author>	<author>Per Bothner</author>	<author>Kurt Cagle</author>	<author>James Linn</author>	<author>Vaidyanathan Nagarajan</author>	<year>2003</year>	<price>49.99</price></book><book category="web">	<title lang="en">Learning XML</title>	<author>Erik T. Ray</author>	<year>2003</year>	<price>39.95</price></book></bookstore>
-
-<!DOCTYPE html>
-<html>
-<body>
-
-<p id="demo"></p>
-
-<script>
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-        showResult(xhttp.responseXML);
-    }
-};
-xhttp.open("GET", "books.xml", true);
-xhttp.send(); 
-
-function showResult(xml) {
-    var txt = "";
-    path = "/bookstore/book/price[text()]";
-    if (xml.evaluate) {
-        var nodes = xml.evaluate(path, xml, null, XPathResult.ANY_TYPE, null);
-        var result = nodes.iterateNext();
-        while (result) {
-            txt += result.childNodes[0].nodeValue + "<br>";
-            result = nodes.iterateNext();
-        } 
-    // Code For Internet Explorer
-    } else if (window.ActiveXObject || xhttp.responseType == "msxml-document") {
-        xml.setProperty("SelectionLanguage", "XPath");
-        nodes = xml.selectNodes(path);
-        for (i = 0; i < nodes.length; i++) {
-            txt += nodes[i].childNodes[0].nodeValue + "<br>";
-        }
-    }
-    document.getElementById("demo").innerHTML = txt;
-}
-</script>
-
-</body>
-</html>
 
 
 
 
 BOOLEANS
 ———————
-A boolean is a data type that has two possible values, true or false, which can also be written as TRUE or FALSE.
+A boolean is a data type with exactly two possible values: true and false. They are written in
+lowercase, and only in lowercase.
 
-In PHP, `true` and `false` (in lowercase) are the boolean literals representing the two possible boolean values. The uppercase versions, `TRUE` and `FALSE`, are exactly the same as `true` and `false` with no functional difference between them. They are completely interchangeable and treated the same by PHP
-  
-The lowercase versions are the more commonly used and recommended forms. They align with common coding standards and are more readable because most PHP keywords are in lowercase.
-  
-           $is_valid = true;
-           if ($is_valid) {
-               echo "Valid!";
-            }
+  Be careful here if you have come to JavaScript from another language. Some languages, PHP
+among them, also accept TRUE and FALSE in capitals as the same thing. JavaScript does not.
+Written in capitals they are not booleans at all, just names JavaScript has never heard of,
+and using one gives you a ReferenceError:
 
-The uppercase equivalents (TRUE and FALSE) are less commonly used. Some developers use them for stylistic reasons, historical conventions, or to match coding styles from other programming languages or frameworks.
+        let isValid = true;
 
-               $is_valid = TRUE;
-               if ($is_valid) {
-                   echo "Valid!";
-               }
+        if (isValid) {
+            console.log("Valid!");
+        }
+
+        // Error: ReferenceError: TRUE is not defined
+        let alsoValid = TRUE;
+
+  So there is only one form to remember, which is one less thing to think about.
 
 
 The different interpretations of true or false
-——————————————————
-    In the context of booleans, there are 4 
-  data constructs that evaluate in code to 
-  false in a boolean context, but they 
-  however represent different types and 
-  values. Understanding their differences is 
-  important for handling them correctly in 
-  your code These are:
+——————————————————————————————
+    JavaScript will happily accept things other than true and false wherever it expects a
+  yes-or-no answer, such as inside an if statement. When it meets a value that is not a boolean
+  in one of those places, it works out whether to treat it as true or false. Values that come
+  out as false are called falsy, and everything else is truthy.
+    There are exactly eight falsy values in JavaScript, and it is worth learning the list,
+  because everything not on it is truthy:
 
-        -i) NULL (same as null). This is the 
-             absence of a value, or a variable 
-             with no value assigned to it.
-        -ii) A blank string (“”)
-        -iii) An empty array ([])
-        -iv) 0 or 0.0
+        -i)    false          the boolean itself
+        -ii)   0   and  -0    zero, either sign
+        -iii)  0n             zero as a BigInt
+        -iv)   ""             an empty string
+        -v)    null           a deliberate "no value"
+        -vi)   undefined      a value never set
+        -vii)  NaN            "Not a Number"
 
-    The opposite of the above constructs will 
-  make them evaluate to true. For example, 
-  the presence of a value instead of NULL, 
-  or instead of a blank string, or adding a ln 
-  item to the empty array, or changing the 
-  value from 0 (or 0.0) to 1 or any unsigned 
-  number (1 and above) will make them 
-  evaluate to true.
+    Everything else is truthy. That includes some things people often expect to be falsy:
 
-    There are times when you want to make 
-  absolutely sure that you are working with a 
-  specific data type, for example an array, or 
-  a NULL. You may want to know not only 
-  that your data is false, but you want to 
-  know if the data is an empty array. In this 
-  case, we need some way in code to 
-  distinguish between the data types and 
-  identify them.
-    There are ways for you to do this. The 
-  easiest is to use the identical operator   
-  ‘===‘. So, for example, when working with a 
-  an array stored in a variable $myData, 
-  instead of saying 
+        -an empty array, []
+        -an empty object, {}
+        -the string "0", and even the string "false"
 
-         if ($mySata == false)
-         {
-             // $myData is false, but we do not 
-             // know what data type it is
-         }
+    That first one catches people out constantly, and it is worth pausing on, because in
+  several other languages an empty array IS falsy. Not here:
 
-  do this:
+        if ([]) {
+            console.log("This really does run.");
+        }
 
-         if ($mySata === [])
-         {
-             // $myData is an empty array, 
-             // so it is false
-         }
+        // Output: This really does run.
 
-    Besides, the identical operator for strict 
-  comparison, there are some handy php 
-  built-in functions which hou can use to that 
-  effect.
-  Here is how to distinguish between false 
-  and the other data types given above:
+    So if you want to know whether an array is empty, testing it directly will not tell you.
+  You have to ask about its length.
 
--1) NULL (or `null`)
-   NULL represents the absence of a value or 
-   a variable with no value assigned.
-   Example:
-     
-     $var = null;
-     if ($var === null) {
-         echo "The variable is NULL.";
-     }
-     
-   -Distinguishing: You can use the strict 
-     comparison (`===`) to check if a variable 
-     is `NULL`.
+    There are times when you want to be sure not just that something is falsy, but exactly
+  what it is. Knowing a value is falsy does not tell you whether it is null, an empty string
+  or zero, and those often need handling differently. For that, use the strict equality
+  operator (===) from Chapter 5, which compares the type as well as the value.
+    Here is how to tell each case apart.
 
--2) Empty String ("")
-   An empty string is a string with no 
-   characters. It is considered `false` when 
-   evaluated in a boolean context.
-   Example:
-     
-     $var = "";
-     if ($var === "") {
-         echo "The variable is an empty string.";
-     }
-     
-   -Distinguishing: Use the strict comparison 
-     (===) to check if a variable is an empty 
-     string.
+-1) null
+   null represents a deliberate absence of a value.
 
--3) Empty Array ([] or array())
-   An empty array is an array with no 
-   elements. It evaluates to `false` in a 
-   boolean context.
-   -Example:
-     
-     $var = [];
-     if ($var === []) {
-         echo "The variable is an empty array.";
-     }
-     
-   -Distinguishing: Use the strict comparison 
-     (===) to check if a variable is an empty 
-     array.
+        let value = null;
 
--4) Zero (0 or 0.0)
-   The integer `0` or the float `0.0` 
-    evaluates to `false` in a boolean context.
-   Example:
-     
-     $var = 0;
-     if ($var === 0) {
-         echo "The variable is zero.";
-     }
-     
-   -Distinguishing: Use the strict comparison 
-     (===) to check if a variable is `0` or 
-     `0.0`.
+        if (value === null) {
+            console.log("The variable is null.");
+        }
+
+   -Distinguishing: use strict equality (===). Do not use == here, because null == undefined
+     is true, and you would not be able to tell the two apart.
+
+-2) undefined
+   undefined means no value was ever put there, as opposed to null, which means someone
+   deliberately put "nothing" there. There is more on the difference earlier in this chapter.
+
+        let value;
+
+        if (value === undefined) {
+            console.log("The variable is undefined.");
+        }
+
+-3) An empty string ("")
+   A string with no characters in it.
+
+        let value = "";
+
+        if (value === "") {
+            console.log("The variable is an empty string.");
+        }
+
+   -Distinguishing: strict equality works perfectly well for strings, because a string is a
+     primitive and is compared by its value.
+
+-4) An empty array ([])
+   This one needs a different approach, and here is why. An array is a reference type, as we
+   saw in Chapter 3. Two arrays are never strictly equal to each other, even when both are
+   empty, because they are two different arrays sitting in two different places in memory:
+
+        console.log([] === []);   // false, always
+
+   So a test like if (value === []) can never be true, no matter what value holds. Ask about
+   the length instead, having first checked that it really is an array:
+
+        let value = [];
+
+        if (Array.isArray(value) && value.length === 0) {
+            console.log("The variable is an empty array.");
+        }
+
+-5) Zero (0)
+   The number zero.
+
+        let value = 0;
+
+        if (value === 0) {
+            console.log("The variable is zero.");
+        }
+
+   -Distinguishing: strict equality again, and here it matters more than usual. With loose
+     equality, 0 == "" and 0 == false are both true, so == would tell you a value is zero when
+     it is actually an empty string.
+
 
 
 

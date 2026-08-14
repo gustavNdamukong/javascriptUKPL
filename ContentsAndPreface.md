@@ -291,7 +291,6 @@ Chapter 10 - Data Types
         -Undefined vs null values
         -Convert the datatype of a variable
     -Built-in utility functions for type checking
-        -Reading data from an xml file using javaScript XPATH
     -Booleans
       -The different interpretations of true or 
         false
