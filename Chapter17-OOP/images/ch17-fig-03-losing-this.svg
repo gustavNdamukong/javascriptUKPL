@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 430" width="760" height="430" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+  </defs>
+  <rect width="760" height="430" fill="#ffffff"/>
+  <text x="380" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">Losing "this", and giving it back</text>
+  <text x="380" y="52" text-anchor="middle" font-size="12.5" fill="#333">The only difference is whether the owner travels with the function.</text>
+
+  <!-- ================= ROW 1 : the problem ================= -->
+  <text x="24" y="88" font-size="12.5" font-weight="bold" fill="#111">WITHOUT its owner</text>
+
+  <rect x="24" y="100" width="150" height="70" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="99" y="126" text-anchor="middle" font-size="13" font-family="Courier, monospace" fill="#111">person</text>
+  <text x="99" y="148" text-anchor="middle" font-size="11" fill="#444">name: 'John Doe'</text>
+
+  <line x1="178" y1="135" x2="288" y2="135" stroke="#222" stroke-width="2" marker-end="url(#c)"/>
+  <text x="233" y="124" text-anchor="middle" font-size="11" font-family="Courier, monospace" fill="#111">getName</text>
+  <text x="233" y="153" text-anchor="middle" font-size="10.5" fill="#666">goes alone</text>
+
+  <rect x="294" y="100" width="150" height="70" rx="6" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="369" y="126" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">setTimeout</text>
+  <text x="369" y="148" text-anchor="middle" font-size="11" fill="#444">runs it later</text>
+
+  <line x1="448" y1="135" x2="530" y2="135" stroke="#222" stroke-width="2" marker-end="url(#c)"/>
+  <rect x="536" y="100" width="200" height="70" rx="6" fill="#ffffff" stroke="#111" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="636" y="124" text-anchor="middle" font-size="12" fill="#111">this is NOT person</text>
+  <text x="636" y="150" text-anchor="middle" font-size="14" font-family="Courier, monospace" font-weight="bold" fill="#111">undefined</text>
+
+  <line x1="24" y1="196" x2="736" y2="196" stroke="#ccc" stroke-width="1"/>
+
+  <!-- ================= ROW 2 : the fix ================= -->
+  <text x="24" y="226" font-size="12.5" font-weight="bold" fill="#111">WITH its owner</text>
+
+  <rect x="24" y="238" width="150" height="70" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+  <text x="99" y="264" text-anchor="middle" font-size="13" font-family="Courier, monospace" fill="#111">person</text>
+  <text x="99" y="286" text-anchor="middle" font-size="11" fill="#444">name: 'John Doe'</text>
+
+  <line x1="178" y1="273" x2="288" y2="273" stroke="#222" stroke-width="3" marker-end="url(#c)"/>
+  <text x="233" y="262" text-anchor="middle" font-size="11" font-family="Courier, monospace" fill="#111">getName</text>
+  <text x="233" y="291" text-anchor="middle" font-size="10.5" font-weight="bold" fill="#111">+ person</text>
+
+  <rect x="294" y="238" width="150" height="70" rx="6" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="369" y="264" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">setTimeout</text>
+  <text x="369" y="286" text-anchor="middle" font-size="11" fill="#444">runs it later</text>
+
+  <line x1="448" y1="273" x2="530" y2="273" stroke="#222" stroke-width="3" marker-end="url(#c)"/>
+  <rect x="536" y="238" width="200" height="70" rx="6" fill="#ffffff" stroke="#111" stroke-width="2.5"/>
+  <text x="636" y="262" text-anchor="middle" font-size="12" fill="#111">this IS person</text>
+  <text x="636" y="288" text-anchor="middle" font-size="14" font-family="Courier, monospace" font-weight="bold" fill="#111">'John Doe'</text>
+
+  <!-- ================= the three ways ================= -->
+  <text x="24" y="342" font-size="12.5" font-weight="bold" fill="#111">Three ways to send the owner along</text>
+
+  <text x="34" y="368" font-size="11.5" font-weight="bold" fill="#111">wrap</text>
+  <text x="110" y="368" font-size="11" font-family="Courier, monospace" fill="#111">setTimeout(function () { person.getName(); }, 1000)</text>
+
+  <text x="34" y="390" font-size="11.5" font-weight="bold" fill="#111">bind</text>
+  <text x="110" y="390" font-size="11" font-family="Courier, monospace" fill="#111">person.getName.bind(person)</text>
+  <text x="380" y="390" font-size="10.5" fill="#666">— hands back a function to run later</text>
+
+  <text x="34" y="412" font-size="11.5" font-weight="bold" fill="#111">call</text>
+  <text x="110" y="412" font-size="11" font-family="Courier, monospace" fill="#111">person.getName.call(person)</text>
+  <text x="380" y="412" font-size="10.5" fill="#666">— runs it straight away (apply takes an array)</text>
+</svg>

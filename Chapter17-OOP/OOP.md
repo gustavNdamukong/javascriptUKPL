@@ -350,6 +350,10 @@ Here are examples of how these static methods can be used:
 	from whether it is written after a function name (Person.prototype) or
 	fetched from an object (person1.__proto__).
 
+![Figure 17.1 — Two different things are called "prototype"](images/ch17-fig-01-two-prototypes.svg)
+
+*Figure 17.1 — Two different things are called "prototype"*
+
 
 		Such functions are special objects that you create as a developer so that other objects can inherit from. They are known as constructor functions. This distinction is very 	important to be understood as many developers get it confused. Very uniquely to JavaScript, the syntax of a regular function is very similar to a constructor function which is basically a class. The best way to get a grasp of this is to recognise that JavaScript is a unique language of its own, in terms of classes and objects, and agree with yourself not to try to compare it with any other language. Once you do that, you will find it becomes easier to put things into context and understand. Don't worry, by the end of this chapter you will have mastered the creation of objects in JavaScript. Even in JavaScript, regular functions and objects, as identical as they look, have their distinctions if only you are observant. I will proceed to show you now. To make it easier for you to see the visual differences, I will demonstrate with an object and a function below.
 
@@ -582,6 +586,11 @@ prototype (parent) of all objects, and its value in this case will be Object:
 
 	Notice that an object has exactly ONE prototype, never two. When you hear that a Date "inherits from both Date.prototype and Object.prototype", what is really meant is that both of them are in its chain — Date.prototype directly, and Object.prototype one step further up. That distinction matters, because inheritance in JavaScript is a single line of links, not a bundle of parents.
 	This linking or association of objects, as we already know, is what we call the prototype chain, and it is how JavaScript answers every property lookup: it checks the object itself, then its prototype, then its prototype's prototype, until it either finds what you asked for or reaches null.
+
+![Figure 17.2 — The prototype chain: a single line of links](images/ch17-fig-02-prototype-chain.svg)
+
+*Figure 17.2 — The prototype chain: a single line of links*
+
 
 
 
@@ -954,9 +963,9 @@ The result of this is exactly the same as in the previous example above- 'TestVa
 	The call(), apply() and bind() methods of Function
 	———————————————————————————-
 		
-	In javaScript, functions are objects, as we have learned so far. This means that all functions are instances of the Function prototype, and are therefore available on all function objects in JavaScript. With that said, there are three very important functions you should know; and these are the call(), apply(), and bind() functions. They are special because they serve a specific purpose. Understanding how they work will take your JavaScript mastery to a deeper level. 
-	So, the three methods, call(), apply, and bind() are methods of the function object. In other words, these are methods that JavaScript has provided you with to use on functions. You can therefore call them on any function (both built-in and your custom functions and it will work. These functions solve a very pertinent problem when it comes to functions, and that is the problem of resolving the context in which a function is called. When it comes to objects, context, refers to the current object on which a function is being ran at any point in time. This current object is represented by the this keyword. In the flow of your program, your objects will often interact with one another and you will invariably find yourself needing to call functions or methods of other objects outside of the object in which you are operating for various reasons. One reason could be to extend the functionality of the object you are in by making it do something it cannot do, or utilise (re-use) a feature already offered by another function rather than rewriting it all over again. It is generally known in the programming worlds that code should be re-used wherever possible in order to avoid code duplication. 
-	With that said; when calling one object from within another object, or in other words; when a method of an object is being passed to another function as a callback (which essentially means calling another/external function inside a function), the this keyword is lost. This is because JavaScript is unable to decide which of the two objects is being referenced by this. When JavaScript cannot decide, it returns an undefined error. The three methods call(), 	apply() and bind() make it possible for you to tell JavaScript which object has the context, or better put; which of the objects should be referenced by this. 
+	In JavaScript, functions are objects, as we have learned so far. This means every function inherits from Function.prototype, and the methods living there are therefore available on every function you write. With that said, there are three very important functions you should know; and these are the call(), apply(), and bind() functions. They are special because they serve a specific purpose. Understanding how they work will take your JavaScript mastery to a deeper level. 
+	So, the three methods call(), apply() and bind() are methods of the function object. In other words, these are methods that JavaScript has provided you with to use on functions. You can therefore call them on any function (both built-in ones and your own) and it will work. These functions solve a very pertinent problem when it comes to functions, and that is the problem of resolving the context in which a function is called. When it comes to objects, context refers to the current object on which a function is being run at any point in time. This current object is represented by the this keyword. In the flow of your program, your objects will often interact with one another and you will invariably find yourself needing to call functions or methods of other objects outside of the object in which you are operating for various reasons. One reason could be to extend the functionality of the object you are in by making it do something it cannot do, or utilise (re-use) a feature already offered by another function rather than rewriting it all over again. It is generally known in the programming world that code should be re-used wherever possible in order to avoid code duplication. 
+	With that said; when calling one object from within another object, or in other words; when a method of an object is being passed to another function as a callback (which essentially means calling another/external function inside a function), the this keyword is lost. This is because the function has been separated from the object it belongs to, so JavaScript no longer has anything to point this at. What happens then depends on the mode you are running in: in strict mode this becomes undefined, and in non-strict mode it falls back to the global object. Either way it is not the object you wanted, and the usual symptom is a value coming back as undefined, or a "Cannot read properties of undefined" error a moment later. The three methods call(), 	apply() and bind() make it possible for you to tell JavaScript which object has the context, or better put; which of the objects should be referenced by this. 
 	We will start by looking at call() and apply() as they are used in exactly the same way apart from a slight difference in their syntax. To call a function of another object B from inside another object A as if the method of B is a method of object A, you can use the call() method. To do so, while operating from within object A, you call the function of the external class B, followed by the keyword .call(), and pass as the first parameter to the call() function the object to be referenced by this. Here is an example of two objects Car and MotorBike:
 
 		function Car(name, fuel)
@@ -997,7 +1006,7 @@ The result of this is exactly the same as in the previous example above- 'TestVa
 		let car = new Car('Mercedes', 'petrol');
 		let bike = new Motorbike('Harley Davidson', 
 			'petrol');
-		alert("car.getName());
+		alert(car.getName());
 		//I expect the popup to say 'Mercedes'
 		
 		alert(bike.getName());
@@ -1020,7 +1029,7 @@ The result of this is exactly the same as in the previous example above- 'TestVa
 		//-Next, let's see how you would pass arguments to 
 		// the method you are calling on the other object.
 		// alert(bike.multiply(2,2));
-		//I expect the popup to throw an error in the console saying 'bike.multiply is not a function'.
+		//I expect this to throw an error in the console saying 'bike.multiply is not a function'.
   		 //Comment this line out to proceed with running the rest of the code on this page.
 		alert(car.multiply.call(bike, 2, 2));
 		//I expect the popup to say 4
@@ -1035,7 +1044,7 @@ The result of this is exactly the same as in the previous example above- 'TestVa
 
 
 	
-	Now that we have mastered the use of call() and apply(), let us look at the bind() function which, though also used to set the context (this value) of a function call, is used in a slightly different way from the other two. The main difference is that unlike call() and apply() that call the function they are called on immediately and returns the results; bind() is used to prepare and return a function with the context (this value) set, so you can then call when you need it. Take the following example:
+	Now that we have mastered the use of call() and apply(), let us look at the bind() function which, though also used to set the context (this value) of a function call, is used in a slightly different way from the other two. The main difference is that unlike call() and apply(), which run the function immediately and give you the result, bind() prepares and returns a new function with the context (this value) already set, so you can call it whenever you need it. Take the following example:
 	
 		let person = {
 		    name: 'John Doe',
@@ -1047,10 +1056,10 @@ The result of this is exactly the same as in the previous example above- 'TestVa
 		setTimeout(person.getName, 1000);
 		Output:
 			undefined
-	As you can see clearly form the output, the 	person.getName()returns ‘undefined’ instead of'John Doe'.
+	As you can see clearly from the output, person.getName() returns ‘undefined’ instead of ‘John Doe’.
 
-	That’s because setTimeout() received the function person.getName outside of (separately from) the person object. The getName() method has been passed as a callback function to the setTimeout() function, so the this reference while inside setTimeout() then becomes the global Object-if you are running JavaScript in non-strict mode, or it becomes undefined in strict mode. Either way, the value of this as you expected it (to reference the person object) is lost. Hence when 	setTimeout() runs, and person.getName() gets invoked, the name is not found on the global object, and so it it sets it to undefined. There are two ways to fix this issue;
-either by wrapping the call to person.getNam() inside another anonymous function, or use the bind() method.
+	That’s because setTimeout() received the function person.getName outside of (separately from) the person object. The getName() method has been passed as a callback function to the setTimeout() function, so the this reference while inside setTimeout() then becomes the global Object-if you are running JavaScript in non-strict mode, or it becomes undefined in strict mode. Either way, the value of this as you expected it (to reference the person object) is lost. Hence when 	setTimeout() runs, and person.getName() gets invoked, the name is not found on the global object, and so it comes back as undefined. There are two ways to fix this issue;
+either by wrapping the call to person.getName() inside another anonymous function, or use the bind() method.
 	
 	-i) Using an anonymous function
 		setTimeout(function () { 
@@ -1066,7 +1075,7 @@ either by wrapping the call to person.getNam() inside another anonymous function
 		let f = person.getName.bind(person);
 		setTimeout(f, 1000);
 	
-	-What if just like we did with call() and apply(), you want to use bind() to make an object have some extra functionality by calling a method from another object which it does not have. This is also easy to do, though it's done slightly differently from the way call() and apply() does it. The following example is how you can make the Motorbike object borrow and make use of the getType() and the multiply() methods of the Car object.
+	-What if just like we did with call() and apply(), you want to use bind() to make an object have some extra functionality by calling a method from another object which it does not have. This is also easy to do, though it's done slightly differently from the way call() and apply() do it. The following example is how you can make the Motorbike object borrow and make use of the getType() and the multiply() methods of the Car object.
 
 		let car = new Car('Mercedes', 'petrol');
 		let bike = new Motorbike('Harley Davidson', 'petrol');
@@ -1087,6 +1096,11 @@ either by wrapping the call to person.getNam() inside another anonymous function
 
 		The bind() method allows an object to borrow a method from another object without making a copy of that method. This is known as function borrowing in JavaScript, and it's very powerful because it broadens the capabilities of your classes and objects while promoting code reuse.
 
+![Figure 17.3 — Losing "this", and giving it back](images/ch17-fig-03-losing-this.svg)
+
+*Figure 17.3 — Losing "this", and giving it back*
+
+
 
 
 
@@ -1101,13 +1115,13 @@ Object literals
   JavaScript, which actually has the same 
   syntax as an associative array. It is written 
   as a pair of opening and closing curly 
-  braces with is properties written as key-
+  braces with its properties written as key-
   value pairs. Here is an example:
 
       let obj = {
-          msg: “Hello”,
-          title: “Welcome”,
-          footer: “Good bye”
+          msg: "Hello",
+          title: "Welcome",
+          footer: "Good bye"
      };
 
     The above object is called obj, and it has 
@@ -1154,7 +1168,7 @@ JavaScript objects vs object literals
   directly using the {} syntax, making it a 
   literal expression. There is no need to 
   invoke a constructor or function to build or 
-  replicate an instance this object. Here are 
+  replicate an instance of this object. Here are 
   the key characteristics of object literals:
 
        i) Direct declaration. The object is 
@@ -1169,7 +1183,7 @@ JavaScript objects vs object literals
           JavaScript).
 
 
--Object literals vs constructor function
+Object literals vs constructor function
 —————————————————-
     In contrast, here’s how an object could be
   created using a constructor function:
@@ -1194,7 +1208,7 @@ JavaScript objects vs object literals
            the properties in advance.
      -ii) Efficiency. They reduce the need for 
            additional code to create and initialise 
-           objects
+           objects.
     -iii) Clarity. Object literals are easy to 
            read and understand, especially for 
            simple objects.
@@ -1242,7 +1256,7 @@ Changing object literal values on the fly
   ‘country’ property to contain the home 
   country of the person:
 
-     person.country = “Canada”;
+     person.country = "Canada";
 
   You can also delete properties from an 
   object using the delete operator. Here’s 
@@ -1279,9 +1293,31 @@ Restricting modification on objects
       // frozen
       car.model = 'Camry'; 
 
-  Object.seal() allows you to change 
-  existing properties but prevents adding or 
-  deleting properties.
+  Be careful with the words "will not work" 
+  there, because what happens next 
+  surprises people. In ordinary, non-strict 
+  code the assignment fails SILENTLY. There 
+  is no error and nothing in the console — 
+  the line simply has no effect, and car.model 
+  is still 'Corolla' afterwards. In strict mode 
+  the very same line throws a TypeError 
+  instead. So if you are ever puzzled that an 
+  assignment seems to be ignored, a frozen 
+  object is one thing worth checking.
+    Freezing also blocks adding and deleting, 
+  not just changing, which is what makes it a 
+  freeze rather than a lock on existing values.
+
+  Object.seal() is the gentler of the two. It 
+  allows you to change existing properties 
+  but prevents adding or deleting them:
+
+      let user = { name: 'Ada' };
+      Object.seal(user);
+
+      user.name = 'Grace';  // allowed
+      user.age = 36;        // blocked, stays undefined
+      delete user.name;     // blocked, name survives
 
 
 
