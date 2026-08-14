@@ -796,16 +796,19 @@ Parent node
 	-closest()
 		closest() only looks for element nodes 
 		(HTMLElement), so it ignores text nodes and 
-		comment nodes automatically. It keeps moving up 
-		the DOM until it finds a matching element or 
-		reaches <html>. You have to pass it the id, class 
-		name, or tag name of the target element to find as 
-		a string. For example, 
+		comment nodes automatically. It starts with the 
+		element you called it on—if that one matches, it is 
+		what you get back—and then keeps moving up the 
+		DOM until it finds a match or reaches <html>. You 
+		have to pass it a CSS selector as a string, written 
+		exactly as you would write it in a stylesheet: "#id" 
+		for an id, ".className" for a class, or just the tag 
+		name. For example, 
 
 		.closest(".editFormDiv") will search up the DOM 
 		to find the nearest ancestor with the class name 
-		of class .editFormDiv. It is more efficient than 
-		parentElement simply  because you can be 
+		of class .editFormDiv. It is more precise than 
+		parentElement simply because you can be 
 		specific by passing it the exact id, class name or 
 		tag name to fetch from the base element (the 
 		element you call it on). 
@@ -819,19 +822,19 @@ Child nodes
 		and excludes text and comment 
 		nodes. It will then contain a collection of 
 		HTMLElement objects represented like so 
-		if you do console.logo() of it to view its 
+		if you do console.log() of it to view its 
 		contents: [object 
 		HTMLCollection]. This is like an array of 
 		child elements (but not exactly an array).
 		To then get (select) a specific child inside 
 		that collection, you can reference it on the 
 		result using the bracket notation and the 
-		index-just as you would do with arrays, 
+		index—just as you would do with arrays, 
 		like so: 
 
 		let parentElement = 
-		document.getElementById(“elemId”); 
-		let children = parentElement.children);
+		document.getElementById("elemId");
+		let children = parentElement.children;
  
 		// Get the first child element
 		console.log(children[0]);
@@ -866,9 +869,9 @@ Sibling nodes
 	-nextElementSibling /	
 	  previousElementSibling 
 		It gets the next/previous sibling. It 
-		only gets actual HTMLS elements.
+		only gets actual HTML elements.
 
-Note: childNodes, firstChild, lastChild, nextSibling, and previousSibling include text nodes and comment nodes, which often leads to unexpected results. Prefer children firstElementChild, lastElementChild, and nextElementSibling and	
+Note: childNodes, firstChild, lastChild, nextSibling, and previousSibling include text nodes and comment nodes, which often leads to unexpected results. Prefer children, firstElementChild, lastElementChild, nextElementSibling and
 previousElementSibling, unless you need non-element nodes.
 
 So, if you want only elements, use:
@@ -908,12 +911,19 @@ Here is a simple example to demonstrate DOM traversal using the above HTMLElemen
 
 	console.log(parent.childNodes); 
 
-This outputs: 
+This outputs a NodeList of FIVE nodes, not three:
 	[
-		#text, 
-		<p>Paragraph 1</p>, 	
-		<p>Paragraph 2</p>
+		#text,                    (the line break and "Text Node")
+		<p>Paragraph 1</p>, 
+		#text,                    (the line break between them)
+		<p>Paragraph 2</p>,
+		#text                     (the line break before </div>)
 	]
+
+That is worth staring at for a moment, because it is exactly the trap
+this section is warning you about. Every line break and run of spaces
+between your tags becomes a text node of its own. Three of the five
+things here are whitespace you never typed on purpose.
 
 	console.log(parent.children); 
 
@@ -970,7 +980,7 @@ Changing elements
 
 Let’s explore the four main properties you’ll use most often.
 	-textContent
-	-InnerHTML
+	-innerHTML
 	-outerHTML
 	-innerText
 
@@ -984,17 +994,17 @@ Let’s explore the four main properties you’ll use most often.
 			elem.textContent = "<h1>Hello world</h1>";
 
 		This will select an element on the web page with the id of 
-		"myHeading”, then set or place the text "<h1>Hello world</h1>" 
+		"myHeading", then set or place the text "<h1>Hello world</h1>" 
 		in that element, which can be for example a div. I should point 
 		out here that you should not be confused by the <h1> tags in the 
-		value. The text of the targeted element will be not now contain 
-		an h1 element, but rather, just literally the “text 
-		<h1>Hello world</h1>”. Again, this is because textContent treats 
+		value. The text of the targeted element will not now contain 
+		an h1 element, but rather just the literal text 
+		"<h1>Hello world</h1>". Again, this is because textContent treats 
 		everything as plain text.
 		Use textContent when you only want to work with text and don't 
 		need to insert any HTML. It's also safer (see XSS section below).
 
-	-InnerHTML
+	-innerHTML
 		It places or gets the HTML content inside an element that 
 		contains HTML code. If you write tags, unlike content assigned 
 		to textContent which the browser only reads as text, the browser 
@@ -1016,10 +1026,10 @@ Let’s explore the four main properties you’ll use most often.
 
 	-outerHTML
 		It gets or sets the entire element itself, including its tags and 
-		everything inside it. Basically, it overrides the element you use it 			on, as opposed to only touching its content. The result is a 
+		everything inside it. Basically, it overrides the element you use it on, as opposed to only touching its content. The result is a 
 		complete replacement of the old element with the value you pass 
 		in. As for the syntax, it’s the same as the examples above. 
-		Similarly to innerHTML, it handles HTML and not just text-as you 
+		Similarly to innerHTML, it handles HTML and not just text—as you 
 		could probably guess from the HTML in its name.
 		
 		Use outerHTML if you want to replace the entire element, not just 
@@ -1038,10 +1048,10 @@ Both the textContent and innerHTML properties insert content into an element on 
 
 	elem.innerHTML = "<img src='x' onerror='alert(\"Hacked!\")'>";
 
-This could cause popups, data leaks, or worse. If you're inserting user input (like from a form or a database), always use textContent to avoid these dangers. It will treat everything as plain text-so there will be no surprises.
+This could cause popups, data leaks, or worse. If you're inserting user input (like from a form or a database), always use textContent to avoid these dangers. It will treat everything as plain text—so there will be no surprises.
   Let me talk about why <img src='x' onerror='alert("Hacked!")'> is dangerous. This kind of code is a classic example of XSS (Cross-Site Scripting), and here's how it works:
 
-	-The src="x" is invalid—it points to an image that doesn't exist.
+	-The src='x' is invalid—it points to an image that doesn't exist.
 	-Because the image fails to load, the browser triggers the onerror 
 	   event.
 	-The onerror="alert('Hacked!')" attribute tells the browser:
@@ -1059,8 +1069,8 @@ If the code of your website blindly uses .innerHTML to display those user commen
 the code that hacker entered will be executed since .innerHTML knows how to read HTML. This is bad. That script will run in your browser, and possibly steal session cookies, login tokens, private data etc. That will be a security nightmare, especially for websites with accounts, admin panels, or user-sensitive data. Here is how to prevent it and be safe:
 
     * Always use .textContent when inserting user data.
-    * Sanitize inputs submitted by users before you use them in your application (especially if you must use .innerHTML). Sanitize means validating or checking the content to ensure it meets a certain standard, or contains no suspicious or unwanted characters.
-    * Use security libraries or frameworks that auto-sanitize content (like React, which escapes HTML by default).
+    * Sanitise inputs submitted by users before you use them in your application (especially if you must use .innerHTML). Sanitising means validating or checking the content to ensure it meets a certain standard, or contains no suspicious or unwanted characters.
+    * Use security libraries or frameworks that auto-sanitise content (like React, which escapes HTML by default).
 
 
 
@@ -1073,8 +1083,8 @@ Adding/removing elements
 
 	-appendChild(newElement) – Adds a child 
 		to an element. The new element will 
-		then become the last sibling (at the 
-		end)  in that element.
+		then become the last child (at the 
+		end) of that element.
 
 	-insertBefore(newElement, 
 		referenceElement) – Inserts the 
@@ -1113,7 +1123,7 @@ Creating New Elements
 	let newDiv = 	
 		document.createElement("div");
 
-	newDiv.textContent = "New DIV Element is “here;
+	newDiv.textContent = "New DIV Element is here";
 	document.body.appendChild(newDiv);
 
 Let’s modify this example slightly by adding a border to the created div, and adding some border color, and background color, to blue. Let us also make the text within the div be in a <p> tag, and make it bold and white. 
@@ -1126,7 +1136,7 @@ Let’s modify this example slightly by adding a border to the created div, and 
 
 	// Add styling directly via the style property
 	newDiv.style.border = "2px solid blue";
-	newDiv.style.borderRadius = “5px";
+	newDiv.style.borderRadius = "5px";
 	newDiv.style.backgroundColor = "dodgerblue";
 	newDiv.style.color = "white";
 	newDiv.style.fontWeight = "bold";
@@ -1136,16 +1146,16 @@ Let’s modify this example slightly by adding a border to the created div, and 
 	// Append to the body
 	document.body.appendChild(newDiv);
 
-Notice that we changed how we assign the text value to the div (in newDiv). We first of all wrap the text in a pair of <p> tags. Then instead of using the .textContent we used earlier-which would display only text, we use .innerHTML so that the string which now contains HTML (in the <p> tag) will be parsed as as HTML and displayed on the web document as such.
-  To add styling, you have to reference the style properties on the style property of the HTML element, which in this case is newDiv. I should point out that when using JavaScript like this to add styling to elements, the style properties are not written in the same way as in CSS. In JavaScript most of the selectors are the same, however, camel-casing is used, for example. Here is a small example of CSS properties and the equivalent names of the JavaScript HTML element’s style properties-just to give you a hint:
+Notice that we changed how we assign the text value to the div (in newDiv). We first of all wrap the text in a pair of <p> tags. Then instead of using the .textContent we used earlier-which would display only text, we use .innerHTML so that the string which now contains HTML (in the <p> tag) will be parsed as HTML and displayed on the web document as such.
+  To add styling, you have to reference the style properties on the style property of the HTML element, which in this case is newDiv. I should point out that when using JavaScript like this to add styling to elements, the style properties are not written in the same way as in CSS. In JavaScript most of the names are the same, however, camel-casing is used. Here is a small example of CSS properties and the equivalent names of the JavaScript HTML element’s style properties—just to give you a hint:
 
-          CSS Selector	  JavaScript style property
+          CSS property	  JavaScript style property
 background-color	backgroundColor
 border-radius	borderRadius
 font-weight	fontWeight
 margin-top	marginTop
 
-We finally make use of the .appendChild() on the body of the web document, which is a method of the HTMLElement object (for all elements) to add (append) the new div as the last item/element inside the new div. 
+We finally make use of the .appendChild() on the body of the web document, which is a method of the HTMLElement object (for all elements) to add (append) the new div as the last element inside the body. 
 
 	document.body.appendChild(newDiv);
 
@@ -1233,8 +1243,7 @@ This code may seem long, but it is really easy to understand once you take a clo
 	-Then we create a pair of "th" elements for both the First Name and 
 	   the Surname headings.
 	-Then we create a pair of "tr" elements to contain the table’s data 
-	   rows (records). Each "tr" is followed by a creation of the “table data 
-	   (td”) cell, and then the use of .textContent to add the content for 
+	   rows (records). Each "tr" is followed by a creation of the "table data (td)" cell, and then the use of .textContent to add the content for 
 	   that table cell.
 
 Let us count the times we use document.createElement() in the example:
@@ -1249,12 +1258,12 @@ Let us count the times we use document.createElement() in the example:
     8. document.createElement("td") // row 1 Surname
     9. document.createElement("tr") // row 2 
     10. document.createElement("td") // row 2 First name
-    11. document.createElement("td")row 2 Surname
+    11. document.createElement("td") // row 2 Surname
 
 As you can see, creation of elements should be done chronologically, in the order in which they come in the DOM, and appended to the parent element. 
   You do not have to create a closing tag for the element. Once you create an element with the .createElement() method, it knows to close the element’s tag when it is done creating and adding any attributes and data to it.
   Hopefully, this exercise has taught you how to create a table element and structure it row-by-row and cell-by-cell, how to apply styles to each part of the table dynamically, and how to nest elements by inserting a table inside a div. This example visually reinforces how DOM manipulation allows you to build complex HTML structures with JavaScript. Further on in this chapter, under the section "Examples of DOM manipulation"
-we will expand on this table creation exercise. We will use an array of data, create a table in a similar fashion, then loop through the array,  injecting the data as cell values in the new table. At the end, we place the table inside the div on the web page.
+we will expand on this table creation exercise. We will use an array of data, create a table in a similar fashion, then loop through the array, injecting the data as cell values in the new table. At the end, we place the table inside the div on the web page.
 
 
 
@@ -1288,32 +1297,33 @@ Attribute properties
 Attribute methods
 ————————-——
 
-	-setAttribute("attributeName, "value")
+	-setAttribute("attributeName", "value")
 		This sets an attribute with the name 
 		attributeName, and assigns it the 
 		value “value”. It updates the element’s 	
 		attributeName attribute with the value “value” 
 		if it already exists, or creates a new one. 
-   		The 2nd argument is optional & can be left 
-   		blank the blank will work e.g: for HTML5 attributes 
-		that don’t need a value (e.g ‘disabled’ or 
-		‘required’). For example:
+   		Both arguments are required. For HTML5 attributes 
+   		that do not need a value (such as ‘disabled’ or 
+		‘required’) you still have to pass a second 
+		argument—give it an empty string, "". Leaving it 
+		out altogether throws a TypeError. For example:
 
-		document.getElementsByTagName(“div”)
-       		[0].setAttribute(“class”, “active”);
+		document.getElementsByTagName("div")
+       		[0].setAttribute("class", "active");
 
 		This will grab all div elements on a page, and 
 		set the class value of the first div ([0]) to “active”.
 		
-		While we are on creating attributes to an element, an
-		alternative way to to use Object.assign(). Here is how 
+		While we are on creating attributes for an element, another
+		way is to use Object.assign(). Here is how 
 		to do it:
 
-			let li = document.querySelector(“#li”);
+			let li = document.querySelector("#li");
 			
 			Object.assign(li, {
-            			‘active’: 'true',
-            			className: ['list-item draggable'] 
+            			'active': 'true',
+            			className: 'list-item draggable'
         		});
 
 		This code selects a list element that has an id of “li”,
@@ -1322,12 +1332,12 @@ Attribute methods
 		and two classes; ‘list-item’ and ‘draggable’. 
 
 
-	-getAttribute("attributeName”) 
+	-getAttribute("attributeName") 
 		This retrieves (gets) the value of the attribute that goes 
 		by the name of attributeName. Here’s an example:
 
-			document.getElementsByTagName(“h1”)
-       				[0].getAttribute(“class”);
+			document.getElementsByTagName("h1")
+       				[0].getAttribute("class");
 
 		This will grab all h1 elements on a page, and 
 		retrieve the value of the class attribute of the first 
@@ -1342,12 +1352,12 @@ Attribute methods
 		attribute. Here it removes the 
 		attribute ‘attr’ from the element.
 
-	-classList.add("className”) 
+	-classList.add("className") 
 		Adds a class. This adds a new class 
 		by the name of className to 
 		the element.
 
-	-classList.remove("className”)
+	-classList.remove("className")
 		This removes a class. It removes the 
 		class by the name of className 
 		from the element.
@@ -1366,7 +1376,7 @@ Attribute methods
 
 Handling styling
 ————————-——
-  JavaScript provides direct access to the styles of HTML elements, which allows you to dynamically update the look and feel of a page. While most of the visual appearance is handled through CSS, JavaScript can manipulate these styles in real time — like changing colors when a user clicks a button, hiding/showing sections, or adjusting sizes for animation effects.
+  JavaScript provides direct access to the styles of HTML elements, which allows you to dynamically update the look and feel of a page. While most of the visual appearance is handled through CSS, JavaScript can manipulate these styles in real time — like changing colours when a user clicks a button, hiding/showing sections, or adjusting sizes for animation effects.
 
 Common styling properties:
 —————————
@@ -1384,15 +1394,17 @@ Common styling properties:
 		calculations.
 		
 	-clientWidth / .clientHeight 
-		Returns the width/height of the element including padding but 			excluding borders, scrollbars, and margins.
+		Returns the width/height of the element including padding but excluding borders, scrollbars, and margins.
 
 	-scrollWidth / .scrollHeight 
 		Returns the full width/height of the element’s content, including 
 		the parts that are hidden and require scrolling. They are good for 
 		detecting overflow content.
 
-	-.getComputedStyle(element)
-		Allows you to get the final computed CSS styles for an element 
+	-getComputedStyle(element)
+		Note that this one belongs to window, not to the element—you 
+		pass the element to it rather than calling it on the element. It 
+		allows you to get the final computed CSS styles for an element 
 		(including those from external stylesheets). For example:
 
 			const styles = getComputedStyle(element);
@@ -1443,8 +1455,9 @@ Common positioning properties:
 			const rect = element.getBoundingClientRect();
 			console.log(rect.top, rect.left);
 
-	-.pageXOffset / .pageYOffset
-		Returns how far the document is scrolled horizontally or 
+	-window.pageXOffset / window.pageYOffset
+		These two belong to window rather than to an element. They 
+		return how far the document is scrolled horizontally or 
 		vertically from the top-left corner. These are useful for 
 		calculating absolute positions on the page.
 
@@ -1455,14 +1468,14 @@ Common positioning properties:
 Working with events
 ————————-——
   When users interact with a web page — by clicking a button, moving their mouse, typing into a form, or scrolling down — JavaScript needs a way to notice these actions and respond. This is where events come in.
-Events are signals that tell JavaScript, "Hey, something just happened on the page!”. Since the DOM is the structure of everything the user sees and interacts with, events are a natural part of DOM management.By listening for events and reacting to them, your JavaScript code can make web pages interactive and dynamic.
+Events are signals that tell JavaScript, "Hey, something just happened on the page!”. Since the DOM is the structure of everything the user sees and interacts with, events are a natural part of DOM management. By listening for events and reacting to them, your JavaScript code can make web pages interactive and dynamic.
   For now, it's enough to know that JavaScript provides simple tools to:
 
     * Listen for specific types of events (like clicks or keypresses),
     * Run code when an event happens,
     * And manipulate the DOM in response.     
 
-We will explore events in much greater detail.Here, we just want to get comfortable with the idea that handling events is a key part of working with the DOM.
+We will explore events in much greater detail. Here, we just want to get comfortable with the idea that handling events is a key part of working with the DOM.
 
 The following is a small example of how you can use JavaScript to listen for a user’s click on a button and respond with an action.
 
