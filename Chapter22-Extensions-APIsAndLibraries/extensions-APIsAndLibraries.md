@@ -1,6 +1,6 @@
 
 //————————————————————//
-CHAPTER 21 - Extensions (APIs & Libraries)
+CHAPTER 22 - Extensions (APIs & Libraries)
 //————————————————————//
 
 -APIs
@@ -2012,7 +2012,7 @@ If you test this in your browser, you will find that it gets and returns all pho
 		whenever you wish to display a string that contains 
 		dynamic variable, and you want to make it clear to 
 		the JavaScript parser (interpreter) which of the elements 
-		in the string are variables. See chapter 23 (Templates), 
+		in the string are variables. See chapter 24 (Templates), 
 		where I talk in depth about String Literals & Template 
 		Strings. The variables must be wrapped in ${} like so: 
 
@@ -2086,7 +2086,7 @@ WEBSOCKETS
 		reloading, no waiting.
 
 Think of it like opening a tunnel between your app and the server where they can toss messages back and forth instantly.
-  Earlier in chapter 17 (File Management), we learned how to send binary file data over WebSocket. We saw how WebSockets can be used to send files-whether it is through the uploading of images or documents in real-time, or sending chunks of data such as audio or video. We also saw how using a WebSocket gives you a lot more control over a file transfer process, than traditional uploading does.
+  Earlier in chapter 18 (File Management), we learned how to send binary file data over WebSocket. We saw how WebSockets can be used to send files-whether it is through the uploading of images or documents in real-time, or sending chunks of data such as audio or video. We also saw how using a WebSocket gives you a lot more control over a file transfer process, than traditional uploading does.
 
 
 

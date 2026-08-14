@@ -145,4 +145,4 @@ name at a different object, but you can change what is inside the one it already
   So it is worth holding on to this one sentence, because it catches almost everybody out at
 least once: const protects the name, not the contents. If you genuinely need the contents
 frozen too, JavaScript has a separate tool for that called Object.freeze(), which we will
-meet when we come to objects in Chapter 16.
+meet when we come to objects in Chapter 17.

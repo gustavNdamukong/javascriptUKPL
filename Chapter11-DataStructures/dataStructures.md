@@ -365,7 +365,7 @@
            let tup = [1, "apple", 3.14];
 
            // Pulling the values back out, using
-           // destructuring from Chapter 16
+           // destructuring from Chapter 17
            let [count, fruit, price] = tup;
            console.log(fruit);   // "apple"
 

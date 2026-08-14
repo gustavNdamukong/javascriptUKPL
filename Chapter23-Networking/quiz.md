@@ -1,7 +1,7 @@
-QUIZ — Chapter 22: Networking
+QUIZ — Chapter 23: Networking
 =============================
 
-This page contains the Q & A (questions and answers) for this chapter — Chapter 22: Networking. Work through
+This page contains the Q & A (questions and answers) for this chapter — Chapter 23: Networking. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
 new knowledge into long-term memory.
 

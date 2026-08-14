@@ -1,7 +1,7 @@
 
 
 //————————————————————//
-	CHAPTER 19 - IMAGES
+	CHAPTER 20 - IMAGES
 //————————————————————//
 
 	-JavaScript and images

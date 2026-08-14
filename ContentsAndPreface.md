@@ -30,17 +30,18 @@ Chapter 11 - Data Structures
 Chapter 12 - Design Patterns
 Chapter 13 - Databases and Storage
 Chapter 14 - Dates and Time
-Chapter 15 - DOM Frontend and Assets Management
-Chapter 16 - Object Oriented Programming (OOP)
-Chapter 17 - File Management
-Chapter 18 - Forms and Email
-Chapter 19 - Images
-Chapter 20 - Error Debugging and Testing
-Chapter 21 - Extensions (APIs & Libraries)
-Chapter 22 - Networking
-Chapter 23 - Templates
-Chapter 24 - Event Handling
-Chapter 25 - Asset Management
+Chapter 15 - DOM and URL Manipulation
+Chapter 16 - The Canvas Element
+Chapter 17 - Object Oriented Programming (OOP)
+Chapter 18 - File Management
+Chapter 19 - Forms and Email
+Chapter 20 - Images
+Chapter 21 - Error Debugging and Testing
+Chapter 22 - Extensions (APIs & Libraries)
+Chapter 23 - Networking
+Chapter 24 - Templates
+Chapter 25 - Event Handling
+Chapter 26 - Asset Management
 
 What next
 
@@ -380,7 +381,7 @@ Chapter 14 - Dates and Time
         -Create a slideshow of images
     -A datepicker library in vanilla JS & Bootstrap
 
-Chapter 15 - DOM Frontend and Assets Management
+Chapter 15 - DOM and URL Manipulation
     -Introduction to the DOM
       -Understanding the DOM Tree (Parent-
         child relationships)
@@ -467,16 +468,17 @@ Chapter 15 - DOM Frontend and Assets Management
           -6) Opening a New Child Window
             -Opening a New Window
             -Security issues with multiple tab navigation 
-      -The Canvas element-for drawing on the web
-        -Draw a rectangle
-        -Draw a circle
-        -Write some text
-        -Create a drawing app
-        -Positioning, animation and collision detection
-          -Detecting the collision of two shapes
-      -Assets Management
 
-Chapter 16 - Object Oriented Programming (OOP)
+Chapter 16 - The Canvas Element
+    -The Canvas element—for drawing on the web
+      -Draw a rectangle
+      -Draw a circle
+      -Write some text
+      -Create a drawing app
+      -Positioning, animation and collision detection
+        -Detecting the collision of two shapes
+
+Chapter 17 - Object Oriented Programming (OOP)
     -Introduction
       -Relationship between the object data 
         type and Object
@@ -547,7 +549,7 @@ Chapter 16 - Object Oriented Programming (OOP)
           -Private methods and properties 
             (Encapsulation)
 
-Chapter 17 - File Management
+Chapter 18 - File Management
     -The File Reader API
       -Use-cases for the File Reader API
       -Key methods
@@ -575,7 +577,7 @@ Chapter 17 - File Management
                     -Reading data from an XML string
       -Limitations of the FileReader API
 
-Chapter 18 - Forms and Email
+Chapter 19 - Forms and Email
     -The three ways to handle form data in JavaScript
       -i) Extracting the value from form fields
       -ii) Using the elements property of 
@@ -593,7 +595,7 @@ Chapter 18 - Forms and Email
       -App Passwords
       -Why use an App Password
 
-Chapter 19 - Images
+Chapter 20 - Images
     -JavaScript and images
       -What JavaScript can do with images
       -Image manipulation
@@ -610,7 +612,7 @@ Chapter 19 - Images
           -Add a blur filter
           -Bonus tip - Combining filters
 
-Chapter 20 - Error Debugging and Testing
+Chapter 21 - Error Debugging and Testing
     -Displaying values on screen
       -document.write()
       -innerHTML
@@ -630,7 +632,7 @@ Chapter 20 - Error Debugging and Testing
         -Conclusion and exception handling examples
 -Testing
 
-Chapter 21 - Extensions (APIs & Libraries)
+Chapter 22 - Extensions (APIs & Libraries)
     -APIs
     -Introduction to APIs and HTTP Requests
     -REST API Requests
@@ -667,18 +669,18 @@ Chapter 21 - Extensions (APIs & Libraries)
     -Libraries
     -notie
 
-Chapter 22 - Networking
+Chapter 23 - Networking
     -Networking in the browser
     -Networking in Node.js
 
-Chapter 23 - Templates
+Chapter 24 - Templates
     -Introduction to Templates
     -String Literals & Template Strings
     -JavaScript Templating Engines
     -Popular Modern Approaches
     -Implementing Handlebars.js with Mustache
 
-Chapter 24 - Event Handling
+Chapter 25 - Event Handling
     -Event listeners
     -Inline event listener attribute 
     -The addEventListener() method
@@ -700,7 +702,7 @@ Chapter 24 - Event Handling
     -Custom events
     -Conclusion
 
-Chapter 25 - Asset Management
+Chapter 26 - Asset Management
     -When and why assets management is needed
     -Why you do not need it for vanilla JavaScript
 

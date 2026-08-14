@@ -1,6 +1,6 @@
 
 //————————————————————//
-	CHAPTER 17 - FILE MANAGEMENT
+	CHAPTER 18 - FILE MANAGEMENT
 //————————————————————//
 
 	-The File Reader API
@@ -770,7 +770,7 @@ Hopefully, this example teaches you how to programmatically inspect the raw bina
 
 Sending binary file content over WebSocket
 ————————————————————————
-  We will talk some more about WebSockets in chapter 21 (Extensions), but here is what it is. A WebSocket is a two-way communication channel between the browser and the server. Unlike regular HTTP requests (which are one-way), WebSockets stay open, allowing both sides to send and receive data continuously. This makes WebSockets great for things like chat apps, multiplayer games, live dashboards, and — yes — even real-time file sharing.
+  We will talk some more about WebSockets in chapter 22 (Extensions), but here is what it is. A WebSocket is a two-way communication channel between the browser and the server. Unlike regular HTTP requests (which are one-way), WebSockets stay open, allowing both sides to send and receive data continuously. This makes WebSockets great for things like chat apps, multiplayer games, live dashboards, and — yes — even real-time file sharing.
   If you are building a collaborative file-sharing app or a peer-to-peer (computer-to-computer) media uploader, and you want to send a file chunk by chunk over a WebSocket-maybe to avoid HTTP overhead or allow real-time transmission. You can do that using the readAsArrayBuffer() method of the File Reader API.
   Why is it better to send a large file in chunks rather than uploading a whole file at once? Normally, when uploading a file to a remote server, you would use a regular 
 
@@ -1596,7 +1596,7 @@ Using fetch is the best way to deal with remote XML files.
 
 	Using the XMLHttpRequest object
 	———————————————————
-  The XMLHttpRequest object is a built-in JavaScript object that helps your web page ask for data from a server without refreshing the page. That is the definition of an AJAX (Asynchronous JavaScript and XML) request. When I come to talk about Extensions and APIs in chapter 21, you will learn all about AJAX and how it works. You will see how this same XMLHttpRequest object is very effective in that. However, it is not only good at making requests (local and remote) and receiving the response back in text format. As its name suggests, it is designed to handle XML files out of the box. In fact, it was the old standard way of reading and processing XML files. It was very effective and powerful then, and it still works in all browsers today. Though it may seem outdated because it’s no longer commonly used, it is still relevant and being used in legacy systems. 
+  The XMLHttpRequest object is a built-in JavaScript object that helps your web page ask for data from a server without refreshing the page. That is the definition of an AJAX (Asynchronous JavaScript and XML) request. When I come to talk about Extensions and APIs in chapter 22, you will learn all about AJAX and how it works. You will see how this same XMLHttpRequest object is very effective in that. However, it is not only good at making requests (local and remote) and receiving the response back in text format. As its name suggests, it is designed to handle XML files out of the box. In fact, it was the old standard way of reading and processing XML files. It was very effective and powerful then, and it still works in all browsers today. Though it may seem outdated because it’s no longer commonly used, it is still relevant and being used in legacy systems. 
   Unlike when reading XML files using FileReader and fetch() where you have to use pass the data over to DOMParser to be read, when using the XMLHttpRequest, you do not need the DOMParser. This is because, the XMLHttpRequest object has its own tools to parse the XML data. If the remote server responds to the AJAX request with valid XML (with the Content-Type header correctly set e.g. text/xml or application/xml), the responseXML property of XMLHttpRequest automatically parses the XML data into a readable DOM object (DOM)-which is what the DOMParser would normally do, so you do not need it. This means you can directly query the data stored in responseXML using DOM methods like getElementsByTagName(), querySelector(), etc. The DOMParser would only be needed if you are working with raw XML text-like a string or a non-XML HTTP response like responseText. In this case, you would get the response data as text from the responseText property, and can use the DOMParser to parse it into a DOM object.  
   Again, this combination is best suited for reading files from a remote server, although it will still work if the file is in your local file system Just pass the file path or remote path as the second argument to the open() method of the XMLHttpRequest object. The workflow is as follows:
 
@@ -1655,7 +1655,7 @@ In the following line, this is how we check if anything has changed in the state
 
 	xhr.onreadystatechange = function() { ... }
 
-Requests go through 5 ready states (0-4), and these are stored in the readyState property of the XMLHttpRequest object. I will explain all the readyState property values and what they mean in chapter 21 under the topic of AJAX using XMLHttpRequest. As you can see in this example, the one we need to care about is the state that says it's done, and that is when the value of the readyState property is 4.
+Requests go through 5 ready states (0-4), and these are stored in the readyState property of the XMLHttpRequest object. I will explain all the readyState property values and what they mean in chapter 22 under the topic of AJAX using XMLHttpRequest. As you can see in this example, the one we need to care about is the state that says it's done, and that is when the value of the readyState property is 4.
 
 	if (xhr.readyState === 4 && xhr.status === 200)
 
@@ -1674,7 +1674,7 @@ Next, we receive the XML data returned and store it in a variable xmlDoc.
 The responseXML property of the XMLHttpRequest object
 gives you the parsed XML data as a DOM object, so you can use  methods of the HTMLElement object like .getElementsByTagName() and .querySelector() etc, just as you would do with any other HTML element. This, you would agree with me, is amazing.
 
-Other than the responseXML property, there are other useful properties of the XMLHttpRequest object designed for you to work with other data formats and handle the whole request process efficiently. I will provide you will all the properties when I go in depth into AJAX requests in chapter 21.
+Other than the responseXML property, there are other useful properties of the XMLHttpRequest object designed for you to work with other data formats and handle the whole request process efficiently. I will provide you will all the properties when I go in depth into AJAX requests in chapter 22.
 
 Let’s take a look at what we do with the result in our example. Remember as pointed out above that at this point, we already have an HTMLElement-like object made possible by responseXML and stored in xmlDoc. The next thing we do therefore is to grab all the book (in <book>) tags from the XML data like so:
 
@@ -1682,7 +1682,7 @@ Let’s take a look at what we do with the result in our example. Remember as po
 
 getElementsByTagName() returns an HTMLCollection object, and so that is now what books is. 
 
-Subsequently, I am displaying the XML data on books in the console, and notice that this time I use console.table() instead of the usual console.log() we have been using. I will provide you with the other methods of the console object later in chapter 20 (Error Debugging and Testing). For now, just know that console.table() takes an array, and displays the data in a clean table format in the console. 
+Subsequently, I am displaying the XML data on books in the console, and notice that this time I use console.table() instead of the usual console.log() we have been using. I will provide you with the other methods of the console object later in chapter 21 (Error Debugging and Testing). For now, just know that console.table() takes an array, and displays the data in a clean table format in the console. 
   
 This means we need to convert the HTMLCollection books into an array to pass to console.table(). That is exactly what we do in this line:
 

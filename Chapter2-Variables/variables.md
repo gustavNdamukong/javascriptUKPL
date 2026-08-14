@@ -328,7 +328,7 @@ Types of blocks
 
 Blocks are not objects
 —————————————
-  An object literal { key: value } is NOT a block—it’s just an object. Don’t worry, we will talk more on objects in Chapter 16 (Object Oriented Programming). Blocks are structural elements of JavaScript’s syntax, while objects are data structures. For example:
+  An object literal { key: value } is NOT a block—it’s just an object. Don’t worry, we will talk more on objects in Chapter 17 (Object Oriented Programming). Blocks are structural elements of JavaScript’s syntax, while objects are data structures. For example:
 
       let obj = {
            name: "Alice",
@@ -705,7 +705,7 @@ Let’s say you define a function like this in your index.js file:
    }
 
 Do not worry about understanding what the code does for now. It uses an external library called Axios to make an AJAX request to fetch photos from the URL 'https://jsonplaceholder.typicode.com/photos'.
-We will come back to this same example in Chapter 21 (Extensions - APIs & Libraries), where I will explain how it all works. So, let’s say in your HTML code you do:
+We will come back to this same example in Chapter 22 (Extensions - APIs & Libraries), where I will explain how it all works. So, let’s say in your HTML code you do:
 
 	<script type="module" src="index.js"></script>
 	
@@ -736,7 +736,7 @@ Option 2: Remove the type="module" attribute from your
 
 Now everything defined in index.js becomes globally available by default. So, here are the take-away points of learning:
 
-    - If you want to use import/export and keep code modular, use type="module" and export what you need. (import and export are the commands modules use to share code between files. We cover them in Chapter 16.)
+    - If you want to use import/export and keep code modular, use type="module" and export what you need. (import and export are the commands modules use to share code between files. We cover them in Chapter 17.)
 
     - If you need HTML or other scripts to access your functions, attach them to window, or don't use type="module".
 

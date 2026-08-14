@@ -61,7 +61,7 @@ QUESTIONS
 5) You want a value that genuinely cannot be changed at all, contents included. Is const enough
    on its own? If not, what would you reach for?
 
-   Clue: the chapter names the tool at the very end, and points you to Chapter 16.
+   Clue: the chapter names the tool at the very end, and points you to Chapter 17.
 
 
 6) EXERCISE. Write a small piece of code that proves the rule from question 1 to yourself.
@@ -125,7 +125,7 @@ ANSWERS
 5) No, const is not enough on its own.
 
    const only stops the name being pointed somewhere else. To freeze the contents as well, you
-   would use Object.freeze(), which we come to in Chapter 16 (Object Oriented Programming).
+   would use Object.freeze(), which we come to in Chapter 17 (Object Oriented Programming).
 
 
 6) Here is one way to do it:

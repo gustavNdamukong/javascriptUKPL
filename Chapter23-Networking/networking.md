@@ -1,7 +1,7 @@
 
 
 //——————————————————//
-	CHAPTER 22 -  NETWORKING 
+	CHAPTER 23 -  NETWORKING 
 //——————————————————//
 
 	-Networking in the browser

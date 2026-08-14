@@ -1,6 +1,6 @@
 
 //————————————————————//
-CHAPTER 20 - Error Debugging and Testing
+CHAPTER 21 - Error Debugging and Testing
 //————————————————————//
 
 
@@ -435,7 +435,7 @@ Here is how it works:
 		}
 
 This works well for simple checks to prevent standard errors in your code. Exceptions are more powerful because they go deeper than that. There are errors that you either just may not be able to anticipate, or sections in your program that are mission-critical, meaning, your program will just not be able to work when such errors occur. Such an error, can be someone trying to access your banking software, and submitting a bank account number that does not match the password or date of birth they are using. For such errors, you want to definitely capture them when they occur and halt the script execution, then show the user a meaningful message, rather than letting them through. Another type of mission-critical error may be your bank’s server is down, and rather than let the application just crash and blackout-which will confuse or even upset your customers/users, you will want to always check if the server is up and running before trying to access it. If it is then found to be down, you can inform the users in a friendly way to try again later, and then inform your technical department immediately to fix the issue. These are situations where exceptions in programming come in. They really get into the engineering of a software application, and you can see how different they are to simple conditional statements. Your take-home key point here should be that conditional statements are for anticipating standard programming errors, while exceptions are for anticipating mission-critical errors in your application.
-  All programming languages have exception handling built right into them, and they let your create your own custom exceptions as per the needs of your software application. Speaking of objects, if you are new to objects and classes, do not worry, you will come to understand all this when we get to Object-oriented programming (OOP) in chapter 16.   
+  All programming languages have exception handling built right into them, and they let your create your own custom exceptions as per the needs of your software application. Speaking of objects, if you are new to objects and classes, do not worry, you will come to understand all this when we get to Object-oriented programming (OOP) in chapter 17.   
   The way it works is, when creating a service or function, in parts where potential errors may occur (eg a mission-critical error), you will check for this situation so that if your code encounters such an error,  it should use a throw statement to create an exception. Then, in other parts of your code that make use of that service or function that will potentially throw an exception, you will call such services or functions within a try…catch block. Basically, within the try block, you place code to access the service/function, then in the catch block, which is where any exception that would be thrown by that service/function will be captured (caught) and made available to you, you will deal with (handle) the exception. This means that your application will run smoothly without unexpectedly stalling and confusing your users. Any potential issues will be captured in the catch block, so that you can deal with them in a manner befitting of a well-thought-through, and user-friendly application. JavaScript uses two types of block constructs to capture and deal with (handle) the thrown exceptions-more on this shortly. Here is an example:
 
 		// create the service/function
@@ -482,7 +482,7 @@ This works well for simple checks to prevent standard errors in your code. Excep
 			console.log(“The viewAccount() was called”);
 		}
 
-If the viewAccount(…) function determines the user to be the right owner of the account, the user gets their account details shown to them, if not an Error exception is thrown. The API code 401 refers to an unauthorised access attempt, which is usually due to invalid user credentials to access a resource. We will learn more about API response codes when we come to learn about APIs in chapter 21 (Extensions). The Error exception is a JavaScript (in-built) exception. You pass to its constructor a string, which will be available to any code that catches this exception on its message property like so:
+If the viewAccount(…) function determines the user to be the right owner of the account, the user gets their account details shown to them, if not an Error exception is thrown. The API code 401 refers to an unauthorised access attempt, which is usually due to invalid user credentials to access a resource. We will learn more about API response codes when we come to learn about APIs in chapter 22 (Extensions). The Error exception is a JavaScript (in-built) exception. You pass to its constructor a string, which will be available to any code that catches this exception on its message property like so:
 
 	error.message
 

@@ -1,6 +1,6 @@
 
 //————————————//
-CHAPTER 18 - Forms & Email
+CHAPTER 19 - Forms & Email
 //————————————//
 
 -The three ways to handle form data in JavaScript
