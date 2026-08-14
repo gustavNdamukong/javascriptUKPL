@@ -472,7 +472,7 @@ The following is a step-by-step explanation of how it all works:
 
 			canvas.addEventListener("mousemove", (e) => {
   				if (!painting) return;
-			…
+			// // ...
 
 		Get the mouse position inside the canvas:
 
@@ -772,10 +772,10 @@ Here is the modified code to implement pixel erasing using clearRect():
 Positioning, animation and collision detection
 —————————————————————————
 
-  Finally, to round up our learning of the canvas, i will now show you how to create an animation using the simple example of a moving ball, that will demonstrate collision detection. The animation moves a ball on screen from left to right and top to bottom on a keydown event of your keyboard’s arrow keys. When the ball reaches the edge of the canvas, it can go no further, and can only move in another direction. That is thanks to collision detection. The code is able to detect (determine) that it has run into an obstacle. Also we will place an item (a 'rock') in the middle of the canvas that the ball can only go round but cannot run through. That’s another example of collision detection. 
-  None of these two things-animation and collision detection are possible, if we are not able to determine the position of elements on the web page. We will start by learning all about detecting the position of an object using what are known as x and y axes or coordinates. Once we are able not do that, we can make the object move, and are then able to tell if they run into (collide with) any other object on the screen. We know there has been a collision if the position of our object overlaps with that of another. 
-  I hope hereby to teach you how to detect boundaries, collisions, keyboard key presses, and how to make objects move. These are great skills to have as a JavaScript programmer. You would get the fundamental skills needed to start building your own animations, games-whether it is to  write racing games where you detect which car came first based on their positions against the finish line, or a keyboard-driven object that skips over moving obstacles (the flappy bird game comes to mind), or a pacman game, or a shooting game where you detect bullets hitting the enemy to deduct points or lives from them, you will be limited only by your own imagination. The possibilities are endless.
-  Let’s look at the example off the moving ball on a canvas. Note that the ball is drawn using the arc() method go the canvas, while the rock is a rectangle drawn on the canvas using the fillRect() method. Let’s dive into the code:  
+  Finally, to round up our learning of the canvas, I will now show you how to create an animation using the simple example of a moving ball, that will demonstrate collision detection. The animation moves a ball on screen from left to right and top to bottom on a keydown event of your keyboard’s arrow keys. When the ball reaches the edge of the canvas, it can go no further, and can only move in another direction. That is thanks to collision detection. The code is able to detect (determine) that it has run into an obstacle. Also we will place an item (a 'rock') in the middle of the canvas that the ball can only go round but cannot run through. That’s another example of collision detection. 
+  Neither of these two things—animation and collision detection—is possible if we are not able to determine the position of elements on the web page. We will start by learning all about detecting the position of an object using what are known as x and y axes or coordinates. Once we are able to do that, we can make the object move, and are then able to tell if they run into (collide with) any other object on the screen. We know there has been a collision if the position of our object overlaps with that of another. 
+  I hope hereby to teach you how to detect boundaries, collisions, keyboard key presses, and how to make objects move. These are great skills to have as a JavaScript programmer. You would get the fundamental skills needed to start building your own animations, games—whether it is to write racing games where you detect which car came first based on their positions against the finish line, or a keyboard-driven object that skips over moving obstacles (the flappy bird game comes to mind), or a pacman game, or a shooting game where you detect bullets hitting the enemy to deduct points or lives from them, you will be limited only by your own imagination. The possibilities are endless.
+  Let’s look at the example of the moving ball on a canvas. Note that the ball is drawn using the arc() method of the canvas, while the rock is a rectangle drawn on the canvas using the fillRect() method. Let’s dive into the code:  
 
 	HTML code
 	———————
@@ -957,12 +957,12 @@ There you have it; the x and y coordinates of the exact spot in the canvas eleme
   Animation in JavaScript means updating the position or style of something over time, so it looks like it’s moving. In our example code above, we place an event listener on the press of a key on your keyboard, then we proceed to specify an action to be taken depending on which arrow key was clicked. We only check for the case of arrow keys because those are the keys we are interested in. 
 
 	document.addEventListener("keydown", (e) => { 
-		…
+		// // ...
 		if (e.key === "ArrowUp")  dy = -ball.speed;
  		 if (e.key === "ArrowDown")  dy = ball.speed;
   		if (e.key === "ArrowLeft")  dx = -ball.speed;
   		if (e.key === "ArrowRight") dx = ball.speed;
-		…
+		// // ...
 	 });
 
 We move the ball a little each time the user presses an arrow key. This is how the ball movement happens:
@@ -973,7 +973,7 @@ We move the ball a little each time the user presses an arrow key. This is how t
 		const ball = {
   			x: 50,
   			y: 50,
-  			…
+  			// // ...
 			speed: 10
 		};
 
@@ -986,7 +986,7 @@ We move the ball a little each time the user presses an arrow key. This is how t
 	   upwards and vice versa. Equally, if the ArrowDown key is pressed, 
 	   we increase the value of the y coordinate by the value of the speed 
 	   property. This should make the ball move downwards as we 
-	   know. That updated value-whether less or more, is stored in a 
+	   know. That updated value—whether less or more—is stored in a 
 	   variable dy.
 
 		if (e.key === "ArrowUp")  dy = -ball.speed;
@@ -999,13 +999,13 @@ We move the ball a little each time the user presses an arrow key. This is how t
 	   to the left and vice versa. Equally, if the ArrowRight key is pressed, 
 	   we increase the value of the x coordinate by the value of the 
 	   speed property. This should make the ball move to the right, as we 
-	   know. That updated value-whether less or more, is stored in a 
+	   know. That updated value—whether less or more—is stored in a 
 	   variable dx.
 
 		if (e.key === "ArrowLeft")  dx = -ball.speed;
   		if (e.key === "ArrowRight") dx = ball.speed;
 
-	-Finally, we updating the position of the ball object by updating its x, 
+	-Finally, we update the position of the ball object by setting its x and 
 	   y, property values with the new values stored in the dx and dy 
 	   variables:
 
@@ -1016,10 +1016,11 @@ We move the ball a little each time the user presses an arrow key. This is how t
     			draw(); 
   		}
 
-	   This all happens in the draw() function which we call to clear and 
-	   redraw the canvas with the new ball position.
+	   The position itself is updated right there in the key handler. The 
+	   draw() function is then called to clear the canvas and redraw 
+	   everything in its new place.
 
-Another common way to animate is using the built-in function requestAnimationFrame(). That method is used when we want to make something move continuously or very smoothly-like a character that keeps walking or a bouncing ball. Here is the syntax of using requestAnimationFrame() function:
+Another common way to animate is using the built-in function requestAnimationFrame(). That method is used when we want to make something move continuously or very smoothly—like a character that keeps walking or a bouncing ball. Here is the syntax of using requestAnimationFrame() function:
 
 	function animate() {
   		// Move something
@@ -1040,9 +1041,9 @@ This method is a bit more advanced, but you’ll definitely use it later as your
 	Collision detection
 	——————————
   Collision detection means checking if two objects bump into each other.
-In our example code, above the ball has two objects we want to detect collision against. They are as follows:
+In our example code above, the ball has two objects we want to detect collision against. They are as follows:
 
-	-We must detect then the ball reaches the edge of the canvas and 
+	-We must detect when the ball reaches the edge of the canvas and 
 	   prevent it from going off that limit.
 	-We must detect when the ball runs against the rock in the centre 
 	   of the canvas and stop, so that the user can move around it.
@@ -1052,13 +1053,13 @@ We create a custom function to handle the collision detection for us. This is th
 	function canMove(dx, dy) {
   		const nextX = ball.x + dx;
   		const nextY = ball.y + dy;
-		…
+		// // ...
 	}
 
-We will be passing to canMove() the updated x and y position every time the user presses a key to move the ball. We call canMove() first before drawing (re-creating) the new canvas with the new ball position. In doing so, we are checking if there is no obstacle in that new position before we let the ball move to it. That is why we call camMove() within the event listener of every key press:
+We will be passing to canMove() the updated x and y position every time the user presses a key to move the ball. We call canMove() first before drawing (re-creating) the new canvas with the new ball position. In doing so, we are checking if there is no obstacle in that new position before we let the ball move to it. That is why we call canMove() within the event listener of every key press:
 
 	document.addEventListener("keydown", (e) => {
-  		…
+  		// // ...
   		if (canMove(dx, dy)) {
     			ball.x += dx;
     			ball.y += dy;
@@ -1068,14 +1069,14 @@ We will be passing to canMove() the updated x and y position every time the user
 
 The following are the steps to do the collision detection which we do in canMove():
 	
-	-First, we establish the new (next) to be x-y coordinates for the ball 
-	   and store them in the variables nextX and NextY which represent 
-	   the x and y coordinates, respectively.
+	-First, we work out what the ball’s x and y coordinates are about to 
+	   be, and store them in the variables nextX and nextY which 
+	   represent the x and y coordinates, respectively.
 
 		function canMove(dx, dy) {
   			const nextX = ball.x + dx;
   			const nextY = ball.y + dy;
-			…
+			// // ...
 		}
 
 	-Next we do some canvas edge detection to make sure the ball 
@@ -1098,18 +1099,18 @@ The following are the steps to do the collision detection which we do in canMove
 		   of the ball object. 
 
 			const ball = { 
-				…
+				// // ...
 				radius: 15, 
-				…
+				// // ...
 			};
 
 		   In fact, we even used that radius value when 
 		   creating the ball in the first place.
 
 			function drawBall() { 
-				…
+				// // ...
 				ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2); 
-				…
+				// // ...
 			}
 
 		   The x and y coordinates define one spot in the middle of the 
@@ -1145,7 +1146,7 @@ The following are the steps to do the collision detection which we do in canMove
 			x - radius == 0
 
 		   If it is, then the ball is exactly at the edge, touching the left 
-		   canvas (x axis) wall. If it is less that 0, then the ball has gone 
+		   canvas (x axis) wall. If it is less than 0, then the ball has gone 
 		   beyond the left edge.
 			To know if the right edge has touched the right inner wall of 
 		   the canvas, the calculation is exactly the opposite. We simply 
@@ -1155,15 +1156,20 @@ The following are the steps to do the collision detection which we do in canMove
 			x + radius == canvas.width
 
 		   If it is greater, then we know the ball has gone beyond the right 
-		   edge go the canvas. 
+		   edge of the canvas. 
 			The logic we apply in our example code is to check if both 
 		   left and right edges of the ball have not gone beyond the 
 		   canvas edges. That’s why instead of using x - radius == 0 and 
-		   x + radius == canvas.width, we use … > 0 (greater than ) and … 
-		   > canvas.width for the left canvas edge and right canvas edge, 
-		   respectively. That check happens in the function canMove() 
-		   which returns true if the ball has passed edge of the canvas, or 
-		   false if not. We therefore only allow the ball to move if 
+		   x + radius == canvas.width, we use x - radius < 0 (less than) 
+		   and x + radius > canvas.width for the left canvas edge and right 
+		   canvas edge, respectively. Either of those being true means the 
+		   ball has gone too far. 
+			That check happens in the function canMove(), and read its 
+		   return value carefully, because it is the opposite way round 
+		   from what you might expect. canMove() returns FALSE when the 
+		   ball has hit something, and TRUE when the way is clear. Its 
+		   name is the clue: we are asking "can the ball move?", not "has 
+		   it crashed?". That is why we only allow the ball to move when 
 		   canMove() returns true. 
 
 			if (nextX - ball.radius < 0 || nextX + ball.radius > 
@@ -1176,10 +1182,10 @@ The following are the steps to do the collision detection which we do in canMove
 		   0. We run the same check for the right canvas wall. The pipe 
 		   characters (||) separating the two if conditions makes sure we 
 		   run both checks in one if statement. 
-			Similarly, we also check if the ball touches both top and 
-		   bottom edges in canMove() which returns true if the ball has 
-		   touched the top edge of the canvas, or false if not. We 
-		   therefore only allow the ball to move if canMove() returns true. 
+			Similarly, we also check the top and bottom edges in 
+		   canMove(). Again, touching either edge makes the function 
+		   return false, and we only allow the ball to move when it 
+		   returns true. 
 
 			if (nextY - ball.radius < 0 || nextY + ball.radius > 
 				canvas.height) return false;
@@ -1195,7 +1201,7 @@ The following are the steps to do the collision detection which we do in canMove
 
 	Detecting the collision of two shapes
 	————————————————————
-  When it comes to detecting collision of our ball against the rock on the canvas, the approach is exactly the same. To detect the collision between any two objects, you must start by knowing the position of their outer edges-bear in mind that the math for achieving this will depend on the shape of each object. So, in this example, we have a rectangle (the rock), and a circle (the ball). 
+  When it comes to detecting collision of our ball against the rock on the canvas, the approach is exactly the same. To detect the collision between any two objects, you must start by knowing the position of their outer edges—bear in mind that the math for achieving this will depend on the shape of each object. So, in this example, we have a rectangle (the rock), and a circle (the ball). 
   
 	-We start by calculating the edges of the ball: 
 
@@ -1206,7 +1212,7 @@ The following are the steps to do the collision detection which we do in canMove
 
 	-Next, we work out the edges of the rock. Take note of how this is 
 	   calculated differently from how it’s done with a circle. For example, 
-	   the top edge is simply its x position, while its top edge is its y 
+	   the left edge is simply its x position, while its top edge is its y 
 	   position. 
 
 		const rockLeft = rock.x;
@@ -1227,4 +1233,4 @@ If ever all four conditions are true, it means the ball is inside or touching th
 
 Because this check is inside the canMove() function, it means; only allow the move if the ball doesn’t hit the rock.
 
-  You’ve just taken your first steps into the world of graphics and animation using the HTML5 <canvas>! From moving a ball around the screen to detecting collisions with obstacles, you now understand how powerful simple shapes, positioning, and logic can be. But this is just the beginning. The canvas API can do so much more — from drawing images and text to creating full-blown games. Explore the official Canvas documentation on NDN (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) to see what’s possible. And if you’re feeling adventurous, try building a maze, a simple pong game, or a mini obstacle course — anything that challenges you to move objects, detect hits, and control motion. 
+  You’ve just taken your first steps into the world of graphics and animation using the HTML5 <canvas>! From moving a ball around the screen to detecting collisions with obstacles, you now understand how powerful simple shapes, positioning, and logic can be. But this is just the beginning. The canvas API can do so much more — from drawing images and text to creating full-blown games. Explore the official Canvas documentation on MDN (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) to see what’s possible. And if you’re feeling adventurous, try building a maze, a simple pong game, or a mini obstacle course — anything that challenges you to move objects, detect hits, and control motion. 
