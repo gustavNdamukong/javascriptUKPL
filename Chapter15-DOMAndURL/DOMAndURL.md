@@ -2079,19 +2079,19 @@ The DOMParser
   In this section above on the document.evaluate() method, you would remember I mentioned that in order to read (parse) data in XML, we must make sure the data is converted from a string into an actual XML document before we can use it in document.evaluate(). The data is usually a string in XML format which you could have obtained through any of the following ways:
 
     * You might have created this XML string yourself in code
-    * Your code may read this data from an XML file and stored it in a string. See how to read files in JavaScript in File Management (Chapter 18).
+    * Your code may read this data from an XML file and store it in a string. See how to read files in JavaScript in File Management (Chapter 18).
     * Your code might have received this data as a response after making an AJAX or API request to read a file or get data that can be from a remote server.
 
-Whatever the case me be, you would typically end up having this data as a string stored in a variable. I need you to understand one thing here. Just because a string is formatted like HTML or formatted like XML does not make it a real HTML or XML document. The .evaluate() method of the document object only works with real documents not strings. Therefore, in order to manipulate this data with JavaScript in the same way you would manipulate a real HTML or XML document, you have to first of all convert that string into an HTML document or an XML document before you hand it over to be used in document.evaluate. That’s when the DOMParser comes in.
+Whatever the case may be, you would typically end up having this data as a string stored in a variable. I need you to understand one thing here. Just because a string is formatted like HTML or formatted like XML does not make it a real HTML or XML document. The .evaluate() method of the document object only works with real documents not strings. Therefore, in order to manipulate this data with JavaScript in the same way you would manipulate a real HTML or XML document, you have to first of all convert that string into an HTML document or an XML document before you hand it over to be used in document.evaluate(). That’s when the DOMParser comes in.
   DOMParser is a built-in JavaScript object that allows you to convert strings of XML or HTML into actual document objects that your code can interact with using the DOM (Document Object Model). Think of it this way: if you have a block of XML or HTML stored as a string, DOMParser helps you turn that string into something JavaScript can "walk through", read from, or manipulate — just like the document object.
-  DOMParser is part of the DOM Living Standard, maintained by the WHATWG (Web Hypertext Application Technology Working Group) — the same group that maintains standards for HTML and the DOM. It is widely supported across all modern browsers (including Chrome, Firefox, Safari, Edge, and even IE10+). It's safe to use in nearly any project. DOMParser has two jobs:
+  DOMParser is part of the DOM Living Standard, maintained by the WHATWG (Web Hypertext Application Technology Working Group) — the same group that maintains standards for HTML and the DOM. It is widely supported across all modern browsers (Chrome, Firefox, Safari and Edge among them). It's safe to use in nearly any project. DOMParser has two jobs:
 
     * Converts XML strings to XML documents
     * Converts HTML strings to HTML documents
 
 Again, this is essential when working with data from APIs, file uploads, or manually loaded XML, because XPath and DOM methods (like document.evaluate()) only work on real DOM objects, not raw strings.
   Another JavaScript tool which is not directly related, but works well together with the DOMParser is the FileReader. FileReader reads files (like XML or HTML) from the user's device and gives you the data as a string. We will learn all about FileReader under File Management in Chapter 18.
-DOMParser takes that string and turns it into a DOM document you can work with. Let’s look at an example of the DOMParser in action, which you should already be a familiar example to you by now. Here, I will create an XML string and store it in a variable (xmlString):
+DOMParser takes that string and turns it into a DOM document you can work with. Let’s look at an example of the DOMParser in action, which should be a familiar one to you by now. Here, I will create an XML string and store it in a variable (xmlString):
 
 	const xmlString = `
   		<books>
@@ -2149,12 +2149,12 @@ Select this element in JavaScript like so:
 
 -Select an element by its class
 —————————————————
-To select an element by its class attribute value you should use the getElementsByClassName() method of the HTMLElement object, and provide it with the name of the class you want to target on the web page. Note that this obviously means you will end up with an array of multiple elements, since unlike id attributes, the same class is usually used on multiple HTML elements. 
+To select an element by its class attribute value you should use the getElementsByClassName() method of the document object, and provide it with the name of the class you want to target on the web page. Note that this obviously means you will end up with multiple elements, returned as an HTMLCollection—not an array, as we established earlier in this chapter—since unlike id attributes, the same class is usually used on multiple HTML elements. 
 
 	const items = 
 		document.getElementsByClassName("list-item");
 	OR
-		const items = document.querySelector(".list-tem"); 
+		const items = document.querySelector(".list-item"); 
 	OR
 		const list = document.querySelectorAll(
 				".list-item"
@@ -2168,18 +2168,17 @@ To select an element by its class attribute value you should use the getElements
 	getElementsByClassName(). This makes sense 
 	because a class is usually assigned to multiple 
 	elements anyway. 
-	   The above alternative ways call all be used to 
+	   The above alternative ways can all be used to 
 	accomplish the same thing, but the last 	two are more 
 	elegant and relatively newer to JavaScript. However, if 
 	you are trying to grab 	all the elements of a certain 
 	class in order to manipulate them as an array and do 
 	some cool stuff with them, then querySelector() is not 
-	quite suitable because it will return an HTMLCollection 
-	which does not give you access to all the JS object 	
-	members that you need. Therefore it is often better to 
-	use querySelectorAll() instead, when you need to 
-	select more than one item (with these elements having 
-	the same class.
+	quite suitable, because it returns only the first 
+	matching element and nothing else. Therefore it is often 
+	better to use querySelectorAll() instead, when you need 
+	to select more than one item (with these elements 
+	having the same class).
 
 
 
@@ -2195,22 +2194,22 @@ To select an element by its class attribute value you should use the getElements
 	   and a text field will appear for you to enter some text for 
 	   the content of the list item
 	-if you try to save the entry with no text entered, you will get 
-	   a validation error, a popup text that disappears after 3 
+	   a validation error, a popup text that disappears after 2 
 	   seconds.
 	-you can add multiple list items
 	-you can edit the text on an item
 	-when editing, an edit box (div) will appear with the current 
-	   text per-populated in an edit text field.
+	   text pre-populated in an edit text field.
 	-while editing, if you submit the edit form with no text 
 	   entered, you will get a validation error, a popup text that 
-	   disappears after 3 seconds..
+	   disappears after 2 seconds.
 	-while editing, if you change your mind, you can cancel the 
 	   edit, and this will clear any edit text you had started 
 	   typing in, and hide the edit box.
 	-delete any list item by clicking on its ‘delete’ button 
 
 
-Index.css
+index.css
 ——————
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -2298,7 +2297,7 @@ h1 {
 
 
 
-Index.html
+index.html
 ——————
 <!doctype html>
 <html>
@@ -2335,7 +2334,7 @@ Index.html
 
 
 
-Index.js
+index.js
 ——————
 let todoString = "";
     todoString = `
@@ -2396,7 +2395,7 @@ function addTodoItem(e) {
         let addItemDiv = document.querySelector("#addItemDiv");
         addItemDiv.style.display = "none";
         //---------------------------------------------
-        // ADD EVENT LISTENERS TO BUTTONS (editButton. cancelEdit, saveEdit)
+        // ADD EVENT LISTENERS TO BUTTONS (editButton, cancelEdit, saveEdit)
         //---------------------------------------------
 
         // Find the .editButton inside that specific parent <li>
@@ -2491,7 +2490,7 @@ function notify() {
 
     // Hide the warning after 2 seconds
     setTimeout(() => {
-        warning.textContent = ""
+        warning.textContent = "";
         // Hide the message
         warning.style.display = "none"; 
     }, 2000);
@@ -2521,7 +2520,7 @@ function deleteTodo(e) {
             li,
             {
                 'id': 'truest',
-                className: ['listGus-item something’] 
+                className: 'listGus-item something'
             }
         );
 
@@ -2529,20 +2528,20 @@ function deleteTodo(e) {
 	In the first example, we use the className property of the JavaScript Element object which this list (li) element is an instance of to give it a class attribute. You just have to 	assign it the name of the class you want the element to have, and that is what we have done here.
 	In the second example, we use the setAttribute() method of the JavaScript Element object which this list element (li) is an instance of, to give it a class attribute. It takes two 	arguments; the name of the attribute-in this case 'class', and the value you want it to have-in 	this case 'list-item'.
 	Alternatively, we can use the classList member of the JavaScript Element object, again, of which this list (li) element is an instance. This classList member happens to be an object itself, and you have to call its add() method to actually assign the class. You pass in the name of the class you want the element to have. 
-	The last alternative is also a powerful way to dynamically assign attributes to an element in JavaScript. We use the assign() method of the Object object, which we know is the parent of all objects in your JavaScript code. The assign()
-Method takes two arguments in our above example. The first argument is the target element (it has to know what element to assign the attributes to, and the second is an object literal in which you can assign as many attributes you want to the element. In this example, we assign an ‘id’ attribute, and give it a value of ‘truest’, but of course, the value can be anything you want. We also assign some classes to the element. Pay attention to how we pass in multiple classes in one line. If you are adding multiple, just place them in a square bracket and separate them by commas, but if it’s just one, just type it in as a string.
+	The last alternative is also a powerful way to dynamically assign attributes to an element in JavaScript. We use the assign() method of the Object object, which we know is the parent of all objects in your JavaScript code. The assign() method takes two arguments in our example above. The first argument is the target element (it has to know which element to assign the attributes to), and the second is an object literal in which you can assign as many attributes as you want to the element. In this example, we assign an ‘id’ attribute and give it a value of ‘truest’, though of course the value can be anything you want. We also assign some classes to the element.
+	Pay close attention to how multiple classes are passed. They go in as one single string with a space between them, exactly as you would write them in your HTML. Do not be tempted to put them in an array and separate them with commas: className is a string, so an array of ["list-item", "draggable"] is quietly turned into the text "list-item,draggable", which the browser reads as one strangely-named class rather than two. One string, spaces between the names.
 
 
 
 
 Assign multiple attributes to an element in one go
-	Any of the above ways to assign attributes to an element is fine, but there are rimes when you would have multiple attributes to an element, and there is a beautiful way to do it in one 	block. This is done by the assign() method of the base JavaScript Object Object. You simply pass the target element as the first argument to assign() and an object as its second 	argument containing all the attributes you want the element to have and their values.  Here is 	an example:
-		object.assign({
-			'draggable':'true',
-			className: ['list-item draggable']	
+	Any of the above ways to assign attributes to an element is fine, but there are times when you would have multiple attributes to an element, and there is a beautiful way to do it in one 	block. This is done by the assign() method of the base JavaScript Object Object. You simply pass the target element as the first argument to assign() and an object as its second 	argument containing all the attributes you want the element to have and their values.  Here is 	an example:
+		Object.assign(li, {
+			'draggable': 'true',
+			className: 'list-item draggable'
 		});
 
-	There are two things you should note here. The first is how the className must be used instead of class to assign a class to an element when using this approach. The second thing 	to note is the way you can pass multiple classes to the same element. Just put them in curly brackets and separate the class names with spaces. 
+	There are three things you should note here. The first is that Object.assign() needs the element itself as its first argument—leave it out and you have assigned the attributes to nothing at all. The second is how className must be used instead of class to assign a class to an element when using this approach. The third is the way you pass multiple classes to the same element: as one string, with the class names separated by spaces. 
 
 
 
@@ -2577,7 +2576,7 @@ Concatenate a variable with a string and display the result
 How to dynamically insert content into an element
 	There are two ways to do this; using either the textContent or the innerHTML properties of the JavaScript HTMLElement object of which your web page elements are instances. This means that you can just refer to any of these properties of your element, and assign whatever content you want to them as a string. Here is an example:
 
-	INDEX.HTML
+	index.html
 	———————
 	<!doctype html>
 	<html>
@@ -2594,7 +2593,7 @@ How to dynamically insert content into an element
 	</html>
 
 
-	INDEX.JS
+	index.js
 	—————-
 
 	let todoString = "";
@@ -2617,7 +2616,7 @@ How to dynamically insert content into an element
     myUl.appendChild(li);
 
 
-  Understand the difference between using textContent and innerHTML to insert content into an element. The difference lies in their names. Use innerHTML when you want to render som HTML tags, as in this case a list item. If you use textContent, the li item will not be parsed as the browser would read your HTML code, and rather it will insert and display the following raw text as it is:
+  Understand the difference between using textContent and innerHTML to insert content into an element. The difference lies in their names. Use innerHTML when you want to render some HTML tags, as in this case a list item. If you use textContent, the li item will not be parsed as the browser would read your HTML code, and rather it will insert and display the following raw text as it is:
 
 	<div> <h1>The new li element is here</h1> <span 
 		class='todo-item'>Test item</span> 
@@ -2635,19 +2634,20 @@ How to dynamically insert content into an element
 
 Implementing drag and drop
 —————————————————
-  We are going to see howe to drag and drop an element. We will see how to drag and element from one container to another. Let’s dive straight into the code, and I will explain how it works at the end.
+  We are going to see how to drag and drop an element. We will see how to drag an element from one container to another. Let’s dive straight into the code, and I will explain how it works at the end.
 
 
 
 	The HTML code
 	
 	<!DOCTYPE html>
+	<html>
     	<head>
         <title>The JavaScript Blueprint</title>
         <link rel="stylesheet" href="index.css">
     	</head>
     	<body>
-        	<h1>File Management Lab</h1>
+        	<h1>Drag and drop</h1>
 
         	<div class="empty">
             		<div class='fill' draggable="true">
@@ -2709,7 +2709,6 @@ Implementing drag and drop
 
 	The JS code
 
-	<script type="text/javascript" />
 	const fill = document.querySelector('.fill');
 	const empties = document.querySelectorAll('.empty');
 
@@ -2775,7 +2774,6 @@ Implementing drag and drop
    		this.append(fill);
 	}
 
-</script>
 
 
 Here is an explanation of the code, and how drag and drop generally works. Imagine you're picking up a sticker and moving it to another page in a sticker book. That's exactly what you're doing with drag and drop on a web page. Here is what happens behind the scenes, step-by-step as you drag and drop your item:
@@ -2786,7 +2784,7 @@ Here is an explanation of the code, and how drag and drop generally works. Imagi
 - Then, in order to make this inner div draggable, we need to give it an attribute called ‘draggable’, and its value needs to be true. This is a standard, HTML 5 requirement, and it makes this (inner) div draggable without us having to write any code for that. However, having done all this, we have the basis setup, and the dragging will not actually move that element to anywhere. Even if you tried, it will appear to move but then withdraw right back to where it was once you let go of it. To make the dragging actually happen, as in allow the user to drag the item-which in this case is an image, and drop it elsewhere on the DOM, we have to write the JavaScript code to make that happen. Let us proceed and see how that is done.
 - Starting the Drag: When the drag starts, we highlight it (using the .hold class) and hide it (using .invisible) so it looks like it's moving.
 - Target Zones: The .empty boxes are drop zones. They are set up to react when something is dragged over them.
-- The drag events: There are three main drag events you need to manage. These are dragenter, dragleave and drop. Let’s talk about how they work.
+- The drag events: There are four drag events you need to manage. These are dragover, dragenter, dragleave and drop. Let’s talk about how they work.
 		
     * dragenter and dragover are triggered when you drag the image over a box.
     * dragleave is triggered when you leave the box without dropping.
@@ -2804,6 +2802,7 @@ This makes your web page interactive-no page reloads, just drag, drop, and go.
 	HTML code
 	———————
 	<!DOCTYPE html>
+	<html>
    	 <body>
 
         <script type="module" src="index.js" defer></script>
@@ -2865,7 +2864,7 @@ This makes your web page interactive-no page reloads, just drag, drop, and go.
 
 
 	// Do the loop to get the data
-	Object.values(clients).forEach((person) => {
+	clients.forEach((person) => {
    		 // 4. Add a couple of data rows
     		let row = document.createElement("tr");
 
@@ -2890,7 +2889,7 @@ This makes your web page interactive-no page reloads, just drag, drop, and go.
 
 	
   Explanation of the Code
-* Create the Data:A clients array is defined, where each object contains a person's name and country.
+* Create the Data: A clients array is defined, where each object contains a person's name and country.
 * Step 1: Create the div container
     * A div element is created using document.createElement("div").
     * Text is added using .textContent.
