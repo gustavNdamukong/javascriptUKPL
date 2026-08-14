@@ -1397,7 +1397,7 @@ When you need precise control over what part of the XML to extract—especially 
 					document.evaluate()
 
 
-  Here  are some example scenarios when you may need to deal with an XML file:
+  Here are some example scenarios when you may need to deal with an XML file:
 
 	- Reading config files in XML format.
 	- Parsing RSS feeds (which are XML-based).
@@ -1408,10 +1408,10 @@ When you need precise control over what part of the XML to extract—especially 
 
 	-Get elements by tag using .getElementsByTagName() for example:
 
-        	xmlDoc.getElementsByTagName("book”);
+        	xmlDoc.getElementsByTagName("book");
 
     	-Query with CSS selectors using .querySelector() for example select 
-	   a <author> tag like this:
+	   an <author> tag like this:
 
         	xmlDoc.querySelector("author");
 
@@ -1422,19 +1422,19 @@ When you need precise control over what part of the XML to extract—especially 
 	-Get attributes using getAttribute() for example select an element 
 	   with an id attribute value of "id":
 
-        	element.getAttribute("id”);
+        	element.getAttribute("id");
 
-  Each of the approaches listed above for reading XML files each have their strengths and use cases. As you go through the upcoming examples, you’ll see how flexible JavaScript is when it comes to handling XML—whether it’s reading a local file from your computer or pulling data from a web service. Let’s dive deeper into the above-mentioned four approaches JavaScript takes to read and process XML files.
+  Each of the approaches listed above for reading XML files has its own strengths and use cases. As you go through the upcoming examples, you’ll see how flexible JavaScript is when it comes to handling XML—whether it’s reading a local file from your computer or pulling data from a web service. Let’s dive deeper into the above-mentioned four approaches JavaScript takes to read and process XML files.
 
 
 
 
 	Using the FileReader and DOMParser
 	—————————————————————
-  The DOMParser API converts an XML string into a traversable DOM object, similar to the HTML DOM whereby it then becomes very easy to read the XML document using the various methods provided by the HTML document object-which you are already familiar with. I introduced the DOMParser in chapter 15 (DOM Frontend and assets management). Let’s dive right into the steps of reading an XML file. 
-  This approach involves using a combination of FileReader and the DOMParser. FileReader will do the reading of the file, and pass its contents for DOMParser as a string. This combination is best suited for reading local files. The workflow is as follows:
+  The DOMParser API converts an XML string into a traversable DOM object, similar to the HTML DOM whereby it then becomes very easy to read the XML document using the various methods provided by the HTML document object—which you are already familiar with. I introduced the DOMParser in Chapter 15 (DOM and URL Manipulation). Let’s dive right into the steps of reading an XML file. 
+  This approach involves using a combination of FileReader and the DOMParser. FileReader will do the reading of the file, and pass its contents to DOMParser as a string. This combination is best suited for reading local files. The workflow is as follows:
 
-    - You select an XML file via a file input field (<input type="file”>) on a web page. 
+    - You select an XML file via a file input field (<input type="file">) on a web page. 
     - Next, you read the file using the FileReader, and typically store its text (string) in a variable.
     - Next, you parse (convert) the text into an XML DOM object using the DOMParser
     - Finally, extract the data you need from the file using DOM methods (`getElementsByTagName`, `querySelector`, etc.).
@@ -1509,15 +1509,15 @@ As you can see, it uses the FileReader in combination with the DOMParser. The wo
 		const file = e.target.files[0];
 
 	This grabs the first file the user selected. Even if they were allowed to 
-	choose many files-in our example, they are not, we're only grabbing 
+	choose many files—in our example, they are not, we're only grabbing 
 	the first one here. This is because we only fetch the file at the first 	
 	index in the files array (files[0]).
 
-	-Next, we setup a FileReader
+	-Next, we set up a FileReader
 
 		const reader = new FileReader();
 
-	This creates a FileReader-the special browser object that can read 
+	This creates a FileReader—the special browser object that can read 
 	files from your computer, which we have seen in action already, from 
 	previous examples.
 
@@ -1588,18 +1588,18 @@ Using the DOMParser is the most modern and recommended way to parse XML files.
 Let’s see an example. Place the following code in your JavaScript file:
 
 	fetch('books.xml')
-  	.then(response => response.text())
-  	.then(xmlString => {
-    		const parser = new DOMParser();
-    		const xmlDoc = parser.parseFromString(
+  	.then(response => response.text())
+  	.then(xmlString => {
+    		const parser = new DOMParser();
+    		const xmlDoc = parser.parseFromString(
 					xmlString, "text/xml"
 				);
-    
-    		// Process XML data here
-    		console.log(xmlDoc.querySelector("title")
+    
+    		// Process XML data here
+    		console.log(xmlDoc.querySelector("title")
 		.textContent);
-  	})
-  	.catch(error => console.error("Error loading XML:", error));
+  	})
+  	.catch(error => console.error("Error loading XML:", error));
 
 In a real-life scenario, instead of the string 'books.xml' that I have passed to fetch() above, you would pass in the real URL path of the API endpoint (target web address or URL) where you are expecting to get a response in XML format from.
 Using fetch is the best way to deal with remote XML files.
@@ -1611,9 +1611,9 @@ Using fetch is the best way to deal with remote XML files.
 
 	Using the XMLHttpRequest object
 	———————————————————
-  The XMLHttpRequest object is a built-in JavaScript object that helps your web page ask for data from a server without refreshing the page. That is the definition of an AJAX (Asynchronous JavaScript and XML) request. When I come to talk about Extensions and APIs in chapter 22, you will learn all about AJAX and how it works. You will see how this same XMLHttpRequest object is very effective in that. However, it is not only good at making requests (local and remote) and receiving the response back in text format. As its name suggests, it is designed to handle XML files out of the box. In fact, it was the old standard way of reading and processing XML files. It was very effective and powerful then, and it still works in all browsers today. Though it may seem outdated because it’s no longer commonly used, it is still relevant and being used in legacy systems. 
+  The XMLHttpRequest object is a built-in JavaScript object that helps your web page ask for data from a server without refreshing the page. That is the definition of an AJAX (Asynchronous JavaScript and XML) request. When I come to talk about Extensions and APIs in Chapter 22, you will learn all about AJAX and how it works. You will see how this same XMLHttpRequest object is very effective in that. However, it is not only good at making requests (local and remote) and receiving the response back in text format. As its name suggests, it is designed to handle XML files out of the box. In fact, it was the old standard way of reading and processing XML files. It was very effective and powerful then, and it still works in all browsers today. Though it may seem outdated because it’s no longer commonly used, it is still relevant and being used in legacy systems. 
   Unlike when reading XML files using FileReader and fetch() where you have to use pass the data over to DOMParser to be read, when using the XMLHttpRequest, you do not need the DOMParser. This is because, the XMLHttpRequest object has its own tools to parse the XML data. If the remote server responds to the AJAX request with valid XML (with the Content-Type header correctly set e.g. text/xml or application/xml), the responseXML property of XMLHttpRequest automatically parses the XML data into a readable DOM object (DOM)-which is what the DOMParser would normally do, so you do not need it. This means you can directly query the data stored in responseXML using DOM methods like getElementsByTagName(), querySelector(), etc. The DOMParser would only be needed if you are working with raw XML text-like a string or a non-XML HTTP response like responseText. In this case, you would get the response data as text from the responseText property, and can use the DOMParser to parse it into a DOM object.  
-  Again, this combination is best suited for reading files from a remote server, although it will still work if the file is in your local file system Just pass the file path or remote path as the second argument to the open() method of the XMLHttpRequest object. The workflow is as follows:
+  Again, this combination is best suited for reading files from a remote server, although it will still work if the file is in your local file system. Just pass the file path or remote path as the second argument to the open() method of the XMLHttpRequest object. The workflow is as follows:
 
     - You make a XMLHttpRequest request to get the data from the remote server and get that data back optionally as a text string (using the responseText property) or an already parsed XML DOM object (using the responseXML property).
     - Next, you parse (convert) the text into an XML DOM object using the DOMParser if it is string format (gotten using the responseText property). If however the data is an already parsed XML DOM object, you do not need to use the DOMParser.
@@ -1650,7 +1650,7 @@ Using fetch is the best way to deal with remote XML files.
 
 	const xhr = new XMLHttpRequest();
 
-This creates a new request object called xhr (short for "XML HTTP Request"). It will help you send a request to get data from a file (in this case, an XML file). Remember to test this by placing the XML file books.xml from our previous fetch() example in root folder of your project-the same location as this JavaScript code’s file.  
+This creates a new request object called xhr (short for "XML HTTP Request"). It will help you send a request to get data from a file (in this case, an XML file). Remember to test this by placing the XML file books.xml from our previous fetch() example in the root folder of your project—the same location as this JavaScript code’s file. 
 
 Next, we call the open() method of the XMLHttpRequest like so:
 
@@ -1664,19 +1664,19 @@ This is the line that makes the request for the file. It prepares the request by
 		freeze while waiting for the server to respond. This is essentially 
 		what makes this request an asynchronous (AJAX) one. If you 
 		used false, the browser would pause everything until the request 
-		finishes-which is not desirable at all.
+		finishes—which is not desirable at all.
 
 In the following line, this is how we check if anything has changed in the state of the request, and run a function:
 
 	xhr.onreadystatechange = function() { ... }
 
-Requests go through 5 ready states (0-4), and these are stored in the readyState property of the XMLHttpRequest object. I will explain all the readyState property values and what they mean in chapter 22 under the topic of AJAX using XMLHttpRequest. As you can see in this example, the one we need to care about is the state that says it's done, and that is when the value of the readyState property is 4.
+Requests go through 5 ready states (0-4), and these are stored in the readyState property of the XMLHttpRequest object. I will explain all the readyState property values and what they mean in Chapter 22 under the topic of AJAX using XMLHttpRequest. As you can see in this example, the one we need to care about is the state that says it's done, and that is when the value of the readyState property is 4.
 
 	if (xhr.readyState === 4 && xhr.status === 200)
 
 Actually, we check for two things:
 	a) if the value of the readyState property is 4, and 
-	b)  if the value of the status property is 200
+	b) if the value of the status property is 200
 
 xhr.readyState === 4 means the request is done and we got a response.
 xhr.status === 200 means the server said ‘OK’, and everything went well.
@@ -1687,9 +1687,9 @@ Next, we receive the XML data returned and store it in a variable xmlDoc.
 	const xmlDoc = xhr.responseXML;
 
 The responseXML property of the XMLHttpRequest object
-gives you the parsed XML data as a DOM object, so you can use  methods of the HTMLElement object like .getElementsByTagName() and .querySelector() etc, just as you would do with any other HTML element. This, you would agree with me, is amazing.
+gives you the parsed XML data as a DOM object, so you can use methods of the HTMLElement object like .getElementsByTagName() and .querySelector() etc, just as you would do with any other HTML element. This, you would agree with me, is amazing.
 
-Other than the responseXML property, there are other useful properties of the XMLHttpRequest object designed for you to work with other data formats and handle the whole request process efficiently. I will provide you will all the properties when I go in depth into AJAX requests in chapter 22.
+Other than the responseXML property, there are other useful properties of the XMLHttpRequest object designed for you to work with other data formats and handle the whole request process efficiently. I will provide you with all the properties when I go in depth into AJAX requests in Chapter 22.
 
 Let’s take a look at what we do with the result in our example. Remember as pointed out above that at this point, we already have an HTMLElement-like object made possible by responseXML and stored in xmlDoc. The next thing we do therefore is to grab all the book (in <book>) tags from the XML data like so:
 
@@ -1697,15 +1697,15 @@ Let’s take a look at what we do with the result in our example. Remember as po
 
 getElementsByTagName() returns an HTMLCollection object, and so that is now what books is. 
 
-Subsequently, I am displaying the XML data on books in the console, and notice that this time I use console.table() instead of the usual console.log() we have been using. I will provide you with the other methods of the console object later in chapter 21 (Error Debugging and Testing). For now, just know that console.table() takes an array, and displays the data in a clean table format in the console. 
+Subsequently, I am displaying the XML data on books in the console, and notice that this time I use console.table() instead of the usual console.log() we have been using. I will provide you with the other methods of the console object later in Chapter 21 (Error, Debugging and Testing). For now, just know that console.table() takes an array, and displays the data in a clean table format in the console. 
   
 This means we need to convert the HTMLCollection books into an array to pass to console.table(). That is exactly what we do in this line:
 
-	const bookArray = Array.from(books)…
+	const bookArray = Array.from(books)...
 
-If you remember in chapter 15 when we learned about the collection of elements HTMLCollection and NodeList, we looked at how they can be converted to an array under he section "Using all array methods on HTMLCollections & NodeLists”. If you wish to refresh your mind on how and why we need to convert an HTMLCollection into an array, revisit that section and then come back. Just to remind you once more, there are two ways to do the conversion of both HTMLCollections and NodeLists. These are by either using the Array.from() method or the spread operator.
+If you remember in Chapter 15 when we learned about the collection of elements HTMLCollection and NodeList, we looked at how they can be converted to an array under the section "Using all array methods on HTMLCollections & NodeLists". If you wish to refresh your mind on how and why we need to convert an HTMLCollection into an array, revisit that section and then come back. Just to remind you once more, there are two ways to do the conversion of both HTMLCollections and NodeLists. These are by either using the Array.from() method or the spread operator.
 So, there you have it, a good lesson on how to convert an HTMLCollection into an array. Being able to convert data in programming from one data type to another is a valuable skill. 
-  Because bookArray is now an array, we can call any array method on it-and in this case, we use the map() method. Using map(), we map through bookArray to extract the data of each individual book, which in this case is two pieces of the data; title and author. To understand how the map() function works, refer back to Arrays in chapter 3 where I listed and explained the methods of the array object in JavaScript. The code doing the conversion from an HTMLCollection to an array, and looping through it using may() looks like this:
+  Because bookArray is now an array, we can call any array method on it—and in this case, we use the map() method. Using map(), we map through bookArray to extract the data of each individual book, which in this case is two pieces of the data; title and author. To understand how the map() function works, refer back to Arrays in Chapter 3 where I listed and explained the methods of the array object in JavaScript. The code doing the conversion from an HTMLCollection to an array, and looping through it using map() looks like this:
 
 	const bookArray = Array.from(books).map(book => {
   		const title = book.querySelector("title").textContent;
@@ -1716,15 +1716,15 @@ So, there you have it, a good lesson on how to convert an HTMLCollection into an
 
 Basically, .map(...) – loops through each <book> and creates a new object. Within that loop, we use .querySelector() to find the <title> and <author> tags inside each of those books. We use .textContent to grab the actual text inside the tag. Each object is therefore returned with title and author keys in it. 
 
-Because this all happens inside map()-which works in a loop fashion, the data of ‘title’ and ‘author’ which we extract from each book is being repeatedly sent back to be pushed into the bookArray variable. The sending back of the extracted data happens because of the the return statement inside the map() function:
+Because this all happens inside map()—which works in a loop fashion, the data of ‘title’ and ‘author’ which we extract from each book is being repeatedly sent back to be pushed into the bookArray variable. The sending back of the extracted data happens because of the return statement inside the map() function:
 
 	return { title, author };
 
 The bookArray then ends up as an array containing multiple book objects like this:
 
 	[
-  		{ title: "JavaScript for Kids", author: "John Doe" },
-  		{ title: "CSS Mastery", author: "Jane Smith" },
+  		{ title: "JavaScript: The Good Parts", author: "Douglas Crockford" },
+  		{ title: "Eloquent JavaScript", author: "Marijn Haverbeke" }
 	]
 
 That is it, we finally display the array in the console using console.table();
@@ -1781,7 +1781,7 @@ Let’s look at some examples of handling XML files using XPath.
     		</book>
 	</library>
 
-As you can see, this is XML structured data about books. The data contain two books, and you can tel because it contains two <book> tags. Within each book data is the title (<title>) and the author (<author>) of the book. We are going to use XPath to read the data about the books from this XML file, and log the title of each to the console. Here is the code, and I will explain how it works in the code comments as well as below:
+As you can see, this is XML structured data about books. The data contains two books, and you can tell because it contains two <book> tags. Within each book data is the title (<title>) and the author (<author>) of the book. We are going to use XPath to read the data about the books from this XML file, and log the title of each to the console. Here is the code, and I will explain how it works in the code comments as well as below:
 
 
 	const xhr = new XMLHttpRequest();
@@ -1789,8 +1789,8 @@ As you can see, this is XML structured data about books. The data contain two bo
 	xhr.responseType = 'document'; 
 	xhr.onload = () => {
 		// This is an XML Document
-  		const xmlDoc = xhr.responseXML; 
-  		// Use XPath on xmlDoc here (document.evaluate())
+  		const xmlDoc = xhr.responseXML; 
+  		// Use XPath on xmlDoc here (document.evaluate())
 
   		const result = document.evaluate(
         		"//book/title",       // XPath expression
@@ -1815,7 +1815,7 @@ Output:
    	Title: Eloquent JavaScript
 
 Explanation:
-	We use an XMLHttpRequest object to make a request to grab the file books.xml. The request is a GET request, as seen in the first argument of xht.open(). We pass the name of the file we need (books.xml) as the second argument to it. If the request was to a remote server, the second argument to open() would have been a long URL string of the server path.  
+	We use an XMLHttpRequest object to make a request to grab the file books.xml. The request is a GET request, as seen in the first argument of xhr.open(). We pass the name of the file we need (books.xml) as the second argument to it. If the request was to a remote server, the second argument to open() would have been a long URL string of the server path.  
 
 	open('GET', 'books.xml');
 
