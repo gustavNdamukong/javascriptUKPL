@@ -823,19 +823,21 @@ of the __proto__ 	property is a Person function. You can further verify this by 
 		let juanita = Object.create(gusto);
 
 
-		console.log('THIS HAS TO BE TRUE -Person is the prototype of 
-		gusto: '+Person.isPrototypeOf(gusto)); //this returns true
-
-		console.log('THIS HAS TO BE TRUE -Person is the prototype of 
-		juanita: '+Person.isPrototypeOf(juanita)); //this returns true
+		//this returns true
+		console.log('Person is the prototype of gusto: '
+			+ Person.isPrototypeOf(gusto));
 
 		//this returns true
-		console.log('THIS HAS TO BE TRUE -Object.prototype is the 
-		prototype of juanita: '+Object.prototype.isPrototypeOf(juanita)); 
+		console.log('Person is the prototype of juanita: '
+			+ Person.isPrototypeOf(juanita));
+
+		//this returns true
+		console.log('Object.prototype is the prototype of juanita: '
+			+ Object.prototype.isPrototypeOf(juanita));
 
 		//this returns false
-		console.log('THIS HAS TO BE FALSE -juanita is the prototype of 
-		gusto: '+juanita.isPrototypeOf(gusto)); 
+		console.log('juanita is the prototype of gusto: '
+			+ juanita.isPrototypeOf(gusto));
 
 
 
@@ -1566,7 +1568,7 @@ console.log(
 
 This function return value will be the object:
 
-   {make: 'Toyota', model: 'Rav4', year: '2025'}
+   {make: 'Toyota', model: 'Rav4', year: '2025'}
 
 
   Notice that the keys of the object literal returned by the function exactly match the arguments of the function. This is a repetition of the same names, first in the function argument, and then again in the keys of the object literal being returned. JavaScript provides a shorthand for exactly this situation: when a key and the variable supplying its value have the same name, you may write the name once. So { make: make } can simply be written { make }. This is called object shorthand, and although you will most often meet it alongside arrow functions, it is not an arrow-function feature — it works just as well inside an ordinary function. Combined with an arrow function’s one-line body, it lets you write the whole thing like this:
@@ -1582,7 +1584,7 @@ This function return value will be the object:
  The return value of this simplified code is still the same:
 
 	  
-     {make: 'Toyota', model: 'Rav4', year: '2025'}
+     {make: 'Toyota', model: 'Rav4', year: '2025'}
 
   
 
@@ -2019,9 +2021,9 @@ Here is how:
 
 
 	// file2.js
-	import { capitalizeWord } from "./file1”;
+	import { capitalizeWord } from "./file1";
 
-	const upper = capitalizeWord(jump);
+	const upper = capitalizeWord("jump");
 	console.log(upper);
 
 This will write to the console: JUMP
@@ -2033,14 +2035,14 @@ The file where we want to import this function is file2.js, so in file2.js we us
 
 Note also that when you specify the file, you leave out the ‘.js’ extension, so this will do just fine:
 
-	import { capitalizeWord } from "./file1”;
+	import { capitalizeWord } from "./file1";
 
 
 
 
 Exporting multiple functions or variables
 ——————————————————————
-  You can export multiple variables and function, and even code blocks from one file to another. Here is an example of or file1.js file above, modified to export multiple separate values:
+  You can export multiple variables and functions from one file to another. Here is an example of our file1.js file above, modified to export multiple separate values:
 
 	// file1.js
 	// single function
@@ -2050,17 +2052,14 @@ Exporting multiple functions or variables
 	export const foo = "bar";
 	export const bar = "foo";
 
-	{
-    		let name = "John Bands";
-    		let age = 40
-	}
+	let name = "John Bands";
+	let age = 40;
 
 	export {name, age};
 
 
 	// file2.js
-	import { capitalizeWord, foo, bar, name, age } from "./
-		file1”;
+	import { capitalizeWord, foo, bar, name, age } from "./file1";
 
 Here are the points to take note of:
 	-As can be seen, when exporting multiple values, wrap 
@@ -2078,25 +2077,40 @@ Here are the points to take note of:
 	
 		export {capitalizeWord, foo, bar};
 
-	-When exporting a block of code, as in name and age 
-	  above, it is incorrect to try to export the block directly. 
-	  For example, this will not work:
+	-Here is a point that trips people up, and it is worth 
+	  slowing down for. The curly braces in export { ... } are 
+	  NOT a block of code. They are simply a LIST of names 
+	  you are handing out. That is why you never put 
+	  declarations inside them. This does not work:
+
 		export { 
 			let name = "John Bands";
     			let age = 40 
 		}
 
-	  With blocks, you have to write the block first and 
-	  declare all the functions/variables you want within it, 
-	  then export them explicitly. For example, this is the 
-	  correct way to export a block of code-just like we did 
-	  above in file1.js:
+	  And nor does wrapping the declarations in a real block 
+	  and exporting afterwards, which looks reasonable but 
+	  fails for a different reason:
 
 		{
     			let name = "John Bands";
     			let age = 40
 		}
  
+		// SyntaxError: Export 'age' is not defined in module
+		export {name, age};
+
+	  The reason is scope, which we met back in Chapter 2. 
+	  A pair of braces creates a block, and let and const are 
+	  block-scoped, so name and age exist only inside those 
+	  braces and are gone by the time the export line runs. 
+	  There is nothing left to export.
+	  The fix is simply not to use a block at all. Declare the 
+	  values at the top level of the file, then list them:
+
+		let name = "John Bands";
+		let age = 40;
+
 		export {name, age};
 
 	-Notice how in the importing file, you import the 
@@ -2104,8 +2118,7 @@ Here are the points to take note of:
 	  except you simply add all the multiple values to the 
 	  curly braces separated by commas eg:
 
-	import { capitalizeWord, foo, bar, name, age } from 
-		"./file1”;
+	import { capitalizeWord, foo, bar, name, age } from "./file1";
 
 
 
@@ -2114,8 +2127,7 @@ Using a wildcard to import all from a file
 ——————————————————————
   Take our example from “Exporting multiple functions or variables” above where we are exporting multiple values, there is another simplified way to pull them in, in the file where they are to be used (file2.js). So instead of writing the variables/functions all out in the curly braces at the ‘import’ statement like so:
 
-	import { capitalizeWord, foo, bar, name, age } from 
-		"./file1”;
+	import { capitalizeWord, foo, bar, name, age } from "./file1";
 
 Simply do this:
 
@@ -2126,9 +2138,9 @@ Call the fileOneValues anything you want. That will be the variable within this 
 Or 
 	fileOneValues.bar etc
 
-For example, lets do our capitalising example again:
+For example, let us do our capitalising example again:
 
-	 const upper = fileOneValues.capitalizeWord(jump);
+	 const upper = fileOneValues.capitalizeWord("jump");
 	console.log(upper);
 
 This will write JUMP to the console.
@@ -2138,7 +2150,7 @@ This will write JUMP to the console.
 
 Export fallback with export default
 ———————————————————
-  The exporting we have looked at above are named exports. There is also a concept known as export defaults. This is a fallback export, and this is used when you only want to export one value from a file. 
+  The exports we have looked at above are named exports. There is also a concept known as export defaults. This is a fallback export, and this is used when you only want to export one value from a file. 
 
 	// file1.js
 	function subtract(a, b) {
@@ -2155,7 +2167,7 @@ The add() function is the only thing that is going to be exported from the file1
 To import the default export values, here is how. The example below will import the default function ‘add()’ that was exported from file1.js into file2.js
 
 	// file2.js
-	import add from "./file1”;
+	import add from "./file1";
 
 You do not need to wrap the imported value within curly braces, the curly braces are meant only for named exports.
 
@@ -2165,7 +2177,7 @@ You do not need to wrap the imported value within curly braces, the curly braces
 Other advanced OOP concepts
 —————————————————-
 
-  Once you learn JavaScript, you start to compare it to other programming languages, and then the concept of classes suddenly feels weird and different in JavaScript. You look at other server-side languages like Java, PHP, Python, C# etc and your start to wonder; does concepts like static methods or properties? What about abstract classes, interfaces, dependency injection? Do not worry, you are not alone in this. JavaScript is a language not like the others, not least because its turf is on the front end side of the web. By the way, Node.js has you covered on all of that. It has all those concepts since it is the solution for running JavaScript on the server-side. However, our focus in this book is on vanilla JavaScript, which means core or pure JavaScript with no external frameworks or libraries.
+  Once you learn JavaScript, you start to compare it to other programming languages, and then the concept of classes suddenly feels weird and different in JavaScript. You look at other server-side languages like Java, PHP, Python, C# etc and you start to wonder: does JavaScript have concepts like static methods or properties? What about abstract classes, interfaces, dependency injection? Do not worry, you are not alone in this. JavaScript is a language not like the others, not least because its turf is on the front end side of the web. By the way, Node.js has you covered on all of that. It has all those concepts since it is the solution for running JavaScript on the server-side. However, our focus in this book is on vanilla JavaScript, which means core or pure JavaScript with no external frameworks or libraries.
 
 Throwing these questions back to JavaScript, there is good news. JavaScript does have equivalents (or similar concepts) to things like abstract classes, interfaces, dependency injection, and static methods, but they work a bit differently compared to the other programming languages. We will now proceed to list these concepts one after the other, and show in code how they can be implemented just as effectively in JavaScript. 
 
@@ -2176,7 +2188,7 @@ Throwing these questions back to JavaScript, there is good news. JavaScript does
 Static Methods 
 ————————————
 What Are Static Methods?
-A Static method belong to the class itself, not to instances of the class. Such a method is useful for utility functions or helper methods. Here is an example:
+A static method belongs to the class itself, not to instances of the class. Such a method is useful for utility functions or helper methods. Here is an example:
 
 	class MathHelper {
     		static add(a, b) {
@@ -2191,36 +2203,47 @@ A Static method belong to the class itself, not to instances of the class. Such 
 	// Output: 8
 	console.log(MathHelper.add(5, 3)); 
 
-	// create a child class of MathHelper
-	let childMath = new MathHelper;
+	// create an INSTANCE of MathHelper
+	let mathObject = new MathHelper();
 
 	// Output: 10
-	console.log(childMath.subtract(15, 5)); 
+	console.log(mathObject.subtract(15, 5)); 
 
 	// output: 7
-	console.log(childMath.subtract(9, 2)); 
+	console.log(mathObject.subtract(9, 2)); 
 
-	// Output: TypeError: childMath.add is not a function
-	console.log(childMath.add(3, 3));
+	// Output: TypeError: mathObject.add is not a function
+	console.log(mathObject.add(3, 3));
 
-The above example class MathHelper has two method, one static ‘add()’ and one non-static ‘subtract()’. When I say the static method add() can only be accessed from within the class that defines it, it means exactly that. That is why when we call add() from the MathHelper class eg
+The above example class MathHelper has two methods, one static ‘add()’ and one non-static ‘subtract()’. The rule to hold on to is this: a static method lives on the CLASS, not on the objects made from it. That is why calling add() on the class itself works:
 
-	MathHelper.add(5, 3);
+	MathHelper.add(5, 3);   // 8
 
-It works. But when we call it from a child class of MathHelper that we create 
+But when we make an object from that class and try the same thing:
 
-	// create a child class of MathHelper
-	let childMath = new MathHelper;
+	// this is an INSTANCE, not a class
+	let mathObject = new MathHelper();
 
-	console.log(childMath.add(3, 3));
+	console.log(mathObject.add(3, 3));
 
-We get the error: TypeError: childMath.add is not a function. 
-Note that the child class can access the other non-static method of MathHelper subtract():
+We get the error: TypeError: mathObject.add is not a function.
+Note that the instance can use the other, non-static method subtract() perfectly well:
 
 	// output: 7
-	console.log(childMath.subtract(9, 2)); 
+	console.log(mathObject.subtract(9, 2)); 
 
 And it works just fine.
+  Be careful not to read this as "statics cannot be inherited", because they can. If you make a genuine CHILD CLASS with extends, that child gets the static method too:
+
+	class ChildHelper extends MathHelper {}
+
+	// 8 - the child class inherits the static
+	console.log(ChildHelper.add(5, 3));
+
+	// but its instances still cannot see it
+	console.log(new ChildHelper().add);   // undefined
+
+  So the dividing line is not parent versus child. It is class versus instance. Statics travel down the class line, and never appear on the objects made from it.
 
 
 
@@ -2229,7 +2252,7 @@ And it works just fine.
 
 Abstract Classes
 ——————————
-  In other programming languages like PHP, an abstract class is a class that cannot be instantiated and is meant to be extended by subclasses. JavaScript doesn’t have built-in abstract classes, but you can simulate them. To implement a JavaScript Equivalent of an abstract class, you should sing a Base Class. Here is how to do it:
+  In other programming languages like PHP, an abstract class is a class that cannot be instantiated and is meant to be extended by subclasses. JavaScript doesn’t have built-in abstract classes, but you can simulate them. To implement a JavaScript Equivalent of an abstract class, you should use a base class. Here is how to do it:
 
 	-Detect any attempt at instantiation of the class 
 	  from its constructor and throw an error. This will 
@@ -2242,14 +2265,16 @@ Here is an example:
 	class Animal {
     		constructor() {
        		 	if (new.target === Animal) {
-            			throw new Error("Cannot instantiate an 
-					abstract class!");
+            			throw new Error(
+				"Cannot instantiate an abstract class!"
+			);
         		}
     		}
     
     		makeSound() { 
-        		throw new Error("Method 'makeSound()' must 
-				be implemented in a subclass");
+        		throw new Error(
+        			"Method 'makeSound()' must be implemented in a subclass"
+        		);
     		}
 	}
 
@@ -2260,11 +2285,12 @@ Here is an example:
 	}
 
 	let myDog = new Dog();
-console.log(myDog.makeSound()); // Output: Woof!
+	console.log(myDog.makeSound()); // Output: Woof!
 
-let myAnimal = new Animal(); // ❌ Error: Cannot instantiate an abstract class!
+	// Error: Cannot instantiate an abstract class!
+	let myAnimal = new Animal();
 
-  In the example above, the parent abstract class is Animal, and myDog inherits from it (using the ‘extends’ keyword). If you try to instantiate the the Dog class, it works fine. It is okay to create an instance of the child class. However, when you try to create an instance (instantiate) the Animal (parent) class like so:
+  In the example above, the parent abstract class is Animal, and myDog inherits from it (using the ‘extends’ keyword). If you try to instantiate the Dog class, it works fine. It is okay to create an instance of the child class. However, when you try to create an instance (instantiate) the Animal (parent) class like so:
 
 	let myAnimal = new Animal();
 
@@ -2273,8 +2299,9 @@ You get the error: Error: Cannot instantiate an abstract class!
 This is because of this code in the constructor of the Animal class that forbids the creation of instances of the class:
 
 	if (new.target === Animal) {
-            	throw new Error("Cannot instantiate an 
-		abstract class!");
+            	throw new Error(
+            		"Cannot instantiate an abstract class!"
+            	);
         }
 
 This behaviour makes that class behave exactly like an abstract class of any other programming language.
@@ -2394,7 +2421,7 @@ So, as you see, the issue with this approach is that it does not prevent access�
 
 	let pers = new Person("Alice");
 	console.log(pers.getName()); // Output: Alice
-	console.log(pers.name); // ❌ Undefined (truly private)
+	console.log(pers.name); // Undefined (truly private)
  Why did this work? The property was stored in a WeakMap, which is only accessible inside the class. The downside of this approach was, it was complex and harder to maintain.
 
 —————————————————
@@ -2418,19 +2445,14 @@ So, as you see, the issue with this approach is that it does not prevent access�
 	// Output: This is a secret!
 	console.log(pers.revealSecret()); 
 
-	// ❌ Error: Private field cannot be accessed
+Notice that the instance pers can use the ordinary methods of the class, like revealSecret(), and it works just fine. That method is allowed to reach #getSecret() because it is written inside the class.
+  But reaching for a private field from outside the class does not work:
+
+	// SyntaxError: Private field '#privateAge' must be
+	// declared in an enclosing class
 	console.log(pers.#privateAge); 
 
-Notice that the instance of the Person class pers can access regular properties and methods of the parent class like revealSecret() and it works just fine eg:
-
-	console.log(pers.revealSecret()); 
-
-but when it tries to access a private property privateAge of the parent class, there is an error. Eg:  
-
-	// ❌ Error: Private field cannot be accessed
-	console.log(pers.#privateAge); 
-
-
-Private properties are truly hidden, unlike regular class properties. Attempting to access them from outside causes a SyntaxError!
+  Look closely at what kind of error that is, because it is stricter than you might expect. It is a SyntaxError, not a runtime error. JavaScript refuses at the moment it reads your file, before a single line has run. So this is not a case of the value coming back as undefined, or of an error being thrown when that line is reached — the whole script fails to start.
+  That is what makes # properties genuinely private, and different from the older conventions. Naming a property _age to signal "please do not touch this" relies on everyone being polite. A # field is enforced by the language itself.
 
   In conclusion of this OOP topic in JavaScript, I will say that JavaScript does support OOP concepts but in a more flexible and prototype-based way. ES6 classes make JavaScript feel more like traditional OOP, but under the hood, it’s still prototype-based. For real interfaces and dependency injection, TypeScript or frameworks like Angular provide more structured solutions.
