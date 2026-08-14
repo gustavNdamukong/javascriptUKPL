@@ -367,12 +367,14 @@ Chapter 14 - Dates and Time
       -Understanding UTC
       -Handling UTC in JavaScript
       -Converting local time to UTC
+        -A trap worth knowing about
+        -What Date.UTC() is actually for
       -Convert UTC to local time
     -Working with Timers: setTimeout() and setInterval()
       -setTimeout()
-        -Real-life setInterval use case for Dates
       -setInterval()
-      -Stopping timers
+        -Real-life setInterval use case for Dates
+      -Stopping a timer
       -Performing animations with the timer functions
         -Make a ball move across the screen
         -Create a slideshow of images
