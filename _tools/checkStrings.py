@@ -29,7 +29,9 @@ for path in sorted(glob.glob(pat)):
         decontracted = re.sub(r'(?<=\w)\u2019(?=\w)', '', l)
         if indented and codey and re.search(r'[\u201c\u201d\u2018\u2019]', decontracted):
             hits.append('curly quote in code')
-        if indented and codey and re.search(r'[=;{}]', l) and (EN in l or EM in l):
+        # ';' alone is not enough - this author writes "For example;" in
+        # prose, so require an assignment or a brace to call a line code
+        if indented and codey and re.search(r'[={}]', l) and (EN in l or EM in l):
             hits.append('en/em dash in code')
         if NB in l: hits.append('non-breaking space')
         if re.search('[\U0001F300-\U0001FAFF☀-➿️]', l): hits.append('emoji')

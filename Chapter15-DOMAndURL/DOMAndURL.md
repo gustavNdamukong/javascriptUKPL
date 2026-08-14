@@ -101,20 +101,20 @@ Introduction to the DOM
 —————————
 
 -This is about HTML’s Document Object Model (DOM) and the ability of your application to pass data to and from the frontend directly, or via URL parameters, template engines, performs redirections to different views (routing), and handles the generation and management of assets (like CSS, JavaScript, libraries etc) for view layout files. This also involves the ability of your program to do DOM manipulation (create, display, modify, delete HTML elements) and traverse through these DOM elements on the fly.
--The Javascript programming language 
+-The JavaScript programming language 
  really shines in this domain. 
 
 The DOM is an abbreviation for Document Object Model. It refers to the concept that JavaScript sees everything on an HTML document as an object. These objects are known as elements and like any object in programming, they have properties. A property is basically a part of what makes an object, for example, a door is a property of a car, just like its engine, or a tyre. A person or user object will have the following properties: username, name, age, address, etc 
   So JavaScript regards a web page as an object (the document object), and all the elements on this document object are also objects themselves having their own properties. For example; a web document has a form element, an unordered list or ordered list, a div element etc. The div element (object) has properties like style, class, id etc. 
  
-  We will go in depth into, and learn all about objects and how they work, under the Object Oriented Programming (OOP) section. Here we will look at how to use JavaScript to dynamically manipulate the DOM, which means we will learn how to create HTML elements, display/hide them on a web page (document), modify them, delete them, traverse (move) through them etc. If this sounds like fun, it’s because it really is. 
-  The properties of HTML elements are all, but not limited to their attributes. For example, the following is an image HTML tag and it has three properties; src (which points to the path of the image to be displayed, and then the width and height of the image.
+  We will go in depth into, and learn all about objects and how they work, in Chapter 17 (Object Oriented Programming). Here we will look at how to use JavaScript to dynamically manipulate the DOM, which means we will learn how to create HTML elements, display/hide them on a web page (document), modify them, delete them, traverse (move) through them etc. If this sounds like fun, it’s because it really is. 
+  The properties of HTML elements are all, but not limited to their attributes. For example, the following is an image HTML tag and it has three properties: src (which points to the path of the image to be displayed), and then the width and height of the image.
 
-	<img src=“” width=“100” height=“200“>
+	<img src="" width="100" height="200">
 
 As you can probably already imagine, since attributes are the properties of HTML elements, as we learn about manipulating DOM elements, we will therefore be working a lot with attributes.
 
- When you first get introduced to JavaScript, the thing that excites most programmers-which is usually the biggest selling point of JavaScript, is DOM manipulation. That was for me as well. We immediately want to get right into selecting DOM elements, traversing the DOM, etc but most of the time, it seems like the tools that JavaScript has to achieve these things are just so many and haphazard. Different learning sources talk of nodes, child nodes, parent nodes, sibling nodes, then there is the ubiquitous HTMLElement object, however, no one seems to be talking about how they are all related to each other or when to use which, and which are the most efficient in any given scenario. If that is you, then you are not alone. I struggled with that too. Personally, I always like to have the full list presented to me in a structured way. The fact is; the DOM can feel like a chaotic mix of tools, but there's actually a structure to it. If it seems complicated to most, it’s only because it’s not being presented in a structured way. Once that structure becomes clear, it will then become easy for you to master it all. Here’s a structured breakdown of the key DOM manipulation tools and how they relate to one another.
+ When you first get introduced to JavaScript, the thing that excites most programmers—which is usually the biggest selling point of JavaScript, is DOM manipulation. That was for me as well. We immediately want to get right into selecting DOM elements, traversing the DOM, etc but most of the time, it seems like the tools that JavaScript has to achieve these things are just so many and haphazard. Different learning sources talk of nodes, child nodes, parent nodes, sibling nodes, then there is the ubiquitous HTMLElement object, however, no one seems to be talking about how they are all related to each other or when to use which, and which are the most efficient in any given scenario. If that is you, then you are not alone. I struggled with that too. Personally, I always like to have the full list presented to me in a structured way. The fact is; the DOM can feel like a chaotic mix of tools, but there's actually a structure to it. If it seems complicated to most, it’s only because it’s not being presented in a structured way. Once that structure becomes clear, it will then become easy for you to master it all. Here’s a structured breakdown of the key DOM manipulation tools and how they relate to one another.
 
 
 
@@ -143,7 +143,7 @@ A node is any item in the DOM (elements, text, comments).
 
 An element (HTMLElement) is a specific type of node that represents an actual HTML tag. 
 
-It is important to be able to tell when you're dealing with a Node and when you are dealing with an Element. When we say some properties or methods of the HTMLElement object (like children) ignore non-element nodes, we mean they only return actual elements and ignore text nodes and comment nodes. What are actually text nodes and comment nodes? Text in your HTML can exist inside elements (like inside a <p> tag) or directly in the DOM as a separate text node. The same applies to comments. It is the ones that are not within HTML elements (tags) that are not considered as element nodes. Here is a demonstration:
+It is important to be able to tell when you're dealing with a Node and when you are dealing with an Element. When we say some properties or methods of the HTMLElement object (like children) ignore non-element nodes, we mean they only return actual elements and ignore text nodes and comment nodes. What actually are text nodes and comment nodes? Text in your HTML can exist inside elements (like inside a <p> tag) or directly in the DOM as a separate text node. The same applies to comments. It is the ones that are not within HTML elements (tags) that are not considered as element nodes. Here is a demonstration:
 
 	<div id="parent">
     		Some text  <!-- This is a text node -->
@@ -161,7 +161,7 @@ It is important to be able to tell when you're dealing with a Node and when you 
    -<p> → A real element, but its inner text is still 
 	inside a text node.
 
-  Here is the kicker; a <p> tag is an element, so it will always be included in .children. However, the text inside a <p> is a text node, not an element, so children will count (select) the <p> tag, but not the text within it. Another property of the HTMLElement object which accepts text and comments like childNodes, on the other hand, will return the text within the <p> tag. Here is a demonstration:
+  Here is the kicker; a <p> tag is an element, so it will always be included in .children. However, the text inside a <p> is a text node, not an element, so children will count (select) the <p> tag, but not the text within it. The childNodes property, on the other hand, does accept text and comments, and so it will return the text within the <p> tag. Here is a demonstration:
 
 	<p id="para">Hello World!</p>
 
@@ -181,7 +181,7 @@ Why does p.children return empty? Because the p tag has no element children, jus
   Here are some properties of nodes and elements that you MUST know:
 
 	-nodeType – Used to differentiate 
-		between element types. This can be 
+		between node types. This can be 
 		very handy in determining what type 
 		of element you are dealing with. For 
 		example, nodeType 1 (element node), 
@@ -190,8 +190,44 @@ Why does p.children return empty? Because the p tag has no element children, jus
 	-nodeName – Returns the tag name (DIV, 
 		SPAN, etc.).
 
-	-innerText vs. textContent – Gets/sets 
-		text inside an element.
+	-innerText vs. textContent – Both get 
+		and set the text inside an element, 
+		but they are not the same thing, and 
+		the difference matters. See below.
+
+
+  That last pair deserves a few more words, because the two look
+interchangeable and are not. Say you have this on your page:
+
+	<div id="myDiv">
+		Visible <span style="display:none">hidden</span> text
+	</div>
+
+  textContent gives you every piece of text that is in there, whether the
+visitor can see it or not:
+
+	let div = document.getElementById("myDiv");
+
+	// "Visible hidden text"
+	console.log(div.textContent);
+
+  innerText gives you only what is actually rendered on screen. The span is
+styled display:none, so it is not shown, so innerText leaves it out:
+
+	// "Visible text"
+	console.log(div.innerText);
+
+  So the short version is this: textContent is what is in the HTML, and
+innerText is what the visitor can see. There are two more differences worth
+knowing. innerText collapses runs of spaces and line breaks the way the
+browser does when it draws the page, while textContent hands back the
+whitespace exactly as it sits in your markup. And because innerText has to
+know what is visible, the browser may have to work out the page layout
+before it can answer, which makes it slower than textContent.
+  For most jobs textContent is the one you want. It is faster, and it does
+not surprise you by changing its answer when somebody edits the CSS. Reach
+for innerText only when you genuinely mean "the text as the visitor sees
+it".
 
 
 
@@ -203,7 +239,7 @@ Selecting DOM Elements (Getting elements to work with)
 
 	document.methodName(idOrClassOfElementYouWant);
 
-Selecting elements on a web page is probably the most frequent task you will have to be carrying out as a JavaScript programmer. If you have to do anything with elements on a web page-which is what JavaScript does, then you have to learn how to select these elements before you can do anything with them. This skill alone will reveal the power of JavaScript to you and give you the confidence to harness the power of this versatile scripting language. 
+Selecting elements on a web page is probably the most frequent task you will have to be carrying out as a JavaScript programmer. If you have to do anything with elements on a web page—which is what JavaScript does, then you have to learn how to select these elements before you can do anything with them. This skill alone will reveal the power of JavaScript to you and give you the confidence to harness the power of this versatile scripting language. 
   Here is a list of methods we will learn about here.
 
 		-document.getElementsByTagName()
@@ -218,7 +254,7 @@ Selecting elements on a web page is probably the most frequent task you will hav
 	-Get all elements having the same class
 	-Get all elements having the same HTML tag
 
-These methods will select and return a single or multiple HTMLElement object(s). Actually, to be specific, what it returns when you select a paragraph (p tag), is a HTMLParagraphElement, but this HTMLParagraphElement is the child of the HTMLElement object. The fact is, in the Document Object Model (DOM) every HTML element is represented by a specific JavaScript object type, usually named something like: HTML<TagName>Element, and they are all children of the HTMLElement object. Before we proceed to learn how to 
+These methods will select and return a single or multiple HTMLElement object(s). Actually, to be specific, what it returns when you select a paragraph (p tag), is an HTMLParagraphElement, but this HTMLParagraphElement inherits from the HTMLElement object. The fact is, in the Document Object Model (DOM) every HTML element is represented by a specific JavaScript object type, usually named something like: HTML<TagName>Element, and they are all children of the HTMLElement object. Before we proceed to learn how to 
 select elements; here’s a list of the most commonly used HTML 
 elements and their corresponding DOM interface names (JavaScript object types): This is not the exhaustive list, but rather a few, just so you get the idea.
 
@@ -235,7 +271,7 @@ elements and their corresponding DOM interface names (JavaScript object types): 
 <ul>, <ol>	HTMLUListElement, HTMLOListElement
 <body>	HTMLBodyElement
 
-All I need you to know right now is that all HTML elements have their specific object types, like the <p> tag has HTMLParagraphElement. But these object types are all children of another JavaScript HTMLElement object, so they inherit everything from it. Therefore all the properties and methods of the HTMLElement object are available to them. That is why after selecting an element, we can reference properties on it like .innerHTML, .style, .classList, to manipulate it. Let’s now look at how to select elements on a web page.
+All I need you to know right now is that all HTML elements have their specific object types, like the <p> tag has HTMLParagraphElement. But these object types all inherit from another JavaScript object, HTMLElement, so they get everything it has. (Careful with the word “child” here—in this chapter it means a child node on the page, which is a different idea altogether.) Therefore all the properties and methods of the HTMLElement object are available to them. That is why after selecting an element, we can reference properties on it like .innerHTML, .style, .classList, to manipulate it. Let’s now look at how to select elements on a web page.
 
 
 	The getElementsByTagName() method
@@ -248,7 +284,7 @@ All I need you to know right now is that all HTML elements have their specific o
 
 	The getElementById() method
 	————————————————
-    		It is used like this: document.getElementById("id”); 
+    		It is used like this: document.getElementById("id"); 
 		This method of the document object grabs an element by the 
 		value of its id attribute. It selects that single element and returns 
 		it as an HTMLElement object. 
@@ -268,13 +304,13 @@ All I need you to know right now is that all HTML elements have their specific o
 		Just like the document.getElementById() grabs an element by its 
 		ID, getElementsByClassName() method as its name suggests, 
 		selects elements by the class name that you give to it. Note that 
-		the Elements it the method name getElementsByClassName() is 
+		the Elements in the method name getElementsByClassName() is 
 		spelled with an ’s’. This makes sense because a class attribute  
 		is usually assigned to multiple elements anyway.
 
-		Call this method on the document object passing to it the the 
+		Call this method on the document object passing to it the 
 		class you want to target on the web page. Note that this 
-		obviously means you will end up multiple elements, since unlike 
+		obviously means you will end up with multiple elements, since unlike 
 		the id attributes which have to be unique, the same class 
 		attribute value can, and is usually assigned to multiple HTML 
 		elements. These (multiple) items of the matching class are 
@@ -301,10 +337,10 @@ All I need you to know right now is that all HTML elements have their specific o
 		let myText = document
 			.getElementsByClassName("myText");
 
-		// Logs an HTMLCollection
+		// Logs the first element in the collection
 		console.log(myText[0]);
 
-		// First element
+		// Logs the text inside that first element
 		console.log(myText[0].textContent);
 
 		The output of this will be:
@@ -322,7 +358,7 @@ All I need you to know right now is that all HTML elements have their specific o
 
 	The querySelector() method
 	————————————————
-    	  It is used like this: document.querySelector(“cssSelector”);
+    	  It is used like this: document.querySelector("cssSelector");
 		It returns the first matching element. 
 		Pass it the id, class, or tag name of 
 		the target element in a string. Tip: it accepts a CSS selector as a 
@@ -350,7 +386,7 @@ All I need you to know right now is that all HTML elements have their specific o
 			let item = 	
 		       		document.querySelector(".myText");
 
-			Note very carefully-and this is the 
+			Note very carefully—and this is the 
 		    difference between the .querySelector() and 
 		    the .getElementsByClassName() methods of the 
 		    HTMLElement object, that unlike 
@@ -367,9 +403,7 @@ All I need you to know right now is that all HTML elements have their specific o
         		<p class='myText'>Some text 3</p>
 			<ul id='myUl'>
             			<li>
-                    			<p class='myText'>
-                    				Text within a list
-                			</p>
+                    			<p class='myText'>Text within a list</p>
             			</li>
         		</ul>
 
@@ -406,8 +440,8 @@ All I need you to know right now is that all HTML elements have their specific o
 
 	Difference between HTMLCollection, NodeList, and HTMLElement
 	——————————————————————
-		They both return multiple elements as opposed to a single 
-		element. The HTMLCollection is sometimes referred to as a live 
+		The first two of these return multiple elements, as opposed to 
+		a single element. The HTMLCollection is sometimes referred to as a live 
 		HTMLCollection. It’s said to be live because it is tracked by 
 		JavaScript and is updated whenever any of the corresponding 
 		elements on the web page changes.
@@ -429,14 +463,14 @@ All I need you to know right now is that all HTML elements have their specific o
 			-getElementsByClassName()
 			-getElementsByTagName()
 
-        * document.getElementsByClassName("className”). It will work just the same if you call it within a specific element-basically using that element as the root or base within which to search for a match, as opposed to using the document object. For example; the first example code will return an HTMLCollection of all elements having a class value of ‘item’. The second example will return an HTMLCollection of all elements with the class "divItems" that are found within the div that has the id of "myDiv”, only: 
+        * document.getElementsByClassName("className"). It will work just the same if you call it within a specific element—basically using that element as the root or base within which to search for a match, as opposed to using the document object. For example; the first example code will return an HTMLCollection of all elements having a class value of "item". The second example will return an HTMLCollection of all elements with the class "divItems" that are found within the div that has the id of "myDiv", only: 
 
 			let items = document.getElementsByClassName("item");
 
 			let div = document.getElementById("myDiv");
 			let spans = div.getElementsByClassName("divItems");
 
-        * document.getElementsByTagName("tagName”). Returns all elements with the given tag name. It will work just the same if you call it within a specific element-basically using that element as the root to search from, as opposed to using the document object. For example; the first line of code below will return an HTMLCollection of all <p> tags in the current web document. The next example code will return an HTMLCollection of all span tags within the div having the id of "myDiv”, only:
+        * document.getElementsByTagName("tagName"). Returns all elements with the given tag name. It will work just the same if you call it within a specific element—basically using that element as the root to search from, as opposed to using the document object. For example; the first line of code below will return an HTMLCollection of all <p> tags in the current web document. The next example code will return an HTMLCollection of all span tags within the div having the id of "myDiv", only:
 
 			let paragraphs = document.getElementsByTagName("p");		
 			let div = document.getElementById("myDiv");
@@ -447,17 +481,17 @@ All I need you to know right now is that all HTML elements have their specific o
 		Document methods that return NodeList
 		————————————————
 	A NodeList is simply a list of Node objects, which may include 
-	elements, text nodes, or comments-though usually it's just elements 
+	elements, text nodes, or comments—though usually it's just elements 
 	in most common use cases. So, a NodeList contains not just legal 
 	HTML elements (HTMLElement objects), but also childNodes that 
 	can be text that are within HTML tags (elements) but are not the 
 	elements themselves, as well as comments in your code like this: 
 
-		<!— comment in HTML code here—>
+		<!-- comment in HTML code here -->
 
-	While a NodeList looks similar to HTMLCollection, it is not live and 	
-	has 	slightly different behaviour. There is only one DOM method that 
-	returns a NodeList, and you guessed it correctly-the 
+	While a NodeList looks similar to HTMLCollection, it is not live and
+	has slightly different behaviour. The one you will reach for most
+	often by far—and you guessed it correctly—is the 
 
 		-querySelectorAll() method
 
@@ -466,7 +500,7 @@ All I need you to know right now is that all HTML elements have their specific o
 		let nodes = document.querySelectorAll(".item");
 
 	Will select and return a NodeList of all elements on the current web 
-	page that have (match) the class of ".item”.
+	page that have (match) the class of ".item".
 
 
 	For example 2:
@@ -494,7 +528,7 @@ All I need you to know right now is that all HTML elements have their specific o
 	-querySelectorAll() (NodeList)
 
 I had to show you which DOM methods return an HTMLCollection, and which returns a NodeList. Now that you know, let’s get down to the main question we are trying to answer; what is the relationship between an HTMLCollection, a NodeList, and an HTMLElement? In other words, how are they all related. Let me break it down.
-  When you query the DOM using methods like getElementsByTagName, getElementsByClassName, or querySelectorAll, they all return a collection. Collection here is synonymous to multiple items being returned. However, the type of collection depends on the method you use.
+  When you query the DOM using methods like getElementsByTagName, getElementsByClassName, or querySelectorAll, they all return a collection. Collection here is synonymous with multiple items being returned. However, the type of collection depends on the method you use.
   Each element in these collections is typically an HTMLElement object (or, to be specific; a subtype like HTMLDivElement, HTMLParagraphElement, etc).  Here is how they therefore all relate to each other:
 
     * HTMLCollection is a live collection of only HTMLElement objects.
@@ -508,11 +542,13 @@ I had to show you which DOM methods return an HTMLCollection, and which returns 
 
 	
 Array property/method	      HTMLCollection	          NodeList
-    .length	      ✅ Yes	    ✅ Yes
-    .forEach()	      ❌ No	    ✅ Yes
+    .length	      Yes	    Yes
+    index access	      Yes	    Yes
+    .forEach()	      No	    Yes
+    .map(), .filter()	      No	    No
 
 
-HTMLCollections and NodeLists are not real arrays. HTMLCollections only have a .length property and index access but have no array methods at all. NodeLists have a .length property too, has index access, and the .forEach() method only-but has no other array methods like .map(), .filter(), etc	
+HTMLCollections and NodeLists are not real arrays. HTMLCollections only have a .length property and index access but have no array methods at all. NodeLists have a .length property too, have index access, and the .forEach() method—but no other array methods like .map() or .filter().
 If you want to be able to perform array-like operations on them, like loops, and much more, there are ways to do so. Let’s talk about that next.  
 
 
@@ -522,9 +558,9 @@ If you want to be able to perform array-like operations on them, like loops, and
 
 Looping through HTMLCollections & NodeLists
 —————————————————————————
-  Because when we talk of HTMLCollections and NodeLists, we are speaking of multiple items-with 'multiple' being the operative word, it follows that we need a way to be able to traverse through these items in order to make any use of it. Without being true arrays, they have their own ways to be looped over.
-  HTMLCollection alone shares the same for…of loop that applies to Arrays, while both HTMLCollection and NodeList share the traditional for loop used in Arrays as well. Let’s see how to use these two array-like loops.
-  The for...of loop magically works directly on HTMLCollection, and is therefore the easiest choice. Here is an example:
+  Because when we talk of HTMLCollections and NodeLists, we are speaking of multiple items—with 'multiple' being the operative word, it follows that we need a way to be able to traverse through these items in order to make any use of them. Without being true arrays, they have their own ways to be looped over.
+  Both HTMLCollection and NodeList work with the for...of loop that applies to Arrays, and both work with the traditional for loop used in Arrays as well. So for looping alone, the two behave the same. What separates them is .forEach(), which a NodeList has and an HTMLCollection does not—which is exactly what the table above tells you. Let’s see how to use these two array-like loops.
+  The for...of loop works directly on either of them, and is therefore the easiest choice. Here is an example:
 
 	HTML code
 	——————
@@ -533,9 +569,7 @@ Looping through HTMLCollections & NodeLists
         <p class='myText'>Some text 3</p>
         <ul id='myUl'>
             <li>
-                    <p class='myText'>
-                    Text within a list
-                </p>
+                    <p class='myText'>Text within a list</p>
             </li>
         </ul>
 
@@ -557,7 +591,7 @@ The output is:
 
 Notice that even the <p> tag nested within the <li> tag of a <ul> element was fetched.
 
-  You can use the classic for loop known to arrays to loop both through HTMLCollections and NodeLists. It works because the for loop works with anything that has the .length property, and HTMLCollections and NodeLists have it. Here is an example using the same HTML markup as above:
+  You can use the classic for loop familiar from arrays to loop through both HTMLCollections and NodeLists. It works because the for loop works with anything that has the .length property, and HTMLCollections and NodeLists have it. Here is an example using the same HTML markup as above:
 
 	JavaScript code
 	—————————
@@ -576,16 +610,16 @@ The output is same as above:
 
 
 
-It is great to be able to loop though your collection of data. Now you have the power to really make use of the data you select from the DOM. What if we could go one step further, and have the full power that we have with arrays on HTMLCollections and NodeLists? There is a way.
+It is great to be able to loop through your collection of data. Now you have the power to really make use of the data you select from the DOM. What if we could go one step further, and have the full power that we have with arrays on HTMLCollections and NodeLists? There is a way.
     
 
 
 Using all array methods on HTMLCollections & NodeLists
 ——————————————————————————————
-  You can have the full power that we have on arrays on HTMLCollections and NodeLists. The way to achieve that is easier than you think.  The way to do that is: …drumroll… you guessed it right, to convert the collection into an array. Yes, it’s as easy as that. There are two ways to convert an HTMLCollection or NodeList into a true array, and it works the same for both of them. These two ways are:
+  You can have the full power that we have on arrays on HTMLCollections and NodeLists. The way to achieve that is easier than you think. It is: …drumroll… you guessed it right, to convert the collection into an array. Yes, it’s as easy as that. There are two ways to convert an HTMLCollection or NodeList into a true array, and it works the same for both of them. These two ways are:
 
     * Use the Array.from() method
-    * Use the spread operator [...]
+    * Use the spread operator ...
 
 Let’s see how that works.
 
@@ -609,9 +643,9 @@ In this example, we use the array .forEach() to loop through the data after conv
 
 
 
-		The spread operator [...]
+		The spread operator ...
 		—————————————-
-  Let’s look at the other way of converting a collection into an array using the spread operator. To get a good understanding of what the Spread operator is, refer back to chapter 3 (Arrays), in the section where I talked about Rest parameters and the Spread operator. This time let’s convert a NodeList just for balance, but remember that both the Array.from() approach and the spread operator will work regardless of if we are dealing with an HTMLCollection or a NodeList.
+  Let’s look at the other way of converting a collection into an array using the spread operator. To get a good understanding of what the Spread operator is, refer back to Chapter 3 (Arrays), in the section where I talked about Rest parameters and the Spread operator. This time let’s convert a NodeList just for balance, but remember that both the Array.from() approach and the spread operator will work regardless of if we are dealing with an HTMLCollection or a NodeList.
 
 	const nodeList = [...document.querySelectorAll("p")];
 
@@ -622,14 +656,13 @@ In this example, we use the array .forEach() to loop through the data after conv
   		console.log(item.textContent);
 	});
 
-Here we use the querySelectorAll() method of the document object to select all <p> tags on the current web page. We already know the querySelectorAll() method returns a NodeList-which is why I am using it. When we call this method, we use the Spread operator to capture what it returns into an array like so:
+Here we use the querySelectorAll() method of the document object to select all <p> tags on the current web page. We already know the querySelectorAll() method returns a NodeList—which is why I am using it. When we call this method, we use the Spread operator to capture what it returns into an array like so:
 
-	[ …method call ]
+	[ ...methodCall ]
 
-The square brackets is what creates the array, as we already know. That is it. Now that we have an array, the rest of the code is us using the forEach() method of all arrays to loop through the data.
+The square brackets are what create the array, as we already know. That is it. Now that we have an array, the rest of the code is us using the forEach() method of all arrays to loop through the data.
 
 The output of the console.log(item.textContent); line logs this to the console:
-	Heading text
 	Some text 1
 	Some text 2
 	Some text 3
@@ -646,7 +679,7 @@ The output of the console.log(item.textContent); line logs this to the console:
 			query the DOM beginning from within the parent of the 
 			<p> element, which in this case is a li element, 
 			instead of using document as the 
-			parent-which will search the whole 
+			parent—which will search the whole 
 			document. 
 			  So, to do so, start by selecting the list element which is the 
 			parent, and use that as the base of your selection instead of 
@@ -664,7 +697,7 @@ The output of the console.log(item.textContent); line logs this to the console:
 
 	Get the value or contents of an HTML element
 	———————————————————
-	When we select HTML elements, it could be for a variety of reasons, to change their styling, of example their color, background position, position on the page, move them-as in the case of drag-and-drop, etc But very often, we want to retrieve their value or content. Generally, if we are dealing with a form element, like a form input, or textarea field, we would mostly refer to its content as value, but if we are dealing with something like a <p> tag, or a div, we would refer to its content as, just content. Let me show you some examples on how to retrieve values/contents of elements. Imagine we have the following markup in our HTML page: 
+	When we select HTML elements, it could be for a variety of reasons, to change their styling, for example their colour, background position, position on the page, move them—as in the case of drag-and-drop, etc. But very often, we want to retrieve their value or content. Generally, if we are dealing with a form element, like a form input, or textarea field, we would mostly refer to its content as value, but if we are dealing with something like a <p> tag, or a div, we would refer to its content as, just content. Let me show you some examples on how to retrieve values/contents of elements. Imagine we have the following markup in our HTML page: 
 
 		<h1 id='myHeading'>Heading text</h1>
 
@@ -674,9 +707,7 @@ The output of the console.log(item.textContent); line logs this to the console:
         	
 		<ul id='myUl'>
             		<li>
-                    		<p class='myText'>
-                    			Text within a list
-                		</p>
+                    		<p class='myText'>Text within a list</p>
             		</li>
         	</ul>
 
@@ -709,9 +740,9 @@ The output of the console.log(item.textContent); line logs this to the console:
 	The output as always is:
 		Text within a list
 
-	Let’s try that same example again, but this time using the querySelectorAll() which returns a NodeList that you can directly run array methods on or extract values via keys from it, just like you would do with a real array.
+	Let’s try that same example again, but this time using the querySelectorAll() which returns a NodeList that you can directly run array methods on or extract values by index from it, just like you would do with a real array. Notice that the selector is exactly the same as before—all that changes is the method, and that we now have to reach for the first match with [0]:
 
-		let myUl = document.querySelectorAll("#myUl");
+		let myUl = document.querySelectorAll("#myUl li p");
 		console.log(myUl[0].textContent);
 
 	The output again, is:
@@ -723,17 +754,17 @@ The output of the console.log(item.textContent); line logs this to the console:
 	<input type="text" id="nameInput" value="Gustav" />
 
 I have given the field an id of "nameInput" and a value of "Gustav”.
-Normally, form elements should be within a form element (<form> tag) so it would also have other properties like a button which all browsers know how to respond to by submitting the form when it is clicked. Another thing a real form element has is an optional HTTP method in the opening form tag which are meant for the headers of the request being sent to a server by then browser. The header values will help the browser determine how the data from that form is to be transmitted over to a server. So I have not placed this input field inside a form tag because we are just testing here.
-  The value which I gave is also for testing. In a real scenario, that value will only be there once the user has typed something into that input element, and submitted. The general practice is to place what we call an event listener on the form’s submit button, and define that the event we want to listen for is a click event. Our code due to the event listener placed on that button will then be listening for that event to occur (fire). Once the event fires (occurs), we will then grab the value entered into that field because it is always sent through the event object by the browser. We will look learn all about event handling and form handling in later chapters. For now, just understand that our "nameInput" field above is just for testing, so there is no form element, and no submit button with an event-listener on it, waiting for the user to submit it after completing the form. This is why I manually give the field a value so we can test extracting it after selecting the field. 
-  The following is the code to select the input field and get its value. It works by first of all selecting the target field using the .querySelecto() method that you are already familiar with, then we get the value from the .value property of the DOM object. Here it is:
+Normally, form elements should be within a form element (<form> tag) so it would also have other properties like a button which all browsers know how to respond to by submitting the form when it is clicked. Another thing a real form element has is an optional HTTP method in the opening form tag which is meant for the headers of the request being sent to a server by the browser. The header values will help the browser determine how the data from that form is to be transmitted over to a server. So I have not placed this input field inside a form tag because we are just testing here.
+  The value which I gave is also for testing. In a real scenario, that value will only be there once the user has typed something into that input element, and submitted. The general practice is to place what we call an event listener on the form’s submit button, and define that the event we want to listen for is a click event. Our code due to the event listener placed on that button will then be listening for that event to occur (fire). Once the event fires (occurs), we will then grab the value entered into that field because it is always sent through the event object by the browser. We will learn all about event handling and form handling in later chapters. For now, just understand that our "nameInput" field above is just for testing, so there is no form element, and no submit button with an event-listener on it, waiting for the user to submit it after completing the form. This is why I manually give the field a value so we can test extracting it after selecting the field. 
+  The following is the code to select the input field and get its value. It works by first of all selecting the target field using the .querySelector() method that you are already familiar with, then we get the value from the .value property of the DOM object. Here it is:
 
 	let nameInput = document.querySelector("#nameInput");
 	console.log(nameInput.value);
 
 The output is: Gustav
 
-  In this section, we have learned about how to select the content of an h1, a p tag, a ul/li and one form input element. I will save extracting values from form fields for chapter 19 where I go in depth into form manipulation. 
-This is because there are better ways to extract values from form fields than the approach in this example. You will learn all about that in chapter 19. You will come out of that chapter as a pro form handler. 
+  In this section, we have learned about how to select the content of an h1, a p tag, a ul/li and one form input element. I will save extracting values from form fields for Chapter 19 where I go in depth into form manipulation. 
+This is because there are better ways to extract values from form fields than the approach in this example. You will learn all about that in Chapter 19. You will come out of that chapter as a pro form handler. 
 
 
 
