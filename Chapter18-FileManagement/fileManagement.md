@@ -355,7 +355,10 @@ Here is the full JavaScript code:
   		a.href = url;
   		a.download = 'modified-file.txt';
   		a.click();
-  		URL.revokeObjectURL(url);
+
+  		// give the browser a moment to start the download before we
+  		// throw the URL away - revoking on the next line can cancel it
+  		setTimeout(() => URL.revokeObjectURL(url), 1000);
 	});
 
 
@@ -479,7 +482,10 @@ Here is the full JavaScript code:
   				a.href = url;
   				a.download = 'modified-file.txt';
   				a.click();
-  				URL.revokeObjectURL(url);
+
+  				// give the browser a moment to start the download before we
+  				// throw the URL away - revoking on the next line can cancel it
+  				setTimeout(() => URL.revokeObjectURL(url), 1000);
 			});
 
 	First, to prepare the contents to be converted into a downloadable 
@@ -580,18 +586,21 @@ Generate CSV from a JavaScript Array
   		a.href = url;
   		a.download = 'data.csv';
   		a.click();
-  		URL.revokeObjectURL(url);
+
+  		// give the browser a moment to start the download before we
+  		// throw the URL away - revoking on the next line can cancel it
+  		setTimeout(() => URL.revokeObjectURL(url), 1000);
 	});
 
-Here is how this code works. We wrap it all in an event listener, which listens for a click on the ‘Download CSV’ button. This makes sense because nothing needs to be done otherwise. Once that click even fires (occurs) we proceed by
+Here is how this code works. We wrap it all in an event listener, which listens for a click on the ‘Download CSV’ button. This makes sense because nothing needs to be done otherwise. Once that click event fires (occurs) we proceed by
 going through all the elements in the data array, and joining each row with commas (,), ending each line (row) with newline character (\n) to form proper CSV text. 
 
   This ends up with each element (row) in the data array being written as a line of text in the CSV file to be created.
 
   A Blob is created to hold the text as a downloadable file.
-Using URL.createObjectURL(), a temporary download link is created, and a  file is downloaded when the button is clicked.
+Using URL.createObjectURL(), a temporary download link is created, and a file is downloaded when the button is clicked.
   
-  This example is meant to teach you how to generate files in the browser from scratch-useful for exporting user data or reports.
+  This example is meant to teach you how to generate files in the browser from scratch—useful for exporting user data or reports.
 
 
 
@@ -612,7 +621,7 @@ Read data from a CSV file and inject into the DOM
 
 
 
--b) Have a stylesheet e.g index.css with his code
+-b) Have a stylesheet e.g index.css with this code
 
 	table, th, td {
     		border: 1px solid black;
@@ -625,6 +634,7 @@ Read data from a CSV file and inject into the DOM
 -c) Have an HTML file (e.g. index.html) with this code:
 
 	<!DOCTYPE html>
+	<html>
     	<head>
         	<title>The JavaScript Blueprint</title>
         	<link rel="stylesheet" href="index.css" type="text/css">
@@ -644,7 +654,7 @@ Read data from a CSV file and inject into the DOM
 
 -d) Have a JavaScript file (e.g. index.js) with this code in it:
 
-	document.getElementById('csvFile').addEventListener('change', 		function(event) {
+	document.getElementById('csvFile').addEventListener('change', function(event) {
     		const file = event.target.files[0];
    		 if (!file) return;
 
@@ -671,11 +681,12 @@ Read data from a CSV file and inject into the DOM
       			});
 
       			table.appendChild(tr);
-    	});
+    		});
 
-	// Clear old tables
-    	document.getElementById('tableContainer').innerHTML = '';  
-    	document.getElementById('tableContainer').appendChild(table);
+    		// Clear old tables
+    		document.getElementById('tableContainer').innerHTML = '';  
+    		document.getElementById('tableContainer').appendChild(table);
+  	}
 
   You should be very familiar with this FileReader code flow by now. Here is the brief run-down of it:
 	
@@ -692,7 +703,7 @@ Read data from a CSV file and inject into the DOM
 
 Reading a file’s raw binary data with readAsArrayBuffer() 
 ——————————————————————————
-  We have learned about the key methods of the File Reader API for handling files (createObjectURL() and toDataURL()). While createObjectURL() is suitable for handling blobs, and toDataURL() is suitable for canvas images, there is another powerful method we have not talked about, and that is readAsArrayBuffer(). The readAsArrayBuffer() method of the FileReader API is used to read a file's raw binary data. It reads the contents of a file (or blob) and returns it as an ArrayBuffer, which is a low-level representation of binary data. 
+  We have already used two methods for turning file data into something downloadable, and it is worth being clear about where each one lives, because neither belongs to the File Reader API. createObjectURL() is a method of the URL object and is suitable for handling blobs, while toDataURL() is a method of a canvas element and is suitable for canvas images. The File Reader API’s own methods are the readAs... family we listed earlier, and there is one of those we have not talked about yet: readAsArrayBuffer(). The readAsArrayBuffer() method of the FileReader API is used to read a file's raw binary data. It reads the contents of a file (or blob) and returns it as an ArrayBuffer, which is a low-level representation of binary data. 
   It can be used in different scenarios. Here are scenarios when you may need to use the readAsArrayBuffer() method:
 
 -a) When you’re working with binary files, such as:
@@ -710,7 +721,7 @@ Reading a file’s raw binary data with readAsArrayBuffer()
     * Blob() constructor for creating new binary blobs
     * Encryption/Decryption libraries
 
--c) When you want to manipulate or inspect the binary contents using 	DataView, Uint8Array, etc.
+-c) When you want to manipulate or inspect the binary contents using DataView, Uint8Array, etc.
 
 All this information is about being able to read into a file down to the binary level. But if you are like me, it does not mean much. You prefer to see it in practice, and that’s the best way to learn. Let’s look at an example of readAsArrayBuffer() being used. 
 
@@ -720,7 +731,7 @@ All this information is about being able to read into a file down to the binary 
 Validating File Signatures (a.k.a. Magic Numbers)
 ————————————————————————
   Imagine you want to ensure that an uploaded file is really a JPEG or PNG, and not just renamed with a .jpg or .png extension.
-This is important because, people can rename malicious files to trick file uploaders. Reading the first few bytes of the file (its magic number) can help detect fakes. This example therefore, is a validation solution. 
+This is important because people can rename malicious files to trick file uploaders. Reading the first few bytes of the file (its magic number) can help detect fakes. This example therefore, is a validation solution. 
   The following example code will detect if a file is truly a PNG or JPEG:
 
 	<input type="file" id="fileInput" />
@@ -736,7 +747,8 @@ This is important because, people can rename malicious files to trick file uploa
       				const arrayBuffer = e.target.result;
       				const bytes = new Uint8Array(arrayBuffer);
 
-     	 			// Check PNG magic number (first 8 bytes)
+     	 			// Check the PNG magic number. Its full signature is
+     	 			// eight bytes, but the first four identify it.
       				const isPng = bytes[0] === 0x89 &&
                     		bytes[1] === 0x50 &&
                     		bytes[2] === 0x4E &&
@@ -771,7 +783,7 @@ Hopefully, this example teaches you how to programmatically inspect the raw bina
 
 Sending binary file content over WebSocket
 ————————————————————————
-  We will talk some more about WebSockets in chapter 22 (Extensions), but here is what it is. A WebSocket is a two-way communication channel between the browser and the server. Unlike regular HTTP requests (which are one-way), WebSockets stay open, allowing both sides to send and receive data continuously. This makes WebSockets great for things like chat apps, multiplayer games, live dashboards, and — yes — even real-time file sharing.
+  We will talk some more about WebSockets in Chapter 22 (Extensions), but here is what it is. A WebSocket is a two-way communication channel between the browser and the server. Unlike regular HTTP requests (which are one-way), WebSockets stay open, allowing both sides to send and receive data continuously. This makes WebSockets great for things like chat apps, multiplayer games, live dashboards, and — yes — even real-time file sharing.
   If you are building a collaborative file-sharing app or a peer-to-peer (computer-to-computer) media uploader, and you want to send a file chunk by chunk over a WebSocket-maybe to avoid HTTP overhead or allow real-time transmission. You can do that using the readAsArrayBuffer() method of the File Reader API.
   Why is it better to send a large file in chunks rather than uploading a whole file at once? Normally, when uploading a file to a remote server, you would use a regular 
 
