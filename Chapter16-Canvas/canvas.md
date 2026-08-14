@@ -16,6 +16,8 @@ CHAPTER 16 - THE CANVAS ELEMENT
 			-Animation
 			-Collision detection
 				-Detecting the collision of two shapes
+				-A word about the shape we are really testing
+				-The precise version, if you need it
 
 
 The Canvas element—for drawing on the web
@@ -1231,6 +1233,76 @@ If ever all four conditions are true, it means the ball is inside or touching th
 
 	return !hitRock;
 
-Because this check is inside the canMove() function, it means; only allow the move if the ball doesn’t hit the rock.
+Because this check is inside the canMove() function, it means: only allow the move if the ball doesn’t hit the rock.
+
+
+	A word about the shape we are really testing
+	————————————————————————
+  There is an honest admission to make about those four comparisons, and
+it is worth making because you will meet this trade-off in every game you
+ever write.
+  Look again at what we compared. We took the ball’s left, right, top and
+bottom edges and treated them as the four sides of a box. But the ball is
+not a box. It is a circle. What we have actually been testing all along is
+whether an invisible square drawn around the ball overlaps the rock.
+  This technique has a name. It is called AABB collision detection, which
+stands for Axis-Aligned Bounding Box — "bounding box" because we draw the
+smallest box that contains the shape, and "axis-aligned" because that box
+is always square to the screen and never tilted.
+  Most of the time you cannot tell the difference. Push the ball straight
+at the flat side of the rock and the box edge and the circle edge are in
+exactly the same place, so it stops precisely where you would expect. The
+difference only shows itself at the rock’s corners. Approach one
+diagonally and the corner of the invisible box reaches the rock before the
+ball itself does, so the ball stops with a small gap, as though it had
+bumped into thin air.
+  How big is that gap? The corner of the box sits further from the centre
+than the edge of the circle does — the radius multiplied by the square
+root of 2, which for our 15 pixel ball is about 21 pixels rather than 15.
+So in the very worst case, coming in at exactly 45 degrees, the ball stops
+around 6 pixels early. On a 500 pixel canvas that is small enough that
+most people never notice.
+  So why use it? Because it is four simple comparisons. No square roots,
+no multiplication, nothing expensive. When you have a hundred objects on
+screen and you are checking every one of them against every other, sixty
+times a second, that cheapness is the whole game. Real game engines use
+AABB as a first, fast pass, and only do the precise, expensive maths on
+the few pairs that the boxes say might be touching.
+
+
+	The precise version, if you need it
+	———————————————————
+  If you did want the true circle-against-rectangle test, here is how it
+works. Find the point on the rectangle that is closest to the centre of
+the circle, then measure the distance from the circle’s centre to that
+point. If that distance is smaller than the radius, they really are
+touching:
+
+	function circleHitsRock(cx, cy) {
+	    // Find the closest point on the rock to the ball's centre.
+	    // Math.max and Math.min together "clamp" the ball's centre so
+	    // that it never falls outside the rock's edges.
+	    const closestX = Math.max(
+	        rock.x, Math.min(cx, rock.x + rock.width)
+	    );
+	    const closestY = Math.max(
+	        rock.y, Math.min(cy, rock.y + rock.height)
+	    );
+
+	    // How far is the ball's centre from that closest point?
+	    const distanceX = cx - closestX;
+	    const distanceY = cy - closestY;
+	    const distance = Math.sqrt(
+	        distanceX * distanceX + distanceY * distanceY
+	    );
+
+	    // Touching only if that distance is less than the radius
+	    return distance < ball.radius;
+	}
+
+  You could drop that straight into canMove() in place of the hitRock
+calculation. For our one rock it makes no practical difference, and the
+box version is easier to read, which is why the chapter uses it. But now
+you know both, and you know why you would reach for each.
 
   You’ve just taken your first steps into the world of graphics and animation using the HTML5 <canvas>! From moving a ball around the screen to detecting collisions with obstacles, you now understand how powerful simple shapes, positioning, and logic can be. But this is just the beginning. The canvas API can do so much more — from drawing images and text to creating full-blown games. Explore the official Canvas documentation on MDN (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) to see what’s possible. And if you’re feeling adventurous, try building a maze, a simple pong game, or a mini obstacle course — anything that challenges you to move objects, detect hits, and control motion. 

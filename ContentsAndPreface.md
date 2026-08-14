@@ -483,6 +483,8 @@ Chapter 16 - The Canvas Element
         -Animation
         -Collision detection
           -Detecting the collision of two shapes
+          -A word about the shape we are really testing
+          -The precise version, if you need it
 
 Chapter 17 - Object Oriented Programming (OOP)
     -Introduction
