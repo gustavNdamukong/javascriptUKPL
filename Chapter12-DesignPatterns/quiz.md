@@ -81,7 +81,7 @@ QUESTIONS
 11) EXERCISE. Using the Builder pattern, build a Pizza step by step — size, then two toppings —
     and finish with build(). Make the calls chain together on one line.
 
-    Clue: each setter has to return something for the next call to hang off.
+    Clue: each setter has to return something for the next call to attach to.
 
 
 12) EXERCISE. Write a Subject that keeps a list of observers and notifies them all. Add two
