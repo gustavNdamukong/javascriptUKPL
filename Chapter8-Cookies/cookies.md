@@ -10,6 +10,7 @@
 		-Retrieving a cookie
 		-Get a specific cookie by name
 		-Delete a cookie by name
+	-A cookie consent solution
 
 
 
@@ -181,3 +182,114 @@ What it does is:
 	-Splits them into an array using "; " as the separator.
 	-Checks if any cookie starts with name=.
 	-Deletes it only if it exists.
+
+
+A cookie consent solution
+——————————————
+  Let's put the whole chapter to work with a small, real example: a cookie
+consent popup, the kind almost every website now has to show. It is worth
+building because it uses cookies for exactly what they are for - remembering
+one small fact about a visitor between visits.
+  We will also write it so that you can switch between the three ways of
+storing data on the visitor's machine, since the popup does not much care
+which one you use. Those other two, localStorage and sessionStorage, are
+covered in Chapter 13 (Databases and Storage).
+
+  First the markup for the popup itself:
+
+	<div id="consent-popup" class="consent-hidden">
+		<p>
+			Be aware that we use cookies to improve your
+			experience, and nothing more
+			<a href="#">Link to your Terms and Conditions
+			or Data Policy here</a>.
+
+			<a href="#" id="accept-cookie-use"
+				class="btn btn-primary rounded-pill">
+				Okay
+			</a>
+		</p>
+	</div>
+
+  And the little bit of CSS that hides it. Without this the popup would
+simply always be on show, since all our JavaScript does is add and remove
+that one class:
+
+	.consent-hidden {
+		display: none;
+	}
+
+  Now the JavaScript. Cookies are written and read differently from
+localStorage and sessionStorage, so the first thing we do is wrap them in an
+object with getItem() and setItem() methods. That way the rest of the code
+can treat all three the same way:
+
+	const cookieStorage = {
+		getItem: (key) => {
+			// Get the whole cookie string and turn it
+			// into an object of key-value pairs
+			const cookies = document.cookie
+				.split(';')
+				.map(cookie => cookie.split('='))
+				.reduce(
+					// The {} at the end is the starting
+					// value, so we build up an object
+					(acc, [name, value]) =>
+						({ ...acc, [name.trim()]: value }),
+					{}
+				);
+
+			return cookies[key];
+		},
+
+		setItem: (key, value) => {
+			document.cookie = `${key}=${value}; path=/`;
+		}
+	};
+
+  Take care with that last line. There must be no spaces around the equals
+sign. Writing `${key} = ${value}` would create a cookie whose name ends in a
+space and whose value begins with one, which is not what you asked for and
+leads to some baffling afternoons.
+
+  With that in place, the rest reads plainly:
+
+	const storageType = cookieStorage;
+	const consentPropertyName = 'jdc_consent';
+
+	// Show the popup only if we have not already been told "Okay"
+	const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
+
+	const saveToStorage = () =>
+		storageType.setItem(consentPropertyName, true);
+
+	const consentPopup =
+		document.getElementById('consent-popup');
+	const consentAcceptBtn =
+		document.getElementById('accept-cookie-use');
+
+	// When the accept button is clicked
+	const acceptFunc = event => {
+		saveToStorage();
+		consentPopup.classList.add('consent-hidden');
+	};
+
+	consentAcceptBtn.addEventListener('click', acceptFunc);
+
+	if (shouldShowPopup()) {
+		// Delay the popup by 2 seconds so it does not
+		// appear before the page has settled
+		setTimeout(() => {
+			consentPopup.classList.remove('consent-hidden');
+		}, 2000);
+	}
+
+  If you would rather store the visitor's answer in localStorage or
+sessionStorage instead of a cookie, you only have to change one line:
+
+	const storageType = localStorage;      // survives the browser closing
+	const storageType = sessionStorage;    // forgotten when the browser closes
+	const storageType = cookieStorage;     // our own wrapper, above
+
+  That is the benefit of having wrapped the cookie code to look like the
+other two. Everything below that line stays exactly as it is.

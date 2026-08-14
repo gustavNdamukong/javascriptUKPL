@@ -247,6 +247,7 @@ Chapter 8 - Cookies
         -Retrieving a cookie
         -Get a specific cookie by name
         -Delete a cookie by name
+    -A cookie consent solution
 
 Chapter 9 - Strings
     -Escaping nested quotes
@@ -349,12 +350,7 @@ Chapter 13 - Databases and Storage
       -How to update data in LocalStorage
       -How to delete data from LocalStorage
     -Persisting with Session Storage
-    -Persisting data with Cookies
-      -Setting a cookie
-      -Retrieving a cookie
-      -Get a specific cookie by name
-      -Deleting a cookie  
-    -A cookie content solution
+    -Persisting with Cookies
     -Databases
       -What is a database
       -JavaScript and databases
