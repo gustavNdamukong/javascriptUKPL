@@ -31,7 +31,7 @@ JavaScript and images
 For small web projects and learning vanilla JavaScript, you’ll mostly use it to change images on a webpage or handle basic uploads. But if you go deeper into building real-world apps — like photo editors, e-commerce platforms, or social networks — JavaScript has the tools to do even more.
 You’ve already learned how to preview images using the DOM, load files with the FileReader API, and respond to file input events in earlier chapters. But what if we want to go beyond simply displaying images?
 What if we want to edit them — crop, apply filters, draw over them, or change their content in more advanced ways? That’s where the power of the HTML5 <canvas> element comes in.
-You were introduced to <canvas> in the DOM Manipulation chapter, where we used it for drawing shapes and making interactive graphics. In this chapter, we’ll take it further and explore how the canvas can act as a powerful tool for image processing.
+You were introduced to <canvas> in Chapter 16 (The Canvas Element), where we used it for drawing shapes and making interactive graphics. In this chapter, we’ll take it further and explore how the canvas can act as a powerful tool for image processing.
 The canvas allows us to:
 
     * Draw images onto it using drawImage()
@@ -88,7 +88,7 @@ Image manipulation
 					display: block; margin-top: 10px;" />
 
 
-  			<script src=“index.js"></script>
+  			<script src="index.js"></script>
 		</body>
 		</html>
 
@@ -117,7 +117,7 @@ Image manipulation
 	
 	Add a grayscale filter Effect to an image
 	————————————————————
-  Make sure you have Ian images/ directory in the same folder in which this index.html file is, and have an image in it named ‘urban.jpg’. This is because the image is being used as the source (src attribute) of the image page in this index.html, and it is the image we are practicing how to add a grayscale filter on. 
+  Make sure you have an images/ directory in the same folder as this index.html file, with an image in it named ‘urban.jpg’. That is the image used as the src attribute of the <img> tag in this page, and the one we are practising adding a grayscale filter to. 
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -138,21 +138,21 @@ Image manipulation
 
 
 
-  			<script src=“index.js"></script>
+  			<script src="index.js"></script>
 		</body>
 		</html>
 
 	Add this code to your JavaScript file (eg index.js) 
 
 		const btn = document.getElementById('grayScaleBtn');
-		btn.addEventListener('click', applFilter);
+		btn.addEventListener('click', applyFilter);
 
 
   		function applyFilter() {
     			const img = document.getElementById('myImage');
 
 			// give the image filter a grayscale effect
-			img.style.filter = 'grayscale(100%)’;
+			img.style.filter = 'grayscale(100%)';
 		}
 
 
@@ -160,7 +160,7 @@ Image manipulation
 
 	Toggle a grayscale filter Effect on an image (on/off)
 	—————————————————————————
-  This effect is so cool, but we cannot reverse it. Let’s make it possible to add and reverse the grayscale effect on the image. Make sure you have Ian images/ directory in the same folder in which this index.html file is, and have an image in it named ‘urban.jpg’. This is because the image is being used as the source (src attribute) of the image page in this index.html, and it is the image we are practicing how to add a grayscale filter on. 
+  This effect is so cool, but we cannot reverse it. Let’s make it possible to add and reverse the grayscale effect on the image. Make sure you have an images/ directory in the same folder as this index.html file, with an image in it named ‘urban.jpg’, exactly as in the previous example. 
   Here is the code to make that happen:
 
 		<!DOCTYPE html>
@@ -182,7 +182,7 @@ Image manipulation
 
 
 
-  			<script src=“index.js"></script>
+  			<script src="index.js"></script>
 		</body>
 		</html>
 
@@ -214,24 +214,24 @@ Image manipulation
 	Notice the modifications of the previous code:
 		-Now when the ‘Make Grayscale’ button is clicked, we check the 
 		   previous value of the img.style.filter, and if it was 
-		   'grayscale(100%)’, we update to 'grayscale(0%)' (it will work the 
-		   same if we updated it to ‘img.style.filter = 'none’;), else we update 
-		   it to 'grayscale(100%)’.
+		   'grayscale(100%)', we update it to 'grayscale(0%)'. It would work 
+		   just the same if we set it to 'none' instead. Otherwise we update 
+		   it to 'grayscale(100%)'.
 		-We renamed the function from applyFilter() to toggleFilter() so it 
-		   reflects what it is really does now-which is to turn the grayscale 
+		   reflects what it really does now—which is to turn the grayscale 
 		   filter on the image on or off.
 		-Notice also how, though using an if statement inside index.js will still
 		   work just the same, using a ternary operator to do the logic makes 
 		   for less and cleaner (readable) code.
-This exercise is a great example, for interactive photo editors or learning about CSS filters through JavaScript.
+This exercise is a great example for interactive photo editors, or for learning about CSS filters through JavaScript.
 
 
 
 	Permanently grayscale an image using Canvas
 	———————————————————————
   The grayscale effect using CSS filters (like in the previous example) only affects how the image looks in the browser. It doesn’t actually modify the image data itself. So, that effect isn’t permanent and can’t be saved as-is.
-However, as I mentioned above; It is a great example for interactive photo editors or learning about CSS filters through JavaScript.
-But If you want to make the grayscale change, or any change to an image file permanent so that the user can download or upload the edited image-you have to use the <canvas> element. This is because, the canvas API’s context which is the thing the image is built on, and all the changes you make on it are saved, makes the changes persist. You just have to then make the image downloadable as a new image file. Always remember that because of JavaScript’s restriction on local files, what essentially happens is this; you read an (original) image, re-create it as a new image on the canvas, then download the new image as a new, separate file. The original file remains unmodified. Back to our greyscale example, here is what the <canvas> element will do:
+However, as I mentioned above, it is a great example for interactive photo editors, or for learning about CSS filters through JavaScript.
+But if you want to make the grayscale change—or any change to an image file—permanent, so that the user can download or upload the edited image, you have to use the <canvas> element. This is because, the canvas API’s context which is the thing the image is built on, and all the changes you make on it are saved, makes the changes persist. You just have to then make the image downloadable as a new image file. Always remember that because of JavaScript’s restriction on local files, what essentially happens is this; you read an (original) image, re-create it as a new image on the canvas, then download the new image as a new, separate file. The original file remains unmodified. Back to our greyscale example, here is what the <canvas> element will do:
 
 	-Draw the image to the canvas,
 	-Apply grayscale pixel by pixel,
@@ -259,7 +259,7 @@ Your index.html code, should look like this:
         		<canvas id="canvas" 
 				style="display: block; margin-top: 10px;"></canvas>
 
-  			<script src=“index.js"></script>
+  			<script src="index.js"></script>
 		</body>
 		</html>
 
@@ -412,7 +412,11 @@ Your index.html code, should look like this:
 
         		<label for="scale">Resize (%): 
 				<span id="scaleValue">100</span>%</label>
-        		<input type="range" id="scale" min="0.1" max="2" step="0.1" 					value="1">
+        		<input 
+					type="range" 
+					id="scale" 
+					min="0.1" max="2" step="0.1" 
+					value="1">
 
         		<br /><br />
 
@@ -461,19 +465,21 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
     		// When the file has been read...
     		reader.onload = function (event) {
         
-			// Create an empty image object
+			// Create an image object. It has no picture in it yet -
+			// it is an empty frame waiting for a src
        			img = new Image(); 
 
-        		// When the (empty) image has finished loading (is fully loaded 	
-			// into memory) only then do we draw it to the canvas
+        		// Setting src starts a download, which takes time, so we
+        		// say in advance what should happen once it has finished.
+        		// Nothing is drawn until this fires
         		img.onload = function () {
-            			// Draw it (the empty image) at the current slider scale
+            			// By now the picture really is loaded, so draw it
             			drawImageAtScale(scaleInput.value); 
         		}; 
 
-        		// Set image source to the file data (as base64)
-        		// this is the magic-where the uploaded file (stored in 'file') 
-        		//  is made to replace the new drawn empty image   
+        		// Giving it a src is what sets everything above in motion.
+        		// The file was read as base64 text, which an Image can
+        		// take as a source just like a URL
         		img.src = event.target.result; 
     		};
 
@@ -508,8 +514,11 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
 
 	// When the slider is moved...
 	scaleInput.addEventListener('input', function () {
-    		// Show the scale value next to the slider
-    		scaleValue.textContent = this.value; 
+    		// Show the scale value next to the slider. The slider holds a
+    		// MULTIPLIER (1 = full size), but the label reads "%", so we
+    		// convert. Without this you would see "Resize (%): 1.5%"
+    		// beside an image that had just grown by half.
+    		scaleValue.textContent = Math.round(this.value * 100); 
 
    	 	// Redraw the image with the new scale
     		drawImageAtScale(this.value); 
@@ -565,7 +574,7 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
 The key in grasping this process lies in understanding that the event that is triggered when a file is uploaded has a result property which is the uploaded file itself. That is why when we listen in the code for that upload event like so:
 
 	reader.onload = function (event) {
-		…
+		// ...
 	}
 
 It is the event (file upload) object’s target.result that we assign to the src attribute of img. We are hereby pointing the src attribute of the newly drawn (created) image to the location of the uploaded image.
@@ -713,7 +722,7 @@ Add this code to the already existing code above for rotating an image:
 
 	const downloadBtn = document.getElementById('downloadImgBtn');
 
-	…
+	// ...
 
 	downloadBtn.addEventListener('click', function () {
     		// Create a temporary link
@@ -931,7 +940,7 @@ As with brightening up an image, let’s look an a code example that allows you 
    		const link = document.createElement('a'); 
 
     		// Set the filename for the download
-    		link.download = ‘contrasted-image.png'; 
+    		link.download = 'contrasted-image.png'; 
 
     		// Convert canvas image to a downloadable URL
     		link.href = canvas.toDataURL(); 
@@ -979,7 +988,7 @@ As with brightening or adding contrast to an image, the following code example w
 		</body>
 		</html>
 
-  I would recommend you set up your slider input field with the following: min="0" max="10" step="1" value=“0”. The max of 10 gives you more room to fine-tune the blur filter effect.
+  I would recommend you set up your slider input field with the following: min="0" max="10" step="1" value="0". The max of 10 gives you more room to fine-tune the blur filter effect.
 
 
 
