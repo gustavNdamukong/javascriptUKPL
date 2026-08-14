@@ -330,7 +330,7 @@ Chapter 12 - Design Patterns
          -FACADE PATTERN
          -COMPOSITE PATTERN
          -PROXY PATTERN
-   3) Behavioral Patterns
+   3) Behavioural Patterns
           These patterns deal with object 
           interaction and responsibility 
           distribution.

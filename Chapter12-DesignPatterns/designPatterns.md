@@ -29,7 +29,7 @@ Design patterns are reusable solutions to
          -FACADE PATTERN
          -COMPOSITE PATTERN
          -PROXY PATTERN
-   3) Behavioral Patterns
+   3) Behavioural Patterns
           These patterns deal with object 
           interaction and responsibility 
           distribution.
@@ -116,8 +116,8 @@ used for shared resources like databases, configuration, or logging. The followi
   The output will be as follows:
 
 	Establishing new database connection...
-	{connected: true, db: 'my_database'}
-	true // true — same instance
+	{ connected: true, db: 'my_database' }
+	true
 
 
 
@@ -136,26 +136,26 @@ used for shared resources like databases, configuration, or logging. The followi
 	   like they are in PHP, for example. But we can still achieve a Singleton
 	   behaviour by storing the instance in a static property and returning it if 
 	   it already exists.
-	     This is the whole idea behind a singleton-multiple calls to create a 
+	     This is the whole idea behind a singleton—multiple calls to create a 
 	   database connection will all return the same instance. This ensures 
 	   that only one database connection is used throughout the application, 
 	   which can improve performance and prevent multiple connections from 
 	   being opened unnecessarily, which could lead to inefficiency and 
 	   resource exhaustion. This is why this pattern is commonly used in 
-  	   situations like managing a single database connection in web 
+  	   situations like managing a single database connection in a web 
 	   application.
-	-The connectToDatabase() method method is declared private using the 
+	-The connectToDatabase() method is declared private using the 
 	   # prefix. Because the connectToDatabase() is a private method, it 
 	   cannot be called directly, and that is the intention. That is why it is 
-	   called by the class itself, constructor when you instantiate the class in 
-	   order to make the database connection. 
+	   called by the class itself, from the constructor, when you instantiate the 
+	   class in order to make the database connection. 
 	-The connectToDatabase() method (which is private) is where we make 
 	   the database connection. Normally, in a real application, this is where 
 	   you will have the code on your server to make and return the 
 	   connection to your database server. But since working on a server is 
 	   beyond the scope of this book, I have mimicked that process by logging 
 	   some text to the console saying we are making a connection with the 
-	   database. Here it what it looks like:
+	   database. Here is what it looks like:
 
 		#connectToDatabase() {
     			console.log("Establishing new database connection...");
@@ -360,8 +360,8 @@ class House {
 
   	show() {
     	    	console.log(
-      			`House with ${this.walls} walls, ${this.doors} doors, 
-			${this.windows} 	windows, and a ${this.roof} roof`
+      			`House with ${this.walls} walls, ${this.doors} doors, `
+			+ `${this.windows} windows, and a ${this.roof} roof`
    		);
   	}
 }
@@ -427,7 +427,7 @@ house.show();
 
 The output of this code will be:
 
-	“House with Wooden walls, Wooden doors, Wooden windows, and a Wooden roof”
+	House with Wooden walls, Wooden doors, Wooden windows, and a Wooden roof
 
 
       Key points:
@@ -486,10 +486,10 @@ const clonedDocument = originalDocument.clone();
 // Display the contents of both the 
 // original and the cloned document
 
-// The output: “Document content: Original Content”
+// The output: Document content: Original Content
 originalDocument.showContent(); 
 
-// The output: “Document content: Original Content”
+// The output: Document content: Original Content
 clonedDocument.showContent();   
 
 
@@ -510,7 +510,7 @@ clonedDocument.showContent();
     ———————————————
     Structural design patterns focus on how objects and classes are composed   
 (structured). They focus on how objects and classes are composed to form larger structures, making code easier to manage and scale. They help ensure that if one part of a system changes, the entire structure doesn’t need to change. These structural patterns help organise and manage the relationships between classes and objects in your applications, providing 
-flexibility, reusability, and better organization. The following design patterns 
+flexibility, reusability, and better organisation. The following design patterns 
 fall under this group:
 
 
@@ -646,9 +646,9 @@ The Decorator pattern works exactly like that—wrapping extras around something
         Key points
         —————-
    -The purpose of the Decorator Pattern is 
-     to allow behavior to be added to 
+     to allow behaviour to be added to 
      individual objects dynamically, without 
-     affecting the behavior of other objects 
+     affecting the behaviour of other objects 
      from the same class. This is done by 
      “wrapping” the object with decorator 
      classes that enhance or modify its 
@@ -672,7 +672,7 @@ The Decorator pattern works exactly like that—wrapping extras around something
              decorators.
 	Concrete Classes( like MilkDecorator or SugarDecorator):
            -These classes implement the basic 
-             behavior of the Coffee class. In 
+             behaviour of the Coffee class. In 
              this case, it represents a simple 
              coffee with a base cost.
 	Decorator Classes (MilkDecorator and 
@@ -681,7 +681,7 @@ The Decorator pattern works exactly like that—wrapping extras around something
              the same Coffee class but 
              enhance the functionality of the 
              base class (Coffee). They add 
-             their own behavior-in this case 
+             their own behaviour-in this case 
              flavour (adding milk or sugar) while 
              still calling the base class’s methods 
              to maintain the existing functionality.
@@ -689,7 +689,7 @@ The Decorator pattern works exactly like that—wrapping extras around something
              the cost of milk to the base cost of coffee. Similarly, 
              SugarDecorator adds the cost.
    -The decorator pattern also allows for 
-     dynamic and flexible behavior addition. 
+     dynamic and flexible behaviour addition. 
      You can apply multiple decorators in 
      sequence, as shown in the example 
      where we first decorate the coffee with 
@@ -703,7 +703,7 @@ The Decorator pattern works exactly like that—wrapping extras around something
   want to add functionality to an object 
   without modifying its code, especially 
   when you need to apply different 
-  combinations of behavior (e.g., coffee with 
+  combinations of behaviour (e.g., coffee with 
   milk, coffee with sugar, coffee with milk 
   and sugar, etc.). Instead of creating 
   multiple subclasses to represent each 
@@ -842,7 +842,7 @@ messy details behind a single, simple interface.
      methods directly, the code would be 
      more complex and harder to read.
    -Another great benefit of the facade 
-     pattern allows for a clean, organized 
+     pattern allows for a clean, organised 
      separation between the client and the 
      complex internals of a system. It also 
      allows for easier maintenance because 
@@ -923,10 +923,15 @@ root.display();
 The output will look like so:
 
 	+ Folder: Root
-	- File: file1.txt
-	+ Folder: SubFolder
-	- File: file3.txt
-	- File: file2.txt
+	  - File: file1.txt
+	  + Folder: SubFolder
+	    - File: file3.txt
+	  - File: file2.txt
+
+  Notice the indentation. Each level down adds two more spaces, because
+display() passes indent + '  ' to its children. That indentation is the
+whole point: it is what turns a flat list of lines into a picture of the
+hierarchy.
 
 Think of your computer's folders and files. A folder can contain both files and other folders. Whether it's a file or a folder, you can click and view it the same way. The Composite pattern lets you treat both single items (files) and groups (folders with files) the same, simplifying how you interact with them.
 
@@ -1004,6 +1009,13 @@ The output will be:
 
 	Loading cat.png
 	Displaying cat.png
+	Displaying cat.png
+
+  Look carefully at those three lines, because they are the whole point.
+"Loading" appears only once, on the first call. The second call to
+display() finds the real image already made and skips straight to
+displaying it. That is the proxy doing its job: the expensive work
+happens once, and only when it is first needed.
 
 Imagine opening a large image file. The first time, it takes time to load. But after that, it opens instantly. The Proxy pattern works like a smart assistant that only loads the heavy image when truly needed—saving time and resources.
 
@@ -1012,7 +1024,7 @@ Imagine opening a large image file. The first time, it takes time to load. But a
      ——————
    -The Proxy Pattern provides a surrogate to 
      control access to another object.
-   -It’s useful for lazy initialization, access 
+   -It’s useful for lazy initialisation, access 
      control, or logging.
 
 
@@ -1151,7 +1163,7 @@ The output in the console here will be:
 
     3) BEHAVIORAL DESIGN PATTERNS
     ———————————————-
-    Behavioral design patterns focus on how 
+    Behavioural design patterns focus on how 
   objects communicate and interact with 
   each other. They define the way in which 
   classes and objects collaborate. The   
@@ -1209,7 +1221,7 @@ subject.notify();
 
 The output in the console will say:
 
-	“Observer notified”
+	Observer notified
 
 
 Key points:
@@ -1306,9 +1318,9 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
      define a family of algorithms (or 
      strategies) that can be used 
      interchangeably. Instead of hardcoding 
-     specific behavior into a class, different 
+     specific behaviour into a class, different 
      strategies are encapsulated in separate 
-     classes, allowing the behavior to be 
+     classes, allowing the behaviour to be 
      selected at runtime.
    -Here is how it works:
       -Strategy Interface (PaymentStrategy)
@@ -1322,7 +1334,7 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
        CreditCardStrategy):
        These classes implement the 
        PaymentStrategy interface and provide 
-       the specific behavior for how the 
+       the specific behaviour for how the 
        payment is processed. For example, 
        PayPalStrategy handles payments using 
        PayPal, while CreditCardStrategy 
@@ -1341,18 +1353,18 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
 
       Use Cases:
       ——————-
-   -Dynamic Behavior Selection. When you 
+   -Dynamic Behaviour Selection. When you 
      need to switch between different 
-     algorithms or behaviors at runtime, the 
+     algorithms or behaviours at runtime, the 
      strategy pattern is useful. For example, 
      choosing different payment methods (like 
      PayPal or credit card) based on the 
      user’s preference.
    -Avoiding Conditional Logic. Instead of 
      using complex if-else or switch 
-     statements to determine the behavior, 
+     statements to determine the behaviour, 
      the strategy pattern encapsulates these 
-     behaviors into separate classes, making 
+     behaviours into separate classes, making 
      the code more maintainable and flexible.
    -The big benefit of the Strategy Pattern is
      that it promotes the open/closed 
@@ -1362,7 +1374,7 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
      changing the existing code in the 
      PaymentContext. The pattern allows for 
      flexibility by letting you swap out 
-     behavior dynamically while keeping the 
+     behaviour dynamically while keeping the 
      code structure clean and modular.
 
 
@@ -1377,7 +1389,7 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
   changing its structure. It is called the 
   Template Method because it provides a 
   template for the overall process, with some 
-  steps left open for customization by 
+  steps left open for customisation by 
   subclasses.
 
   JavaScript Example:
@@ -1421,11 +1433,11 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
 // Usage
 const pasta = new PastaMeal();
 pasta.prepareMeal();
-// Output: Boiling water, Cooking pasta, Serving the meal
+// Prints three lines - see the full output below
 
 const rice = new RiceMeal();
 rice.prepareMeal();
-// Output: Boiling water, Cooking rice, Serving the meal
+// Prints three lines - see the full output below
 
 
 
@@ -1476,7 +1488,7 @@ rice.prepareMeal();
       ——————
     The Template Method Pattern is useful 
   when multiple classes share a similar 
-  process but require customization for 
+  process but require customisation for 
   specific steps. In the example, both pasta 
   and rice meals follow the same process but 
   differ in the cooking step.
@@ -1488,7 +1500,7 @@ rice.prepareMeal();
         ———————————-
     The Command Pattern turns a request 
   into an object, allowing the 
-  parameterization of clients with queues, 
+  parameterisation of clients with queues, 
   requests, or logs. It is called Command 
   because each object represents an 
   operation to be executed, stored, or 
@@ -1569,7 +1581,7 @@ The output of this code in the console will be:
        Key points
        —————-
   Purpose of the Command Pattern:
-This pattern encapsulates requests as objects, allowing you to parameterize methods, delay execution, and queue operations. It decouples the invoker (client) from the object that performs the actual work (receiver).
+This pattern encapsulates requests as objects, allowing you to parameterise methods, delay execution, and queue operations. It decouples the invoker (client) from the object that performs the actual work (receiver).
 	
    How It Works:
    ———————
@@ -1614,10 +1626,10 @@ This pattern encapsulates requests as objects, allowing you to parameterize meth
     the command.
       It is called the invoker because the 
     execution of the command starts from it. 
-    It all starts from its PressButton() method. 
+    It all starts from its pressButton() method. 
     It then runs the execute() method on the 
     command which it had already stored in 
-    its ‘$command’ property.
+    its ‘command’ property.
 	
   Use Case:
   —————-
