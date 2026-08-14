@@ -1337,15 +1337,24 @@ The difference between a JavaScript object and JSON
   client eg in APIs). JSON is often used to 
   store and exchange data, and it follows a 
   strict syntax that is a subset of JavaScript 
-  object syntax, but it is purely textual and 
-  does not allow functions or other non-
-  serializable values like undefined or Date. 
-  Jason happens to be a data type 
-  embraced by JavaScript so its common in 
-  JavaScript programming to write content in 
-  the json datatype and easily pass it around 
-  your application or share it between 
-  different applications.
+  object syntax, but it is purely textual. It has 
+  no way to represent a function, and any 
+  property whose value is a function or 
+  undefined is simply dropped when you 
+  convert. A Date is a special case worth 
+  knowing: it does survive the conversion, but 
+  only as text, so it comes back from 
+  JSON.parse() as a string rather than as a 
+  Date object. 
+  JSON is embraced so widely by JavaScript 
+  that it is common to write content in JSON 
+  and pass it around your application, or 
+  share it between different applications. 
+  Note though that JSON is a data FORMAT, 
+  not a data type — we will come back to 
+  that distinction at the end of this section, 
+  because it is the root of most of the 
+  confusion around the word.
     Where there can be a confusion is that 
   people fail to understand the distinction 
   between a json object and an object 
@@ -1367,9 +1376,9 @@ The difference between a JavaScript object and JSON
   other data types are allowed. For example:
 
        {
-            “animal”: “Dog”,
-            “color”: “brown”,
-            “num_legs”: 4
+            "animal": "Dog",
+            "color": "brown",
+            "num_legs": 4
        }
 
   Multiple JSON objects are enclosed within 
@@ -1377,14 +1386,14 @@ square brackets like any other array. For example:
 
 	[
 		{
-            		“animal”: “Dog”,
-            		“color”: “brown”,
-            		“num_legs”: 4
+            		"animal": "Dog",
+            		"color": "brown",
+            		"num_legs": 4
       	 	},
 		{
-            		“animal”: “Cat”,
-            		“color”: “black”,
-            		“num_legs”: 4
+            		"animal": "Cat",
+            		"color": "black",
+            		"num_legs": 4
        		}
 	]
 
@@ -1399,9 +1408,9 @@ separated by commas within the square brackets.
   objects, functions etc. For example:
 
         let employee = {
-            id: 157”,
-            name: Gus,
-            email: gus@gmail.com
+            id: 157,
+            name: 'Gus',
+            email: 'gus@gmail.com'
        }
            
   Similarly to a json object, the items in a 
@@ -1415,7 +1424,7 @@ However, JSON is based on two fundamental data structures in JavaScript:
 * Objects (key-value pairs)
 * Arrays (ordered lists)
 
-Since JSON data is stored as text (a string) and can be converted to and from JavaScript objects using JSON.parse() and JSON.stringify(), it is best categorized as a data format rather than a built-in data type or structure.
+Since JSON data is stored as text (a string) and can be converted to and from JavaScript objects using JSON.parse() and JSON.stringify(), it is best categorised as a data format rather than a built-in data type or structure.
 So, while people sometimes loosely say "JSON object," the correct term is just JSON (for the string format) or JavaScript object (after parsing). Again, this is because JSON (JavaScript Object Notation) is a data format, not an actual JavaScript object. It looks like a JavaScript object, but it's just a string representation of data that follows a specific structure.
 However, when you parse JSON using JSON.parse(), it becomes a JavaScript object. Similarly, when you stringify a JavaScript object using JSON.stringify(), it turns into a JSON-formatted string.
 
@@ -1473,8 +1482,8 @@ Destructuring of objects
   out of the box one by one, assigning them 
   individually to variables like so:
 
-    let obj = { msg: “Hello”, title: “Welcome”, 
-                     footer: “Goodbye” };
+    let obj = { msg: "Hello", title: "Welcome", 
+                     footer: "Goodbye" };
 
    let message = obj.msg;
    let title = obj.title;
@@ -1501,18 +1510,36 @@ Destructuring of objects
   does not have a “title”. Destructuring with 
   defaults lets you say, “if this item is 
   missing, use this value instead”. So let’s 
-  give our above examples have default 
+  give our example above some default 
   values:
 
        let {
-            msg: “No message”,
-            title:  “No title”,
-            footer: “No footer”
+            msg = "No message",
+            title = "No title",
+            footer = "No footer"
        } = obj;
 
-  This was, if the box does not have a “title”, 
+  This way, if the box does not have a title, 
   the variable title will automatically be set 
-  to “No title” instead of undefined.
+  to "No title" instead of undefined.
+    Take careful note of the equals sign there. 
+  It is easy to reach for a colon instead, 
+  because a colon is what separates keys 
+  from values everywhere else in an object. 
+  But inside destructuring a colon means 
+  something quite different — it RENAMES 
+  the variable:
+
+       // put the value of obj.msg into a
+       // variable called greeting
+       let { msg: greeting } = obj;
+
+  So a colon renames, and an equals sign 
+  supplies a fallback. You can use both 
+  together when you need to, and they read 
+  in that order — rename first, then default:
+
+       let { msg: greeting = "No message" } = obj;
 
 
 
@@ -1521,7 +1548,7 @@ Destructuring of objects
 
 Simplified object literal creation from function arguments
 —————————————————————————
-  I talked about this under the topic of functions, under the heading “Quick object literals from function arguments”, but since this is a topic on objects, I thought I should quickly mention it again. Since you are learning how to create objects, you should remember how that links up with functions and how they work together. The idea is that you sometimes have a function whose only job to return an object literal from the arguments passed to the function. For example:
+  I talked about this under the topic of functions, under the heading “Quick object literals from function arguments”, but since this is a topic on objects, I thought I should quickly mention it again. Since you are learning how to create objects, you should remember how that links up with functions and how they work together. The idea is that you sometimes have a function whose only job is to return an object literal from the arguments passed to the function. For example:
 
 // arrow function version
 const createObject = (make, model, year) => {
@@ -1542,7 +1569,7 @@ This function return value will be the object:
    {make: 'Toyota', model: 'Rav4', year: '2025'}
 
 
-  Notice that the keys of the object literal returned by the function exactly match the arguments of the function. This is a repetition of the same names, first in the function argument, and then again in the keys of the object literal being returned. The arrow function in JavaScript provided a simplified way for this exact same situation whereby if you are creating a simple function that returns an object literal whose keys exactly match the names of the arguments you are passing to the function, you can simplify the function’s return code to generate the object literal in one line like this:
+  Notice that the keys of the object literal returned by the function exactly match the arguments of the function. This is a repetition of the same names, first in the function argument, and then again in the keys of the object literal being returned. JavaScript provides a shorthand for exactly this situation: when a key and the variable supplying its value have the same name, you may write the name once. So { make: make } can simply be written { make }. This is called object shorthand, and although you will most often meet it alongside arrow functions, it is not an arrow-function feature — it works just as well inside an ordinary function. Combined with an arrow function’s one-line body, it lets you write the whole thing like this:
 
 	const createObject = 
 		(make, model, year) => 
@@ -1564,8 +1591,20 @@ This function return value will be the object:
 
 Viewing the contents of an object
 ————————————-
+  When you want to read an object in the console and its contents are
+nested, printing it directly can be awkward. JSON.stringify() takes two
+optional extra arguments that turn it into a neat, indented listing:
+
    console.log(JSON.stringify(YOUROBJECT, 
     null, 4));
+
+  The second argument (null here) is a filter you will rarely need, and
+the third is how many spaces to indent each level by. Using 4 gives you
+a readable, tree-shaped view of the whole object.
+  One thing to remember from the section above: anything JSON cannot
+represent will be missing from that listing. If your object holds
+methods, they will not appear, because functions are dropped on the way
+in.
 
 
 
@@ -1620,15 +1659,26 @@ With ES6, JavaScript introduced the class keyword, which provides a more structu
 
 This code logs the value of the arg property of the class, which in this case will be ‘car’. Here are the key differences between the class approach and constructor functions:
 	-Classes use the class keyword instead of a function.
-	-classes add a constructor() method to initialise the 
+	-Classes add a constructor() method to initialise the 
 		object.
-	-Functions are we know have the prototype property 
-		and the methods that come with it, but classes 
-		don’t need this. Classes can have their own 
-		methods defined inside the class directly.
+	-Functions, as we know, have the prototype property 
+		and the methods that come with it. With a class 
+		you no longer write to that property by hand — 
+		you simply define methods inside the class body 
+		and JavaScript puts them on the prototype for 
+		you. So the prototype has not gone away; the 
+		class syntax is just doing that work on your 
+		behalf. You can see it for yourself:
+
+		class Dog { speak() {} }
+
+		// true - the method really is on the prototype
+		console.log(
+			Dog.prototype.hasOwnProperty("speak")
+		);
 
 This ES6 approach improves readability and makes JavaScript more consistent with class-based languages like Java and Python. 
-  Use ES6 classes whenever possible-they’re clearer and more structured. Constructor functions still work but are now considered outdated for defining classes. Both methods (constructors functions and classes) still rely on prototypes under the hood, but ES6 classes provide a more intuitive way to work with objects.
+  Use ES6 classes whenever possible—they’re clearer and more structured. Constructor functions still work but are now considered outdated for defining classes. Both methods (constructors functions and classes) still rely on prototypes under the hood, but ES6 classes provide a more intuitive way to work with objects.
 
 
 
@@ -1677,15 +1727,15 @@ Class inheritance
         }
     }
 
-    Inside a subclass constructor, you must call super() before accessing the parent class using the this keyword-which always refers to the current class.
-  The above example will work, but when one class extends another using the extends keyword, the child class inherits all the methods and properties of the parent. But to properly initialize the parent class, you need to use the super() function inside the child’s constructor. It must be first line in child constructor.
+    Inside a subclass constructor, you must call super() before you use the this keyword. And be careful with what this means here: it refers to the current INSTANCE — the particular object being built — not to the class itself. That distinction matters enough that the next section is devoted to it.
+  The above example will work, but when one class extends another using the extends keyword, the child class inherits all the methods and properties of the parent. But to properly initialise the parent class, you need to use the super() function inside the child’s constructor, and it must run before you touch this. In practice people put it on the first line, and that is the habit to keep. Strictly speaking JavaScript only requires that it comes before any use of this — reaching for this first throws a ReferenceError.
   Let's understand what super() is, and what it does. super() is used to call 
 the constructor of the parent class. It must be called before using the this 
-keyword inside a subclass constructor. Overriding is when the child class defines a method with the same name as another method on the parent class in order to change behavior of the method to suit its own needs.
+keyword inside a subclass constructor. Overriding is when the child class defines a method with the same name as another method on the parent class in order to change the behaviour of the method to suit its own needs.
 
     What is the benefit of inheritance:
         -Promotes code re-use, so you avoid repeating code
-        -To make a general classes (like Animal) and then specific ones 
+        -To make general classes (like Animal) and then specific ones 
             (like Dog, Cat, Bird)
         -It helps you build a class hierarchy that models real-world 
 		relationships
@@ -1718,7 +1768,12 @@ Difference between a child class and an instance
 
   An instance is still an object — it’s the actual usable thing created from any 
   class (parent or child). Therefore, the class that the instance is created from 
-  can be either a base class or a child class-it does not matter. 
+  can be either a base class or a child class—it does not matter. 
+
+![Figure 17.4 — A child class is still a blueprint; an instance is a real thing](images/ch17-fig-04-class-vs-instance.svg)
+
+*Figure 17.4 — A child class is still a blueprint; an instance is a real thing*
+
 
 
 
@@ -1729,7 +1784,7 @@ Difference between a child class and an instance
     
 	super() function 
 
-inside the child’s constructor. It must be first line in child constructor. Here is an example:
+inside the child’s constructor, before any use of this. Here is an example:
 
 	// Child class
     	class Dog extends Animal {
@@ -1754,7 +1809,7 @@ This can be useful if this child class has a method with the same name, but want
   Check if an object is an instance of a class
 ————————————
 
-  In programming, there will be times when you will need to kow if an object is an 
+  In programming, there will be times when you will need to know if an object is an 
   instance of a class, for example for validation reasons. JavaScript offers you a 
   simple way to check that, and that is by using the 'instanceof' keyword. The 
   syntax goes like this: 
@@ -1762,7 +1817,7 @@ This can be useful if this child class has a method with the same name, but want
     objectName instanceof ClassName
   
   Let's put that to action and check if rex is an instance of the Animal class. 
-  Here is the exact same code we used above-just so we can take a closer look:
+  Here is the exact same code we used above—just so we can take a closer look:
 
     // Parent class
     class Animal {
@@ -1791,8 +1846,8 @@ This can be useful if this child class has a method with the same name, but want
 
     rex is an instance of Animal:  true
 
-  This is because, though, rex is an instance of Dog, which is a child class 
-  of Animal, that still makes rex an instance of the super Animal class. This 
+  This is because although rex is an instance of Dog, and Dog is a child class 
+  of Animal, that still makes rex an instance of the Animal class too. This 
   code:
     console.log("rex is an instance of Dog: ", rex instanceof Dog);
 
@@ -1800,7 +1855,7 @@ This can be useful if this child class has a method with the same name, but want
   and that is because rex is an instance of Dog as well, in fact, it was formed 
   from the Dog class. 
 
-  I will tell you what is not an instance of the Animal class-Dog. This code:
+  I will tell you what is not an instance of the Animal class—Dog. This code:
 
     console.log("Dog is an instance of Animal: ", Dog instanceof Animal);
 
@@ -1813,7 +1868,7 @@ This can be useful if this child class has a method with the same name, but want
 
 
 Function Constructors, object literals and inheritance
---------------------------------------------------------
+————————————————————————————
 
   In JavaScript, we know the old way of creating a class was via Function, so it evolved from function-based “classes” and object literals to the modern class syntax. The following questions which we have answered for regular classes can also be asked of the old-alternative ways to create classes; 
 	-Can you instantiate or extend an object literal or function?

@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 420" width="760" height="420" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="d" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+  </defs>
+  <rect width="760" height="420" fill="#ffffff"/>
+  <text x="380" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">A child class is still a blueprint. An instance is a real thing.</text>
+
+  <!-- BLUEPRINTS side -->
+  <rect x="24" y="56" width="330" height="250" rx="8" fill="#fafafa" stroke="#999" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text x="189" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">BLUEPRINTS (classes)</text>
+  <text x="189" y="98" text-anchor="middle" font-size="11" fill="#666">you cannot use these directly</text>
+
+  <rect x="104" y="116" width="170" height="60" rx="6" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="189" y="141" text-anchor="middle" font-size="14" font-family="Courier, monospace" fill="#111">Animal</text>
+  <text x="189" y="162" text-anchor="middle" font-size="11" fill="#444">the parent class</text>
+
+  <line x1="189" y1="182" x2="189" y2="216" stroke="#222" stroke-width="2" marker-end="url(#d)"/>
+  <text x="199" y="204" font-size="11" font-family="Courier, monospace" fill="#111">extends</text>
+
+  <rect x="104" y="222" width="170" height="60" rx="6" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="189" y="247" text-anchor="middle" font-size="14" font-family="Courier, monospace" fill="#111">Dog</text>
+  <text x="189" y="268" text-anchor="middle" font-size="11" fill="#444">the child class</text>
+
+  <!-- crossing arrow -->
+
+  <!-- REAL THINGS side -->
+  <rect x="406" y="56" width="330" height="250" rx="8" fill="#ffffff" stroke="#111" stroke-width="1.5"/>
+  <text x="571" y="80" text-anchor="middle" font-size="13" font-weight="bold" fill="#111">REAL THINGS (instances)</text>
+  <text x="571" y="98" text-anchor="middle" font-size="11" fill="#666">these are the objects you use</text>
+
+  <rect x="458" y="222" width="170" height="60" rx="6" fill="#ffffff" stroke="#111" stroke-width="2.5"/>
+  <text x="543" y="247" text-anchor="middle" font-size="14" font-family="Courier, monospace" fill="#111">rex</text>
+  <text x="543" y="268" text-anchor="middle" font-size="11" fill="#444">name: "Rex"</text>
+
+  <!-- drawn last so the panels cannot paint over it -->
+  <line x1="280" y1="252" x2="452" y2="252" stroke="#222" stroke-width="3" marker-end="url(#d)"/>
+  <rect x="292" y="222" width="148" height="20" fill="#ffffff"/>
+  <text x="366" y="237" text-anchor="middle" font-size="12" font-family="Courier, monospace" fill="#111">new Dog("Rex")</text>
+
+  <!-- the instanceof table -->
+  <text x="24" y="342" font-size="12.5" font-weight="bold" fill="#111">What instanceof says</text>
+  <text x="34" y="366" font-size="11.5" font-family="Courier, monospace" fill="#111">rex instanceof Dog</text>
+  <text x="300" y="366" font-size="11.5" font-weight="bold" fill="#111">true</text>
+  <text x="360" y="366" font-size="11" fill="#666">— it was made from Dog</text>
+
+  <text x="34" y="388" font-size="11.5" font-family="Courier, monospace" fill="#111">rex instanceof Animal</text>
+  <text x="300" y="388" font-size="11.5" font-weight="bold" fill="#111">true</text>
+  <text x="360" y="388" font-size="11" fill="#666">— Dog extends Animal, so rex is one too</text>
+
+  <text x="34" y="410" font-size="11.5" font-family="Courier, monospace" fill="#111">Dog instanceof Animal</text>
+  <text x="300" y="410" font-size="11.5" font-weight="bold" fill="#111">false</text>
+  <text x="360" y="410" font-size="11" fill="#666">— Dog is a blueprint, not a thing made from one</text>
+</svg>
