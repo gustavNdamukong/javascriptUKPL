@@ -59,9 +59,9 @@ EVENT LISTENERS
 	   This works in two steps; you add the event listener attribute on the target element’s tag, then get that event listener to call an inbuilt or your custom function in response to that event by passing the custom function as the value of the attribute. Here is an example:
 
 	<button 
-		id=“myButton”
-		class=“btn btn-primary”
-		onclick=“myFunction(event)”
+		id="myButton"
+		class="btn btn-primary"
+		onclick="myFunction(event)"
 	>
 	Click me</button> 
 
@@ -74,12 +74,12 @@ EVENT LISTENERS
 	}
 
 	Notice that the code that listens for the click 
-	event is onclick=“”. Its value “myFunction()” is 
+	event is onclick="". Its value "myFunction()" is 
 	a function which should exist in your code. 	
 	This function will automatically be called. Also 
 	notice how as the function is called within the 
 	attribute value, an ‘event’ string is passed to it 
-	(onclick=“myFunction(event)”). This ‘event’ is 
+	(onclick="myFunction(event)"). This ‘event’ is 
 	the global event that is generated every time 
 	an event occurs, and so by passing it to the 
 	function you are calling, you are thereby 
@@ -105,7 +105,7 @@ EVENT LISTENERS
 			let buttonId = e.target.id;
 			
 			// this will write “ID is: myButton”
-			console.log(“ID is: ” + buttonId);
+			console.log("ID is: " + buttonId);
 		}
 
 
@@ -137,12 +137,12 @@ EVENT LISTENERS
 	     ——————
 
 		<button 
-			id=“myButton”
-			class=“btn btn-primary”>
+			id="myButton"
+			class="btn btn-primary">
 			Click me</button> 
 
-		document.getElementById("myButton”)
-		    .addEventListener(“click”, function(e) {
+		document.getElementById("myButton")
+		    .addEventListener("click", function(e) {
 
 		    // Prevent page refresh
    		    e.preventDefault(); 
@@ -150,7 +150,7 @@ EVENT LISTENERS
 		   // get the id of the clicked button
     	           let buttonId = e.target.id; 
 
-    		   console.log(“THE BUTTON ID IS: ”+ 
+    		   console.log("THE BUTTON ID IS: "+ 
 			buttonId); 
    
 		});
@@ -180,7 +180,7 @@ EVENT LISTENERS
 	}
 
 	let myButton = 
-	   document.querySelector(“#myButton"); 
+	   document.querySelector("#myButton"); 
 
 	// invoke the function
 	myButton.addEventListener("click", myFunction); 
@@ -468,20 +468,20 @@ Deep dive into event mechanics
 
 Event bubbling
 —————————
-  When an event happens, it first occurs on the target element (where the user acted).Then, it "bubbles up" through the parent elements all the way to the root (highest parent element) (<html>). Example:
+  When an event happens, it first occurs on the target element (where the user acted). Then, it "bubbles up" through the parent elements all the way to the root (highest parent element) (<html>). Example:
 
     * You click a button inside a div.
     * The click event first fires on the button.
     * Then it bubbles up to the div.
     * Then bubbles up to the body, and so on.
 
-Why it matters:You can listen for an event higher up in the DOM, instead of on every tiny element individually. Event bubbling is the default propagation pattern.
+Why it matters: you can listen for an event higher up in the DOM, instead of on every tiny element individually. Event bubbling is the default propagation pattern.
 
 
 
 Event capturing (aka capture phase)
 ————————————————————
-  This is the event propagation pattern that is directly opposite to bubbling. In event capturing mode, instead of bubbling up, events will first travel downward from the root (top-most parent) downward to the target (the element on which the event was triggered). This is called capturing. By default, most event listeners listen during bubbling phase.But you can make a listener listen during capture phase by setting { capture: true }. This is an advanced concept to grasp for less advanced programmers, so let me take the time to break it down. If I seem to be repeating some words, just follow along, it’s to drive this important topic home in your mind. 
+  This is the event propagation pattern that is directly opposite to bubbling. In event capturing mode, instead of bubbling up, events will first travel downward from the root (top-most parent) downward to the target (the element on which the event was triggered). This is called capturing. By default, most event listeners listen during the bubbling phase. But you can make a listener listen during capture phase by setting { capture: true }. This is an advanced concept to grasp for less advanced programmers, so let me take the time to break it down. If I seem to be repeating some words, just follow along, it’s to drive this important topic home in your mind. 
   In the context of event capturing, "the root" simply means the very top parent element. In a web page, the biggest root is usually the document or <html> tag. But inside a smaller section, like a <div>, the root could be that <div> when you're only considering its children. Let me demonstrate:
 
 	<div id="parentDiv">
@@ -518,8 +518,9 @@ the event first starts at the root and travels down the DOM tree — down throug
 
 	// Add event listener to the parent div (capturing phase)
 	parentDiv.addEventListener("click", function(e) {
-  		alert("Parent DIV handled the click FIRST during CAPTURING 
-			phase!");
+  		alert(
+			"Parent DIV handled the click FIRST during CAPTURING phase!"
+		);
 	}, true);  // <- This 'true' enables capturing
 
 	// Add event listener to item1 (normal bubbling)
@@ -543,7 +544,12 @@ Here is what happens when you run this code; If you click on Item 1:
 As a final analogy; imagine the Root (Parent Div) to be the CEO, and the Target (Item clicked) to be a Worker. When a user clicks, 
 	
     * In bubbling, the Worker notices first, then tells the Supervisor, then the Manager, up to the CEO.
-    * In capturing, the CEO checks first ("is it mine?"), then passes it down Manager ➔ Supervisor ➔ Worker, until finally the exact clicked item is found.
+    * In capturing, the CEO checks first ("is it mine?"), then passes it down Manager to Supervisor to Worker, until finally the exact clicked item is found.
+
+![Figure 25.1 — One click, two journeys through the same elements](images/ch25-fig-01-bubbling-vs-capturing.svg)
+
+*Figure 25.1 — One click, two journeys through the same elements*
+
 
 
 
@@ -575,7 +581,7 @@ Bubbling vs Capturing, which is better?
         * Developers are more familiar with bubbling.
         * When you write event handlers on child elements, you expect the event to "bubble up" to parent elements.
 
-	-3) Bubbling makes event delegation becomes possible
+	-3) Bubbling is what makes event delegation possible
 
         * Event delegation (which we talked about) depends on bubbling.
         * It lets you attach one event listener to a parent instead of many listeners on children.
@@ -583,8 +589,8 @@ Bubbling vs Capturing, which is better?
 
 	-4) Using bubbling makes for less overhead
 
-        * The browser is heavily optimized to handle bubbling efficiently.
-        * Capturing is a bit less commonly used, so it's slightly less optimized in some browsers (but in practice, this difference is very tiny).
+        * The browser is heavily optimised to handle bubbling efficiently.
+        * Capturing is a bit less commonly used, so it's slightly less optimised in some browsers (but in practice, this difference is very tiny).
 	
 	-5) Using bubbling makes for cleaner and simpler code
 	
@@ -594,7 +600,7 @@ Bubbling vs Capturing, which is better?
 
 Why ever use Event Capturing
 —————————————————
-  As bad as it seems to be from the ton of points above, capturing does has its own uses. It would be useful in the following scenarios:
+  As bad as it seems to be from the ton of points above, capturing does have its own uses. It would be useful in the following scenarios:
 
 	-When you need to intercept an event before it reaches its target.
 	-When you want a parent to prevent something before the child can 

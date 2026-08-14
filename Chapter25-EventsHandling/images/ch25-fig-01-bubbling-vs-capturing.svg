@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 740 420" width="740" height="420" font-family="Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="e" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#222"/>
+    </marker>
+  </defs>
+  <rect width="740" height="420" fill="#ffffff"/>
+  <text x="370" y="30" text-anchor="middle" font-size="17" font-weight="bold" fill="#111">One click, two journeys through the same elements</text>
+  <text x="370" y="52" text-anchor="middle" font-size="12.5" fill="#333">The click happens once. What differs is WHEN each listener is told about it.</text>
+
+  <!-- CAPTURING side -->
+  <text x="30" y="88" font-size="13" font-weight="bold" fill="#111">CAPTURING — top down</text>
+  <text x="30" y="106" font-size="11" fill="#666">addEventListener(..., true)</text>
+
+  <rect x="30" y="120" width="200" height="40" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="130" y="145" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">document</text>
+  <line x1="130" y1="162" x2="130" y2="184" stroke="#222" stroke-width="2.5" marker-end="url(#e)"/>
+  <rect x="30" y="188" width="200" height="40" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="130" y="213" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">#parentDiv</text>
+  <line x1="130" y1="230" x2="130" y2="252" stroke="#222" stroke-width="2.5" marker-end="url(#e)"/>
+  <rect x="30" y="256" width="200" height="40" rx="5" fill="#ffffff" stroke="#111" stroke-width="2.5"/>
+  <text x="130" y="281" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">#item1  ← clicked</text>
+  <text x="130" y="318" text-anchor="middle" font-size="11.5" fill="#444">the parent hears it FIRST</text>
+
+  <line x1="370" y1="80" x2="370" y2="330" stroke="#ccc" stroke-width="1"/>
+
+  <!-- BUBBLING side -->
+  <text x="410" y="88" font-size="13" font-weight="bold" fill="#111">BUBBLING — bottom up (the default)</text>
+  <text x="410" y="106" font-size="11" fill="#666">addEventListener(...)  — no third argument</text>
+
+  <rect x="470" y="120" width="200" height="40" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="570" y="145" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">document</text>
+  <line x1="570" y1="184" x2="570" y2="162" stroke="#222" stroke-width="2.5" marker-end="url(#e)"/>
+  <rect x="470" y="188" width="200" height="40" rx="5" fill="#eeeeee" stroke="#111" stroke-width="2"/>
+  <text x="570" y="213" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">#parentDiv</text>
+  <line x1="570" y1="252" x2="570" y2="230" stroke="#222" stroke-width="2.5" marker-end="url(#e)"/>
+  <rect x="470" y="256" width="200" height="40" rx="5" fill="#ffffff" stroke="#111" stroke-width="2.5"/>
+  <text x="570" y="281" text-anchor="middle" font-size="12.5" font-family="Courier, monospace" fill="#111">#item1  ← clicked</text>
+  <text x="570" y="318" text-anchor="middle" font-size="11.5" fill="#444">the clicked item hears it FIRST</text>
+
+  <line x1="30" y1="348" x2="710" y2="348" stroke="#ccc" stroke-width="1"/>
+  <text x="30" y="372" font-size="12" fill="#333">Bubbling is the default, and it is what makes event delegation possible: one listener on the</text>
+  <text x="30" y="392" font-size="12" fill="#333">parent catches clicks from every child, including children added later.</text>
+  <text x="30" y="412" font-size="12" fill="#333">Reach for capturing only when you must intercept an event BEFORE it reaches its target.</text>
+</svg>
