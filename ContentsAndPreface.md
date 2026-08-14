@@ -569,9 +569,7 @@ Chapter 18 - File Management
         -Using the Fetch API and DOMParser
         -Using the XMLHttpRequest object
         -JavaScript XML handling with XPath
-          -What is XPath
-                -Why learn XPath
-                -Some valid XPath queries
+          -A quick reminder of what XPath is
                 -XPath in action
                     -Read from a local or remote XML file
                     -Reading data from an XML string

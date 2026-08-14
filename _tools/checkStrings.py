@@ -7,6 +7,33 @@ import io, re, glob, os, sys
 NB, EN, EM = chr(0xA0), chr(0x2013), chr(0x2014)
 CODEY = re.compile(r'(console\.|document\.|\.textContent|\.innerHTML|alert\(|prompt\(|\breturn\s+["\'\u2018\u201c]|=\s*["\'\u2018\u201c]|\.push\(|\.log\()')
 ANY    = re.compile(r'(console\.|function\s|=>|\breturn\b|document\.|alert\(|\.log\(|=\s*[\[\{\'"])')
+
+def strip_comment(s):
+    """Return s with any // line comment removed - but only when the // sits
+    outside a string. XPath expressions ("//p", "//book/title") and URLs live
+    inside quotes and are not comments."""
+    out, quote, i = [], None, 0
+    while i < len(s):
+        c = s[i]
+        if quote is None:
+            if c in '"\'`\u2018\u2019\u201c\u201d':
+                quote = c
+            elif c == '/' and i + 1 < len(s) and s[i+1] == '/':
+                break
+        else:
+            if c == '\\':
+                out.append(c)
+                i += 1
+                if i < len(s): out.append(s[i])
+                i += 1
+                continue
+            # treat any of the curly/straight partners as a closer
+            if c == quote or (quote in '\u2018\u201c' and c in '\u2019\u201d'):
+                quote = None
+        out.append(c)
+        i += 1
+    return ''.join(out)
+
 pat = sys.argv[1] if len(sys.argv) > 1 else 'Chapter*/*.md'
 total = 0
 for path in sorted(glob.glob(pat)):
@@ -14,7 +41,7 @@ for path in sorted(glob.glob(pat)):
         hits = []
         indented, codey = l.startswith((' ', '\t')), ANY.search(l)
         if indented and CODEY.search(l):
-            body = re.sub(r'(?<!:)//.*', '', l)   # do not treat the // in https:// as a comment
+            body = strip_comment(l)
             # strip escaped backslashes FIRST, then escaped quotes, so that
             # "a backslash: \\" is not misread as an escaped closing quote
             body = body.replace('\\\\', '')
@@ -35,7 +62,9 @@ for path in sorted(glob.glob(pat)):
             hits.append('en/em dash in code')
         if NB in l: hits.append('non-breaking space')
         if re.search('[\U0001F300-\U0001FAFF☀-➿️]', l): hits.append('emoji')
-        if re.search(r'\b(Console|Document|Alert|Math\.MAX)\.', l): hits.append('capitalised global')
+        # require a method after the dot - "a real XML Document." ending a
+        # sentence is prose, not a mis-capitalised global
+        if re.search(r'\b(Console|Document|Alert|Math\.MAX)\.[a-z]', l): hits.append('capitalised global')
         if hits:
             total += 1
             print('%-46s %5d  %-22s %s' % (path, i, '/'.join(hits), l.strip()[:62]))

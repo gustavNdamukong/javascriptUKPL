@@ -1490,34 +1490,66 @@ XPath and selecting DOM Elements
 ————————————————————
 
   XPath stands for XML Path Language. It’s a powerful query language designed to navigate and select nodes in an XML or HTML document. While JavaScript developers often use CSS selectors to get elements (like getElementById(), querySelector() or querySelectorAll()), XPath gives you more precision and flexibility, especially when you need to traverse deeply nested or irregular structures.
+  If you want one sentence to hold on to, it is this: consider XPath to be to
+XML data what SQL (Structured Query Language) is to relational databases. It
+lets you find specific elements, attributes, or text inside a structured
+document using path-like expressions. It supports filtering, in the same way
+a WHERE clause does in SQL, and it comes with string, number and boolean
+functions such as contains() and count() that are not far off the JavaScript
+methods you already know.
+  It has been around since 1999, and people who assume it is obsolete are
+mistaken. It is true that plenty of developers go a whole career without
+touching it. But it is still supported in every modern browser, and it is
+still what you reach for in some very specific corners, which we will come to.
 
 
 Syntax examples of XPath (//tag, /html/body, etc.)
 ————
   XPath expressions use a path-like syntax to describe elements in a document. Here are a few examples:
 
-    * //pSelects all <p> elements in the document, no matter where they are.
+    * //p            Selects all <p> elements in the document, no matter
+                     where they are.
 
-    * /html/body/divSelects a specific <div> that is a direct child of <body> and <html> elements.
+    * /html/body/div Selects a specific <div> that is a direct child of the
+                     <body> and <html> elements.
 
-    * //div[@class='box']Selects all <div> elements with the class box.
+    * //div[@class='box']   Selects all <div> elements with the class box.
 
-    * //ul/li[2]Selects the second <li> element inside every <ul>.
+    * //ul/li[2]     Selects the second <li> element inside every <ul>.
 
-    * //*[@id='main']You probably guess this; yes, it selects all elements on this web document that have the id of "main" (id="main”).
+    * //*[@id='main']   You probably guessed this one; yes, it selects every
+                     element on this web document that has the id of "main"
+                     (id="main").
 
-These examples show that XPath is more expressive than CSS in certain cases-like selecting based on text content or element position. Mastering this skill will set you apart as a JavaScript developer, and you will be able to work in any niche environment where expertise in handling complex XML documents is required. As you can see, it goes beyond the basics of the other CSS query selectors. Knowing XPath will make you able to take any complex HTML or XML document and make sense of its data.
+  Here is a fuller list to give you an idea of the range. Play and experiment
+with these, and check the online documentation for more complex queries and
+explanations:
+
+  Select all <book> nodes                          //book
+  Attribute access (select id attributes)          //@id
+  All <book> tags whose id attribute is "b1"       //book[@id="b1"]
+  Filter books by price greater than 10            //book[price > 10]
+  Wildcards (select all nodes)                     //*
+  Axes (advanced) - navigate relationships         //book/child::title
+  Find all <h1> tags                               //h1
+  Find links whose href value is "#foo"            //a[@href="#foo"]
+  All <span> tags containing the text "Hello"      //span[text()="Hello"]/..
+  A <p> tag containing the text "warning"          //p[contains(text(), "warning")]
+  All <title> tags that are children of <book>     //book/title
+  Books by Orwell costing less than 10             //book[author="Orwell" and price < 10]
+
+These examples show that XPath is more expressive than CSS in certain cases—like selecting based on text content or element position. Mastering this skill will set you apart as a JavaScript developer, and you will be able to work in any niche environment where expertise in handling complex XML documents is required. As you can see, it goes beyond the basics of the other CSS query selectors. Knowing XPath will make you able to take any complex HTML or XML document and make sense of its data.
 
 
 Introducing document.evaluate()
 ——————
   The document.evaluate() method is how JavaScript interacts with XPath. It allows you to run an XPath expression against the DOM and get matching results back.
 This method was created specifically to work with XPath in HTML and XML documents, and it’s part of the DOM Level 3 XPath specification. XPath works on both HTML and XML because their structures are very similar—both are markup languages with nested elements.
-  You might not see the .evaluate() method mentioned in many beginner books or online tutorials. That’s because XPath is a bit of a niche topic. Most JavaScript developers go their entire careers without ever needing it-especially if they only work with websites and don’t deal with XML.
+  You might not see the .evaluate() method mentioned in many beginner books or online tutorials. That’s because XPath is a bit of a niche topic. Most JavaScript developers go their entire careers without ever needing it—especially if they only work with websites and don’t deal with XML.
 However, XPath becomes useful in environments where advanced XML processing is done, such as in data-heavy applications or when working with APIs that return XML.
-I’m including it in this book so you’re not caught off guard if you ever encounter it. My goal is to make you a well-rounded and prepared JavaScript programmer-even in the rare cases.
+I’m including it in this book so you’re not caught off guard if you ever encounter it. My goal is to make you a well-rounded and prepared JavaScript programmer—even in the rare cases.
 
-💡 Did You Know?XPath was actually designed before CSS selectors became popular! While we now use things like document.querySelector() to grab elements easily, XPath was the go-to method for finding elements in XML documents—especially in older systems.
+DID YOU KNOW? XPath was actually designed before CSS selectors became popular! While we now use things like document.querySelector() to grab elements easily, XPath was the go-to method for finding elements in XML documents—especially in older systems.
 Even today, tools like browser dev tools and web scraping software still support XPath because of how powerful it is for navigating complex document structures.
 
 
@@ -1542,7 +1574,7 @@ Here’s how the document.evaluate() method works:
   		console.log(result.snapshotItem(i).textContent);
 	}
 
-The 'document' argument-which is the second argument passed to .evaluate(), should always have the value of document if you are trying to read an HTML document, but if you are reading an XML document, its value should be the formatted XML document. 
+The 'document' argument—which is the second argument passed to .evaluate(), should always have the value of document if you are trying to read an HTML document, but if you are reading an XML document, its value should be the formatted XML document. 
   The XPathResult (fourth) argument is the format you wish the results from XPath to be in. You would pass in the relevant property of the XPathResult object that represents the type of result you need. In this case we use the .ORDERED_NODE_SNAPSHOT_TYPE which is a very common choice as it returns a list of the matched (selected) nodes nicely in an array, which is then easy for you to loop through and use. The type or format of the result returned will determine how you retrieve and work with the data. The names of these properties are written as constants, and are referenced on the XPathResult object when used like so:
 
 	XPathResult.propertyName
@@ -1670,7 +1702,7 @@ Remember that in this example we have used an XML string stored in a variable xm
 The XPathResult types
 ——————————
 
-The possible XPathResult (properties) types are 9 in number, and here is a list of them:
+The possible XPathResult (properties) types are 10 in number, and here is a list of them:
 
 
   Property name	       Code	     Description
@@ -1685,8 +1717,8 @@ ORDERED_NODE_SNAPSHOT_TYPE	               7	Returns a static list of nodes in or
 ANY_UNORDERED_NODE_TYPE	               8	Returns any one matching node (not guaranteed to be first)
 FIRST_ORDERED_NODE_TYPE	               9	Returns the first node (in the order in which it occurs on the document)
 
-Each result type constant (like XPathResult.STRING_TYPE) is actually a number behind the scenes, and that is what is represented by the code numbers 0-9 which are returned with the result. Though when handling the returned result in code, you can use these either the name (preferred for clarity) or the raw number, using the number is not recommended for beginners. I just listed the codes here for you to understand it, but you should not have to worry about them.
-  If you really ever need to check what type was returned, you can do so by using the XPathResult.ANY_TYPE property. That is why that property does not come with its own code number above. It will return the type number as its value. Here is how to check for it:
+Each result type constant (like XPathResult.STRING_TYPE) is actually a number behind the scenes, and that is what is represented by the code numbers 0-9 which are returned with the result. When handling the returned result in code you can use either the name or the raw number, but the name is much clearer and the number is not recommended for beginners. I just listed the codes here for you to understand it, but you should not have to worry about them.
+  If you really ever need to check what type was returned, you can do so by using the XPathResult.ANY_TYPE property. It is the one that does not commit you to a type up front: you ask for ANY_TYPE, and then read back which type you actually got. Here is how to check for it:
 
 	const result = document.evaluate(
   		xpath,
@@ -1711,7 +1743,7 @@ Retrieving the data based on XPathResult type
 ————————————
   The response data format will depend on the XPathResult type you specified in .evaluate(). This will also determine how you handle the result to retrieve the data it contains. The result object happens to have properties to help you access the data based on the different types that may be returned. For example, retrieve the data like so:
 
-	const result = document.evaluate(…);
+	const result = document.evaluate(...);
 	const data = result.propertyName;
 	
 Here is a list of these access properties of the result object. 
@@ -1728,7 +1760,7 @@ ORDERED_NODE_SNAPSHOT_TYPE	.snapshotItem(index)
 ANY_UNORDERED_NODE_TYPE	.singleNodeValue
 FIRST_ORDERED_NODE_TYPE	.singleNodeValue
 
-Let’s see some examples of retrieving the returned data in different ways based on the XPathResult type. I intend to leave you with these many examples so you have a deep understanding of these concepts. The key is knowing the nature (type) of the results you want, and passing the the XPathResult argument the right property, as well as knowing which property of the result object to use to retrieve the data based on that kind of data which you are expecting. 
+Let’s see some examples of retrieving the returned data in different ways based on the XPathResult type. I intend to leave you with these many examples so you have a deep understanding of these concepts. The key is knowing the nature (type) of the results you want, and passing the XPathResult argument the right property, as well as knowing which property of the result object to use to retrieve the data based on that kind of data which you are expecting. 
   We will look at how to get the following kinds of results from an XPath query return value.
 
 	1. Getting a Number (e.g., Count)
@@ -1738,7 +1770,7 @@ Let’s see some examples of retrieving the returned data in different ways base
 	5. Snapshot List of Nodes (Like an Array)
 	6. Just the First Node
 
-For all the examples, we will be demonstrating querying this HTML file structure that looks which is the same as we did in other examples above:
+For all the examples, we will be querying this HTML structure, which is the same one we used in the examples above:
 
 	<body>
   	<h1>Book List</h1>
@@ -1754,7 +1786,7 @@ For all the examples, we will be demonstrating querying this HTML file structure
 	</body>
 
 
-For each example, I will start by stating following  two things:
+For each example, I will start by stating the following two things:
 	-What type I expect
 	-How I will retrieve the data returned
 
@@ -1782,7 +1814,7 @@ For each example, I will start by stating following  two things:
 
 	This example uses an XPath expression to search for and count the 
 	number of <li> elements on the current web page. We use 
-	XPathResult.NUMBER_TYPE to specify that we expect a number-
+	XPathResult.NUMBER_TYPE to specify that we expect a number—
 	which makes sense because we are running a count() query. Once we 
 	get back the result, we retrieve it using the .numberValue property of 
 	the result object. This is because we are expecting a number, of 
@@ -1814,13 +1846,13 @@ For each example, I will start by stating following  two things:
 		);
 
 		// retrieve the data
-		console.log("Number of results is: "+result.stringValue);
+		console.log("The first title is: "+result.stringValue);
 
 	This example uses an XPath expression to search through all the 
 	<span> elements on the current web page that have a class of ‘title’. 
 	It then gets only the first one of what is matched ([1]), and returns its 
 	content (using text()). We use XPathResult.STRING_TYPE to specify 
-	that we expect a string-which makes sense because we are running a 
+	that we expect a string—which makes sense because we are running a 
 	text() query. Once we get back the result, we retrieve it using 
 	the .stringValue property of the result object. This is because we are 
 	expecting a string, of course.
@@ -1839,8 +1871,8 @@ For each example, I will start by stating following  two things:
 		-Result retrieval:		.booleanValue
 
 
-		const xpath = "boolean((//span[@class='title'])[2]/text() 
-			='Eloquent JavaScript')";
+		const xpath =
+			"boolean((//span[@class='title'])[2]/text()='Eloquent JavaScript')";
 
 
 		// Run XPath query on the current HTML document
@@ -1855,20 +1887,20 @@ For each example, I will start by stating following  two things:
 		// retrieve the data
 		console.log(result.booleanValue);
 
-	This example uses an XPath expression to search for <li> elements 
-	and see if the second <li> tag ([2]) has a title value (text()) that is 	
-	equal to the string: 'Eloquent JavaScript’. 
+	This example uses an XPath expression to search for the <span> 
+	elements with a class of title, and see whether the second one of 
+	them ([2]) has text() equal to the string 'Eloquent JavaScript'. 
 	  We use XPathResult.BOOLEAN_TYPE to specify that we expect a 
-	boolean response-which makes sense because we are running a 
+	boolean response—which makes sense because we are running a 
 	boolean() query. 
 	  Once we get back the result, we retrieve it using the .booleanValue 
 	property of the result object. This is because we are expecting a 
 	boolean, of course.
 
-	Because the second <li> items in our HTML has the text 'Eloquent 
+	Because the second <span> in our HTML does have the text 'Eloquent 
 	JavaScript' in it, the output is the following logged to the console:
 		true
-	otherwise it would returned:
+	Otherwise it would have returned:
 		false
 
 
@@ -1881,7 +1913,7 @@ For each example, I will start by stating following  two things:
 		-Type we want: 		ORDERED_NODE_ITERATOR_TYPE
 		-Result retrieval:		.iterateNext()
 
-		const xpath = "//li”;
+		const xpath = "//li";
 
 		const result = document.evaluate(
       			xpath,      
@@ -1901,7 +1933,7 @@ For each example, I will start by stating following  two things:
 	This example uses an XPath expression to search for all nodes that 
 	match the name li on the current web page. 
 	  We use XPathResult.ORDERED_NODE_ITERATOR_TYPE to specify 
-	that we expect an iterable value-since we expect more than one node 
+	that we expect an iterable value—since we expect more than one node 
 	returned. 
 	  Once we get back the result, we loop through it using 
 	the .iterateNext() method of the result object. This is because having 
@@ -1913,9 +1945,9 @@ For each example, I will start by stating following  two things:
 	Because there are three <li> items in our HTML example above, the 
 	output is the following logged to the console:
 
-		Node name is: LI
-		Node name is: LI
-		Node name is: LI
+		Node name: LI
+		Node name: LI
+		Node name: LI
 
 
 
@@ -1946,7 +1978,7 @@ For each example, I will start by stating following  two things:
 
 	This example uses an XPath expression to search for and match all li 
 	elements on the current web page. 
-	  We use XPathResult.ORDERED_NODE_ITERATOR_TYPE to specify 
+	  We use XPathResult.ORDERED_NODE_SNAPSHOT_TYPE to specify 
 	that we want an array-like list. 
 	  Once we get back the result, we loop through it and access the li 
 	items using the .snapshotItem(i) with the index. 
@@ -1956,7 +1988,7 @@ For each example, I will start by stating following  two things:
 
 		JavaScript: The Good Parts
 		Eloquent JavaScript
-		You Don't Know JS
+		You Don’t Know JS
 
 
 
@@ -1965,7 +1997,7 @@ For each example, I will start by stating following  two things:
     6. Just the First Node
  	—————————————————————
 		-Type we want: 			
-			XPathResult.ORDERED_NODE_SNAPSHOT_TYPE
+			XPathResult.FIRST_ORDERED_NODE_TYPE
 		-Result retrieval:		.singleNodeValue
 
 
@@ -1985,13 +2017,13 @@ For each example, I will start by stating following  two things:
 
 	This example uses an XPath expression to search for and match all li 
 	elements on the current web page, just like the one above that 
-	returns an array-like list . 
+	returns an array-like list. 
 	  We use XPathResult.FIRST_ORDERED_NODE_TYPE to specify 
 	that we want only the first match. 
 	  Once we get back the result, we retrieve it from the result using 
 	the .singleNodeValue property of the result object. This is the 
 	property meant for single node values, and because this node is 
-	simply as HTML element as we know it, we are free to go ahead and 
+	simply an HTML element as we know it, we are free to go ahead and 
 	use any JavaScript document object method/property on it, and we 
 	do so here. We get its text using the document object’s .textContent 
 	property.
@@ -2019,8 +2051,25 @@ Use CSS selectors when:
 * Your goal is quick DOM access for styling or manipulation.
 
 
-  XPath and document.evaluate() are advanced but powerful tools in your DOM toolkit. For most everyday tasks, CSS selectors are fine—but XPath shines when your selection needs are more complex or precise.
-  You will get the chance to do see some more practical examples of how to use XPath to process XML data.
+  There is one more way to tell them apart that is worth knowing, because it
+explains why XPath can express things CSS cannot. XPath is declarative: you
+describe what you want and it works out how to get it. The DOM methods are
+imperative: you have to code how to get there, step by step.
+  These are the situations where XPath genuinely earns its place:
+
+	-Web scraping, where it is often faster than traversing by hand.
+	-RSS and Atom feeds, which are still XML-based.
+	-Legacy enterprise systems, in banking and healthcare especially.
+	-Browser dev tools - Chrome and Firefox both support $x() in the
+	   console.
+	-XML-heavy systems such as SOAP APIs, RSS and SVG manipulation.
+	-Complex document queries that CSS selectors simply cannot express.
+
+  My advice is to master CSS selectors first, because they cover about 95% of
+what you will ever need. Then learn XPath for when you are dealing with XML,
+or with HTML complicated enough that querySelectorAll() runs out of road.
+  XPath and document.evaluate() are advanced but powerful tools in your DOM toolkit. For most everyday tasks, CSS selectors are fine—but XPath shines when your selection needs are more complex or precise. It is a powerful but niche skill: add it to your toolkit after the core DOM methods, not before them.
+  You will get the chance to see some more practical examples of how to use XPath to process XML data in Chapter 18 (File Management), where we read XML out of real files.
 
 
 

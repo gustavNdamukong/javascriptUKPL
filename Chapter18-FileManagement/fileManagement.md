@@ -22,9 +22,7 @@
 		-Using the Fetch API and DOMParser
 		-Using the XMLHttpRequest object
 		-JavaScript XML handling with XPath
-			-What is XPath
-      			-Why learn XPath
-      			-Some valid XPath queries
+			-A quick reminder of what XPath is
       			-XPath in action
           			-Read from a local or remote XML file
           			-Reading data from an XML string
@@ -1725,80 +1723,24 @@ That is it, we finally display the array in the console using console.table();
 	JavaScript XML handling with XPath
 	—————————————————————
 
-	What is XPath
-	————————
-XPath is another way to handle XML files. It is powerful and has advanced featured for heavy-duty XML processing, like XML queries. Let’s take a deep dive deep into the role of XPath in modern JavaScript and whether it's still relevant. XPath (XML Path Language) is a query language for selecting nodes from an XML document. It’s been around since 1999 and is widely used for:  
+	A quick reminder of what XPath is
+	————————————————————
+  XPath (XML Path Language) is a query language for selecting nodes out of
+an XML document. Consider it to be to XML data what SQL is to a relational
+database: you describe the thing you want, and it goes and finds it for you.
+  We covered XPath properly in Chapter 15, under the heading “XPath and
+selecting DOM Elements”. That is where you will find what document.evaluate()
+does, the full list of valid query expressions, the XPathResult types and how
+each one changes the way you read your results back, and when XPath is worth
+reaching for instead of querySelectorAll(). If any of that is hazy, go back
+and read it now, because the rest of this section assumes it.
+  What this chapter adds is the part that belongs to file management: how you
+get the XML into the browser in the first place. Take particular note that how
+you acquire the XML document does not matter to XPath. Whether you get it
+using FileReader, the Fetch API or XMLHttpRequest is not the point of focus
+here, because that is not what XPath is. XPath is what you run on the data
+once you have it, when you hand it over to document.evaluate().
 
-	- Navigating XML trees.  
-	- Extracting specific data using path expressions (e.g., `/library/book/	   title`).  
-	- Filtering nodes with conditions (e.g., `//book[price > 10]`). 
-
-Consider XPath to be to XML data what SQL (Structured Query Language) is to relational databases. It lets you find specific elements, attributes, or text within a structured document using path-like expressions. It supports filtering (`//book[price > 20]`), just like `WHERE` clauses in SQL. XPath also includes string, number, and boolean functions (`contains()`, `count()`), which are similar to JavaScript methods.
-
-  People think that XPath is obsolete, but it is not. Yes, it’s true that some developers may never have to deal with it, if their job roles do not involve processing XML files. While JSON has largely replaced XML for APIs-in fact JSON has JSONPath which is equivalent of XPath for JSON, XPath is still being widely used today. XPath is also still very much supported in all modern browsers via the evaluate() method of the HTML document object e.g.
-
-	document.evaluate();
-
-This is a JavaScript built-in DOM method specifically designed to let you run XPath queries on XML and HTML documents. We have already learned about XPath in chapter 15 under the section: XPath and selecting DOM elements. Feel free to revisit that section if you need to have a refresher before jumping back here. 
-  The following are some example requests to fetch and parse XML documents with XPath. Take particular note that how you acquire the XML document does not matter. Whether you get the XML document using FileReader, the Fetch API or XMLHttpRequest is not the point of focus here, because that is not what XPath is. XPath is when you run XPath expressions (queries) on that XML/HTML data, once you get the data. It happens when you hand over the data to document.evaluate(). 
-
-
-
-
-		Why learn XPath
-		—————————-
-
-  It is absolutely still worth learning, especially if you ever see yourself working in any of the following scenarios where it shines:
-
-	-Web Scraping (parsing HTML/XMXPath is faster than manual 
-		traversal in some cases). 
-	-RSS/Atom Feeds (still XML-based).  
-	-Legacy enterprise systems (banking, healthcare etc).
-	-Browser devTools (Chrome/Firefox support `$x()` in the console). 
-	-XML-heavy systems (e.g., SOAP APIs, RSS, SVG manipulation etc).   
-	-Maintain legacy enterprise software systems where XPath is already 
-		used.
-	-Need complex document queries that CSS selectors can’t handle.  
-
-The new document.querySelectorAll() method which accepts a CSS selector can select nodes from a DOM object very efficiently too, and it can handle most tasks. To read XML data using the querySelectorAll(), you would use the FileReader to read the data, parse (convert) it into a DOM object using DOMParser, and then query the elements in the data using the document.querySelectorAll() method.
-  However, if you happen to need to do some real complex queries, then use XPath. My advice will be for you master CSS selectors (querySelectorAll) first, because they cover 95% of all use cases. Then 
-As mentioned earlier, learn XPath only when dealing with XML or complex HTML traversal. 
-  The conclusion is this: XPath is a powerful but niche skill. Add it to your toolkit after mastering core DOM methods, and use it when dealing with XML or unusually complex HTML queries. 
-
-
-
-
-	Some valid XPath queries
-	———————————————
-  Here is a list of some valid XPath queries. This is to give you an idea. Play and experiment with them, and also check the online documents for more complex queries and explanations:
-
-Selecting nodes (select all <book> nodes)	`//book`
-Attribute access (select id attributes)	`//@id`
-Get all <book> tags where the value of their id attribute is "b1"	`//book[@id="b1"]`
-Conditional filters (filter books by prices greater than 10)	`//book[price > 10]`
-Wildcards (Select all nodes)	`//*`
-Axes (Advanced) (navigate relationships)	`//book/child::title`
-Find all <h1> tags	`//h1`
-Find links where their href value is "#foo"	 `//a[@href="#foo"]`
-Get all <span> tags that contain the text "Hello"	`//span[text()="Hello"]/..`
-Find a <p> tag that contains the text "warning"	`//p[contains(text(), "warning")]`
-Get all <title> tags that are children of <book> tags	`//book/title`
-Get all <book> tags where the author is "Orwell" and the price is greater than 10 	//book[author="Orwell" and price < 10]
-
-Here is how the querySelectorAll() DOM method would handle some of those queries listed for XPath above:
-
-	-To get all <h1> tags:
-
-		document.querySelectorAll("h1")
-
-	-Find all links where their href value is "#foo"
-
-		document.querySelectorAll('a[href="#foo"]')
-
-The key difference between XPath and the DOM methods like querySelectorAll() is that XPath is declarative (as in, you describe what you want, and it works out how to get it for you), while the DOM methods are imperative (as in, you have to manually code how you want to get your data, step-by-step). 
-
-
-	
 
 
 
@@ -1902,52 +1844,21 @@ Example 2: Using XPath on XML data from fetch() request
 
 Reading data from an XML string
 ——————————————————-
-  When showing you the syntax of XPath above, the code involved two example, both of which reading the data from an XML file named “books.xml” which you have to have in your project files, in the same directory as this JavaScript code, in order to test it. The first example read from the XML file using an XMLHttpRequest object, and the second one read the data using a fetch() request. But what if you did not have to read that data from a file? What if you already have that data available to your script, stored in a variable as a string? This will mean you do not have to use XMLHttpRequest or fetch(), because there is no request to make to get the data. As I mentioned earlier, XMLHttpRequest and fetch() are not part of XPath. They are just tools for you to pull the data in. Let’s see what the code would look like when we use XPath on an XML string.  
-
-	let xmlString = `
-  	<library>
-     		<book>
-       			<title>JavaScript: The Good Parts</title>
-       			<author>Douglas Crockford</author>
-     		</book>
-     		<book>
-       			<title>Eloquent JavaScript</title>
-       			<author>Marijn Haverbeke</author>
-     		</book>
-  	</library> `;
-
-  	const xmlDoc = new DOMParser().parseFromString(
-		xmlString, "text/xml"
-	);
-  	const titles = document.evaluate(
-    		"//title",
-    		xmlDoc,
-    		null,
-    		XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
-    		null
-  	);
-  
-  	for (let i = 0; i < titles.snapshotLength; i++) {
-    		console.log(titles.snapshotItem(i).textContent);
-  	}
-
-
-
-We have to use DOMParser to parse the string into a document. Be reminded that when we pulled in this XML string using something like XMLHttpRequest, we did not need to use the DOMParser because XMLHttpRequest does the parsing internally. If we used fetch() we had to parse the data with DOMParser.
-  Having parsed the XML document with DOMParser, we pass it to document.evaluate()
-
-	const xmlDoc = 
-    		new DOMParser().parseFromString(xmlString, "text/xml");
-
-	const titles = document.evaluate(
-    		"//title",      
-    		xmlDoc,              
-    		…
-  	);
-
-document.evaluate() returns an XPathResult, not an Array. Therefore to use the data stored in titles (the variable in which the result/response from document.evaluate() is stored), you need to loop through it. 
-  The way you loop through the data from document.evaluate() depends on what you passed in to it as the XPathResult argument. In this example we loop through the data using a for… loop while referencing the .snapshotItem() method on the titles (response), and passing to it the key in each iteration (snapshotItem(i)). This is because when running document.evaluate(), we passed in ORDERED_NODE_SNAPSHOT_TYPE as the argument value for XPathResult. The node variable then becomes an iterable object, which is why we loop through it with a for loop, to extract the data. 
-  See the section "The XPathResult types" under the sub-heading "XPath and selecting DOM Elements" in chapter 15. There I discuss the different XPathResult type options available and how they determine the approach you will take in accessing the data returned. 
+  The two examples above both read their data out of an actual file named
+books.xml sitting in your project folder. The first pulled it in with an
+XMLHttpRequest object, the second with a fetch() request. But what if you did
+not have to read the data from a file at all? What if you already had it in
+your script, stored in a variable as a string?
+  Then there is no request to make, and neither XMLHttpRequest nor fetch()
+comes into it. You hand the string to DOMParser to turn it into a real XML
+document, and run document.evaluate() on that.
+  That is exactly the example worked through in Chapter 15, under “Use
+document.evaluate() to read an XML document”, using this same library of
+books. Rather than repeat it here, go and read it there — and note while you
+are looking at it that DOMParser is doing the job XMLHttpRequest did for us
+above. XMLHttpRequest parses the XML for you internally when you set
+responseType to 'document'; fetch() and a plain string do not, which is why
+those two need DOMParser and the XMLHttpRequest version does not.
 
 
 	Limitations of the FileReader API
