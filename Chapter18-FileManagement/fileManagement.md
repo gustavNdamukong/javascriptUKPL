@@ -784,19 +784,19 @@ Hopefully, this example teaches you how to programmatically inspect the raw bina
 Sending binary file content over WebSocket
 ————————————————————————
   We will talk some more about WebSockets in Chapter 22 (Extensions), but here is what it is. A WebSocket is a two-way communication channel between the browser and the server. Unlike regular HTTP requests (which are one-way), WebSockets stay open, allowing both sides to send and receive data continuously. This makes WebSockets great for things like chat apps, multiplayer games, live dashboards, and — yes — even real-time file sharing.
-  If you are building a collaborative file-sharing app or a peer-to-peer (computer-to-computer) media uploader, and you want to send a file chunk by chunk over a WebSocket-maybe to avoid HTTP overhead or allow real-time transmission. You can do that using the readAsArrayBuffer() method of the File Reader API.
+  If you are building a collaborative file-sharing app or a peer-to-peer (computer-to-computer) media uploader, and you want to send a file chunk by chunk over a WebSocket—maybe to avoid HTTP overhead or allow real-time transmission. You can do that using the readAsArrayBuffer() method of the File Reader API.
   Why is it better to send a large file in chunks rather than uploading a whole file at once? Normally, when uploading a file to a remote server, you would use a regular 
 
 	<input type="file"> 
 
-Input element, and AJAX, via the fetch API or XMLHttpRequest, to send it to the remote server. Then you would do the following:
+input element, and AJAX, via the fetch API or XMLHttpRequest, to send it to the remote server. Then you would do the following:
 
     - Select the entire file
     - Send it all at once to the server
     - Wait until it’s 100% uploaded to do anything with it
 
 This works just fine for small files. But for large files (like videos, audio, or big documents), sending the entire file at once can cause problems.
-  Here’s why chunking can be useful-especially over a WebSocket:
+  Here’s why chunking can be useful—especially over a WebSocket:
 
     - Real-time Streaming or Processing
 		This will be great for video platforms or live audio transcription
@@ -811,9 +811,8 @@ This works just fine for small files. But for large files (like videos, audio, o
 		upload request. A file upload, as all HTTP requests, involves 
 		sending request headers back and forth 
 		between your computer and the server, with repeated 
-		connections being opened and closed for each request-
-		response, and extra steps taken per file being uploaded. Using a 
-		webSockets on the otherhand has the following advantages:
+		connections being opened and closed for each request-response, and extra steps taken per file being uploaded. Using a 
+		WebSocket on the other hand has the following advantages:
 
             * Opens one persistent connection
             * Has less overhead
@@ -822,7 +821,7 @@ This works just fine for small files. But for large files (like videos, audio, o
 		This results in faster communication, especially for apps that 
 		do a lot of back-and-forth (like collaborative tools).
 
-    - Using a webSocket to send chunks of provides more fine-grained control over the file upload process, such as giving you the ability to pause, resume the upload, or retry if something goes wrong. These can be useful if you are building a file upload manager app, or if you are working with slow or unstable networks which can stall mid way in the upload process. By sending chunks one at a time:
+    - Using a WebSocket to send chunks provides more fine-grained control over the file upload process, such as giving you the ability to pause, resume the upload, or retry if something goes wrong. These can be useful if you are building a file upload manager app, or if you are working with slow or unstable networks which can stall mid way in the upload process. By sending chunks one at a time:
 
         * If one chunk fails, you can retry just that chunk
         * You can pause and resume the upload without starting over.
@@ -830,7 +829,7 @@ This works just fine for small files. But for large files (like videos, audio, o
 		    full file at once, which means if anything breaks, the user has 
 		    to re-upload the entire file again
 
-    - Using a webSocket to send chunks is ideal when building real-time peer-to-peer (P2P) file transfer apps. Examples of such apps can be Bluetooth/WiFi direct transfers, file-sharing without a central server. With such applications, sending chunks lets two users exchange data bit by bit, showing progress or reacting in real-time-like a chat app for files.
+    - Using a WebSocket to send chunks is ideal when building real-time peer-to-peer (P2P) file transfer apps. Examples of such apps can be Bluetooth/WiFi direct transfers, file-sharing without a central server. With such applications, sending chunks lets two users exchange data bit by bit, showing progress or reacting in real time—like a chat app for files.
 
     When working with large files like videos, images, or even documents, JavaScript gives you a powerful tool called readAsArrayBuffer() from the FileReader API. This method reads a file and gives you its raw binary data, which is perfect for sending through a WebSocket connection.
 But what does that really mean? And how is it different from something like YouTube, where videos just seem to play instantly without being fully downloaded first? Let’s break this down step-by-step.
@@ -912,7 +911,7 @@ We start from the beginning of the file. As we send chunks, this number keeps tr
 
 	let offset = 0;
 
-We grab the FileReader-the specialised tool for reading files in our browser. 
+We grab the FileReader—the specialised tool for reading files in our browser. 
 
 	const reader = new FileReader();
 
@@ -936,7 +935,7 @@ We move our pointer forward by the size of the chunk. So we’re ready to send t
 
 	offset += chunkSize;
 
-If we haven’t reached the end of the file yet, we call readNextChunk() to read and send the next piece. This is what creates the loop effect, so that the chunks of the file are being read until the very last one. If we have reached the end of the file, we say the upload is done by writing the text “File upload complete” to the console
+If we haven’t reached the end of the file yet, we call readNextChunk() to read and send the next piece. This is what creates the loop effect, so that the chunks of the file are being read until the very last one. If we have reached the end of the file, we say the upload is done by writing the text “File upload complete” to the console.
 
 	if (offset < file.size) {
   		readNextChunk();
@@ -944,7 +943,7 @@ If we haven’t reached the end of the file yet, we call readNextChunk() to read
   		console.log("File upload complete.");
 	}
 
-Here is the custom function readNextChunk() which will keep reading the file until all the chunks are read. It does so by slicing the next piece of the file-from where we left off (offset) to the next chunk, each time it is called. While doing so, we tell the FileReader to read each of the slices as an ArrayBuffer (a binary format we can send).
+Here is the custom function readNextChunk() which will keep reading the file until all the chunks are read. It does so by slicing the next piece of the file—from where we left off (offset) to the next chunk, each time it is called. While doing so, we tell the FileReader to read each of the slices as an ArrayBuffer (a binary format we can send).
 
 We start the whole process by reading the first chunk. This kicks off the reading and sending loop.
 
@@ -963,7 +962,7 @@ We start the whole process by reading the first chunk. This kicks off the readin
 
 	const socket = new WebSocket("ws://localhost:3000"); 
 
-But what does this actually mean, and what is the meaning of "ws://localhost:3000”?
+But what does this actually mean, and what is the meaning of "ws://localhost:3000"?
 
 To actually upload a file using WebSocket (or even handle any server logic), you need to run a real backend server, such as:
 
@@ -971,7 +970,7 @@ To actually upload a file using WebSocket (or even handle any server logic), you
     * PHP (though PHP typically uses HTTP, not WebSocket)
     * Python, Go, or any backend tech that supports WebSockets
 
-This means first of all that  you must have a WebSocket server up and running, whether it is locally or remotely on the internet like https:sockets.io. This is needed for this or any WebSocket connection application to work. A WebSocket server is a server that supports WebSockets, as in the examples given above, which are servers running on Node.js, Python, Go etc. The string "ws://localhost:3000" passed to WebSocket() above means your WebSocket server is running localhost (your local machine, and listening for WebSocket connections on port 3000.
+This means first of all that you must have a WebSocket server up and running, whether locally or remotely on the internet. This is needed for this or any WebSocket connection application to work. A WebSocket server is a server that supports WebSockets, as in the examples given above, which are servers running on Node.js, Python, Go etc. The string "ws://localhost:3000" passed to WebSocket() above means your WebSocket server is running on localhost (your local machine) and listening for WebSocket connections on port 3000.
 
 	localhost - means your own computer (not the internet).
 
@@ -979,11 +978,11 @@ This means first of all that  you must have a WebSocket server up and running, w
 			be listening for this to work. Change that port number to the 
 			port number your WebSocket server is listening.
 
-If you are using localhost (your machine), as is in this example, it is very common to use a Node.js backend-because Node has full support for WebSockets, file handling, and custom server logic. The above example assumes you are doing that-running a Node.js server locally. 
+If you are using localhost (your machine), as is in this example, it is very common to use a Node.js backend—because Node has full support for WebSockets, file handling, and custom server logic. The above example assumes you are doing that—running a Node.js server locally. 
 
-Do not confuse that with the Live Server in VS Code which I guided you to set up so you can test your JavaScript code. The Live Server in VS Code is a static file server, which means It only serves HTML, CSS, and JavaScript. It does not support WebSocket connections out of the box. It also does not handle server-side logic like receiving file uploads or processing binary data. So you cannot upload a file to Live Server the way the WebSocket example shows.
+Do not confuse that with the Live Server in VS Code which I guided you to set up so you can test your JavaScript code. The Live Server in VS Code is a static file server, which means it only serves HTML, CSS, and JavaScript. It does not support WebSocket connections out of the box. It also does not handle server-side logic like receiving file uploads or processing binary data. So you cannot upload a file to Live Server the way the WebSocket example shows.
 
-To test this feature locally; let us write code to set up an example Node.js server. Though Node.js is beyond the scope of this book, I will give the example code on the server-side just because it is important for you to see the full communication process that makes this feature work. Being we are on the topic of file management, it only makes sense for you to learn of what happens on the backend, when you send a file over via an upload. I choose a Node.js server because it is the easiest to set up on your local machine, and is a very common and popular solution for JavaScript development. 
+To test this feature locally; let us write code to set up an example Node.js server. Though Node.js is beyond the scope of this book, I will give the example code on the server-side just because it is important for you to see the full communication process that makes this feature work. Since we are on the topic of file management, it only makes sense for you to learn what happens on the backend, when you send a file over via an upload. I choose a Node.js server because it is the easiest to set up on your local machine, and is a very common and popular solution for JavaScript development. 
   In your already existing web project, create a JavaScript file server.js – for the Node.js backend code
 
 	HTML code
@@ -1024,10 +1023,10 @@ We will maintain the same example JavaScript code above that captures the upload
 
 				npm -v
 
-	You should see a version number for that too. Now that Node.js is 	
-	installed, your readers can: Run JavaScript files in their terminal 
-	using node, create backend servers, use npm to install tools like 
-	express, ws, nodemon, and more.
+	You should see a version number for that too. Now that Node.js is
+	installed, you can run JavaScript files in your terminal using node, 
+	create backend servers, and use npm to install tools like express, 
+	ws, nodemon and more.
 
 
 -Install the WebSocket library like so: Open a terminal, then navigate to  
@@ -1047,11 +1046,12 @@ This is the file that will contain the Node.js server-side code, that will open 
 
 	const wss = new WebSocket.Server({ port: 3000 });
 
-	console.log("✅ WebSocket server is running on ws://
-		localhost:3000");
+	console.log(
+		"WebSocket server is running on ws://localhost:3000"
+	);
 
 	wss.on('connection', (ws) => {
-  		console.log("🔌 New client connected");
+  		console.log("New client connected");
 
   		const uploadPath = path.join(
 			__dirname, 'uploaded_video.mp4');
@@ -1064,11 +1064,11 @@ This is the file that will contain the Node.js server-side code, that will open 
 
   		ws.on('close', () => {
     			writeStream.end();
-    			console.log("📁 Upload complete, connection closed");
+    			console.log("Upload complete, connection closed");
   		});
 
   		ws.on('error', (err) => {
-    			console.error("❌ WebSocket error:", err);
+    			console.error("WebSocket error:", err);
     			writeStream.end();
   		});
 	});
@@ -1083,19 +1083,19 @@ Next, test the upload now by uploading a video or any large file.
 After the upload, you should see a new file “uploaded_video.mp4” created in your folder, which contains the file/video you uploaded.
   Let us discuss a little about how the Node.js code (server-side) in server.js works. 
 
-	-The "message" keyword on the line: ws.on('message', (data) => { … }
+	-The "message" keyword on the line: ws.on('message', (data) => { ... });
 	  is not a custom word. It must be exactly as it is given. This is 
 	  because "message" is a standard, built-in WebSocket event. The 
 	  fact is, in Node.js (and in the browser too), WebSockets have a few 
 	  standard event names you must use exactly — they are not 
-	  customizable. Here is a breakdown of those event names:
+	  customisable. Here is a breakdown of those event names:
 
 	
        Event name	      Meaning
        "message"	A new message (data) was received
        "open"	The connection has been successfully opened
-       “close”	The connection has closed
-       “error”	Something went wrong
+       "close"	The connection has closed
+       "error"	Something went wrong
 
 	  So when you write:
 
@@ -1106,11 +1106,11 @@ After the upload, you should see a new file “uploaded_video.mp4” created in 
 	  You're telling the WebSocket server to run this code whenever a 	
 	  message comes in from the client.
 	  If you changed "message" to something else like "fileUpload", it 	
-	  won’t work — the server won’t recognize it.
+	  won’t work — the server won’t recognise it.
 
-	-The “close” event in the ine “ws.on('close', …)” can happen on the 
+	-The “close” event in the line ws.on('close', ...) can happen on the 
 	  server when the client disconnects, and can also happen on the 
-	  client when the server disconnects. It's a two-way event-either 
+	  client when the server disconnects. It's a two-way event—either 
 	  side can trigger it, and the other side will also get notified. For 
 	  example:
 
@@ -1137,7 +1137,7 @@ If you're switching from a vanilla WebSocket server (like the one you wrote usin
 There are two (2) ways you could do it. Here they are:
 
 	-1) You can reference the remote Socket.io client via their Content 
-		Distribution Network (CDN) to create a client without having the 
+		Delivery Network (CDN) to create a client without having the 
 		code on your local machine. Do it like so:
 
 		HTML code (to load the Socket.IO client via CDN)
@@ -1148,19 +1148,19 @@ There are two (2) ways you could do it. Here they are:
 		JavaScript code
 		—————————
   
-		// Or io("http://localhost:3000”)
+		// Or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
 		The value (string) you pass to io() will be location of your 
 		WebSocket server, which can be on your local 
-		machine (eg server.js), in which case you would pass in "http://
-		localhost:3000”. Note that this is different from 
-		"ws://localhost:3000”.
+		machine (eg server.js), in which case you would pass in
+		"http://localhost:3000". Note that this is different from
+		"ws://localhost:3000".
 
 	-2) Alternatively, you can use the Node Package Manager (NPM) tool 
 		which you should have installed on your machine together with 
-		Node.js-the same one you should have used to install the 
-		WebSocket (ws) library. Use NPM to install the a socket.io client 
+		Node.js—the same one you should have used to install the 
+		WebSocket (ws) library. Use NPM to install the socket.io client 
 		onto your local machine like so, via your terminal:
 
 			npm install socket.io-client
@@ -1170,24 +1170,26 @@ There are two (2) ways you could do it. Here they are:
 
 		import { io } from "socket.io-client";
 
-		// or io(“http://localhost:3000”)
+		// or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
 		Again, the value (string) you pass to io() will be the 
 		location of your WebSocket server, which can be on your local 
-		machine (eg server.js), in which case you would pass in "http://
-		localhost:3000”. Note that this is different from 
-		"ws://localhost:3000”.
+		machine (eg server.js), in which case you would pass in
+		"http://localhost:3000". Note that this is different from
+		"ws://localhost:3000".
 
 Conclusion
 ——————
-In conclusion, when you are working with standard WebSocket servers, you have to create a WebSocket server like so:
+In conclusion, when you are talking to a standard WebSocket server, you create the client end of the connection like so:
 
 	new WebSocket("ws://...")
 
-Whereas, for communicating with a Socket.IO server, you are required to create a WebSocket server like so:
+Whereas, for communicating with a Socket.IO server, you create that client like so:
 
 	io("http://...")
+
+Note that both of those lines run in the BROWSER and create a client. The server is the separate program you started with node server.js.
 
 If your server is on another machine or hosted online, create a WebSocket client like so:
 
@@ -1255,13 +1257,13 @@ Here is a bonus tip: If the browser ever blocks a request and says something lik
 		console.log('Server running on http://localhost:3000'); 
 	});
 
-This is because, earlier, we setup only a WebSocket server and not an HTTP server. So we just did:
+This is because, earlier, we set up only a WebSocket server and not an HTTP server. So we just did:
 
 	const wss = new WebSocket.Server({ port: 3000 });
 
-We didn’t use http.createServer() or Express. That style runs WebSocket-only, without a regular HTTP server. That’s why there was no need for a server.listen() in that case-the WebSocket server handled its own listening.
+We didn’t use http.createServer() or Express. That style runs WebSocket-only, without a regular HTTP server. That’s why there was no need for a server.listen() in that case—the WebSocket server handled its own listening.
 
-This time around, when adding a CORS, we needed an HTTP server for that, and therefore we absolutely needed this line:
+This time around, when adding CORS, we needed an HTTP server for that, and therefore we absolutely needed this line:
 
 	server.listen(3000, () => {
   		console.log('Server running on http://localhost:3000');
@@ -1284,12 +1286,12 @@ Without the server.listen(…) line, no server will be started.
   When sending large files, for example video files via a WebSocket, that is not the same thing as real video streaming like Netflix or YouTube. Once uploaded to the (remote) server, the job of WebSocket is done. Though you can start processing or displaying the file on the remote server as it arrives, how you manage this playback process is a separate thing. You would need to build your own video player logic to play the data in chunks. Real streaming services offered by platforms like Netflix or YouTube use smart streaming protocols like HLS (HTTP Live Streaming) and MPEG-DASH (Dynamic Adaptive Streaming over HTTP). 
   These streaming protocols offer the following:
 
-    * Chop the video into small, downloadable segments to pass down to the  video player via the <video> HTML element of a web page. 
+    * Chop the video into small, downloadable segments to pass down to the video player via the <video> HTML element of a web page. 
     * Allow the video player on a web page to request for only the needed segments
     * Enable adaptive quality (e.g., switch from 1080p to 720p if internet is slow)
 
 This makes video smooth, fast, and user-friendly — which WebSocket by itself doesn’t provide.
-  So, in conclusion, WebSockets can be used to stream media, but not in the traditional sense. It is not optimised for that. While you can stream binary chunks of a video or audio file over WebSocket, you’ll need to build your own playback logic. Real video streaming uses smarter protocols like HLS or MPEG-DASH, which streaming services like Youtube and Netflix use. Here is when you can use WebSockets for media:
+  So, in conclusion, WebSockets can be used to stream media, but not in the traditional sense. It is not optimised for that. While you can stream binary chunks of a video or audio file over WebSocket, you’ll need to build your own playback logic. Real video streaming uses smarter protocols like HLS or MPEG-DASH, which streaming services like YouTube and Netflix use. Here is when you can use WebSockets for media:
 
     * When you are building your own media uploader or experimental video player
     * When building a peer-to-peer (P2P) file sharing app
@@ -1310,7 +1312,7 @@ Sending files using WebSockets gives you more power and control — you decide h
 
 Previewing a PDF file
 ————————————
-  This example allows the user to select a .pdf file to upload, after which it reads it using readAsArrayBuffer(), then creates a temporary URL so the PDF file that can be viewed directly in the browser.
+  This example allows the user to select a .pdf file to upload, after which it reads it using readAsArrayBuffer(), then creates a temporary URL so the PDF file can be viewed directly in the browser.
 
 
 		HTML code
