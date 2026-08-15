@@ -1,5 +1,4 @@
-QUIZ — Chapter 7: Functions
-===========================
+# QUIZ — Chapter 7: Functions
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 7: Functions. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) In this code, which of name and "Sam" is the parameter, and which is the argument?
 
@@ -125,15 +123,15 @@ QUESTIONS
     without you having to say in advance how many there will be. Call it twice with different
     amounts of numbers.
 
-    Clue: three dots in the parameter list will gather them all into an array for you, and then
-    an array method from Chapter 3 will add them up.
+  Clue: three dots in the parameter list will gather them all into an array for you, and then
+  an array method from Chapter 3 will add them up.
 
 
 13) EXERCISE. Write a function called setMember that takes a name and a type, where type
     defaults to "member" if nothing is passed for it. Prove that the default works by calling it
     both ways.
 
-    Clue: you give the default right there in the parameter list, with an equals sign.
+  Clue: you give the default right there in the parameter list, with an equals sign.
 
 
 14) EXERCISE. Take this array and use map() with an arrow function to produce a new array where
@@ -145,8 +143,7 @@ QUESTIONS
     return.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) name is the parameter. "Sam" is the argument.
 
@@ -210,7 +207,7 @@ ANSWERS
 
 5) It prints nothing, and throws:
 
-        ReferenceError: testLocalVar is not defined
+    ReferenceError: testLocalVar is not defined
 
    testLocalVar was declared with var inside the function, which makes it function-scoped. It
    exists only while the function is running, and only inside it. From outside, the name means
@@ -249,8 +246,8 @@ ANSWERS
 
 8) It prints:
 
-        10
-        undefined
+    10
+    undefined
 
    regularFunction is an ordinary function, and when you call it as obj.regularFunction(), its
    this refers to the object it was called on. So this.value is 10.
@@ -296,9 +293,9 @@ ANSWERS
             console.log("I run immediately!");
         })();
 
-    The main reason for using one is to **keep things private**. Anything declared inside stays
-    inside, so it never touches the global scope and cannot clash with names elsewhere in your
-    program:
+  The main reason for using one is to **keep things private**. Anything declared inside stays
+  inside, so it never touches the global scope and cannot clash with names elsewhere in your
+  program:
 
         const result = (function() {
             let secret = "Hidden Data";
@@ -308,7 +305,7 @@ ANSWERS
         console.log(result);          // "Hidden Data"
         console.log(typeof secret);   // "undefined" - it never escaped
 
-    It is also handy for setup code that should run exactly once.
+  It is also handy for setup code that should run exactly once.
 
 
 11) Here is one way:
@@ -321,9 +318,9 @@ ANSWERS
 
         console.log('The sum of the two numbers is: ' + sum);
 
-    Output:
+  Output:
 
-        The sum of the two numbers is: 10
+    The sum of the two numbers is: 10
 
     Notice the two jobs the + sign does here. Inside the function it adds two numbers together.
     In the console.log line it joins a piece of text to a value, which is called concatenation.
@@ -339,9 +336,9 @@ ANSWERS
         console.log(addAll(1, 2, 3, 4));      // 10
         console.log(addAll(5, 10));           // 15
 
-    The three dots gather however many arguments were passed into a real array called numbers.
-    Because it is a genuine array, you can use array methods on it — here reduce(), from Chapter
-    3, to add them all up starting from 0.
+  The three dots gather however many arguments were passed into a real array called numbers.
+  Because it is a genuine array, you can use array methods on it — here reduce(), from Chapter
+  3, to add them all up starting from 0.
 
     A function that accepts a varying number of arguments like this is called a variadic
     function.
@@ -358,8 +355,8 @@ ANSWERS
     The `= "member"` in the parameter list is the default. It is used only when nothing is
     passed for that parameter. Pass something and yours wins.
 
-    Defaults must come after the parameters that have none, otherwise you would have no way of
-    skipping them.
+  Defaults must come after the parameters that have none, otherwise you would have no way of
+  skipping them.
 
 
 14) 

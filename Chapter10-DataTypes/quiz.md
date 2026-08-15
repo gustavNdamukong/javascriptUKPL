@@ -1,5 +1,4 @@
-QUIZ — Chapter 10: Data Types
-=============================
+# QUIZ — Chapter 10: Data Types
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 10: Data Types. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What is the difference between null and undefined? Which one does JavaScript give you on
    its own, and which one do you have to ask for?
@@ -83,25 +81,24 @@ QUESTIONS
     really is an array with nothing in it. Test it with an empty array, an array with items, an
     empty string, and null.
 
-    Clue: you need two checks joined with &&: that it is an array at all, and that its length is
-    zero.
+  Clue: you need two checks joined with &&: that it is an array at all, and that its length is
+  zero.
 
 
 11) EXERCISE. Take an array and an object, convert each into a string, and print them.
 
-    Clue: there is one built-in method that does this for both, and it has JSON in the name.
+  Clue: there is one built-in method that does this for both, and it has JSON in the name.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) Both mean "there is nothing here". The difference is in who put the nothing there.
 
-   - **undefined** is what JavaScript gives you on its own. You get it from a variable that was
-     declared but never assigned, from a property that does not exist, and from a function that
-     returns nothing.
-   - **null** is one you set deliberately. It is a programmer saying "this is empty, and I meant
-     it". JavaScript will never hand you null by itself.
+- **undefined** is what JavaScript gives you on its own. You get it from a variable that was
+  declared but never assigned, from a property that does not exist, and from a function that
+  returns nothing.
+- **null** is one you set deliberately. It is a programmer saying "this is empty, and I meant
+  it". JavaScript will never hand you null by itself.
 
         let notSetYet;                  // undefined - nobody assigned anything
         let deliberatelyEmpty = null;   // null - we chose this
@@ -112,7 +109,7 @@ ANSWERS
 
 2) The eight falsy values are:
 
-        false     0     -0     0n     ""     null     undefined     NaN
+    false     0     -0     0n     ""     null     undefined     NaN
 
    Of the three given, only **""** is falsy. Both **[]** and **{}** are truthy.
 
@@ -123,7 +120,7 @@ ANSWERS
 
 3) It prints:
 
-        Yes
+    Yes
 
    Because `[]` is truthy, the if branch runs. If you have come from a language where an empty
    array is falsy, you would expect "No", and this is exactly the sort of thing that produces a
@@ -168,7 +165,7 @@ ANSWERS
 
 6) It prints:
 
-        number2
+    number2
 
    not "number". `typeof` binds more tightly than `+`, so JavaScript reads it as `(typeof 2) + 2`
    — that is, the string "number" joined to the number 2, which gives the string "number2".

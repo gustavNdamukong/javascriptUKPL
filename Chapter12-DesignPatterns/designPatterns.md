@@ -11,42 +11,42 @@ Design patterns are reusable solutions to
   patterns are categorised into three groups:
 
    1) Creational Patterns
-        These are concerned with object 
-         creation.
+    These are concerned with object
+    creation.
 
-         -SINGLETON
-         -FACTORY
-         -ABSTRACT FACTORY
-         -BUILDER
-         -PROTOTYPE
+    - SINGLETON
+    - FACTORY
+    - ABSTRACT FACTORY
+    - BUILDER
+    - PROTOTYPE
    2) Structural Patterns
-         These patterns focus on the 
-          composition (structure) of classes or 
-          objects.
+    These patterns focus on the
+    composition (structure) of classes or
+    objects.
 
-         -ADAPTER PATTERN
-         -DECORATOR PATTERN
-         -FACADE PATTERN
-         -COMPOSITE PATTERN
-         -PROXY PATTERN
+    - ADAPTER PATTERN
+    - DECORATOR PATTERN
+    - FACADE PATTERN
+    - COMPOSITE PATTERN
+    - PROXY PATTERN
    3) Behavioural Patterns
-          These patterns deal with object 
-          interaction and responsibility 
-          distribution.
+    These patterns deal with object
+    interaction and responsibility
+    distribution.
 
-         -OBSERVER PATTERN
-         -STRATEGY PATTERN
-         -TEMPLATE METHOD PATTERN
-         -COMMAND PATTERN
-         -ITERATOR PATTERN
+    - OBSERVER PATTERN
+    - STRATEGY PATTERN
+    - TEMPLATE METHOD PATTERN
+    - COMMAND PATTERN
+    - ITERATOR PATTERN
 
 ![Figure 12.1 — The three families of design pattern](images/ch12-fig-01-three-groups.svg)
 
-*Figure 12.1 — The three families of design pattern*
+- Figure 12.1 — The three families of design pattern*
 
 
 
-    These design patterns are global and 
+  These design patterns are global and
   programming-language agnostic, however, 
   each programming language has its own 
   way of implementing them. In the 
@@ -59,9 +59,8 @@ Design patterns are reusable solutions to
   the same, with syntactical differences of 
   course.
 
-         1) Creational Design Patterns
-         ————————————-
-    Creational design patterns deal with 
+#### 1) Creational Design Patterns
+  Creational design patterns deal with
   object creation mechanisms, trying to 
   create objects in a manner suitable to the 
   situation. These patterns provide flexibility 
@@ -71,23 +70,21 @@ Design patterns are reusable solutions to
   creation processes in your applications, 
   ensuring efficiency, flexibility, and 
   maintainability.
-    The following are the patterns in this 
+  The following are the patterns in this
   group:
 
-        -SINGLETON
-        -FACTORY
-        -ABSTRACT FACTORY
-        -BUILDER
-        -PROTOTYPE
+    - SINGLETON
+    - FACTORY
+    - ABSTRACT FACTORY
+    - BUILDER
+    - PROTOTYPE
 
 
-    SINGLETON PATTERN
-    —————————
-    The singleton pattern ensures that a class has only one instance and provides a global point of access to it. It's commonly 
+#### SINGLETON PATTERN
+  The singleton pattern ensures that a class has only one instance and provides a global point of access to it. It's commonly
 used for shared resources like databases, configuration, or logging. The following is an example of a singleton implementation in JavaScript to make a database connection.
   
-    JavaScript example
-    ————————
+#### JavaScript example
 
           class DatabaseConnection {
   		constructor() {
@@ -127,40 +124,40 @@ used for shared resources like databases, configuration, or logging. The followi
 
 
 
-      Key Points:
-      —————
-	-Normally, to implement a singleton, you would create a private 
-	   constructor in whichever programming language you are using. A 
-	   private constructor will ensure that no external code can directly create 
-	   an instance of the class. Only the class itself can create 
-           an instance, and in our example, that happens in the constructor. 
-	   Notice how, in that constructor we check if a database connection has 
-	   already been created and return the existing one if it is. A new instance 
-	   is only created if no earlier connection exists.
-	     In JavaScript classes however, private constructors are not supported 
-	   like they are in PHP, for example. But we can still achieve a Singleton
-	   behaviour by storing the instance in a static property and returning it if 
-	   it already exists.
-	     This is the whole idea behind a singleton—multiple calls to create a 
-	   database connection will all return the same instance. This ensures 
-	   that only one database connection is used throughout the application, 
-	   which can improve performance and prevent multiple connections from 
-	   being opened unnecessarily, which could lead to inefficiency and 
-	   resource exhaustion. This is why this pattern is commonly used in 
-  	   situations like managing a single database connection in a web 
-	   application.
-	-The connectToDatabase() method is declared private using the 
-	   # prefix. Because the connectToDatabase() is a private method, it 
-	   cannot be called directly, and that is the intention. That is why it is 
-	   called by the class itself, from the constructor, when you instantiate the 
-	   class in order to make the database connection. 
-	-The connectToDatabase() method (which is private) is where we make 
-	   the database connection. Normally, in a real application, this is where 
-	   you will have the code on your server to make and return the 
-	   connection to your database server. But since working on a server is 
-	   beyond the scope of this book, I have mimicked that process by logging 
-	   some text to the console saying we are making a connection with the 
-	   database. Here is what it looks like:
+  Key Points:
+  —————
+  - Normally, to implement a singleton, you would create a private
+  constructor in whichever programming language you are using. A
+  private constructor will ensure that no external code can directly create
+  an instance of the class. Only the class itself can create
+    an instance, and in our example, that happens in the constructor.
+  Notice how, in that constructor we check if a database connection has
+  already been created and return the existing one if it is. A new instance
+  is only created if no earlier connection exists.
+  In JavaScript classes however, private constructors are not supported
+  like they are in PHP, for example. But we can still achieve a Singleton
+  behaviour by storing the instance in a static property and returning it if
+  it already exists.
+  This is the whole idea behind a singleton—multiple calls to create a
+  database connection will all return the same instance. This ensures
+  that only one database connection is used throughout the application,
+  which can improve performance and prevent multiple connections from
+  being opened unnecessarily, which could lead to inefficiency and
+  resource exhaustion. This is why this pattern is commonly used in
+  situations like managing a single database connection in a web
+  application.
+  - The connectToDatabase() method is declared private using the
+  # prefix. Because the connectToDatabase() is a private method, it
+  cannot be called directly, and that is the intention. That is why it is
+  called by the class itself, from the constructor, when you instantiate the
+  class in order to make the database connection.
+  - The connectToDatabase() method (which is private) is where we make
+  the database connection. Normally, in a real application, this is where
+  you will have the code on your server to make and return the
+  connection to your database server. But since working on a server is
+  beyond the scope of this book, I have mimicked that process by logging
+  some text to the console saying we are making a connection with the
+  database. Here is what it looks like:
 
 		#connectToDatabase() {
     			console.log("Establishing new database connection...");
@@ -172,22 +169,21 @@ used for shared resources like databases, configuration, or logging. The followi
 
 		console.log(db1 === db2); 
 
-	   The result of this is true.
+  The result of this is true.
 
 
 
 
 
 
-       FACTORY PATTERN
-       ——————————-
-    The factory pattern provides a way to 
+#### FACTORY PATTERN
+  The factory pattern provides a way to
   create objects without specifying the exact 
   class. It delegates the object creation 
   process (logic) to subclasses or another object.
 
-    JavaScript example:
-    ——————
+  JavaScript example:
+  ——————
 
          class Dog {
   		speak() {
@@ -215,17 +211,15 @@ used for shared resources like databases, configuration, or logging. The followi
 
 
 
-        Using the factory class
-        ——————————
+#### Using the factory class
        const animal = AnimalFactory.createAnimal("dog");
 	console.log(animal.speak()); // Woof
 
 
 
 
-    ABSTRACT FACTORY PATTERN
-    ——————————————— 
-    The Abstract Factory Pattern provides an 
+#### ABSTRACT FACTORY PATTERN
+  The Abstract Factory Pattern provides an
   interface for creating families of related or 
   dependent objects without specifying their 
   concrete classes. It allows the client to 
@@ -233,9 +227,9 @@ used for shared resources like databases, configuration, or logging. The followi
   family, where the exact class of each 
   object is determined by the factory. It is ideal for UI libraries or platform-dependent logic.
 
-    Example Scenario:  
-    ——————-
-    Let's say you’re building an application 
+  Example Scenario:
+  ——————-
+  Let's say you’re building an application
   that can work with two types of user 
   interfaces: Windows and Mac. Each UI has 
   its own specific elements (like buttons, 
@@ -244,8 +238,7 @@ used for shared resources like databases, configuration, or logging. The followi
   UI components based on the environment.
 
  
-    JavaScript Code Example
-    ———————
+#### JavaScript Code Example
          
 // Abstract Products
 class Button {
@@ -324,28 +317,26 @@ function renderUI(factory) {
 renderUI(new WindowsFactory());
 renderUI(new MacFactory());
 
-Key points
-—————-
--Abstract Factory pattern allows 
-       creating families of related objects.
--You can easily switch between different 
-       families (e.g., Windows vs Mac).
+#### Key points
+- Abstract Factory pattern allows
+  creating families of related objects.
+- You can easily switch between different
+  families (e.g., Windows vs Mac).
 
 
 
 
 
 
-    BUILDER PATTERN
-    ——————————
-    The Builder Pattern is used to create 
+#### BUILDER PATTERN
+  The Builder Pattern is used to create
   complex objects step by step. It separates 
   the construction of a complex object from 
   its representation, allowing different representations of the object to be created using the same process.
 
   Example Scenario:
   ————————
-    Consider building a ‘House’ with various 
+  Consider building a ‘House’ with various
   customisable features like walls, doors, 
   windows, and roof. Each house may differ 
   in terms of these features, but the 
@@ -432,23 +423,21 @@ house.show();
 
 The output of this code will be:
 
-	House with Wooden walls, Wooden doors, Wooden windows, and a Wooden roof
+  House with Wooden walls, Wooden doors, Wooden windows, and a Wooden roof
 
 
-      Key points:
-      ——————
-   -The Builder Pattern focuses on step-by-
-     step construction of complex objects.
-   -The same building process can create 
-     different results (e.g., WoodenHouse or 
-     BrickHouse).
+  Key points:
+  ——————
+- The Builder Pattern focuses on step-by-step construction of complex objects.
+- The same building process can create
+  different results (e.g., WoodenHouse or
+  BrickHouse).
 
 
 
 
-    PROTOTYPE PATTERN
-    ———————————-
-    The Prototype Pattern involves creating 
+#### PROTOTYPE PATTERN
+  The Prototype Pattern involves creating
   new objects by copying an existing object 
   (the prototype). This is useful when the 
   cost of creating a new object is expensive, 
@@ -457,7 +446,7 @@ The output of this code will be:
 
   Example Scenario:  
   ———————-
-    Imagine you are creating a ‘Document 
+  Imagine you are creating a ‘Document
   Editor’ where you need to create copies of 
   documents. The prototype pattern allows 
   you to create new documents by cloning 
@@ -465,8 +454,8 @@ The output of this code will be:
   scratch.
 
 
-    JavaScript Code Example:
-    —————————-
+  JavaScript Code Example:
+  —————————-
         
  class TextDocument {
   	constructor(content) {
@@ -498,41 +487,39 @@ originalDocument.showContent();
 clonedDocument.showContent();   
 
 
-    Key points:
-    —————-
-   -Prototype Pattern allows creating new 
-     objects by copying an existing object.
-   -It is useful for cases where object 
-     creation is expensive, and copying is 
-     more efficient.
+  Key points:
+  —————-
+- Prototype Pattern allows creating new
+  objects by copying an existing object.
+- It is useful for cases where object
+  creation is expensive, and copying is
+  more efficient.
 
 
 
 
 
 
-    2) STRUCTURAL DESIGN PATTERNS
-    ———————————————
-    Structural design patterns focus on how objects and classes are composed   
+#### 2) STRUCTURAL DESIGN PATTERNS
+  Structural design patterns focus on how objects and classes are composed
 (structured). They focus on how objects and classes are composed to form larger structures, making code easier to manage and scale. They help ensure that if one part of a system changes, the entire structure doesn’t need to change. These structural patterns help organise and manage the relationships between classes and objects in your applications, providing 
 flexibility, reusability, and better organisation. The following design patterns 
 fall under this group:
 
 
 
-    -ADAPTER PATTERN
-    -DECORATOR PATTERN
-    -FACADE PATTERN
-    -COMPOSITE PATTERN
-    -PROXY PATTERN
-    -BRIDGE PATTERN
-    -FLYWEIGHT PATTERN
+  - ADAPTER PATTERN
+  - DECORATOR PATTERN
+  - FACADE PATTERN
+  - COMPOSITE PATTERN
+  - PROXY PATTERN
+  - BRIDGE PATTERN
+  - FLYWEIGHT PATTERN
 
 
 
-    ADAPTER PATTERN
-    ——————————-
-    The Adapter Pattern allows objects with 
+## ADAPTER PATTERN
+  The Adapter Pattern allows objects with
   incompatible interfaces to work together. It 
   acts as a bridge between two interfaces 
   that otherwise couldn’t interact directly. 
@@ -540,17 +527,16 @@ fall under this group:
   class with a different interface into your 
   system.
 
-    Example Scenario:
-    ——————-
-    Imagine you have a Media Player that 
+  Example Scenario:
+  ——————-
+  Imagine you have a Media Player that
   only supports playing MP3 files, but you 
   want to add support for playing MP4 files. 
   The adapter pattern helps convert the MP4 
   interface to be compatible with the MP3 
   player.
 
-    JavaScript code example
-   ——————————
+#### JavaScript code example
 // Old API
 class OldPrinter {
   	printText(text) {
@@ -586,20 +572,18 @@ adaptedPrinter.print("Hello World!"); // works like the new printer
 In this pattern, PrinterAdapter plays the role of the plug adapter. It makes the old printer work with new code that expects a different method (print instead of printText).
 
 
-Key points
-—————-
-   -The Adapter Pattern enables objects with 
-     incompatible interfaces to work together.
-   -You can introduce new functionality to an 
-     existing system without changing its 
-     structure.
+#### Key points
+- The Adapter Pattern enables objects with
+  incompatible interfaces to work together.
+- You can introduce new functionality to an
+  existing system without changing its
+  structure.
 
 
 
 
 
-      DECORATOR PATTERN
-      ————————————
+## DECORATOR PATTERN
   The decorator pattern allows behaviour to be added to individual objects, either statically or dynamically, without affecting the behaviour of other objects from the same class. Basically, you can use this pattern to add behaviour to objects dynamically without changing their structure.
 
     JavaScript example:
@@ -641,70 +625,69 @@ console.log(`Total cost: $${myCoffee.cost()}`);
 
 The result in the console will be something like this:
 
-	Total cost: $6.5
+  Total cost: $6.5
 
 Imagine you buy a basic coffee. Then you say, “Add milk.” Then, “Add sugar.” Each time, you’re upgrading the same coffee without changing the original cup.
 The Decorator pattern works exactly like that—wrapping extras around something, layer by layer, without touching its core.
 
 
 
-        Key points
-        —————-
-   -The purpose of the Decorator Pattern is 
-     to allow behaviour to be added to 
-     individual objects dynamically, without 
-     affecting the behaviour of other objects 
-     from the same class. This is done by 
-     “wrapping” the object with decorator 
-     classes that enhance or modify its 
-     functionality.
-   -The pattern is called a decorator 
-     because the decorator class is used to 
-     “decorate” or wrap the original class, 
-     adding additional features or 
-     responsibilities to the object being 
-     decorated. Each decorator class 
-     implements the same interface or inherits 
-     from the same parent class as the 
-     original object.
-   -Here is how the Code really Works:
-	Component class Coffee:
-          -This Coffee class defines the core 
-             functionality, which in this case is 
-             The method cost()
-           -This sets the contract for both the 
-             base class (Coffee) and the 
-             decorators.
-	Concrete Classes( like MilkDecorator or SugarDecorator):
-           -These classes implement the basic 
-             behaviour of the Coffee class. In 
-             this case, it represents a simple 
-             coffee with a base cost.
-	Decorator Classes (MilkDecorator and 
-         SugarDecorator):
-           -These decorator classes implement 
-             the same Coffee class but 
-             enhance the functionality of the 
-             base class (Coffee). They add 
-             their own behaviour-in this case 
-             flavour (adding milk or sugar) while 
-             still calling the base class’s methods 
-             to maintain the existing functionality.
-	       For example, MilkDecorator adds 
-             the cost of milk to the base cost of coffee. Similarly, 
-             SugarDecorator adds the cost.
-   -The decorator pattern also allows for 
-     dynamic and flexible behaviour addition. 
-     You can apply multiple decorators in 
-     sequence, as shown in the example 
-     where we first decorate the coffee with 
-     milk and then with sugar. Each decorator 
-     adds to the cost and description, building 
-     on top of the previous one.
+#### Key points
+- The purpose of the Decorator Pattern is
+  to allow behaviour to be added to
+  individual objects dynamically, without
+  affecting the behaviour of other objects
+  from the same class. This is done by
+  “wrapping” the object with decorator
+  classes that enhance or modify its
+  functionality.
+- The pattern is called a decorator
+  because the decorator class is used to
+  “decorate” or wrap the original class,
+  adding additional features or
+  responsibilities to the object being
+  decorated. Each decorator class
+  implements the same interface or inherits
+  from the same parent class as the
+  original object.
+- Here is how the Code really Works:
+  Component class Coffee:
+    - This Coffee class defines the core
+      functionality, which in this case is
+      The method cost()
+    - This sets the contract for both the
+      base class (Coffee) and the
+      decorators.
+  Concrete Classes( like MilkDecorator or SugarDecorator):
+    - These classes implement the basic
+      behaviour of the Coffee class. In
+      this case, it represents a simple
+      coffee with a base cost.
+  Decorator Classes (MilkDecorator and
+    SugarDecorator):
+    - These decorator classes implement
+      the same Coffee class but
+      enhance the functionality of the
+      base class (Coffee). They add
+      their own behaviour-in this case
+      flavour (adding milk or sugar) while
+      still calling the base class’s methods
+      to maintain the existing functionality.
+  For example, MilkDecorator adds
+      the cost of milk to the base cost of coffee. Similarly,
+      SugarDecorator adds the cost.
+- The decorator pattern also allows for
+  dynamic and flexible behaviour addition.
+  You can apply multiple decorators in
+  sequence, as shown in the example
+  where we first decorate the coffee with
+  milk and then with sugar. Each decorator
+  adds to the cost and description, building
+  on top of the previous one.
 	
-    Use Case:
-    ——————
-    The Decorator Pattern is useful when you 
+  Use Case:
+  ——————
+  The Decorator Pattern is useful when you
   want to add functionality to an object 
   without modifying its code, especially 
   when you need to apply different 
@@ -714,7 +697,7 @@ The Decorator pattern works exactly like that—wrapping extras around something
   multiple subclasses to represent each 
   combination, you can achieve this through 
   decorators.
-	This decorator pattern provides 
+  This decorator pattern provides
   flexibility because you can “stack” multiple 
   decorators in any order and combine them 
   as needed without altering the underlying 
@@ -723,15 +706,14 @@ The Decorator pattern works exactly like that—wrapping extras around something
 
   
 
-      FACADE PATTERN
-      —————————-
-    The facade pattern provides a simplified 
+## FACADE PATTERN
+  The facade pattern provides a simplified
   interface to a complex subsystem. It hides 
   the complexities of the system behind a 
   unified, easy-to-understand interface.
 
-    JavaScript example:
-    ———————
+  JavaScript example:
+  ———————
         
 	class CPU {
   		start() {
@@ -772,99 +754,97 @@ The Decorator pattern works exactly like that—wrapping extras around something
         const myComputer = new Computer();
 	myComputer.start();
 
-	The output of this code will be:
+  The output of this code will be:
 
-		CPU started
-		Memory loaded
-		Hard drive read
+    CPU started
+    Memory loaded
+    Hard drive read
 
 
 
-      Key points:
-      ——————
-	Starting a computer involves many parts—CPU, memory, hard drive—all working together. But you don’t push ten buttons to turn it on. You press one power button. The Facade pattern is like that power button—it hides the 
+  Key points:
+  ——————
+  Starting a computer involves many parts—CPU, memory, hard drive—all working together. But you don’t push ten buttons to turn it on. You press one power button. The Facade pattern is like that power button—it hides the
 messy details behind a single, simple interface.
-   -The Facade Pattern provides a simplified 
-     interface to a complex system or a set of 
-     classes. It hides the complexity of the 
-     subsystems and offers a unified, easier-
-     to-use interface for the client.
-   -It is called a Facade because it acts as 
-     the “front” or “face” of a set of 
-     subsystems. Instead of interacting 
-     directly with complex subsystems (like 
-     CPU, Memory, and HardDrive in this 
-     example), the client interacts with a 
-     single class (the ComputerFacade) that 
-     manages the communication with the 
-     subsystems behind the scenes.
-   -Here is how the Code Works:
-	Subsystem Classes:
-	   -The CPU, Memory, and HardDrive are 
-            the individual subsystems that 
-            perform specific tasks.
-	  -Each class has its own methods 
-           (start(), load(), read(), etc.) that are 
-           specific to its responsibility.
-	Facade Class (Computer):
-	   -This class aggregates (brings 
-           together) the subsystems (CPU, 
-           Memory, and HardDrive) and exposes 
-           a simple start() method to the client.
-	  -The start() method internally 
-           coordinates the necessary calls to the 
-           subsystems, such as freezing the 
-           CPU, loading data into memory, 
-           reading from the hard drive, and 
-           finally executing instructions.
-	  -The client only needs to call start(), 
-          without worrying about the individual 
-          steps required to boot the computer.
+- The Facade Pattern provides a simplified
+  interface to a complex system or a set of
+  classes. It hides the complexity of the
+  subsystems and offers a unified, easier-to-use interface for the client.
+- It is called a Facade because it acts as
+  the “front” or “face” of a set of
+  subsystems. Instead of interacting
+  directly with complex subsystems (like
+  CPU, Memory, and HardDrive in this
+  example), the client interacts with a
+  single class (the ComputerFacade) that
+  manages the communication with the
+  subsystems behind the scenes.
+- Here is how the Code Works:
+  Subsystem Classes:
+  - The CPU, Memory, and HardDrive are
+      the individual subsystems that
+      perform specific tasks.
+  - Each class has its own methods
+    (start(), load(), read(), etc.) that are
+    specific to its responsibility.
+  Facade Class (Computer):
+  - This class aggregates (brings
+    together) the subsystems (CPU,
+    Memory, and HardDrive) and exposes
+    a simple start() method to the client.
+  - The start() method internally
+    coordinates the necessary calls to the
+    subsystems, such as freezing the
+    CPU, loading data into memory,
+    reading from the hard drive, and
+    finally executing instructions.
+  - The client only needs to call start(),
+    without worrying about the individual
+    steps required to boot the computer.
 	
 
-    Use Cases:
-    ——————
-   -This can be used anywhere to simplify   
-     complex systems. When you have a 
-     system composed of several intricate 
-     components (such as hardware or APIs), 
-     a facade can simplify interactions by 
-     consolidating them into a single, 
-     easy-to-use interface. For example, in 
-     this case, starting a computer requires 
-     multiple steps, but the facade hides all 
-     that complexity.
-   -It can be used to Reducing Tight 
-     Coupling. The client code is only coupled 
-     with the facade (ComputerFacade), not 
-     with the individual subsystems (CPU, 
-     Memory, HardDrive). This makes the 
-     code easier to maintain and modify.
-   -It can also be used to Improve Code 
-     Readability. Facade patterns are often 
-     used to improve code readability. If the 
-     client had to call each subsystem’s 
-     methods directly, the code would be 
-     more complex and harder to read.
-   -Another great benefit of the facade 
-     pattern allows for a clean, organised 
-     separation between the client and the 
-     complex internals of a system. It also 
-     allows for easier maintenance because 
-     changes to the subsystem do not affect 
-     the client, as long as the facade’s 
-     interface remains consistent.
-   -You can see how the Facade Pattern 
-     simplifies interactions with a complex 
-     system by creating a single entry point 
-     for the client to use.
+  Use Cases:
+  ——————
+- This can be used anywhere to simplify
+  complex systems. When you have a
+  system composed of several intricate
+  components (such as hardware or APIs),
+  a facade can simplify interactions by
+  consolidating them into a single,
+  easy-to-use interface. For example, in
+  this case, starting a computer requires
+  multiple steps, but the facade hides all
+  that complexity.
+- It can be used to Reducing Tight
+  Coupling. The client code is only coupled
+  with the facade (ComputerFacade), not
+  with the individual subsystems (CPU,
+  Memory, HardDrive). This makes the
+  code easier to maintain and modify.
+- It can also be used to Improve Code
+  Readability. Facade patterns are often
+  used to improve code readability. If the
+  client had to call each subsystem’s
+  methods directly, the code would be
+  more complex and harder to read.
+- Another great benefit of the facade
+  pattern allows for a clean, organised
+  separation between the client and the
+  complex internals of a system. It also
+  allows for easier maintenance because
+  changes to the subsystem do not affect
+  the client, as long as the facade’s
+  interface remains consistent.
+- You can see how the Facade Pattern
+  simplifies interactions with a complex
+  system by creating a single entry point
+  for the client to use.
 
 
 
 
-      COMPOSITE PATTERN
-      ————————————
-    The Composite Pattern is used to treat 
+## COMPOSITE PATTERN
+  The Composite Pattern is used to treat
   individual objects and compositions of 
   objects uniformly. This pattern allows you 
   to build a tree structure where individual 
@@ -873,15 +853,15 @@ messy details behind a single, simple interface.
 
   Example Scenario:
   —————————
-    A company might have employees who 
+  A company might have employees who
   can be regular staff members or managers 
   who supervise other employees. The 
   composite pattern helps manage this 
   hierarchy by treating both employees and 
   managers uniformly.
 
-    JavaScript Example:
-    ————-
+  JavaScript Example:
+  ————-
      
   // Leaf
   class File {
@@ -927,11 +907,11 @@ root.display();
 
 The output will look like so:
 
-	+ Folder: Root
-	  - File: file1.txt
-	  + Folder: SubFolder
-	    - File: file3.txt
-	  - File: file2.txt
+  + Folder: Root
+  - File: file1.txt
+  + Folder: SubFolder
+  - File: file3.txt
+  - File: file2.txt
 
   Notice the indentation. Each level down adds two more spaces, because
 display() passes indent + '  ' to its children. That indentation is the
@@ -941,37 +921,35 @@ hierarchy.
 Think of your computer's folders and files. A folder can contain both files and other folders. Whether it's a file or a folder, you can click and view it the same way. The Composite pattern lets you treat both single items (files) and groups (folders with files) the same, simplifying how you interact with them.
 
 
-    Key points
-    —————-
-   -The Composite Pattern allows you to 
-     treat individual objects and groups of 
-     objects the same way.
-   -It is useful for representing hierarchical 
-     structures like employees, files, or GUI 
-     components.
+#### Key points
+- The Composite Pattern allows you to
+  treat individual objects and groups of
+  objects the same way.
+- It is useful for representing hierarchical
+  structures like employees, files, or GUI
+  components.
 
 
 
 
 
-      PROXY PATTERN
-      —————————
-    The Proxy Pattern provides a placeholder 
+## PROXY PATTERN
+  The Proxy Pattern provides a placeholder
   or surrogate for another object to control 
   access to another object. It’s used to add an extra level 
   of control before accessing the actual 
   object, such as in cases of lazy loading, 
   access control, or logging.
 
-    Example Scenario:
-    ————————
-    Imagine you have a large image that 
+  Example Scenario:
+  ————————
+  Imagine you have a large image that
   takes time to load. Instead of loading it 
   directly, you can use a proxy that loads the 
   image only when it’s needed.
 
    JavaScript Code Example:
-    —————————-
+  —————————-
           
    // Real object
    class RealImage {
@@ -1012,9 +990,9 @@ image.display(); // Only displays, doesn't load again
 
 The output will be:
 
-	Loading cat.png
-	Displaying cat.png
-	Displaying cat.png
+  Loading cat.png
+  Displaying cat.png
+  Displaying cat.png
 
   Look carefully at those three lines, because they are the whole point.
 "Loading" appears only once, on the first call. The second call to
@@ -1025,12 +1003,12 @@ happens once, and only when it is first needed.
 Imagine opening a large image file. The first time, it takes time to load. But after that, it opens instantly. The Proxy pattern works like a smart assistant that only loads the heavy image when truly needed—saving time and resources.
 
 
-     Key points:
-     ——————
-   -The Proxy Pattern provides a surrogate to 
-     control access to another object.
-   -It’s useful for lazy initialisation, access 
-     control, or logging.
+  Key points:
+  ——————
+- The Proxy Pattern provides a surrogate to
+  control access to another object.
+- It’s useful for lazy initialisation, access
+  control, or logging.
 
 
 
@@ -1038,17 +1016,14 @@ Imagine opening a large image file. The first time, it takes time to load. But a
 
 
 
-    BRIDGE AND FLYWEIGHT PATTERNS
-    —————-—————————
-    These remaining two structural patterns are less common than the others and you therefore may not find it listed in some books or documents. This is because Some beginner-level articles or tutorials only introduce the most common patterns. Besides, patterns like Bridge and especially Flyweight are used less often or are harder to grasp, so they sometimes get left out of beginner resources. Also, some blog authors may occasionally incorrectly group patterns or exclude a few based on personal interpretation.
+#### BRIDGE AND FLYWEIGHT PATTERNS
+  These remaining two structural patterns are less common than the others and you therefore may not find it listed in some books or documents. This is because Some beginner-level articles or tutorials only introduce the most common patterns. Besides, patterns like Bridge and especially Flyweight are used less often or are harder to grasp, so they sometimes get left out of beginner resources. Also, some blog authors may occasionally incorrectly group patterns or exclude a few based on personal interpretation.
 Nonetheless, I will teach you about them here.
 
-    BRIDGE PATTERN
-    ——————————
+#### BRIDGE PATTERN
   The bridge pattern separates an abstraction from its implementation so both can change independently.
 
-    JavaScript example
-    ————————
+#### JavaScript example
 
     // Implementation
     class DrawingAPI1 {
@@ -1088,24 +1063,22 @@ circle2.draw();
 
 The output in the console here will be:
 
-	API1 drawing circle at (5, 10) with radius 15
-	API2 drawing circle at (2, 4) with radius 8
+  API1 drawing circle at (5, 10) with radius 15
+  API2 drawing circle at (2, 4) with radius 8
 
 
 
 
-     Key points:
-     ——————
+  Key points:
+  ——————
    Let’s say you’re a designer, and you have two types of drawing tools: a pencil and a marker. You can draw the same circle with either tool. The Bridge pattern lets you separate what you draw (a circle) from how you draw it (pencil or marker). This means you can swap tools anytime without changing the actual process of drawing (the drawing logic).
 
 
 
-     FLYWEIGHT PATTERN
-    ——————————
+#### FLYWEIGHT PATTERN
   This pattern helps reduce memory usage by sharing common data between similar objects.
 
-    JavaScript example
-    ————————
+#### JavaScript example
 
     // Shared flyweight
     class TreeType {
@@ -1151,13 +1124,13 @@ console.log(tree1 === tree2); // true
 
 The output in the console here will be:
 
-	Drawing Oak tree at (10, 20) in Green
-	Drawing Oak tree at (15, 25) in Green
-	true
+  Drawing Oak tree at (10, 20) in Green
+  Drawing Oak tree at (15, 25) in Green
+  true
 
 
-     Key points:
-     ——————
+  Key points:
+  ——————
   Imagine a video game with a forest of thousands of trees. If each tree has its own copy of “Oak, Green,” memory will run out fast. The Flyweight pattern makes all identical trees share the same blueprint and only store what’s unique (like position). This saves tons of memory.
 
 
@@ -1166,27 +1139,25 @@ The output in the console here will be:
 
 
 
-    3) BEHAVIORAL DESIGN PATTERNS
-    ———————————————-
-    Behavioural design patterns focus on how 
+#### 3) BEHAVIORAL DESIGN PATTERNS
+  Behavioural design patterns focus on how
   objects communicate and interact with 
   each other. They define the way in which 
   classes and objects collaborate. The   
   following design patterns fall under this 
   group:
 
-    -OBSERVER PATTERN
-    -STRATEGY PATTERN
-    -TEMPLATE METHOD PATTERN
-    -COMMAND PATTERN
-    -ITERATOR PATTERN
+  - OBSERVER PATTERN
+  - STRATEGY PATTERN
+  - TEMPLATE METHOD PATTERN
+  - COMMAND PATTERN
+  - ITERATOR PATTERN
 
 
 
 
-      OBSERVER PATTERN
-      ———————————
-    The observer pattern is used when there 
+## OBSERVER PATTERN
+  The observer pattern is used when there
   is one subject and multiple observers that   
   depend on the subject's state. Whenever 
   the subject changes its state, it notifies all 
@@ -1226,43 +1197,42 @@ subject.notify();
 
 The output in the console will say:
 
-	Observer notified
+  Observer notified
 
 
 Key points:
 ——————
 
 This is how this works:
--The Subject is like a news channel. It allows multiple subscribers (Observers) 
-	to register with it.
--When the Subject has an update (something changes), it calls notify(), and 
-	all subscribers get notified through their own update() method.
--This pattern is great for scenarios like chat apps (new messages notify all 
-	listeners) or live price updates.
+- The Subject is like a news channel. It allows multiple subscribers (Observers)
+  to register with it.
+- When the Subject has an update (something changes), it calls notify(), and
+  all subscribers get notified through their own update() method.
+- This pattern is great for scenarios like chat apps (new messages notify all
+  listeners) or live price updates.
 
 
 
 
-        STRATEGY PATTERN
-        ———————————
-    The strategy pattern allows you to define 
+## STRATEGY PATTERN
+  The strategy pattern allows you to define
   a family of algorithms, encapsulate each 
   one, and make them interchangeable. It 
   lets the algorithm vary independently from 
   the clients that use it. In other words, the 
   clients use the algorithm relevant to them 
   through the family interface.
-    This pattern needs 
-      -an interface to define the algorithm 
-       family
-     -one or more strategy classes to 
-       implement the different algorithms in 
-       the family, each in its own way
-     -one client-interfacing class (often 
-       referred to as context) to bring the 
-       two (interface and strategies) together, 
-       which clients will use to vary their 
-       strategies seamlessly.
+  This pattern needs
+  - an interface to define the algorithm
+  family
+  - one or more strategy classes to
+  implement the different algorithms in
+  the family, each in its own way
+  - one client-interfacing class (often
+  referred to as context) to bring the
+  two (interface and strategies) together,
+  which clients will use to vary their
+  strategies seamlessly.
 
    JavaScript example:
    ———————-
@@ -1312,82 +1282,80 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
 
 
 
-      Key points and explanation 
-      ————————————
-   -You create different payment strategies (like PayPal or Credit Card).
-   -The PaymentContext is like a wallet that lets you swap how you want to 
-	pay.
-   -This avoids messy if-else code and makes it easy to add new payment 
-	methods without touching the core logic.
-   -The purpose of the Strategy Pattern is to 
-     define a family of algorithms (or 
-     strategies) that can be used 
-     interchangeably. Instead of hardcoding 
-     specific behaviour into a class, different 
-     strategies are encapsulated in separate 
-     classes, allowing the behaviour to be 
-     selected at runtime.
-   -Here is how it works:
-      -Strategy Interface (PaymentStrategy)
-        This interface defines the common 
-        method pay(amount) that all concrete 
-        strategies must implement. It ensures 
-        that all payment methods share the 
-        same contract.
+#### Key points and explanation
+- You create different payment strategies (like PayPal or Credit Card).
+- The PaymentContext is like a wallet that lets you swap how you want to
+  pay.
+- This avoids messy if-else code and makes it easy to add new payment
+  methods without touching the core logic.
+- The purpose of the Strategy Pattern is to
+  define a family of algorithms (or
+  strategies) that can be used
+  interchangeably. Instead of hardcoding
+  specific behaviour into a class, different
+  strategies are encapsulated in separate
+  classes, allowing the behaviour to be
+  selected at runtime.
+- Here is how it works:
+  - Strategy Interface (PaymentStrategy)
+    This interface defines the common
+    method pay(amount) that all concrete
+    strategies must implement. It ensures
+    that all payment methods share the
+    same contract.
 
-     -Concrete Strategies (PayPalStrategy, 
-       CreditCardStrategy):
-       These classes implement the 
-       PaymentStrategy interface and provide 
-       the specific behaviour for how the 
-       payment is processed. For example, 
-       PayPalStrategy handles payments using 
-       PayPal, while CreditCardStrategy 
-       handles payments using a credit card.
+  - Concrete Strategies (PayPalStrategy,
+  CreditCardStrategy):
+  These classes implement the
+  PaymentStrategy interface and provide
+  the specific behaviour for how the
+  payment is processed. For example,
+  PayPalStrategy handles payments using
+  PayPal, while CreditCardStrategy
+  handles payments using a credit card.
 
-     -Context Class (PaymentContext):
-       The context class (PaymentContext) is 
-       responsible for interacting with the 
-       chosen strategy. It accepts a 
-       PaymentStrategy object as a parameter 
-       and uses it to process the payment 
-       without knowing the details of how the 
-       payment is handled. This decouples the 
-       client code from the specific strategies.
+  - Context Class (PaymentContext):
+  The context class (PaymentContext) is
+  responsible for interacting with the
+  chosen strategy. It accepts a
+  PaymentStrategy object as a parameter
+  and uses it to process the payment
+  without knowing the details of how the
+  payment is handled. This decouples the
+  client code from the specific strategies.
 	
 
-      Use Cases:
-      ——————-
-   -Dynamic Behaviour Selection. When you 
-     need to switch between different 
-     algorithms or behaviours at runtime, the 
-     strategy pattern is useful. For example, 
-     choosing different payment methods (like 
-     PayPal or credit card) based on the 
-     user’s preference.
-   -Avoiding Conditional Logic. Instead of 
-     using complex if-else or switch 
-     statements to determine the behaviour, 
-     the strategy pattern encapsulates these 
-     behaviours into separate classes, making 
-     the code more maintainable and flexible.
-   -The big benefit of the Strategy Pattern is
-     that it promotes the open/closed 
-     principle (the O in the SOLID principles). 
-     It is open for extension in that new 
-     strategies can be added without 
-     changing the existing code in the 
-     PaymentContext. The pattern allows for 
-     flexibility by letting you swap out 
-     behaviour dynamically while keeping the 
-     code structure clean and modular.
+  Use Cases:
+  ——————-
+- Dynamic Behaviour Selection. When you
+  need to switch between different
+  algorithms or behaviours at runtime, the
+  strategy pattern is useful. For example,
+  choosing different payment methods (like
+  PayPal or credit card) based on the
+  user’s preference.
+- Avoiding Conditional Logic. Instead of
+  using complex if-else or switch
+  statements to determine the behaviour,
+  the strategy pattern encapsulates these
+  behaviours into separate classes, making
+  the code more maintainable and flexible.
+- The big benefit of the Strategy Pattern is
+  that it promotes the open/closed
+  principle (the O in the SOLID principles).
+  It is open for extension in that new
+  strategies can be added without
+  changing the existing code in the
+  PaymentContext. The pattern allows for
+  flexibility by letting you swap out
+  behaviour dynamically while keeping the
+  code structure clean and modular.
 
 
 
 
-        TEMPLATE METHOD PATTERN
-        ———————————————-
-    The Template Method Pattern defines the 
+## TEMPLATE METHOD PATTERN
+  The Template Method Pattern defines the
   skeleton of an algorithm in a base class, 
   while allowing subclasses to override 
   specific steps of the algorithm without 
@@ -1448,50 +1416,49 @@ rice.prepareMeal();
 
    The output in the console will be: 
 
-	Boiling water
-	Cooking pasta
-	Serving the meal
-	Boiling water
-	Cooking rice
-	Serving the meal
+  Boiling water
+  Cooking pasta
+  Serving the meal
+  Boiling water
+  Cooking rice
+  Serving the meal
 
 
 
-    Key points
-    —————-
-   -The purpose of the template design 
-     pattern is that it allows you define the 
-     framework of an algorithm in a base 
-     class, leaving the details of specific steps
-     to be implemented by subclasses.
-   -Here is How It Works:
+#### Key points
+- The purpose of the template design
+  pattern is that it allows you define the
+  framework of an algorithm in a base
+  class, leaving the details of specific steps
+  to be implemented by subclasses.
+- Here is How It Works:
 
-	-The Template Method is a predefined “recipe” (a sequence of steps).
-	-Some steps are shared (boiling, serving), while others (cooking) are left 
-		open so that each type of meal (Pasta or Rice) can define them.
-	-It ensures a consistent structure while allowing flexibility in specific 
-		steps.
+  - The Template Method is a predefined “recipe” (a sequence of steps).
+  - Some steps are shared (boiling, serving), while others (cooking) are left
+    open so that each type of meal (Pasta or Rice) can define them.
+  - It ensures a consistent structure while allowing flexibility in specific
+    steps.
 
-	Template Method (prepareMeal):
-        This method is defined in the base 
-         class (MealPreparation) where the 
-         algorithm’s structure is defined. Here,  
-         some steps (like boilWater and serve) 
-         are common, while others (like cook) 
-         are left abstract for subclasses to 
-         implement.
+  Template Method (prepareMeal):
+    This method is defined in the base
+    class (MealPreparation) where the
+    algorithm’s structure is defined. Here,
+    some steps (like boilWater and serve)
+    are common, while others (like cook)
+    are left abstract for subclasses to
+    implement.
 
-     There are concrete Classes (PastaMeal, 
-     RiceMeal):
-     These classes implement the step (cook) 
-     in their own way, allowing flexibility while 
-     still following the overall process defined 
-     by the base class.
+  There are concrete Classes (PastaMeal,
+  RiceMeal):
+  These classes implement the step (cook)
+  in their own way, allowing flexibility while
+  still following the overall process defined
+  by the base class.
 	
 
-      Use Case:
-      ——————
-    The Template Method Pattern is useful 
+  Use Case:
+  ——————
+  The Template Method Pattern is useful
   when multiple classes share a similar 
   process but require customisation for 
   specific steps. In the example, both pasta 
@@ -1501,9 +1468,8 @@ rice.prepareMeal();
 
 
 
-        COMMAND PATTERN
-        ———————————-
-    The Command Pattern turns a request 
+## COMMAND PATTERN
+  The Command Pattern turns a request
   into an object, allowing the 
   parameterisation of clients with queues, 
   requests, or logs. It is called Command 
@@ -1578,67 +1544,66 @@ rice.prepareMeal();
 
 The output of this code in the console will be:
 	
-	Light is ON
-	Light is OFF
+  Light is ON
+  Light is OFF
 
 
 
-       Key points
-       —————-
+#### Key points
   Purpose of the Command Pattern:
 This pattern encapsulates requests as objects, allowing you to parameterise methods, delay execution, and queue operations. It decouples the invoker (client) from the object that performs the actual work (receiver).
 	
    How It Works:
    ———————
-  -Think of the command as a wrapper around an action.
-  -Each Command holds a receiver (like Light) and tells it what to do (turn 
-		on or off).
-  -The RemoteControl is just a trigger—it doesn’t know how the light 
-		works.
-  -This pattern is great when you want to schedule, queue, or undo 
-		operations.
+- Think of the command as a wrapper around an action.
+- Each Command holds a receiver (like Light) and tells it what to do (turn
+    on or off).
+- The RemoteControl is just a trigger—it doesn’t know how the light
+    works.
+- This pattern is great when you want to schedule, queue, or undo
+    operations.
 
-  -Command Interface:
-    -The Command interface defines a 
-      method (execute()) that will be 
-      implemented by different commands.
+- Command Interface:
+  - The Command interface defines a
+  method (execute()) that will be
+  implemented by different commands.
   Concrete Commands 
-    -LightOnCommand, 
-    -LightOffCommand):
+  - LightOnCommand,
+  - LightOffCommand):
 
-       These command classes accept a 
-        receiver class Light. This makes sense 
-        because their command action is all 
-        about light. 
-       Through their execute() methods, these 
-        classes indirectly implement the 
-        specific actions (turnOn, turnOff) by 
-        delegating the work to the Light 
-        receiver class which is the class having 
-        these turnOn() and turnOff() methods. 
-        Which of them is called will depend on 
-        the command interface-so it will be 
-        turnOn() or turnOff() for 
-        LightOnCommand and 
-        LightOffCommand respectively.
+  These command classes accept a
+    receiver class Light. This makes sense
+    because their command action is all
+    about light.
+  Through their execute() methods, these
+    classes indirectly implement the
+    specific actions (turnOn, turnOff) by
+    delegating the work to the Light
+    receiver class which is the class having
+    these turnOn() and turnOff() methods.
+    Which of them is called will depend on
+    the command interface-so it will be
+    turnOn() or turnOff() for
+    LightOnCommand and
+    LightOffCommand respectively.
 
   Invoker (RemoteControl):
-      The invoker class stores a command and 
-    executes it when the client presses a 
-    button. The invoker doesn’t know the 
-    details of what the command does, it 
-    simply executes the execute() method on 
-    the command.
-      It is called the invoker because the 
-    execution of the command starts from it. 
-    It all starts from its pressButton() method. 
-    It then runs the execute() method on the 
-    command which it had already stored in 
-    its ‘command’ property.
+  The invoker class stores a command and
+  executes it when the client presses a
+  button. The invoker doesn’t know the
+  details of what the command does, it
+  simply executes the execute() method on
+  the command.
+  It is called the invoker because the
+  execution of the command starts from it.
+  It all starts from its pressButton() method.
+  It then runs the execute() method on the
+  command which it had already stored in
+  its ‘command’ property.
 	
   Use Case:
   —————-
-    The Command Pattern is useful for 
+  The Command Pattern is useful for
   implementing undo/redo functionality, 
   executing commands in sequence, or 
   logging operations for future execution. In 
@@ -1651,17 +1616,16 @@ This pattern encapsulates requests as objects, allowing you to parameterise meth
 
 
 
-        ITERATOR PATTERN
-        ——————————-
-    The Iterator Pattern provides a way to 
+## ITERATOR PATTERN
+  The Iterator Pattern provides a way to
   access the elements of a collection (like an 
   array or list) sequentially without exposing 
   the underlying structure. It is called Iterator 
   because it “iterates” over a collection one 
   element at a time.
 
-      JavaScript Example:
-     ———————-
+  JavaScript Example:
+  ———————-
 
 // Collection class
 class BookCollection {
@@ -1708,13 +1672,12 @@ while (iterator.hasNext()) {
 
 The output in the console will be:
 
-	Design Patterns
-	Clean Code
+  Design Patterns
+  Clean Code
 
 
-     Key points
-    -—————-
-    Purpose of the Iterator Pattern:
+#### Key points
+  Purpose of the Iterator Pattern:
   This pattern allows clients to traverse 
   through the elements of a collection 
   without needing to know the underlying 
@@ -1722,40 +1685,40 @@ The output in the console will be:
   standardised way to access and iterate 
   over data.
 	
-    How It Works:
-    ———————
-  -This pattern helps you walk through a collection one item at a time without 
-	knowing how that collection is built internally.
-  -The BookIterator takes the book list and lets us use hasNext() and next() to 
-	access each book.
-  -It’s like a movie queue: instead of grabbing all at once, you go through them 
-	in order.
+  How It Works:
+  ———————
+- This pattern helps you walk through a collection one item at a time without
+  knowing how that collection is built internally.
+- The BookIterator takes the book list and lets us use hasNext() and next() to
+  access each book.
+- It’s like a movie queue: instead of grabbing all at once, you go through them
+  in order.
 
   Collection Interface (Collection):
-     -This defines a method (getIterator()) to 
-       return an iterator for the collection. 
-     -Concrete collection classes (like 
-       BookCollection) implement this method.
+  - This defines a method (getIterator()) to
+  return an iterator for the collection.
+  - Concrete collection classes (like
+  BookCollection) implement this method.
   Iterator Class (BookIterator):
-    -The BookIterator class is a class that 
-      stands on its own and is used by the 
-      BookCollection classes (via their 
-      getIterator() methods to which they will 
-      pass their array of items-be it books or 
-      anything else). It defines methods 
-      like hasNext() and next() to access 
-      elements in the collection one by one.
+  - The BookIterator class is a class that
+  stands on its own and is used by the
+  BookCollection classes (via their
+  getIterator() methods to which they will
+  pass their array of items-be it books or
+  anything else). It defines methods
+  like hasNext() and next() to access
+  elements in the collection one by one.
 
-    Client Code:
-    ——————-
-    The client doesn’t need to know how the 
+  Client Code:
+  ——————-
+  The client doesn’t need to know how the
   BookCollection stores its books. It just uses 
   the iterator to access the books 
   sequentially using hasNext() and next().
 	
-    Use Case:
-    ——————
-    The Iterator Pattern is useful when you 
+  Use Case:
+  ——————
+  The Iterator Pattern is useful when you
   need to traverse a collection without 
   exposing its internal details. It is especially 
   helpful when working with custom data 

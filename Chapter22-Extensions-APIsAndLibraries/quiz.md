@@ -1,5 +1,4 @@
-QUIZ — Chapter 22: Extensions (APIs and Libraries)
-==================================================
+# QUIZ — Chapter 22: Extensions (APIs and Libraries)
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 22: Extensions
 (APIs and Libraries). Work through these after reading the chapter, while the material is fresh —
@@ -10,8 +9,7 @@ you stuck. Questions 9 to 13 are proper exercises where you write and run real c
 are all together in the Answers section further down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What is an API, in one sentence, and what does an "endpoint" mean?
 
@@ -75,17 +73,16 @@ QUESTIONS
 
 12) EXERCISE. Use `Promise.all()` to wait for two promises and print both results together.
 
-    Clue: what comes back is an array, in the order you passed them.
+  Clue: what comes back is an array, in the order you passed them.
 
 
 13) EXERCISE. Write a `fetch()` call that checks the status code and throws if the response was
-    not OK.
+  not OK.
 
-    Clue: question 4 tells you which property to test.
+  Clue: question 4 tells you which property to test.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) An **API (Application Programming Interface) is an agreed way for one program to ask another
    program for something**, without needing to know how that other program works inside.
@@ -96,19 +93,19 @@ ANSWERS
 
    An **endpoint** is one particular thing you can ask for, expressed as a URL:
 
-        http://my-api.com/shoes
-        http://my-api.com/clothes
+    http://my-api.com/shoes
+    http://my-api.com/clothes
 
    Same API, same domain, different endpoints — one item on the menu each.
 
 
 2) 
-   - **REST** uses ordinary HTTP methods (GET, POST, PUT, PATCH, DELETE) against URLs, and
-     normally exchanges **JSON**. It is simple, lightweight, and what you will meet almost
-     everywhere today.
-   - **SOAP** is a stricter, older protocol built on **XML**, with a fixed envelope structure and
-     usually a WSDL file describing the service. It is still common in banking, insurance and
-     other enterprise systems.
+- **REST** uses ordinary HTTP methods (GET, POST, PUT, PATCH, DELETE) against URLs, and
+  normally exchanges **JSON**. It is simple, lightweight, and what you will meet almost
+  everywhere today.
+- **SOAP** is a stricter, older protocol built on **XML**, with a fixed envelope structure and
+  usually a WSDL file describing the service. It is still common in banking, insurance and
+  other enterprise systems.
 
    SOAP is usually handled outside the browser mainly because of **CORS**. A SOAP service on
    another domain will not normally send the headers a browser demands before it will let your
@@ -122,16 +119,16 @@ ANSWERS
 
 
 3) 
-        200   OK                      it worked
-        201   Created                 it worked, and something new exists
-        400   Bad Request             your request was malformed
-        401   Unauthorised            you need to log in
-        404   Not Found               that resource does not exist
-        500   Internal Server Error   the server broke
+    200   OK                      it worked
+    201   Created                 it worked, and something new exists
+    400   Bad Request             your request was malformed
+    401   Unauthorised            you need to log in
+    404   Not Found               that resource does not exist
+    500   Internal Server Error   the server broke
 
    The first digit is the useful part. **2xx** means success. **4xx** means the problem is at
-   *your* end — you asked wrongly, or you are not allowed. **5xx** means the problem is at the
-   *server's* end and there may be nothing wrong with your request at all.
+- your* end — you asked wrongly, or you are not allowed. **5xx** means the problem is at the
+- server's* end and there may be nothing wrong with your request at all.
 
    That distinction decides what you do next: a 4xx usually means fix your request, a 5xx
    usually means try again later.
@@ -171,11 +168,11 @@ ANSWERS
 
 
 6) 
-        XMLHttpRequest   the original way to make a request without reloading
-        callbacks        the original way to handle "when it finishes"
-        promises         fixed callback nesting; gave us .then() and .catch()
-        fetch()          a cleaner request API, promise-based from the start
-        async/await      made promise code read like ordinary sequential code
+    XMLHttpRequest   the original way to make a request without reloading
+    callbacks        the original way to handle "when it finishes"
+    promises         fixed callback nesting; gave us .then() and .catch()
+    fetch()          a cleaner request API, promise-based from the start
+    async/await      made promise code read like ordinary sequential code
 
    Two of them (`XMLHttpRequest`, `fetch`) are about **making the request**. Three (callbacks,
    promises, `async/await`) are about **handling the wait**.
@@ -198,7 +195,7 @@ ANSWERS
 
 
 8) `Promise.all()` takes an array of promises and returns a single promise that resolves once
-   **every one** of them has resolved. What you get back is an **array of results, in the order
+- *every one** of them has resolved. What you get back is an **array of results, in the order
    you passed them in** — not the order they finished.
 
         Promise.all([p1, p2, p3])
@@ -242,9 +239,9 @@ ANSWERS
     `await` pauses inside the async function until the promise settles, so the code reads top to
     bottom even though it is asynchronous. It only works inside a function marked `async`.
 
-    Note that `try...catch` here does the job `.catch()` does in the `.then()` style — which is
-    one of the nicest things about `async/await`, since it means asynchronous errors are caught
-    the same way as ordinary ones.
+  Note that `try...catch` here does the job `.catch()` does in the `.then()` style — which is
+  one of the nicest things about `async/await`, since it means asynchronous errors are caught
+  the same way as ordinary ones.
 
 
 11) 
@@ -257,7 +254,7 @@ ANSWERS
 
         createPost({ title: 'post three' }, getPosts);
 
-    Result: all three posts appear.
+  Result: all three posts appear.
 
     The detail worth getting right is on the last line. You pass **`getPosts`**, not
     **`getPosts()`**. With the brackets you would call the function immediately and hand
@@ -277,8 +274,8 @@ ANSWERS
                 console.log(results[0]);   // Hello world
             });
 
-    Notice that `promise1` was ready instantly and `promise2` took half a second, yet the results
-    come back in the order they were **passed in**, not the order they finished.
+  Notice that `promise1` was ready instantly and `promise2` took half a second, yet the results
+  come back in the order they were **passed in**, not the order they finished.
 
 
 13) 
@@ -292,6 +289,6 @@ ANSWERS
             .then(data => console.log(data))
             .catch(error => console.error(error));
 
-    Throwing inside a `.then()` sends control to the `.catch()` at the end, so both kinds of
-    failure — a dead network and a 404 — end up in the same handler. Without the `!response.ok`
-    check, a 404 would sail past and you would try to read JSON from an error page.
+  Throwing inside a `.then()` sends control to the `.catch()` at the end, so both kinds of
+  failure — a dead network and a 404 — end up in the same handler. Without the `!response.ok`
+  check, a 404 would sail past and you would try to read JSON from an error page.

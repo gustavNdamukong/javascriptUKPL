@@ -1,5 +1,4 @@
-QUIZ — Chapter 21: Error, Debugging and Testing
-===============================================
+# QUIZ — Chapter 21: Error, Debugging and Testing
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 21: Error,
 Debugging and Testing. Work through these after reading the chapter, while the material is fresh
@@ -10,8 +9,7 @@ you stuck. Questions 9 to 12 are proper exercises where you write and run real c
 are all together in the Answers section further down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) Why is `document.write()` considered bad practice, and what should you use instead?
 
@@ -42,7 +40,7 @@ QUESTIONS
 
 6) Match each built-in error type to what causes it:
 
-        TypeError      ReferenceError      RangeError      SyntaxError
+    TypeError      ReferenceError      RangeError      SyntaxError
 
    Clue: try `null.someMethod()`, an undeclared variable, and `(5).toFixed(-1)`.
 
@@ -64,24 +62,23 @@ QUESTIONS
 
 
 10) EXERCISE. Write a `ValidationError` class that extends `Error`, throw one, and print both its
-    name and its message.
+  name and its message.
 
-    Clue: two lines in the constructor, one of which is `super`.
+  Clue: two lines in the constructor, one of which is `super`.
 
 
 11) EXERCISE. Write a `try...catch` that tells a `TypeError` apart from any other error.
 
-    Clue: one operator does the checking.
+  Clue: one operator does the checking.
 
 
 12) EXERCISE. Write two manual tests for an `add(a, b)` function — one with an `if`, one with
     `console.assert()` — and make the second one fail on purpose so you can see what happens.
 
-    Clue: question 8 tells you what to expect from the failure.
+  Clue: question 8 tells you what to expect from the failure.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) Because of **when** it runs. While the page is still loading, `document.write()` simply adds
    content. But once the browser has finished loading and closed the document stream, calling it
@@ -105,10 +102,10 @@ ANSWERS
    Calling it a placeholder is misleading because the two behave differently in a way that
    matters:
 
-   - A **placeholder** is grey hint text that **vanishes the moment you type**. It is never a
-     value.
-   - A **default** is real text **already sitting in the box**. If the user presses OK without
-     touching it, that text is exactly what `prompt()` returns to you.
+- A **placeholder** is grey hint text that **vanishes the moment you type**. It is never a
+  value.
+- A **default** is real text **already sitting in the box**. If the user presses OK without
+  touching it, that text is exactly what `prompt()` returns to you.
 
    So a default can arrive in your program as though the user had typed it, and your code should
    be ready for that.
@@ -157,12 +154,12 @@ ANSWERS
 
 
 6) 
-        TypeError       null.someMethod()        — doing something to a value that
-                                                   cannot do it
-        ReferenceError  using an undeclared      — the name does not exist at all
-                        variable
-        RangeError      (5).toFixed(-1)          — a number outside an allowed range
-        SyntaxError     a missing bracket        — the code cannot even be parsed
+    TypeError       null.someMethod()        — doing something to a value that
+      cannot do it
+    ReferenceError  using an undeclared      — the name does not exist at all
+      variable
+    RangeError      (5).toFixed(-1)          — a number outside an allowed range
+    SyntaxError     a missing bracket        — the code cannot even be parsed
 
    `SyntaxError` is the odd one out. The others happen while your program is *running*;
    a SyntaxError happens when JavaScript *reads* your file, which means the program never
@@ -194,8 +191,8 @@ ANSWERS
 
    Output:
 
-        Assertion failed: this will not stop anything
-        and this line still runs
+    Assertion failed: this will not stop anything
+    and this line still runs
 
    That is worth being clear about, because "assert" sounds forceful and in some other languages
    a failed assertion does halt the program. In JavaScript it is purely a reporting tool. If you
@@ -217,9 +214,9 @@ ANSWERS
             console.error("Error:", error.message);   // Error: Cannot divide by zero
         }
 
-    Note that the first call prints `5` before the second one throws. Everything in a `try` block
-    up to the point of the throw runs perfectly normally — the block is abandoned from the throw
-    onwards, not from the beginning.
+  Note that the first call prints `5` before the second one throws. Everything in a `try` block
+  up to the point of the throw runs perfectly normally — the block is abandoned from the throw
+  onwards, not from the beginning.
 
 
 10) 
@@ -237,12 +234,12 @@ ANSWERS
             // ValidationError - Username is too short
         }
 
-    `super(message)` passes the message up to `Error`, which is what makes `.message` work.
-    Setting `this.name` is what makes the error identify itself properly — without it, the name
-    would still say "Error", which rather defeats the purpose of having made your own.
+  `super(message)` passes the message up to `Error`, which is what makes `.message` work.
+  Setting `this.name` is what makes the error identify itself properly — without it, the name
+  would still say "Error", which rather defeats the purpose of having made your own.
 
-    A custom error also means a catch block can pick it out specifically with
-    `error instanceof ValidationError`.
+  A custom error also means a catch block can pick it out specifically with
+  `error instanceof ValidationError`.
 
 
 11) 
@@ -256,9 +253,9 @@ ANSWERS
             }
         }
 
-    JavaScript has only one `catch` block per `try` — unlike some languages, you cannot write
-    several catches for different types. So `instanceof` inside a single catch is how you tell
-    them apart.
+  JavaScript has only one `catch` block per `try` — unlike some languages, you cannot write
+  several catches for different types. So `instanceof` inside a single catch is how you tell
+  them apart.
 
 
 12) 
@@ -278,11 +275,11 @@ ANSWERS
 
         console.log('Still running');
 
-    Output:
+  Output:
 
-        Test passed
-        Assertion failed: Test failed: add(1, 2) should equal 4
-        Still running
+    Test passed
+    Assertion failed: Test failed: add(1, 2) should equal 4
+    Still running
 
     The last line is the point of the exercise. The assertion failed, said so, and the program
     carried on regardless — which is exactly why `console.assert` is fine for a quick check but

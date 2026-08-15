@@ -1,5 +1,4 @@
-QUIZ — Chapter 8: Cookies
-=========================
+# QUIZ — Chapter 8: Cookies
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 8: Cookies. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What is a cookie, and name two things websites commonly use them for.
 
@@ -68,17 +66,16 @@ QUESTIONS
    tell you whether a piece of text begins with something.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) A cookie is a small piece of data stored in the user's browser, which lets a website remember
    information between visits or between pages.
 
    Common uses include:
 
-   - **User authentication** — keeping someone logged in as they move around the site.
-   - **Session management** — remembering what is in a shopping cart.
-   - **Personalisation** — storing preferences such as a theme or a language choice.
+- **User authentication** — keeping someone logged in as they move around the site.
+- **Session management** — remembering what is in a shopping cart.
+- **Personalisation** — storing preferences such as a theme or a language choice.
 
    The browser sends the cookie back automatically with each request, which is how the server
    recognises a returning visitor.
@@ -86,10 +83,10 @@ ANSWERS
 
 2) They protect against quite different things:
 
-   - **HttpOnly** stops the cookie from being read by JavaScript at all. Even
-     `document.cookie` will not show it. This protects it from any script running on the page.
-   - **Secure** does not affect JavaScript. It tells the browser to send the cookie only over
-     HTTPS, never over plain HTTP, so it cannot be read in transit.
+- **HttpOnly** stops the cookie from being read by JavaScript at all. Even
+  `document.cookie` will not show it. This protects it from any script running on the page.
+- **Secure** does not affect JavaScript. It tells the browser to send the cookie only over
+  HTTPS, never over plain HTTP, so it cannot be read in transit.
 
    One is about *who can read it on the page*, the other about *how it travels across the
    network*. You would typically want both on anything sensitive.

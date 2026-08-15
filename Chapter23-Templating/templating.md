@@ -1,14 +1,12 @@
 
-//————————————————————//
-	CHAPTER 23 - TEMPLATES
-//————————————————————//
+# Chapter 23 — TEMPLATES
 
 
--Introduction to Templates
--String Literals & Template Strings
--JavaScript Templating Engines
--Popular Modern Approaches
--Implementing a template with Handlebars.js
+- Introduction to Templates
+- String Literals & Template Strings
+- JavaScript Templating Engines
+- Popular Modern Approaches
+- Implementing a template with Handlebars.js
 
 
 
@@ -20,8 +18,7 @@ Templates in JavaScript help dynamically generate HTML content by injecting vari
 
 
 
-String Literals & Template Strings
-——————————————————-
+## String Literals & Template Strings
   JavaScript introduced template literals (backticks: `...`) in ES6, allowing easy interpolation using ${}. Example:
 
 	const name = "Alice";
@@ -35,12 +32,11 @@ While useful for small templates, they are limited for larger or more complex UI
 
 
 
-JavaScript Templating Engines
-——————————————————-
+## JavaScript Templating Engines
 Templating engines provide more powerful ways to structure dynamic HTML. Popular options include:
 
-	-EJS (Embedded JavaScript) – Works similarly to PHP or 
-	    JSP, embedding JavaScript into HTML.
+  - EJS (Embedded JavaScript) – Works similarly to PHP or
+  JSP, embedding JavaScript into HTML.
 
 	-Mustache – deliberately logic-less templates using 
 	    {{ }} placeholders.
@@ -49,8 +45,8 @@ Templating engines provide more powerful ways to structure dynamic HTML. Popular
 	    {{ }} syntax and adds helpers, conditionals and loops. 
 	    You use one or the other, not both together.
 
-	-Pug – A whitespace-sensitive, minimalistic templating 
-	    engine.
+  - Pug – A whitespace-sensitive, minimalistic templating
+  engine.
 
 Of these, Handlebars is the one you are most likely to meet, because it keeps Mustache’s simplicity while giving you just enough logic to be practical.
 
@@ -58,12 +54,11 @@ Of these, Handlebars is the one you are most likely to meet, because it keeps Mu
 
 
 
-Popular Modern Approaches
-——————————————————-
+## Popular Modern Approaches
   In modern JavaScript, frameworks handle templating in different ways:
 
-	-React uses JSX, which blends HTML inside JavaScript.
-	-Vue.js uses a declarative template syntax with directives.
+  - React uses JSX, which blends HTML inside JavaScript.
+  - Vue.js uses a declarative template syntax with directives.
 
 These frameworks essentially replace traditional templating engines in many projects.
 
@@ -71,14 +66,12 @@ These frameworks essentially replace traditional templating engines in many proj
 
 
 
-Implementing a template with Handlebars.js
-————————————————————————
-Step 1: Install Handlebars
-————————
-	-You can include it via a CDN or install via npm
-	  Install it by running this command:
+## Implementing a template with Handlebars.js
+#### Step 1: Install Handlebars
+  - You can include it via a CDN or install via npm
+  Install it by running this command:
 
-		npm install handlebars
+    npm install handlebars
 
 	 Or use a CDN in the head tag of your HTML page:
 		<head>	
@@ -89,12 +82,10 @@ Step 1: Install Handlebars
 
 
 
-Step 2: Define a Template in HTML
-———————————
+#### Step 2: Define a Template in HTML
   Here is an example code for creating a template. Place this code in your HTML file:
 
-	index.html
-	——————
+#### index.html
 
 	<!doctype html>
 	<html>
@@ -126,16 +117,14 @@ Once that template has been created, you will select it, inject data into it usi
 
 
 
-Step 3: Compile & Render the Template in JavaScript
-———————————
+#### Step 3: Compile & Render the Template in JavaScript
   This is referring to how you would go about passing pieces of data dynamically using JavaScript, that will be assigned to those variables (title and message in this case) that are being used in the HTML template. Note that in Handlebars, to parse variables or display their data within HTML code, you do so by wrapping the variables within double curly brackets.
 
 	{{myVar}} 
 
 The following is an example of how to create and inject the values for the variables used in your template. Do this in your JavaScript file:
 
-	index.js
-	————-
+#### index.js
 
 	const source = 	
 		document.getElementById("template").innerHTML;
@@ -152,8 +141,7 @@ The following is an example of how to create and inject the values for the varia
 	document.getElementById("output").innerHTML = 
 		template(data);
 
-Explanation
-——————
+#### Explanation
 In this example, we select our template script tag, which has the id attribute value of “template” which we assign to a variable named “source”. Next, we convert it into a template using the compile() method of Handlebars.
 
 	Handlebars.compile(source);

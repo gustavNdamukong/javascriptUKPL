@@ -1,39 +1,36 @@
 
-//————————————————————//
-	CHAPTER 7 - FUNCTIONS
-//————————————————————//
+# Chapter 7 — FUNCTIONS
 
--Introduction
-	-Giving Functions Tools to Work With (Parameters)
-	-Built-in Functions vs Custom Functions
-	-Quick Note on document.write()
-	-Rules for Naming Functions
--Functions demonstrated
--The arguments object
--Handling varied arguments as Rest 
-	Parameters
--Arguments with default values
--To return something or to do something 
--Functions and variable scope
--Anonymous and arrow functions 
--Convert an anonymous function into an 
+- Introduction
+  - Giving Functions Tools to Work With (Parameters)
+  - Built-in Functions vs Custom Functions
+  - Quick Note on document.write()
+  - Rules for Naming Functions
+- Functions demonstrated
+- The arguments object
+- Handling varied arguments as Rest
+  Parameters
+- Arguments with default values
+- To return something or to do something
+- Functions and variable scope
+- Anonymous and arrow functions
+- Convert an anonymous function into an
    arrow function
--Quick object literals from function arguments
--Anonymous and arrow functions and the 
+- Quick object literals from function arguments
+- Anonymous and arrow functions and the
    this keyword
--Passing arguments to an arrow function
--Immediately Invoked Function Expression 
+- Passing arguments to an arrow function
+- Immediately Invoked Function Expression
    (IIFE)
-	-Why should you use an IIFE
-	-Private Variables with IIFE
-	-IIFE with Parameters
-	-Arrow Function IIFE
+  - Why should you use an IIFE
+  - Private Variables with IIFE
+  - IIFE with Parameters
+  - Arrow Function IIFE
 
 
 
 
--INTRODUCTION
-———————————
+## -INTRODUCTION
 
 In programming, we often need to perform certain tasks over and over again. Instead of writing the same code multiple times, we can put that code into a function and just call it whenever we need it.
 
@@ -49,8 +46,7 @@ For example:
 	greet(); // Calls the function
 
 
-Giving Functions Tools to Work With (Parameters)
-————————————————
+### Giving Functions Tools to Work With (Parameters)
 Sometimes, just like a person needs tools to do a job, a function may also need some information to do its task. This information is passed into the function through parameters, which go inside the parentheses () when you define the function. The actual values you hand over when you call it are known as arguments.
 
 	function greetUser(name) {
@@ -69,31 +65,29 @@ Here, "Sam" is an argument, and name is the parameter. You can pass multiple par
 
 The arguments you pass can be:
 
-* Literal values (like "hello" or 5)
-* Variables (like name or age)
-* Even other functions!
+- Literal values (like "hello" or 5)
+- Variables (like name or age)
+- Even other functions!
 
 Yes, in JavaScript, you can pass a function to another function, especially when one task depends on another already-defined task.
 
 
 
-Built-in Functions vs Custom Functions
-—————————————————
+### Built-in Functions vs Custom Functions
   In JavaScript (and most programming languages), there are two kinds of functions:
-	-1) Built-in functions: These are provided by JavaScript itself to help 
-		you do common tasks.
+  - 1) Built-in functions: These are provided by JavaScript itself to help
+    you do common tasks.
 
     * Example: document.write("Hello") displays text in the browser.
     * Another example: Math.max(3, 10, 7) gives you the highest number.
 	
-	-2) Custom functions: These are the functions you create yourself, like 
-		greetUser() above.
+  - 2) Custom functions: These are the functions you create yourself, like
+    greetUser() above.
 
 While built-in functions are helpful for routine tasks, custom functions allow you to build powerful and unique behaviours into your program.
 
 
-Quick Note on document.write()
-—————————————
+### Quick Note on document.write()
   Although document.write() is a built-in JavaScript function, it is no longer recommended in modern web development. It can cause issues with page rendering and often doesn't work well after the page has finished loading.
 Instead, use this modern approach:
 
@@ -103,23 +97,22 @@ This method is safer and works well in all modern browsers.
 
 
 
-Rules for Naming Functions
-—————————————
+### Rules for Naming Functions
 When you create your own functions, JavaScript has some rules for naming them:
-	-A function name must start with a letter, an underscore (_) or a 
-		dollar sign ($). It may not start with a digit.
-	-After the first character, the name can include:
+  - A function name must start with a letter, an underscore (_) or a
+    dollar sign ($). It may not start with a digit.
+  - After the first character, the name can include:
 
-        * Letters (a-z, A-Z)
-        * Digits (0-9)
-        * Underscores (_)
-        * Dollar signs ($)
+    - Letters (a-z, A-Z)
+    - Digits (0-9)
+    - Underscores (_)
+    - Dollar signs ($)
 
-	-Function names are case-sensitive (myFunction is different from 
-		myfunction).
-	-Use camelCase naming (also called bumpyCaps), where the first word 
-		is lowercase and each following word starts with a capital letter.
-		For example:
+  - Function names are case-sensitive (myFunction is different from
+    myfunction).
+  - Use camelCase naming (also called bumpyCaps), where the first word
+    is lowercase and each following word starts with a capital letter.
+    For example:
 
 			function calculateTotal() { }
 
@@ -128,8 +121,7 @@ When you create your own functions, JavaScript has some rules for naming them:
 
 
 
--FUNCTIONS DEMONSTRATED
-————————————————
+## -FUNCTIONS DEMONSTRATED
 
   The syntax of a function is as follows: the keyword function, 
 followed by the name of the function, followed by a pair of 
@@ -196,7 +188,7 @@ result. Here is how to do it:
 
 The output of this function call will be:
 
-	Hello Gustav
+  Hello Gustav
 
 Notice how the function takes the value handed to it and, in combining 
 it with the string “Hello”, closes that string first and then joins it to 
@@ -214,8 +206,7 @@ stored in a variable.
 
 
 
--THE ARGUMENTS OBJECT
-———————————
+## -THE ARGUMENTS OBJECT
 
 In JavaScript, there is a concept known as the `arguments` object. It's an array-like object that is automatically available inside all functions, and contains all the arguments passed to a function, even if the function doesn't explicitly list them as parameters. Eg:
 
@@ -231,12 +222,11 @@ let result = sumAll(1, 2, 3, 4); // result will be 10
 
 Key Points:
 ————-
--`arguments` Object: Inside any function, `arguments` is an array-like object that holds all the arguments passed to the function.
--I say “array-like” because it behaves like an array (you can access elements with `arguments[0]`, `arguments[1]`, etc.), but it doesn't have all the array methods like `.map()`, `.forEach()`, etc.
+- `arguments` Object: Inside any function, `arguments` is an array-like object that holds all the arguments passed to the function.
+- I say “array-like” because it behaves like an array (you can access elements with `arguments[0]`, `arguments[1]`, etc.), but it doesn't have all the array methods like `.map()`, `.forEach()`, etc.
   
 
-HANDLING VARIED ARGUMENTS AS REST PARAMETERS
-———————————————————
+#### HANDLING VARIED ARGUMENTS AS REST PARAMETERS
 Besides the arguments object, there is a more modern and flexible way to handle a variable number of arguments passed to a function when it is called—using rest parameters (...).
 Rest parameters (...rest) collect multiple arguments into an array. They are written inside the parentheses of a function, such as ...numbers or ...args, though ...rest is commonly used as a placeholder name.
 However, rest parameters do not "convert" function arguments into an array in the same way as Array.from(arguments). Instead, they create a true array of the collected arguments, making it more convenient to use array methods like .map(), .filter(), and .reduce().
@@ -245,11 +235,11 @@ It's important to note that the spread operator does not "convert" an array into
 
   In a way, rest parameters can be seen as the opposite of the spread operator, since rest parameters collect multiple values into a single array while the spread operator takes an array and expands it into multiple values.
   The main thing however, is to understand these points about rest parameters:
-	-They are used in function parameters 
-	  to collect multiple arguments into a 	
-	  single array. 
-	-They are always placed at the end of 
-	  the function parameter list.
+  - They are used in function parameters
+  to collect multiple arguments into a
+  single array.
+  - They are always placed at the end of
+  the function parameter list.
 
 Here is an example:
 
@@ -272,8 +262,7 @@ used to implement this capability. The keyword ‘rest’ in ‘rest parameters�
 
 
 
-ARGUMENTS WITH DEFAULT VALUES 
-————————————————————
+## ARGUMENTS WITH DEFAULT VALUES
   There are times when you write a function and want one or more of the arguments you pass into it to have default values. These are values that will be used by the function even if no argument is passed in. Here is a simple example:
 
 	let member = {
@@ -314,8 +303,7 @@ own later in this chapter.
 
 
 
-TO RETURN SOMETHING OR TO DO SOMETHING
-———————————————————
+## TO RETURN SOMETHING OR TO DO SOMETHING
 
   	Most often, you want a function to return some kind of 
 data to you, which you need in your program. This could be 
@@ -369,8 +357,7 @@ of a variable and does not return anything:
 
 
 
-FUNCTIONS AND VARIABLE SCOPE
-—————————————————————
+## FUNCTIONS AND VARIABLE SCOPE
   Scope relates to the visibility of a variable. We cover 
 everything about scopes in Chapter 2 (Variables), but I 
 will briefly hint at how it applies to code used within 
@@ -438,8 +425,7 @@ To learn everything about variable scopes, see Chapter 2
 
 
 
-ANONYMOUS AND ARROW FUNCTIONS
-—————————————————————
+## ANONYMOUS AND ARROW FUNCTIONS
   An anonymous function is a function without a name. It is often assigned to a variable or passed as an argument.
 
 const greet = function(name) {
@@ -450,10 +436,10 @@ const greet = function(name) {
 console.log(greet("Alice")); 
 
 Here are the key points on anonymous functions:
-	-It can be stored in a variable or passed as 
-	  an argument.
-	-It uses the function keyword.
-	-It has its own this context.
+  - It can be stored in a variable or passed as
+  an argument.
+  - It uses the function keyword.
+  - It has its own this context.
 
   Arrow functions can be said to be the new and simplified way of writing functions in general that was introduced since ES6. An arrow function has a shorter syntax for writing functions using the arrow character =>. It has lexical this binding.
   That phrase is worth unpacking, because you will meet it often and it
@@ -480,19 +466,19 @@ const greet = (name) => `Hello, ${name}!`;
 console.log(greet("Alice")); 
 
 Here are the key points about arrow functions:
-	-More concise than traditional functions.
-	-Does not use the function keyword
-	-Do not have their own this, but rather 
-		inherit it from the surrounding scope 
-		(lexical).
-	-Cannot be used as a constructor 
-		(new keyword won’t work).
-	-Implicit return when using a single 
-		expression.
-	-The left side of the arrow has the 
-	  argument(s) being passed to the 
-	  function, while the right side of the arrow 
-	  constitutes the return value. 
+  - More concise than traditional functions.
+  - Does not use the function keyword
+  - Do not have their own this, but rather
+    inherit it from the surrounding scope
+    (lexical).
+  - Cannot be used as a constructor
+    (new keyword won’t work).
+  - Implicit return when using a single
+    expression.
+  - The left side of the arrow has the
+  argument(s) being passed to the
+  function, while the right side of the arrow
+  constitutes the return value.
 	
 	   (arguments) => value;
 
@@ -509,8 +495,7 @@ Here are the key points about arrow functions:
 
 
 
-Convert an anonymous function into an arrow function
-—————————————————————
+#### Convert an anonymous function into an arrow function
 
 An anonymous function can always be converted into an arrow function. Let’s convert the above anonymous function into an arrow function. To do so, simply replace ‘function()’ with ‘()  =>’:
 
@@ -535,8 +520,7 @@ You therefore see how short and concise our code can be as a result. Always reme
 
 
 
-Quick object literals from function arguments
-—————————————————————————
+## Quick object literals from function arguments
   You sometimes have a function in your code that simply needs to return an object literal from arguments passed to the function. If you do not know what object literals are, quickly hop over to Chapter 17 (Object Oriented Programming) and read about objects and object literals before hopping back here to continue. Here is an example of such a function. Since we are on the topic of functions, just for the purpose of better understanding of the differences, I will write three versions of the same function; one using the traditional function syntax, one in anonymous function syntax, and one in the arrow function syntax. The differences should be very subtle, and you should be able to distinguish between them by now:
 
 (These three are alternatives to each other, not three things
@@ -612,8 +596,7 @@ This function return value will be the object:
 
 
 
-Anonymous and arrow functions and the this keyword
-—————————————————————
+#### Anonymous and arrow functions and the this keyword
 
 Here is an example of how the this keyword works differently with both function types:
 
@@ -710,8 +693,7 @@ let greet = function() {
 
 
 
-Passing arguments to an arrow function
-—————————————————————
+## Passing arguments to an arrow function
   Say we have a regular function as below:
 
 let addThemUp = function(arg1, arg2) {
@@ -783,8 +765,7 @@ entirely.
 
 
 Immediately Invoked Function Expression 
-   (IIFE)
-———————————————————————
+#### (IIFE)
   An IIFE (Immediately Invoked Function Expression) is a self-executing function that runs immediately after it is defined. It is wrapped in parentheses to make it an expression, and then followed by () to invoke it immediately.
 
 Here is the basic syntax:
@@ -795,22 +776,20 @@ Here is the basic syntax:
 
 	// Output: "I run immediately!"
 
-Why should you use an IIFE
-————————
+### Why should you use an IIFE
 We use it for the following reasons:
 
-	-It avoids polluting the global scope – 
-	   variables inside the IIFE stay private.
-	-It executes immediately – No need to 
-	   call it separately.
-	-It is useful for initialisation code – 
-	   meaning, it would make a good place to 
-	   run your application setup logic code 
-	   just once.
+  - It avoids polluting the global scope –
+  variables inside the IIFE stay private.
+  - It executes immediately – No need to
+  call it separately.
+  - It is useful for initialisation code –
+  meaning, it would make a good place to
+  run your application setup logic code
+  just once.
 
 
-Private Variables with IIFE
-————————
+### Private Variables with IIFE
   Let’s see how you can have private variables that are only available within an IIFE.
  
 	const result = (function() {
@@ -824,12 +803,11 @@ Private Variables with IIFE
 	// Output: undefined (because it's private)
 	console.log(typeof secret); 
 
-	In this example, the variable secret is not 
-	accessible outside the IIFE.
+  In this example, the variable secret is not
+  accessible outside the IIFE.
 
 
-IIFE with Parameters
-—————————
+### IIFE with Parameters
   You can pass arguments into an IIFE like a normal function:
 
 	(function(name) {
@@ -839,8 +817,7 @@ IIFE with Parameters
 	// Output: "Hello, Alice!"
 
 
-Arrow Function IIFE
-—————————-
+### Arrow Function IIFE
   With ES6, we can write IIFEs using arrow functions. We already know from studying arrow functions that you convert a regular function into an arrow one by replacing the “function” keyword with a pair of parentheses and an arrow like so “() =>”, and that if there are any parameters, they will go into the parentheses on the left side of the arrow.
 
 	(() => {

@@ -1,46 +1,44 @@
 
-//————————————————————//
-CHAPTER 22 - Extensions (APIs & Libraries)
-//————————————————————//
+# Chapter 22 — Extensions (APIs & Libraries)
 
--APIs
-	-Introduction to APIs and HTTP Requests
-	-REST API Requests
-		-How to send a REST request
-	-Understanding SOAP APIs (and why they’re usually handled outside 
-		the browser)
-		-XML namespaces and why we need a namespace resolver
-    		-Must you use a Namespace in every SOAP request?
-    		-How to send a SOAP request
-		-CORS work-arounds for making SOAP requests from frontend
-		-Setting up a local SOAP server with Node.js
-		-To use or not to use a WSDL file
-	-Why Use APIs
-	-How JavaScript Communicates with APIs
-	-Sending HTTP Requests
-	-What Happens on the server-side
-	-HTTP Status Codes
--AJAX
-	-How does it relate to JavaScript?
-	-AJAX in Action (Examples)
-	   -Old Way (Using XMLHttpRequest)
-		-The responseType property
-		-The readyState property
-	   -Modern Way (Using fetch())
-	   -Asynchronous programming
-		-a) Callback
-		-b) A promise
-			-promise.all()
-		-c) Async/Await
-	   -Using Axios (External Library)
--WebSockets
-	-Why Use WebSockets
-	-Why it works
--Where networking actually lives
-	-Networking in the browser
-	-Networking in Node.js
--Libraries
-	-notie
+- APIs
+  - Introduction to APIs and HTTP Requests
+  - REST API Requests
+    - How to send a REST request
+  - Understanding SOAP APIs (and why they’re usually handled outside
+    the browser)
+    - XML namespaces and why we need a namespace resolver
+    - Must you use a Namespace in every SOAP request?
+    - How to send a SOAP request
+    - CORS work-arounds for making SOAP requests from frontend
+    - Setting up a local SOAP server with Node.js
+    - To use or not to use a WSDL file
+  - Why Use APIs
+  - How JavaScript Communicates with APIs
+  - Sending HTTP Requests
+  - What Happens on the server-side
+  - HTTP Status Codes
+- AJAX
+  - How does it relate to JavaScript?
+  - AJAX in Action (Examples)
+  - Old Way (Using XMLHttpRequest)
+    - The responseType property
+    - The readyState property
+  - Modern Way (Using fetch())
+  - Asynchronous programming
+    - a) Callback
+    - b) A promise
+      - promise.all()
+    - c) Async/Await
+  - Using Axios (External Library)
+- WebSockets
+  - Why Use WebSockets
+  - Why it works
+- Where networking actually lives
+  - Networking in the browser
+  - Networking in Node.js
+- Libraries
+  - notie
 
 
 
@@ -51,11 +49,9 @@ CHAPTER 22 - Extensions (APIs & Libraries)
   Here we talk about external tools in the ecosystem of your programming language that make it even more powerful. We are talking here about any existing APIs, development frameworks, and off the shelf libraries available for you to use extend any kind of functionality.
 
 
-APIs
-———-
+## APIs
 
-	Introduction to APIs and HTTP Requests
-	——————————————————-
+### Introduction to APIs and HTTP Requests
   Let’s start by talking about what an API is. API stands for Application Programming Interface. It’s like a messenger that allows different pieces of software to talk to each other. In JavaScript, when we talk about APIs, we usually mean web APIs. These are systems created and put out there on the internet by people-companies, or other programmers, so that your browser can send requests to and receive data from them. These APIs often provide data in a format like JSON (JavaScript Object Notation), which is easy to work with in JavaScript.
   However, vanilla JavaScript cannot create a server-side API. This is because client-side JavaScript, which runs in a browser (frontend) is not a server-side programming language, as you already know. It therefore lacks access to server resources like databases, full access to file systems etc.
   To create an API, you need a server-side programming language-also referred to as a backend language. Examples of backend languages are Python, PHP, Node.js, Ruby, Java etc and they can all be used to build APIs.
@@ -65,12 +61,11 @@ APIs
 
 
 
-	REST API Requests
-	———————————
+### REST API Requests
   REST stands for Representational State Transfer-an architectural style for designing networked applications. It relies on stateless, client-server communication, typically over HTTP. The frontend (client) and the backend (server) operate independently. Rest resources are identified by their URLs or endpoints. For example: /users. Data is usually transmitted using JSON format e.g., {"name": "Alice"}
   You send data to the API server in JSON format using different HTTP methods, depending on the kind of request being made. Here is a list of the HTTP methods supported in a REST API:
 
-           Method	          Purpose
+    Method	          Purpose
 GET	Read. Ask the server for data
 POST	Create. Send some data to the server to create a new resource
 PUT	Update, by replacing the entire existing resource (data)
@@ -81,8 +76,7 @@ These are the HTTP/1.1 protocol methods defined in the RFC 7231 specification. T
   The PUT and PATCH methods handle update operations, but as you can see from their purposes, while PUT entirely replaces what existed of the record previously, PATCH will only update some fields of that existing data.
 
 
-	How to send a REST request
-	—————————————
+#### How to send a REST request
   Here is and example POST request to a REST API using fetch(): 
 
 	fetch(
@@ -129,32 +123,32 @@ The first argument to fetch() is the URL or endpoint of the resource. This is ba
   			.then(data => console.log(data))
   			.catch(error => console.error('Error', error));
 
-    * The body is also sent within the request’s options object. This body option contains whatever data you are sending to the server. This data is also referred to as the payload (of the request). It is typically sent with requests like: POST, PUT, and PATCH. Sometimes data is sent with DELETE requests too, and that will only contain the id of the resource to be deleted. For the PATCH request, only data intended for the field or fields to be updated are sent. 
+  - The body is also sent within the request’s options object. This body option contains whatever data you are sending to the server. This data is also referred to as the payload (of the request). It is typically sent with requests like: POST, PUT, and PATCH. Sometimes data is sent with DELETE requests too, and that will only contain the id of the resource to be deleted. For the PATCH request, only data intended for the field or fields to be updated are sent.
 
   It is okay for no request object to be sent with an API request. A GET request does not need it, and so none is sent with GET requests. Actually, a request is assumed to be a GET request by default, unless you pass in an options object to specify another request method.
   Whenever you pass a JavaScript object as the body in the body of a fetch() request, you must wrap it in a JSON.stringify() function, because:
 
-	-HTTP Requests only  accept strings (or binary data). The body 
-	   property in fetch() cannot handle JavaScript objects. The HTTP 
-	   protocol needs the request body (data) to be sent as either of 
-	   these:
-            * A string which can be a JSON string, or a URL-encoded form data.
-            * A Blob/Buffer (for binary data like files)
+  - HTTP Requests only  accept strings (or binary data). The body
+  property in fetch() cannot handle JavaScript objects. The HTTP
+  protocol needs the request body (data) to be sent as either of
+  these:
+      - A string which can be a JSON string, or a URL-encoded form data.
+      - A Blob/Buffer (for binary data like files)
 	
-	-Another reason to use JSON.stringify() on the fetch() body is 
-	   because JSON.stringify() converts objects to JSON strings.
-	-The data type declared as the type of data being sent in the headers 
-	   section must match the type of the data being sent in the body, 
-	   obviously. Therefore, because we set the request data type as 
-	   JSON 
+  - Another reason to use JSON.stringify() on the fetch() body is
+  because JSON.stringify() converts objects to JSON strings.
+  - The data type declared as the type of data being sent in the headers
+  section must match the type of the data being sent in the body,
+  obviously. Therefore, because we set the request data type as
+  JSON
 
 		headers: {
     				"Content-Type": "application/json"
   			},
 
-	   We therefore have to make sure what is being sent via the body 
-	   matches that. Hence we use JSON.stringify() to convert that data 
-	   into a JSON string.
+  We therefore have to make sure what is being sent via the body
+  matches that. Hence we use JSON.stringify() to convert that data
+  into a JSON string.
    With that said, if you are not sending JSON data, you do not have to use JSON.stringify() on the body. This also means you would not set the datatype as JSON ("application/json") in the headers section, obviously.
 
 
@@ -162,17 +156,16 @@ The first argument to fetch() is the URL or endpoint of the resource. This is ba
 
 
 	
-	Understanding SOAP APIs (and why they’re usually handled outside 
-	the browser)
-	———————————————————————————
+  Understanding SOAP APIs (and why they’re usually handled outside
+#### the browser)
 
   While modern frontend development mostly revolves around REST APIs and JSON, there's another important type of web service called SOAP—short for Simple Object Access Protocol, and it works differently. SOAP uses XML to structure messages used for communication between applications over a network. It was widely adopted since the early 2000s in enterprise software systems for building web services, before REST became popular. Although SOAP is still in use today (especially in finance, healthcare, telecom and enterprise software, where strict message formats and contracts are important.), it's important to know that most SOAP APIs are not accessible directly from the browser. This is because browsers block cross-origin requests unless the API explicitly allows it through something called CORS (Cross-Origin Resource Sharing)—which SOAP APIs often don't.
 So why learn about SOAP in a JavaScript book? Because understanding SOAP helps you:
 
-* Work with XML-based data formats (which are still common),
-* Understand legacy systems in enterprise environments,
-* Parse XML using XPath and namespaces (a skill useful beyond SOAP),
-* Recognize when and why you'd use tools like Postman or server-side code to interact with APIs.
+- Work with XML-based data formats (which are still common),
+- Understand legacy systems in enterprise environments,
+- Parse XML using XPath and namespaces (a skill useful beyond SOAP),
+- Recognize when and why you'd use tools like Postman or server-side code to interact with APIs.
 
 This section will show you how SOAP works, what its XML messages look like, and how you'd parse a SOAP response using JavaScript's XML tools—not necessarily to run it in your browser, but to prepare you for when you’ll encounter it in the real world.
   SOAP messages are typically sent over HTTP and have a predefined envelope structure that looks like this:
@@ -191,8 +184,7 @@ This XML structure is what you parse when working with SOAP responses.
 
 
 
-	XML namespaces and why we need a namespace resolver
-	———————————————————————————————
+#### XML namespaces and why we need a namespace resolver
   In XML, namespaces are used to avoid name conflicts when different elements share the same name. They do this by associating elements with a unique URI (a web-like address).
 For example:
 
@@ -213,20 +205,19 @@ Without the correct namespace, XPath queries (a technology for reading XML data,
 
 Then use this resolver when calling document.evaluate():
 
-	const result = xmlDoc.evaluate(
-  		"//soap:Body//Price/text()", // your XPath query
-  		xmlDoc,
-  		nsResolver,
-  		XPathResult.STRING_TYPE,
-  		null
-	);
+  const result = xmlDoc.evaluate(
+    "//soap:Body//Price/text()", // your XPath query
+    xmlDoc,
+    nsResolver,
+    XPathResult.STRING_TYPE,
+    null
+  );
 
 
 
 
 
-	Must you use a Namespace in every SOAP request?
-	————————————————————————————
+#### Must you use a Namespace in every SOAP request?
   You do not need it sometimes. If your XML doesn't use prefixes (e.g. just `<Envelope>` instead of `<soap:Envelope>`), you don’t need a resolver. But in most real-world SOAP responses, you will need one, because namespaces are standard practice.
 
 
@@ -234,15 +225,14 @@ Then use this resolver when calling document.evaluate():
 
 
 
-	How to send a SOAP request
-	————————————————
+#### How to send a SOAP request
   SOAP messages are not something you "guess"—they follow a predefined structure called a WSDL, or Web Services Description Language file. A WSDL is an XML document provided by the API provider that describes the operations (functions or methods) the service offers, and how to structure the request you send. It will also tell you about the structure of the response to expect back.
 For example, the WSDL might tell you:
 
-    * The name of the operation (e.g. GetPrice)
-    * The expected input and its format
-    * The required XML namespaces
-    * The response structure
+  - The name of the operation (e.g. GetPrice)
+  - The expected input and its format
+  - The required XML namespaces
+  - The response structure
 
 Always check if the service provides a .wsdl file or documentation. It helps you to build the correct SOAP message. Here’s a simple SOAP request message structure:
 
@@ -287,13 +277,13 @@ Let us look at a complete example of how you would prepare and send a SOAP reque
         		return null;
       		};
 
- 	 	const result = xmlDoc.evaluate(
-    			"//soap:Body//Price/text()",
-    			xmlDoc,
-    			nsResolver,
-    			XPathResult.STRING_TYPE,
-    			null
-  		);
+    const result = xmlDoc.evaluate(
+      "//soap:Body//Price/text()",
+      xmlDoc,
+      nsResolver,
+      XPathResult.STRING_TYPE,
+      null
+    );
 
   		console.log("Price: $" + result.stringValue);
 	};
@@ -314,125 +304,122 @@ You use document.evaluate() to run XPath queries in JavaScript. It requires a va
   CORS is a security mechanism implemented by browsers to control how web pages from one domain (origin) can request resources (e.g. APIs, fonts, images etc) from another domain. This is for security reasons-imagine if anyone was allowed to make their application request and use data from the application of another business, like a bank without their permission. This would facilitate the work of malicious users and hackers. That is why CORS was introduced.
   If you try to send a SOAP (or REST) request to an external API from your browser and see a CORS error, it's not a problem with your code. For example, trying to run the code in this example above might give you this error in your console:
 
-	"Access to XMLHttpRequest at 'https://example.com/soap-endpoint' 
-	from origin 'http://127.0.0.1:5500' has been blocked by CORS 
-	policy: Response to preflight request doesn't pass access control 
-	check: No 'Access-Control-Allow-Origin' 
-	header is present on the requested resource."
+  "Access to XMLHttpRequest at 'https://example.com/soap-endpoint'
+  from origin 'http://127.0.0.1:5500' has been blocked by CORS
+  policy: Response to preflight request doesn't pass access control
+  check: No 'Access-Control-Allow-Origin'
+  header is present on the requested resource."
 
 This is because your browser is protecting your local environment from making requests to a different origin (i.e., https://example.com/soap-endpoint). This is a very common issue when testing SOAP or REST APIs locally. Modern browsers block requests made from one origin (like your localhost) to another (like example.com) unless the server explicitly says it’s okay by sending (enabling) CORS headers like:
 
-	Access-Control-Allow-Origin: *
+  Access-Control-Allow-Origin: *
 
 But in most real SOAP APIs, especially enterprise-grade ones, CORS headers are not enabled, because they assume you are calling from server-side code, not from a browser. This makes them inaccessible directly from browser code, which is what JavaScript is.
 
 Browsers block such requests by default for security. You can work around this by using:
 
-* A local proxy server
-* Tools like Postman or Insomnia
-* Server-side code (Node.js, PHP, Python, etc.)
+- A local proxy server
+- Tools like Postman or Insomnia
+- Server-side code (Node.js, PHP, Python, etc.)
 
 APIs are usually meant to be accessed from backend systems, which do not have CORS restrictions like browsers do. Let’s look at the ways to work-around CORS errors when making test API requests from the frontend.
 
 
 
-	CORS work-arounds for making SOAP requests from frontend
-	————————————————————————————————— 
--1) Set up a local proxy server that makes the SOAP request on your 
-	behalf (from Node.js, PHP, etc.). Your browser talks to your proxy, 
-	and the proxy talks to the API. This bypasses CORS. That is beyond 
-	the scope of this book. But I make you aware of these solutions just 
-	to deepen your knowledge of APIs.
+#### CORS work-arounds for making SOAP requests from frontend
+- 1) Set up a local proxy server that makes the SOAP request on your
+  behalf (from Node.js, PHP, etc.). Your browser talks to your proxy,
+  and the proxy talks to the API. This bypasses CORS. That is beyond
+  the scope of this book. But I make you aware of these solutions just
+  to deepen your knowledge of APIs.
 
--2) Use a Tool Like Postman or Insomnia (No CORS in Desktop Tools). If 
-	you're just testing SOAP requests, use Postman or Insomnia 
-	instead of your browser. These are tools meant to help you test API’s, 
-	by manually sending and inspecting SOAP messages. One thing great 
-	about them is that they don’t enforce CORS
+- 2) Use a Tool Like Postman or Insomnia (No CORS in Desktop Tools). If
+  you're just testing SOAP requests, use Postman or Insomnia
+  instead of your browser. These are tools meant to help you test API’s,
+  by manually sending and inspecting SOAP messages. One thing great
+  about them is that they don’t enforce CORS
 
--3) Host your code on a server that allows CORS. If you're not just testing 
-	but building a real application, host your frontend and backend on 
-	the same domain or configure the backend to allow CORS (only if 
-	you control it). We will test this option below under the “Setting up a 
-	local SOAP server with Node.js” section. There I will show you how to 
-	use Node.js to set up a simple SOAP service that you can send 
-	requests to from the frontend code, and it will work because both 
-	your frontend and SOAP (backend) service are running in the same 
-	domain. 
+- 3) Host your code on a server that allows CORS. If you're not just testing
+  but building a real application, host your frontend and backend on
+  the same domain or configure the backend to allow CORS (only if
+  you control it). We will test this option below under the “Setting up a
+  local SOAP server with Node.js” section. There I will show you how to
+  use Node.js to set up a simple SOAP service that you can send
+  requests to from the frontend code, and it will work because both
+  your frontend and SOAP (backend) service are running in the same
+  domain.
 
 In conclusion, we must remember that browser JavaScript cannot reliably consume SOAP APIs. Unlike REST, SOAP APIs have the following limitations:
 
-	-The require XML-formatted requests with strict headers (e.g. 
-	   SOAPAction). 
-	-They block browser requests due to CORS restrictions (unless the 
-	   server explicitly allows it).
-	-SOAP APIs often lack HTTPS (which triggers mixed content errors in 
-	   browsers).
+  - The require XML-formatted requests with strict headers (e.g.
+  SOAPAction).
+  - They block browser requests due to CORS restrictions (unless the
+  server explicitly allows it).
+  - SOAP APIs often lack HTTPS (which triggers mixed content errors in
+  browsers).
 
 Due to all of that, here are the best practices or recommendations:
 
-	-In production (real-life applications), SOAP requests should be 
-	   handled by a backend server using for example: Node.js, Python, or 
-	   PHP. 
-	-Such a backend server will process the SOAP request securely
-	-Such a backend server will also return a simplified response-for 
-	   example in JSON format, to your frontend code.
+  - In production (real-life applications), SOAP requests should be
+  handled by a backend server using for example: Node.js, Python, or
+  PHP.
+  - Such a backend server will process the SOAP request securely
+  - Such a backend server will also return a simplified response-for
+  example in JSON format, to your frontend code.
 
 As I indicated earlier, setting up such a backend server is beyond the scope of this book. That is why all the examples I have given you are focused on REST APIs-the modern standard of web development. My coverage of SOAP here is to prepare you and make you well balanced in your knowledge of the APIs, even if you will rarely ever consume a SOAP API directly from JavaScript.
 
 
 
 
-	Setting up a local SOAP server with Node.js 
-	—————————————————————————
+#### Setting up a local SOAP server with Node.js
   If you have a local server and hosted a SOAP API on your local server, it will be possible to access this SOAP API from frontend code running on the same server. Let us just say you host a SOAP API on your local server (e.g., localhost:3000/soap-api) and your frontend code (HTML/JS) is also served from the same origin (e.g., `localhost:3000/index.html`), you can access the SOAP API without CORS issues. The reason why it works is simple; 
 
-	-The Same-Origin Policy (SOP) allows frontend code to freely interact 
-	   with APIs on the same domain/port/protocol.  
-	-There are no CORS restrictions applicable, since there’s no cross-
-	   origin request.  
+  - The Same-Origin Policy (SOP) allows frontend code to freely interact
+  with APIs on the same domain/port/protocol.
+  - There are no CORS restrictions applicable, since there’s no cross-origin request.
 
 Let’s see how to set a Node.js server on your local machine to host a simple SOAP API that we can send a request to from the frontend and get a response back. In this example, we will be using Express, a very popular Node.js framework that makes setting up and working with servers in Node.js very easy. It comes packed with libraries that provide services to handle most things to do with servers so that you don’t have to build them by yourself-like security, validation, receiving and responding to HTTP requests, and much, much more. This is not a book on Node.js, but I want to leave you with a clear understanding of what happens on the side of a server when it comes to APIs. If you ever decide to go on and learn Node.js, it will be a great choice after mastering vanilla JavaScript. Node.js is a JavaScript engine that runs on a server. Thanks to it, JavaScript is no longer limited to a browser. It is one of the biggest reason’s for JavaScript’s popularity soaring in the last decade. It means with your current JavaScript knowledge, you will be able to build a full stack (frontend and backend) application that is fast and reliable. You will even be able to build backend systems for mobile applications as APIs, and much more. It’s very powerful. Let’s get right into building our SOAP API. Follow these steps, and remember, you should be in the root of your project in the Terminal when you run all of these commands:
   
-	-Make sure you have Node.js installed on your local machine, and if 
-	   not, install it. Open the Terminal application on your local machine 
-	   and navigate to your project folder, or in your IDE (code editor eg 
-	   VSCode), open the integrated (built-in) Terminal application in it by 
-	   going to Terminal (menu bar above), then choose New Terminal.  
-	   Now that you’re in the terminal, check if Node.js is installed by 
-	   running this command:
+  - Make sure you have Node.js installed on your local machine, and if
+  not, install it. Open the Terminal application on your local machine
+  and navigate to your project folder, or in your IDE (code editor eg
+  VSCode), open the integrated (built-in) Terminal application in it by
+  going to Terminal (menu bar above), then choose New Terminal.
+  Now that you’re in the terminal, check if Node.js is installed by
+  running this command:
 
-		node --version
+    node --version
 
-	   If it is installed, you should get a response with the version number 
-	   like this:
-			v20.12.2
-	   If it’s not installed, go ahead and install Node.js. The best way to do 
-	   this is to visit their website: https://node.js.org and download the 
-	   LTS (Long-Term Support) version for your system (Windows/
-	   macOS). Run the installer and follow the instructions-the default 
-	   settings are fine. It will install both Node.js and npm (Node Package 
-	   Manager) on your computer. Once done, confirm the installation by 	   running the same command above:
+  If it is installed, you should get a response with the version number
+  like this:
+      v20.12.2
+  If it’s not installed, go ahead and install Node.js. The best way to do
+  this is to visit their website: https://node.js.org and download the
+  LTS (Long-Term Support) version for your system (Windows/
+  macOS). Run the installer and follow the instructions-the default
+  settings are fine. It will install both Node.js and npm (Node Package
+  Manager) on your computer. Once done, confirm the installation by 	   running the same command above:
 
-		node --version 
+    node --version
 
-	-Next, setup a package manager file named package.json. All 
-	   Node.js applications need you to have this file in the root of your 
-	   application. Node uses it to keep track of, and manage which 
-	   packages (libraries) your application is using, and their versions. In 
-	   web development, these packages are also known as 
-	   dependencies, because they are libraries that your application 
-	   depends on to do its job.
-	   You do not have to create this file yourself, Node has a command 
-	   that will do it for you and place the necessary code to start you off 
-	   with a server that you can build on. But this basic one will be 
-	   sufficient to handle our example application right now. Run this 
-	   command to create the package.json file: 
+  - Next, setup a package manager file named package.json. All
+  Node.js applications need you to have this file in the root of your
+  application. Node uses it to keep track of, and manage which
+  packages (libraries) your application is using, and their versions. In
+  web development, these packages are also known as
+  dependencies, because they are libraries that your application
+  depends on to do its job.
+  You do not have to create this file yourself, Node has a command
+  that will do it for you and place the necessary code to start you off
+  with a server that you can build on. But this basic one will be
+  sufficient to handle our example application right now. Run this
+  command to create the package.json file:
 		
-		npm init -y
+    npm init -y
 
-	   It will create a package.json in the root of your project, and place 
-	   the following code in it:
+  It will create a package.json in the root of your project, and place
+  the following code in it:
 
 		{
   			"name": "js-test",
@@ -447,71 +434,71 @@ Let’s see how to set a Node.js server on your local machine to host a simple S
   			"description": ""
 		}
 
-	-Install Express. Do so by running the following command:
+  - Install Express. Do so by running the following command:
 
-		npm install express
+    npm install express
 
-	   This will add express as a dependency in your package.json and 
-	   create a node_modules/ folder. 
+  This will add express as a dependency in your package.json and
+  create a node_modules/ folder.
 
-	-Install the following two Node.js packages that we will be needing:
-		-'xmldom' (the Node.js equivalent of DOMParser) 
-		-'xpath' (the Node.js package used to perform XPath operations 
-		   on files on the server-side.)
-	   Install them both using these commands:
+  - Install the following two Node.js packages that we will be needing:
+    - 'xmldom' (the Node.js equivalent of DOMParser)
+    - 'xpath' (the Node.js package used to perform XPath operations
+    on files on the server-side.)
+  Install them both using these commands:
 		
-		npm install xmldom
-		npm install xpath
+    npm install xmldom
+    npm install xpath
 
-	-Optionally, modify this package.json 
-	   file slightly by adding the following line in the “scripts” section if it 
-	   doesn’t exist in it:
+  - Optionally, modify this package.json
+  file slightly by adding the following line in the “scripts” section if it
+  doesn’t exist in it:
 
-		"start": "node index.js"
+    "start": "node index.js"
 
-	   Your package.json file should now look like this:
+  Your package.json file should now look like this:
 
-		{
-  			"name": "js-test",
-  			"version": "1.0.0",
-  			"main": "index.js",
-  			"scripts": {
-    				"test": "echo \"Error: no test specified\" && exit 1”,
-				"start": "node index.js"
-  			},
-  			"keywords": [],
-  			"author": "",
-  			"license": "ISC",
-  			"description": “”,
-			"dependencies": {
-    				"express": "^5.1.0”,
-				"xmldom": "^0.6.0",
-    				"xpath": "^0.0.34"
-  			}
+    {
+      "name": "js-test",
+      "version": "1.0.0",
+      "main": "index.js",
+      "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1”,
+      "start": "node index.js"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "description": “”,
+      "dependencies": {
+      "express": "^5.1.0”,
+      "xmldom": "^0.6.0",
+      "xpath": "^0.0.34"
+      }
 
 		}
 
-	   Note how the new section "dependencies”:… has been added. It 
-	   was added when you ran the command to install Express. Then, 
-	   henceforth, every time you install new dependency for you project, 
-	   they will be added in there. For example, notice how both 'xmldom' 
-	   and 'xpath' are all listed in there. They are all dependencies used 
-	   by your application.
-	     Adding the ‘start’ entry to the ‘scripts’ section is optional, because 
-	   it just allows you to be able to start your server by typing in the 
-	   Terminal: 
+  Note how the new section "dependencies”:… has been added. It
+  was added when you ran the command to install Express. Then,
+  henceforth, every time you install new dependency for you project,
+  they will be added in there. For example, notice how both 'xmldom'
+  and 'xpath' are all listed in there. They are all dependencies used
+  by your application.
+  Adding the ‘start’ entry to the ‘scripts’ section is optional, because
+  it just allows you to be able to start your server by typing in the
+  Terminal:
 
-		npm start
+    npm start
 
-	   It will run this command specified in it for you:
-		node index.js 
-	   If not, you can run that command yourself whenever you want to 
-	   start your server:
-		node index.js 
-	   To stop the server, just hit Control+c. Note that what this start 
-	   command does is to serves a file index.js where your Node.js code
-	   to start a server should be. Let’s go ahead and write the code that 
-	   will create the server.
+  It will run this command specified in it for you:
+    node index.js
+  If not, you can run that command yourself whenever you want to
+  start your server:
+    node index.js
+  To stop the server, just hit Control+c. Note that what this start
+  command does is to serves a file index.js where your Node.js code
+  to start a server should be. Let’s go ahead and write the code that
+  will create the server.
 
 	-Next, let’s proceed to write the code on both the backend to create 
 	   a server in Node.js and Express that will receive API (in this case 
@@ -520,19 +507,18 @@ Let’s see how to set a Node.js server on your local machine to host a simple S
 	   response. Before we do that, let’s establish what the file structure 
 	   of the application should look like in your project folder.
 
-		your-project-folder/
-		 │
-		├── index.js         ← Your SOAP server
-		├── index.html       ← Your frontend
-		├── package.json     ← Auto-generated by `npm init -y`
-		└── node_modules/    ← Created by `npm install express`
+    your-project-folder/
+    │
+    ├── index.js         ← Your SOAP server
+    ├── index.html       ← Your frontend
+    ├── package.json     ← Auto-generated by `npm init -y`
+    └── node_modules/    ← Created by `npm install express`
 
-	   Here is the code to go in the files. We have already seen what goes 
-	in the package.json file above:
+  Here is the code to go in the files. We have already seen what goes
+  in the package.json file above:
 
 
-		FRONTEND CODE (index.html)
-		—————————————————
+#### FRONTEND CODE (index.html)
 	<!DOCTYPE html>
     	<head>
         	<title>The JavaScript Blueprint</title>
@@ -575,21 +561,21 @@ Let’s see how to set a Node.js server on your local machine to host a simple S
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(str, "text/xml");
 
-                const product = xml.evaluate(
-			"//Product", 
-			xml, 
-			null, 
-			XPathResult.STRING_TYPE, 
-			null
-		).stringValue;
+      const product = xml.evaluate(
+      "//Product",
+      xml,
+      null,
+      XPathResult.STRING_TYPE,
+      null
+    ).stringValue;
 
-                const price = xml.evaluate(
-			"//Price", 
-			xml, 
-			null, 
-			XPathResult.STRING_TYPE, 
-			null
-		).stringValue;
+      const price = xml.evaluate(
+      "//Price",
+      xml,
+      null,
+      XPathResult.STRING_TYPE,
+      null
+    ).stringValue;
 
                 console.log(`Product: ${product}`);
                 console.log(`Price: $${price}`);
@@ -603,8 +589,7 @@ Let’s see how to set a Node.js server on your local machine to host a simple S
 
 
 
-		BACKEND CODE (index.js)
-		—————————————————
+#### BACKEND CODE (index.js)
 // server.js (SOAP API running on localhost:3000)
 const express = require('express');
 const path = require('path');
@@ -740,21 +725,21 @@ Then, we use skills we have seen before when we learned all about DOM manipulati
 
 We then use XPath with evaluate() to extract the product name and its price sent back from the XML data of the SOAP response.
 
-	const product = xml.evaluate(
-		"//Product", 
-		xml, 
-		null, 
-		XPathResult.STRING_TYPE, 
-		null
-	).stringValue;
+  const product = xml.evaluate(
+    "//Product",
+    xml,
+    null,
+    XPathResult.STRING_TYPE,
+    null
+  ).stringValue;
 
-        const price = xml.evaluate(
-		"//Price", 
-		xml, 
-		null, 
-		XPathResult.STRING_TYPE, 
-		null
-	).stringValue;
+    const price = xml.evaluate(
+    "//Price",
+    xml,
+    null,
+    XPathResult.STRING_TYPE,
+    null
+  ).stringValue;
 
 We then use that data-in our example, we simply log them to the console:
 
@@ -765,17 +750,17 @@ We then use that data-in our example, we simply log them to the console:
   This great example demonstrates how a soap server can have a function that returns something (in this case the price of a product). Finally, I give you a hint as to how a WSDL file could be provided for your service clients to use.
   I do not go into showing you what the contents of the WSDL file for such an application should look like, because;
 
-	-browsers do not support consuming a WSDL on the frontend
-	-Using WSDL is optional
+  - browsers do not support consuming a WSDL on the frontend
+  - Using WSDL is optional
 
 However, I will still explain to you how it is used. To have one in our above example, create the file in your application folder, and give it a name with ideally, a .wsdl extension like so: 
 
-	service.wsdl or soap.wsdl
+  service.wsdl or soap.wsdl
 
 It’s recommended to name the file with an .wsdl extension because:
-	-It would help text editors recognize and highlight XML syntax.
-	-External tools (like SOAP clients or validators) properly detect file 
-	   type.
+  - It would help text editors recognize and highlight XML syntax.
+  - External tools (like SOAP clients or validators) properly detect file
+  type.
 
 Once you have created the service.wsdl file in your project folder, serve it like this:
 
@@ -785,13 +770,12 @@ Once you have created the service.wsdl file in your project folder, serve it lik
 
 Your clients can then retrieve it from your application endpoint which is being served from your backend:
 
-	 http://localhost:3000/wsdl.
+  http://localhost:3000/wsdl.
 
 
 
 
-	To use or not to use a WSDL file
-	——————————————————
+#### To use or not to use a WSDL file
   A WSDL file is not required for a SOAP service to function. You will find that this example will work, and you can send and receive SOAP envelopes manually. This is called using SOAP without contract (WSDL-less) — and it also works just fine for tightly coupled or controlled integrations.
   A WSDL is required when the client is auto-generating code from the WSDL (e.g., using wsimport in Java or Add Service Reference in .NET), or when you want to make your service discoverable and self-documented for external consumers, or when you’re using tools like SoapUI, Postman (for SOAP), or API Gateways that need to understand your contract.
   Internal SOAP services may skip WSDL, as well as local servers like the one we just setup to use. Public/external SOAP services on the other hand (e.g., airline APIs, payment gateways, legacy ERPs) almost always provide a WSDL.
@@ -801,21 +785,19 @@ Your clients can then retrieve it from your application endpoint which is being 
 
 
 
-	Why use APIs
-	—————————
+### Why use APIs
   Imagine you're building a weather app. You probably don’t want to build your own satellite or temperature sensor. Instead, it would be wise for you to use an API provided by a weather service. They have already done the work to gather all the data that you need, probably more efficiently that you would if you tried to, because they may have more expertise in that domain. Using their data would be allow you deliver your application faster. Examples of what APIs provide:
 
-    * Weather data
-    * Currency exchange rates
-    * News headlines
-    * User authentication (e.g., login with Google)
-    * Product details from a store
+  - Weather data
+  - Currency exchange rates
+  - News headlines
+  - User authentication (e.g., login with Google)
+  - Product details from a store
 
 
 
 
-	How JavaScript Communicates with APIs
-	——————————————————-
+### How JavaScript Communicates with APIs
   To communicate with an API, your JavaScript code sends an HTTP request to a server and waits for a response.
 This is the same principle that web browsers use when you visit a website. The browser sends a request, and the server sends back HTML, CSS, JavaScript, or data.
 
@@ -823,8 +805,7 @@ This is the same principle that web browsers use when you visit a website. The b
 
 
 
-	Sending HTTP Requests
-	———————————————
+### Sending HTTP Requests
   JavaScript gives you tools to send HTTP requests. The modern way to do that is through using fetch(). Here is an example of how you would send a GET request to a web application hosted on the following domain: 'https://api.example.com/users'
 
 	fetch('https://api.example.com/users')
@@ -834,32 +815,30 @@ This is the same principle that web browsers use when you visit a website. The b
 
 Here is an explanation of the request:
 
-	-Your web application sends a GET request by default.
-	-.json() reads the response body and parses it as JSON.
-	-.catch() handles any potential errors, such as if the server is down.
+  - Your web application sends a GET request by default.
+  - .json() reads the response body and parses it as JSON.
+  - .catch() handles any potential errors, such as if the server is down.
 
 Keep in mind that using fetch() is the modern way of sending HTTP requests, but the traditional way for a long time, was to use the XMLHttpRequest object to do so, and that still works today. It is just more popular to use fetch() due to its simpler syntax of fetch(), and its promise-based syntax.
 
 
 
 
-	What Happens on the server-side
-	——————————————————-
+### What Happens on the server-side
   Although we’re focusing on JavaScript in the browser, it helps to know what happens on the backend (also often referred to as the server-side), when a request is sent to the server from the frontend (browser). The following are the things to know, and the chain of events that unfold in the process:
 
-    * Server-side languages like PHP, Python, Node.js, Java, or Ruby etc live on the server.
-    * They receive your request, process it (e.g., look up something in a database), and send back a response, often in JSON format.
-    * JavaScript on your page then receives this response and can update the page dynamically without reloading.
+  - Server-side languages like PHP, Python, Node.js, Java, or Ruby etc live on the server.
+  - They receive your request, process it (e.g., look up something in a database), and send back a response, often in JSON format.
+  - JavaScript on your page then receives this response and can update the page dynamically without reloading.
 
 You don’t need to know the server-side code. Just know that it’s doing the work behind the scenes. If you go on later to learn one of those server-side languages-or maybe you are a backend (server-side) programmer already, you will be able to write the code to handle such requests coming from the frontend.
 
 
 
-	HTTP Status Codes
-	————————————
+### HTTP Status Codes
   When your code talks to a server, it gets back a status code—also known as a response code—to indicate how the request went. Here is a list of the most common HTTP response codes, and what they mean:
 
-           HTTP Code	          Meaning
+    HTTP Code	          Meaning
 200	OK (everything worked)
 201	Created (something was added)
 400	Bad Request (your request had an error)
@@ -888,8 +867,7 @@ As a developer, you can use console.log() or browser tools to inspect the result
 
 
 
-AJAX
-————
+## AJAX
 AJAX stands for Asynchronous JavaScript and XML. AJAX is a technique that allows web pages to communicate with a server without reloading the page. This makes web applications faster, more dynamic, and user-friendly.
 For example, when you type in Google Search, the search suggestions appear without refreshing the whole page—that’s AJAX at work!
 
@@ -897,25 +875,23 @@ How Does AJAX Relate to JavaScript?
 AJAX is not a programming language. It’s just a way of using JavaScript to send and receive data from a server in the background.
 JavaScript provides different tools to implement AJAX, such as:
 
-   -XMLHttpRequest (XHR) — the old way (still 
-	works).
-   -Fetch API — a modern, simpler way to make 
-	requests.
-   -Axios — a popular external library that simplifies 
-	AJAX requests.
-   -Promises and async/await — tools that help 
-	manage asynchronous AJAX requests more 
-	easily.
+- XMLHttpRequest (XHR) — the old way (still
+  works).
+- Fetch API — a modern, simpler way to make
+  requests.
+- Axios — a popular external library that simplifies
+  AJAX requests.
+- Promises and async/await — tools that help
+  manage asynchronous AJAX requests more
+  easily.
 
 
 
 
-AJAX in Action (Examples)
-———————————
+### AJAX in Action (Examples)
 Let's say we want to fetch user data from a server and display it on a webpage without refreshing.
 
-	Old Way (Using XMLHttpRequest)
-	——————————————————-
+### Old Way (Using XMLHttpRequest)
 
 	let xhr = new XMLHttpRequest();
 
@@ -965,14 +941,12 @@ Note: This URL is safe to use in demos and practice code. However, in real appli
   The drawback of using XMLHttpRequest (XHR) is that XHR has a syntax that is a little more complex compared to the more modern approaches.
 However, it is still effective and very  much supported by all browsers. The above example is a GET request, here is an example making a POST request with the XMLHttpRequest object:
 
-	HTML code
-	——————
+#### HTML code
 
 	<input type="text" id="username" /><span id="info"></span>
 
 
-	JavaScript code
-	—————————
+#### JavaScript code
 
 	let username = document.getElementById('info').value;
 
@@ -1022,23 +996,23 @@ This creates a new XMLHttpRequest object.
 
 We are opening a new request here:
 
-	request.open("POST", "auth/checkUsername", true)
+  request.open("POST", "auth/checkUsername", true)
 
--"POST" means we're sending data (not just fetching).
--"auth/checkUsername" is the URL (a file or route on the server) that will 
-	handle the request.
--true, the second argument passed to request.open() means the request 
-	is asynchronous-it will run in the background so the page doesn’t 
-	freeze while waiting.
--This next block of code sends a Content-Type value meant to be sent as 
-	part of the header of the request. This particular Content-Type is important for this request. It tells the server how the data it is sending across is formatted:
+- "POST" means we're sending data (not just fetching).
+- "auth/checkUsername" is the URL (a file or route on the server) that will
+  handle the request.
+- true, the second argument passed to request.open() means the request
+  is asynchronous-it will run in the background so the page doesn’t
+  freeze while waiting.
+- This next block of code sends a Content-Type value meant to be sent as
+  part of the header of the request. This particular Content-Type is important for this request. It tells the server how the data it is sending across is formatted:
 
 	request.setRequestHeader(
 		"Content-Type", "application/x-www-form-urlencoded"
 	)
 
-	We're saying: "Hey server, I'm sending form-style data — just like a 	
-	normal HTML form would."
+  We're saying: "Hey server, I'm sending form-style data — just like a
+  normal HTML form would."
 
 -This next line sets a function to run every time the state of the request 	changes:
 
@@ -1046,34 +1020,34 @@ We are opening a new request here:
 		…
 	}
 
--The request goes through different "states" (0 to 4) as it progresses-and 
-	these are stored in the readyState property of the XMLHttpRequest 
-	object. When it gets to state 4, it means the response has been fully 
-	returned 	from the server. So, this is where we check if the request is 
-	finished:
+- The request goes through different "states" (0 to 4) as it progresses-and
+  these are stored in the readyState property of the XMLHttpRequest
+  object. When it gets to state 4, it means the response has been fully
+  returned 	from the server. So, this is where we check if the request is
+  finished:
 
 	 if (this.readyState == 4) {
 		…
 	}
 
-	See below, the different values of the readyState property and what 	
-	they mean. So here, we confirm if the request is done. If it is, we move 
-	on to check if it worked properly.
+  See below, the different values of the readyState property and what
+  they mean. So here, we confirm if the request is done. If it is, we move
+  on to check if it worked properly.
 
--This next line checks if the server responded with success:
+- This next line checks if the server responded with success:
 
 	if (this.status == 200) {
 		…
 	}
 
-	Universally, in API programming, the group of status codes normally returned are as follows:
+  Universally, in API programming, the group of status codes normally returned are as follows:
 
     * 200 = Success
     * 404 = Not found
     * 500 = Server error
     * …and so on.
 
--Now we check: Did the server actually send us back some text? 
+- Now we check: Did the server actually send us back some text?
 
 	if (this.responseText != null) {
 		// use thisResponseText here
@@ -1095,39 +1069,39 @@ message will appear in the page.
                 alert("Ajax error: No data received");
         }  
 
--If the the server returned another status code other than an OK status (200), it means the AJAX request was not successful, hence we also inform the user using a popup alert that there was an Ajax error and whatever the the text that was returned with the status code (this.statusText):
+- If the the server returned another status code other than an OK status (200), it means the AJAX request was not successful, hence we also inform the user using a popup alert that there was an Ajax error and whatever the the text that was returned with the status code (this.statusText):
 
 	} else alert("Ajax error: " + this.statusText)
 
 -This is how we send the request to the server — along with the 
 	params we built earlier (username=JohnDoe):
 
-	request.send(params)
+  request.send(params)
 
--That’s all the JavaScript frontend code needed to make the AJAX 
-	request. But let’s talk a little about how the backend (server-side) will 
-	work, so you have a full-rounded perspective about how this works.
-	The server-side code that receives, processes the parameter passed 
-	in (username intros case), and sends back the response could be 
-	handled by any one of the following server-side programming 
-	languages:
+- That’s all the JavaScript frontend code needed to make the AJAX
+  request. But let’s talk a little about how the backend (server-side) will
+  work, so you have a full-rounded perspective about how this works.
+  The server-side code that receives, processes the parameter passed
+  in (username intros case), and sends back the response could be
+  handled by any one of the following server-side programming
+  languages:
 	
-	-PHP file like checkUsername.php
-	-Node.js route like /auth/checkUsername
-	-Python/Django/Flask handler
+  - PHP file like checkUsername.php
+  - Node.js route like /auth/checkUsername
+  - Python/Django/Flask handler
 
-	That server script receives the username, checks it (e.g. in a 
-	database), and sends back a message like:
+  That server script receives the username, checks it (e.g. in a
+  database), and sends back a message like:
 
-	"Username is available" or "Username is already taken"
+  "Username is available" or "Username is already taken"
 
 
   In the early days of the web, developers had to jump through hoops to make AJAX calls that worked in different browsers-especially Internet Explorer. But modern browsers now universally support XMLHttpRequest.
 Although XMLHttpRequest is mostly used to fetch plain text or JSON today, it was originally built for XML data.
 You can still use it to:
 
-    * Send or receive XML from a server
-    * Parse XML using responseXML
+  - Send or receive XML from a server
+  - Parse XML using responseXML
 
 To receive and XML response, you would use the responseXML property of the XMLHttpRequest object instead of the responseText. For example:
 
@@ -1146,8 +1120,7 @@ Basically, the property that will contain the returned data always depends on th
 
 
 
-	The responseType property
-	———————————————
+#### The responseType property
 
   Sometimes, you will see developers use the .responseType property when sending an AJAX request with the XMLHttpRequest object. This specifies the type of the data you want to get back as the response from the server. In our example above we did not use it, but if we did, we would have added it like this:
 
@@ -1234,12 +1207,12 @@ Notice you can use a document object method like getElementsByTagName(), and if 
 This works as long as the server sends the XML file with the correct content type.
 
   Your take-away from here should be that 
-	-Setting .responseType = 'document' is helpful when loading XML or 
-	   HTML and you want to work with it using DOM methods.
-	-But if you're loading XML from a well-configured server that 
-	   communicates back the right headers-that include the response 
-	   data type it is sending, using xhr.responseXML will also work just 
-	   fine even without setting responseType.
+  - Setting .responseType = 'document' is helpful when loading XML or
+  HTML and you want to work with it using DOM methods.
+  - But if you're loading XML from a well-configured server that
+  communicates back the right headers-that include the response
+  data type it is sending, using xhr.responseXML will also work just
+  fine even without setting responseType.
 
 I though I should let you know about this responseType property so you’re prepared when you need more control over how data is handled in the browser.
 
@@ -1252,19 +1225,18 @@ I though I should let you know about this responseType property so you’re prep
 
 
 
-	The readyState property
-	——————————————
+#### The readyState property
   The readyState property of an XMLHttpRequest object tells you the 
 current status or stage of the request. It changes as the request 
 progresses. There are five (5) different states the request goes through from start to finish, and they are all recorded on the readyState property. To know what state the request is in, at any given time, you just have to check for the value of readyState. Here's a complete list of the 5 readyState values and what they mean:
 
 
-       Value	        Name	      Meaning
-                0	       UNSENT		The request has been created, but .open() has not been called yet
-                1	        OPENED	.open() has been called. You can now set headers or call .send()
-                2	HEADERS_RECEIVED	.send() has been called, and the response headers have been received
-               3	       LOADING	The browser is receiving the response body (data is loading)
-               4	      DONE	The request is complete, and the response is fully received
+  Value	        Name	      Meaning
+      0	       UNSENT		The request has been created, but .open() has not been called yet
+      1	        OPENED	.open() has been called. You can now set headers or call .send()
+      2	HEADERS_RECEIVED	.send() has been called, and the response headers have been received
+      3	       LOADING	The browser is receiving the response body (data is loading)
+      4	      DONE	The request is complete, and the response is fully received
 
 
 You can use an event listener to track the changes in the value of this readyState property as the request progresses, and react to them. This is very powerful because even though your AJAX request calls are happening behind the scenes (asynchronously) of your application without your user being aware, you still have complete control over their progress because you can track these changes, and update your users on what’s going on at any given point.   
@@ -1289,15 +1261,14 @@ This code will make an AJAX request to the same URL we used above to get sample 
 
 
 
-	Modern Way (Using fetch())
-	———————————————-
+### Modern Way (Using fetch())
   The fetch() function is a built-in JavaScript function used to make HTTP requests. It allows you to retrieve data from APIs, send data to servers, and handle responses asynchronously.
 Unlike Axios, fetch() returns a Promise and does not automatically convert JSON responses—you need to call .json() manually. It is widely used because:
 
-	-It’s native to JavaScript (no need to install anything).
-	-It supports modern async/await syntax for cleaner code.
-	-It provides fine control over requests, including headers 
-	   and methods.
+  - It’s native to JavaScript (no need to install anything).
+  - It supports modern async/await syntax for cleaner code.
+  - It provides fine control over requests, including headers
+  and methods.
 
   However, fetch() does not reject on HTTP errors (e.g., 404 or 500), so you must manually check response.ok to handle errors properly. Despite this, it remains a powerful and lightweight tool for making AJAX requests in JavaScript. Here is an example of using fetch() to make an Ajax request to the following endpoint: "https://jsonplaceholder.typicode.com/users”, logging the result to console, and handling any errors that occurred in the request:
 
@@ -1338,12 +1309,11 @@ Let’s convert the exact same example we wrote above for the XMLHttpRequest obj
 	});
 
 Explanation: 
-	-We create a URLSearchParams object — a fancy way to build form-
-		style data. It’s like saying: username=JohnDoe.
-	-This tells the browser where to send the request — to a server file or 
-		route (same as before).
+  - We create a URLSearchParams object — a fancy way to build form-style data. It’s like saying: username=JohnDoe.
+  - This tells the browser where to send the request — to a server file or
+    route (same as before).
 
-	-This waits for the server’s reply:
+  - This waits for the server’s reply:
 
 		.then(response => {
   			if (!response.ok) {
@@ -1352,16 +1322,16 @@ Explanation:
   			return response.text();
 		})
 
-		If the response is not OK (e.g. 404 or 500), we throw an error,
-		otherwise, If all is good, we grab the response as plain text and 
-		display it inside the #info element in the HTML.
+    If the response is not OK (e.g. 404 or 500), we throw an error,
+    otherwise, If all is good, we grab the response as plain text and
+    display it inside the #info element in the HTML.
 		
 		.then(data => {
   			document.getElementById("info").innerHTML = data;
 		})
 
-		If something goes wrong anywhere above (bad URL, server 
-		offline, etc.), we catch the error and alert the user.
+    If something goes wrong anywhere above (bad URL, server
+    offline, etc.), we catch the error and alert the user.
 
 		.catch(error => {
   			alert("Fetch error: " + error.message);
@@ -1369,15 +1339,14 @@ Explanation:
 
 Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
-    * fetch() uses promises (cleaner code) but XMLHttpRequest does not 
-    * fetch() has less code, and is easier to write
-    * fetch() has built-in error handling while XMLHttpRequest  does not
+  - fetch() uses promises (cleaner code) but XMLHttpRequest does not
+  - fetch() has less code, and is easier to write
+  - fetch() has built-in error handling while XMLHttpRequest  does not
 
 
 
 
-	Asynchronous programming
-	—————————————
+### Asynchronous programming
   Asynchronous programming is when code runs but the rest of your program does not have to wait for it to finish. You can still interact with your application program in different ways while waiting for the result of the running code. There would naturally be some kind of code that listens for the event of the result of the asynchronous (background) task returning being completed. That listener will take some action based on that, even if that action is simply to display a notification on screen to inform the user of the background task’s completion.  
   If a function is run synchronously-and this is the default behaviour, the code parser will wait at that line for it to run completely before moving on to the next line. Asynchronous is the opposite of that. If a function is run asynchronously, it means that the JavaScript parser will not stop at that line and wait for it to finish its job before proceeding. Rather, that function will simply be made to run in the background while the parser will carry on executing the rest of the lines of code after that line. JavaScript has some of its own (built-in) asynchronous functions, one of which you have seen above; the setTimeout() function. So in brief, an asynchronous function schedules a task to run later without blocking the execution of other code.
    This is where callbacks come in handy, hence why they have always been used in JavaScript. A callback is usually a function (usually anonymous) to be run when a program has finished running. It is therefore ideal in asynchronous (background) programs. In fact, call backs was always the de-facto way to write these kind of programs.
@@ -1404,7 +1373,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 		clearInterval(interval); 
 
 
--3) fetch() – Makes network requests (AJAX calls, APIs).
+- 3) fetch() – Makes network requests (AJAX calls, APIs).
 
 	fetch("https://jsonplaceholder.typicode.com/posts")
     		.then(response => response.json())
@@ -1431,14 +1400,14 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 		requestAnimationFrame(animate);
 
 
--6) WebSockets & Event Listeners – These run 	
-		asynchronously, waiting for events to happen.
+- 6) WebSockets & Event Listeners – These run
+    asynchronously, waiting for events to happen.
 
 		document.addEventListener("click", () => 	
 			console.log("Clicked!"));
 
 
--7) async/await functions – Used to simplify Promises.
+- 7) async/await functions – Used to simplify Promises.
 
 		async function getData() {
     			let response = await fetch(
@@ -1456,11 +1425,11 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 ![Figure 22.1 — The same wait, written three ways](images/ch22-fig-01-three-async-styles.svg)
 
-*Figure 22.1 — The same wait, written three ways*
+- Figure 22.1 — The same wait, written three ways*
  Let us dive right in, and demonstrate with examples, a callback, then move on to show how a promise would be used, and finally, how Async/Await would be used to solve the same problem.
 
 
-	-a) Callback
+  - a) Callback
 
 		<!doctype html>
 		<html>
@@ -1546,10 +1515,10 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 
   Now when we call createPost() as we do above, because we pass it a callback, we get the three list items displayed correctly in the browser. It is crucial to understand why the callback solution works:
-	-Note that earlier, we called both the createPost() and 
-	   getPosts() functions separately, first to create a new post, 
-	   and then to fetch all the posts to upload the list in the UI 
-	   like so:
+  - Note that earlier, we called both the createPost() and
+  getPosts() functions separately, first to create a new post,
+  and then to fetch all the posts to upload the list in the UI
+  like so:
 
 		createPost( 
     			{ title: 'post three', body: 'This is three'}
@@ -1557,7 +1526,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 		ul.innerHTML = getPosts();
 
-	   But that was because getPosts() was returning data (output), and we were using that to update the list in the UI outside of getPosts(). Well, we now know that it obviously did not work because getPosts() was returning posts data (output) which it was fetching before createPost() had done its job. This time we call both functions in one line, by calling createPost() and passing it getPosts() at the same time as a callback, then we call getPosts() one more time in the end just to get the initial, out-of-date posts, before the update happens in getPosts() thanks to the callback we are sending:
+  But that was because getPosts() was returning data (output), and we were using that to update the list in the UI outside of getPosts(). Well, we now know that it obviously did not work because getPosts() was returning posts data (output) which it was fetching before createPost() had done its job. This time we call both functions in one line, by calling createPost() and passing it getPosts() at the same time as a callback, then we call getPosts() one more time in the end just to get the initial, out-of-date posts, before the update happens in getPosts() thanks to the callback we are sending:
 
 		createPost( { title: 'post three', body: 'This 
 			is three'}, getPosts);
@@ -1684,7 +1653,7 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 
 
 
-	-c) Async/Await
+  - c) Async/Await
   
   Async/await literally stands for asynchronous and await. You use them together on a block of code to get the desired result. Start by declaring it one space before the function keyword to mark that function so JavaScript knows that it should be run asynchronously. That is exactly its purpose; to allow you to create your custom asynchronous functions.
 
@@ -1760,7 +1729,7 @@ This is because you cannot use pure async/await to resolve the issue without usi
 
 With that in place, only then will the await code that calls createPost()
 
-	await createPost(...) 
+  await createPost(...)
 
 be able to correctly pause execution until the Promise resolves. 
   Here is a modified example of using async/await with promises , structured slightly differently to achieve the same thing. Hopefully you can read through the code and understand everything about it without my explanations. Read the inline comments as a guide.
@@ -1885,19 +1854,18 @@ This is because .json() is a function that coverts the data into json format, an
 
 
 
-Using Axios (external library)
-————————————————-
+### Using Axios (external library)
   Axios is a popular JavaScript library used for making HTTP requests (GET, POST, etc). It simplifies fetching data from APIs, sending data to servers, and handling responses. Axios works in both browsers and Node.js. When used in Node.js, it is installed as any of the other Node.js packages using the npm … command (e.g. npm install axios). When used in the browser, it can be included via a CDN, or just installed on a machine. Axios is often preferred over the built-in fetch() because:
 
-	-It is promise-based, which is cleaner that callbacks
-	-It automatically transforms JSON data (no need 
-	   for .json()).
-	-It handles errors better by rejecting failed requests.
-	-It supports request timeouts, making it easy to prevent 
-	   long waits.
-	-It allows interceptors, which help modify requests or 
-	   responses globally.
-	-It works on browsers and Node.js, unlike fetch, which is browser-only
+  - It is promise-based, which is cleaner that callbacks
+  - It automatically transforms JSON data (no need
+  for .json()).
+  - It handles errors better by rejecting failed requests.
+  - It supports request timeouts, making it easy to prevent
+  long waits.
+  - It allows interceptors, which help modify requests or
+  responses globally.
+  - It works on browsers and Node.js, unlike fetch, which is browser-only
 
   With Axios, you can make GET, POST, PUT, DELETE requests easily, making it a great tool for handling AJAX operations in modern web development. Here is a simple example of how to make an Ajax request to the following endpoint: 
 "https://jsonplaceholder.typicode.com/users”, log the response to the console and handle any errors that occur:
@@ -1909,8 +1877,7 @@ Using Axios (external library)
 
 Here is another example of using Axios with async/await:
 
-	CSS code
-	—————
+#### CSS code
 
 	body {
     		font-family: Arial, sans-serif;
@@ -1924,8 +1891,7 @@ Here is another example of using Axios with async/await:
   	}
 
 
-	HTML code (eg index.html)
-	—————————
+#### HTML code (eg index.html)
 	<!DOCTYPE html>
     <head>
         <title>The JavaScript Blueprint</title>
@@ -1947,8 +1913,7 @@ Here is another example of using Axios with async/await:
 
 
 
-	JS code (eg index.js)
-	—————————-
+#### JS code (eg index.js)
 
 	async function fetchPhotos() {
       try {
@@ -2000,48 +1965,47 @@ If you test this in your browser, you will find that it gets and returns all pho
           			params: { albumId }
         		});
 
-		This object literal sent as a second argument to 
-		axios.get() is also known as the request configuration 
-		object. 
+    This object literal sent as a second argument to
+    axios.get() is also known as the request configuration
+    object.
 
-	b) You can also choose to fetch and return a specific (single) 
-		photo by passing in the unique id of the photo, if you 
-		know it. This id argument is not passed as a second 
-		argument to axios.get(). Rather, you have to do so by 
-		changing the last value in that endpoint path string-
-		which in this case is /photos. Change it to the id of the 
-		photo eg /3 if the id is 3. For example:
+  b) You can also choose to fetch and return a specific (single)
+    photo by passing in the unique id of the photo, if you
+    know it. This id argument is not passed as a second
+    argument to axios.get(). Rather, you have to do so by
+    changing the last value in that endpoint path string-which in this case is /photos. Change it to the id of the
+    photo eg /3 if the id is 3. For example:
 
 		const response = await axios.get(
 			'https://jsonplaceholder.typicode.com/photos/3'
 		)
 
-		Or, if you have the id of the photo as a variable, you can 
-		pass it in dynamically like so:
+    Or, if you have the id of the photo as a variable, you can
+    pass it in dynamically like so:
 
 		let photId = 6;
 		const response = await axios.get(`https://
 			jsonplaceholder.typicode.com/photos/${photoId}`);
 
-		Notice that because we are mixing a variable with a 
-		string here, we  have to let JavaScript know that photoId 
-		is a variable so it can parse. We do this by wrapping the 
-		whole API endpoint path string in backtick (`…`) and 
-		place the variable within ${} characters. This is a 
-		template literal, which is what you use in JavaScript 
-		whenever you wish to display a string that contains 
-		dynamic variable, and you want to make it clear to 
-		the JavaScript parser (interpreter) which of the elements 
-		in the string are variables. See chapter 23 (Templates), 
-		where I talk in depth about String Literals & Template 
-		Strings. The variables must be wrapped in ${} like so: 
+    Notice that because we are mixing a variable with a
+    string here, we  have to let JavaScript know that photoId
+    is a variable so it can parse. We do this by wrapping the
+    whole API endpoint path string in backtick (`…`) and
+    place the variable within ${} characters. This is a
+    template literal, which is what you use in JavaScript
+    whenever you wish to display a string that contains
+    dynamic variable, and you want to make it clear to
+    the JavaScript parser (interpreter) which of the elements
+    in the string are variables. See chapter 23 (Templates),
+    where I talk in depth about String Literals & Template
+    Strings. The variables must be wrapped in ${} like so:
 
 		`This is a string ${variableName} and more text`
 
-		Of course you do not need to use a string literal, 
-		especially if there is only one variable. In our case, we 
-		can also simply concatenate the variable to the end of 
-		the string like so, and it will work just the same:
+    Of course you do not need to use a string literal,
+    especially if there is only one variable. In our case, we
+    can also simply concatenate the variable to the end of
+    the string like so, and it will work just the same:
 
 		const response = await axios.get(
 			'https://jsonplaceholder.typicode.com/photos/' + photoId
@@ -2077,35 +2041,32 @@ Now you know how to pass data to an API endpoint when using Axios. Remember that
 
 
 
-WEBSOCKETS
-————————
+## WEBSOCKETS
   Have you ever used a chat app where new messages just pop up instantly — without refreshing the page? Or maybe you've seen live sports scores update in real-time on a website? That kind of instant, back-and-forth communication is made possible by a powerful tool called WebSockets.
   So, what is exactly a WebSocket? A WebSocket is like opening a direct phone line between your browser and a server. Unlike regular HTTP requests (which are one-way and short-lived), a WebSocket connection is two-way and always open — until you decide to close it.
 
-    * With HTTP: The browser makes a request → the server sends a response → done.
-    * With WebSockets: The browser and server can both send messages to each other at any time-like chatting over a walkie-talkie.
+  - With HTTP: The browser makes a request → the server sends a response → done.
+  - With WebSockets: The browser and server can both send messages to each other at any time-like chatting over a walkie-talkie.
 
 
 
 
-	Why Use WebSockets
-	————————————
+### Why Use WebSockets
   WebSockets are useful when you need:
 
-    * Real-time updates (e.g., chats, online games, live notifications)
-    * Continuous data exchange (e.g., sensor readings, stock prices, collaborative apps)
-    * Lower latency (no repeated "asking" the server — data just flows when needed)
+  - Real-time updates (e.g., chats, online games, live notifications)
+  - Continuous data exchange (e.g., sensor readings, stock prices, collaborative apps)
+  - Lower latency (no repeated "asking" the server — data just flows when needed)
 
 
 
 
-	Why it works
-	———————
+### Why it works
   Here is how it works, in a nutshell:
-	-Your browser opens a WebSocket connection to a server.
-	-The server accepts and keeps that connection alive.
-	-Both sides can now send and receive data as needed — no 
-		reloading, no waiting.
+  - Your browser opens a WebSocket connection to a server.
+  - The server accepts and keeps that connection alive.
+  - Both sides can now send and receive data as needed — no
+    reloading, no waiting.
 
 Think of it like opening a tunnel between your app and the server where they can toss messages back and forth instantly.
   Earlier in chapter 18 (File Management), we learned how to send binary file data over WebSocket. We saw how WebSockets can be used to send files-whether it is through the uploading of images or documents in real-time, or sending chunks of data such as audio or video. We also saw how using a WebSocket gives you a lot more control over a file transfer process, than traditional uploading does.
@@ -2114,8 +2075,7 @@ Think of it like opening a tunnel between your app and the server where they can
 
 
 
-Where networking actually lives
-———————————————————
+## Where networking actually lives
   We have now met every tool this chapter set out to cover — fetch(),
 XMLHttpRequest, Axios and WebSockets — so this is a good moment to step back
 and ask a question that is easy to get wrong: which of these is actually part
@@ -2129,15 +2089,14 @@ the browser or Node.js.
 can feel so different in the two places.
 
 
-	Networking in the browser
-	——————————————
+### Networking in the browser
   In the browser, every networking tool you have used in this chapter is
 supplied by the browser itself:
 
-    * fetch() — for making HTTP requests
-    * XMLHttpRequest — the older way of doing the same
-    * WebSocket — for a two-way connection that stays open
-    * <script src="..."> — loading an external script
+  - fetch() — for making HTTP requests
+  - XMLHttpRequest — the older way of doing the same
+  - WebSocket — for a two-way connection that stays open
+  - <script src="..."> — loading an external script
 
   Notice what is missing from that list. There is no way to open a raw TCP or
 UDP connection, no way to listen on a port, no way to act as a server. The
@@ -2147,15 +2106,14 @@ goes through the browser, and the browser applies its rules — which is exactly
 why CORS kept turning up earlier in this chapter.
 
 
-	Networking in Node.js
-	————————————
+### Networking in Node.js
   On a server, the restrictions fall away. Node.js gives JavaScript the same
 networking a language like Python or Go would have:
 
-    * open TCP and UDP sockets
-    * run HTTP and HTTPS servers, not just make requests to them
-    * call other servers' APIs
-    * use modules such as http, net, dns and ws for full control
+  - open TCP and UDP sockets
+  - run HTTP and HTTPS servers, not just make requests to them
+  - call other servers' APIs
+  - use modules such as http, net, dns and ws for full control
 
   This is why the SOAP examples earlier had to be routed through a Node.js
 server, and why the WebSocket server in Chapter 18 was a Node.js program
@@ -2169,13 +2127,11 @@ chapter has been about using that subset well.
 
 
 
-LIBRARIES
-———————-
--Notie, is an easy to use notification library
-———————————-
--Note: see how i implemented it in the 
+## LIBRARIES
+#### -Notie, is an easy to use notification library
+- Note: see how i implemented it in the
   Golang ‘Hotel-booking’ app on github.
--Get it from:
+- Get it from:
 
   http://github.com/jaredreich/notie
 

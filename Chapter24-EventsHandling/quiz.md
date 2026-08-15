@@ -1,5 +1,4 @@
-QUIZ — Chapter 24: Events Handling
-==================================
+# QUIZ — Chapter 24: Events Handling
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 24: Events
 Handling. Work through these after reading the chapter, while the material is fresh — recall
@@ -10,8 +9,7 @@ you stuck. Questions 8 to 11 are proper exercises where you write and run real c
 are all together in the Answers section further down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) There are two ways to attach an event handler to an element. Name both, and say which you
    should prefer and why.
@@ -64,45 +62,44 @@ QUESTIONS
 
 10) EXERCISE. Now make the parent's listener capture instead, and show that the order reverses.
 
-    Clue: one word changes.
+  Clue: one word changes.
 
 
 11) EXERCISE. Use event delegation: put a single listener on a `<ul>` that reports which `<li>`
     was clicked — and show it still works for an `<li>` added afterwards.
 
-    Clue: question 6 tells you which property identifies the actual item.
+  Clue: question 6 tells you which property identifies the actual item.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) The two ways are:
 
-   - **The inline HTML attribute**:
+- **The inline HTML attribute**:
 
             <button onclick="myFunction(event)">Click me</button>
 
-   - **`addEventListener()` in JavaScript**:
+- **`addEventListener()` in JavaScript**:
 
             button.addEventListener("click", myFunction);
 
-   **Prefer `addEventListener()`.** Three reasons:
+- *Prefer `addEventListener()`.** Three reasons:
 
-   - It keeps your JavaScript out of your HTML, so the markup stays about structure and the
-     script stays about behaviour.
-   - You can attach **several** listeners for the same event on the same element. An `onclick`
-     attribute can only hold one thing; adding a second replaces the first.
-   - You can remove a listener again with `removeEventListener()`.
+- It keeps your JavaScript out of your HTML, so the markup stays about structure and the
+  script stays about behaviour.
+- You can attach **several** listeners for the same event on the same element. An `onclick`
+  attribute can only hold one thing; adding a second replaces the first.
+- You can remove a listener again with `removeEventListener()`.
 
    Inline handlers are still worth recognising, because you will meet them in older code.
 
 
 2) They are the same journey through the same elements, travelling in opposite directions.
 
-   - **Bubbling** starts at the **target** — the element actually clicked — and travels **upward**
-     through its parents to `document`. This is the default.
-   - **Capturing** starts at the **root** and travels **downward** through the parents until it
-     reaches the target.
+- **Bubbling** starts at the **target** — the element actually clicked — and travels **upward**
+  through its parents to `document`. This is the default.
+- **Capturing** starts at the **root** and travels **downward** through the parents until it
+  reaches the target.
 
    Every click actually does both: the browser runs the capture phase down, reaches the target,
    then bubbles back up. Which of your handlers fires when depends on which phase each one
@@ -126,7 +123,7 @@ ANSWERS
    That surprises people, because the parent is "further away" from the click. But capturing
    travels **downward from the root**, so the parent is reached on the way *to* the target:
 
-        document → #parentDiv (capturing handler fires) → #item1 (target, its handler fires)
+    document → #parentDiv (capturing handler fires) → #item1 (target, its handler fires)
 
    If the parent's listener had been an ordinary one, the order would be the other way round —
    child first, then parent on the way back up.
@@ -151,10 +148,10 @@ ANSWERS
 
 
 6) 
-   - **`e.target`** is the element the event actually **happened on** — the thing the user
-     clicked.
-   - **`e.currentTarget`** is the element whose **listener is currently running** — the one you
-     called `addEventListener` on.
+- **`e.target`** is the element the event actually **happened on** — the thing the user
+  clicked.
+- **`e.currentTarget`** is the element whose **listener is currently running** — the one you
+  called `addEventListener` on.
 
    When you put a listener directly on a button and click it, these are the same element, which
    is why the difference is easy to miss.
@@ -168,11 +165,11 @@ ANSWERS
 
 
 7) 
-   - **`e.stopPropagation()`** stops the event travelling any further through the DOM. Handlers
-     on parents (or on children, if capturing) will not run. It affects **your other handlers**.
-   - **`e.preventDefault()`** stops the **browser's own default reaction** — a link navigating, a
-     form submitting, a checkbox ticking. It does not stop the event moving through the DOM at
-     all.
+- **`e.stopPropagation()`** stops the event travelling any further through the DOM. Handlers
+  on parents (or on children, if capturing) will not run. It affects **your other handlers**.
+- **`e.preventDefault()`** stops the **browser's own default reaction** — a link navigating, a
+  form submitting, a checkbox ticking. It does not stop the event moving through the DOM at
+  all.
 
    They solve different problems and are not interchangeable:
 
@@ -216,8 +213,8 @@ ANSWERS
 
    Output when you click the button:
 
-        Child clicked
-        Parent clicked
+    Child clicked
+    Parent clicked
 
    The child fires first, then the event bubbles up to the parent. Neither listener passed a
    third argument, so both are bubbling-phase listeners.
@@ -232,13 +229,13 @@ ANSWERS
             console.log("Child clicked");
         });
 
-    Output:
+  Output:
 
-        Parent clicked
-        Child clicked
+    Parent clicked
+    Child clicked
 
-    Exactly reversed, from adding one word. The parent is now listening on the way **down**, so
-    it hears the click before the click has even reached the button.
+  Exactly reversed, from adding one word. The parent is now listening on the way **down**, so
+  it hears the click before the click has even reached the button.
 
 
 11) 
@@ -261,12 +258,12 @@ ANSWERS
         newItem.textContent = "Item 3";
         list.appendChild(newItem);
 
-    Clicking any of the three — including the one added afterwards — prints its text.
+  Clicking any of the three — including the one added afterwards — prints its text.
 
-    That last part is the real reward. If you had attached a listener to each `<li>` in a loop,
-    "Item 3" would have been dead on arrival, because the loop ran before it existed. The
-    delegated listener never knew about individual items in the first place, so a new one needs
-    no special treatment.
+  That last part is the real reward. If you had attached a listener to each `<li>` in a loop,
+  "Item 3" would have been dead on arrival, because the loop ran before it existed. The
+  delegated listener never knew about individual items in the first place, so a new one needs
+  no special treatment.
 
     The `if (e.target.tagName === "LI")` check matters: clicks on padding inside the `<ul>` also
     reach the listener, and without the check you would report those too.

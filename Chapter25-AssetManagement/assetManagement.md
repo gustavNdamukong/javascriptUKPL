@@ -1,7 +1,5 @@
 
-//————————————————————//
-	CHAPTER 25 - ASSET MANAGEMENT
-//————————————————————//
+# Chapter 25 — ASSET MANAGEMENT
 
 
   Here we will explore the subject of asset management in JavaScript, and talk about when and why it is needed.

@@ -1,5 +1,4 @@
-QUIZ — Chapter 15: DOM and URL Manipulation
-===========================================
+# QUIZ — Chapter 15: DOM and URL Manipulation
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 15: DOM and URL
 Manipulation. Work through these after reading the chapter, while the material is fresh — recall
@@ -11,8 +10,7 @@ you look below. Each one carries a clue, so nothing here should leave you stuck.
 Answers section further down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What is the difference between a node and an element? Given this markup, how many nodes does
    `parent.childNodes` return, and how many does `parent.children` return?
@@ -78,54 +76,53 @@ QUESTIONS
 10) `document.evaluate()` takes five arguments. What is the fourth one for, and why does it
     change how you read your results?
 
-    Clue: asking for a number and asking for a list of nodes cannot possibly be read back the
-    same way.
+  Clue: asking for a number and asking for a list of nodes cannot possibly be read back the
+  same way.
 
 
 11) What is the difference between the `window` object and the `document` object? Give one thing
-    that belongs to each.
+  that belongs to each.
 
-    Clue: one is the browser, one is the page. And one of them owns the other.
+  Clue: one is the browser, one is the page. And one of them owns the other.
 
 
 12) EXERCISE. Given three paragraphs with the class `note`, select them all and print the text
-    of each — using a real array method, not a plain loop.
+  of each — using a real array method, not a plain loop.
 
-    Clue: you will need question 5 to get there.
+  Clue: you will need question 5 to get there.
 
 
 13) EXERCISE. Create a `<div>`, give it the classes `card` and `wide` in one go, put a
     `<p>Hello</p>` inside it, and add it to the page.
 
-    Clue: remember what question 9 taught you about multiple classes.
+  Clue: remember what question 9 taught you about multiple classes.
 
 
 14) EXERCISE. Using XPath, count the `<li>` elements on a page and print the number. Then use
     XPath again to get the text of the first `<li>`.
 
-    Clue: two different XPathResult types, and two different properties to read the answer from.
+  Clue: two different XPathResult types, and two different properties to read the answer from.
 
 
 15) EXERCISE. Take the URL `https://shop.example.com:8080/cart?item=42#summary` and print its
     protocol, hostname, port, pathname, the value of the `item` query parameter, and its hash.
 
-    Clue: one built-in constructor gives you all six.
+  Clue: one built-in constructor gives you all six.
 
 
 16) EXERCISE. Take the current page's URL, add a query parameter `sort=asc` to it, and print the
     resulting full URL — without reloading the page.
 
-    Clue: build a URL object from it, set the parameter, then read `.href` back.
+  Clue: build a URL object from it, set the parameter, then read `.href` back.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) A **node** is any item in the DOM — that includes elements, but also text and comments. An
-   **element** is the specific kind of node that represents an actual HTML tag.
+- *element** is the specific kind of node that represents an actual HTML tag.
 
-   - `parent.childNodes` returns **5** nodes.
-   - `parent.children` returns **2** elements.
+- `parent.childNodes` returns **5** nodes.
+- `parent.children` returns **2** elements.
 
    The five are:
 
@@ -172,8 +169,8 @@ ANSWERS
 
    That is the pairing worth memorising, because the two facts pull in opposite directions:
 
-        for...of    HTMLCollection: yes    NodeList: yes
-        .forEach()  HTMLCollection: NO     NodeList: yes
+    for...of    HTMLCollection: yes    NodeList: yes
+    .forEach()  HTMLCollection: NO     NodeList: yes
 
    Neither of them has `.map()`, `.filter()` or any of the rest.
 
@@ -216,8 +213,8 @@ ANSWERS
 
         <div id="myDiv">Visible <span style="display:none">hidden</span> text</div>
 
-        div.textContent   // "Visible hidden text"
-        div.innerText     // "Visible text"
+    div.textContent   // "Visible hidden text"
+    div.innerText     // "Visible text"
 
    Two more differences. `innerText` collapses runs of spaces and line breaks the way the browser
    does when it draws the page, while `textContent` hands the whitespace back exactly as it sits
@@ -253,7 +250,7 @@ ANSWERS
 
         element.setAttribute("disabled", "");   // <input disabled="">
 
-   **Line 2 fails silently, which is worse.** `className` is a *string*, so handing it an array
+- *Line 2 fails silently, which is worse.** `className` is a *string*, so handing it an array
    makes JavaScript convert that array to text — and arrays convert by joining with commas:
 
         className: ['list-item', 'draggable']   ->  "list-item,draggable"
@@ -269,7 +266,7 @@ ANSWERS
     of answer you want — a number, a string, a boolean, an iterator of nodes, or a snapshot list
     of nodes.
 
-    It changes how you read the results because each type puts the answer in a different place:
+  It changes how you read the results because each type puts the answer in a different place:
 
         NUMBER_TYPE                  ->  .numberValue
         STRING_TYPE                  ->  .stringValue
@@ -278,27 +275,27 @@ ANSWERS
         ORDERED_NODE_SNAPSHOT_TYPE   ->  .snapshotItem(i), with .snapshotLength
         FIRST_ORDERED_NODE_TYPE      ->  .singleNodeValue
 
-    There are ten types in all, numbered 0 to 9. `ANY_TYPE` is 0, and it is the one that does not
-    commit you up front — you ask for it, then read `.resultType` to find out what you actually
-    got.
+  There are ten types in all, numbered 0 to 9. `ANY_TYPE` is 0, and it is the one that does not
+  commit you up front — you ask for it, then read `.resultType` to find out what you actually
+  got.
 
-    Ask for a number and try to read `.snapshotItem(0)` and you will get nothing useful, so the
-    type you request and the property you read must always be chosen together.
+  Ask for a number and try to read `.snapshotItem(0)` and you will get nothing useful, so the
+  type you request and the property you read must always be chosen together.
 
 
 11) `window` is the **browser window or tab**. `document` is the **page loaded inside it**.
 
-    And `document` is a property of `window`, so `window.document` and `document` are the same
-    object.
+  And `document` is a property of `window`, so `window.document` and `document` are the same
+  object.
 
-    - Belonging to `window`: `alert()`, `confirm()`, `prompt()`, `innerWidth`, `location`,
-      `history`, `open()`, `scrollTo()`, `getComputedStyle()`, `pageXOffset`.
-    - Belonging to `document`: `getElementById()`, `querySelector()`, `querySelectorAll()`,
-      `createElement()`, `body`, `evaluate()`.
+  - Belonging to `window`: `alert()`, `confirm()`, `prompt()`, `innerWidth`, `location`,
+  `history`, `open()`, `scrollTo()`, `getComputedStyle()`, `pageXOffset`.
+  - Belonging to `document`: `getElementById()`, `querySelector()`, `querySelectorAll()`,
+  `createElement()`, `body`, `evaluate()`.
 
-    A useful way to keep it straight: if it is about the page's *content*, it is on `document`.
-    If it is about the *browser* around that content — its size, its address bar, its history —
-    it is on `window`.
+  A useful way to keep it straight: if it is about the page's *content*, it is on `document`.
+  If it is about the *browser* around that content — its size, its address bar, its history —
+  it is on `window`.
 
     One more thing worth remembering: every global variable or function you declare becomes a
     property of `window`.
@@ -310,16 +307,16 @@ ANSWERS
 
         notes.forEach(note => console.log(note.textContent));
 
-    Output, for three paragraphs reading "First note", "Second note", "Third note":
+  Output, for three paragraphs reading "First note", "Second note", "Third note":
 
-        First note
-        Second note
-        Third note
+    First note
+    Second note
+    Third note
 
-    `querySelectorAll()` would actually let you call `.forEach()` directly, because NodeLists
-    have it. But spreading it into a real array first is the habit worth having, because it works
-    whichever of the three selection methods you used, and it gives you `.map()` and `.filter()`
-    as well.
+  `querySelectorAll()` would actually let you call `.forEach()` directly, because NodeLists
+  have it. But spreading it into a real array first is the habit worth having, because it works
+  whichever of the three selection methods you used, and it gives you `.map()` and `.filter()`
+  as well.
 
 
 13) 
@@ -337,14 +334,14 @@ ANSWERS
         console.log(div.outerHTML);
         // <div class="card wide"><p>Hello</p></div>
 
-    Two alternatives for the classes, both fine:
+  Two alternatives for the classes, both fine:
 
         div.classList.add("card", "wide");
         div.setAttribute("class", "card wide");
 
-    Note the order of the last two lines. We build the whole thing first and append it to the
-    page once, at the end. Appending an element and then filling it works too, but doing it this
-    way means the browser only has to redraw the page a single time.
+  Note the order of the last two lines. We build the whole thing first and append it to the
+  page once, at the end. Appending an element and then filling it works too, but doing it this
+  way means the browser only has to redraw the page a single time.
 
 
 14) 
@@ -368,16 +365,16 @@ ANSWERS
         );
         console.log("First item: " + textResult.stringValue);
 
-    For a page with three list items reading "one", "two" and "three":
+  For a page with three list items reading "one", "two" and "three":
 
-        Number of items: 3
-        First item: one
+    Number of items: 3
+    First item: one
 
-    Notice that the two calls differ in exactly two places: the type asked for in the fourth
-    argument, and the property read from the result. That is the whole idea of question 10.
+  Notice that the two calls differ in exactly two places: the type asked for in the fourth
+  argument, and the property read from the result. That is the whole idea of question 10.
 
-    Notice too that XPath counts from **1**, not 0 — `(//li)[1]` is the first one. It is one of
-    the few places in this book where you will not be counting from zero.
+  Notice too that XPath counts from **1**, not 0 — `(//li)[1]` is the first one. It is one of
+  the few places in this book where you will not be counting from zero.
 
 
 15) 
@@ -392,21 +389,21 @@ ANSWERS
         console.log("Item: " + url.searchParams.get("item"));
         console.log("Hash: " + url.hash);
 
-    Output:
+  Output:
 
-        Protocol: https:
-        Hostname: shop.example.com
-        Port: 8080
-        Path: /cart
-        Item: 42
-        Hash: #summary
+    Protocol: https:
+    Hostname: shop.example.com
+    Port: 8080
+    Path: /cart
+    Item: 42
+    Hash: #summary
 
-    Two details that catch people. `protocol` includes the colon — `"https:"`, not `"https"`.
-    And `hash` includes the `#`, just as `search` would include the `?`.
+  Two details that catch people. `protocol` includes the colon — `"https:"`, not `"https"`.
+  And `hash` includes the `#`, just as `search` would include the `?`.
 
-    Doing this by splitting the string yourself is possible, and it is how everybody did it
-    before the URL API existed. It is also fiddly and easy to get wrong, which is precisely why
-    the URL API was created.
+  Doing this by splitting the string yourself is possible, and it is how everybody did it
+  before the URL API existed. It is also fiddly and easy to get wrong, which is precisely why
+  the URL API was created.
 
 
 16) 
@@ -416,18 +413,18 @@ ANSWERS
 
         console.log(url.href);
 
-    If the page was at `https://example.com/products`, this prints:
+  If the page was at `https://example.com/products`, this prints:
 
         https://example.com/products?sort=asc
 
-    Remember which method does what: **`get()` reads** a parameter, **`set()` writes** one. And
-    `set()` replaces the parameter if it is already there rather than adding a second copy of it,
-    which is usually what you want.
+  Remember which method does what: **`get()` reads** a parameter, **`set()` writes** one. And
+  `set()` replaces the parameter if it is already there rather than adding a second copy of it,
+  which is usually what you want.
 
-    To actually navigate to the new URL you would then assign it:
+  To actually navigate to the new URL you would then assign it:
 
         window.location.href = url.href;
 
-    That reloads the page at the new address. Leave that line out, as we did above, and you have
-    simply built the URL string without going anywhere — which is often all you need, for
-    instance when you are putting it into a link.
+  That reloads the page at the new address. Leave that line out, as we did above, and you have
+  simply built the URL string without going anywhere — which is often all you need, for
+  instance when you are putting it into a link.

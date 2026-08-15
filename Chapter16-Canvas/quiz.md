@@ -1,5 +1,4 @@
-QUIZ — Chapter 16: The Canvas Element
-=====================================
+# QUIZ — Chapter 16: The Canvas Element
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 16: The Canvas
 Element. Work through these after reading the chapter, while the material is fresh — recall
@@ -10,8 +9,7 @@ you stuck. Questions 9 to 13 are proper exercises where you write and run real c
 are all together in the Answers section further down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What makes a `<canvas>` different from an `<img>` or a `<div>`, and what is the very first
    thing you must do in JavaScript before you can draw on one?
@@ -22,8 +20,8 @@ QUESTIONS
 
 2) What is the difference between these two pairs, and when would you use each?
 
-        ctx.fillStyle  +  ctx.fill()
-        ctx.strokeStyle +  ctx.stroke()
+    ctx.fillStyle  +  ctx.fill()
+    ctx.strokeStyle +  ctx.stroke()
 
    Clue: one colours the inside, the other draws the outline.
 
@@ -77,31 +75,30 @@ QUESTIONS
 
 
 10) EXERCISE. Draw a circle outline (no fill) with a radius of 30, in the middle of a canvas
-    that is 200 by 200.
+  that is 200 by 200.
 
-    Clue: the middle of a 200 by 200 canvas is not 200, 200.
+  Clue: the middle of a 200 by 200 canvas is not 200, 200.
 
 
 11) EXERCISE. Write the words "Hello Canvas!" onto a canvas in 20 pixel blue text, 70 pixels
-    from the left and 50 pixels from the top.
+  from the left and 50 pixels from the top.
 
-    Clue: three lines, and one of them is the text equivalent of fill().
+  Clue: three lines, and one of them is the text equivalent of fill().
 
 
 12) EXERCISE. Given a ball with `x`, `y` and `radius`, and a canvas, write a check that returns
-    true only if the ball is completely inside the canvas.
+  true only if the ball is completely inside the canvas.
 
-    Clue: four comparisons, one per wall, and every one of them needs the radius.
+  Clue: four comparisons, one per wall, and every one of them needs the radius.
 
 
 13) EXERCISE. The ball is at (250, 200) with a radius of 15. The rock sits at (220, 170) and is
-    60 by 60. Work out, by hand, whether the bounding-box check says they are touching.
+  60 by 60. Work out, by hand, whether the bounding-box check says they are touching.
 
-    Clue: write down the four edges of each, then compare them in pairs.
+  Clue: write down the four edges of each, then compare them in pairs.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) A `<canvas>` has **no content of its own**. A `<div>` can hold text and an `<img>` shows a
    picture you gave it, but a canvas starts as a blank rectangle and stays blank until
@@ -124,7 +121,7 @@ ANSWERS
 2) **`fillStyle` and `fill()`** colour the **inside** of a shape — a solid circle, a solid
    rectangle.
 
-   **`strokeStyle` and `stroke()`** draw the **outline** only, leaving the middle empty.
+- *`strokeStyle` and `stroke()`** draw the **outline** only, leaving the middle empty.
 
    They pair up, and mixing them is a common mistake — setting `fillStyle` and then calling
    `stroke()` gets you an outline in the default black, because `stroke()` never looks at
@@ -143,13 +140,13 @@ ANSWERS
 
 
 3) 
-        ctx.arc(150, 75, 40, 0, 2 * Math.PI);
-                 |    |   |   |      |
-                 x    y   r  start  end
+    ctx.arc(150, 75, 40, 0, 2 * Math.PI);
+      |    |   |   |      |
+      x    y   r  start  end
 
-   - **150** and **75** are the x and y coordinates of the **centre** of the circle.
-   - **40** is the **radius** — how far the circle reaches out from that centre.
-   - **0** is the starting angle and **2 * Math.PI** is the ending angle.
+- **150** and **75** are the x and y coordinates of the **centre** of the circle.
+- **40** is the **radius** — how far the circle reaches out from that centre.
+- **0** is the starting angle and **2 * Math.PI** is the ending angle.
 
    The angles are in **radians**, not degrees. A full circle is 360 degrees, which is
    `2 * Math.PI` radians, so going from 0 to `2 * Math.PI` draws the whole way round. If you only
@@ -204,8 +201,8 @@ ANSWERS
 
 7) Because they answer **two completely different questions**:
 
-   - `mouseDown` — *is the button being held right now?*
-   - `isErasing` — *which tool has the user chosen?*
+- `mouseDown` — *is the button being held right now?*
+- `isErasing` — *which tool has the user chosen?*
 
    These change independently. You can be erasing with the button up, or drawing with the button
    down, or any other combination. Trying to store both in one variable, or deriving one from
@@ -259,12 +256,12 @@ ANSWERS
         ctx.strokeStyle = "red";
         ctx.stroke();
 
-    The middle of a 200 by 200 canvas is **(100, 100)** — half the width and half the height, not
-    the width and height themselves. Since `arc()` takes the coordinates of the *centre*, that is
-    exactly what it wants.
+  The middle of a 200 by 200 canvas is **(100, 100)** — half the width and half the height, not
+  the width and height themselves. Since `arc()` takes the coordinates of the *centre*, that is
+  exactly what it wants.
 
-    Use `strokeStyle` and `stroke()` because we want an outline. Swap them for `fillStyle` and
-    `fill()` and you get a solid disc instead.
+  Use `strokeStyle` and `stroke()` because we want an outline. Swap them for `fillStyle` and
+  `fill()` and you get a solid disc instead.
 
 
 11) 
@@ -275,12 +272,12 @@ ANSWERS
         ctx.fillStyle = "blue";
         ctx.fillText("Hello Canvas!", 70, 50);
 
-    `fillText()` is the text equivalent of `fill()` — it is what actually puts the text on the
-    canvas. So the pattern matches the shapes: `fillStyle` chooses the colour, and the `fill`
-    method does the painting.
+  `fillText()` is the text equivalent of `fill()` — it is what actually puts the text on the
+  canvas. So the pattern matches the shapes: `fillStyle` chooses the colour, and the `fill`
+  method does the painting.
 
-    The `font` property takes the same kind of value you would write in CSS, size first and then
-    the typeface.
+  The `font` property takes the same kind of value you would write in CSS, size first and then
+  the typeface.
 
 
 12) 
@@ -313,7 +310,7 @@ ANSWERS
     its own would let half the ball disappear off the edge before anything complained. Subtract
     the radius to get the left and top edges, add it to get the right and bottom.
 
-    The same four checks written more compactly, once you are comfortable with them:
+  The same four checks written more compactly, once you are comfortable with them:
 
         return ball.x - ball.radius >= 0 &&
                ball.x + ball.radius <= canvas.width &&
@@ -323,7 +320,7 @@ ANSWERS
 
 13) **Yes — the bounding-box check says they are touching.**
 
-    Work out the eight edges:
+  Work out the eight edges:
 
         ball at (250, 200), radius 15        rock at (220, 170), 60 by 60
         ballLeft   = 250 - 15 = 235          rockLeft   = 220
@@ -331,18 +328,18 @@ ANSWERS
         ballTop    = 200 - 15 = 185          rockTop    = 170
         ballBottom = 200 + 15 = 215          rockBottom = 170 + 60 = 230
 
-    Now the four comparisons:
+  Now the four comparisons:
 
         ballRight  > rockLeft     265 > 220   true
         ballLeft   < rockRight    235 < 280   true
         ballBottom > rockTop      215 > 170   true
         ballTop    < rockBottom   185 < 230   true
 
-    All four are true, so `hitRock` is true, so `canMove()` returns false and the ball is not
-    allowed to move there.
+  All four are true, so `hitRock` is true, so `canMove()` returns false and the ball is not
+  allowed to move there.
 
-    That makes sense if you picture it: the ball's centre at (250, 200) is inside the rock, which
-    spans 220 to 280 across and 170 to 230 down. The ball is sitting right on top of it.
+  That makes sense if you picture it: the ball's centre at (250, 200) is inside the rock, which
+  spans 220 to 280 across and 170 to 230 down. The ball is sitting right on top of it.
 
-    Remember that all four must be true. If even one is false the shapes have missed each other,
-    because a gap on any single side is enough to keep them apart.
+  Remember that all four must be true. If even one is false the shapes have missed each other,
+  because a gap on any single side is enough to keep them apart.

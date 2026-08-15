@@ -1,23 +1,21 @@
 
-//————————————————————//
-	CHAPTER 2 - VARIABLES
-//————————————————————//
+# Chapter 2 — VARIABLES
 
--Variable creation and naming rules
--Initialising a variable
-    -Assigning values to variables
-        -Variable scope and blocks
-            -What is a block
-            -Types of blocks
-            -Blocks are not objects
-            -Blocks are not data structures
-            -The practical use of blocks
-            -Global scope
-            -Two differences between var vs let 
-              and const in the global scope
-            -Hoisting and the temporal dead zone
-            -Best practices for variables
-	     -JavaScript modules and variable scope
+- Variable creation and naming rules
+- Initialising a variable
+  - Assigning values to variables
+    - Variable scope and blocks
+      - What is a block
+      - Types of blocks
+      - Blocks are not objects
+      - Blocks are not data structures
+      - The practical use of blocks
+      - Global scope
+      - Two differences between var vs let
+      and const in the global scope
+      - Hoisting and the temporal dead zone
+      - Best practices for variables
+  - JavaScript modules and variable scope
 
 
   A variable is like a virtual container in computer memory in which you can store things for later use while your program is running. It is far more efficient to work something out once and keep it in a variable than to work it out all over again every time you need it.
@@ -27,38 +25,37 @@ of text, a boolean, an array, a function, or the value held by another variable.
 
 
 
-Variable creation and naming rules
--——————————————————
+## Variable creation and naming rules
   Variable names should adhere to these rules:
 
--i) Variables may include a-z, A-Z, 0-9, the $ symbol and the underscore.
--ii) No other characters are allowed. That means no spaces, and no punctuation.
--iii) The first character of the variable name must be a letter (a-z or A-Z), 
-	the $ symbol, or the underscore. It may NOT be a digit, so a name like 
-	1stName is not allowed. Digits are fine anywhere after the first 
-	character, as in name1. However, the $ 
-	character should be avoided so that it is not mixed up with the $ 
-	character used in other scripting languages like PHP for variables, or any 
-	third party library you might be using now or in the future like jQuery 
-	which uses it too.
--iv) Names are case sensitive. It has to be, as variables are meant to identify 
-	resources and so must be unique.
+- i) Variables may include a-z, A-Z, 0-9, the $ symbol and the underscore.
+- ii) No other characters are allowed. That means no spaces, and no punctuation.
+- iii) The first character of the variable name must be a letter (a-z or A-Z),
+  the $ symbol, or the underscore. It may NOT be a digit, so a name like
+  1stName is not allowed. Digits are fine anywhere after the first
+  character, as in name1. However, the $
+  character should be avoided so that it is not mixed up with the $
+  character used in other scripting languages like PHP for variables, or any
+  third party library you might be using now or in the future like jQuery
+  which uses it too.
+- iv) Names are case sensitive. It has to be, as variables are meant to identify
+  resources and so must be unique.
 
-	This means that these two variables are not the same:
+  This means that these two variables are not the same:
 
 		let myCaseDetails;
 		let Mycasedetails;
 
--v) There is no limit on variable name length. 
+- v) There is no limit on variable name length.
 
   By convention, programmers usually name variables using camel casing. This means that the variable name should start with a lowercase letter, 
 and any other word that makes up the name will be started in uppercase,
 with no spaces in-between. For example, the following are potential variable 
 names:
 
-	myRoundBall
-	nationalId
-	myCaseDetails etc
+  myRoundBall
+  nationalId
+  myCaseDetails etc
 
   A variable can be declared in three ways in JavaScript: 
 	-The var keyword
@@ -80,9 +77,8 @@ names:
 
 
 
-Initialising a variable
-———————————-
-    Declaring a variable means creating it. Initialising it means giving it its first 
+## Initialising a variable
+  Declaring a variable means creating it. Initialising it means giving it its first
   value. You can do both in one go, or you can declare a variable now and give it a 
   value later on.
   Here is a variable being declared and initialised at the same time:
@@ -115,9 +111,8 @@ Initialising a variable
   console open as you work through this chapter.
 
 
-Assigning values to variables
-———————————————-
-	We do so using the assignment operator—more on operators in Chapter 5 
+### Assigning values to variables
+  We do so using the assignment operator—more on operators in Chapter 5
   (Control Flow). Here is an example of assigning a value to a variable:
 
 	let firstName = "John";
@@ -147,8 +142,7 @@ the declared variables userName and age above, do this:
 
 
 
-Variable scope and blocks
-————————
+#### Variable scope and blocks
   A quick word about functions first, because they are about to matter a great deal.
   A function is a parcel of code that you give a name to, so that you can run it whenever
 you like, rather than only at the moment you wrote it. You create one with the word
@@ -183,46 +177,45 @@ and Chapter 7 is devoted entirely to them.
   Now, before we understand the scope of variables, we have to first of all understand the concept of blocks in JavaScript. 
 
 
-What is a block
-—————
+##### What is a block
 A block in JavaScript is any section of code enclosed within curly braces {}. Blocks are used to group multiple statements together, and they define the scope for let or const variables. So, the two types of variables which can have their scope limited by blocks are variables created with the keywords ‘let’ or ‘const’. These two types of variables are therefore said to be block-scoped variables. There is a third type of variable whose scope is slightly different from let and const variables; and this is a var variable. Variables created using the ‘var’ keyword can only be scoped by a function. Though a function as we will see below is also a block, also referred to as a function block; it is the only block that can limit the scope of a var variable. To summarise the behaviour of these three types of variables within blocks, we can say that while let and const variables are block-scoped, var variables are function-scoped. Here are the characteristics of a block:
-        -A block is created by enclosing a 
-               body of code within a pair of 
-               opening and closing {} (curly 
-               braces). The code within these 
-               curly braces then become the 
-               block. This is where you can group 
-               multiple statements together.
-        -A block creates a new scope, which 
-               in other words means that besides 
-               allowing you a space to group 
-               multiple statements together, a 
-               block also creates an area of 
-               visibility or reach for your 
-               variables. However, the types of 
-               variables that respect blocks, in 
-               terms of being limited in scope by 
-               blocks are only variables created 
-               using the keywords ‘let’ and 
-               ‘const’. This means that when 
-               these variables are defined, they 
-               cannot be accessed from outside
-               the block they are defined in. Any 
-               attempt will lead to a 
-               ReferenceError, which is the 
-               browser telling you it cannot 
-               find that name at all. Variables 
-               created using the ‘var’ keyword 
-               on the other hand are 
-               not block scoped, or in other 
-               words, do not respect blocks. This 
-               means that variables created with 
-               the ‘var’ keyword inside a block 
-               can be accessed from outside that 
-               block they are defined in, unless 
-               the block is a function block. In 
-               other words, their values leak 
-               through the block.
+    - A block is created by enclosing a
+      body of code within a pair of
+      opening and closing {} (curly
+      braces). The code within these
+      curly braces then become the
+      block. This is where you can group
+      multiple statements together.
+    - A block creates a new scope, which
+      in other words means that besides
+      allowing you a space to group
+      multiple statements together, a
+      block also creates an area of
+      visibility or reach for your
+      variables. However, the types of
+      variables that respect blocks, in
+      terms of being limited in scope by
+      blocks are only variables created
+      using the keywords ‘let’ and
+      ‘const’. This means that when
+      these variables are defined, they
+      cannot be accessed from outside
+      the block they are defined in. Any
+      attempt will lead to a
+      ReferenceError, which is the
+      browser telling you it cannot
+      find that name at all. Variables
+      created using the ‘var’ keyword
+      on the other hand are
+      not block scoped, or in other
+      words, do not respect blocks. This
+      means that variables created with
+      the ‘var’ keyword inside a block
+      can be accessed from outside that
+      block they are defined in, unless
+      the block is a function block. In
+      other words, their values leak
+      through the block.
 
   Here is an example of how var being used inside a block leaks out:
 
@@ -263,16 +256,14 @@ Here, a is restricted to the function, so it behaves as expected.
 
 ![Figure 2.1 — How far each kind of variable can be seen](images/ch02-fig-01-scope-and-blocks.svg)
 
-*Figure 2.1 — How far each kind of variable can be seen*
+- Figure 2.1 — How far each kind of variable can be seen*
 
 
 
-Types of blocks
-——————————-
+##### Types of blocks
   Remember we have established that a block in JavaScript is a group of code enclosed within a pair of curly braces. The main types of block you will meet in JavaScript are: a standalone block, an if statement, a loop (for or while loop), and a function. There are others besides these, such as try/catch and switch blocks, which we will meet in later chapters. Here they are with examples:
 
--a) Standalone block
-—————
+#### -a) Standalone block
           {
               let x = 10;
               console.log(x); // 10
@@ -285,8 +276,7 @@ Types of blocks
       not accessible outside.
 
 
--b) If statement block
-—————
+#### -b) If statement block
         if (true) {
             let y = 20;
             console.log(y); // 20
@@ -297,8 +287,7 @@ Types of blocks
 
 
 
--c) Loop (for or while loop) block
-—————
+#### -c) Loop (for or while loop) block
   Both the for loop and the while loop of JavaScript are blocks. Let’s see an example of a for loop:
 
      for (let i = 0; i < 3; i++) {
@@ -313,8 +302,7 @@ Types of blocks
     the for loop block.
 
 
--d) Function block
-—————
+#### -d) Function block
        function example() {
            let z = 50;
            console.log(z); // 50
@@ -330,8 +318,7 @@ Types of blocks
 
 
 
-Blocks are not objects
-—————————————
+##### Blocks are not objects
   An object literal { key: value } is NOT a block—it’s just an object. Don’t worry, we will talk more on objects in Chapter 17 (Object Oriented Programming). Blocks are structural elements of JavaScript’s syntax, while objects are data structures. For example:
 
       let obj = {
@@ -346,8 +333,7 @@ Even though an object uses {}, it does not create a new scope. The variables ins
 
 
 
-Blocks are not data structures
-—————————————————
+##### Blocks are not data structures
   A block {} is not a data structure in JavaScript. A block is just a syntactic structure used to group code together and define scope, particularly for let and const. It does not store data like arrays or objects do. Let’s demonstrate that a little bit:
 
     {
@@ -369,36 +355,35 @@ This {} simply defines a scope. It doesn’t store values like an object or an a
 console.log(person.name);
 
 This {} is an object literal, which is used to store data. Let’s look at some key differences to help us distinguish between a block and an object: 
-  -A block does not have keys—it just 
-    defines a scope for let and const 
-    variables.
-  -An object has keys (properties), but 
-    these are not variables. They are stored 
-    inside the object and accessed using dot 
-    notation (obj.key) or bracket notation 
-    (obj["key"]).
+- A block does not have keys—it just
+  defines a scope for let and const
+  variables.
+- An object has keys (properties), but
+  these are not variables. They are stored
+  inside the object and accessed using dot
+  notation (obj.key) or bracket notation
+  (obj["key"]).
 
 
 
 
 
-The practical use of blocks
-——————————————
+##### The practical use of blocks
   One might be tempted to question the usefulness of standalone blocks! At first glance, it might seem like they don’t serve much purpose, but they do have practical applications in real-world programming. 
 While they aren’t the most common feature, they can be useful in certain scenarios—especially for keeping your code clean and avoiding variable pollution (overriding of one another). Here are some instances when you need a block in your application code:
-   -When you need temporary variables 
-     that shouldn’t affect the rest of the code.
-  -When you want to isolate (separate) 
-     execution logic without defining a 
-     function. This means, the code will be 
-     parsed and run at the line where it is, 
-     without you having to call it explicitly. 
-  -When you want to logically group code 
-     within a function for better readability.
+- When you need temporary variables
+  that shouldn’t affect the rest of the code.
+- When you want to isolate (separate)
+  execution logic without defining a
+  function. This means, the code will be
+  parsed and run at the line where it is,
+  without you having to call it explicitly.
+- When you want to logically group code
+  within a function for better readability.
 
 Let us see some code examples:
- -1) Using a Block to Process Temporary 
-       Data Without Polluting Scope
+- 1) Using a Block to Process Temporary
+  Data Without Polluting Scope
 
 Here is an example of fetching and processing API data in an isolated block.
   Before you read it, a word of reassurance. This example, and the one after it, 
@@ -437,10 +422,10 @@ fetchUserData();
 The fetchUserData() function has a block inside of it. Outside that block, the blocked-scoped variables ‘response’, ‘data’, ‘username’, and ‘age’ no longer exist. This is because they are out of scope, and that is the idea. The benefit is a tidier program, where a name only exists for as long as it is actually needed.
 
 
- -2) Isolating Temporary DOM Elements 
-        Without Affecting Global Scope. This 
-      is about temporary DOM Manipulation 
-      Without Polluting Scope.
+- 2) Isolating Temporary DOM Elements
+    Without Affecting Global Scope. This
+  is about temporary DOM Manipulation
+  Without Polluting Scope.
 
       document.querySelector("#btn")
             .addEventListener("click", () => {
@@ -469,16 +454,15 @@ This example demonstrates JavaScript’s prowess in manipulating the DOM. Here w
   In this code, the messageBox element is only used inside the block. Once it’s appended and scheduled for removal, there’s no need to keep the variable around.
 
 Therefore you can see how when using a block, you can place code in them that performs actual logic like fetching data, modifying the DOM, handling calculations, etc. The key idea is:
-     -a) Do the necessary work inside the 
-            block.
-     -b) Let the variables automatically 
-            disappear when they are no longer 
-            needed.
+  - a) Do the necessary work inside the
+      block.
+  - b) Let the variables automatically
+      disappear when they are no longer
+      needed.
 
 
 
-Global scope
-————————
+##### Global scope
   As a reminder of all what we have learned so far about variables and scopes, here are the take-away points:
     -Var variables are always global unless 
       they are used inside a function (they 
@@ -570,23 +554,22 @@ Another thing we need to remember about global variables is that it is possible 
     console.log(item);
 
 The output will be :
-    dress
-    shoe
+  dress
+  shoe
 
 Inside displayItem(), the local item variable with the value 'dress' shadows the global item within that function’s scope. However, the global item remains 'shoe' when accessed outside the function.
 
 
-Two differences between var vs let and const in the global scope
-————————————————
+#### Two differences between var vs let and const in the global scope
   There are two important differences between the behaviour of var and let or const in the global scope. Even though let and const can be used globally, they do not behave exactly like var in the global scope. Here are the differences:
 
--a) var attaches to the window object (in 
-       browsers), let and const do not. The 
-       window object is the browser’s own 
-       global object, where it keeps everything 
-       that is available everywhere on the 
-       page. We look at it properly in 
-       Chapter 15.
+- a) var attaches to the window object (in
+  browsers), let and const do not. The
+  window object is the browser’s own
+  global object, where it keeps everything
+  that is available everywhere on the
+  page. We look at it properly in
+  Chapter 15.
 
       var x = 10;
       let y = 20;
@@ -628,8 +611,7 @@ The assigning code references the variable name (count) without needing to re-de
 
 
 
-Hoisting and the temporal dead zone
-————————————————————
+##### Hoisting and the temporal dead zone
   There is one more difference between var and let or const, and it explains a 
 lot of otherwise baffling behaviour. It is called hoisting.
   Before your code runs, JavaScript takes a quick first pass over it and makes a 
@@ -666,12 +648,11 @@ them, and prefer let and const so that JavaScript tells you when you have not.
 
 ![Figure 2.2 — Reaching for a variable before you declare it](images/ch02-fig-02-hoisting-tdz.svg)
 
-*Figure 2.2 — Reaching for a variable before you declare it*
+- Figure 2.2 — Reaching for a variable before you declare it*
 
 
 
-Best practices for variables
-———————————————
+##### Best practices for variables
   It is recommended to always declare variables using let or const instead of relying on var, as they provide better scoping rules and avoid accidental global variable leaks.
   Use const for a value that should never be reassigned, and let when you do need to update the value later on. One word of warning about const, because it catches almost everybody out: const stops you from reassigning the variable, but it does not freeze what is inside it. If a const holds an array or an object, you can still change the contents; what you cannot do is point that name at something else entirely. We look at this properly in Chapter 4 (Constants). let allows reassignments without polluting the window object (useful for things like counters, flags which are only needed temporarily). Let variables as we have seen also prevent accidental redeclaration, which var allows.
   Avoid implicit global variables (i.e., variables declared without var, let, or const), as they can lead to unintended side effects.
@@ -683,8 +664,7 @@ By following these practices, you can write cleaner, more maintainable JavaScrip
 
 
 
-JavaScript modules and variable scope
-————————————————————
+### JavaScript modules and variable scope
   As your code grows larger, it's common to split it into multiple files to keep things organised. These files can be treated as modules — reusable, self-contained pieces of JavaScript code. (Take care not to confuse this use of the word with the code blocks we met earlier in this chapter. They are unrelated.) But JavaScript handles modules a little differently than regular scripts.
 To declare a JavaScript file as a module, you use the type="module" attribute in your HTML in the `<script>` tag as you reference the specific JavaScript file:
 
@@ -718,7 +698,7 @@ We will come back to this same example in Chapter 22 (Extensions - APIs & Librar
 
 If you run this code in your browser, you’ll get an error like:
 
-	Uncaught ReferenceError: fetchPhotos is not defined
+  Uncaught ReferenceError: fetchPhotos is not defined
 
 That’s because fetchPhotos() exists inside the module, not in the global scope where HTML's onclick can see it. 
   So how do you resolve this issue? You have two options:

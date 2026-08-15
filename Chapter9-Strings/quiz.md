@@ -1,5 +1,4 @@
-QUIZ — Chapter 9: Strings
-=========================
+# QUIZ — Chapter 9: Strings
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 9: Strings. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) Name the three ways you can wrap a piece of text to make it a string in JavaScript.
 
@@ -30,7 +28,7 @@ QUESTIONS
 
 3) What do each of these escape sequences do?
 
-        \n    \t    \\    \"
+    \n    \t    \\    \"
 
    Clue: the first two are about layout, the second two are about characters that would
    otherwise be taken as syntax.
@@ -60,9 +58,9 @@ QUESTIONS
 
 7) Given `const sport = "Boxing";`, what do each of these give you?
 
-        sport[0]
-        sport[sport.length - 1]
-        sport[sport.length - 2]
+    sport[0]
+    sport[sport.length - 1]
+    sport[sport.length - 2]
 
    Clue: counting starts at 0, which is why the last one is at length minus 1 rather than
    length.
@@ -84,14 +82,13 @@ QUESTIONS
 
 
 10) EXERCISE. Write a piece of code that prints the last character of any string, without
-    knowing in advance how long the string is. Test it on two strings of different lengths.
+  knowing in advance how long the string is. Test it on two strings of different lengths.
 
-    Clue: the property from question 6 will tell you how long it is, and question 7 shows you
-    what to do with that number.
+  Clue: the property from question 6 will tell you how long it is, and question 7 shows you
+  what to do with that number.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) Double quotes, single quotes, and backticks:
 
@@ -109,11 +106,11 @@ ANSWERS
 
    Two ways to fix it:
 
-   **Use a different kind of quote inside:**
+- *Use a different kind of quote inside:**
 
         const sentence = "He said hello to 'her'";
 
-   **Or escape the inner quotes with a backslash:**
+- *Or escape the inner quotes with a backslash:**
 
         const sentence = "He said hello to \"her\"";
 
@@ -125,11 +122,11 @@ ANSWERS
 
 
 3) 
-   - `\n` — a newline. Everything after it starts on a fresh line.
-   - `\t` — a tab. Useful for lining things up in columns.
-   - `\\` — a single literal backslash. You need two, because one on its own would be read as
-     the start of an escape sequence.
-   - `\"` — a literal double quote, one that does not end the string.
+- `\n` — a newline. Everything after it starts on a fresh line.
+- `\t` — a tab. Useful for lining things up in columns.
+- `\\` — a single literal backslash. You need two, because one on its own would be read as
+  the start of an escape sequence.
+- `\"` — a literal double quote, one that does not end the string.
 
 
 4) Concatenation is joining two or more pieces of text together into one. In JavaScript it is
@@ -149,8 +146,8 @@ ANSWERS
 
 5) It prints:
 
-        My name is Alice 
-            and I am 25 years old.
+    My name is Alice
+      and I am 25 years old.
 
    on two lines, not one — with the indentation included.
 
@@ -177,9 +174,9 @@ ANSWERS
 
 
 7) 
-        sport[0]                    // "B"  - the first character
-        sport[sport.length - 1]     // "g"  - the last character
-        sport[sport.length - 2]     // "n"  - the last but one
+    sport[0]                    // "B"  - the first character
+    sport[sport.length - 1]     // "g"  - the last character
+    sport[sport.length - 2]     // "n"  - the last but one
 
    "Boxing" has six characters, so `length` is 6. But counting starts at 0, so the positions run
    0 to 5. That is why the last character sits at `length - 1` and not at `length` — asking for
@@ -215,7 +212,7 @@ ANSWERS
 
    Both print:
 
-        Hello, John Doe!
+    Hello, John Doe!
 
    The spaces are the fiddly part of the concatenated version. There is one after the comma,
    inside the first piece of text, and another between the two names that has to be added as a
@@ -233,12 +230,12 @@ ANSWERS
         console.log(lastCharacter("Boxing"));      // g
         console.log(lastCharacter("Football"));    // l
 
-    Because we work the position out from `text.length` rather than typing a number in, this
-    works on a string of any length without being told how long it is.
+  Because we work the position out from `text.length` rather than typing a number in, this
+  works on a string of any length without being told how long it is.
 
-    You could also use charAt() for the same job:
+  You could also use charAt() for the same job:
 
         return text.charAt(text.length - 1);
 
-    The difference between the two shows up only when you ask for a position that does not
-    exist: brackets give you undefined, whereas charAt() gives you an empty string.
+  The difference between the two shows up only when you ask for a position that does not
+  exist: brackets give you undefined, whereas charAt() gives you an empty string.

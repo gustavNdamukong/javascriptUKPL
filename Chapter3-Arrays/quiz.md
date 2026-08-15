@@ -1,5 +1,4 @@
-QUIZ — Chapter 3: Arrays
-========================
+# QUIZ — Chapter 3: Arrays
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 3: Arrays. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) JavaScript has two types of array. Name them, and say what the difference between them is.
 
@@ -42,9 +40,9 @@ QUESTIONS
 
         const person = { "first-name": "Tom", aunt: "Polly" };
 
-        person.aunt
-        person["first-name"]
-        person.first-name
+    person.aunt
+    person["first-name"]
+    person.first-name
 
    Clue: think about what JavaScript sees when it meets a hyphen in the middle of an expression.
 
@@ -85,10 +83,10 @@ QUESTIONS
 
 
 10) Objects do not have array methods like .filter() or .map(), and they have no .length
-    either. Name the three methods JavaScript gives you to get around this, and say what each
-    one hands back.
+  either. Name the three methods JavaScript gives you to get around this, and say what each
+  one hands back.
 
-    Clue: the chapter gives them the nickname KVE.
+  Clue: the chapter gives them the nickname KVE.
 
 
 11) EXERCISE. Loop through an array running a function on each element.
@@ -102,18 +100,18 @@ QUESTIONS
 
 12) EXERCISE. Loop through an array of images and display the images on screen.
 
-    -Create a div in your HTML code and give it an ID
-    -Within your JavaScript code, create an array
-    -Put in this array a number of elements which should be names of images as strings,
-     including their image extensions. Make sure these are the names of actual images on
-     your computer
-    -Select the div you created in your HTML. This is where you will be displaying the images
-     whose names you have stored in the array. Let us refer to it as the target div
-    -Loop through the array grabbing the names of the images one by one, placing them within
-     an <img /> tag, and then placing the image tag in the target div, so that the image
-     displays
-    -Use a timer function so that only one image is displayed at a time, and the image changes
-     every 5 seconds
+  - Create a div in your HTML code and give it an ID
+  - Within your JavaScript code, create an array
+  - Put in this array a number of elements which should be names of images as strings,
+  including their image extensions. Make sure these are the names of actual images on
+  your computer
+  - Select the div you created in your HTML. This is where you will be displaying the images
+  whose names you have stored in the array. Let us refer to it as the target div
+  - Loop through the array grabbing the names of the images one by one, placing them within
+  an <img /> tag, and then placing the image tag in the target div, so that the image
+  displays
+  - Use a timer function so that only one image is displayed at a time, and the image changes
+  every 5 seconds
 
     Clue: setInterval() takes two arguments — a function to run, and how long to wait between
     runs, in milliseconds. Keep a counter of which image you are up to, and send it back to 0
@@ -122,36 +120,35 @@ QUESTIONS
 
 13) EXERCISE. Create an array of the numbers 1, 3, 2, 5, 2, 9, 2, 9, 2, 1.
 
-    -Then create another, empty array
-    -Loop through the array of numbers and check each one. If the number is a 2 or a 9, put it
-     into the other array
-    -Finally, display the contents of that second array in an alert popup
+  - Then create another, empty array
+  - Loop through the array of numbers and check each one. If the number is a 2 or a 9, put it
+  into the other array
+  - Finally, display the contents of that second array in an alert popup
 
-    The popup should display 2, 2, 9, 2, 9, 2
+  The popup should display 2, 2, 9, 2, 9, 2
 
-    This exercise should teach you how to loop through an array and scan its contents for
-    specific values, filtering out what is not needed. In doing so, you will use the comparison
-    operator to check whether a value is equal to another value. We have not covered comparison
-    operators yet, so treat this as a gentle introduction. When we come to them in Chapter 5
-    (Control Flow), and you see those and many other operators in action, you will grasp their
-    essence and power in programming.
+  This exercise should teach you how to loop through an array and scan its contents for
+  specific values, filtering out what is not needed. In doing so, you will use the comparison
+  operator to check whether a value is equal to another value. We have not covered comparison
+  operators yet, so treat this as a gentle introduction. When we come to them in Chapter 5
+  (Control Flow), and you see those and many other operators in action, you will grasp their
+  essence and power in programming.
 
     Clue: == checks whether two values are equal. push() adds to an array.
 
 
 14) EXERCISE. Finally, we should not proceed without exercising with multi-dimensional arrays
-    too.
+  too.
 
-    -Create an array called food which contains three arrays of different food types. Each of
-     those three arrays should have three elements in it
-    -Loop through this food array and display the elements of each of the inner arrays in the
-     console, on separate lines
+  - Create an array called food which contains three arrays of different food types. Each of
+  those three arrays should have three elements in it
+  - Loop through this food array and display the elements of each of the inner arrays in the
+  console, on separate lines
 
-    Clue: one level of array needs one loop. Two levels need a loop inside a loop.
+  Clue: one level of array needs one loop. Two levels need a loop inside a loop.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) Numeric arrays (also called indexed arrays) and associative arrays.
 
@@ -196,7 +193,7 @@ ANSWERS
    starting with a digit. "first-name" has a hyphen, so JavaScript does not read it as one
    name. It reads it as a subtraction:
 
-        person.first - name
+    person.first - name
 
    which gives you NaN rather than "Tom".
 
@@ -239,10 +236,10 @@ ANSWERS
 
 
 7) 
-    - push()    adds an item to the END of the array
-    - pop()     removes the item at the END of the array
-    - unshift() adds an item to the BEGINNING of the array
-    - shift()   removes the item at the BEGINNING of the array
+  - push()    adds an item to the END of the array
+  - pop()     removes the item at the END of the array
+  - unshift() adds an item to the BEGINNING of the array
+  - shift()   removes the item at the BEGINNING of the array
 
    pop() and shift() both hand back the item they removed, so you can catch it in a variable if
    you still need it.
@@ -296,9 +293,9 @@ ANSWERS
 
 
 11) When you meet a problem in programming, the first thing to do is think about what tool the
-    language already gives you. Here we are dealing with an array, so ask what JavaScript
-    provides for arrays — the array methods come to mind. Is there one that runs a function on
-    every element? Yes: map(). Once you have found the tool, the problem is half solved.
+  language already gives you. Here we are dealing with an array, so ask what JavaScript
+  provides for arrays — the array methods come to mind. Is there one that runs a function on
+  every element? Yes: map(). Once you have found the tool, the problem is half solved.
 
     map() can be given a built-in function or one you write yourself. We will write our own,
     taking a number as its argument and returning that number doubled:
@@ -313,16 +310,16 @@ ANSWERS
 
         alert(newNumbers);
 
-    This displays a popup saying 2,4,6,8,10.
+  This displays a popup saying 2,4,6,8,10.
 
     Notice that you pass multiplier without brackets after it. You are handing map() the
     function itself, not the result of calling it. At each turn of the loop, map() passes the
     current element into multiplier() as num.
 
-    One more thing worth knowing while we are here. map() itself takes just one argument, the
-    function. But the function it hands your elements to can accept a second parameter, and
-    JavaScript will fill that one in with the index of the current element. This is handy when
-    you need to know where in the array you are:
+  One more thing worth knowing while we are here. map() itself takes just one argument, the
+  function. But the function it hands your elements to can accept a second parameter, and
+  JavaScript will fill that one in with the index of the current element. This is handy when
+  you need to know where in the array you are:
 
         let names = ['Ada', 'Grace', 'Alan'];
 
@@ -333,8 +330,8 @@ ANSWERS
         console.log(numbered);
         // ["1: Ada", "2: Grace", "3: Alan"]
 
-    We add 1 to i because the index starts at 0, and a numbered list that starts at 0 would
-    look odd to a reader. The same second parameter is available in forEach() and filter() too.
+  We add 1 to i because the index starts at 0, and a numbered list that starts at 0 would
+  look odd to a reader. The same second parameter is available in forEach() and filter() too.
 
 
 12) Here is the whole page:
@@ -351,14 +348,14 @@ ANSWERS
             <script>
                 let images = new Array();
 
-                // put the images in the array
-                images.push(
-                    "amex.png",
-                    "visa.png",
-                    "pexels-photo.jpeg",
-                    "pexels-photo2.jpeg",
-                    "logo.jpeg"
-                );
+      // put the images in the array
+      images.push(
+      "amex.png",
+      "visa.png",
+      "pexels-photo.jpeg",
+      "pexels-photo2.jpeg",
+      "logo.jpeg"
+      );
 
                 // grab the target div
                 let div = document.getElementById("myImgDiv");
@@ -390,9 +387,9 @@ ANSWERS
     and 5000 milliseconds, which is 5 seconds. So the images appear in the target div and keep
     changing every five seconds.
 
-    The pos counter keeps track of which image we are showing. When it reaches the last one, we
-    set it back to 0 so the slideshow starts over. Congratulations, you have just built your
-    first image slideshow.
+  The pos counter keeps track of which image we are showing. When it reaches the last one, we
+  set it back to 0 so the slideshow starts over. Congratulations, you have just built your
+  first image slideshow.
 
 
 13) Here is the code:
@@ -415,14 +412,14 @@ ANSWERS
 
         alert(arr2);
 
-    As expected, the alert popup displays 2, 2, 9, 2, 9, 2.
+  As expected, the alert popup displays 2, 2, 9, 2, 9, 2.
 
-    The if () block we use to check each item is a conditional statement, which we look at
-    properly in Chapter 5. Notice the word conditional: a condition is checked, and what
-    happens next depends on the answer.
+  The if () block we use to check each item is a conditional statement, which we look at
+  properly in Chapter 5. Notice the word conditional: a condition is checked, and what
+  happens next depends on the answer.
 
-    Instead of two separate if statements, we could check both conditions in one, by joining
-    them with the OR operator (||):
+  Instead of two separate if statements, we could check both conditions in one, by joining
+  them with the OR operator (||):
 
         let arr1 = [1, 3, 2, 5, 2, 9, 2, 9, 2, 1];
         let arr2 = [];
@@ -437,8 +434,8 @@ ANSWERS
 
         alert(arr2);
 
-    This still displays 2, 2, 9, 2, 9, 2. The double pipe (||) means "if the test on either
-    side is true, do the thing". Notice we end up with rather less code than before.
+  This still displays 2, 2, 9, 2, 9, 2. The double pipe (||) means "if the test on either
+  side is true, do the thing". Notice we end up with rather less code than before.
 
 
 14) Here is the code:
@@ -461,23 +458,23 @@ ANSWERS
             console.log(sub);
         }
 
-    The result in the console is:
+  The result in the console is:
 
-        tomatoes pepper cabbage
-        apple pineapple banana
-        rice pasta beans
+    tomatoes pepper cabbage
+    apple pineapple banana
+    rice pasta beans
 
-    The key to mastering loops is this: for every level you move down into the array, you need
-    another loop block. This array is two levels deep, so we use two for loops, one nested
-    inside the other.
+  The key to mastering loops is this: for every level you move down into the array, you need
+  another loop block. This array is two levels deep, so we use two for loops, one nested
+  inside the other.
 
-    Notice that the outer loop uses a counter called i, and the inner one uses j. It has to be
-    a different name, because i is already in use by the outer loop. There is nothing magic
-    about i and j — any names would work — but by convention those are the ones programmers
-    reach for. If the array went deeper still, we would carry on in the same way.
+  Notice that the outer loop uses a counter called i, and the inner one uses j. It has to be
+  a different name, because i is already in use by the outer loop. There is nothing magic
+  about i and j — any names would work — but by convention those are the ones programmers
+  reach for. If the array went deeper still, we would carry on in the same way.
 
-    Remember too that you use one set of square brackets for each level. food[1] gives you the
-    second inner array, ['apple', 'pineapple', 'banana'], and food[1][0] then gives you the
-    first element of that, 'apple'. That is exactly what food[i][j] is doing inside the loop.
-    The sub += ' ' + part is simply building up a string of all three items so we can print
-    them on one line.
+  Remember too that you use one set of square brackets for each level. food[1] gives you the
+  second inner array, ['apple', 'pineapple', 'banana'], and food[1][0] then gives you the
+  first element of that, 'apple'. That is exactly what food[i][j] is doing inside the loop.
+  The sub += ' ' + part is simply building up a string of all three items so we can print
+  them on one line.

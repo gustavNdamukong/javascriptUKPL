@@ -1,58 +1,56 @@
 
 
 
-//————————————————————//
-	CHAPTER 5 - CONTROL FLOW (OCLS)
-//————————————————————//
+# Chapter 5 — CONTROL FLOW (OCLS)
 
--OCLS (Operators, Conditionals, Loops, Switch)
+- OCLS (Operators, Conditionals, Loops, Switch)
 
-	 -Operators
-		-1) Mathematical operators
-			-Addition operator
-			-minus operator
-			-division operator
-			-multiplication operator
-			-modulus operator
-			-assignment operator
-			-incremental operator
-			-decremental operator
-		-2) Assignment operators
-		-3) Comparison operators
-			-Equality operator
-			-Strict equality operator
-			-greater than operator
-			-less than operator
-			-greater than or equal to operator
-			-less than or equal to operator
-		-4) Logical operators
-			-Not operator
-			-OR operator
-			-And operator
-			-Ternary operator
-				-Nesting multiple ternary operators
-		-Combining math operators with the assignment operator
-	-Conditionals
-		-if statements
-		-Checking Multiple Conditions
-			-a) Independent Conditions
-			-b) Mutually Exclusive Conditions
-			     (Two Choices)
-			-c) Mutually Exclusive Conditions
-			     (More Than Two Choices)
-		-Additional notes on conditionals
-	-Loops (6)
-             -The For loop
-             -The While loop
-             -The Do...while loop
-             -The For...in loop (objects and arrays)
-             -The For...of loop (for Arrays, Strings, Maps, Sets, etc)
-             -The forEach() loop (for arrays)
+  - Operators
+    - 1) Mathematical operators
+      - Addition operator
+      - minus operator
+      - division operator
+      - multiplication operator
+      - modulus operator
+      - assignment operator
+      - incremental operator
+      - decremental operator
+    - 2) Assignment operators
+    - 3) Comparison operators
+      - Equality operator
+      - Strict equality operator
+      - greater than operator
+      - less than operator
+      - greater than or equal to operator
+      - less than or equal to operator
+    - 4) Logical operators
+      - Not operator
+      - OR operator
+      - And operator
+      - Ternary operator
+      - Nesting multiple ternary operators
+    - Combining math operators with the assignment operator
+  - Conditionals
+    - if statements
+    - Checking Multiple Conditions
+      - a) Independent Conditions
+      - b) Mutually Exclusive Conditions
+      (Two Choices)
+      - c) Mutually Exclusive Conditions
+      (More Than Two Choices)
+    - Additional notes on conditionals
+  - Loops (6)
+      - The For loop
+      - The While loop
+      - The Do...while loop
+      - The For...in loop (objects and arrays)
+      - The For...of loop (for Arrays, Strings, Maps, Sets, etc)
+      - The forEach() loop (for arrays)
 
-	     -Loop control statements
-			-the break statement
-			-the continue statement
-       -Switch statement
+  - Loop control statements
+      - the break statement
+      - the continue statement
+  - Switch statement
 
 
 
@@ -61,15 +59,15 @@ Let’s say a robot is programmed to walk forward. What happens if it walks up t
 All of these situations are examples of events. Your program’s job is to detect when events happen and respond with the right logic. In simple terms, logic means looking at a situation, recognising what’s going on, and choosing what to do next.
 Here’s a real-world example: When you’re typing in a Word document and try to close it without saving, you get a message asking if you want to save your changes first. That’s control flow at work—smart logic built into the app to help the user avoid mistakes.
 For your program to handle events well, it needs two main abilities:
-* To detect that an event has happened
-* To decide what to do about it (and maybe consider other things too)
+- To detect that an event has happened
+- To decide what to do about it (and maybe consider other things too)
 This is what control flow is all about: giving your program the power to respond to things in smart, useful ways.
 In JavaScript, there are four main tools that help you build this kind of logic. I remember them by the abbreviation OCLS:
 
-	-1) Operators
-	-2) Conditionals
-	-3) Loops
-	-4) Switch
+  - 1) Operators
+  - 2) Conditionals
+  - 3) Loops
+  - 4) Switch
 
   Strictly speaking, a switch is itself a kind of conditional, and you will see it described that way elsewhere. I have given it a section of its own because its syntax is different enough from if...else to be worth studying separately. Operators are in this list for a similar practical reason: they are not really control flow either, but you cannot write a condition without them.
 
@@ -81,16 +79,14 @@ In JavaScript, there are four main tools that help you build this kind of logic.
 
 
 
-OPERATORS
-———————
-	Operators are very useful for performing things like mathematical 
+### OPERATORS
+  Operators are very useful for performing things like mathematical
  operations, assigning values to variables, performing logical operations 
 like comparing two values, adding up values etc.
 
 		
 
--1) Mathematical operators
-———————————————
+#### -1) Mathematical operators
 
 Operators give you the ability to perform calculations so you can make accurate logical decisions. The following is a list of mathematical operators with practical examples to show how they work. Here is a list of operator characters and their meanings:
 
@@ -119,44 +115,44 @@ Operators give you the ability to perform calculations so you can make accurate 
 	&&	and
 	||	or
 
-	There is also the ternary operator, which needs a little more explaining
-	than a single line, so it has a section of its own further down.
+  There is also the ternary operator, which needs a little more explaining
+  than a single line, so it has a section of its own further down.
 
 
-		Addition operator
-	The addition operator + is like the addition sign in mathematics (represented by the plus sign) and it is used to add two numbers together. It should not be mistaken for the concatenation operator that binds variables to a string. For example:
+    Addition operator
+  The addition operator + is like the addition sign in mathematics (represented by the plus sign) and it is used to add two numbers together. It should not be mistaken for the concatenation operator that binds variables to a string. For example:
 
 		let sum = 2 + 2;
 			
 The value of sum will be 4.	
 	
 
-		Minus operator
-	The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
+    Minus operator
+  The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
 				
 		let num = 3 - 2;
 			
 The value of num will be 1.
 
 						
-		Division operator
-	The division operator / is used to divide one number by the other. It divides the value on the left by the value on the right. The result is called the quotient. For example:
+    Division operator
+  The division operator / is used to divide one number by the other. It divides the value on the left by the value on the right. The result is called the quotient. For example:
 				
 		let num = 4 / 2;
 			
 The value of num will be 2.
 
 						
-		Multiplication operator
-	The multiplication operator * is used to multiply a number by a number. It multiplies the value on the left by the value on the right. The result is called the product. For example:
+    Multiplication operator
+  The multiplication operator * is used to multiply a number by a number. It multiplies the value on the left by the value on the right. The result is called the product. For example:
 				
 	let num = 2 * 2;
 			
 The value of num will be 4.
 
 						
-		Modulo operator
-	The modulus operator % is used to get the remainder after dividing one number by another. Basically, it divides the number on the left by the number on the right, and returns whatever is left over. For example:
+    Modulo operator
+  The modulus operator % is used to get the remainder after dividing one number by another. Basically, it divides the number on the left by the number on the right, and returns whatever is left over. For example:
 				
 		let num = 10 % 5;
 			
@@ -182,15 +178,15 @@ The value of num will be 1.
 	
 
 
-		Incremental operator
-	An incremental operator ++ is used to quickly add 1 to a number. Normally, there are two ways to increase a number’s value:
+    Incremental operator
+  An incremental operator ++ is used to quickly add 1 to a number. Normally, there are two ways to increase a number’s value:
 
-	a) By using the addition operator
+  a) By using the addition operator
 
 		let count = 1;
 		let value = count + 1; // value is 2
 
-	b) By using the incremental operator
+  b) By using the incremental operator
 
 		let count = 1;
 		let value = count++; // value is 1, but count becomes 2
@@ -198,15 +194,15 @@ The value of num will be 1.
 Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However, if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
 
 
-		Decremental operator
-	This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
+    Decremental operator
+  This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
 
-	a) By using the subtraction operator
+  a) By using the subtraction operator
 
 		let count = 2;
 		let value = count - 1; // value is 1
 
-	b) By using the decremental operator
+  b) By using the decremental operator
 
 		let count = 2;
 		let value = count--; // value is 2, but count becomes 1
@@ -216,8 +212,7 @@ Note: In count-- where the operator is on the right side of the variable being d
 
 
 
--2) Assignment operators
-———————————————
+#### -2) Assignment operators
   The assignment operator is used to assign a value to something. We saw this when learning about variables. It is how we assign values to variables. It is used to assign the value on the right of the operator to the operand on the left of it.
 				
 		let number = 10;
@@ -229,11 +224,9 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
 
 
 
--3) Comparison operators
-———————————————
+#### -3) Comparison operators
 
-	Equality operator
-	————————
+##### Equality operator
 	The equal operator == is used to check if a value is equal to another value. It checks if the values of both operands match (but not their types). A common mistake is to mistake this for the assignment operator. This equal operator is usually used in conditional statements to verify if the value of a 	variable for example is equal to a specific value. We will learn all about 	conditional statements shortly, when we come to look at conditionals. For now, just remember that you need two mathematical equal signs, not just one, to check if two values are the same. It looks like this:	
 
 		let colour = "green";
@@ -245,9 +238,8 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
 	In this example, we have assigned the value of “green” to a variable colour, then used the equal operator (==) to check if its value is actually equal to “green”.
 
 	
-	Strict equality operator
-	————————————
-	Also sometimes referred to as the identical operator, it goes beyond the equal operator which only checks if their values are the same, and checks if both values are of the same type as well. It is therefore more strict, and is handy for situations when you need to know that both operands are not only of the same type, but have the same value as well. Here is an example of how their differences can be deceiving:
+##### Strict equality operator
+  Also sometimes referred to as the identical operator, it goes beyond the equal operator which only checks if their values are the same, and checks if both values are of the same type as well. It is therefore more strict, and is handy for situations when you need to know that both operands are not only of the same type, but have the same value as well. Here is an example of how their differences can be deceiving:
 			
 		let fiveString = '5';
 		let fiveNumber = 5;
@@ -261,7 +253,7 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
    			alert('fiveString and fiveNumber are NOT the same');
 		}
 
-	The above example will display an alert popup saying 'fiveString and 	fiveNumber are the same'. JavaScript has a good ability to convert a string of digits into a number when it sees you are trying to use it as a number. This is handy, but it is not what you want in situations where you need to be precise. In such 	circumstances, just change the expression in the if statement to use an identical operator instead of an equal operator. For example:
+  The above example will display an alert popup saying 'fiveString and 	fiveNumber are the same'. JavaScript has a good ability to convert a string of digits into a number when it sees you are trying to use it as a number. This is handy, but it is not what you want in situations where you need to be precise. In such 	circumstances, just change the expression in the if statement to use an identical operator instead of an equal operator. For example:
 
 		let fiveString = '5';
 		let fiveNumber = 5;
@@ -311,16 +303,15 @@ The value of lessThanOrEqualTo is true because 2 is equal to 2.
 	
 
 
-	-4) Logical operators
-	Logical operators are used to determine if the value of an expression is true or false.
+  - 4) Logical operators
+  Logical operators are used to determine if the value of an expression is true or false.
 
-		-Not operator
-		-OR operator
-		-And operator
-		-Ternary operator
+    - Not operator
+    - OR operator
+    - And operator
+    - Ternary operator
 
-		-Not operator
-	————————
+##### -Not operator
 	The ! operator, also known as the Not or Logical Not operator, is used to determine whether an expression is not equal to a value. It comes in three forms: 
 	!	Logical NOT
 	!=	Not Equal
@@ -364,9 +355,8 @@ Ternary operators are great when you need to quickly choose between two options.
 The code after the colon acts as the else clause in an if statement. You can see how a ternary operator is simple yet powerful. Using it will make your code very concise and readable.
 
 
-	Nesting multiple ternary operators
-	———————————————————
-	You can also chain multiple ternary conditions, just like nesting if...else blocks. Here is the syntax:
+###### Nesting multiple ternary operators
+  You can also chain multiple ternary conditions, just like nesting if...else blocks. Here is the syntax:
 
 		condition1 ? value1 : 
 		condition2 ? value2 : 
@@ -384,8 +374,7 @@ Here, the value of light is 'red', so the last message, 'Stop', will be printed.
 
 		
 
-Combining math operators with the assignment operator
-————————————————————————————
+#### Combining math operators with the assignment operator
 
   Sometimes, you will come across two operators being combined like this: += for example 
 
@@ -408,7 +397,7 @@ It is completely valid, and += means that the value on the right (after the = ch
 		let num = 2;
 		num = num * 2;		// num is now 4
 		
-	You can quickly do that like so:
+  You can quickly do that like so:
 	
 		let num = 2;
 		num *= 2;		// num is now 4
@@ -438,16 +427,14 @@ It is completely valid, and += means that the value on the right (after the = ch
 
 
 
-CONDITIONALS
-—————————
-  -If statements
-  ————————
+### CONDITIONALS
+#### -If statements
   In programming, the powerful concept behind writing intelligent systems is the ability of code to perform logic. It does this by evaluating parameters and conditions, then taking action based on the value of those conditions. The topic "conditionals" comes from this idea of a program taking an action based on a condition.
 This condition is usually an expression that returns true, and so your if code takes an action when that expression evaluates as true. You set up the expression to return true based on whatever value you’re checking for. A conditional is therefore used to make decisions in code.
 The main tool for implementing conditionals in programming is known as an if statement. All programming languages have them. No programming language would be useful without the ability to perform logic and make decisions based on conditions.
 In JavaScript, an if statement is a block, and its syntax is similar to that of a function. It is written with the word if, followed by a pair of parentheses (), and then a pair of curly braces {}.
 
-	Here is the syntax:
+  Here is the syntax:
 
 	if (condition) {
  		 // code to run (action) if condition is true
@@ -462,13 +449,11 @@ The condition is always some kind of expression that evaluates to either true or
 Note: This is not real code for checking the current time in JavaScript. It’s simply a demonstration of how the logic would work. Such demonstrations are called pseudo code—a way of showing how code behaves without writing it in a specific programming language.
 
 
-Checking Multiple Conditions
-————————————————
+#### Checking Multiple Conditions
 There will be times when you have more than one condition to check. These multiple conditions can play out in two main ways:
 
 
-a) Independent Conditions
-———————————————
+##### a) Independent Conditions
 Let’s say the bell should ring not only at 9:00 AM but also at 10:00 AM. The bell ringing at 10:00 has nothing to do with whether it rang at 09:00 or 
 not. The ringing just happens at both times, quite independently of each other. There are different ways to write the if statement, and they will all work. 
 You can either decide to make the one conditional expression check for both times in a single if statement or you can write two separate if statements, one for each time check, with each taking the action necessary. 
@@ -491,17 +476,16 @@ Also works – Two separate if statements:
 
 While both work, the first approach is preferred because:
 
-* It avoids code duplication
-* It’s more readable
-* It’s easier to maintain
+- It avoids code duplication
+- It’s more readable
+- It’s easier to maintain
 
 
 Note that here I show just two if statements, but if you are dealing with more than two conditions, you will write as many if statements as there 
 are conditions to handle (check for).
 
 
-b) Mutually Exclusive Conditions (Two Choices)
-—————————————————————————-
+#### b) Mutually Exclusive Conditions (Two Choices)
   In this case, you have two conditions that are mutually exclusive.
 It means if one event or condition happens, the other cannot happen at the same time. Say for example, you are working with a barrier that opens when a light shows green, and closes when the light is red. In this case the light is the condition (expression) and the behaviour of the barrier (the code you run) is the action you take based on the value of that light—which is what the expression resolves to. In this green or red light scenario, you are dealing with multiple conditions. 
   For each condition, there is an action to be taken, which are to open 
@@ -526,13 +510,12 @@ Let’s see an example of how to use an if...else statement:
 
 
 
-c) Mutually Exclusive Conditions (More Than Two Choices)
-————————————————————————————————
+#### c) Mutually Exclusive Conditions (More Than Two Choices)
 Now let’s say the barrier is controlled by three lights:
 
-* Red: Close the barrier
-* Amber: Start closing the barrier
-* Green: Open the barrier
+- Red: Close the barrier
+- Amber: Start closing the barrier
+- Green: Open the barrier
 
 Use an if...else if...else chain:
 
@@ -556,14 +539,13 @@ green nor amber, then it can only be red.
 
 
 
-Additional notes on conditionals
-—————————————————
+#### Additional notes on conditionals
   Here is a list of important points to keep in mind in order to understand how to work with conditionals.
 
-* You can nest as many else if blocks as needed.
-* In JavaScript, else if must have a space between the else and the if keywords.
-* The final else block is optional but recommended to handle any unexpected or unhandled cases.
-* Curly braces {} are optional for single-line statements:
+- You can nest as many else if blocks as needed.
+- In JavaScript, else if must have a space between the else and the if keywords.
+- The final else block is optional but recommended to handle any unexpected or unhandled cases.
+- Curly braces {} are optional for single-line statements:
 
 
 	if (true) console.log("This works without braces.");
@@ -582,18 +564,17 @@ Best Practice: Always use curly braces—even for one-liners—for readability a
 
 
 
-    LOOPS
-    ————
+#### LOOPS
   In programming, a loop gives your code the power to repeat actions over and over—without you having to write them again and again. This is super useful when you’re working with multiple pieces of data, like items in an array, characters in a string, or keys in an object.
 For example, imagine having a list of 100 fruits—you wouldn’t want to write the same line of code 100 times just to print them all out. A loop saves you from that by doing the repetition for you.
 
 Why are loops important?
 Loops are one of the most powerful features in any programming language because they allow your program to:
 
-* Do something repeatedly as long as a condition is true.
-* Go through a list of items one by one and take action on each.
-* Look through data to find something or change things.
-* Handle different layers of information, especially in nested arrays or complex data.
+- Do something repeatedly as long as a condition is true.
+- Go through a list of items one by one and take action on each.
+- Look through data to find something or change things.
+- Handle different layers of information, especially in nested arrays or complex data.
 
   Here is how loops work. When you create a loop, you usually define a counter variable—this is most often called i. If your loop is going through a simple list, you’ll use i. If it’s a loop inside another loop (like in a multi-level array), the second counter is often called j. And if you need more, you can keep going with k, l, and so on.
 Here’s a quick look at how you might retrieve an item from an array using a counter:
@@ -605,50 +586,48 @@ Remember, arrays in JavaScript always start counting from zero (0), so the first
   JavaScript gives you several types of loops, and each one is useful in different situations. You’ve already seen some loops when we talked about arrays, but now let’s look at all the main loop types available in JavaScript.
 There are 6 main types of loops to master:
 
-	-1) For loop – The most common type, great for running a block of code 
-		a specific number of times.
-	-2) While loop – Keeps running as long as a condition is true.
-	-3) Do...while loop – Similar to while, but runs the code at least once, 
-		even if the condition is false.
-	-4) For...in loop – Used to loop through the properties of an object.
-	-5) For...of loop – Used to loop through values in arrays, strings, and 
-		other iterable objects.
-	-6) forEach loop – A special array method that loops through array 
-		items and lets you run a function on each one.
+  - 1) For loop – The most common type, great for running a block of code
+    a specific number of times.
+  - 2) While loop – Keeps running as long as a condition is true.
+  - 3) Do...while loop – Similar to while, but runs the code at least once,
+    even if the condition is false.
+  - 4) For...in loop – Used to loop through the properties of an object.
+  - 5) For...of loop – Used to loop through values in arrays, strings, and
+    other iterable objects.
+  - 6) forEach loop – A special array method that loops through array
+    items and lets you run a function on each one.
 
 Each of these loop types has its own structure and best use case, and we’ll go through all of them one by one in this chapter.
 
 
 
 
-	-1) The For loop
-	————
-	Use a for loop when you know how 
-    many times the loop should run. It is by far the most commonly used loop, and it has a very simple and easy to read syntax. The action inside its curly braces is only run while the condition in its parentheses is true. That condition is entirely up to you: very often it counts up to the number of elements in an array, but as the example below shows, it does not have to involve an array at all. Here is the syntax:
+#### -1) The For loop
+  Use a for loop when you know how
+  many times the loop should run. It is by far the most commonly used loop, and it has a very simple and easy to read syntax. The action inside its curly braces is only run while the condition in its parentheses is true. That condition is entirely up to you: very often it counts up to the number of elements in an array, but as the example below shows, it does not have to involve an array at all. Here is the syntax:
 
 	  for (initialisation; condition; increment or decrement) { 
 		// Code to execute 
 	  }
 
-    Example:
+  Example:
 
 	for (let i = 0; i < 5; i++) { 
 		console.log(i); 
 	 }
 
-    The output will be each number printed on its own line:
+  The output will be each number printed on its own line:
 
-	0
-	1
-	2
-	3
-	4
+  0
+  1
+  2
+  3
+  4
 
 
 
-   -2) The While loop
-   ————
-    Used when you don’t know how many times the loop should run, because that depends on a condition. The while loop is very similar to the for loop in that it runs only when a condition is true. The key difference is flexibility: unlike the for loop, which often checks the number of elements in an array, the while loop can check any condition at all. That means you can use it in a wide variety of situations—not just for arrays, but for any kind of condition you want to keep checking.
+#### -2) The While loop
+  Used when you don’t know how many times the loop should run, because that depends on a condition. The while loop is very similar to the for loop in that it runs only when a condition is true. The key difference is flexibility: unlike the for loop, which often checks the number of elements in an array, the while loop can check any condition at all. That means you can use it in a wide variety of situations—not just for arrays, but for any kind of condition you want to keep checking.
 
 Here is the syntax:
 
@@ -658,18 +637,17 @@ Here is the syntax:
 
 Here’s how it works:
 
-* The loop checks the condition.
-* If it’s true, it runs the code inside the curly braces.
-* Then it checks the condition again, and runs the code again if it’s still true.
-* It keeps going until the condition becomes false.
+- The loop checks the condition.
+- If it’s true, it runs the code inside the curly braces.
+- Then it checks the condition again, and runs the code again if it’s still true.
+- It keeps going until the condition becomes false.
 
 
 Be Careful: Infinite Loops!
 One important thing to remember is that you must change something inside the loop to make the condition false eventually.
 If the condition never becomes false, the loop will run forever! This is called an infinite loop, and it can crash your browser or freeze your computer.
 
-Example: A loop that never ends
-————————
+#### Example: A loop that never ends
 
 	let trafficLightColor = 'green';
 
@@ -680,8 +658,7 @@ Example: A loop that never ends
 In this example, the condition is always true because trafficLightColor never changes—so the loop keeps running forever.
 
 
-Fixed Version (Simulating the Light Changing)
-————————
+#### Fixed Version (Simulating the Light Changing)
 
 	let trafficLightColor = 'green';
 	let timesChecked = 0;
@@ -711,9 +688,9 @@ Let us look at an example of using a while loop to loop through an array. You ca
 
 What it prints on the screen:
 
-	The fruit is banana  
-	The fruit is apple  
-	The fruit is kiwi  
+  The fruit is banana
+  The fruit is apple
+  The fruit is kiwi
 
 Here, the while loop runs while i is less than the number of fruits in the array. It prints each fruit one by one and then stops when there are no more fruits left.
 
@@ -724,15 +701,14 @@ Here, the while loop runs while i is less than the number of fruits in the array
 
 
 			
-	-3) The Do...while loop
-	———————
+#### -3) The Do...while loop
 
   do...while loops are less common than other types of loops, but they are useful in situations where a block of code needs to run at least once before a condition is checked.
   A good example would be a website where every user must have at least one profile picture, but can optionally upload more. You might want to display the first picture by default, and then show any extra ones only if they exist. A do...while loop is perfect for this, because it will always run once—showing the first picture—before checking whether additional pictures are available to display.
 Syntax
 The syntax for a do...while loop is slightly different from a regular while loop. In a while loop, the condition comes before the block of code. In a do...while loop, the block runs first, and then the condition is checked afterwards:
 
-	Here is the syntax:
+  Here is the syntax:
 
 			do {
   				// code to run at least once
@@ -752,9 +728,9 @@ Example:
 
 The output will be:
 
-		The fruit is banana  
-		The fruit is apple  
-		The fruit is kiwi 
+    The fruit is banana
+    The fruit is apple
+    The fruit is kiwi
 
 This loop runs once to display the first fruit, then continues checking if more items are available in the array before each additional run.
 
@@ -762,20 +738,19 @@ This loop runs once to display the first fruit, then continues checking if more 
 
 
 
-	-4) The For...in loop (Used for Objects and Arrays)
-	————————
+#### -4) The For...in loop (Used for Objects and Arrays)
 
-	Used to loop over object properties. A word of caution: it can also loop 
-	over arrays, but it is not recommended because it may include inherited 
-	properties.
+  Used to loop over object properties. A word of caution: it can also loop
+  over arrays, but it is not recommended because it may include inherited
+  properties.
 
-	Here is the syntax:
+  Here is the syntax:
 
 				for (let key in object) { 
 					// Code to execute 
 				}
 
-			Example (Object Iteration):
+      Example (Object Iteration):
 
 				let person = { name: "Alice", age: 25, city: "New York" }; 
 
@@ -783,27 +758,26 @@ This loop runs once to display the first fruit, then continues checking if more 
 					console.log(`${key}: ${person[key]}`); 
 				}
 
-			The output will be:
+      The output will be:
 
-				name: Alice 
-				age: 25 
-				city: New York
+      name: Alice
+      age: 25
+      city: New York
 
 
 
-	-5) The For...of loop (Used for Arrays, Strings, Maps, Sets, etc.)
-	————————————
+#### -5) The For...of loop (Used for Arrays, Strings, Maps, Sets, etc.)
 
-	It offers a cleaner way to iterate over iterable objects like arrays 
-	and strings.
+  It offers a cleaner way to iterate over iterable objects like arrays
+  and strings.
 
- 	Here is the syntax:
+  Here is the syntax:
 
 				for (let value of iterable) { 
 					// Code to execute 
 				}
 
-			Example (Array Iteration):
+      Example (Array Iteration):
 
 				let fruits = ["Apple", "Banana", "Cherry"]; 
 
@@ -811,27 +785,26 @@ This loop runs once to display the first fruit, then continues checking if more 
 					console.log(fruit); 
 				}
 
-			The output will be:
+      The output will be:
 
-				Apple
-				Banana
-				Cherry
+      Apple
+      Banana
+      Cherry
 
 
 
-	-6) The forEach() Loop (Used for Arrays)
-	————————————
+#### -6) The forEach() Loop (Used for Arrays)
 
 		         The forEach() method is an array method that executes a 
 			function on each element.
 
- 			Here is the syntax:
+      Here is the syntax:
 
 				array.forEach((value, index, array) => { 
 					// Code to execute 
 				});
 
-			Example (Array Iteration):
+      Example (Array Iteration):
 
 				let numbers = [10, 20, 30]; 
 
@@ -839,16 +812,16 @@ This loop runs once to display the first fruit, then continues checking if more 
 					console.log(num); 
 				});
 
-			The output will be:
+      The output will be:
 
-				10
-				20
-				30
+      10
+      20
+      30
 
 
 
-	Here is a conclusive summary of the various loops and when they should 
-	be used:
+  Here is a conclusive summary of the various loops and when they should
+  be used:
 
    Loop type	   When to use it
 for	When the number of iterations is known.
@@ -862,19 +835,17 @@ forEach()	When iterating over an array with a function callback.
 
 
 
-	Loop control statements 
-	——————————————
+### Loop control statements
   In a loop, things usually run over and over until a condition says “stop.” But what if you want to take control of the loop and tell it to either:
 
-* Exit early, even if the condition hasn’t finished yet, or
-* Skip one turn in the loop and go to the next round?
+- Exit early, even if the condition hasn’t finished yet, or
+- Skip one turn in the loop and go to the next round?
 
 This is where loop control statements come in. These are special keywords in JavaScript that give you, the programmer, more control over how a loop behaves.
 There are two main loop control statements, and these are the break, and the continue statements.
 
 
-	The break statement 
-	—————————
+##### The break statement
   The break statement tells the loop to stop running completely and jump out of the loop when a certain condition is met. This is useful when you're looking for something, and once you've found it, there's no need to keep looping.
 It exits the loop immediately when a condition is met. You as the programmer will place this statement inside the loop at the spot where you expect the loop to have achieved its objective—usually in a conditional statement in which case the condition would have matched a target case. You therefore want the program to exit the loop.
 
@@ -889,20 +860,19 @@ Here is an example:
 			}
 
 
-				The output will be:
+      The output will be:
 
-				0
-				1
-				2
-				3
-				4
+      0
+      1
+      2
+      3
+      4
 
 As you can see, the loop stops as soon as i becomes 5. The number 5 is never printed because the loop exited right before that.
 
 
 
-	The continue statement 
-	—————————
+##### The continue statement
   The continue statement is a little different. It doesn’t stop the whole loop—it just skips the current iteration and goes straight to the next one.
 This is helpful when you want to ignore certain values but still finish the loop.
 
@@ -916,16 +886,16 @@ This is helpful when you want to ignore certain values but still finish the loop
 			}
 
 
-			The output will be:
+      The output will be:
 
-			0 
-			1 
-			3 
-			4
+      0
+      1
+      3
+      4
 
 ![Figure 5.1 — Where break and continue send you next](images/ch05-fig-01-break-vs-continue.svg)
 
-*Figure 5.1 — Where break and continue send you next*
+- Figure 5.1 — Where break and continue send you next*
 	
 
 
@@ -934,8 +904,7 @@ This is helpful when you want to ignore certain values but still finish the loop
  
 
 
-    Switch statement
-    ————————————
+### Switch statement
   The switch statement in JavaScript is used for conditional 
 branching. It allows you to execute different blocks of code 
 based on the value of an expression, making it a cleaner 
@@ -958,11 +927,11 @@ switch (expression) {
 
 This is how it works:
 
-* The expression is evaluated once.
-* Its value is compared with each case.
-* If a match is found, the block of code in that matching case runs.
-* The break statement prevents fall-through (executing the next case unintentionally). This will cause the code execution to stop checking the other case statements when a match has already been found.
-* The default case (optional) runs if no match is found. It acts as the fallback default, just as its name indicates.
+- The expression is evaluated once.
+- Its value is compared with each case.
+- If a match is found, the block of code in that matching case runs.
+- The break statement prevents fall-through (executing the next case unintentionally). This will cause the code execution to stop checking the other case statements when a match has already been found.
+- The default case (optional) runs if no match is found. It acts as the fallback default, just as its name indicates.
 
   Here is an example switch statement. Let’s 
   write one that checks for days of the week.
@@ -999,6 +968,6 @@ This is how it works:
 
 This will be the output:
 
-	Wednesday
+  Wednesday
 
 We got that output because we initialised the value of the ‘day’ variable to 3. Note that you could place this switch statement inside a function that accepts the variable to test for in the case statements as its argument. In such a case you would create or set a variable within the case blocks so that it stores some data that you need in the case that a match is made. You would then return that variable at the end of the function.

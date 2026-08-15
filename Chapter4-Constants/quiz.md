@@ -1,5 +1,4 @@
-QUIZ — Chapter 4: Constants
-===========================
+# QUIZ — Chapter 4: Constants
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 4: Constants. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -10,8 +9,7 @@ leave you stuck. The answers are all together in the Answers section further dow
 to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What exactly does const protect? Finish this sentence in your own words:
 
@@ -70,12 +68,11 @@ QUESTIONS
     -Change the first one to something else, and print the array to show that it worked
     -Then try to replace the whole array, and see what the browser tells you
 
-    Clue: keep the second part last, because once it throws an error the lines after it will
-    not run.
+  Clue: keep the second part last, because once it throws an error the lines after it will
+  not run.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) "const protects the NAME, not the CONTENTS."
 

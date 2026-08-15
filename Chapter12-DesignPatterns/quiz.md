@@ -1,5 +1,4 @@
-QUIZ — Chapter 12: Design Patterns
-==================================
+# QUIZ — Chapter 12: Design Patterns
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 12: Design Patterns. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) The patterns in this chapter fall into three groups. Name them, and say in a few words what
    each group is concerned with.
@@ -73,34 +71,33 @@ QUESTIONS
 
 
 10) EXERCISE. Write a small Factory that returns a Circle, a Square, or throws an error for
-    anything else. Each shape should have an area() method.
+  anything else. Each shape should have an area() method.
 
-    Clue: a static method on the factory class is enough. It does not need to be instantiated.
+  Clue: a static method on the factory class is enough. It does not need to be instantiated.
 
 
 11) EXERCISE. Using the Builder pattern, build a Pizza step by step — size, then two toppings —
-    and finish with build(). Make the calls chain together on one line.
+  and finish with build(). Make the calls chain together on one line.
 
     Clue: each setter has to return something for the next call to attach to.
 
 
 12) EXERCISE. Write a Subject that keeps a list of observers and notifies them all. Add two
-    observers that print different messages, then notify.
+  observers that print different messages, then notify.
 
     Clue: the subject holds an array; notifying means looping over it and calling the same
     method on each.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) 
-   - **Creational patterns** — concerned with how objects are made. Singleton, Factory, Abstract
-     Factory, Builder, Prototype.
-   - **Structural patterns** — concerned with how objects are put together and arranged.
-     Adapter, Decorator, Facade, Composite, Proxy, Bridge, Flyweight.
-   - **Behavioural patterns** — concerned with how objects communicate and share
-     responsibilities. Observer, Strategy, Template Method, Command, Iterator.
+- **Creational patterns** — concerned with how objects are made. Singleton, Factory, Abstract
+  Factory, Builder, Prototype.
+- **Structural patterns** — concerned with how objects are put together and arranged.
+  Adapter, Decorator, Facade, Composite, Proxy, Bridge, Flyweight.
+- **Behavioural patterns** — concerned with how objects communicate and share
+  responsibilities. Observer, Strategy, Template Method, Command, Iterator.
 
    A rough way to remember it: creational is about birth, structural is about arrangement,
    behavioural is about conversation.
@@ -187,9 +184,9 @@ ANSWERS
 
 5) The console shows:
 
-        Loading cat.png
-        Displaying cat.png
-        Displaying cat.png
+    Loading cat.png
+    Displaying cat.png
+    Displaying cat.png
 
    The word "Loading" appears **once**, even though `display()` was called twice. That is the
    whole point. The proxy holds off creating the real, expensive image until it is genuinely
@@ -201,12 +198,12 @@ ANSWERS
 
 6) Both sit in front of something else, but for different reasons.
 
-   - **Facade** hides complexity. Behind it are several parts that all have to be used together,
-     and the facade gives you one simple way in. The chapter's example is starting a computer:
-     CPU, memory and hard drive all have to start, but you press one button.
-   - **Adapter** translates. It exists because two things that need to work together have
-     incompatible shapes — an old interface and a new one, say — so the adapter converts between
-     them.
+- **Facade** hides complexity. Behind it are several parts that all have to be used together,
+  and the facade gives you one simple way in. The chapter's example is starting a computer:
+  CPU, memory and hard drive all have to start, but you press one button.
+- **Adapter** translates. It exists because two things that need to work together have
+  incompatible shapes — an old interface and a new one, say — so the adapter converts between
+  them.
 
    Put simply: a facade **simplifies** something that already works; an adapter **converts**
    something that otherwise would not fit.
@@ -230,10 +227,10 @@ ANSWERS
 
    You would reach for it instead of a long `if...else` chain when:
 
-   - the list of options is likely to grow, since adding a strategy means adding a class rather
-     than editing a chain everybody depends on
-   - you want to choose the approach while the program is running
-   - the branches are big enough that the chain becomes hard to read
+- the list of options is likely to grow, since adding a strategy means adding a class rather
+  than editing a chain everybody depends on
+- you want to choose the approach while the program is running
+- the branches are big enough that the chain becomes hard to read
 
    For two or three short branches an `if...else` is perfectly fine. The pattern earns its place
    when there are many, or when they keep changing.
@@ -382,11 +379,11 @@ ANSWERS
 
         subject.notify();
 
-    Output:
+  Output:
 
-        Email sent
-        Written to the log
+    Email sent
+    Written to the log
 
-    Notice that the subject knows nothing about what its observers actually do. It only knows
-    they each have an `update()` method. That is what makes the pattern useful: you can add a
-    third observer tomorrow without touching the Subject class at all.
+  Notice that the subject knows nothing about what its observers actually do. It only knows
+  they each have an `update()` method. That is what makes the pattern useful: you can add a
+  third observer tomorrow without touching the Subject class at all.

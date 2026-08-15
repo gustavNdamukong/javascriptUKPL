@@ -1,31 +1,28 @@
 
 
-//————————————————————//
-	CHAPTER 20 - IMAGES
-//————————————————————//
+# Chapter 20 — IMAGES
 
-	-JavaScript and images
-	-What JavaScript can do with images
-	-Image manipulation
-		-Image preview before upload
-		-Add a grayscale filter Effect to an image
-		-Toggle a grayscale filter Effect on an image (on/off)
-		-Permanently grayscale an image using Canvas
-		-Resizing an image using Canvas
-		-Rotate an image in 2d
-			-Add feature to download the rotated image
-		-Adding image filters
-			-Increase the brightness of an image
-			-Adding contrast to an image
-			-Add a blur filter
-			-Bonus tip - Combining filters
+  - JavaScript and images
+  - What JavaScript can do with images
+  - Image manipulation
+    - Image preview before upload
+    - Add a grayscale filter Effect to an image
+    - Toggle a grayscale filter Effect on an image (on/off)
+    - Permanently grayscale an image using Canvas
+    - Resizing an image using Canvas
+    - Rotate an image in 2d
+      - Add feature to download the rotated image
+    - Adding image filters
+      - Increase the brightness of an image
+      - Adding contrast to an image
+      - Add a blur filter
+      - Bonus tip - Combining filters
 
 
 
 
 
-JavaScript and images
-—————————————
+## JavaScript and images
   
   JavaScript can be used to handle images — and it’s actually quite versatile in that area. It’s capable of managing many image-related tasks, especially when combined with browser features or server-side tools. That said, how you use it depends on what you're building.
 For small web projects and learning vanilla JavaScript, you’ll mostly use it to change images on a webpage or handle basic uploads. But if you go deeper into building real-world apps — like photo editors, e-commerce platforms, or social networks — JavaScript has the tools to do even more.
@@ -34,26 +31,25 @@ What if we want to edit them — crop, apply filters, draw over them, or change 
 You were introduced to `<canvas>` in Chapter 16 (The Canvas Element), where we used it for drawing shapes and making interactive graphics. In this chapter, we’ll take it further and explore how the canvas can act as a powerful tool for image processing.
 The canvas allows us to:
 
-    * Draw images onto it using drawImage()
-    * Access and manipulate pixel data with getImageData() and putImageData()
-    * Apply transformations, filters, overlays, and more
+  - Draw images onto it using drawImage()
+  - Access and manipulate pixel data with getImageData() and putImageData()
+  - Apply transformations, filters, overlays, and more
 
 In short, while the DOM and FileReader can help load and preview images, it’s the canvas that enables us to edit and process them directly in the browser.
 
 
-	What JavaScript can do with images
-	———————————————————————
+## What JavaScript can do with images
 On the frontend (in the browser), you can use JavaScript to:
-* Preview uploaded images before sending them to a server
-* Resize or crop images using the `<canvas>` element
-* Switch images dynamically (e.g., for image sliders or galleries)
-* Apply filters or effects (like converting to black-and-white)
-* Delete images from the webpage view (e.g., in a gallery)
+- Preview uploaded images before sending them to a server
+- Resize or crop images using the `<canvas>` element
+- Switch images dynamically (e.g., for image sliders or galleries)
+- Apply filters or effects (like converting to black-and-white)
+- Delete images from the webpage view (e.g., in a gallery)
 On the backend (e.g., using Node.js), JavaScript can also:
-* Upload images to a server or cloud storage
-* Resize or compress images automatically (with libraries like Sharp)
-* Rename or delete image files from disk
-* Convert image formats (e.g., PNG to JPEG)
+- Upload images to a server or cloud storage
+- Resize or compress images automatically (with libraries like Sharp)
+- Rename or delete image files from disk
+- Convert image formats (e.g., PNG to JPEG)
 For backend image handling, you’ll need to explore the documentation of the backend platform you're using — such as Node.js, Express, or cloud services like AWS S3.
 
 
@@ -62,12 +58,10 @@ I will go ahead and give you practical, real-world image handling examples using
 
 
 
-Image manipulation
-———————————
-	Image preview before upload
-	————————————————
+## Image manipulation
+### Image preview before upload
 
-	Add this code to your HTML file (eg index.html)
+  Add this code to your HTML file (eg index.html)
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -92,7 +86,7 @@ Image manipulation
 		</body>
 		</html>
 
-	Add this code to your JavaScript file (eg index.js) 
+  Add this code to your JavaScript file (eg index.js)
 
 		const imageInput = document.getElementById('imageInput');
   		const preview = document.getElementById('preview');
@@ -105,18 +99,17 @@ Image manipulation
     			}
   		});
 
-	In this code as you can see, there is an <img> tag in the HTML 
-	code, which will be used to preview the image. There is also a file upload 	
-	input field where you will upload a file that you select from your 
-	computer. The uploaded file is then grabbed and dynamically inserted 
-	into the image tag for you to preview it before submission.  This is a 
-	simple but very practical example of a feature you can add to enhance 
-	the user experience of your application.
+  In this code as you can see, there is an <img> tag in the HTML
+  code, which will be used to preview the image. There is also a file upload
+  input field where you will upload a file that you select from your
+  computer. The uploaded file is then grabbed and dynamically inserted
+  into the image tag for you to preview it before submission.  This is a
+  simple but very practical example of a feature you can add to enhance
+  the user experience of your application.
 
 
 	
-	Add a grayscale filter Effect to an image
-	————————————————————
+### Add a grayscale filter Effect to an image
   Make sure you have an images/ directory in the same folder as this index.html file, with an image in it named ‘urban.jpg’. That is the image used as the src attribute of the `<img>` tag in this page, and the one we are practising adding a grayscale filter to. 
 
 		<!DOCTYPE html>
@@ -142,7 +135,7 @@ Image manipulation
 		</body>
 		</html>
 
-	Add this code to your JavaScript file (eg index.js) 
+  Add this code to your JavaScript file (eg index.js)
 
 		const btn = document.getElementById('grayScaleBtn');
 		btn.addEventListener('click', applyFilter);
@@ -158,8 +151,7 @@ Image manipulation
 
 
 
-	Toggle a grayscale filter Effect on an image (on/off)
-	—————————————————————————
+### Toggle a grayscale filter Effect on an image (on/off)
   This effect is so cool, but we cannot reverse it. Let’s make it possible to add and reverse the grayscale effect on the image. Make sure you have an images/ directory in the same folder as this index.html file, with an image in it named ‘urban.jpg’, exactly as in the previous example. 
   Here is the code to make that happen:
 
@@ -186,7 +178,7 @@ Image manipulation
 		</body>
 		</html>
 
-	Add this code to your JavaScript file (eg index.js) 
+  Add this code to your JavaScript file (eg index.js)
 
 		const btn = document.getElementById('grayScaleBtn');
 		btn.addEventListener('click', toggleFilter);
@@ -204,31 +196,30 @@ Image manipulation
         				img.style.filter = 'grayscale(100%)'
     				} 
     
-    			*/
+      - /
     
 			img.style.filter = img.style.filter == 'grayscale(100%)' ? 
 				'grayscale(0%)' : 'grayscale(100%)';
 
 		}
 
-	Notice the modifications of the previous code:
-		-Now when the ‘Make Grayscale’ button is clicked, we check the 
-		   previous value of the img.style.filter, and if it was 
-		   'grayscale(100%)', we update it to 'grayscale(0%)'. It would work 
-		   just the same if we set it to 'none' instead. Otherwise we update 
-		   it to 'grayscale(100%)'.
-		-We renamed the function from applyFilter() to toggleFilter() so it 
-		   reflects what it really does now—which is to turn the grayscale 
-		   filter on the image on or off.
-		-Notice also how, though using an if statement inside index.js will still
-		   work just the same, using a ternary operator to do the logic makes 
-		   for less and cleaner (readable) code.
+  Notice the modifications of the previous code:
+    - Now when the ‘Make Grayscale’ button is clicked, we check the
+    previous value of the img.style.filter, and if it was
+    'grayscale(100%)', we update it to 'grayscale(0%)'. It would work
+    just the same if we set it to 'none' instead. Otherwise we update
+    it to 'grayscale(100%)'.
+    - We renamed the function from applyFilter() to toggleFilter() so it
+    reflects what it really does now—which is to turn the grayscale
+    filter on the image on or off.
+    - Notice also how, though using an if statement inside index.js will still
+    work just the same, using a ternary operator to do the logic makes
+    for less and cleaner (readable) code.
 This exercise is a great example for interactive photo editors, or for learning about CSS filters through JavaScript.
 
 
 
-	Permanently grayscale an image using Canvas
-	———————————————————————
+### Permanently grayscale an image using Canvas
   The grayscale effect using CSS filters (like in the previous example) only affects how the image looks in the browser. It doesn’t actually modify the image data itself. So, that effect isn’t permanent and can’t be saved as-is.
 However, as I mentioned above, it is a great example for interactive photo editors, or for learning about CSS filters through JavaScript.
 
@@ -238,10 +229,10 @@ However, as I mentioned above, it is a great example for interactive photo edito
 
 But if you want to make the grayscale change—or any change to an image file—permanent, so that the user can download or upload the edited image, you have to use the `<canvas>` element. This is because, the canvas API’s context which is the thing the image is built on, and all the changes you make on it are saved, makes the changes persist. You just have to then make the image downloadable as a new image file. Always remember that because of JavaScript’s restriction on local files, what essentially happens is this; you read an (original) image, re-create it as a new image on the canvas, then download the new image as a new, separate file. The original file remains unmodified. Back to our greyscale example, here is what the `<canvas>` element will do:
 
-	-Draw the image to the canvas,
-	-Apply grayscale pixel by pixel,
-	-Export the result as a new image (base64 or blob),
-	-Let the user download or upload it.
+  - Draw the image to the canvas,
+  - Apply grayscale pixel by pixel,
+  - Export the result as a new image (base64 or blob),
+  - Let the user download or upload it.
 
 Your index.html code, should look like this:
 
@@ -308,7 +299,7 @@ Add the following code to your JavaScript file (eg index.js)
 
 ![Figure 20.2 — Why the pixel loop counts in fours](images/ch20-fig-02-pixel-array.svg)
 
-*Figure 20.2 — Why the pixel loop counts in fours*
+- Figure 20.2 — Why the pixel loop counts in fours*
 
 
         			// Make it downloadable
@@ -331,8 +322,7 @@ This is a very cool feature which can be used in a simple photo editing app so t
 
 
 
-	Resizing an image using Canvas
-	——————————————————
+### Resizing an image using Canvas
   This will let you shrink an image in the browser before uploading or displaying it. Let’s add some styling to make the web page look nice and professional. Create a CSS file eg index.css in the same folder as your index.html file. Place this code in it:
 
 body {
@@ -551,18 +541,18 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
 
   If it seems as if the code is complicated, do not be daunted by the length of it, it really isn’t hard. Here is some more explanation on how it all works:
 
-    * You create a FileReader and tell it what to do when it's done reading the file. Here is the code, but it does not run straight away:
+  - You create a FileReader and tell it what to do when it's done reading the file. Here is the code, but it does not run straight away:
 
         	reader.onload = function (event) {
 			// We'll do stuff after the file is read here
         	};
 
-    *  You start the file-reading process:
+  - You start the file-reading process:
         
 			// Asynchronous operation
 			reader.readAsDataURL(file); 
 
-    *  JavaScript doesn't block or wait. It moves on and comes back later when the file is fully read.
+  - JavaScript doesn't block or wait. It moves on and comes back later when the file is fully read.
 
     *  When it's finally read, the reader.onload function gets triggered with the result. Inside this same function:
         
@@ -570,15 +560,15 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
                 		...
             		}
         
-        	is where you should then set: 
+  is where you should then set:
         
             		img.src = event.target.result;
 
     *   In summary; here are the steps:
         
-        * reader.readAsDataURL(file) triggers the reading.
-        * Only after the reading is done does reader.onload run.
-        * Inside that callback, we assign that file value to img.src.
+    - reader.readAsDataURL(file) triggers the reading.
+    - Only after the reading is done does reader.onload run.
+    - Inside that callback, we assign that file value to img.src.
 
   The img.src = event.target.result; doesn't run immediately — it only runs after the FileReader has finished loading the file and fired the onload event.
 The key in grasping this process lies in understanding that the event that is triggered when a file is uploaded has a result property which is the uploaded file itself. That is why when we listen in the code for that upload event like so:
@@ -597,13 +587,11 @@ If we had used big numbers like 100 or 200, the image would have become huge (10
 
 
 
-		Rotate an image in 2d
-		—————————————
+### Rotate an image in 2d
   With the Canvas you can rotate an image, and it’s a nice thing to be able to do with your mages. We will look at a full working example with a button that allows you upload an image, and another button which rotates the image in increments of 45 degrees clockwise. When you are happy with the rotation, you can download the image as usual. The rotation done is in 2D. Canvas alone does not support real 3D transforms. It's strictly 2D.
 To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an image using the transition an transform properties (just visually, not on canvas). For real 3D rendering in JavaScript, you would need WebGL or a 3D library like Three.js. Let’s look at how to rotate an image in 2D with JavaScript.
 
-HTML code
-——————
+#### HTML code
 		<!DOCTYPE html>
 		<html lang="en">
 		<head>
@@ -627,8 +615,7 @@ HTML code
 		</html>
 
 
-index.js code
-————————
+#### index.js code
 
 const upload = document.getElementById('upload');
 const rotateBtn = document.getElementById('rotateBtn');
@@ -693,9 +680,9 @@ function drawRotatedImage() {
 
 Use the same CSS code as all the other examples-in a file in the same directory as this index.js and index.html.
 Here are important points to understand about the working of the above code:
-    * ctx.translate() moves the canvas "zero point" to the center so we can rotate around the middle.
-    * ctx.rotate() expects radians, not degrees, so we use degrees * Math.PI / 180.
-    * We reverse the translate/rotate with ctx.restore() so future drawings are not affected.
+  - ctx.translate() moves the canvas "zero point" to the center so we can rotate around the middle.
+  - ctx.rotate() expects radians, not degrees, so we use degrees * Math.PI / 180.
+  - We reverse the translate/rotate with ctx.restore() so future drawings are not affected.
 
   By default, the canvas starts drawing from the top-left corner (0, 0). So if you rotate from there, the image will spin off the canvas or get cut off.
 
@@ -707,27 +694,24 @@ That way, when you rotate, the image spins around its own center, not from the c
 This draws the image starting halfway left and halfway up from the center.
 If you didn’t do this, the image would rotate but still be drawn from the top-left — which would cause it to appear off-center or clipped.
 So in human terms:
-	“First move to the center of the canvas. Then, rotate. Then place the 
-	image so that its own center lines up with the canvas center.”
+  “First move to the center of the canvas. Then, rotate. Then place the
+  image so that its own center lines up with the canvas center.”
 
 This is a very common pattern when rotating things in canvas:
-		translate → rotate → draw → restore.
+    translate → rotate → draw → restore.
 
 
 
-Add feature to download the rotated image
-——————————————————————
+#### Add feature to download the rotated image
   You are able to download your rotated image easily just like we did with the example of the resized images because it was done on the canvas.
 Adding the ability to download the resized image will give you a nice feature which you can build and share with your family and friends to use. Achieving this is as simple as adding the following two pieces of code-a download button in your HTML code, and some code in your JavaScript file to listen for a click event on that download button, and download the already created image from the canvas. Here is the code:
 
-	html (eg index.html)
-	———————————
+#### html (eg index.html)
 	
 	<button id="downloadImgBtn">Download Image</button>
 
 
-	JavaScript (eg index.js)
-	———————————
+#### JavaScript (eg index.js)
 Add this code to the already existing code above for rotating an image:
 
 	const downloadBtn = document.getElementById('downloadImgBtn');
@@ -754,17 +738,14 @@ From the previous example, it should be clear to you how that download code work
 
 
 ————————————-
-Adding image filters
-————————————
+### Adding image filters
  Adding filters to images using the canvas is quite straight forward. You just have to add the relevant filter by calling its method and assigning its result to the context of the image canvas. Available filter methods are brightness(), contrast(), blur(). Without further ado, let’s see them in action.
 
-	Increase the brightness of an image
-	—————————————————————
+#### Increase the brightness of an image
   As usual, we will now look at code that allows you to upload an image of your choice, adjust its brightness using a range slider, then download the desired result to your computer. 
   To brighten an image, we just need to add the brightness filter to the canvas context. Let’s dive right into the code:
 
-	HTML (eg index.html)
-	————————————
+#### HTML (eg index.html)
 	<!DOCTYPE html>
 		<html lang="en">
 		<head>
@@ -796,8 +777,7 @@ Adding image filters
 
 
 
-	JavaScript code (eg index.js)
-	————————————————
+#### JavaScript code (eg index.js)
 	const brightnessSlider = document.getElementById('brightness');
 	const downloadBtn = document.getElementById('downloadImgBtn');
 	const upload = document.getElementById('upload'); 
@@ -863,14 +843,12 @@ Understand that this works because the canvas context which we create at the beg
 
 
 
-		Adding contrast to an image
-		————————————————
+#### Adding contrast to an image
 As with brightening up an image, let’s look an a code example that allows you to upload an image, adjust its brightness using a range slider, then download the desired result to your computer. 
   To add contrast to an image, we just need to add the contrast filter to the canvas context. Let’s take a look:
 
 	
-	HTML (eg index.html)
-	————————————
+#### HTML (eg index.html)
 		<!DOCTYPE html>
 		<html lang="en">
 		<head>
@@ -902,8 +880,7 @@ As with brightening up an image, let’s look an a code example that allows you 
 
 
 
-	JavaScript code (eg index.js)
-	————————————————
+#### JavaScript code (eg index.js)
 	const contrastSlider = document.getElementById('contrast');
 	const downloadBtn = document.getElementById('downloadImgBtn');
 	const upload = document.getElementById('upload'); 
@@ -961,14 +938,12 @@ As with brightening up an image, let’s look an a code example that allows you 
 
 
 
-		Add a blur filter
-		————————————————
+#### Add a blur filter
 As with brightening or adding contrast to an image, the following code example will allow you to upload an image, adjust its blur level using a range slider, then download the desired result to your computer. 
   To add a blur filter to an image, add the blur filter to the canvas context. Here is how:
 
 
-		HTML (eg index.html)
-		—————————————
+#### HTML (eg index.html)
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -1002,8 +977,7 @@ As with brightening or adding contrast to an image, the following code example w
 
 
 
-	JavaScript code (eg index.js)
-	————————————————
+#### JavaScript code (eg index.js)
 	const blurSlider = document.getElementById('blur');
 	const downloadBtn = document.getElementById('downloadImgBtn');
 	const upload = document.getElementById('upload'); 
@@ -1068,8 +1042,7 @@ Notice that the blur() filter function accepts its value in pixels, hence in the
 
 
 
-		Bonus tip - Combining filters
-		————————————————
+#### Bonus tip - Combining filters
 You can combine filters like this:
 
 	ctx.filter = `brightness(1.2) contrast(1.5) blur(2px)`;
@@ -1079,8 +1052,7 @@ This will apply all three filters at once!. Let’s just go ahead and create an 
 The following code is a working solution of all three filters. As always, the user can upload an image, and after the upload, the image is previewed in a canvas, with three sliders available below to apply all three filters; brightness, contrast and blur, separately to the same image and see all changes applied live. When they are happy with the result, they can hit on the Download Image button to save the edited file to their machine. Here is the code:
 
 
-		CSS styling for the web page 
-		————————————————
+#### CSS styling for the web page
 
 	body {
     		font-family: Arial, sans-serif;
@@ -1138,8 +1110,7 @@ The following code is a working solution of all three filters. As always, the us
 
 
 
-		HTML (eg index.html)
-		—————————————
+#### HTML (eg index.html)
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -1188,14 +1159,13 @@ The following code is a working solution of all three filters. As always, the us
 		</html>
 
  Note as usual, that the controls of the range slider input can be slightly different, depending on the filters.In this example, they are as follows: 
-	-For brightness, min is 0, max is 200, value is 100
-	-For contrast, min is 0, max is 200, and value is 100
-	-For blur, the min is 0, max is 10, and value is 0.1
+  - For brightness, min is 0, max is 200, value is 100
+  - For contrast, min is 0, max is 200, and value is 100
+  - For blur, the min is 0, max is 10, and value is 0.1
 
 
 
-	JavaScript code (eg index.js)
-	————————————————
+#### JavaScript code (eg index.js)
 
 	const downloadBtn = document.getElementById('downloadImgBtn');
 	const upload = document.getElementById('upload');

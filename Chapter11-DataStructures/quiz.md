@@ -1,5 +1,4 @@
-QUIZ — Chapter 11: Data Structures
-==================================
+# QUIZ — Chapter 11: Data Structures
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 11: Data Structures. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) Of the structures in this chapter, which ones does JavaScript give you built in, and which
    do you have to build yourself?
@@ -68,32 +66,31 @@ QUESTIONS
 
 
 10) EXERCISE. Build a linked list of three nodes by hand and print every value in it, without
-    knowing in advance how many nodes there are.
+  knowing in advance how many nodes there are.
 
-    Clue: start at the first node and keep following .next until there is no next.
+  Clue: start at the first node and keep following .next until there is no next.
 
 
 11) EXERCISE. Given a list of names with repeats in it, produce a list of the unique names, and
-    then say how many unique names there are.
+  then say how many unique names there are.
 
-    Clue: one structure from this chapter does both jobs.
+  Clue: one structure from this chapter does both jobs.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) **Built in:**
 
-   - **Arrays** — the ones you have used since Chapter 3
-   - **Maps and plain objects** — for key-value pairs
-   - **Sets** — for collections of unique values
+- **Arrays** — the ones you have used since Chapter 3
+- **Maps and plain objects** — for key-value pairs
+- **Sets** — for collections of unique values
 
-   **Built by you, out of what JavaScript already has:**
+- *Built by you, out of what JavaScript already has:**
 
-   - **Stacks and queues** — an ordinary array already behaves as both
-   - **Tuples** — an array stands in for one
-   - **Structs** — an object literal or a class stands in
-   - **Linked lists and trees** — assembled from objects or classes
+- **Stacks and queues** — an ordinary array already behaves as both
+- **Tuples** — an array stands in for one
+- **Structs** — an object literal or a class stands in
+- **Linked lists and trees** — assembled from objects or classes
 
    That is a useful thing to notice in itself: JavaScript gives you a small number of flexible
    structures and expects you to build the rest from them, where a language like C or Go hands
@@ -135,11 +132,11 @@ ANSWERS
 
 4) A Map can:
 
-   - **Use any type as a key.** A plain object turns every key into text, so `person[42]` and
-     `person["42"]` are the same key. A Map keeps them separate, and will happily use a number,
-     an object or even a function as a key.
-   - **Tell you how many entries it has**, through `.size`. A plain object has no equivalent —
-     you have to count its keys with `Object.keys(obj).length`, which you met in Chapter 3.
+- **Use any type as a key.** A plain object turns every key into text, so `person[42]` and
+  `person["42"]` are the same key. A Map keeps them separate, and will happily use a number,
+  an object or even a function as a key.
+- **Tell you how many entries it has**, through `.size`. A plain object has no equivalent —
+  you have to count its keys with `Object.keys(obj).length`, which you met in Chapter 3.
 
         let scores = new Map();
         scores.set("alice", 10);
@@ -185,10 +182,10 @@ ANSWERS
 
 7) Because two of the things you work with constantly in JavaScript **are already trees**.
 
-   - The **DOM** — the structure of the web page itself, which Chapter 15 covers — is a tree.
-     Every element has a parent, and may have children.
-   - **Nested JSON** coming back from an API is a tree too. An object holding objects holding
-     arrays is a tree by another name.
+- The **DOM** — the structure of the web page itself, which Chapter 15 covers — is a tree.
+  Every element has a parent, and may have children.
+- **Nested JSON** coming back from an API is a tree too. An object holding objects holding
+  arrays is a tree by another name.
 
    So the skill worth having is not building trees, but moving around inside one and finding
    what you need in it.
@@ -222,9 +219,9 @@ ANSWERS
 
    Output:
 
-        Processing: print report
-        Processing: send email
-        Processing: update record
+    Processing: print report
+    Processing: send email
+    Processing: update record
 
    They come out in the order they went in, because `shift()` takes from the front while
    `push()` adds to the back. Swap `shift()` for `pop()` and you would process them backwards,
@@ -250,12 +247,12 @@ ANSWERS
             current = current.next;
         }
 
-    Output: 10, 20 and 30, each on its own line.
+  Output: 10, 20 and 30, each on its own line.
 
-    The loop is the important part. We hold on to where we are in `current`, print it, then move
-    `current` along to whatever it points at next. When we reach a node whose `next` is null,
-    there is nowhere further to go and the loop stops. That is why we never needed to know how
-    many nodes there were.
+  The loop is the important part. We hold on to where we are in `current`, print it, then move
+  `current` along to whatever it points at next. When we reach a node whose `next` is null,
+  there is nowhere further to go and the loop stops. That is why we never needed to know how
+  many nodes there were.
 
 
 11) 
@@ -266,10 +263,10 @@ ANSWERS
         console.log(unique);          // ["Ada", "Grace", "Alan"]
         console.log(unique.length);   // 3
 
-    A Set does both jobs at once. Building one from the array removes the repeats, and you can
-    either spread it back into an array as above, or ask the Set itself how many it holds:
+  A Set does both jobs at once. Building one from the array removes the repeats, and you can
+  either spread it back into an array as above, or ask the Set itself how many it holds:
 
         console.log(new Set(names).size);   // 3
 
-    Notice the order is preserved: Ada, Grace, Alan appear in the order they were first seen.
-    A Set will not hold duplicates, but it does remember the order things arrived in.
+  Notice the order is preserved: Ada, Grace, Alan appear in the order they were first seen.
+  A Set will not hold duplicates, but it does remember the order things arrived in.

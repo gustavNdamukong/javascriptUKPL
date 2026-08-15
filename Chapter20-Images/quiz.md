@@ -1,5 +1,4 @@
-QUIZ — Chapter 20: Images
-=========================
+# QUIZ — Chapter 20: Images
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 20: Images. Work
 through these after reading the chapter, while the material is fresh — recall practice is what
@@ -10,8 +9,7 @@ you stuck. Questions 9 to 12 are proper exercises where you write and run real c
 are all together in the Answers section further down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) You apply a grayscale effect with `img.style.filter = 'grayscale(100%)'`. Why can the user
    not download the grey version of that image?
@@ -79,25 +77,24 @@ QUESTIONS
 
 
 10) EXERCISE. Given a 2×1 canvas with one red pixel and one blue pixel, apply the averaging
-    grayscale from question 6 and print the resulting pixel values.
+  grayscale from question 6 and print the resulting pixel values.
 
-    Clue: 255 divided by 3.
+  Clue: 255 divided by 3.
 
 
 11) EXERCISE. Write the download handler: turn the canvas into a data URL and trigger a download
-    named `edited-image.png`.
+  named `edited-image.png`.
 
-    Clue: three lines and a click.
+  Clue: three lines and a click.
 
 
 12) EXERCISE. A resize slider holds a multiplier from 0.1 to 2, but its label reads "%". Write
-    the line that displays it correctly.
+  the line that displays it correctly.
 
-    Clue: 1 should read as 100.
+  Clue: 1 should read as 100.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) Because a **CSS filter only changes how the image is displayed**. It does not touch the image
    data at all. The browser paints the picture differently on screen, but the file behind it is
@@ -177,14 +174,14 @@ ANSWERS
 6) **The counter goes up in fours because each pixel is four numbers**, laid out end to end in
    one long list:
 
-        [ R, G, B, A,   R, G, B, A,   R, G, B, A,  ... ]
-          pixel 1        pixel 2        pixel 3
+    [ R, G, B, A,   R, G, B, A,   R, G, B, A,  ... ]
+    pixel 1        pixel 2        pixel 3
 
    So `data[i]` is red, `data[i+1]` green, `data[i+2]` blue, and `data[i+3]` is the **alpha** —
    how opaque that pixel is.
 
    Alpha is left alone because it is not a colour. Averaging it in would make the picture grey
-   *and* partly transparent. By skipping it, the image keeps exactly the transparency it had.
+- and* partly transparent. By skipping it, the image keeps exactly the transparency it had.
 
 
 7) **`blur()` is the one that would silently fail** if you wrote it like `contrast()`.
@@ -208,7 +205,7 @@ ANSWERS
    This does not fail on click. It fails immediately, when that line runs, because JavaScript
    looks for a variable called `applFilter` and there is no such thing:
 
-        ReferenceError: applFilter is not defined
+    ReferenceError: applFilter is not defined
 
    Two names that differ by one letter are hard to spot, which is a good argument for letting
    your editor autocomplete function names rather than typing them again.
@@ -255,11 +252,11 @@ ANSWERS
         console.log(data[0], data[1], data[2]);   // 85 85 85
         console.log(data[4], data[5], data[6]);   // 85 85 85
 
-    Both pixels come out as **85**, because 255 ÷ 3 is 85 whether the 255 was in the red slot or
-    the blue one. Two very different colours land on the same grey — which is exactly what
-    averaging does, and why this simple method is not how professional tools convert to
-    greyscale. They weight the channels, because our eyes are far more sensitive to green than
-    to blue.
+  Both pixels come out as **85**, because 255 ÷ 3 is 85 whether the 255 was in the red slot or
+  the blue one. Two very different colours land on the same grey — which is exactly what
+  averaging does, and why this simple method is not how professional tools convert to
+  greyscale. They weight the channels, because our eyes are far more sensitive to green than
+  to blue.
 
 
 11) 
@@ -272,19 +269,19 @@ ANSWERS
             link.click();
         });
 
-    The link never has to be added to the page. Creating it, pointing it at the data URL and
-    clicking it in code is enough to start a download.
+  The link never has to be added to the page. Creating it, pointing it at the data URL and
+  clicking it in code is enough to start a download.
 
-    Note that `download` is what makes the browser save the file rather than navigate to it, and
-    it is also where the filename comes from.
+  Note that `download` is what makes the browser save the file rather than navigate to it, and
+  it is also where the filename comes from.
 
 
 12) 
         scaleValue.textContent = Math.round(this.value * 100);
 
-    The slider holds a **multiplier** — `1` means full size, `0.5` means half, `2` means double.
-    The label says `%`. Printing the raw value beside a percent sign gives you "Resize (%): 1%"
-    next to an image at its original size, which is confusing.
+  The slider holds a **multiplier** — `1` means full size, `0.5` means half, `2` means double.
+  The label says `%`. Printing the raw value beside a percent sign gives you "Resize (%): 1%"
+  next to an image at its original size, which is confusing.
 
-    Multiplying by 100 makes the two agree: `1` reads as `100`, `0.5` reads as `50`. `Math.round`
-    tidies away the floating-point dust that a step of `0.1` can produce.
+  Multiplying by 100 makes the two agree: `1` reads as `100`, `0.5` reads as `50`. `Math.round`
+  tidies away the floating-point dust that a step of `0.1` can produce.

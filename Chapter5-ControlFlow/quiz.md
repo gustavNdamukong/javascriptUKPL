@@ -1,5 +1,4 @@
-QUIZ — Chapter 5: Control Flow
-==============================
+# QUIZ — Chapter 5: Control Flow
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 5: Control Flow. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What does this print, and why?
 
@@ -72,12 +70,12 @@ QUESTIONS
 
 7) Match each job to the loop you would reach for:
 
-    -a) You want to run something exactly 10 times
-    -b) You want to keep going until something happens, and you have no idea how many turns
-        that will take
-    -c) You want the code to run at least once before the condition is even checked
-    -d) You want to go through the named properties of an object
-    -e) You want to go through the values in an array, simply and readably
+  - a) You want to run something exactly 10 times
+  - b) You want to keep going until something happens, and you have no idea how many turns
+    that will take
+  - c) You want the code to run at least once before the condition is even checked
+  - d) You want to go through the named properties of an object
+  - e) You want to go through the values in an array, simply and readably
 
    Clue: five of the six loop types from this chapter, one each.
 
@@ -113,70 +111,69 @@ QUESTIONS
                 console.log("Invalid day");
         }
 
-    Clue: look very carefully at what is missing from every single case.
+  Clue: look very carefully at what is missing from every single case.
 
 
 11) EXERCISE. Create an array in a constant containing people's names. Use a while loop to
-    loop through the array and display the elements on screen. This will help you practise
-    working with while loops.
+  loop through the array and display the elements on screen. This will help you practise
+  working with while loops.
 
-    Clue: you will need a counter starting at 0, and the loop should keep going while that
-    counter is less than the array's length. Do not forget to increase the counter inside the
-    loop, or you will meet question 8 again.
+  Clue: you will need a counter starting at 0, and the loop should keep going while that
+  counter is less than the array's length. Do not forget to increase the counter inside the
+  loop, or you will meet question 8 again.
 
 
 12) EXERCISE. Create a numbers array containing the numbers 1 to 10, stored in a constant. In
-    a while loop, loop through the numbers and use the modulus operator to check whether each
-    number is even, and if so display it on screen.
+  a while loop, loop through the numbers and use the modulus operator to check whether each
+  number is even, and if so display it on screen.
 
-    This will help you practise using while loops and the less commonly used but powerful
-    modulus operator.
+  This will help you practise using while loops and the less commonly used but powerful
+  modulus operator.
 
-    Clue: a number is even when dividing it by 2 leaves nothing over.
+  Clue: a number is even when dividing it by 2 leaves nothing over.
 
 
 13) EXERCISE. Create a numbers array containing the numbers 1 to 10, stored in a constant.
-    Create three empty arrays: evenNumbers, divisibleBy3 and otherNumbers. Loop through the
-    numbers array with a while loop and, using an if...else if conditional and the modulus
-    operator, do the following checks:
+  Create three empty arrays: evenNumbers, divisibleBy3 and otherNumbers. Loop through the
+  numbers array with a while loop and, using an if...else if conditional and the modulus
+  operator, do the following checks:
 
-    -i) check whether the number is divisible by 2, and put it in evenNumbers if it is
-    -ii) check whether the number is divisible by 3, and put it in divisibleBy3 if it is
-    -iii) otherwise put the number in otherNumbers
+  - i) check whether the number is divisible by 2, and put it in evenNumbers if it is
+  - ii) check whether the number is divisible by 3, and put it in divisibleBy3 if it is
+  - iii) otherwise put the number in otherNumbers
 
-    Once out of the loop, display the contents of all three arrays.
+  Once out of the loop, display the contents of all three arrays.
 
-    This exercise is meant to help you master how if...else if statements work. When you look
-    at your results, check the divisibleBy3 array carefully — there is a lesson hiding in it.
+  This exercise is meant to help you master how if...else if statements work. When you look
+  at your results, check the divisibleBy3 array carefully — there is a lesson hiding in it.
 
-    Clue: use push() to add to an array, and join(', ') to display one neatly.
+  Clue: use push() to add to an array, and join(', ') to display one neatly.
 
 
 14) EXERCISE. Practise the do...while loop.
 
-    Create an array called names containing some names. Use a do...while loop to go through
-    the names array and display them on screen.
+  Create an array called names containing some names. Use a do...while loop to go through
+  the names array and display them on screen.
 
-    Clue: remember the block runs first and the condition is checked afterwards.
+  Clue: remember the block runs first and the condition is checked afterwards.
 
 
 15) EXERCISE. Practise using the ternary operator.
 
-    Create an array named light with one string element, 'green', in it. Create an action
-    variable and use a ternary operator to give it the value 'Go' if the string in the light
-    array is 'green', or 'Stop' if it is 'red'. Use an alert popup to display the value of
-    action.
+  Create an array named light with one string element, 'green', in it. Create an action
+  variable and use a ternary operator to give it the value 'Go' if the string in the light
+  array is 'green', or 'Stop' if it is 'red'. Use an alert popup to display the value of
+  action.
 
-    Clue: the array has only one element, so it sits at index 0.
+  Clue: the array has only one element, so it sits at index 0.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) It prints:
 
-        true
-        false
+    true
+    false
 
    The == operator compares only the values. JavaScript is happy to convert the string '5'
    into the number 5 in order to make the comparison, so it reports them as equal.
@@ -252,11 +249,11 @@ ANSWERS
 
 
 7) 
-    -a) exactly 10 times                  →  the for loop
-    -b) unknown number of turns           →  the while loop
-    -c) run at least once first           →  the do...while loop
-    -d) properties of an object           →  the for...in loop
-    -e) values in an array, readably      →  the for...of loop
+  - a) exactly 10 times                  →  the for loop
+  - b) unknown number of turns           →  the while loop
+  - c) run at least once first           →  the do...while loop
+  - d) properties of an object           →  the for...in loop
+  - e) values in an array, readably      →  the for...of loop
 
    The sixth, forEach(), is an array method rather than a loop keyword. You would use it when
    you want to run a function on every element of an array.
@@ -305,26 +302,26 @@ ANSWERS
 
 10) It prints:
 
-        Tuesday
-        Wednesday
-        Invalid day
+    Tuesday
+    Wednesday
+    Invalid day
 
-    What has gone wrong is called fall-through, and it is the single most common mistake made
-    with switch statements.
+  What has gone wrong is called fall-through, and it is the single most common mistake made
+  with switch statements.
 
-    Every case is missing its break. Once a case matches, JavaScript runs its code and then
-    carries straight on into the next case, and the next, all the way to the bottom, without
-    testing any of them again. It matched case 2, and then simply fell through everything
-    below it.
+  Every case is missing its break. Once a case matches, JavaScript runs its code and then
+  carries straight on into the next case, and the next, all the way to the bottom, without
+  testing any of them again. It matched case 2, and then simply fell through everything
+  below it.
 
-    Adding break to each case fixes it, and the output becomes just Tuesday:
+  Adding break to each case fixes it, and the output becomes just Tuesday:
 
         case 2:
             console.log("Tuesday");
             break;
 
-    This is exactly why the break statement matters so much in a switch, and it is worth
-    checking for whenever a switch behaves strangely.
+  This is exactly why the break statement matters so much in a switch, and it is worth
+  checking for whenever a switch behaves strangely.
 
 
 11) Here is the code:
@@ -337,12 +334,12 @@ ANSWERS
             i++;
         }
 
-    This displays the names like so:
+  This displays the names like so:
 
-        Alice
-        Bob
-        Charlie
-        Diana
+    Alice
+    Bob
+    Charlie
+    Diana
 
     We loop through the people array with a while loop and print each name to the screen. Note
     the use of += on document.body.innerHTML, which keeps adding each name to what is already
@@ -362,14 +359,14 @@ ANSWERS
             i++;
         }
 
-    We loop through the numbers and use the modulus operator (%) to check whether each one is
-    divisible by 2, which is to say even. If it is, we print it. This displays only the even
-    numbers:
+  We loop through the numbers and use the modulus operator (%) to check whether each one is
+  divisible by 2, which is to say even. If it is, we print it. This displays only the even
+  numbers:
 
-        246810
+    246810
 
-    They run together because we are printing each one straight after the last with nothing in
-    between. If you would rather see them separated, add something to the end:
+  They run together because we are printing each one straight after the last with nothing in
+  between. If you would rather see them separated, add something to the end:
 
         document.body.innerHTML += numbers[i] + ' ';
 
@@ -404,23 +401,23 @@ ANSWERS
         document.body.innerHTML += 'Divisible by 3: ' + divisibleBy3.join(', ') + '<br>';
         document.body.innerHTML += 'Other Numbers: ' + otherNumbers.join(', ') + '<br>';
 
-    The result on screen is:
+  The result on screen is:
 
-        Even Numbers: 2, 4, 6, 8, 10
-        Divisible by 3: 3, 9
-        Other Numbers: 1, 5, 7
+    Even Numbers: 2, 4, 6, 8, 10
+    Divisible by 3: 3, 9
+    Other Numbers: 1, 5, 7
 
-    Now, the lesson hiding in there. The divisibleBy3 array should arguably contain 6 as well,
-    and it does not. That is because 6 is divisible by 2, so it matched the very first
-    condition, and once a branch of an if...else if chain matches, none of the branches below
-    it are even looked at. 6 went into evenNumbers and never got the chance to be tested
-    against 3.
+  Now, the lesson hiding in there. The divisibleBy3 array should arguably contain 6 as well,
+  and it does not. That is because 6 is divisible by 2, so it matched the very first
+  condition, and once a branch of an if...else if chain matches, none of the branches below
+  it are even looked at. 6 went into evenNumbers and never got the chance to be tested
+  against 3.
 
-    That is the whole point of an else if chain: at most one branch ever runs.
+  That is the whole point of an else if chain: at most one branch ever runs.
 
-    If you want a number to be able to land in more than one array, use a series of separate
-    if statements instead, with no else at all, so that every check runs regardless of what
-    the ones before it did:
+  If you want a number to be able to land in more than one array, use a series of separate
+  if statements instead, with no else at all, so that every check runs regardless of what
+  the ones before it did:
 
         while (i < numbers.length)
         {
@@ -444,9 +441,9 @@ ANSWERS
             i++;
         }
 
-    This is perfectly legal code. It just means every if statement is checked every time,
-    regardless of what any of the others did. Now 6 appears in both evenNumbers and
-    divisibleBy3.
+  This is perfectly legal code. It just means every if statement is checked every time,
+  regardless of what any of the others did. Now 6 appears in both evenNumbers and
+  divisibleBy3.
 
 
 14) Here is the code:
@@ -459,15 +456,15 @@ ANSWERS
             i++;
         } while (i < names.length);
 
-    This prints:
+  This prints:
 
-        John
-        Susan
-        Mary
-        Ann
+    John
+    Susan
+    Mary
+    Ann
 
-    To prove to yourself that a do...while really does run its first turn before checking
-    anything, try adding a condition that says to stop when the name 'John' is met:
+  To prove to yourself that a do...while really does run its first turn before checking
+  anything, try adding a condition that says to stop when the name 'John' is met:
 
         const names = ['John', 'Susan', 'Mary', 'Ann'];
         let i = 0;
@@ -478,15 +475,15 @@ ANSWERS
         }
         while ((i < names.length) && (names[i] != 'John'));
 
-    This still runs through all four names and displays John, Susan, Mary, Ann. The first turn
-    happens regardless, without the condition being looked at, and by the time it is checked we
-    are past John, so nothing else matches it.
+  This still runs through all four names and displays John, Susan, Mary, Ann. The first turn
+  happens regardless, without the condition being looked at, and by the time it is checked we
+  are past John, so nothing else matches it.
 
-    Change the name in the condition to one further along and you will see the loop stop:
+  Change the name in the condition to one further along and you will see the loop stop:
 
         while ((i < names.length) && (names[i] != 'Mary'));
 
-    This runs only twice, because 'Mary' is the third name, so only John and Susan are printed.
+  This runs only twice, because 'Mary' is the third name, so only John and Susan are printed.
 
 
 15) Here is the code:
@@ -496,8 +493,8 @@ ANSWERS
 
         alert(action);
 
-    As it stands, the alert popup displays 'Go'. Change the string in the light array to 'red'
-    and refresh the page, and the popup will say 'Stop' instead.
+  As it stands, the alert popup displays 'Go'. Change the string in the light array to 'red'
+  and refresh the page, and the popup will say 'Stop' instead.
 
-    Note that light is an array with a single element, which is why we read it with light[0]
-    rather than just light. Comparing the whole array to 'green' would never be true.
+  Note that light is an array with a single element, which is why we read it with light[0]
+  rather than just light. Comparing the whole array to 'green' would never be true.

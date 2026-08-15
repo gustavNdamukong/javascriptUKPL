@@ -1,5 +1,4 @@
-QUIZ — Chapter 17: OOP
-======================
+# QUIZ — Chapter 17: OOP
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 17: OOP. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ where you write and run real code. The answers are all together in the Answers s
 down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) Two different things in JavaScript are called "prototype". What are they, and which kind of
    thing has each one?
@@ -62,9 +60,9 @@ QUESTIONS
 
 8) `rex` is created from `class Dog extends Animal`. What do these three give you?
 
-        rex instanceof Dog
-        rex instanceof Animal
-        Dog instanceof Animal
+    rex instanceof Dog
+    rex instanceof Animal
+    Dog instanceof Animal
 
    Clue: two of them agree and the third is the interesting one.
 
@@ -88,48 +86,47 @@ QUESTIONS
 
 
 11) What kind of error do you get from reading a `#private` field outside its class, and why is
-    that stricter than it first appears?
+  that stricter than it first appears?
 
-    Clue: it happens earlier than you would think.
+  Clue: it happens earlier than you would think.
 
 
 12) EXERCISE. Write a `Person` constructor function taking a name, add a `greet()` method to its
     prototype after the fact, then create two people and prove they both have it.
 
-    Clue: add the method to the mould, not to each object.
+  Clue: add the method to the mould, not to each object.
 
 
 13) EXERCISE. Prove in code that a method added to `Person.prototype` is not an own property of
-    the instance.
+  the instance.
 
-    Clue: one method name from `Object.prototype` answers this directly.
+  Clue: one method name from `Object.prototype` answers this directly.
 
 
 14) EXERCISE. Write `Animal` with a `speak()` method, and `Dog extends Animal` whose constructor
-    also takes a breed. Call the parent constructor properly and override `speak()`.
+  also takes a breed. Call the parent constructor properly and override `speak()`.
 
-    Clue: one keyword does both jobs, in two different forms.
+  Clue: one keyword does both jobs, in two different forms.
 
 
 15) EXERCISE. Take `{ name: 'Ada', age: 36 }`, convert it to JSON, print it, convert it back, and
     print the name.
 
-    Clue: two methods, both starting with JSON.
+  Clue: two methods, both starting with JSON.
 
 
 16) EXERCISE. Destructure `{ msg: 'Hello' }` into three variables — `msg`, `title` and `footer` —
     where the two missing ones fall back to sensible defaults.
 
-    Clue: question 7 tells you which character you need.
+  Clue: question 7 tells you which character you need.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) **`.prototype`** — a real, visible property that **only functions have**. It holds the object
    that instances made from that function will inherit from.
 
-   **`__proto__`** — the internal link that **every object has**, pointing at the object it
+- *`__proto__`** — the internal link that **every object has**, pointing at the object it
    actually inherits from. Its proper name in the specification is `[[Prototype]]`, and modern
    browser consoles display it that way.
 
@@ -142,7 +139,7 @@ ANSWERS
 
 2) `p`'s prototype is **`Person.prototype`** — not `Person` itself. The full chain:
 
-        p  →  Person.prototype  →  Object.prototype  →  null
+    p  →  Person.prototype  →  Object.prototype  →  null
 
    You can walk it:
 
@@ -206,7 +203,7 @@ ANSWERS
         car.model = 'Camry';
         console.log(car.model);   // still 'Corolla'
 
-   **In strict mode the same line throws a `TypeError`.**
+- *In strict mode the same line throws a `TypeError`.**
 
    The silent version is the nastier of the two, because there is nothing to tell you what
    happened. If an assignment seems to be ignored for no reason, a frozen object is worth
@@ -234,9 +231,9 @@ ANSWERS
 
 
 8) 
-        rex instanceof Dog      // true
-        rex instanceof Animal   // true
-        Dog instanceof Animal   // false
+    rex instanceof Dog      // true
+    rex instanceof Animal   // true
+    Dog instanceof Animal   // false
 
    The first two are true because `rex` really was made from `Dog`, and `Dog` extends `Animal`,
    so `Animal.prototype` is in `rex`'s chain as well.
@@ -269,7 +266,7 @@ ANSWERS
 
 10) It fails with **`SyntaxError: Export 'age' is not defined in module`**.
 
-    Two things are going on, and the second is the important one.
+  Two things are going on, and the second is the important one.
 
     First, the braces in `export { ... }` are **not a block of code**. They are a *list of names*
     you are handing out. That is why declarations never go inside them.
@@ -278,7 +275,7 @@ ANSWERS
     `let` and `const` are block-scoped. So `name` and `age` exist only inside those braces and
     are gone by the time the `export` line runs. There is nothing left to export.
 
-    The fix is to drop the block entirely:
+  The fix is to drop the block entirely:
 
         let name = "John Bands";
         let age = 40;
@@ -288,15 +285,15 @@ ANSWERS
 
 11) You get a **`SyntaxError`**:
 
-        SyntaxError: Private field '#privateAge' must be declared in an enclosing class
+    SyntaxError: Private field '#privateAge' must be declared in an enclosing class
 
-    It is stricter than it looks because a SyntaxError happens when JavaScript *reads* your file,
-    before a single line has run. So this is not a value coming back as `undefined`, and not an
-    error thrown when execution reaches that line — **the whole script fails to start**.
+  It is stricter than it looks because a SyntaxError happens when JavaScript *reads* your file,
+  before a single line has run. So this is not a value coming back as `undefined`, and not an
+  error thrown when execution reaches that line — **the whole script fails to start**.
 
-    That is what makes `#` fields genuinely private. The old convention of naming something
-    `_age` to signal "please do not touch" relies on everyone being polite. A `#` field is
-    enforced by the language.
+  That is what makes `#` fields genuinely private. The old convention of naming something
+  `_age` to signal "please do not touch" relies on everyone being polite. A `#` field is
+  enforced by the language.
 
 
 12) 
@@ -315,8 +312,8 @@ ANSWERS
         console.log(p1.greet());   // "Hello, Tom"
         console.log(p2.greet());   // "Hello, John"
 
-    Both objects get the method even though it was added after they were created. That is the
-    power of the prototype: they do not each hold a copy, they all look up the same one.
+  Both objects get the method even though it was added after they were created. That is the
+  power of the prototype: they do not each hold a copy, they all look up the same one.
 
 
 13) 
@@ -324,8 +321,8 @@ ANSWERS
         console.log(p1.hasOwnProperty("greet"));      // false - but it does not own it
         console.log(Person.prototype.hasOwnProperty("greet"));  // true - the mould owns it
 
-    `hasOwnProperty()` asks only about the object itself, ignoring everything up the chain. So
-    this is the tool for telling "this object has it" apart from "this object can reach it".
+  `hasOwnProperty()` asks only about the object itself, ignoring everything up the chain. So
+  this is the tool for telling "this object has it" apart from "this object can reach it".
 
     The same is true of class methods, which is worth knowing: `class Dog { speak() {} }` puts
     `speak` on `Dog.prototype`, not on each dog.
@@ -362,8 +359,8 @@ ANSWERS
     The one keyword doing two jobs is `super`. As `super(...)` it calls the parent's
     **constructor**; as `super.speak()` it calls the parent's **method**.
 
-    `super(name)` must run before you touch `this` — reaching for `this` first throws a
-    `ReferenceError`. In practice, put it on the first line.
+  `super(name)` must run before you touch `this` — reaching for `this` first throws a
+  `ReferenceError`. In practice, put it on the first line.
 
 
 15) 
@@ -375,9 +372,9 @@ ANSWERS
         let back = JSON.parse(json);
         console.log(back.name);         // Ada
 
-    Note what JSON gives you back is a **new** object, not the original one. And remember what
-    does not survive the trip: functions and `undefined` values are dropped entirely, and a
-    `Date` comes back as a string rather than as a Date.
+  Note what JSON gives you back is a **new** object, not the original one. And remember what
+  does not survive the trip: functions and `undefined` values are dropped entirely, and a
+  `Date` comes back as a string rather than as a Date.
 
 
 16) 
@@ -393,6 +390,6 @@ ANSWERS
         console.log(title);    // "No title"  - missing, so defaulted
         console.log(footer);   // "No footer" - missing, so defaulted
 
-    The equals sign is what you need, as question 7 established. Reach for a colon here and you
-    get `SyntaxError: Invalid destructuring assignment target`, because a colon expects a
-    variable name on its right, not a value.
+  The equals sign is what you need, as question 7 established. Reach for a colon here and you
+  get `SyntaxError: Invalid destructuring assignment target`, because a colon expects a
+  variable name on its right, not a value.

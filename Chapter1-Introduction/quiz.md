@@ -1,5 +1,4 @@
-QUIZ — Chapter 1: Introduction
-==============================
+# QUIZ — Chapter 1: Introduction
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 1: Introduction. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -10,8 +9,7 @@ leave you stuck. The answers are all together in the Answers section further dow
 to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) A web page is built from three separate technologies. Name all three, and say in one short
    sentence what each one is responsible for.
@@ -79,23 +77,22 @@ QUESTIONS
 
 
 10) You want to test your code on your own computer. Name the VS Code extension this book
-    recommends and say who made it. Then explain what the 5500 refers to in this address:
+  recommends and say who made it. Then explain what the 5500 refers to in this address:
 
-        http://127.0.0.1:5500/index.html
+    http://127.0.0.1:5500/index.html
 
-    Clue: the chapter describes that last part as a numbered door.
+  Clue: the chapter describes that last part as a numbered door.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) HTML, CSS and JavaScript.
 
-   - HTML (HyperText Markup Language) provides the content and the structure — the headings,
-     paragraphs, images, buttons and form fields.
-   - CSS (Cascading Style Sheets) controls how all of that looks — the colours, fonts, spacing
-     and layout.
-   - JavaScript makes the page do things — it gives the page movement and interactivity.
+- HTML (HyperText Markup Language) provides the content and the structure — the headings,
+  paragraphs, images, buttons and form fields.
+- CSS (Cascading Style Sheets) controls how all of that looks — the colours, fonts, spacing
+  and layout.
+- JavaScript makes the page do things — it gives the page movement and interactivity.
 
    Or, as the chapter puts it: HTML is the skeleton, CSS is the skin and clothes, and
    JavaScript is the muscle.
@@ -155,12 +152,12 @@ ANSWERS
 
    Two ways to fix it:
 
-   - Add the defer attribute to the script tag, so the script waits until the HTML has finished
-     being parsed:
+- Add the defer attribute to the script tag, so the script waits until the HTML has finished
+  being parsed:
 
         <script src="/your-script.js" defer></script>
 
-   - Wrap the code in a DOMContentLoaded listener, so it only runs once every element exists:
+- Wrap the code in a DOMContentLoaded listener, so it only runs once every element exists:
 
         document.addEventListener('DOMContentLoaded', function () {
             // your code here
@@ -193,13 +190,13 @@ ANSWERS
 
 
 10) The extension is Live Server, made by Ritwick Dey. (Take care to pick that one — copycat
-    extensions exist with very similar names, and some have been removed for being malicious.)
+  extensions exist with very similar names, and some have been removed for being malicious.)
 
-    The 5500 is a port number. A port is a door into your computer that programs can use. The
-    port number is a numbered door on your computer that a program running on your computer can
-    listen at for any other program trying to connect with or communicate with it, or through
-    which it can make information available for other programs to connect to and make use of.
-    Those other programs are often somewhere else on a network, but they can just as easily be
-    sitting on the very same computer — which is exactly what is happening here, since it is
-    your own browser doing the connecting. Live Server has opened door number 5500 and is
-    serving your project files through it, which is why that number appears in the address.
+  The 5500 is a port number. A port is a door into your computer that programs can use. The
+  port number is a numbered door on your computer that a program running on your computer can
+  listen at for any other program trying to connect with or communicate with it, or through
+  which it can make information available for other programs to connect to and make use of.
+  Those other programs are often somewhere else on a network, but they can just as easily be
+  sitting on the very same computer — which is exactly what is happening here, since it is
+  your own browser doing the connecting. Live Server has opened door number 5500 and is
+  serving your project files through it, which is why that number appears in the address.

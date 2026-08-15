@@ -1,5 +1,4 @@
-QUIZ — Chapter 19: Forms and Email
-==================================
+# QUIZ — Chapter 19: Forms and Email
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 19: Forms and
 Email. Work through these after reading the chapter, while the material is fresh — recall
@@ -10,8 +9,7 @@ you stuck. Questions 8 to 11 are proper exercises where you write and run real c
 are all together in the Answers section further down, numbered to match the questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) Name the three ways of getting data out of a form, and say when each is the right choice.
 
@@ -67,39 +65,38 @@ QUESTIONS
 
 
 10) EXERCISE. Using the `elements` property, get a form's `username` field and print its value —
-    then print the same value using `getElementById`, to show they agree.
+  then print the same value using `getElementById`, to show they agree.
 
-    Clue: `elements` is keyed by the name attribute, `getElementById` by the id.
+  Clue: `elements` is keyed by the name attribute, `getElementById` by the id.
 
 
 11) EXERCISE. Write the check that runs only when a file really was chosen, and prints its name,
-    type and size.
+  type and size.
 
     Clue: `get()` on an empty file field does not return `undefined`.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) 
-   - **Picking fields off individually** with `getElementById()` or `querySelector()`, then
-     reading `.value`. Fine for a small form with two or three fields. Tedious and fragile for
-     anything bigger, and awkward if fields are added dynamically.
-   - **The `elements` property** of the form. `form.elements` gives you every control in the
-     form in one collection, so you are not writing a selector per field. Good when the form is
-     large or its fields change.
-   - **The `FormData` object**. Built for the job of gathering everything up, and the one to
-     reach for when you are sending the data to a server, because `fetch()` will take a
-     `FormData` object directly.
+- **Picking fields off individually** with `getElementById()` or `querySelector()`, then
+  reading `.value`. Fine for a small form with two or three fields. Tedious and fragile for
+  anything bigger, and awkward if fields are added dynamically.
+- **The `elements` property** of the form. `form.elements` gives you every control in the
+  form in one collection, so you are not writing a selector per field. Good when the form is
+  large or its fields change.
+- **The `FormData` object**. Built for the job of gathering everything up, and the one to
+  reach for when you are sending the data to a server, because `fetch()` will take a
+  `FormData` object directly.
 
    All three can handle file fields equally well.
 
 
 2) `getElementById()` uses the **id** attribute. `form.elements` and `FormData` both use the
-   **name** attribute.
+- *name** attribute.
 
-        form.elements.username        // by name
-        formData.get("username")      // by name
+    form.elements.username        // by name
+    formData.get("username")      // by name
 
    A field with **no `name`** is ignored by `FormData` entirely — it simply will not appear.
    That is a quiet source of "why is my value missing?", because the field looks perfectly
@@ -195,9 +192,9 @@ ANSWERS
                 console.log("Email:", email);
             });
 
-    `e.target` is the form itself, because the form is the element the submit event happened on.
-    That is why it can be passed straight to `new FormData(...)` without selecting the form
-    again.
+  `e.target` is the form itself, because the form is the element the submit event happened on.
+  That is why it can be passed straight to `new FormData(...)` without selecting the form
+  again.
 
 
 9) 
@@ -209,9 +206,9 @@ ANSWERS
         console.log(chosen);          // ['apple', 'cherry']
         console.log(chosen.length);   // 2
 
-    Only the **checked** boxes appear. Unchecked checkboxes are not submitted at all — which is
-    another way of saying they behave rather like disabled fields, in that asking for them gives
-    you nothing back rather than `false`.
+  Only the **checked** boxes appear. Unchecked checkboxes are not submitted at all — which is
+  another way of saying they behave rather like disabled fields, in that asking for them gives
+  you nothing back rather than `false`.
 
 
 10) 
@@ -227,12 +224,12 @@ ANSWERS
         console.log(byId);            // "JohnDoe"
         console.log(byName === byId); // true
 
-    Both reach the same input; they just arrive by different routes. `form.elements` is keyed by
-    the **name** attribute, `getElementById` by the **id**. In the chapter's example form the
-    field happens to have both, and they happen to match — but there is no rule that says they
-    must, and mixing them up is a common source of confusion.
+  Both reach the same input; they just arrive by different routes. `form.elements` is keyed by
+  the **name** attribute, `getElementById` by the **id**. In the chapter's example form the
+  field happens to have both, and they happen to match — but there is no rule that says they
+  must, and mixing them up is a common source of confusion.
 
-    You can also reach fields by position: `form.elements[0]`.
+  You can also reach fields by position: `form.elements[0]`.
 
 
 11) 
@@ -246,10 +243,10 @@ ANSWERS
             console.log("No file selected.");
         }
 
-    The check is worth understanding rather than copying. When no file has been chosen,
-    `formData.get()` on a file field does not give you `undefined` — it gives you an **empty
-    File object**, whose `name` is an empty string. An empty File is still an object, and every
-    object is truthy, so `if (file)` on its own would pass and you would go on to read a file
-    that is not there.
+  The check is worth understanding rather than copying. When no file has been chosen,
+  `formData.get()` on a file field does not give you `undefined` — it gives you an **empty
+  File object**, whose `name` is an empty string. An empty File is still an object, and every
+  object is truthy, so `if (file)` on its own would pass and you would go on to read a file
+  that is not there.
 
-    Testing `file.name` as well is what makes the check reliable.
+  Testing `file.name` as well is what makes the check reliable.

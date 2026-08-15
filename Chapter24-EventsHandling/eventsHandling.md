@@ -1,61 +1,56 @@
 
-//————————————————————//
-	CHAPTER 24 - Event Handling
-//————————————————————//
+# Chapter 24 — Event Handling
 
-    	-Event listeners
-		-Inline event listener attribute 
-		-The addEventListener() method
-	-Common JavaScript Events
-	-Keyboard key detection
-    		-Listening for a key press
-	-Triggering events dynamically
-		-Dynamically triggering a click
-		-Dynamically triggering a form’s submit event
-		-Dynamically triggering a focus on an input field
-		-Events with no trigger methods
-	-A deep dive into event mechanics
-		-Event bubbling
-		-Event capturing (aka capture phase)
-			-How to switch from bubbling to capturing
-			-Bubbling vs Capturing, which is better?
-			-Why ever use Event Capturing
-		-Event delegation
-		-Custom events
-	-Conclusion
+  - Event listeners
+    - Inline event listener attribute
+    - The addEventListener() method
+  - Common JavaScript Events
+  - Keyboard key detection
+    - Listening for a key press
+  - Triggering events dynamically
+    - Dynamically triggering a click
+    - Dynamically triggering a form’s submit event
+    - Dynamically triggering a focus on an input field
+    - Events with no trigger methods
+  - A deep dive into event mechanics
+    - Event bubbling
+    - Event capturing (aka capture phase)
+      - How to switch from bubbling to capturing
+      - Bubbling vs Capturing, which is better?
+      - Why ever use Event Capturing
+    - Event delegation
+    - Custom events
+  - Conclusion
     
 
 
-Event listeners
-—————————
+## Event listeners
   One of the biggest reasons for JavaScript’s popularity is how well it handles events-those moments when users interact with your page.
 Think about it:
 
-    - A click on a button.
-    - A hover over an image.
-    - A keydown when typing into an input.
-    - A submit of a form.
-    - A drag and drop of a file.
+  - A click on a button.
+  - A hover over an image.
+  - A keydown when typing into an input.
+  - A submit of a form.
+  - A drag and drop of a file.
 	
 All of these are events.
 JavaScript listens for these user actions and gives you the power to respond immediately-updating the page, showing messages, processing data, and so much more. In this chapter, we’ll look at:
 
-    * How to listen for events.
-    * Different types of events you can respond to.
-    * How to trigger events yourself from your JavaScript code.
-    * How events travel through the DOM (bubbling and capturing).
-    * How to delegate events smartly.
-    * How to create your own custom events!
+  - How to listen for events.
+  - Different types of events you can respond to.
+  - How to trigger events yourself from your JavaScript code.
+  - How events travel through the DOM (bubbling and capturing).
+  - How to delegate events smartly.
+  - How to create your own custom events!
 
 
 
-EVENT LISTENERS
-——————————
+## EVENT LISTENERS
 
   JavaScript gives you a few simple ways to listen for events and respond to them. There are two major ways to do so.
 
-	-i) Inline event listener attribute 
-	—————————————————
+#### -i) Inline event listener attribute
 	   This works in two steps; you add the event listener attribute on the target element’s tag, then get that event listener to call an inbuilt or your custom function in response to that event by passing the custom function as the value of the attribute. Here is an example:
 
 	<button 
@@ -111,16 +106,15 @@ EVENT LISTENERS
 
 
 
-	-iI) The addEventListener() method
-		—————————————————
-	  Instead of adding event listeners inside your HTML, 
-	JavaScript also provides a cleaner, more powerful 
-	way: programmatically adding an event listener
-	on any element of your choice, and assign it an 
-	event handler function which will take the action in 
-	response to that event.
-	  You call the addEventListener() method on any element.
-	It takes two main arguments:
+#### -iI) The addEventListener() method
+  Instead of adding event listeners inside your HTML,
+  JavaScript also provides a cleaner, more powerful
+  way: programmatically adding an event listener
+  on any element of your choice, and assign it an
+  event handler function which will take the action in
+  response to that event.
+  You call the addEventListener() method on any element.
+  It takes two main arguments:
 
 		-1) The event type (like "click", "submit", "mouseover", etc.).
 		-2) A function (event handler) to run when the event happens.
@@ -133,8 +127,7 @@ EVENT LISTENERS
 	     there as a closure (anonymous function). 
 	     Let’s see addEventListener() in action:
 
-	     In a closure
-	     ——————
+#### In a closure
 
 		<button 
 			id="myButton"
@@ -167,8 +160,7 @@ EVENT LISTENERS
  
 
 
-	In an external named function
-	————————————
+#### In an external named function
 
 	// define the function
 	function myFunction(e) {
@@ -185,7 +177,7 @@ EVENT LISTENERS
 	// invoke the function
 	myButton.addEventListener("click", myFunction); 
 
-	OR
+  OR
 
 	document.getElementById("myButton")
   	.addEventListener("click", myFunction);
@@ -234,16 +226,15 @@ EVENT LISTENERS
 			…
 		}
 
-	  Beside the JavaScript events for HTML 
-	elements mentioned above like click, or 
-	submit, mouseover, hover, keydown, etc, there 
-	are many more. Just read the online 
-	JavaScript documentation to learn more.
+  Beside the JavaScript events for HTML
+  elements mentioned above like click, or
+  submit, mouseover, hover, keydown, etc, there
+  are many more. Just read the online
+  JavaScript documentation to learn more.
 
 
 
-Common JavaScript Events
-————————————————
+## Common JavaScript Events
   Here’s a list of the most commonly used events in everyday web development:
 
 Event name	When it happens
@@ -278,19 +269,17 @@ Tip: Some mouse events (mouseenter, mouseleave) do not bubble, meaning they don'
 
 
 
-Keyboard key detection
-—————————————
+## Keyboard key detection
   The keydown event will fire when any key on your keyboard is pressed. It will therefore be useful to know how to detect which specific key was pressed. JavaScript provides you a way to do this. Having this skill can be invaluable when building applications that involve users controlling objects on the screen with thee keyboard. This is a vital skill when creating games, which is something JavaScript shines in. Another great use for keyboard detection is if you wish to provide the users of your application with shortcuts for certain tasks or functionalities.  
   When your program needs to react to keyboard input (like moving a ball with arrow keys), JavaScript gives you special keyboard events such as:
 
-    * keydown – when a key is pressed down
-    * keyup – when a key is released
-    * keypress – similar to keydown (but now discouraged for most uses)
+  - keydown – when a key is pressed down
+  - keyup – when a key is released
+  - keypress – similar to keydown (but now discouraged for most uses)
 
 
 
-	Listening for a key press
-	——————————————
+### Listening for a key press
   You can use document.addEventListener() to listen for key events on the entire page. Here's an example:
 
 	document.addEventListener("keydown", (e) => {
@@ -312,28 +301,28 @@ Let’s create an example involving detecting a press on the arrow keys. We used
 	});
 
 The way this code logic works is as follows
-	-e is the event object passed to your function. It has properties in 
-	   which important things about the event that just occurred are 
-	   recorded. The property that will contain information varies 
-	   depending on the event that occurred. The event in this example is 
-	   keydown (or keypress), and therefore, the properties you should be 
-	   checking to get the details of the event would be properties 
-	   like .key, .code, or .keyCode (not recommended as it is deprecated).
-	-e.key will always contain the name of whatever key on your 
-	   keyboard was pressed (like "ArrowUp" or "a" or "k" etc).
-	-e.code always contains a code string associated with, and 
-	   represent any key which you can use instead of the key name 
-	   stored in e.key. It is similar to the .key value, but meant to be a code 
-	   string. 
-	-e.keyCode. Older JavaScript applications (or game engines) 
-	   sometimes use these. They are number codes associated with all 
-	   keys, that you can use instead of the string values. It is deprecated 
-	   but still works as of the date of this writing.
+  - e is the event object passed to your function. It has properties in
+  which important things about the event that just occurred are
+  recorded. The property that will contain information varies
+  depending on the event that occurred. The event in this example is
+  keydown (or keypress), and therefore, the properties you should be
+  checking to get the details of the event would be properties
+  like .key, .code, or .keyCode (not recommended as it is deprecated).
+  - e.key will always contain the name of whatever key on your
+  keyboard was pressed (like "ArrowUp" or "a" or "k" etc).
+  - e.code always contains a code string associated with, and
+  represent any key which you can use instead of the key name
+  stored in e.key. It is similar to the .key value, but meant to be a code
+  string.
+  - e.keyCode. Older JavaScript applications (or game engines)
+  sometimes use these. They are number codes associated with all
+  keys, that you can use instead of the string values. It is deprecated
+  but still works as of the date of this writing.
 
 The following table shows you the values recorded for the key names on the .key property, and the corresponding codes stored in the .code property of the event object when the arrow keys are pressed. To give you variety on alternative keys, I have also thrown in there, the names and codes recorded when the space bar and letter a keys are pressed.
 
 
-           e.key	            e.code	         e.keyCode (old)
+    e.key	            e.code	         e.keyCode (old)
 "ArrowLeft"	"ArrowLeft"	37
 "ArrowUp"	"ArrowUp"	38
 "ArrowRight"	"ArrowRight"	39
@@ -355,13 +344,11 @@ Visit the online documents for the codes of any other keys you are interested in
 
 
 
-Triggering events dynamically
-————————————————
+## Triggering events dynamically
   Dynamically doing something in programming terms means you are making something happen entirely in code, without any manual user effort. Sometimes you don’t want to wait for a user’s action before you execute an action.
 You can programmatically trigger certain events by calling specific methods on DOM elements. All HTML elements have certain events associated with them, and so they each have methods provided by JavaScript to deal with these events. For example, the form element has a submit() method which can be used to trigger the submit event (for submission) on the form or to check if it has been submitted. An actor tag, which is used to create links has a click() method for handling a click event on it etc. As you get familiar with different events, you will come to be familiar with which events belong to which elements. Let’s learn how to dynamically trigger some events in code:
 
-Dynamically triggering a click
-—————————
+### Dynamically triggering a click
 
 	<a id="myLink" href="https://example.com" target="_blank">Visit 	
 		Example</a>
@@ -376,8 +363,7 @@ Dynamically triggering a click
 Here we select the anchor tag by its id attribute ‘myLink’, and store it in the variable a. Then we trigger a click event on it by calling the click() method that belongs to all HTML anchor elements.
 
 
-Dynamically triggering a form’s submit event
-——————————————
+### Dynamically triggering a form’s submit event
 
 	<form id="myForm" action="https://example.com/submit" 
 		method="POST">
@@ -396,8 +382,7 @@ Dynamically triggering a form’s submit event
 Here we select the form element by its id ‘myForm’. Next, we submit the form dynamically by calling the submit() method that we know belongs to all HTML form elements.
 
 
-Dynamically triggering a focus on an input field
-———————————————————
+### Dynamically triggering a focus on an input field
 
 	<input id="myInput" type="text" placeholder="Type here...">
 
@@ -413,14 +398,13 @@ Here we select the input field by its id attribute ‘myInput’. Next, we call 
 
 
 
-Events with no trigger methods
-———————————————————
+### Events with no trigger methods
   As we have seen, some events have special methods you can directly call to trigger events like:
-    * click()
-    * submit()
-    * focus()
-    * blur() 
-    * play(), pause() (for media elements)
+  - click()
+  - submit()
+  - focus()
+  - blur()
+  - play(), pause() (for media elements)
 
 However, for most other events, there are not specialised methods you can just call to handle them. For such events, the way to trigger them is to manually create and dispatch an event. For example, the following is how to trigger a mouseover event manually:
 
@@ -463,24 +447,21 @@ Following this same example, you can create and dispatch events like dragstart, 
 And, boom! The event fires.
 
 
-Deep dive into event mechanics
-——————————————————
+#### Deep dive into event mechanics
 
-Event bubbling
-—————————
+### Event bubbling
   When an event happens, it first occurs on the target element (where the user acted). Then, it "bubbles up" through the parent elements all the way to the root (highest parent element) (`<html>`). Example:
 
-    * You click a button inside a div.
-    * The click event first fires on the button.
-    * Then it bubbles up to the div.
-    * Then bubbles up to the body, and so on.
+  - You click a button inside a div.
+  - The click event first fires on the button.
+  - Then it bubbles up to the div.
+  - Then bubbles up to the body, and so on.
 
 Why it matters: you can listen for an event higher up in the DOM, instead of on every tiny element individually. Event bubbling is the default propagation pattern.
 
 
 
-Event capturing (aka capture phase)
-————————————————————
+### Event capturing (aka capture phase)
   This is the event propagation pattern that is directly opposite to bubbling. In event capturing mode, instead of bubbling up, events will first travel downward from the root (top-most parent) downward to the target (the element on which the event was triggered). This is called capturing. By default, most event listeners listen during the bubbling phase. But you can make a listener listen during capture phase by setting { capture: true }. This is an advanced concept to grasp for less advanced programmers, so let me take the time to break it down. If I seem to be repeating some words, just follow along, it’s to drive this important topic home in your mind. 
   In the context of event capturing, "the root" simply means the very top parent element. In a web page, the biggest root is usually the document or `<html>` tag. But inside a smaller section, like a `<div>`, the root could be that `<div>` when you're only considering its children. Let me demonstrate:
 
@@ -496,8 +477,7 @@ The `<li>` elements are children (targets you might click on). Again, the target
   Here is how capturing actually works. With event bubbling, the event starts at the target and bubbles up toward the root. But with capturing,
 the event first starts at the root and travels down the DOM tree — down through each parent, until it reaches the target. Let me demonstrate with a practical working example:
 
-	HTML code
-	——————
+#### HTML code
 	<div id="parentDiv" style="padding:20px; border:2px solid black;">
             Parent Div
             <ul style="margin-top:10px;">
@@ -509,8 +489,7 @@ the event first starts at the root and travels down the DOM tree — down throug
           </div>
 
 
-	JavaScript code
-	—————————
+#### JavaScript code
 
 	const parentDiv = document.getElementById("parentDiv");
 	const item1 = document.getElementById("item1");
@@ -536,26 +515,25 @@ the event first starts at the root and travels down the DOM tree — down throug
 
 Here is what happens when you run this code; If you click on Item 1:
 
-	-First, the Parent DIV's capturing handler fires (because we set 
-		{capture: true}).
-	-Then, the Item 1 click handler fires during bubbling.
-	-The same happens when you click on Item 2.
+  - First, the Parent DIV's capturing handler fires (because we set
+    {capture: true}).
+  - Then, the Item 1 click handler fires during bubbling.
+  - The same happens when you click on Item 2.
 
 As a final analogy; imagine the Root (Parent Div) to be the CEO, and the Target (Item clicked) to be a Worker. When a user clicks, 
 	
-    * In bubbling, the Worker notices first, then tells the Supervisor, then the Manager, up to the CEO.
-    * In capturing, the CEO checks first ("is it mine?"), then passes it down Manager to Supervisor to Worker, until finally the exact clicked item is found.
+  - In bubbling, the Worker notices first, then tells the Supervisor, then the Manager, up to the CEO.
+  - In capturing, the CEO checks first ("is it mine?"), then passes it down Manager to Supervisor to Worker, until finally the exact clicked item is found.
 
 ![Figure 25.1 — One click, two journeys through the same elements](images/ch25-fig-01-bubbling-vs-capturing.svg)
 
-*Figure 25.1 — One click, two journeys through the same elements*
+- Figure 25.1 — One click, two journeys through the same elements*
 
 
 
 
 
-How to switch from bubbling to capturing
-———————————————————————
+#### How to switch from bubbling to capturing
   You have just seen how to do that already, but I am making this sub-heading to separately emphasise on how it’s done again because it is very essential knowledge. Thus far, I have told you about two arguments you need to pass to the addEventListener() method whenever you use it to listen for an event on an HTML element. Well, there is a third argument, and that is a boolean (true or false) which determines if the event propagation is going to be in the capturing phase or not. 
   This third argument is false by default, so even when you do not pass anything into it, event capturing will be set to false. That is why the argument is optional, and that is why event bubbling is on by default. If you want to handle an event in the capturing phase therefore, you have to explicitly pass in a value of true for that third parameter. This is how to do that:
 
@@ -565,56 +543,53 @@ The true tells JavaScript: "I want this function to run during the capturing pha
 
 
 
-Bubbling vs Capturing, which is better?
-—————————————————————
+#### Bubbling vs Capturing, which is better?
   The answer is quite simple. Bubbling is generally better and more widely used, and here is why:
 
-	-1) Bubbling is the default behaviour
+  - 1) Bubbling is the default behaviour
 
         * Bubbling happens automatically in JavaScript.
         * You don't have to set anything special (like { capture: true }).
         * It’s the natural way the browser handles events.
   
 
-	-2) Bubbling is more Predictable
+  - 2) Bubbling is more Predictable
 
-        * Developers are more familiar with bubbling.
-        * When you write event handlers on child elements, you expect the event to "bubble up" to parent elements.
+    - Developers are more familiar with bubbling.
+    - When you write event handlers on child elements, you expect the event to "bubble up" to parent elements.
 
-	-3) Bubbling is what makes event delegation possible
+  - 3) Bubbling is what makes event delegation possible
 
-        * Event delegation (which we talked about) depends on bubbling.
-        * It lets you attach one event listener to a parent instead of many listeners on children.
-        * This could be a huge performance boost when you have many child elements.
+    - Event delegation (which we talked about) depends on bubbling.
+    - It lets you attach one event listener to a parent instead of many listeners on children.
+    - This could be a huge performance boost when you have many child elements.
 
-	-4) Using bubbling makes for less overhead
+  - 4) Using bubbling makes for less overhead
 
-        * The browser is heavily optimised to handle bubbling efficiently.
-        * Capturing is a bit less commonly used, so it's slightly less optimised in some browsers (but in practice, this difference is very tiny).
+    - The browser is heavily optimised to handle bubbling efficiently.
+    - Capturing is a bit less commonly used, so it's slightly less optimised in some browsers (but in practice, this difference is very tiny).
 	
-	-5) Using bubbling makes for cleaner and simpler code
+  - 5) Using bubbling makes for cleaner and simpler code
 	
-        * This is because without capturing, you avoid complicating the event flow unnecessarily.
+    - This is because without capturing, you avoid complicating the event flow unnecessarily.
 
 
 
-Why ever use Event Capturing
-—————————————————
+#### Why ever use Event Capturing
   As bad as it seems to be from the ton of points above, capturing does have its own uses. It would be useful in the following scenarios:
 
-	-When you need to intercept an event before it reaches its target.
-	-When you want a parent to prevent something before the child can 
-		react.
-	-You are dealing with security-sensitive or priority-sensitive 
-		actions.
+  - When you need to intercept an event before it reaches its target.
+  - When you want a parent to prevent something before the child can
+    react.
+  - You are dealing with security-sensitive or priority-sensitive
+    actions.
 
 Take for example, you may have a parent form that needs to stop certain clicks from even reaching inner elements (e.g., security features in apps). However, we can all agree that these occasions are rare. The rule to go by is this; always go with bubbling unless you have a very special reason to use capturing.
 
 
 
 
-Event delegation
-——————————
+### Event delegation
   Event Delegation is a smart technique:
 
     * Instead of attaching event listeners to hundreds of child elements,
@@ -643,8 +618,7 @@ This works well, and with just one event listener on the `<ul>`, you handle clic
 
 
 
-Custom events
-—————————
+### Custom events
   JavaScript even allows you to create your own custom events.
 Example: creating and dispatching a "userLoggedIn" event:
 
@@ -670,9 +644,9 @@ Nothing happens. But as soon as you comment out the line, the event is dispatche
 Custom events are powerful for building your own systems inside an app.
   Let’s look at a  scenario that demonstrates how to create and dispatch a custom event in a real-world-like situation. Imagine you’re building a web app. When a user successfully logs in, several parts of your app should update:
 
-    * A welcome message should show.
-    * A logout button should appear.
-    * The user profile section should refresh.
+  - A welcome message should show.
+  - A logout button should appear.
+  - The user profile section should refresh.
 
 Here is the kicker; instead of calling all these updates manually in the login function, you can dispatch a custom userLoggedIn event, and let each part of the app listen for that event and respond. Here is some code to do just that:
 
@@ -712,16 +686,15 @@ Here is the kicker; instead of calling all these updates manually in the login f
 
 Once more, here are the key points of what it does:
 
-    * CustomEvent is used to create an event with a name you choose.
-    * You can dispatch it using element.dispatchEvent(...).
-    * Any part of the app that cares about that event can simply listen for it and take its own action.
-    * This promotes decoupled design – components don't need to know about each other.
+  - CustomEvent is used to create an event with a name you choose.
+  - You can dispatch it using element.dispatchEvent(...).
+  - Any part of the app that cares about that event can simply listen for it and take its own action.
+  - This promotes decoupled design – components don't need to know about each other.
 
 
 
 
-Passing data with your custom event
-————————————————————-
+#### Passing data with your custom event
   You can pass data via your events so that subscribers to the event (event listeners) can retrieve and use it. This will of course be information relevant to the event that occurred, or information specific to the target element (the element that triggered the event). If for example, you wanted to pass in some user data, you could use detail:
 
 	const loginEvent = new CustomEvent("userLoggedIn", {
@@ -742,17 +715,16 @@ You cannot change it to anything else like data, info, or payload. JavaScript lo
 
 
 
-Conclusion
-———————
+## Conclusion
   In this chapter, you learned:
 
-    * What events are and why they matter.
-    * Two ways to listen to events: Inline and addEventListener().
-    * A huge list of useful everyday events.
-    * How to trigger events dynamically.
-    * How events travel through the DOM (bubbling, capturing).
-    * How to smartly delegate event handling.
-    * How to create and fire your own custom events!
+  - What events are and why they matter.
+  - Two ways to listen to events: Inline and addEventListener().
+  - A huge list of useful everyday events.
+  - How to trigger events dynamically.
+  - How events travel through the DOM (bubbling, capturing).
+  - How to smartly delegate event handling.
+  - How to create and fire your own custom events!
 
 By mastering events, you can make your web pages truly interactive and 
 responsive to users. Events are truly the heartbeat of the modern web.

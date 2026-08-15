@@ -1,42 +1,38 @@
 
-//————————————————————//
-	CHAPTER 14 - DATES AND TIME
-//————————————————————//
--Date and time in JavaScript
--Create a date
--Formatting Dates
--Working with Time Zones
-	-Understanding UTC
-	-Handling UTC in JavaScript
-	-Converting local time to UTC
-		-A trap worth knowing about
-		-What Date.UTC() is actually for
-	-Convert UTC to local time
--Working with Timers: setTimeout() and setInterval()
-	-setTimeout()
-	-setInterval()
-		-Real-life setInterval use case for Dates
-	-Stopping a timer
-	-Performing animations with the timer functions
-		-Make a ball move across the screen
-		-Create a slideshow of images
--A datepicker library in vanilla JS & Bootstrap
+# Chapter 14 — DATES AND TIME
+- Date and time in JavaScript
+- Create a date
+- Formatting Dates
+- Working with Time Zones
+  - Understanding UTC
+  - Handling UTC in JavaScript
+  - Converting local time to UTC
+    - A trap worth knowing about
+    - What Date.UTC() is actually for
+  - Convert UTC to local time
+- Working with Timers: setTimeout() and setInterval()
+  - setTimeout()
+  - setInterval()
+    - Real-life setInterval use case for Dates
+  - Stopping a timer
+  - Performing animations with the timer functions
+    - Make a ball move across the screen
+    - Create a slideshow of images
+- A datepicker library in vanilla JS & Bootstrap
 
 
 
 This has to do with how dates and time are managed by your programming language, including timezone configurations and formatting of the date and time values displayed to users. 
 
   
-Date and time in JavaScript
-—————————-——————
+## Date and time in JavaScript
 
 JavaScript provides a built-in Date object for handling dates and times. The Date object allows you to create, manipulate, and format dates, making it essential for tasks like scheduling events, logging timestamps, or working with time zones.
   JavaScript dates are based on milliseconds since January 1, 1970 (UTC) (the Unix epoch).
   The Date object works with both local time and UTC (Coordinated Universal Time). Unlike some other languages, JavaScript’s Date object is mutable, meaning its values can change after creation.
 
 
-Create a date 
-———————-
+## Create a date
   You can create a date in several ways, here are some examples:
 
    // Current date & time
@@ -55,8 +51,7 @@ Create a date
 
 
 
-Formatting dates
-—————————-
+## Formatting dates
 JavaScript provides basic date formatting with various methods of the Date object. The way you use them is to first of all create a date—which will be an instance of the Date object, then call any of the formatting methods on it to format the date. Here are the Date formatting methods in action:
 
   let now = new Date();
@@ -96,28 +91,26 @@ console.log(now.toLocaleString());
    console.log(formatter.format(now));
 
 As you can see, the way the DateTimeFormat() method of the Intl object works, is as follows:
-   -the first argument is the locale, which is a language-and-region
-	code rather than a place (en-US is English as used in the USA)
-   -the second argument is an object literal in which you specify 
-	how you would like the various components of your date to 
-	be displayed. The components of a date include the day, 	
-	weekday (different from day), the month, the year etc. In 
-	this case, we specify that we want the weekday to be long 
-	meaning, we want it to be spelled out fully (so Sunday, not 
-	Sun), we also specify that we want the day and the 
-	year to be numeric—which are standard anyway, and then 
-	we also indicate that we want the month to be long, meaning 
-	we want it spelled out fully as in, for example March instead 
-	of Mar.  
+- the first argument is the locale, which is a language-and-region
+  code rather than a place (en-US is English as used in the USA)
+- the second argument is an object literal in which you specify
+  how you would like the various components of your date to
+  be displayed. The components of a date include the day,
+  weekday (different from day), the month, the year etc. In
+  this case, we specify that we want the weekday to be long
+  meaning, we want it to be spelled out fully (so Sunday, not
+  Sun), we also specify that we want the day and the
+  year to be numeric—which are standard anyway, and then
+  we also indicate that we want the month to be long, meaning
+  we want it spelled out fully as in, for example March instead
+  of Mar.
 
 
 
 
-Working with Time Zones
-——————————————
+## Working with Time Zones
 
-Understanding UTC
-———————————
+### Understanding UTC
   UTC (Coordinated Universal Time) is the primary time standard used worldwide to keep clocks and time zones synchronized. It is not affected by daylight savings time or local time zones.
   When you create a Date object in JavaScript using new Date(), it automatically adjusts the date and time to match your computer’s local time zone. But sometimes, especially in international applications, you need a consistent, universal reference for time that does not change based on the user's location. That’s where UTC comes in. Let us look at an example.
 
@@ -140,26 +133,25 @@ If Facebook only stored local times exactly as it is in their databases, then it
 
 ![Figure 14.1 — One moment in time, three clocks](images/ch14-fig-01-one-instant-three-clocks.svg)
 
-*Figure 14.1 — One moment in time, three clocks*
+- Figure 14.1 — One moment in time, three clocks*
 
   Let’s talk about some cases where UTC is useful. When it comes to timestamps and databases, UTC ensures that time records are consistent and don't get mixed up by daylight saving or different time zones. This is particularly useful for global applications that need to store user actions (posts, messages, payments, etc.). This is why most database systems like PostgreSQL and MySQL etc all store timestamps in UTC by default when using the TIMESTAMP or DATETIME data types. This is done to ensure consistency across different time zones.
 When you insert a timestamp without specifying a time zone, the database usually assumes it's in UTC. If you store a timestamp with a time zone (e.g., TIMESTAMPTZ in PostgreSQL), the database converts it to UTC internally but can return it in the local time zone when queried. When querying that data from such backend database systems, applications (like a JavaScript frontend eg via APIs) can convert the UTC timestamps to the user's local time zone for display. Why do databases use UTC? Here are some key reasons:
-	-Consistency—a globally standardised time avoids 
-	    confusion when multiple users across different time 
-	    zones access the same data.
-	-Avoids daylight saving issues—since UTC does not 
-	    change with daylight saving time, it prevents errors in 
-	    time calculations.
-	-Easier calculations—time differences are easier to 
-	    compute without worrying about time zone offsets.
+  - Consistency—a globally standardised time avoids
+  confusion when multiple users across different time
+  zones access the same data.
+  - Avoids daylight saving issues—since UTC does not
+  change with daylight saving time, it prevents errors in
+  time calculations.
+  - Easier calculations—time differences are easier to
+  compute without worrying about time zone offsets.
   Another system where timezone conversion occurs is with airline tickets. When booking a flight from New York to London, for example, the airline must show your departure time to you in New York time and your arrival time in London time, otherwise it will not make sense. Behind the scenes however, what the airline’s system is actually doing is storing everything in UTC and converting it for every passenger.
   During debugging and logging of computer system faults, using the right date and time is crucial too. If an application logs errors or user activity, UTC ensures all events are in the same reference frame, making debugging easier.
   Live events like sports and webinars with participants from different time zones taking part need to get the timing right too. A global live event (e.g., FIFA World Cup) must be scheduled in UTC.
   
 
 
-Handling UTC in JavaScript
-———————————————-
+### Handling UTC in JavaScript
   When we use the Date object in JavaScript, the date is displayed to us in the user’s own time zone, but it can be read back in UTC whenever we need it, using methods like getUTCFullYear(). So, when you create a Date object in JavaScript like this:
 
 	let now = new Date();
@@ -181,8 +173,7 @@ These methods return the same moment in time but adjusted to UTC instead of the 
 
 
 
-Converting local time to UTC
-———————————————-
+### Converting local time to UTC
   Here is the thing that catches almost everybody out when they first meet
 the Date object: there is nothing to convert.
   A Date does not store a local time. Inside itself it holds a single
@@ -206,9 +197,9 @@ show itself as UTC whenever you want that:
 
 The output for a user in New York (UTC-4) will look like this:
 
-	Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern 
-		Daylight Time)
-	UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
+  Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern
+    Daylight Time)
+  UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
 
 Notice how UTC is 4 hours ahead of New York time. But notice something more
 important than that: we only called new Date() once. There is a single
@@ -225,8 +216,7 @@ are for:
 One date. Two ways of reading it. No conversion anywhere.
 
 
-A trap worth knowing about
-——————————————
+#### A trap worth knowing about
   Sooner or later you will run into code that tries to convert to UTC like
 this. It looks perfectly sensible, and it is wrong:
 
@@ -249,14 +239,13 @@ along. What comes back is not your moment converted. It is a different
 moment altogether, four hours earlier than the one you started with.
   Print it and you get:
 
-	Thu, 20 Mar 2025 12:00:00 GMT
+  Thu, 20 Mar 2025 12:00:00 GMT
 
 not the 16:00 you were expecting. The numbers on the clock face were copied
 across, and the time zone they belonged to was quietly thrown away.
 
 
-What Date.UTC() is actually for
-—————————————————
+#### What Date.UTC() is actually for
   Date.UTC() does have a real job. It is simply not converting. Its job is
 the opposite direction—building a date out of components that you already
 know are in UTC.
@@ -284,8 +273,7 @@ different kind of value.
 
 
 
-Convert UTC to local time
-———————————————-
+### Convert UTC to local time
   Let's say we have a UTC timestamp and need to show it in the user's local time:
 
 	// UTC time
@@ -298,10 +286,10 @@ Convert UTC to local time
 
 Here is the output for a user, who is for example, in New York (UTC-4):
 
-	UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
+  UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
 
-	Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern 
-		Daylight Time)
+  Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern
+    Daylight Time)
 
 So basically, to convert a UTC time to local time we just need to call the .toString() method on the Date object. JavaScript automatically adjusts the time to match the user's system time zone.
 
@@ -312,15 +300,13 @@ So basically, to convert a UTC time to local time we just need to call the .toSt
 
 
 
-Working with Timers: setTimeout() and setInterval()
-—————————————————————————————
+## Working with Timers: setTimeout() and setInterval()
   When working with time in JavaScript, it's not just about getting the current time or formatting a date—sometimes you want to run actions after a specific time delay, or repeatedly at timed intervals. That's exactly what setTimeout() and setInterval() allow you to do.
 
 
 
 
-setTimeout()
-—————————
+### setTimeout()
 This function lets you run code once after a specified delay (in milliseconds). Think of it like saying: "Do this, but wait a little bit first."
 
 	// Waits 2 seconds (2000 milliseconds) and runs this code once 
@@ -330,18 +316,17 @@ This function lets you run code once after a specified delay (in milliseconds). 
 
 Such functionality would be useful for the following:
 
-    * Showing a splash screen and then hiding it after a few seconds
-    * Delaying a tooltip
-    * Performing cleanup tasks after an action
-    * Staggering animations
+  - Showing a splash screen and then hiding it after a few seconds
+  - Delaying a tooltip
+  - Performing cleanup tasks after an action
+  - Staggering animations
 
 
 
 
 
 
-setInterval()
-—————————
+### setInterval()
   This one keeps repeating the action after each time interval—until you tell it to stop. Basically, it will run code repeatedly at intervals of the time period in milliseconds, as specified by the second parameter. Here is its syntax:
 
 	setInterval(callback, ms); 
@@ -354,14 +339,13 @@ setInterval()
 You can program it to stop the cycle by using clearInterval(intervalId).
 Here are some scenarios where such a helper function will be useful:
 
-    * Clocks or countdown timers
-    * Polling a server every few seconds
-    * Repeated animations (like a blinking element, or bouncy ball)
-    * Updating the UI on a regular schedule
+  - Clocks or countdown timers
+  - Polling a server every few seconds
+  - Repeated animations (like a blinking element, or bouncy ball)
+  - Updating the UI on a regular schedule
 
 
-Real-life setInterval use case for Dates
-———————————————————
+#### Real-life setInterval use case for Dates
   Let’s say you want to build a live digital clock. This is a perfect job for setInterval().
 
 	<p id="clock"></p>
@@ -385,8 +369,7 @@ This updates the clock on your webpage every second, giving your users a real-ti
 
 
 
-Stopping a timer
-——————————
+### Stopping a timer
   Both setTimeout() and setInterval() return an ID that you can use to cancel them:
 
 	const timeoutId = setTimeout(() => {
@@ -416,19 +399,16 @@ Both setTimeout() and setInterval() use time in milliseconds (not seconds), so:
 
 
 
-Performing animations with the timer functions
-——————————————————————————
+### Performing animations with the timer functions
   In the introduction to the timers—setTimeout() and setInterval()—I mentioned that they are very useful for creating animations and repeated actions that are time-based. Whether you want to code a quick image slideshow to impress your family and friends, or build the next Pacman game, these two functions have got what you need. As always, I have to let you see that in action with some simple, but practical examples.
 		
 
-	Make a ball move across the screen
-	————————————————————
+#### Make a ball move across the screen
   We are going to create a circle on screen which will be nothing other than a div that we will style to appear as a circle. Next, with JavaScript, we will use X and Y position coordinates—which you always have to deal with whenever you want to deal with objects moving on the screen—to make the ball start from the left edge of the screen and move towards the right edge. Once the ball arrives at the right edge of the screen, it will start moving in the opposite direction back towards the left of the screen. When it hits the left edge, it will switch direction again and keep repeating that cycle.
   What makes the ball move is simply the value of the left property of the ball’s (div) style that we will keep increasing at intervals in JavaScript. The left style property of an element is essentially the distance the element sits from the left edge of whatever contains it — for our ball, which is positioned absolutely, that is the browser window itself. By increasing that value, the element will keep moving towards the right of the screen. The right property of the style of an element is the direct opposite of that. JavaScript is also used to detect when the object hits the edge of your browser window, so we can make it switch direction.
 
 
-	CSS code
-	—————
+#### CSS code
 Here is the code to style the ball
 
 	#ball {
@@ -442,14 +422,12 @@ Here is the code to style the ball
   	}
 
 
-	HTML code
-	——————-
+#### HTML code
 Create the div element that will be the ball
 
 	<div id="ball"></div>
 
-	JavaScript code
-	——————-
+#### JavaScript code
 
 	const ball = document.getElementById("ball");
   	let position = 0; // starting left position
@@ -535,26 +513,23 @@ Ultimately, the movement happens because we are increasingly setting the ball.st
 
 
 
-	Create a slideshow of images
-	————————————————-
+#### Create a slideshow of images
   This will use setInterval at intervals of 3 seconds (3000 milliseconds) to cycle through a collection of images that you have listed in an array, and also have the images locally in a folder ‘/images’.
 
-	HTML code
-	——————-
+#### HTML code
 Create the `<img>` tag in your HTML code. Notice I have given it a width and height of 500 by 300, and that is relative to the images I have. Tip: to make it work nicely, make all the images have the same dimensions, so the slideshow will flow seamlessly.
 
 	<img id="slideshow" src="" width="500" height="300" />
 
-	JavaScript code
-	—————————
+#### JavaScript code
 
-	const images = [
-    		"/images/blurred-image.png",
-    		"/images/brightened-image.png",
-    		"/images/contrasted-image.png",
-    		"/images/grayscale-image.png",
-    		"/images/resized-image.png",
-  	];
+  const images = [
+    "/images/blurred-image.png",
+    "/images/brightened-image.png",
+    "/images/contrasted-image.png",
+    "/images/grayscale-image.png",
+    "/images/resized-image.png",
+  ];
   
   	// start at the first image
   	let index = 0; 
@@ -579,42 +554,41 @@ Create the `<img>` tag in your HTML code. Notice I have given it a width and hei
 
 This piece of code is pretty simple, but there are four key parts to it. They are as follows:
 
-* We need to start by setting the src attribute of the image element to the first image in the array (the element at index 0):
+- We need to start by setting the src attribute of the image element to the first image in the array (the element at index 0):
 
 		imgElement.src = images[index];
 
-	This is why we had to initialise the value of index to 0.
+  This is why we had to initialise the value of index to 0.
 
 * In the setInterval() function, you need to increment the value by 1. That is how a different image will be displayed each time from a different index of the array.
 
 		index++; 
 
-*   If you update the index value, then you have to update the src reference of that index in the image element
+- If you update the index value, then you have to update the src reference of that index in the image element
 
 		imgElement.src = images[index];
 
-*   Finally, you must perform some kind of check to make sure that if the cycling through the images has come to the last image in the array, then it should restart from index 0. This is why we reset the value of index to 0 within this conditional that ascertains that the current index is either greater than or equal to the number of items in the images array.
+- Finally, you must perform some kind of check to make sure that if the cycling through the images has come to the last image in the array, then it should restart from index 0. This is why we reset the value of index to 0 within this conditional that ascertains that the current index is either greater than or equal to the number of items in the images array.
 
 		if (index >= images.length) {
       			index = 0;
     		}
 
 In these animation examples, you have learned the following:
-    * Arrays and indexes
-    * DOM manipulation using .src
-    * Time-based actions with setInterval()
-    * Cycling (looping back to start)
+  - Arrays and indexes
+  - DOM manipulation using .src
+  - Time-based actions with setInterval()
+  - Cycling (looping back to start)
 
 
 
 
 
-A datepicker library in vanilla JS & Bootstrap
-———————————————————————
- -Use this awesome JS library:
+## A datepicker library in vanilla JS & Bootstrap
+- Use this awesome JS library:
   https://mymth.github.io/vanillajs-datepicker
 
--You can do all sorts eg inline date pickers, date ranges etc. It's about copying and pasting the CDN links into your code in the JavaScript sections of your HTML page, then pasting in the JavaScript code that calls the datepicker class. For a date range, I did something like this:
+- You can do all sorts eg inline date pickers, date ranges etc. It's about copying and pasting the CDN links into your code in the JavaScript sections of your HTML page, then pasting in the JavaScript code that calls the datepicker class. For a date range, I did something like this:
 
 	<input type="date" id="dateField" name="dateFields" />
 

@@ -1,5 +1,4 @@
-QUIZ — Chapter 6: Regular Expressions
-=====================================
+# QUIZ — Chapter 6: Regular Expressions
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 6: Regular Expressions. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) A friend tells you that the asterisk in a regular expression "matches any number of
    characters". Are they right? What does /go*d/ match, and why is /*/ on its own not even a
@@ -69,40 +67,39 @@ QUESTIONS
 
 9) EXERCISE. Write a regex pattern to match a social security number in the format:
 
-        123-45-6789
+    123-45-6789
 
-    Then say how your pattern would need to differ depending on whether you are validating a
-    form field that should contain nothing else, or searching for an SSN inside a longer
-    sentence.
+  Then say how your pattern would need to differ depending on whether you are validating a
+  form field that should contain nothing else, or searching for an SSN inside a longer
+  sentence.
 
     Clue: \d matches a digit, and the curly braces let you say how many of them you want.
 
 
 10) EXERCISE. Write a regex pattern to match five word characters in a row. Then write a
-    second pattern that matches a genuine five-letter word standing on its own.
+  second pattern that matches a genuine five-letter word standing on its own.
 
-    Clue: for the second one you will need to rule out digits, and mark both ends.
+  Clue: for the second one you will need to rule out digits, and mark both ends.
 
 
 11) EXERCISE. Write a regex pattern to match a word of one or more characters.
 
-    Clue: one quantifier is all you need.
+  Clue: one quantifier is all you need.
 
 
 12) EXERCISE. Write a regex pattern that matches 'my' only when it begins the subject string.
-    Then say what it does with the text "I love my cat", and why.
+  Then say what it does with the text "I love my cat", and why.
 
-    Clue: this is one of the two jobs the caret does.
+  Clue: this is one of the two jobs the caret does.
 
 
 13) EXERCISE. Write a regex pattern that matches 'cats' only when it ends the subject string.
-    Then say what it does with "cats are fun. I like cats too", and why.
+  Then say what it does with "cats are fun. I like cats too", and why.
 
-    Clue: the mirror image of the previous question.
+  Clue: the mirror image of the previous question.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) Your friend is not right, and this is one of the most common misunderstandings about regular
    expressions.
@@ -110,7 +107,7 @@ ANSWERS
    The asterisk is a quantifier. It means "zero or more of whatever comes just before it". It
    does not mean "any characters" on its own.
 
-        /go*d/  matches "gd", "god", "good", "goood" and so on
+    /go*d/  matches "gd", "god", "good", "goood" and so on
 
    because the * is attached to the letter o, and asks for zero or more of them.
 
@@ -139,12 +136,12 @@ ANSWERS
 
 4) Inside square brackets, at the start, the caret means negation:
 
-        /[^0-9]/   matches any single character that is NOT a digit
+    /[^0-9]/   matches any single character that is NOT a digit
 
    Outside square brackets, at the start of a pattern, it is an anchor meaning "the match must
    begin at the start of the text":
 
-        /^my/      matches "my cat", but not "I love my cat"
+    /^my/      matches "my cat", but not "I love my cat"
 
    Two completely different jobs, told apart only by where the caret sits.
 
@@ -163,19 +160,19 @@ ANSWERS
 
 6) Put a backslash in front of the dot to escape it:
 
-        /5\.0/
+    /5\.0/
 
    The backslash tells the pattern to stop treating the next character as special and match it
    literally. It works on any special character, including a backslash itself.
 
    If you also wanted to allow 5.00 or 5.000, add a quantifier to the zero:
 
-        /5\.0*/
+    /5\.0*/
 
 
 7) They do quite different jobs, though both sound as though they mean "match more".
 
-   **g is about how many matches you get back. m is about where ^ and $ apply.**
+- *g is about how many matches you get back. m is about where ^ and $ apply.**
 
    Take this three-line string:
 
@@ -183,36 +180,36 @@ ANSWERS
 
    Without g you get the first match only. With it, you get all of them:
 
-        text.match(/cat/)     // ["cat"]
-        text.match(/cat/g)    // ["cat", "cat"]
+    text.match(/cat/)     // ["cat"]
+    text.match(/cat/g)    // ["cat", "cat"]
 
    The word "here" sits at the end of the first line, but the string as a whole ends with
    "slept". So $ on its own finds nothing, because $ means the end of the whole string. Add m
    and $ comes to mean the end of any line:
 
-        text.match(/here$/)   // null
-        text.match(/here$/m)  // ["here"]
+    text.match(/here$/)   // null
+    text.match(/here$/m)  // ["here"]
 
    And because they are independent, they combine:
 
-        text.match(/^cat/g)   // ["cat"]
-        text.match(/^cat/gm)  // ["cat", "cat"]
+    text.match(/^cat/g)   // ["cat"]
+    text.match(/^cat/gm)  // ["cat", "cat"]
 
    A useful way to remember it: g asks "how many times?", m asks "what counts as a line?".
 
 
 8) 
-   - **test()** is called on the pattern and hands back true or false:
+- **test()** is called on the pattern and hands back true or false:
 
-        /cats/i.test("Cats are fun.")            // true
+    /cats/i.test("Cats are fun.")            // true
 
-   - **match()** is called on the string and hands back what it found:
+- **match()** is called on the string and hands back what it found:
 
-        "Cats are fun.".match(/cats/i)           // ["Cats"]
+    "Cats are fun.".match(/cats/i)           // ["Cats"]
 
-   - **replace()** is called on the string and hands back a changed copy of it:
+- **replace()** is called on the string and hands back a changed copy of it:
 
-        "I like cats".replace(/cats/gi, "dogs")  // "I like dogs"
+    "I like cats".replace(/cats/gi, "dogs")  // "I like dogs"
 
    Note that replace() gives you a new string. It does not alter the one you called it on.
 
@@ -225,9 +222,9 @@ ANSWERS
 
    Which version you want depends on the job:
 
-   - **Validating a form field** that should contain nothing but an SSN — keep the anchors. The
-     ^ and $ demand that the whole string is the number and nothing else.
-   - **Searching for an SSN inside a sentence** — drop them:
+- **Validating a form field** that should contain nothing but an SSN — keep the anchors. The
+  ^ and $ demand that the whole string is the number and nothing else.
+- **Searching for an SSN inside a sentence** — drop them:
 
         const pattern = /\d{3}-\d{2}-\d{4}/;
         const text = "My SSN is 123-45-6789";
@@ -246,48 +243,48 @@ ANSWERS
 
         /\w{5}/
 
-    A genuine five-letter word on its own:
+  A genuine five-letter word on its own:
 
         /\b[a-zA-Z]{5}\b/
 
-    The first is looser than its description suggests. \w covers letters, digits and the
-    underscore, and nothing marks where the word begins or ends, so it matches the first five
-    characters of "helloworld", and matches "abc12" too.
+  The first is looser than its description suggests. \w covers letters, digits and the
+  underscore, and nothing marks where the word begins or ends, so it matches the first five
+  characters of "helloworld", and matches "abc12" too.
 
-    The second fixes both problems. [a-zA-Z] rules out the digits, and \b marks a word boundary
-    at each end, so the run of five must stand alone. It matches the "hello" in "say hello now"
-    but finds nothing in "helloworld".
+  The second fixes both problems. [a-zA-Z] rules out the digits, and \b marks a word boundary
+  at each end, so the run of five must stand alone. It matches the "hello" in "say hello now"
+  but finds nothing in "helloworld".
 
 
 11) 
-        /\w+/
+    /\w+/
 
-    The + asks for one or more word characters.
+  The + asks for one or more word characters.
 
-    You will often see this written as /[\w]+/, with square brackets round it. That works just
-    as well, but the brackets add nothing here, because \w is already a class in its own right.
-    Worth recognising both forms, since you will meet them out in the wild.
+  You will often see this written as /[\w]+/, with square brackets round it. That works just
+  as well, but the brackets add nothing here, because \w is already a class in its own right.
+  Worth recognising both forms, since you will meet them out in the wild.
 
 
 12) 
-        /^my/
+    /^my/
 
-    The ^ pins the match to the very start of the text.
+  The ^ pins the match to the very start of the text.
 
-    On "I love my cat" it matches **nothing at all**, even though there is a perfectly good
-    "my" sitting in the middle. The anchor is about position, not about which occurrence.
+  On "I love my cat" it matches **nothing at all**, even though there is a perfectly good
+  "my" sitting in the middle. The anchor is about position, not about which occurrence.
 
-    If what you want is the first "my" wherever it happens to fall, use /my/ with no anchor —
-    a pattern without the g modifier stops at the first match anyway.
+  If what you want is the first "my" wherever it happens to fall, use /my/ with no anchor —
+  a pattern without the g modifier stops at the first match anyway.
 
 
 13) 
-        /cats$/
+    /cats$/
 
-    The $ pins the match to the very end of the text.
+  The $ pins the match to the very end of the text.
 
-    On "cats are fun. I like cats too" it matches **nothing**, because that string ends with
-    "too". It would match "I like cats", where the word really is at the end.
+  On "cats are fun. I like cats too" it matches **nothing**, because that string ends with
+  "too". It would match "I like cats", where the word really is at the end.
 
-    Same lesson as the previous question, mirrored: $ does not mean "the last cats you come
-    across". It means "cats, and only if it finishes the text".
+  Same lesson as the previous question, mirrored: $ does not mean "the last cats you come
+  across". It means "cats, and only if it finishes the text".

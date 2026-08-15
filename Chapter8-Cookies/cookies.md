@@ -1,70 +1,64 @@
 
-//————————————————————//
-	CHAPTER 8 - COOKIES
-//————————————————————//
+# Chapter 8 — COOKIES
 
-	-How cookies work
-	-Security considerations
-	-Managing cookies
-		-Setting a cookie
-		-Retrieving a cookie
-		-Get a specific cookie by name
-		-Delete a cookie by name
-	-A cookie consent solution
+  - How cookies work
+  - Security considerations
+  - Managing cookies
+    - Setting a cookie
+    - Retrieving a cookie
+    - Get a specific cookie by name
+    - Delete a cookie by name
+  - A cookie consent solution
 
 
 
   A cookie is a small piece of data stored in a user's browser that helps websites remember information between visits. It plays a key role in frontend-server communication, allowing websites to track user sessions, store preferences, and manage authentication. Cookies are commonly used for:
 
-	-User authentication — keeping users logged in across pages.
-	-Session management — tracking shopping cart items or user actions.
-	-Personalisation — storing user preferences like themes or language settings.
+  - User authentication — keeping users logged in across pages.
+  - Session management — tracking shopping cart items or user actions.
+  - Personalisation — storing user preferences like themes or language settings.
 
 
 
-How cookies work
-————————
+## How cookies work
   When a user visits a website, the server or client-side JavaScript can set a cookie in the browser. On subsequent requests, the browser automatically includes the cookie, enabling the server to recognise returning users.
 
 
 
-Security considerations
-————————————
-  	-Same-Origin Policy. Cookies are only accessible to the 
-		domain that set them.
-	-The HttpOnly flag. This stops a cookie from being 
-		read by JavaScript at all, which protects it from 
-		scripts running on the page.
-	-The Secure flag. This is a different job: it makes the 
-		browser send the cookie only over HTTPS, never over 
-		plain HTTP.
-	-Expiration & Storage Limits – Cookies have expiration 
-		times and are limited in size (~4KB).
+## Security considerations
+  - Same-Origin Policy. Cookies are only accessible to the
+    domain that set them.
+  - The HttpOnly flag. This stops a cookie from being
+    read by JavaScript at all, which protects it from
+    scripts running on the page.
+  - The Secure flag. This is a different job: it makes the
+    browser send the cookie only over HTTPS, never over
+    plain HTTP.
+  - Expiration & Storage Limits – Cookies have expiration
+    times and are limited in size (~4KB).
 
 While cookies are useful for storing small amounts of data, they are not suitable for storing sensitive information, as they can be accessed by client-side scripts unless secured properly.
 
 
 
-Managing cookies
-———————
+## Managing cookies
 Let us look at how to work with cookies.
 Cookies are written and read differently from how localStorage and sessionStorage are written to and read from the browser (we come to those in Chapter 13, Databases and Storage). Here is how to create a cookie and its value.
 
-Setting a cookie
-—————-
+### Setting a cookie
 
 	document.cookie =
 		"username=JohnDoe; expires=Fri, 31 Dec 2027 23:59:59 GMT; path=/";
 
-	What this does is
-		-Sets a cookie named "username" with the value 
-		    "JohnDoe".
-		-The cookie expires on 31 Dec 2027 (after this, it will 
-		    be deleted automatically).
-		-The path=/ makes the cookie accessible across the 
-		    entire site.
+  What this does is
+    - Sets a cookie named "username" with the value
+    "JohnDoe".
+    - The cookie expires on 31 Dec 2027 (after this, it will
+    be deleted automatically).
+    - The path=/ makes the cookie accessible across the
+    entire site.
 
-  	However, instead of writing a long string like "Fri, 31 Dec 2025 23:59:59 GMT", you can generate it dynamically using JavaScript's Date object. Here is an example:
+  However, instead of writing a long string like "Fri, 31 Dec 2025 23:59:59 GMT", you can generate it dynamically using JavaScript's Date object. Here is an example:
 
 	let expiryDate = new Date();
 
@@ -81,19 +75,18 @@ Setting a cookie
 	rather than the date.
 
 This code does the following:
-	-gets the current date.
-	-Adds 7 days to the expiry date.
-	-converts it to a proper UTC string format 
-	     using .toUTCString().
-	-Sets the cookie with a clear expiration time.
+  - gets the current date.
+  - Adds 7 days to the expiry date.
+  - converts it to a proper UTC string format
+  using .toUTCString().
+  - Sets the cookie with a clear expiration time.
 
-	This method is easier and more flexible than writing the 	
-	date manually.
+  This method is easier and more flexible than writing the
+  date manually.
 
 
 
-Retrieving a cookie
-————————
+### Retrieving a cookie
   To retrieve all cookies as a single string, do it like so:
 
 	console.log(document.cookie);
@@ -107,8 +100,7 @@ Each cookie is separated from the next by a semicolon and a space ("; ").
 
 
 
-Get a specific cookie by name
-——————————
+### Get a specific cookie by name
   The way to do it is to retrieve all the cookies in one string, as in the above example, then loop through the result, whilst maybe checking for the keys or values of each against the value you want to match with. Once you find the match, end the loop and there you have your cookie by the name/value you searched for.
   Say we need to find a cookie with a key named “username”, here is how to do it:
 
@@ -132,27 +124,25 @@ Get a specific cookie by name
 	console.log(getCookie("username")); 
 
 So, what the code does is:
-	-Splits the document.cookie string into an array of key-
-		value pairs.
-	-Loops through the array to find the matching key.
-	-Returns the cookie's value if found, otherwise returns null.
+  - Splits the document.cookie string into an array of key-value pairs.
+  - Loops through the array to find the matching key.
+  - Returns the cookie's value if found, otherwise returns null.
 
 
 
 
-Delete a cookie by name
-———————————————
+### Delete a cookie by name
   To delete a cookie, you simply set its expiration date to a past date. This makes the browser automatically remove it. For example:
 
 	document.cookie =
 		"username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
 
 This code does the following:
-	-Sets the cookie's value to an empty string ("").
-	-Sets the expires attribute to a past date (Jan 1, 1970), 
-		effectively deleting it.
-	-Uses path=/ to ensure it deletes the cookie from all paths 
-		on the site.
+  - Sets the cookie's value to an empty string ("").
+  - Sets the expires attribute to a past date (Jan 1, 1970),
+    effectively deleting it.
+  - Uses path=/ to ensure it deletes the cookie from all paths
+    on the site.
 
 It would be nice to create a re-usable function to delete any cookie by name. We can make it even better and get it to first of all check whether the cookie exists before deleting it. Here it is:
 
@@ -184,8 +174,7 @@ What it does is:
 	-Deletes it only if it exists.
 
 
-A cookie consent solution
-——————————————
+## A cookie consent solution
   Let's put the whole chapter to work with a small, real example: a cookie
 consent popup, the kind almost every website now has to show. It is worth
 building because it uses cookies for exactly what they are for - remembering

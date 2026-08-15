@@ -1,5 +1,4 @@
-QUIZ — Chapter 13: Databases and Storage
-========================================
+# QUIZ — Chapter 13: Databases and Storage
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 13: Databases and Storage. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) Name the three ways of storing data in the visitor's browser covered in this chapter, and
    give the one thing that most distinguishes each from the other two.
@@ -72,19 +70,18 @@ QUESTIONS
 
 
 10) EXERCISE. Write a small helper called remember(key, value) that saves to localStorage, and
-    recall(key) that reads it back, returning null if nothing was stored under that key.
+  recall(key) that reads it back, returning null if nothing was stored under that key.
 
-    Clue: getItem already returns null when it finds nothing, which does half the job for you.
+  Clue: getItem already returns null when it finds nothing, which does half the job for you.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) **localStorage** — stays until you delete it. Closing the browser makes no difference.
 
-   **sessionStorage** — wiped the moment the tab is closed.
+- *sessionStorage** — wiped the moment the tab is closed.
 
-   **Cookies** — you set the expiry yourself, and they are sent to the server automatically
+- *Cookies** — you set the expiry yourself, and they are sent to the server automatically
    with every request.
 
    The clearest way to separate them is by how long the data lives and who can see it.
@@ -115,10 +112,10 @@ ANSWERS
 
 
 4) 
-        setItem(key, value)     // store something
-        getItem(key)            // read it back, or null if there is nothing
-        removeItem(key)         // delete one item
-        clear()                 // delete everything for this site
+    setItem(key, value)     // store something
+    getItem(key)            // read it back, or null if there is nothing
+    removeItem(key)         // delete one item
+    clear()                 // delete everything for this site
 
    Both storage types offer all four with identical names, which is why you can swap one for
    the other by changing a single word.
@@ -140,10 +137,10 @@ ANSWERS
 
    Word by word:
 
-   - `SELECT` means "get data"
-   - `*` is a wildcard meaning "all columns"
-   - `FROM products` says which table to look in
-   - `WHERE category = 'books'` narrows it to just the rows that match
+- `SELECT` means "get data"
+- `*` is a wildcard meaning "all columns"
+- `FROM products` says which table to look in
+- `WHERE category = 'books'` narrows it to just the rows that match
 
    SQL is deliberately readable, which is one of the reasons it has lasted since the 1970s.
 
@@ -222,5 +219,5 @@ ANSWERS
     this one would survive without the check — but `JSON.parse()` throws a SyntaxError on most
     other rubbish it is given, so checking first is the habit worth having.
 
-    Using `JSON.stringify()` on everything, even plain text, keeps the pair symmetrical: whatever
-    you put in through remember() comes back out of recall() as the same type it went in as.
+  Using `JSON.stringify()` on everything, even plain text, keeps the pair symmetrical: whatever
+  you put in through remember() comes back out of recall() as the same type it went in as.

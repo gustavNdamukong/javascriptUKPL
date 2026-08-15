@@ -1,8 +1,6 @@
 
 
-//————————————————————//
-	CHAPTER 4 - CONSTANTS
-//————————————————————//
+# Chapter 4 — CONSTANTS
 
 	   -Mutating a const array
 	   -Mutating a const object
@@ -16,24 +14,24 @@ A constant is like a variable, but with one
 
 	const fee = 20;
 
--Like a variable, a constant stores a single 
+- Like a variable, a constant stores a single
    value in the computer’s memory.
--However, unlike variables, constants 
+- However, unlike variables, constants
    cannot be reassigned after their initial 
    definition.
--Constants are useful for storing fixed 
+- Constants are useful for storing fixed
   values that should remain the same 
   throughout the program, such as tax rates, 
   company names, or configuration settings.
--Here are the key points about constants:
-    - Use const when you never want the 
-      value to change.
-    - Constants help make your code more 
-      predictable and error-free.
-    - Trying to reassign a constant will 
-      cause an error.
+- Here are the key points about constants:
+  - Use const when you never want the
+  value to change.
+  - Constants help make your code more
+  predictable and error-free.
+  - Trying to reassign a constant will
+  cause an error.
 
--Here’s a real-world example using 
+- Here’s a real-world example using
    constants in a shopping cart scenario to 
    calculate a total price with a constant 
    tax rate. Imagine you’re building an online 
@@ -62,12 +60,12 @@ A constant is like a variable, but with one
        // Output: Final price: $115
 
 Why Use a Constant Here?
-    - The tax rate shouldn’t change 
-       throughout the program.
-    -It makes the code clearer—you instantly 
-       know what TAX_RATE represents.
-    -It prevents accidental changes that 
-       could cause calculation errors.
+  - The tax rate shouldn’t change
+  throughout the program.
+  - It makes the code clearer—you instantly
+  know what TAX_RATE represents.
+  - It prevents accidental changes that
+  could cause calculation errors.
 
   You may have noticed something about the name TAX_RATE. Back in Chapter 2 we said that
 programmers normally name variables using camel casing, like taxAmount or itemPrice, and
@@ -83,8 +81,7 @@ and CAPITALS_WITH_UNDERSCORES only for fixed settings of this kind.
 
 
 
-Mutating a const array
-————————————
+### Mutating a const array
   We said above that you cannot point a const 
 at a different value. That is true, and it is worth being precise about what it does and does not protect. const guards the name, not the contents. So although you cannot re-assign a const variable, if the value it holds is an array, you can still change the values at specific keys inside that array. 
 
@@ -100,8 +97,8 @@ at a different value. That is true, and it is worth being precise about what it 
 
 The output of this code will be an error like so:
 
-	TypeError: Assignment to constant 
-       variable.
+  TypeError: Assignment to constant
+  variable.
 
 But since the const variable holds an array, you can target and change the values at specific keys inside it. Here is how: to modify the array key values, you use the bracket notation.
 
@@ -118,11 +115,10 @@ But since the const variable holds an array, you can target and change the value
 
 The output will be the changed contents of the array, like so:
 
-	[200, 0, 20, 25]
+  [200, 0, 20, 25]
 
 
-Mutating a const object
-————————————
+### Mutating a const object
   The very same thing is true of objects. If a const holds an object, you cannot point the
 name at a different object, but you can change what is inside the one it already holds.
   Trying to replace the whole object fails:

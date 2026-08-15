@@ -1,21 +1,19 @@
 
-//————————————-//
-	CHAPTER 9 - STRINGS
-//————————————-//
+# Chapter 9 — STRINGS
 
-	-Escaping nested quotes
-	-Single vs double quotes
-	-Escape sequence characters
-		-Examples of usage
-	-Concatenating strings
-	-Template literals and string 
-          interpolation
-	-String properties and functions
-		-length
-		-charAt()
+  - Escaping nested quotes
+  - Single vs double quotes
+  - Escape sequence characters
+    - Examples of usage
+  - Concatenating strings
+  - Template literals and string
+    interpolation
+  - String properties and functions
+    - length
+    - charAt()
 
 
--A string in computer programming refers to 
+- A string in computer programming refers to
   the data structure that is a piece of text.
   A string is denoted by wrapping it within  a   
   pair of opening and closing quotation 
@@ -28,8 +26,7 @@
 
 
 
-Escaping nested quotes
-—————————————	
+### Escaping nested quotes
   You cannot nest a string inside another using the same type of quotes. This will 
   cause a conflict and you will get an error. For example this is wrong:
 
@@ -55,15 +52,13 @@ Escaping nested quotes
 
 
 
- Single vs double quotes
- —————————————
+### Single vs double quotes
   At the end of the day, the type of quotes you use comes down to choice, and which ever you 
 use will not affect performance or functionality. Both single and double quotes represent strings and behave identically in JavaScript.
 
 
 
- Escape sequence characters
- ——————————
+### Escape sequence characters
  These are characters that you can use in your program to escape characters in different 
 scenarios as shown below. They are basically a combination of the escape character (\) and 
 one or more characters that represent a specific character or behaviour. They are used for formatting or representing special characters within strings.
@@ -78,38 +73,37 @@ one or more characters that represent a specific character or behaviour. They ar
   \uXXXX escape a unicode character
 
 
-	Examples of usage
-	——————————-
-	\n Create a new line eg
+#### Examples of usage
+  \n Create a new line eg
 
 		const text = "Hello\nWorld!"; 
 		console.log(text); 
 
-		The output: 
-			Hello 
-			World!
+    The output:
+      Hello
+      World!
 
 	\t Create a horizontal tab by tabbing in
 		const tabbed = "Column1\tColumn2"; 
 		console.log(tabbed); 
 
-		the output: 
-			Column1 Column2
+    the output:
+      Column1 Column2
 
 	\’  Escape quotes (single/double quotes)
 		const sentence = 'It\'s a beautiful day!'; 
 		console.log(sentence);
 
-		the output:
-			It's a beautiful day!
+    the output:
+      It's a beautiful day!
   
 
 	\\ Escape a backslash to display it as a literal character
 		const backslash = "This is a backslash: \\"; 
 		console.log(backslash); 
 
-		The output: 
-			This is a backslash: \
+    The output:
+      This is a backslash: \
 
 	\r Insert a carriage return (rarely used on its own, often
 		combined with \n for compatibility).
@@ -125,25 +119,24 @@ one or more characters that represent a specific character or behaviour. They ar
 		const backspace = "AB\bC"; 
 		console.log(backspace); 
 
-		The output: 
-			AC
+    The output:
+      AC
 
 	\uXXXX Escape a unicode character
 		const heart = '\u2764'; 
 		console.log(heart); 
 
-		The output: ❤  (a black heart symbol)
+    The output: ❤  (a black heart symbol)
 
-		The \u tells JavaScript that the next four characters are a 
-		hexadecimal code identifying one character in the Unicode 
-		set. 2764 happens to be the heart. This is how you write 
-		characters your keyboard cannot type.
-
-
+    The \u tells JavaScript that the next four characters are a
+    hexadecimal code identifying one character in the Unicode
+    set. 2764 happens to be the heart. This is how you write
+    characters your keyboard cannot type.
 
 
-  Concatenating strings
-  ————————————
+
+
+### Concatenating strings
   This refers to how you can programmatically join two or more strings together. Different languages do it in different ways. 
   In JavaScript, we use the + character which is also known as the concatenation operator, to do this. The syntax is this; say you are combining two strings, you start by opening and closing the quotes wrapping the first string, then type in the concatenation operator, followed by another opening and closing quotes containing the second string. 
 
@@ -159,10 +152,10 @@ Here is an example:
 	console.log("This is another example of concatenating "
 		+ "strings without variables");
 
-	Outputs:
-		string one and string two
+  Outputs:
+    string one and string two
 
-		This is another example of concatenating strings without variables
+    This is another example of concatenating strings without variables
 
   You can also concatenate strings using the += operator. However, though the += operator is mostly used for adding up numbers (see notes under operators), when used with strings, it simply appends a new string to the end of another. Here is an example:
 
@@ -172,10 +165,10 @@ Here is an example:
 	console.log(oneString);
 	console.log(oneString + " make up one long string.");
 
-	Outputs:
-		string one and string two
+  Outputs:
+    string one and string two
 
-		string one and string two make up one long string.
+    string one and string two make up one long string.
  
  Notice how it is possible to combine literal strings, variables containing strings, or two variables containing strings, as seen in the example above:
 
@@ -190,8 +183,7 @@ Or
 
 
 
-Template literals and string interpolation
-——————————————————————-
+#### Template literals and string interpolation
   Template literals are a modern way of handling strings in JavaScript, introduced in ES6 (ECMAScript 2015). They allow us to create multi-line strings, embed expressions, and make string formatting more readable and convenient. Unlike normal strings which use single quotes (') or double quotes ("), template literals use backticks (``). Here is a basic syntax of template literals:
 
 	const message = `Hello, world!`;
@@ -210,11 +202,11 @@ Template literals and string interpolation
 	// Output: My name is Alice and I am 25 years old.
 	console.log(greeting);
 
-	Keep that one on a single line. A template literal is allowed to 
-	run across several lines, but if you let it, the line break and 
-	the indentation become part of the text - which is exactly what 
-	the next example puts to good use, but is rarely what you want 
-	in the middle of a sentence.
+  Keep that one on a single line. A template literal is allowed to
+  run across several lines, but if you let it, the line break and
+  the indentation become part of the text - which is exactly what
+  the next example puts to good use, but is rarely what you want
+  in the middle of a sentence.
 
 Without template literals, we would have to use string concatenation, like so:
 
@@ -223,25 +215,25 @@ Without template literals, we would have to use string concatenation, like so:
 
 You can see how messy that can be. String interpolation therefore makes it much cleaner, readable and less error prone. Here are the benefits of template literals:
 
-	-Makes it so easy to embed variables 
-	  and expressions inside strings (using ${})
-	-Within a template literal, you can write 
-	  multi-line Strings with no need for \n or 
-	  + (to join strings) for new lines, or any 
-	  other escape sequence characters for 
-	  formatting like space, tabbing etc. Within 
-	  a template literal, format your text as you 
-	  would have it, eg adding space, tabbing 
-	  to indent, hitting enter for new lines, 
-	  adding quotes where you you need them 
-	  etc, and the text will be rendered 
-  	  formatted in exactly that same way. This 
-	  makes the handling of large blocks of 
-	  text easier.
-	-Freely use quotes within your string 
-	  without having to worry about escaping 
-	  quotes in order to prevent quote type 
-	  conflicts. 
+  - Makes it so easy to embed variables
+  and expressions inside strings (using ${})
+  - Within a template literal, you can write
+  multi-line Strings with no need for \n or
+  + (to join strings) for new lines, or any
+  other escape sequence characters for
+  formatting like space, tabbing etc. Within
+  a template literal, format your text as you
+  would have it, eg adding space, tabbing
+  to indent, hitting enter for new lines,
+  adding quotes where you you need them
+  etc, and the text will be rendered
+  formatted in exactly that same way. This
+  makes the handling of large blocks of
+  text easier.
+  - Freely use quotes within your string
+  without having to worry about escaping
+  quotes in order to prevent quote type
+  conflicts.
 
 Let’s look at an example on how to write multi-line strings in a template literal:
 
@@ -269,65 +261,62 @@ Let’s look at another example on how to embed expressions within a template li
 
 
 
- String properties and functions
- —————————————————
+### String properties and functions
  There are many built-in functions and properties offered by JavaScript to help you work with 
   strings. We will look at a few examples:
  
-  -length is a property used for measuring the length of a string in characters
-  -charAt(index) used to get the character at a specific position (index) in a string.
+- length is a property used for measuring the length of a string in characters
+- charAt(index) used to get the character at a specific position (index) in a string.
 
-  length
-  ————
+#### length
 	let fullName = "John Doe";
 	let stringLength = fullName.length;
 	console.log(stringLength);
 
-	The output is:
-		8
+  The output is:
+    8
 
-	This is because length counts the blank space between the two parts of the name.
+  This is because length counts the blank space between the two parts of the name.
 
 
-  charAt()
-  ————-
+#### charAt()
 	const str = "Hello, World!"; 
 	console.log(str.charAt(0)); // Outputs "H" 
 	console.log(str.charAt(7)); // Outputs: "W" 
 	console.log(str.charAt(20)); // Outputs: "" (empty string, index out of range)
 
-	Another quick way to get the character at an index is to use the bracket notation.
-	Here is how to do it:
+  Another quick way to get the character at an index is to use the bracket notation.
+  Here is how to do it:
 
 		let sport = "Boxing";
 		let firstLetterOfSport = sport[0];
 		console.log(firstLetterOfSport);
 
-	Outputs:
-		B
+  Outputs:
+    B
 
-	Note that when using the bracket notation, the counting starts from 0.
+  Note that when using the bracket notation, the counting starts from 0.
 
-	You can even place an expression within the brackets to work out the desired index to 
-	get a character of the string from. For example, to get the last character of the string,
-	you can do this:
+  You can even place an expression within the brackets to work out the desired index to
+  get a character of the string from. For example, to get the last character of the string,
+  you can do this:
 
 		let sport = "Boxing";
 		let lastLetterOfSport = sport[sport.length - 1];
 		console.log(lastLetterOfSport);
 
-		Outputs:
-		g
+    Outputs:
+    g
 
-      In the same way, to get the last but one character of a string, just increase the number 
-      you are deducting, eg:
+  In the same way, to get the last but one character of a string, just increase the number
+  you are deducting, eg:
 
 		let sport = "Boxing";
 		let lastButOneLetterOfSport = sport[sport.length - 2];
 		console.log(lastButOneLetterOfSport);
 
-		Outputs:
-		n
+    Outputs:
+    n
 
 
 

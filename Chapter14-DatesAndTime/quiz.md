@@ -1,5 +1,4 @@
-QUIZ — Chapter 14: Dates And Time
-=================================
+# QUIZ — Chapter 14: Dates And Time
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 14: Dates And Time. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -11,8 +10,7 @@ The answers are all together in the Answers section further down, numbered to ma
 questions.
 
 
-QUESTIONS
-—————————
+## QUESTIONS
 
 1) What date does this create, and why is it not the 3rd of March?
 
@@ -76,27 +74,26 @@ QUESTIONS
 
 
 10) EXERCISE. Take one Date and print the same moment twice — once in local time and once in
-    UTC — proving they are the same instant.
+  UTC — proving they are the same instant.
 
-    Clue: call new Date() only once. Compare getTime() on it against itself if you want the
-    proof in numbers.
+  Clue: call new Date() only once. Compare getTime() on it against itself if you want the
+  proof in numbers.
 
 
 11) EXERCISE. Build a live digital clock that updates every second, then make it stop after
-    ten seconds.
+  ten seconds.
 
-    Clue: you need setInterval to start it and setTimeout to end it — and the ID from the
-    first one.
+  Clue: you need setInterval to start it and setTimeout to end it — and the ID from the
+  first one.
 
 
 12) EXERCISE. Write a countdown that starts at 5, prints each number one second apart, and
-    prints "Liftoff!" when it reaches zero — stopping itself cleanly.
+  prints "Liftoff!" when it reaches zero — stopping itself cleanly.
 
-    Clue: the timer has to cancel itself from inside its own callback.
+  Clue: the timer has to cancel itself from inside its own callback.
 
 
-ANSWERS
-———————
+## ANSWERS
 
 1) It creates the **16th of March 2024**, not the 3rd.
 
@@ -129,8 +126,8 @@ ANSWERS
    `toString()` is the plain one, and it is what you get automatically if you print a Date
    without calling anything. For a user in New York at midday:
 
-        Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern Daylight Time)
-        UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
+    Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern Daylight Time)
+    UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
 
    One date. Two ways of writing it down.
 
@@ -143,8 +140,8 @@ ANSWERS
    What you get back is not your moment converted. It is a **different moment altogether**,
    four hours earlier than the one you started with:
 
-        Thu, 20 Mar 2025 12:00:00 GMT     // what it really gives
-        Thu, 20 Mar 2025 16:00:00 GMT     // what people expect
+    Thu, 20 Mar 2025 12:00:00 GMT     // what it really gives
+    Thu, 20 Mar 2025 16:00:00 GMT     // what people expect
 
    And it is worse than simply wrong, because it looks right. The date is right, the minutes
    are right, and only the hour is quietly off by the size of your time zone offset — which is
@@ -206,11 +203,11 @@ ANSWERS
 
    Three reasons in particular:
 
-   - **Consistency** — one standard time avoids confusion across time zones.
-   - **No daylight saving problems** — UTC never shifts, so an hour never happens twice or
-     goes missing.
-   - **Easier calculations** — differences between times are simple subtraction, with no
-     offsets to juggle.
+- **Consistency** — one standard time avoids confusion across time zones.
+- **No daylight saving problems** — UTC never shifts, so an hour never happens twice or
+  goes missing.
+- **Easier calculations** — differences between times are simple subtraction, with no
+  offsets to juggle.
 
    The display conversion happens at the very last moment, when the value is shown to a
    particular user.
@@ -240,9 +237,9 @@ ANSWERS
         console.log("Local hour:", moment.getHours());
         console.log("UTC hour:", moment.getUTCHours());
 
-    Run this anywhere outside the UTC+0 zone and the two hours will differ, while
-    `getTime()` gives one number that never changed. That single number is the moment. The two
-    printed times are just two ways of writing it down.
+  Run this anywhere outside the UTC+0 zone and the two hours will differ, while
+  `getTime()` gives one number that never changed. That single number is the moment. The two
+  printed times are just two ways of writing it down.
 
 
 11) 
@@ -261,12 +258,12 @@ ANSWERS
             console.log("Clock stopped.");
         }, 10000);
 
-    Two things worth noticing. First, `updateClock()` is called directly once before the
-    interval starts — without that, the display would sit blank for a whole second before the
-    first tick. Second, the whole thing only works because `clockId` was stored; the
-    `setTimeout` needs it to know which timer to cancel.
+  Two things worth noticing. First, `updateClock()` is called directly once before the
+  interval starts — without that, the display would sit blank for a whole second before the
+  first tick. Second, the whole thing only works because `clockId` was stored; the
+  `setTimeout` needs it to know which timer to cancel.
 
-    On a web page the only change is where the time goes:
+  On a web page the only change is where the time goes:
 
         document.getElementById("clock").textContent = now.toLocaleTimeString();
 
@@ -285,19 +282,19 @@ ANSWERS
             count--;
         }, 1000);
 
-    Output, one line per second:
+  Output, one line per second:
 
-        5
-        4
-        3
-        2
-        1
-        Liftoff!
+    5
+    4
+    3
+    2
+    1
+    Liftoff!
 
-    The interesting part is that the timer cancels itself from inside its own callback, using
-    the ID stored just outside it. That works because `const countdownId` is assigned before
-    the first tick ever runs — a second passes before the callback is called for the first
-    time.
+  The interesting part is that the timer cancels itself from inside its own callback, using
+  the ID stored just outside it. That works because `const countdownId` is assigned before
+  the first tick ever runs — a second passes before the callback is called for the first
+  time.
 
     The `return` matters too. Without it, execution would carry on to `console.log(count)` and
     print a stray 0 after "Liftoff!", because `clearInterval()` stops future ticks but does
