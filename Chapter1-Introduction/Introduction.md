@@ -206,9 +206,9 @@ code on your web page is important. Where you place your script in the document 
 		HTML5 short way of declaring attributes. The full way will look 
 		like this: defer="". We leave out the '=""' if it has no value.
 
-    One thing to note is that defer only works on a script that loads
-    an external file using the src attribute. It has no effect on code
-    written directly between the opening and closing script tags.
+One thing to note is that defer only works on a script that loads
+an external file using the src attribute. It has no effect on code
+written directly between the opening and closing script tags.
 
   - b) Use the DOMContentLoaded event. Here is how to use it:
 
@@ -217,11 +217,11 @@ code on your web page is important. Where you place your script in the document 
 			// parsed and all the elements exist on the page
 		});
 
-    Be careful not to confuse this with the page being ‘fully loaded’.
-    DOMContentLoaded fires as soon as the HTML has been read and all
-    the elements exist, but it does not wait for images, stylesheets
-    or fonts to finish downloading. If you need to wait for those too,
-    use the ‘load’ event instead.
+Be careful not to confuse this with the page being ‘fully loaded’.
+DOMContentLoaded fires as soon as the HTML has been read and all
+the elements exist, but it does not wait for images, stylesheets
+or fonts to finish downloading. If you need to wait for those too,
+use the ‘load’ event instead.
 
 ![Figure 1.3 — When defer, DOMContentLoaded and load each happen](images/ch01-fig-03-loading-timeline.svg)
 
@@ -338,7 +338,7 @@ Step 1: Create a Project Folder:
   Code, do it like so:
   - Click on the Extensions icon (left sidebar with the group of tiny squares) to open the Extensions view, search for:
 
-    Live Server
+Live Server
 
   - Many options will come up. Choose the one made by Ritwick Dey. This is the
     original, it is by far the most installed, and it is the one this book
@@ -381,27 +381,27 @@ Step 1: Create a Project Folder:
 
 		alert("JavaScript is working!");
 
-    This will display a popup box saying: "JavaScript is working!"
-    when your index.html page loads. alert() is one of JavaScript's
-    built-in commands, and its whole job is to pop up a message box
-    like that.
+This will display a popup box saying: "JavaScript is working!"
+when your index.html page loads. alert() is one of JavaScript's
+built-in commands, and its whole job is to pop up a message box
+like that.
 
 
 #### Step 6: Start the Live Server
   - Finally, right-click on your index.html file's tab in the VS Code editor.
   - Choose "Open with Live Server". You will get a message saying:
 	
-    Server is Started at port: 5500
+Server is Started at port: 5500
 
   Give it a few seconds and it should open a new browser tab with a URL like this:
 
-    http://127.0.0.1:5500/yourFolder/index.html
+http://127.0.0.1:5500/yourFolder/index.html
 
   This is because Live Server has launched a web server, exposed the port number 5500 on your computer, to serve your project folder files beginning with index.html at the above URL. A port is simply a numbered door on your computer that a program can listen at. Your computer has thousands of them, and giving Live Server port 5500 means ‘send anything for this project to door number 5500’. That is why the port number turns up in the URL. If the browser tab fails to open, just paste http://127.0.0.1:5500/yourFolder/index.html into your browser's address bar yourself. Replace 'yourFolder' with any folder path that sits between the folder you opened in VS Code and your index.html file. If your index.html sits directly inside the folder you opened, then there is nothing to replace and the URL is simply http://127.0.0.1:5500/index.html.
 
   - Visit that URL: http://127.0.0.1:5500/yourFolder/index.html in your browser to see the contents of your index.html web page displayed. You should now see a browser popup displayed with this text:
 
-    JavaScript is working!
+JavaScript is working!
 
   - Any time you update your code and save the file, the page will
     automatically refresh.

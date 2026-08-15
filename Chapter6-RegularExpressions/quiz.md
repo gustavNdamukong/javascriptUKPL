@@ -67,7 +67,7 @@ questions.
 
 9) EXERCISE. Write a regex pattern to match a social security number in the format:
 
-    123-45-6789
+123-45-6789
 
   Then say how your pattern would need to differ depending on whether you are validating a
   form field that should contain nothing else, or searching for an SSN inside a longer
@@ -107,7 +107,7 @@ questions.
    The asterisk is a quantifier. It means "zero or more of whatever comes just before it". It
    does not mean "any characters" on its own.
 
-    /go*d/  matches "gd", "god", "good", "goood" and so on
+/go*d/  matches "gd", "god", "good", "goood" and so on
 
    because the * is attached to the letter o, and asks for zero or more of them.
 
@@ -136,12 +136,12 @@ questions.
 
 4) Inside square brackets, at the start, the caret means negation:
 
-    /[^0-9]/   matches any single character that is NOT a digit
+/[^0-9]/   matches any single character that is NOT a digit
 
    Outside square brackets, at the start of a pattern, it is an anchor meaning "the match must
    begin at the start of the text":
 
-    /^my/      matches "my cat", but not "I love my cat"
+/^my/      matches "my cat", but not "I love my cat"
 
    Two completely different jobs, told apart only by where the caret sits.
 
@@ -160,14 +160,14 @@ questions.
 
 6) Put a backslash in front of the dot to escape it:
 
-    /5\.0/
+/5\.0/
 
    The backslash tells the pattern to stop treating the next character as special and match it
    literally. It works on any special character, including a backslash itself.
 
    If you also wanted to allow 5.00 or 5.000, add a quantifier to the zero:
 
-    /5\.0*/
+/5\.0*/
 
 
 7) They do quite different jobs, though both sound as though they mean "match more".
@@ -180,20 +180,20 @@ questions.
 
    Without g you get the first match only. With it, you get all of them:
 
-    text.match(/cat/)     // ["cat"]
-    text.match(/cat/g)    // ["cat", "cat"]
+text.match(/cat/)     // ["cat"]
+text.match(/cat/g)    // ["cat", "cat"]
 
    The word "here" sits at the end of the first line, but the string as a whole ends with
    "slept". So $ on its own finds nothing, because $ means the end of the whole string. Add m
    and $ comes to mean the end of any line:
 
-    text.match(/here$/)   // null
-    text.match(/here$/m)  // ["here"]
+text.match(/here$/)   // null
+text.match(/here$/m)  // ["here"]
 
    And because they are independent, they combine:
 
-    text.match(/^cat/g)   // ["cat"]
-    text.match(/^cat/gm)  // ["cat", "cat"]
+text.match(/^cat/g)   // ["cat"]
+text.match(/^cat/gm)  // ["cat", "cat"]
 
    A useful way to remember it: g asks "how many times?", m asks "what counts as a line?".
 
@@ -201,15 +201,15 @@ questions.
 8) 
 - **test()** is called on the pattern and hands back true or false:
 
-    /cats/i.test("Cats are fun.")            // true
+/cats/i.test("Cats are fun.")            // true
 
 - **match()** is called on the string and hands back what it found:
 
-    "Cats are fun.".match(/cats/i)           // ["Cats"]
+"Cats are fun.".match(/cats/i)           // ["Cats"]
 
 - **replace()** is called on the string and hands back a changed copy of it:
 
-    "I like cats".replace(/cats/gi, "dogs")  // "I like dogs"
+"I like cats".replace(/cats/gi, "dogs")  // "I like dogs"
 
    Note that replace() gives you a new string. It does not alter the one you called it on.
 
@@ -256,8 +256,8 @@ questions.
   but finds nothing in "helloworld".
 
 
-11) 
-    /\w+/
+11)
+  /\w+/
 
   The + asks for one or more word characters.
 
@@ -266,8 +266,8 @@ questions.
   Worth recognising both forms, since you will meet them out in the wild.
 
 
-12) 
-    /^my/
+12)
+  /^my/
 
   The ^ pins the match to the very start of the text.
 
@@ -278,8 +278,8 @@ questions.
   a pattern without the g modifier stops at the first match anyway.
 
 
-13) 
-    /cats$/
+13)
+  /cats$/
 
   The $ pins the match to the very end of the text.
 

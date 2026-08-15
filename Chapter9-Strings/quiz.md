@@ -28,7 +28,7 @@ questions.
 
 3) What do each of these escape sequences do?
 
-    \n    \t    \\    \"
+\n    \t    \\    \"
 
    Clue: the first two are about layout, the second two are about characters that would
    otherwise be taken as syntax.
@@ -58,9 +58,9 @@ questions.
 
 7) Given `const sport = "Boxing";`, what do each of these give you?
 
-    sport[0]
-    sport[sport.length - 1]
-    sport[sport.length - 2]
+sport[0]
+sport[sport.length - 1]
+sport[sport.length - 2]
 
    Clue: counting starts at 0, which is why the last one is at length minus 1 rather than
    length.
@@ -146,8 +146,8 @@ questions.
 
 5) It prints:
 
-    My name is Alice
-      and I am 25 years old.
+My name is Alice
+  and I am 25 years old.
 
    on two lines, not one — with the indentation included.
 
@@ -173,10 +173,11 @@ questions.
    makes eight. `length` counts every character, not just the letters.
 
 
-7) 
-    sport[0]                    // "B"  - the first character
-    sport[sport.length - 1]     // "g"  - the last character
-    sport[sport.length - 2]     // "n"  - the last but one
+7)
+| sport[0] | // "B"  - the first character |
+|---|---|
+| sport[sport.length - 1] | // "g"  - the last character |
+| sport[sport.length - 2] | // "n"  - the last but one |
 
    "Boxing" has six characters, so `length` is 6. But counting starts at 0, so the positions run
    0 to 5. That is why the last character sits at `length - 1` and not at `length` — asking for
@@ -212,7 +213,7 @@ questions.
 
    Both print:
 
-    Hello, John Doe!
+Hello, John Doe!
 
    The spaces are the fiddly part of the concatenated version. There is one after the comma,
    inside the first piece of text, and another between the two names that has to be added as a

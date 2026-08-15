@@ -90,8 +90,8 @@ Each element in the array is referenced by a key which marks its spot in the arr
 
 		console.log(fruits);
 
-    Outputs:
-      ['mango', 'apple', 'guava']
+Outputs:
+  ['mango', 'apple', 'guava']
 
 
 
@@ -100,27 +100,27 @@ Each element in the array is referenced by a key which marks its spot in the arr
 
 		console.log(fruits);
 
-    Outputs:
-      ['mango', 'apple', 'guava']
+Outputs:
+  ['mango', 'apple', 'guava']
 
 
 
 #### Assigning values to a numeric array
-    In the above examples, we initialised the variable with
-  elements already added to it. But you can create an empty
-  array and then dynamically add elements to it later when you
-  need to. You will find that this is a very common way of working.
-  This is because you will not always have the data immediately
-  when you create the array, but rather, you will create the array
-  in anticipation of data being available, and add them as they
-  become available.
-    Once you have created the empty array, there is a very handy
-  method called push() which you will use to insert items into your
-  array. (A method is simply a function that belongs to something, in
-  this case to the array itself, which is why you write it after a dot:
-  fruits.push().) The push() method can take a single item or several
-  of them, separated by commas, and they can be of any type: strings,
-  numbers, booleans, even other arrays. Let’s see how to do that:
+  In the above examples, we initialised the variable with
+elements already added to it. But you can create an empty
+array and then dynamically add elements to it later when you
+need to. You will find that this is a very common way of working.
+This is because you will not always have the data immediately
+when you create the array, but rather, you will create the array
+in anticipation of data being available, and add them as they
+become available.
+  Once you have created the empty array, there is a very handy
+method called push() which you will use to insert items into your
+array. (A method is simply a function that belongs to something, in
+this case to the array itself, which is why you write it after a dot:
+fruits.push().) The push() method can take a single item or several
+of them, separated by commas, and they can be of any type: strings,
+numbers, booleans, even other arrays. Let’s see how to do that:
 
 		// create an empty array as normal using the Array() constructor
 		// or the square brackets as we have seen above
@@ -134,8 +134,8 @@ Each element in the array is referenced by a key which marks its spot in the arr
 
 		console.log(fruits);
 
-    Outputs:
-      ['mango', 'apple', 'guava', 'kiwi']
+Outputs:
+  ['mango', 'apple', 'guava', 'kiwi']
 
   You can also target a specific index/key to add a element to in an
   existing array. If there is no element at that key, the element will be
@@ -153,8 +153,8 @@ Each element in the array is referenced by a key which marks its spot in the arr
 
   The output of the above code is:
 
-    One item: apple
-    Two items: apple,guava
+One item: apple
+Two items: apple,guava
 
   We start by creating an array of fruits with one item 'mango' in it.
   Next, we add an item 'apple' specifying that we need it at the first
@@ -317,15 +317,16 @@ Enough of this repetition, for I know you have got it now. Congratulations, you 
 
 Here is a valid example:
 
-  const person = {
-    "name": "Alice",
-    "age": 30,
-    occupation: "Developer",
-    _id: 12345,             // valid
-    $status: "active",      // valid
-    "other-name": "Gray",   // valid (quoted)
-    "home town": "London",  // valid (quoted)
-  };
+const person = {
+  "name": "Alice",
+  "age": 30,
+  occupation: "Developer",
+| _id: 12345, | // valid |
+|---|---|
+| $status: "active", | // valid |
+| "other-name": "Gray", | // valid (quoted) |
+  "home town": "London",  // valid (quoted)
+};
 
 The property name "other-name" would otherwise be invalid if it was not quoted, because it contains a hyphen. Similarly, the "home town" has a space in it, so it is quoted. These two properties break the identifier rules, and are fixed by quotes. However, because they are fixed by quotes, it changes the way their values can be retrieved. I will address that shortly when I talk about retrieving and updating the values of associative array properties.
 
@@ -432,15 +433,16 @@ would not have worked.
 
 Here is another example demonstrating how and when to use the two notations:
 
-  const person = {
-    "name": "Alice",
-    "age": 30,
-    occupation: "Developer",
-    _id: 12345,             // valid
-    $status: "active",      // valid
-    "other-name": "Gray",   // valid (quoted)
-    "home town": "London",  // valid (quoted)
-  };
+const person = {
+  "name": "Alice",
+  "age": 30,
+  occupation: "Developer",
+| _id: 12345, | // valid |
+|---|---|
+| $status: "active", | // valid |
+| "other-name": "Gray", | // valid (quoted) |
+  "home town": "London",  // valid (quoted)
+};
 
 	console.log(person.age);
 	console.log(person.occupation);
@@ -484,8 +486,8 @@ If you're ever unsure which to use, try bracket notation. It always works, even 
 	associativeArray.key = "VALUE";
 	console.log("The value of key is: "+associativeArray.key);
 
-  The output will be:
-    The value of key is: VALUE
+The output will be:
+  The value of key is: VALUE
 
 ##### Using Bracket Notation
 	let associativeArray = {};
@@ -499,9 +501,9 @@ If you're ever unsure which to use, try bracket notation. It always works, even 
 	console.log(associativeArray.key);
 	console.log(associativeArray.age);
 
-  The output will be:
-    VALUE
-    25
+The output will be:
+  VALUE
+  25
 
   The 'age' key is dynamic because we are assigning the key
   from a variable (dynamicKey).
@@ -520,10 +522,10 @@ If you're ever unsure which to use, try bracket notation. It always works, even 
 
 The output will be:
   {
-    name: 'Alice',
-    age: 30,
-    'favourite colour': 'blue',
-    country: 'Holland'
+  name: 'Alice',
+  age: 30,
+  'favourite colour': 'blue',
+  country: 'Holland'
   }
 
 
@@ -812,7 +814,7 @@ The structure of this clients array is complex because it is mixed on several le
 
 		
 
-    How to assign values to a
+How to assign values to a
 #### multi-dimensional array
   Working with multi-dimensional arrays is as simple as viewing them as a parent-child structure—with the children being the nested arrays, and the outer array being the parent. Use the bracket notation to reference the keys and sub keys. Basically, you have to use one square bracket for each nested array, beginning with the outer (parent) array. 
   Once you can access an element within an array, assigning a value to it is done in the same way as you would do for a normal (single-dimension) array. This is easier demonstrated than explained. What I will explain here will cover how to assign values as well as how to update values in multi-dimensional arrays. Take the following 2D array example:
@@ -927,7 +929,7 @@ We can see that the value of its name property is ‘John’, which is why we go
 
 ## Looping through arrays
 
-      Looping through a numeric
+Looping through a numeric
 #### array
   There are multiple ways to loop through an indexed (numeric) array in JavaScript. You can use:
 
@@ -1102,10 +1104,10 @@ Remember them—they will make your life easier. Learn more about how to use the
 
   The result of this will be:
 
-    Tom Sawyer
-    10
-    Sid
-    Polly
+Tom Sawyer
+10
+Sid
+Polly
 
 
 
@@ -1124,11 +1126,11 @@ Remember them—they will make your life easier. Learn more about how to use the
 			console.log(arr[key]); 
 		});
 
-  The result will be:
-    Tom Sawyer
-    10
-    Sid
-    Polly
+The result will be:
+  Tom Sawyer
+  10
+  Sid
+  Polly
 
 
 #### iii) Using Object.values() and forEach()
@@ -1140,11 +1142,11 @@ Remember them—they will make your life easier. Learn more about how to use the
 		Object.values(arr).forEach(
 			value => { console.log(value); });
 
-  The result will be:
-    Tom Sawyer
-    10
-    Sid
-    Polly
+The result will be:
+  Tom Sawyer
+  10
+  Sid
+  Polly
 
 
 
@@ -1160,10 +1162,10 @@ Remember them—they will make your life easier. Learn more about how to use the
 
   The result will be:
 
-    name: Tom Sawyer
-    age: 10
-    brother: Sid
-    aunt: Polly
+name: Tom Sawyer
+age: 10
+brother: Sid
+aunt: Polly
 
 
 
@@ -1177,10 +1179,10 @@ Remember them—they will make your life easier. Learn more about how to use the
 
   The result will have the keys and their values like so:
 
-    name: Tom Sawyer
-    age: 10
-    brother: Sid
-    aunt: Polly
+name: Tom Sawyer
+age: 10
+brother: Sid
+aunt: Polly
 
 
 
@@ -1192,11 +1194,11 @@ Remember them—they will make your life easier. Learn more about how to use the
 			([key, value]) => console.log(value)
 		);
 
-  The result will be:
-    Tom Sawyer
-    10
-    Sid
-    Polly
+The result will be:
+  Tom Sawyer
+  10
+  Sid
+  Polly
 
 
 
@@ -1241,17 +1243,17 @@ You can do it in any of the following ways:
 			} 
 		}
 
-    The result is each number printed on its own line:
+The result is each number printed on its own line:
 
-      1
-      2
-      3
-      4
-      5
-      6
-      7
-      8
-      9
+1
+2
+3
+4
+5
+6
+7
+8
+9
 
 
   - ii) Using the forEach() method
@@ -1264,7 +1266,7 @@ You can do it in any of the following ways:
 			}
 		);
 
-    The result is the same, each number on its own line.
+The result is the same, each number on its own line.
 
 
   - iii) Using the flat() method
@@ -1275,7 +1277,7 @@ You can do it in any of the following ways:
 
 		myArray.flat().forEach(element => console.log(element));
 
-    The result is again the same, each number on its own line.
+The result is again the same, each number on its own line.
 
 
 
@@ -1302,15 +1304,15 @@ In this case, you should do your regular loop on the first (outer) array using a
 			} 
 		});
 
-    The result is each number printed on its own line, 1 through 9.
+The result is each number printed on its own line, 1 through 9.
 
 
 #### A nested object
-    If you structure it as a nested
-      object, you'd need a different
-      approach. You should use the for...in loop designed for looping
-    through objects. We are going to nest the loop for each nested
-    level. Here is an example:
+If you structure it as a nested
+  object, you'd need a different
+  approach. You should use the for...in loop designed for looping
+through objects. We are going to nest the loop for each nested
+level. Here is an example:
 
 		let myObject = { 
 			row1: { a: 1, b: 2, c: 3 }, 
@@ -1434,10 +1436,10 @@ In this case, you should do your regular loop on the first (outer) array using a
     	console.log(array1);
 
 
-  You would think that array2 will now be:
-    ['word', 'b', 'c', 'd', 'e', 'f']
-  while array1 will remain:
-    ['a', 'b', 'c', 'd', 'e', 'f']
+You would think that array2 will now be:
+  ['word', 'b', 'c', 'd', 'e', 'f']
+while array1 will remain:
+  ['a', 'b', 'c', 'd', 'e', 'f']
 
   But surprisingly, both arrays array1 and
   array2 are now: ['word', 'b', 'c', 'd', 'e', 'f']
@@ -1512,10 +1514,10 @@ Are Rest Parameters and the Spread Operator Opposites?
 			    (acc, num) => acc + num, 0);
 		}
 
-    This sum() function uses the rest operator (in its parameters)
-    so whatever is passed into it will be converted into an array.
-    Internally, what is passed to it will become the numbers array,
-    which it uses to do its job.
+This sum() function uses the rest operator (in its parameters)
+so whatever is passed into it will be converted into an array.
+Internally, what is passed to it will become the numbers array,
+which it uses to do its job.
 
 		const nums = [5, 10, 15];
 
@@ -1664,8 +1666,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 				
 
 #### -copyWithin()
-    Modifies the array by copying values
-    within itself.
+Modifies the array by copying values
+within itself.
 
 		const arr = [1, 2, 3, 4, 5];
 		arr.copyWithin(2, 0, 2); 
@@ -1673,16 +1675,16 @@ Are Rest Parameters and the Spread Operator Opposites?
 		// Output: [1, 2, 1, 2, 5]
 		console.log(arr); 
 
-    In this example, it copies elements
-    from index 0 to 2 and places them
-    starting at index 2. Elements from
-    index 0-2 will grab 1, and 2 (two
-    elements), then placing them from
-    index 2 means the two copied
-    elements (1, 2) will replace two
-    elements from the original array ([1,
-    2, 1, 2, 5]) and thus end up with this
-    output array: [1, 2, 1, 2, 5]
+In this example, it copies elements
+from index 0 to 2 and places them
+starting at index 2. Elements from
+index 0-2 will grab 1, and 2 (two
+elements), then placing them from
+index 2 means the two copied
+elements (1, 2) will replace two
+elements from the original array ([1,
+2, 1, 2, 5]) and thus end up with this
+output array: [1, 2, 1, 2, 5]
 
 				
 
@@ -1709,9 +1711,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 				
 
 #### -fill()
-    Fills an array with a value. The new
-    value overwrites whatever was in
-    those positions before.
+Fills an array with a value. The new
+value overwrites whatever was in
+those positions before.
 
 		const arr = [1, 2, 3, 4];
 		arr.fill(0, 1, 3); 
@@ -1719,19 +1721,19 @@ Are Rest Parameters and the Spread Operator Opposites?
 		// Output: [1, 0, 0, 4]
 		console.log(arr); 
 
-    Replaces values from index 1 to 3
-    with 0. Note that ‘index 1 to 3’ means
-    up to, but not including the element
-    at index 3, which is why 4 from the
-    original array is not overridden.
+Replaces values from index 1 to 3
+with 0. Note that ‘index 1 to 3’ means
+up to, but not including the element
+at index 3, which is why 4 from the
+original array is not overridden.
 	
 				
 
 #### -filter()
-    filter() returns a new array of
-    elements that pass a condition. This
-    means that it ‘filters out’ values that
-    don't meet the condition.
+filter() returns a new array of
+elements that pass a condition. This
+means that it ‘filters out’ values that
+don't meet the condition.
 
 		const numbers = [1, 2, 3, 4, 5];
 		const even = numbers.filter(
@@ -1743,9 +1745,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 				
 
 #### -find()
-    Returns the First Element That Meets
-    a Condition. It stops at the first
-    match.
+Returns the First Element That Meets
+a Condition. It stops at the first
+match.
 	
 		const numbers = [10, 15, 20, 25];
 		const found = numbers.find(
@@ -1757,10 +1759,10 @@ Are Rest Parameters and the Spread Operator Opposites?
 				
 
 #### -findIndex()
-    Returns the Index of the first
-    matching Element. It works just like
-    find() except that, it returns the index
-    instead of the value.
+Returns the Index of the first
+matching Element. It works just like
+find() except that, it returns the index
+instead of the value.
 
 		const numbers = [10, 15, 20, 25];
 		const index = numbers.findIndex(
@@ -1773,8 +1775,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 	
 
 #### -flat()
-    This method flattens the
-    multi-dimensional array into a single-dimensional array.
+This method flattens the
+multi-dimensional array into a single-dimensional array.
 
 		const nested = [
 			1, 
@@ -1791,8 +1793,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 		// Output: [1, 2, 3, 4, 5]
 		console.log(nested.flat(2)); 
 
-    The argument 2 specifies how deep
-    to flatten.
+The argument 2 specifies how deep
+to flatten.
 
 
 	
@@ -1815,8 +1817,8 @@ Are Rest Parameters and the Spread Operator Opposites?
 				
 
 #### -includes()
-    It checks If an array contains a value
-    and returns true if so, or false if not.
+It checks If an array contains a value
+and returns true if so, or false if not.
 
 		const colors = [
 			"red", 
@@ -1831,9 +1833,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 
 #### -indexOf()
-    Finds the first occurrence of a value.
-    It returns the index if found, or -1 if
-    not.
+Finds the first occurrence of a value.
+It returns the index if found, or -1 if
+not.
 
 		const arr = [10, 20, 30, 40];
 
@@ -1867,15 +1869,15 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 
 #### -join()
-    It converts an array into a string. It
-    joins the array elements with a
-    specified separator. This means that
-    you have to tell it what to separate
-    the elements in the array by, and you
-    do so by passing the separator as an
-    argument to join(), e.g. " " for a
-    space, "," for a comma, or "" for no
-    separator at all.
+It converts an array into a string. It
+joins the array elements with a
+specified separator. This means that
+you have to tell it what to separate
+the elements in the array by, and you
+do so by passing the separator as an
+argument to join(), e.g. " " for a
+space, "," for a comma, or "" for no
+separator at all.
 
 		const words = ["Hello", "World"];
 
@@ -1886,10 +1888,10 @@ Are Rest Parameters and the Spread Operator Opposites?
 	
 
 #### -lastIndexOf()
-    It finds the last occurrence of a value
-    and returns its index or -1 if not
-    found. It works just like indexOf()
-    except that it searches from the end.
+It finds the last occurrence of a value
+and returns its index or -1 if not
+found. It works just like indexOf()
+except that it searches from the end.
 
 		const arr = [10, 20, 30, 20, 40];
 
@@ -1900,13 +1902,13 @@ Are Rest Parameters and the Spread Operator Opposites?
 	
 
 #### -map()
-    map() runs a function on every element of an array and hands
-    back a brand new array of the results. The original array is left
-    untouched, and the new array always has the same number of
-    elements as the old one. It is the method you reach for when you
-    want to turn a list of one thing into a list of another thing.
+map() runs a function on every element of an array and hands
+back a brand new array of the results. The original array is left
+untouched, and the new array always has the same number of
+elements as the old one. It is the method you reach for when you
+want to turn a list of one thing into a list of another thing.
 
-    Here it is turning a list of book objects into a block of HTML:
+Here it is turning a list of book objects into a block of HTML:
 
      		const books = [
        			{ id: 1, name: 'Macbeth' },
@@ -1951,7 +1953,7 @@ Are Rest Parameters and the Spread Operator Opposites?
   'Peter' and so the output of the contents of the target array myArray
   will now be:
 			
-    [[1, 2, 3], ['John', 'Peter']]
+[[1, 2, 3], ['John', 'Peter']]
 
 	
 
@@ -1970,14 +1972,14 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 			console.log(myArray);
 
-    This will have removed the last element from myArray, which is the sub array
-    containing names (['John', 'Peter']), and so the output of the contents of the
-    myArray will end up being:
+This will have removed the last element from myArray, which is the sub array
+containing names (['John', 'Peter']), and so the output of the contents of the
+myArray will end up being:
 			
-      [[1, 2, 3]]
+[[1, 2, 3]]
 
-    You may decide to pop the last item out and capture it in a separate variable
-    of its own if you need to use it. For example:
+You may decide to pop the last item out and capture it in a separate variable
+of its own if you need to use it. For example:
 
 			let myArray = [
 				[1, 2, 3],
@@ -1986,7 +1988,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 
 			let names = myArray.pop();
 
-    The new array names will now contain ['John', 'Peter'].
+The new array names will now contain ['John', 'Peter'].
 	
 
 
@@ -2077,7 +2079,7 @@ Are Rest Parameters and the Spread Operator Opposites?
   sub array containing numbers ([1,2,3]), and so the output of the
   contents of the myArray will now end up being:
 			
-      [['John', 'Peter']]
+[['John', 'Peter']]
 
   You may decide to remove that first item and capture it in a separate
   variable of its own if you need to use it. For example:
@@ -2111,7 +2113,7 @@ Are Rest Parameters and the Spread Operator Opposites?
   "Jack"]) as the first element of the names array. The output of the
   contents of the names array will now be:
 			
-    [["Jimmy", "Jack"], ['John', 'Peter']]
+[["Jimmy", "Jack"], ['John', 'Peter']]
 
 	Note that similarly to the push() function, the unshift() function 
 	accepts an argument, which should be the element or item you wish 
@@ -2121,26 +2123,26 @@ Are Rest Parameters and the Spread Operator Opposites?
 				
 
 #### -slice()
-    It extracts a portion of an array, then
-    returns the extracted portion as a
-    new array without modifying the
-    original.
+It extracts a portion of an array, then
+returns the extracted portion as a
+new array without modifying the
+original.
 
 		const arr = [1, 2, 3, 4, 5];
 
 		// Output: [2, 3, 4]
 		console.log(arr.slice(1, 4)); 
 
-    This slices the array from index 1 up
-    to but not including index 4.
+This slices the array from index 1 up
+to but not including index 4.
 		
 	
 
 #### -some()
-    It checks if at least one element in the
-    given array passes a condition and
-    returns true if any element passes
-    the test or false if none passes.
+It checks if at least one element in the
+given array passes a condition and
+returns true if any element passes
+the test or false if none passes.
 
 		const numbers = [1, 3, 5, 7, 8];
 
@@ -2155,40 +2157,40 @@ Are Rest Parameters and the Spread Operator Opposites?
 		
 
 #### -sort()
-    Sorts an array alphabetically or numerically. By default, JavaScript’s
-    sort() method converts all elements to strings and sorts them
-    alphabetically in ascending order.
-    But when it comes to numbers, it has no way of detecting which
-    number is bigger than the other. The solution with numbers is to pass
-    to sort() a compare function. It will run this function on elements in
-    pairs from left to right, subtracting one number from the other and
-    thereby determining which is greater than the other. Basically, when
-    sorting numbers without a compare function, the results can be
-    unexpected. It's easier when you see an example:
+Sorts an array alphabetically or numerically. By default, JavaScript’s
+sort() method converts all elements to strings and sorts them
+alphabetically in ascending order.
+But when it comes to numbers, it has no way of detecting which
+number is bigger than the other. The solution with numbers is to pass
+to sort() a compare function. It will run this function on elements in
+pairs from left to right, subtracting one number from the other and
+thereby determining which is greater than the other. Basically, when
+sorting numbers without a compare function, the results can be
+unexpected. It's easier when you see an example:
 
 			[1, 100, 2, 20].sort(); 
 
-    The above expression is first converted to ["1", "100", "2", "20"] and
-    then to [1, 100, 2, 20] instead of [1, 2, 20, 100]
+The above expression is first converted to ["1", "100", "2", "20"] and
+then to [1, 100, 2, 20] instead of [1, 2, 20, 100]
 
-    JavaScript doesn’t know that "100" should come after "2", because
-    it compares them as strings, character-by-character. The fix is to
-    pass a compare function to sort(). This allows you to control how
-    items are compared—typically by subtracting one from the other for
-    numeric sorting:
+JavaScript doesn’t know that "100" should come after "2", because
+it compares them as strings, character-by-character. The fix is to
+pass a compare function to sort(). This allows you to control how
+items are compared—typically by subtracting one from the other for
+numeric sorting:
 
 			[1, 100, 2, 20].sort((a, b) => a - b); 
 
-    This will result in the correct sorting: [1, 2, 20, 100]
+This will result in the correct sorting: [1, 2, 20, 100]
 
-    This works because:
-      If a - b results in a negative number, a comes before b
-      If a - b results in a positive number, b comes before a
-      If a - b results in 0, then their order doesn’t change.
+This works because:
+  If a - b results in a negative number, a comes before b
+  If a - b results in a positive number, b comes before a
+  If a - b results in 0, then their order doesn’t change.
 
-    Let’s do some examples:
+Let’s do some examples:
 			
-    Sort in alphabetical order:
+Sort in alphabetical order:
 
 			const names = [
 				"Bob", "Alice", "Charlie"
@@ -2197,7 +2199,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 			// Output: ["Alice", "Bob", "Charlie"]
 			console.log(names.sort()); 
 
-    Sort numbers in an array in ascending order
+Sort numbers in an array in ascending order
 
 			const numbers = [10, 5, 20];
 
@@ -2209,7 +2211,7 @@ Are Rest Parameters and the Spread Operator Opposites?
 				numbers.sort((a, b) => a - b)
 			); 
 
-    Sort numbers in an array in descending order
+Sort numbers in an array in descending order
 
 		Pass a function to sort() that assumes that the later number is 
 		greater than the one before it—take note of the b-a it returns.
@@ -2217,22 +2219,22 @@ Are Rest Parameters and the Spread Operator Opposites?
 			let points = [20, 80, 1, 8, 25, 10];
 			points.sort(function(a, b) { return b - a; });
 			
-      This will produce [80, 25, 20, 10, 8, 1]
+This will produce [80, 25, 20, 10, 8, 1]
 
 
-    Get the highest or lowest value in an array
+Get the highest or lowest value in an array
 
-    To get the highest number in an array of numbers, the simple trick is
-    to sort them in descending order and grab the number at the first
-    index. You would do the opposite to get the lowest number. For
-    example:
+To get the highest number in an array of numbers, the simple trick is
+to sort them in descending order and grab the number at the first
+index. You would do the opposite to get the lowest number. For
+example:
 
 			let points = [20, 80, 1, 8, 25, 10];
 			points.sort(function(a, b) { return b - a; });
 
-    The highest number will be found at points[0]
-    The lowest number can be found using any of the following
-    techniques:
+The highest number will be found at points[0]
+The lowest number can be found using any of the following
+techniques:
 
 			points[points.length - 1]
 			// or
@@ -2259,13 +2261,13 @@ Are Rest Parameters and the Spread Operator Opposites?
 		 // Output: [1, "a", "b", 4]
 		console.log(arr);
 
-    In this example, it removes 2
-    elements beginning from index 1 and
-    inserts "a" and "b", hence we end
-    with the original array having the new
-    value of: [1, "a", "b", 4].
-      Any number of arguments after the first two will be added to the
-    array starting from the index specified in the first argument.
+In this example, it removes 2
+elements beginning from index 1 and
+inserts "a" and "b", hence we end
+with the original array having the new
+value of: [1, "a", "b", 4].
+  Any number of arguments after the first two will be added to the
+array starting from the index specified in the first argument.
 
 			const arr = [1, 2, 3, 4];
 			arr.splice(1, 2, "a", "b", "c", "d", "z");
@@ -2276,9 +2278,9 @@ Are Rest Parameters and the Spread Operator Opposites?
 	
 
 #### -toString()
-    It converts an array to a string. It is
-    similar to join(), but always uses
-    commas as the separator.
+It converts an array to a string. It is
+similar to join(), but always uses
+commas as the separator.
 
 		const arr = [1, 2, 3];
 

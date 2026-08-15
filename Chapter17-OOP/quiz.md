@@ -60,9 +60,9 @@ down, numbered to match the questions.
 
 8) `rex` is created from `class Dog extends Animal`. What do these three give you?
 
-    rex instanceof Dog
-    rex instanceof Animal
-    Dog instanceof Animal
+rex instanceof Dog
+rex instanceof Animal
+Dog instanceof Animal
 
    Clue: two of them agree and the third is the interesting one.
 
@@ -139,7 +139,7 @@ down, numbered to match the questions.
 
 2) `p`'s prototype is **`Person.prototype`** — not `Person` itself. The full chain:
 
-    p  →  Person.prototype  →  Object.prototype  →  null
+p  →  Person.prototype  →  Object.prototype  →  null
 
    You can walk it:
 
@@ -230,10 +230,11 @@ down, numbered to match the questions.
         let { msg: greeting = "No message" } = obj;
 
 
-8) 
-    rex instanceof Dog      // true
-    rex instanceof Animal   // true
-    Dog instanceof Animal   // false
+8)
+| rex instanceof Dog | // true |
+|---|---|
+| rex instanceof Animal | // true |
+| Dog instanceof Animal | // false |
 
    The first two are true because `rex` really was made from `Dog`, and `Dog` extends `Animal`,
    so `Animal.prototype` is in `rex`'s chain as well.
@@ -285,7 +286,7 @@ down, numbered to match the questions.
 
 11) You get a **`SyntaxError`**:
 
-    SyntaxError: Private field '#privateAge' must be declared in an enclosing class
+SyntaxError: Private field '#privateAge' must be declared in an enclosing class
 
   It is stricter than it looks because a SyntaxError happens when JavaScript *reads* your file,
   before a single line has run. So this is not a value coming back as `undefined`, and not an

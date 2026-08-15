@@ -123,7 +123,7 @@ are all together in the Answers section further down, numbered to match the ques
    That surprises people, because the parent is "further away" from the click. But capturing
    travels **downward from the root**, so the parent is reached on the way *to* the target:
 
-    document → #parentDiv (capturing handler fires) → #item1 (target, its handler fires)
+document → #parentDiv (capturing handler fires) → #item1 (target, its handler fires)
 
    If the parent's listener had been an ordinary one, the order would be the other way round —
    child first, then parent on the way back up.
@@ -213,8 +213,8 @@ are all together in the Answers section further down, numbered to match the ques
 
    Output when you click the button:
 
-    Child clicked
-    Parent clicked
+Child clicked
+Parent clicked
 
    The child fires first, then the event bubbles up to the parent. Neither listener passed a
    third argument, so both are bubbling-phase listeners.
@@ -231,8 +231,8 @@ are all together in the Answers section further down, numbered to match the ques
 
   Output:
 
-    Parent clicked
-    Child clicked
+Parent clicked
+Child clicked
 
   Exactly reversed, from adding one word. The parent is now listening on the way **down**, so
   it hears the click before the click has even reached the button.

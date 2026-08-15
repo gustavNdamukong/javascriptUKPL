@@ -119,40 +119,40 @@ Operators give you the ability to perform calculations so you can make accurate 
   than a single line, so it has a section of its own further down.
 
 
-    Addition operator
-  The addition operator + is like the addition sign in mathematics (represented by the plus sign) and it is used to add two numbers together. It should not be mistaken for the concatenation operator that binds variables to a string. For example:
+  Addition operator
+The addition operator + is like the addition sign in mathematics (represented by the plus sign) and it is used to add two numbers together. It should not be mistaken for the concatenation operator that binds variables to a string. For example:
 
 		let sum = 2 + 2;
 			
 The value of sum will be 4.	
 	
 
-    Minus operator
-  The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
+  Minus operator
+The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
 				
 		let num = 3 - 2;
 			
 The value of num will be 1.
 
 						
-    Division operator
-  The division operator / is used to divide one number by the other. It divides the value on the left by the value on the right. The result is called the quotient. For example:
+  Division operator
+The division operator / is used to divide one number by the other. It divides the value on the left by the value on the right. The result is called the quotient. For example:
 				
 		let num = 4 / 2;
 			
 The value of num will be 2.
 
 						
-    Multiplication operator
-  The multiplication operator * is used to multiply a number by a number. It multiplies the value on the left by the value on the right. The result is called the product. For example:
+  Multiplication operator
+The multiplication operator * is used to multiply a number by a number. It multiplies the value on the left by the value on the right. The result is called the product. For example:
 				
 	let num = 2 * 2;
 			
 The value of num will be 4.
 
 						
-    Modulo operator
-  The modulus operator % is used to get the remainder after dividing one number by another. Basically, it divides the number on the left by the number on the right, and returns whatever is left over. For example:
+  Modulo operator
+The modulus operator % is used to get the remainder after dividing one number by another. Basically, it divides the number on the left by the number on the right, and returns whatever is left over. For example:
 				
 		let num = 10 % 5;
 			
@@ -178,8 +178,8 @@ The value of num will be 1.
 	
 
 
-    Incremental operator
-  An incremental operator ++ is used to quickly add 1 to a number. Normally, there are two ways to increase a number’s value:
+  Incremental operator
+An incremental operator ++ is used to quickly add 1 to a number. Normally, there are two ways to increase a number’s value:
 
   a) By using the addition operator
 
@@ -194,8 +194,8 @@ The value of num will be 1.
 Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However, if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
 
 
-    Decremental operator
-  This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
+  Decremental operator
+This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
 
   a) By using the subtraction operator
 
@@ -384,13 +384,14 @@ Here, the value of light is 'red', so the last message, 'Stop', will be printed.
 
 It is completely valid, and += means that the value on the right (after the = character) is added to the value on the left (before the + character), rather than used to replace it. Note and remember that the += operator also works for strings and adds to (extends) a string.
 
-=  e.g.  j = 3		which means j = 3
-+= e.g.  j += 2		which means j = j + 2
-+= e.g.  j += 'text'	which means j = j + 'text'
--= e.g.  j -= 2		which means j = j - 2
-*= e.g.  j *= 4		which means j = j * 4
-/= e.g.  j /= 4		which means j = j / 4
-%= e.g.  j %= 6		which means j = j % 6
+| =  e.g.  j = 3 | which means j = 3 |
+|---|---|
+| += e.g.  j += 2 | which means j = j + 2 |
+| += e.g.  j += 'text' | which means j = j + 'text' |
+| -= e.g.  j -= 2 | which means j = j - 2 |
+| *= e.g.  j *= 4 | which means j = j * 4 |
+| /= e.g.  j /= 4 | which means j = j / 4 |
+| %= e.g.  j %= 6 | which means j = j % 6 |
 
   It is basically a shorthand way of using mathematical operators to assign values to variables, and it is worth knowing, as you are sure to come across it in code. It is effectively a compact and quick way to run an expression and assign its result to a variable in one operation. They are also sometimes referred to as short form operators, or compound operators. It is better demonstrated than explained. For example, instead of saying 
 			
@@ -728,9 +729,9 @@ Example:
 
 The output will be:
 
-    The fruit is banana
-    The fruit is apple
-    The fruit is kiwi
+The fruit is banana
+The fruit is apple
+The fruit is kiwi
 
 This loop runs once to display the first fruit, then continues checking if more items are available in the array before each additional run.
 
@@ -750,7 +751,7 @@ This loop runs once to display the first fruit, then continues checking if more 
 					// Code to execute 
 				}
 
-      Example (Object Iteration):
+Example (Object Iteration):
 
 				let person = { name: "Alice", age: 25, city: "New York" }; 
 
@@ -758,11 +759,11 @@ This loop runs once to display the first fruit, then continues checking if more 
 					console.log(`${key}: ${person[key]}`); 
 				}
 
-      The output will be:
+The output will be:
 
-      name: Alice
-      age: 25
-      city: New York
+name: Alice
+age: 25
+city: New York
 
 
 
@@ -777,7 +778,7 @@ This loop runs once to display the first fruit, then continues checking if more 
 					// Code to execute 
 				}
 
-      Example (Array Iteration):
+Example (Array Iteration):
 
 				let fruits = ["Apple", "Banana", "Cherry"]; 
 
@@ -785,11 +786,11 @@ This loop runs once to display the first fruit, then continues checking if more 
 					console.log(fruit); 
 				}
 
-      The output will be:
+The output will be:
 
-      Apple
-      Banana
-      Cherry
+Apple
+Banana
+Cherry
 
 
 
@@ -798,13 +799,13 @@ This loop runs once to display the first fruit, then continues checking if more 
 		         The forEach() method is an array method that executes a 
 			function on each element.
 
-      Here is the syntax:
+Here is the syntax:
 
 				array.forEach((value, index, array) => { 
 					// Code to execute 
 				});
 
-      Example (Array Iteration):
+Example (Array Iteration):
 
 				let numbers = [10, 20, 30]; 
 
@@ -812,24 +813,25 @@ This loop runs once to display the first fruit, then continues checking if more 
 					console.log(num); 
 				});
 
-      The output will be:
+The output will be:
 
-      10
-      20
-      30
+10
+20
+30
 
 
 
   Here is a conclusive summary of the various loops and when they should
   be used:
 
-   Loop type	   When to use it
-for	When the number of iterations is known.
-while	When the number of iterations is unknown and depends on a condition.
-do...while	When you need to run the loop at least once.
-for...in	When iterating over objects (not recommended for arrays).
-for...of	When iterating over arrays, strings, maps, or sets.
-forEach()	When iterating over an array with a function callback.
+| Loop type | When to use it |
+|---|---|
+| `for` | When the number of iterations is known. |
+| `while` | When the number of iterations is unknown and depends on a condition. |
+| `do...while` | When you need to run the loop at least once. |
+| `for...in` | When iterating over objects (not recommended for arrays). |
+| `for...of` | When iterating over arrays, strings, maps, or sets. |
+| forEach() | When iterating over an array with a function callback. |
  
 
 
@@ -860,13 +862,13 @@ Here is an example:
 			}
 
 
-      The output will be:
+The output will be:
 
-      0
-      1
-      2
-      3
-      4
+0
+1
+2
+3
+4
 
 As you can see, the loop stops as soon as i becomes 5. The number 5 is never printed because the loop exited right before that.
 
@@ -886,12 +888,12 @@ This is helpful when you want to ignore certain values but still finish the loop
 			}
 
 
-      The output will be:
+The output will be:
 
-      0
-      1
-      3
-      4
+0
+1
+3
+4
 
 ![Figure 5.1 — Where break and continue send you next](images/ch05-fig-01-break-vs-continue.svg)
 

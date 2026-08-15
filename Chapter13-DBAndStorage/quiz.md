@@ -111,11 +111,12 @@ questions.
    every visit. That is part of why the 4KB limit exists.
 
 
-4) 
-    setItem(key, value)     // store something
-    getItem(key)            // read it back, or null if there is nothing
-    removeItem(key)         // delete one item
-    clear()                 // delete everything for this site
+4)
+| setItem(key, value) | // store something |
+|---|---|
+| getItem(key) | // read it back, or null if there is nothing |
+| removeItem(key) | // delete one item |
+| clear() | // delete everything for this site |
 
    Both storage types offer all four with identical names, which is why you can swap one for
    the other by changing a single word.

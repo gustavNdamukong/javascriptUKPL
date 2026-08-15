@@ -14,12 +14,12 @@ questions.
 
 1) Which of these are valid JavaScript variable names, and why are the others not allowed?
 
-    myAge
-    my age
-    1stPrize
-    _total
-    $price
-    first-name
+myAge
+my age
+1stPrize
+_total
+$price
+first-name
 
    Clue: think about spaces, about punctuation, and about what a name is not allowed to begin
    with.
@@ -181,8 +181,8 @@ questions.
 
 4) It prints:
 
-    10
-    Error: ReferenceError: b is not defined
+10
+Error: ReferenceError: b is not defined
 
    var does not respect block scope, so a leaks out of the if block and is still reachable
    afterwards. let is block-scoped, so b only exists inside the braces. Reaching for it outside
@@ -197,7 +197,7 @@ questions.
 
    Swap var for let and you get an error instead:
 
-    Error: ReferenceError: Cannot access 'price' before initialization
+Error: ReferenceError: Cannot access 'price' before initialization
 
    because a let variable sits in the temporal dead zone until the line declaring it has
    actually run. The error is the more helpful outcome of the two, which is a good reason to
@@ -243,8 +243,8 @@ questions.
 
 9) It prints:
 
-    dress
-    shoe
+dress
+shoe
 
    This is called shadowing. The item inside displayItem() is a separate, local variable that
    hides the global item for as long as we are inside that function. Outside the function, the

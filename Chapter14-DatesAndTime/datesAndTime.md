@@ -197,9 +197,9 @@ show itself as UTC whenever you want that:
 
 The output for a user in New York (UTC-4) will look like this:
 
-  Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern
-    Daylight Time)
-  UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
+Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern
+  Daylight Time)
+UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
 
 Notice how UTC is 4 hours ahead of New York time. But notice something more
 important than that: we only called new Date() once. There is a single
@@ -288,8 +288,8 @@ Here is the output for a user, who is for example, in New York (UTC-4):
 
   UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
 
-  Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern
-    Daylight Time)
+Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern
+  Daylight Time)
 
 So basically, to convert a UTC time to local time we just need to call the .toString() method on the Date object. JavaScript automatically adjusts the time to match the user's system time zone.
 
@@ -523,13 +523,13 @@ Create the `<img>` tag in your HTML code. Notice I have given it a width and hei
 
 #### JavaScript code
 
-  const images = [
-    "/images/blurred-image.png",
-    "/images/brightened-image.png",
-    "/images/contrasted-image.png",
-    "/images/grayscale-image.png",
-    "/images/resized-image.png",
-  ];
+const images = [
+  "/images/blurred-image.png",
+  "/images/brightened-image.png",
+  "/images/contrasted-image.png",
+  "/images/grayscale-image.png",
+  "/images/resized-image.png",
+];
   
   	// start at the first image
   	let index = 0; 

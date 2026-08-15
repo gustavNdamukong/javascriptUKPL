@@ -212,15 +212,15 @@
     Object literals {} are reference types because they store values by reference, not directly in memory.
     Classes (which are just special objects) are also reference types because they use constructors to create instances stored by reference.
 
-  Here are the key differences between
-  primitive and reference types
-  Primitive types:
-    Directly store values, like a box that
-    holds a number.
-  Reference types:
-    Store the location of the data, like an
-    index card that points to where the
-    actual data is stored.
+Here are the key differences between
+primitive and reference types
+Primitive types:
+  Directly store values, like a box that
+  holds a number.
+Reference types:
+  Store the location of the data, like an
+  index card that points to where the
+  actual data is stored.
 
   Why does the distinction matter?
   When you work with ‘primitive types’, you
@@ -316,26 +316,26 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
              String result = 
                        String.valueOf(num) + text; 
 
-      So, in Java, you can’t mix an integer
-      and a string without first converting
-      the integer to a string. The language
-      forces you to respect the types
-      you’re working with.
+So, in Java, you can’t mix an integer
+and a string without first converting
+the integer to a string. The language
+forces you to respect the types
+you’re working with.
 
     Python:
             age = 25
             name = "John"
 
-      # This will cause an error in Python
-      # because you cannot concatenate a
-      # string with an integer directly
-      # Error: TypeError
-      result = name + age
+# This will cause an error in Python
+# because you cannot concatenate a
+# string with an integer directly
+# Error: TypeError
+result = name + age
 
-    # You need to explicitly convert 'age'
-    # to a string
-    # Now it works: "John25"
-    result = name + str(age)
+# You need to explicitly convert 'age'
+# to a string
+# Now it works: "John25"
+result = name + str(age)
 
 
 #### -2) Weakly typed languages
@@ -373,13 +373,13 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
              // not 15
             let sum = "5" + 10; 
 
-    So, in JavaScript, when you try to
-    combine a number with a string, the
-    number is automatically converted to
-    a string, and the result is `"5Hello"`.
-    This automatic conversion is known
-    as type coercion and is a hallmark of
-    weak typing.
+So, in JavaScript, when you try to
+combine a number with a string, the
+number is automatically converted to
+a string, and the result is `"5Hello"`.
+This automatic conversion is known
+as type coercion and is a hallmark of
+weak typing.
 
   Recap:
   - Strongly Typed languages require you
@@ -447,8 +447,8 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
   - The flexibility comes at the cost of
     potential runtime errors.
 
-  Example 
-    Python
+Example
+  Python
 
             # No need to declare the type
             age = 25 
@@ -458,12 +458,12 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
             # Works fine; now it's a string
             age = "twenty-five" 
 
-    In Python, you don’t declare the type
-    of ‘age’ upfront. You can assign an
-    integer, and later assign a string to
-    the same variable without any issues
-    —until the program runs and an error
-    might occur.
+In Python, you don’t declare the type
+of ‘age’ upfront. You can assign an
+integer, and later assign a string to
+the same variable without any issues
+—until the program runs and an error
+might occur.
 
   Recap:
   - In Static Typing the variable type is
@@ -517,14 +517,14 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
     picture in mind. When learning a
     language, make sure you:
 	
-  a) Study its primitive types and
-    understand how it handles more
-    complex data structures.
-  b) Learn about its memory management
-    and how it treats data types internally
-    (e.g., Java uses objects for everything
-    except primitives, while Python treats
-    everything as an object).
+a) Study its primitive types and
+  understand how it handles more
+  complex data structures.
+b) Learn about its memory management
+  and how it treats data types internally
+  (e.g., Java uses objects for everything
+  except primitives, while Python treats
+  everything as an object).
 
   We have pretty much covered the first
   step in the notes above, where we 
@@ -623,8 +623,8 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
            // converts to 123
            let num = +str;
 
-  c) Using parseInt() (for integers) or
-    parseFloat() (for floating-point
+c) Using parseInt() (for integers) or
+  parseFloat() (for floating-point
 #### numbers)
           let str = "123.45";
 
@@ -759,9 +759,9 @@ They all have different sizes depending on the type of data they contain.
 
 
 #### Symbols and Iteration
-  Symbols are not enumerable, meaning they don’t appear in for...in loops or 
-    Object.keys(). However, you can explicitly access them using
-    Object.getOwnPropertySymbols.
+Symbols are not enumerable, meaning they don’t appear in for...in loops or
+  Object.keys(). However, you can explicitly access them using
+  Object.getOwnPropertySymbols.
 
 		const sym1 = Symbol('key1'); 
 		const sym2 = Symbol('key2'); 
@@ -784,7 +784,7 @@ These are used to customise or override default behaviours in objects.
 
 #### Example 1: Symbol.iterator
 
-    Used to define custom iteration behaviour for an object.
+Used to define custom iteration behaviour for an object.
 
 			const iterable = {
 				values: [1, 2, 3], 
@@ -806,7 +806,7 @@ These are used to customise or override default behaviours in objects.
 
 #### Example 2: Symbol.toPrimitive
 
-    Controls how an object converts to a primitive value.
+Controls how an object converts to a primitive value.
 
 			const obj = { 
 				[Symbol.toPrimitive](hint) { 
@@ -988,10 +988,10 @@ Here is how you do it:
 	let someText = "This is some text";
 	console.log(Array.isArray(someText));
 
-  Output:
-    true // [1, 2, 3] is an array
-    false // text is not array
-    false // text is not array
+Output:
+  true // [1, 2, 3] is an array
+  false // text is not array
+  false // text is not array
 
 
 - 2) instanceof
@@ -1004,9 +1004,9 @@ Here is how you do it:
 	console.log(dog instanceof Animal);
 	console.log(dog instanceof Object); 
 
-  Output:
-    true
-    true // Object is the parent of all JavaScript objects
+Output:
+  true
+  true // Object is the parent of all JavaScript objects
 
 
 
@@ -1017,9 +1017,9 @@ Here is how you do it:
 	console.log(isNaN(42));
 
 
-  Output:
-    true  // → "hello" becomes NaN
-    false // 42 is a number
+Output:
+  true  // → "hello" becomes NaN
+  false // 42 is a number
 
   I need to add some clarification with this one. When I say that
   isNaN() first of all coerces its value to a number, I mean, in the
@@ -1046,7 +1046,7 @@ Here is how you do it:
   Since "hello" is not a valid number, JavaScript converts it to NaN.
   Then checks if its a NaN:
 
-    isNaN("hello") → isNaN(NaN) → true
+isNaN("hello") → isNaN(NaN) → true
 
 	That’s why 
 		console.log(isNaN("hello")); // returns true
@@ -1073,11 +1073,11 @@ Here is how you do it:
 		console.log(isNaN(numberString));   
 		console.log(isNaN(helloString));
 
-  Returns:
-    true
-    false
-    false
-    true // coercion to NaN first
+Returns:
+  true
+  false
+  false
+  true // coercion to NaN first
 
   The trick lies in remember ting hat it always converts its value to a
   NaN first, before checking its value.
@@ -1106,11 +1106,11 @@ Here is how you do it:
 	console.log(Number.isNaN(numberString));   
 	console.log(Number.isNaN(helloString));
 
-  Output:
-    true
-    false
-    false
-    false // no coercion
+Output:
+  true
+  false
+  false
+  false // no coercion
 	
   Use Number.isNaN() when you want a strict, reliable check — only
   returns true for the actual NaN value.
@@ -1129,14 +1129,14 @@ Here is how you do it:
 		typeof true;      // returns "boolean"
 		typeof false;     // returns "boolean"
 
-    Take care with typeof and arithmetic. It binds more
-    tightly than +, so this does not do what it looks like:
+Take care with typeof and arithmetic. It binds more
+tightly than +, so this does not do what it looks like:
 
 		typeof 2 + 2;     // "number2", not "number"
 
-    That is (typeof 2) + 2, which is the string "number"
-    joined to the number 2. Put brackets round the sum if
-    that is what you meant:
+That is (typeof 2) + 2, which is the string "number"
+joined to the number 2. Put brackets round the sum if
+that is what you meant:
 
 		typeof (2 + 2);   // "number"
 		console.log(typeof "hello");   // "string"

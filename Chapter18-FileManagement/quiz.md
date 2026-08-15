@@ -47,10 +47,10 @@ answers are all together in the Answers section further down, numbered to match 
 
 7) The chapter gives four ways to read XML. Match each to the situation it suits best:
 
-    FileReader + DOMParser
-    fetch() + DOMParser
-    XMLHttpRequest
-    XPath with document.evaluate()
+FileReader + DOMParser
+fetch() + DOMParser
+XMLHttpRequest
+XPath with document.evaluate()
 
    Clue: one is for local files, one is the modern remote way, one is the old remote way, and
    one is not about fetching at all.
@@ -75,7 +75,7 @@ answers are all together in the Answers section further down, numbered to match 
 
 11) EXERCISE. Take the array below, turn it into CSV text, and print it.
 
-    [['Name','Age'], ['Alice','25'], ['Bob','30']]
+[['Name','Age'], ['Alice','25'], ['Bob','30']]
 
   Clue: two joins, with different separators.
 
@@ -117,10 +117,11 @@ answers are all together in the Answers section further down, numbered to match 
    And even then, access is **read-only**. JavaScript cannot modify or delete the file on disk.
 
 
-2) 
-    readAsText(file)          gives you the file as plain text
-    readAsDataURL(file)       gives you a Base64-encoded string
-    readAsArrayBuffer(file)   gives you the raw binary data
+2)
+| readAsText(file) | gives you the file as plain text |
+|---|---|
+| readAsDataURL(file) | gives you a Base64-encoded string |
+| readAsArrayBuffer(file) | gives you the raw binary data |
 
    `readAsText()` is for text, CSV, XML and JSON. `readAsDataURL()` is what you use for images,
    because the result can go straight into an `<img src="...">`. `readAsArrayBuffer()` is for
@@ -277,9 +278,9 @@ answers are all together in the Answers section further down, numbered to match 
 
   Output:
 
-    Name,Age
-    Alice,25
-    Bob,30
+Name,Age
+Alice,25
+Bob,30
 
   Two joins doing two different jobs: the inner one puts commas **between the cells of a row**,
   and the outer one puts newlines **between the rows**.
@@ -319,8 +320,8 @@ answers are all together in the Answers section further down, numbered to match 
 
   Output:
 
-    Title: Book One, Author: Ann
-    Title: Book Two, Author: Ben
+Title: Book One, Author: Ann
+Title: Book Two, Author: Ben
 
   The point worth taking away is that once `DOMParser` has done its work, the XML behaves
   - *exactly like HTML** — `getElementsByTagName()`, `querySelector()` and `.textContent` all

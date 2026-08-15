@@ -335,13 +335,13 @@ However, there are two popular and safe ways to send emails using JavaScript:
 
 Let’s see the steps to set it up.
 
-  a) Sign up at emailjs.com and log in.
-  b) From the EmailJS dashboard, Add an email service (like Gmail).
-  c) Create a new email template, and add dynamic fields like
-    {{name}}, {{message}}, etc. This is done within the EmailJS app
-  d) Get your service ID, template ID, and public API key from the
-    EmailJS dashboard.
-  e) Include the EmailJS SDK in your HTML for example as a CDN:
+a) Sign up at emailjs.com and log in.
+b) From the EmailJS dashboard, Add an email service (like Gmail).
+c) Create a new email template, and add dynamic fields like
+  {{name}}, {{message}}, etc. This is done within the EmailJS app
+d) Get your service ID, template ID, and public API key from the
+  EmailJS dashboard.
+e) Include the EmailJS SDK in your HTML for example as a CDN:
 
 		<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 		<script>
@@ -349,8 +349,8 @@ Let’s see the steps to set it up.
   			emailjs.init('YOUR_PUBLIC_KEY'); 
 		</script>
 
-  f) If you are triggering the email sending after a form is submitted
-    (most popular approach), create the HTML form:
+f) If you are triggering the email sending after a form is submitted
+  (most popular approach), create the HTML form:
 
 		<form id="contact-form">
   			<input type="text" name="user_name" 
@@ -365,9 +365,9 @@ Let’s see the steps to set it up.
 			<button type="submit">Send</button>
 		</form>
 
-  g) Create an event listener to listen for a submit event on the form,
-    and send the email. This JavaScript code is in your JavaScript
-    file eg index.js:
+g) Create an event listener to listen for a submit event on the form,
+  and send the email. This JavaScript code is in your JavaScript
+  file eg index.js:
 
 		document.getElementById('contact-form')
 		.addEventListener('submit', function(e) {
@@ -396,11 +396,11 @@ Let’s see the steps to set it up.
   by navigating in your Terminal application into your project folder,
   and running the following command:
 
-    npm init -y
+npm init -y
 
   b) Install Nodemailer into your project by running this command:
 
-    npm install nodemailer
+npm install nodemailer
 
   c) Create a send-email.js file which will contain the Node.js
   Nodemailer code:
@@ -437,7 +437,7 @@ Let’s see the steps to set it up.
   d) Run the file containing the Nodemailer code so it sends the email.
   Run it by running this command in the Terminal:
 
-    node send-email.js
+node send-email.js
 
 
   Nodemailer lets you attach files, send HTML emails, and use templates. It is very powerful. In conclusion, JavaScript in the browser can’t send emails directly — but thanks to tools like EmailJS (for frontend apps) and Nodemailer (for backend apps), you can still build powerful email features in your applications.
@@ -460,7 +460,7 @@ Here is a step-by-step guide on how to generate an App Password for Gmail. First
 
   a) Go to your Google Account settings—here:
 
-    Visit: https://myaccount.google.com
+Visit: https://myaccount.google.com
 
   b) Turn on 2-Step Verification (if you haven't already)
 
@@ -480,7 +480,7 @@ Here is a step-by-step guide on how to generate an App Password for Gmail. First
     - Under “Select device”, choose Other and type something like NodeMailer App.
     - Click Generate. You’ll now see a 16-character password that looks something like this:
 
-      abcd efgh ijkl mnop
+abcd efgh ijkl mnop
 
   e) Next, use this password in Nodemailer. Replace your regular Gmail
   password in your Nodemailer code with the new App Password:

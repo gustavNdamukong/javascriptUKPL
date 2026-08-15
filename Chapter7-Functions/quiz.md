@@ -207,7 +207,7 @@ questions.
 
 5) It prints nothing, and throws:
 
-    ReferenceError: testLocalVar is not defined
+ReferenceError: testLocalVar is not defined
 
    testLocalVar was declared with var inside the function, which makes it function-scoped. It
    exists only while the function is running, and only inside it. From outside, the name means
@@ -246,8 +246,8 @@ questions.
 
 8) It prints:
 
-    10
-    undefined
+10
+undefined
 
    regularFunction is an ordinary function, and when you call it as obj.regularFunction(), its
    this refers to the object it was called on. So this.value is 10.
@@ -320,7 +320,7 @@ questions.
 
   Output:
 
-    The sum of the two numbers is: 10
+The sum of the two numbers is: 10
 
     Notice the two jobs the + sign does here. Inside the function it adds two numbers together.
     In the console.log line it joins a piece of text to a value, which is called concatenation.

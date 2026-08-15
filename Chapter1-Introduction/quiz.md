@@ -79,7 +79,7 @@ to match the questions.
 10) You want to test your code on your own computer. Name the VS Code extension this book
   recommends and say who made it. Then explain what the 5500 refers to in this address:
 
-    http://127.0.0.1:5500/index.html
+http://127.0.0.1:5500/index.html
 
   Clue: the chapter describes that last part as a numbered door.
 

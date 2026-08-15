@@ -92,39 +92,39 @@ A regular expression (also referred to as regex) is a
   with their meanings, and separate them 
   under topics according to their behaviours.
  
-  /.*/       An asterisk means "zero or more of
-      whatever comes just before it". This
-      is important, because it never works
-      on its own. Written by itself, /*/ is
-      not even a valid pattern, since there
-      is nothing in front of it to repeat.
-      Put it after a dot, as in /.*/, and you
-      get what people usually mean when
-      they say "match anything, or nothing
-      at all".
+/.*/       An asterisk means "zero or more of
+  whatever comes just before it". This
+  is important, because it never works
+  on its own. Written by itself, /*/ is
+  not even a valid pattern, since there
+  is nothing in front of it to repeat.
+  Put it after a dot, as in /.*/, and you
+  get what people usually mean when
+  they say "match anything, or nothing
+  at all".
 
-/./          A dot character. It matches all kinds 
-      of characters except a newline (\n).
-      It has a limitation, however; it will
-      match only a single character, so /./
-      will match everything on the page or
-      subject string by singling them out
-      one by one. That means, if you use it
-      on a string of characters, it will
-      match and stop at the first
-      character. That is why it is better to
-      use it in a combination with for
-      example + or * to expand its
-      capability.
+/./          A dot character. It matches all kinds
+  of characters except a newline (\n).
+  It has a limitation, however; it will
+  match only a single character, so /./
+  will match everything on the page or
+  subject string by singling them out
+  one by one. That means, if you use it
+  on a string of characters, it will
+  match and stop at the first
+  character. That is why it is better to
+  use it in a combination with for
+  example + or * to expand its
+  capability.
 
 /.+/       Means "one or more of whatever
-      comes just before it". Like the
-      asterisk, it needs something in front
-      of it to work on, so it is always used
-      in a combination. Unlike the asterisk,
-      it will not match nothing—as in, if no
-      character appears in the subject
-      string at all, it will not match.
+  comes just before it". Like the
+  asterisk, it needs something in front
+  of it to work on, so it is always used
+  in a combination. Unlike the asterisk,
+  it will not match nothing—as in, if no
+  character appears in the subject
+  string at all, it will not match.
 
 /<.>/    It will match anything that comes 
             between ‘<‘ and ‘>’ characters. This 
@@ -161,28 +161,28 @@ A regular expression (also referred to as regex) is a
 
                  <p><b>Hello</b></p>
 
-      This is not ideal, and not what you
-      may want. There is a better way to
-      use the + character. Here it is:
+This is not ideal, and not what you
+may want. There is a better way to
+use the + character. Here it is:
 
                   /<[^>]+>/
 
-      Read it as: match an opening angle
-      bracket (<), then one or more
-      characters that are NOT a closing
-      angle bracket, then a closing one.
-      Because [^>] refuses to match a >, the
-      match is forced to stop at the very
-      first > it meets, rather than running on
-      to the last one on the line. That is
-      exactly what we wanted.
-      Note that the [...] and the +
-    characters are a combination.
+  Read it as: match an opening angle
+  bracket (<), then one or more
+  characters that are NOT a closing
+  angle bracket, then a closing one.
+  Because [^>] refuses to match a >, the
+  match is forced to stop at the very
+  first > it meets, rather than running on
+  to the last one on the line. That is
+  exactly what we wanted.
+  Note that the [...] and the +
+characters are a combination.
 
-/?/      Matches an element zero or only 1 
-    time. It is used to make matches on a
-    specific element optional in the
-    subject string.
+/?/      Matches an element zero or only 1
+  time. It is used to make matches on a
+  specific element optional in the
+  subject string.
 
   If you ever need to literally match a
   character which happens to be regex meta 
@@ -197,7 +197,7 @@ A regular expression (also referred to as regex) is a
   5.0, you need to escape the dot (.) in it like 
   so: 
 
-      /5\.0/
+/5\.0/
 
   You may not be sure of how many 
   characters or digits will come after the dot 
@@ -206,7 +206,7 @@ A regular expression (also referred to as regex) is a
   simply add an asterisk after the last zero 
   like so
 
-    /5\.0*/
+/5\.0*/
 
   The backslash can escape anything 
   including a backslash itself, which is useful 
@@ -269,41 +269,41 @@ A regular expression (also referred to as regex) is a
   any of the characters in the bracket is 
   found in the subject string. For example:
 
-/gr[ae]y/    This will match ‘gray’ ‘grey’. Any 
-      meta characters after the square
-      brackets will tell the system to
-      repeat that match any number of
-      times. If you modify the pattern
-      like /gr[ae]+y/ then it will match
-      ‘greey’ and ‘graay’ and ‘greay’
-      and ‘graey’. Just understand that
-      without the + character after the
-      square brackets, each character
-      between the brackets will be
-      matched only once.
+/gr[ae]y/    This will match ‘gray’ ‘grey’. Any
+  meta characters after the square
+  brackets will tell the system to
+  repeat that match any number of
+  times. If you modify the pattern
+  like /gr[ae]+y/ then it will match
+  ‘greey’ and ‘graay’ and ‘greay’
+  and ‘graey’. Just understand that
+  without the + character after the
+  square brackets, each character
+  between the brackets will be
+  matched only once.
 
-  An alternative way to achieve the same
-  outcome is to use a pipe character like so:
-  /a|e/     You simply place a pipe character 
-      between the characters you want
-      to match either of. This approach is
-      not a class, but I am showing you
-      here just for informative purposes.
+An alternative way to achieve the same
+outcome is to use a pipe character like so:
+/a|e/     You simply place a pipe character
+  between the characters you want
+  to match either of. This approach is
+  not a class, but I am showing you
+  here just for informative purposes.
 
 
 #### RANGE
 
-      A range will match any character
-      within a range.
-/[0-9]/   will match any number between 0 
-      and 9. Just place a hyphen between
-      the two numbers. [5-8] will match
-      any number between 5 and 8.
+  A range will match any character
+  within a range.
+/[0-9]/   will match any number between 0
+  and 9. Just place a hyphen between
+  the two numbers. [5-8] will match
+  any number between 5 and 8.
 
-/\d/        Is a shorthand to match any single 
-      digit number. It is exactly the
-      equivalent of the pattern above,
-      /[0-9]/.
+/\d/        Is a shorthand to match any single
+  digit number. It is exactly the
+  equivalent of the pattern above,
+  /[0-9]/.
 
 
 
@@ -323,8 +323,8 @@ A regular expression (also referred to as regex) is a
   a combination.
   Here is one you have already seen:
 
-  /[^0-9]/   matches any single character
-      that is NOT a digit
+/[^0-9]/   matches any single character
+  that is NOT a digit
 
   And the tag pattern from earlier:
 
@@ -364,7 +364,7 @@ A regular expression (also referred to as regex) is a
   the two ends to make sure our text starts 
   and finishes the line like so:
 
-    /^Le *Guin$/
+/^Le *Guin$/
 
   The ^ pins the match to the start of the text
   and the $ pins it to the end, so the subject
@@ -385,7 +385,7 @@ A regular expression (also referred to as regex) is a
 /\b/     matches a word boundary
 
 /\B/     matches anywhere that is NOT a
-    word boundary
+  word boundary
 
 /\d/     single digit
 
@@ -402,7 +402,7 @@ A regular expression (also referred to as regex) is a
 /\w/     word characters (a-zA-Z0-9_)
 
 /\W/     non-word character, so anything but
-    any of these: a-z, A-Z, 0-9 and _
+  any of these: a-z, A-Z, 0-9 and _
 
   Note that every one of these begins with a
   backslash, and that there is no space after
@@ -452,43 +452,43 @@ A regular expression (also referred to as regex) is a
   some examples, assuming that 
   /.../ contains your regex pattern:
 
-  /.../g    This will match in a global manner, 
-      rather than at the first match that
-      is encountered. You could end up
-      with multiple matches rather than
-      just one. Say you are matching any
-      occurrences of the word ‘cat’ in a
-      subject string, if the string had 4
-      occurrences of the word ‘cat’, it will
-      return all 4 occurrences rather
-      than just 1 for the first one.
+/.../g    This will match in a global manner,
+  rather than at the first match that
+  is encountered. You could end up
+  with multiple matches rather than
+  just one. Say you are matching any
+  occurrences of the word ‘cat’ in a
+  subject string, if the string had 4
+  occurrences of the word ‘cat’, it will
+  return all 4 occurrences rather
+  than just 1 for the first one.
 
 /.../i      This makes the match case-insensitive. Matches are normally
-      case-sensitive, so having this will
-      make the following regex patterns
-      work in the same way:
+  case-sensitive, so having this will
+  make the following regex patterns
+  work in the same way:
           
-      /[a-zA-Z]/   and   /[a-z]/i
+/[a-zA-Z]/   and   /[a-z]/i
 
-      or
+or
 
-      /[A-Z]/i    and   /[a-z]/i
+/[A-Z]/i    and   /[a-z]/i
 
 
 /.../m    This enables multiline mode. It is
-      easy to misread this one, so it is
-      worth being careful. It does NOT
-      mean the match can run across
-      several lines of text. What it
-      changes is the meaning of the two
-      anchors: with m in place, ^ matches
-      at the start of every line rather
-      than only the start of the whole
-      text, and $ matches at the end of
-      every line rather than only the end.
-      So it is about where each line
-      begins and ends, not about matching
-      through them.
+  easy to misread this one, so it is
+  worth being careful. It does NOT
+  mean the match can run across
+  several lines of text. What it
+  changes is the meaning of the two
+  anchors: with m in place, ^ matches
+  at the start of every line rather
+  than only the start of the whole
+  text, and $ matches at the end of
+  every line rather than only the end.
+  So it is about where each line
+  begins and ends, not about matching
+  through them.
 
 
 #### The difference between g and m

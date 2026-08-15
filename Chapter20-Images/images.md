@@ -698,7 +698,7 @@ So in human terms:
   image so that its own center lines up with the canvas center.”
 
 This is a very common pattern when rotating things in canvas:
-    translate → rotate → draw → restore.
+  translate → rotate → draw → restore.
 
 
 

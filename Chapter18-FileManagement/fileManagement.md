@@ -260,14 +260,14 @@ Next, place the following code in your JavaScript file eg index.js which should 
       				output.textContent = e.target.result;
     			};
 
-    Note that the code within this block is only run when the file read
-    has been completed. It is therefore very necessary to wrap that
-    code within that event (onload()) block, so that being an
-    asynchronous call, it only runs when the file is successfully read.
-    Once it is read, the code within that block processes the
-    contents of the file. In this case, we extract the file’s contents—
-    which is stored in e.target.result, and assign it to the value of the
-    <pre> tag in the DOM.
+Note that the code within this block is only run when the file read
+has been completed. It is therefore very necessary to wrap that
+code within that event (onload()) block, so that being an
+asynchronous call, it only runs when the file is successfully read.
+Once it is read, the code within that block processes the
+contents of the file. In this case, we extract the file’s contents—
+which is stored in e.target.result, and assign it to the value of the
+<pre> tag in the DOM.
 	
 	-When reading is complete, the file content is displayed inside a 
 		<pre> block using textContent.
@@ -390,33 +390,33 @@ Here is the full JavaScript code:
 			// ...
 		});
 
-    I will now explain what we do in the event blocks, which each
-    contain the code that will run when the corresponding events
-    fire. You will find that it is so easy to understand, especially
-    because the names of the events actually mean what they are
-    meant to do. So, let’s start with when the 'dragover' event fires.
-    This will happen when the user has dragged an item over the
-    border of the ‘dropZone’ div. This should happen before the item
-    is released (dropped). What we do in the code block to react to
-    this event is simple, we set the color of the border to green. This
-    is just to mark the zone to give the user a
-    visual guide of the boundaries in which they are expected to
-    drop the item.
+I will now explain what we do in the event blocks, which each
+contain the code that will run when the corresponding events
+fire. You will find that it is so easy to understand, especially
+because the names of the events actually mean what they are
+meant to do. So, let’s start with when the 'dragover' event fires.
+This will happen when the user has dragged an item over the
+border of the ‘dropZone’ div. This should happen before the item
+is released (dropped). What we do in the code block to react to
+this event is simple, we set the color of the border to green. This
+is just to mark the zone to give the user a
+visual guide of the boundaries in which they are expected to
+drop the item.
 
-    In the code block of the 'dragleave' event listener, it is simple as
-    well. This event happens when the user moves with their mouse
-    out of the dropZone area whilst still dragging the item. By this,
-    they are essentially leaving the zone, hence the name of the
-    event is ‘dragleave’. At this point, they have not let go of the item
-    yet. What the code does here is revert the border colour of the
-    dropZone to what it was before it was turned to green. Again,
-    this is to give the user a visual guide of the drop zone which they
-    have now left.
+In the code block of the 'dragleave' event listener, it is simple as
+well. This event happens when the user moves with their mouse
+out of the dropZone area whilst still dragging the item. By this,
+they are essentially leaving the zone, hence the name of the
+event is ‘dragleave’. At this point, they have not let go of the item
+yet. What the code does here is revert the border colour of the
+dropZone to what it was before it was turned to green. Again,
+this is to give the user a visual guide of the drop zone which they
+have now left.
 
-    The 'drop' event happens when the user lets go of (drops) the
-    item. It is in this code block that most of the work happens. Here
-    we proceed to get the file, and this time we are getting the
-    dragged-and-dropped file instead of a file input.
+The 'drop' event happens when the user lets go of (drops) the
+item. It is in this code block that most of the work happens. Here
+we proceed to get the file, and this time we are getting the
+dragged-and-dropped file instead of a file input.
 		
     When a file is dragged into the #dropZone area, we use
     JavaScript to prevent the default browser behaviour and read the
@@ -441,8 +441,8 @@ Here is the full JavaScript code:
 
 			reader.readAsText(file);
 
-    This method call will asynchronously read the file and trigger the
-    onload event on the reader when it is done
+This method call will asynchronously read the file and trigger the
+onload event on the reader when it is done
 
 			reader.onload = function (e) {
 				// ...
@@ -483,8 +483,8 @@ Here is the full JavaScript code:
   				setTimeout(() => URL.revokeObjectURL(url), 1000);
 			});
 
-  First, to prepare the contents to be converted into a downloadable
-    file in the browser, we create a bob object from the contents.
+First, to prepare the contents to be converted into a downloadable
+  file in the browser, we create a bob object from the contents.
 
 			const blob = new Blob([modifiedText], { type: 'text/plain' });
 
@@ -513,11 +513,11 @@ Here is the full JavaScript code:
   			a.download = 'modified-file.txt';
   			a.click();
 
-    The first line creates the anchor tag. Next, we assign the URL
-    reference of the generated file in memory to the href attribute of
-    the anchor element. We specify our desired name for the file to
-    be downloaded as 'modified-file.txt’. Lastly, we trigger a click
-    event by calling the click() method on the anchor element.
+The first line creates the anchor tag. Next, we assign the URL
+reference of the generated file in memory to the href attribute of
+the anchor element. We specify our desired name for the file to
+be downloaded as 'modified-file.txt’. Lastly, we trigger a click
+event by calling the click() method on the anchor element.
 
 			a.click();
 
@@ -807,8 +807,8 @@ This works just fine for small files. But for large files (like videos, audio, o
       - Has less overhead
       - Sends data as-is with minimal packaging
 
-    This results in faster communication, especially for apps that
-    do a lot of back-and-forth (like collaborative tools).
+This results in faster communication, especially for apps that
+do a lot of back-and-forth (like collaborative tools).
 
   - Using a WebSocket to send chunks provides more fine-grained control over the file upload process, such as giving you the ability to pause, resume the upload, or retry if something goes wrong. These can be useful if you are building a file upload manager app, or if you are working with slow or unstable networks which can stall mid way in the upload process. By sending chunks one at a time:
 
@@ -965,9 +965,9 @@ This means first of all that you must have a WebSocket server up and running, wh
 
   localhost - means your own computer (not the internet).
 
-  3000 - refers to the port number where the WebSocket server should
-      be listening for this to work. Change that port number to the
-      port number your WebSocket server is listening.
+3000 - refers to the port number where the WebSocket server should
+  be listening for this to work. Change that port number to the
+  port number your WebSocket server is listening.
 
 If you are using localhost (your machine), as is in this example, it is very common to use a Node.js backend—because Node has full support for WebSockets, file handling, and custom server logic. The above example assumes you are doing that—running a Node.js server locally. 
 
@@ -1001,15 +1001,15 @@ We will maintain the same example JavaScript code above that captures the upload
       - On Linux: Use your terminal or shell
       - Type the following and press Enter:
 		
-      node -v
+node -v
 
   You should see something like:
 
-      v20.12.2
+v20.12.2
 
   That means Node.js is installed. Then check for npm:
 
-      npm -v
+npm -v
 
   You should see a version number for that too. Now that Node.js is
   installed, you can run JavaScript files in your terminal using node,
@@ -1078,11 +1078,12 @@ After the upload, you should see a new file “uploaded_video.mp4” created in 
   customisable. Here is a breakdown of those event names:
 
 	
-  Event name	      Meaning
-  "message"	A new message (data) was received
-  "open"	The connection has been successfully opened
-  "close"	The connection has closed
-  "error"	Something went wrong
+| Event name | Meaning |
+|---|---|
+| "message" | A new message (data) was received |
+| "open" | The connection has been successfully opened |
+| "close" | The connection has closed |
+| "error" | Something went wrong |
 
   So when you write:
 
@@ -1135,11 +1136,11 @@ There are two (2) ways you could do it. Here they are:
 		// Or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
-    The value (string) you pass to io() will be location of your
-    WebSocket server, which can be on your local
-    machine (eg server.js), in which case you would pass in
-    "http://localhost:3000". Note that this is different from
-    "ws://localhost:3000".
+The value (string) you pass to io() will be location of your
+WebSocket server, which can be on your local
+machine (eg server.js), in which case you would pass in
+"http://localhost:3000". Note that this is different from
+"ws://localhost:3000".
 
   - 2) Alternatively, you can use the Node Package Manager (NPM) tool
     which you should have installed on your machine together with
@@ -1147,7 +1148,7 @@ There are two (2) ways you could do it. Here they are:
     WebSocket (ws) library. Use NPM to install the socket.io client
     onto your local machine like so, via your terminal:
 
-      npm install socket.io-client
+npm install socket.io-client
 
 #### Then in your JavaScript code
 
@@ -1156,11 +1157,11 @@ There are two (2) ways you could do it. Here they are:
 		// or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
-    Again, the value (string) you pass to io() will be the
-    location of your WebSocket server, which can be on your local
-    machine (eg server.js), in which case you would pass in
-    "http://localhost:3000". Note that this is different from
-    "ws://localhost:3000".
+Again, the value (string) you pass to io() will be the
+location of your WebSocket server, which can be on your local
+machine (eg server.js), in which case you would pass in
+"http://localhost:3000". Note that this is different from
+"ws://localhost:3000".
 
 #### Conclusion
 In conclusion, when you are talking to a standard WebSocket server, you create the client end of the connection like so:
@@ -1187,7 +1188,7 @@ Make sure CORS is enabled on your server. CORS stands for Cross-Origin Resource 
 
   - Install the cors package via npm
 
-    npm install cors
+npm install cors
 
   - Use it in your server file (server.js in our example). Here’s an example server (server.js) with CORS enabled:
 
@@ -1363,8 +1364,8 @@ This modern and clean method is perfect for reading remote XML files available o
 c) Using XMLHttpRequest
 This is the older way to read XML from a remote source, but it still works and is widely used in legacy systems. The XMLHttpRequest object can directly receive an XML document response. In many cases, you can work with this responseXML directly. If you're dealing with a plain text response instead, you can still use DOMParser to turn it into a DOM document and proceed with normal XML handling using DOM methods.
 
-  Workflow hint: XMLHttpRequest → (optional) DOMParser → DOM
-      methods
+Workflow hint: XMLHttpRequest → (optional) DOMParser → DOM
+  methods
 
 d) JavaScript XML Handling with XPath
 When you need precise control over what part of the XML to extract—especially from deeply nested structures—XPath becomes extremely useful. XPath lets you write expressions to “query” specific data from an XML document. You can use it with any of the above methods, once you have an XML document in hand. JavaScript provides the document.evaluate() function to apply XPath queries, allowing you to pull out just the data you need, even from complex XML files.
@@ -1761,13 +1762,14 @@ As you can see, this is XML structured data about books. The data contains two b
   		const xmlDoc = xhr.responseXML; 
   		// Use XPath on xmlDoc here (document.evaluate())
 
-    const result = document.evaluate(
-    "//book/title",       // XPath expression
-      xmlDoc,               // Context node (the parsed XML)
-    null,                 // No custom namespace resolver
-    XPathResult.ANY_TYPE, // Type of result
-    null                  // No previous result to reuse
-    );
+const result = document.evaluate(
+| "//book/title", | // XPath expression |
+|---|---|
+| xmlDoc, | // Context node (the parsed XML) |
+| null, | // No custom namespace resolver |
+XPathResult.ANY_TYPE, // Type of result
+null                  // No previous result to reuse
+);
 
     		let node = result.iterateNext();
     		while (node) {
@@ -1809,13 +1811,14 @@ Also, because the data has been converted into a document, it is ready for DOM m
 			xmlStr, 'text/xml');
     		// Use XPath here
 
-    const result = document.evaluate(
-      "//book/title",       // XPath expression
-      xmlDoc,               // Context node (the parsed XML)
-      null,                 // No custom namespace resolver
-      XPathResult.ANY_TYPE, // Type of result
-      null                  // No previous result to reuse
-    );
+const result = document.evaluate(
+| "//book/title", | // XPath expression |
+|---|---|
+| xmlDoc, | // Context node (the parsed XML) |
+| null, | // No custom namespace resolver |
+  XPathResult.ANY_TYPE, // Type of result
+  null                  // No previous result to reuse
+);
   
     		let node = result.iterateNext();
     		while (node) {

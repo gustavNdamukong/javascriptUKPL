@@ -126,8 +126,8 @@ questions.
    `toString()` is the plain one, and it is what you get automatically if you print a Date
    without calling anything. For a user in New York at midday:
 
-    Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern Daylight Time)
-    UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
+Local Time: Thu Mar 20 2025 12:00:00 GMT-0400 (Eastern Daylight Time)
+UTC Time: Thu, 20 Mar 2025 16:00:00 GMT
 
    One date. Two ways of writing it down.
 
@@ -140,8 +140,8 @@ questions.
    What you get back is not your moment converted. It is a **different moment altogether**,
    four hours earlier than the one you started with:
 
-    Thu, 20 Mar 2025 12:00:00 GMT     // what it really gives
-    Thu, 20 Mar 2025 16:00:00 GMT     // what people expect
+Thu, 20 Mar 2025 12:00:00 GMT     // what it really gives
+Thu, 20 Mar 2025 16:00:00 GMT     // what people expect
 
    And it is worse than simply wrong, because it looks right. The date is right, the minutes
    are right, and only the hour is quietly off by the size of your time zone offset — which is
@@ -284,12 +284,12 @@ questions.
 
   Output, one line per second:
 
-    5
-    4
-    3
-    2
-    1
-    Liftoff!
+5
+4
+3
+2
+1
+Liftoff!
 
   The interesting part is that the timer cancels itself from inside its own callback, using
   the ID stored just outside it. That works because `const countdownId` is assigned before

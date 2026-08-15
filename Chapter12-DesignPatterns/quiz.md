@@ -184,9 +184,9 @@ questions.
 
 5) The console shows:
 
-    Loading cat.png
-    Displaying cat.png
-    Displaying cat.png
+Loading cat.png
+Displaying cat.png
+Displaying cat.png
 
    The word "Loading" appears **once**, even though `display()` was called twice. That is the
    whole point. The proxy holds off creating the real, expensive image until it is genuinely
@@ -381,8 +381,8 @@ questions.
 
   Output:
 
-    Email sent
-    Written to the log
+Email sent
+Written to the log
 
   Notice that the subject knows nothing about what its observers actually do. It only knows
   they each have an `update()` method. That is what makes the pattern useful: you can add a

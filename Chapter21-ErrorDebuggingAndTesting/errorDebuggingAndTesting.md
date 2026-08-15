@@ -185,14 +185,14 @@ We will be using them a lot in the code examples in this book to show the result
 	let username = "Alice";
 	console.log("Current user:", username);
 
-  It’s purpose: general purpose
-  Arguments: You can pass strings, numbers, variables, objects,
-    arrays, and even multiple values separated by commas:
+It’s purpose: general purpose
+Arguments: You can pass strings, numbers, variables, objects,
+  arrays, and even multiple values separated by commas:
 
 		console.log("x:", x, "y:", y);
 
-  Use Case: Checking values during development, tracing flow, or
-    understanding what’s going on in your program.
+Use Case: Checking values during development, tracing flow, or
+  understanding what’s going on in your program.
 
 #### Other console Methods and Their Uses
 
@@ -203,21 +203,21 @@ We will be using them a lot in the code examples in this book to show the result
 	Example:
 		console.error("Something went wrong!");
 
-  Use Case: Reporting serious issues like failed API calls, missing files,
-    or exceptions.
-  Benefit: Makes it easy to visually identify problems in logs.
+Use Case: Reporting serious issues like failed API calls, missing files,
+  or exceptions.
+Benefit: Makes it easy to visually identify problems in logs.
 
 
 
 
 #### console.warn()
-  Purpose: Highlights a warning in yellow, without treating it like a full-
-    blown error.
+Purpose: Highlights a warning in yellow, without treating it like a full-
+  blown error.
 
-  Example:
-    console.warn("This is just a warning.");
-  Use Case: When something is suspicious but not necessarily fatal
-    (like deprecated features).
+Example:
+  console.warn("This is just a warning.");
+Use Case: When something is suspicious but not necessarily fatal
+  (like deprecated features).
 
 
 
@@ -226,9 +226,9 @@ We will be using them a lot in the code examples in this book to show the result
 	Example:
 		console.info("This is some useful info.");
 
-  Use Case: Not as commonly used, but can be useful for providing
-    insights during debugging. Appears similar to log() in most
-    browsers
+Use Case: Not as commonly used, but can be useful for providing
+  insights during debugging. Appears similar to log() in most
+  browsers
 
 
 #### console.debug()
@@ -236,10 +236,10 @@ We will be using them a lot in the code examples in this book to show the result
 	Example: 
 		console.debug("This is a debug message.");
 	
-  Use Case: Used when you want something that can be hidden in
-    some browsers unless "Verbose" logging is turned on.
-  Note: May not always be visible unless you expand the console log
-    level settings.
+Use Case: Used when you want something that can be hidden in
+  some browsers unless "Verbose" logging is turned on.
+Note: May not always be visible unless you expand the console log
+  level settings.
 
 	
 
@@ -253,25 +253,25 @@ We will be using them a lot in the code examples in this book to show the result
 		
 		console.table(users);
 
-  Use Case: When printing arrays of objects or data collections. Super
-    useful!
+Use Case: When printing arrays of objects or data collections. Super
+  useful!
 
 
 
 #### console.dir()
-  Purpose: Displays an interactive list of the properties of a specified
-    JavaScript object.
-  Example:
-    console.dir(document.body);
-  Use Case: Useful for exploring DOM objects and nested structures.
+Purpose: Displays an interactive list of the properties of a specified
+  JavaScript object.
+Example:
+  console.dir(document.body);
+Use Case: Useful for exploring DOM objects and nested structures.
 
 
 
 #### console.assert()
-  Purpose: Only logs the message if the assertion fails.
-  Example:
-    console.assert(2 + 2 === 5, "Math is broken!");
-  Use Case: Helpful for adding sanity checks during development.
+Purpose: Only logs the message if the assertion fails.
+Example:
+  console.assert(2 + 2 === 5, "Math is broken!");
+Use Case: Helpful for adding sanity checks during development.
 
 
 
@@ -335,9 +335,9 @@ Alternatively, you can use the Firebug Lite JavaScript module which is easier to
     picked up by the break point tools in the browser DevTools.
     Just type ‘debugger’; at the line you want execution to stop at.
         
-    Wherever you place that line, the browser will pause execution
-    when it gets there. The DevTools in your browser have to be open
-    for that to happen. For example:
+Wherever you place that line, the browser will pause execution
+when it gets there. The DevTools in your browser have to be open
+for that to happen. For example:
 
            	function checkUser() {
                 	let name = "Alice";
@@ -352,8 +352,8 @@ Alternatively, you can use the Firebug Lite JavaScript module which is easier to
     - With each click on the to ‘Step into function’ will keep skipping
     to the next line.
 
-    This is great for temporarily inspecting variables without needing
-    to manually set breakpoints in DevTools.
+This is great for temporarily inspecting variables without needing
+to manually set breakpoints in DevTools.
 
 
   - b) Using Breakpoints in Browser DevTools
@@ -380,11 +380,11 @@ Alternatively, you can use the Firebug Lite JavaScript module which is easier to
       arrow. Script execution will then resume as normal.
 
 
-  Bonus tip:
-    From DevTools, you can also step through code line-by-line
-    using the “Step over”, “Step into”, and “Step out” buttons in the
-    while your code execution is paused-just like a professional
-    debugger
+Bonus tip:
+  From DevTools, you can also step through code line-by-line
+  using the “Step over”, “Step into”, and “Step out” buttons in the
+  while your code execution is paused-just like a professional
+  debugger
 
 
   
@@ -671,7 +671,7 @@ Example 2: A syntax error is caught:
 
 
   Comments: JavaScript throws an error when trying to parse bad
-      JSON, but we handle it and avoid a crash.
+  JSON, but we handle it and avoid a crash.
 —————————————
 
 
@@ -687,8 +687,8 @@ Example 3: The use of finally:
 	}
 
 
-  Output: Caught error: Unexpected problem
-      Cleanup happens here!
+Output: Caught error: Unexpected problem
+  Cleanup happens here!
 
 
   Comments: The finally block runs even though an error occurred.
@@ -722,10 +722,10 @@ Example 4: User input validation:
 	processAge(30);        
 
 
-  Output:
-    Input Error: Age must be a number
-    Input Error: Age can't be negative
-    Valid age: 30
+Output:
+  Input Error: Age must be a number
+  Input Error: Age can't be negative
+  Valid age: 30
 
 
 	Comments: Because we know we want to be throwing exceptions if validation errors are found, we wrap our whole set of validation checks within a try {} block so we can handle them in the catch block.
@@ -784,10 +784,10 @@ Example 5: Re-throwing and Handling at a Higher Level
   Comments:
     - The structure of this pattern is like this:
 
-      handleUserInput()
-      └── validateUsername("Tom")
-      └── throw new Error(...)   // thrown
-      └── catch & re-throw error
+handleUserInput()
+└── validateUsername("Tom")
+└── throw new Error(...)   // thrown
+└── catch & re-throw error
 
 				  	// final handler
   				└── catch (err)                

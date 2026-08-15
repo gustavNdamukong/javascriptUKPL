@@ -169,8 +169,8 @@ Answers section further down, numbered to match the questions.
 
    That is the pairing worth memorising, because the two facts pull in opposite directions:
 
-    for...of    HTMLCollection: yes    NodeList: yes
-    .forEach()  HTMLCollection: NO     NodeList: yes
+for...of    HTMLCollection: yes    NodeList: yes
+.forEach()  HTMLCollection: NO     NodeList: yes
 
    Neither of them has `.map()`, `.filter()` or any of the rest.
 
@@ -213,8 +213,8 @@ Answers section further down, numbered to match the questions.
 
         <div id="myDiv">Visible <span style="display:none">hidden</span> text</div>
 
-    div.textContent   // "Visible hidden text"
-    div.innerText     // "Visible text"
+div.textContent   // "Visible hidden text"
+div.innerText     // "Visible text"
 
    Two more differences. `innerText` collapses runs of spaces and line breaks the way the browser
    does when it draws the page, while `textContent` hands the whitespace back exactly as it sits
@@ -309,9 +309,9 @@ Answers section further down, numbered to match the questions.
 
   Output, for three paragraphs reading "First note", "Second note", "Third note":
 
-    First note
-    Second note
-    Third note
+First note
+Second note
+Third note
 
   `querySelectorAll()` would actually let you call `.forEach()` directly, because NodeLists
   have it. But spreading it into a real array first is the habit worth having, because it works
@@ -367,8 +367,8 @@ Answers section further down, numbered to match the questions.
 
   For a page with three list items reading "one", "two" and "three":
 
-    Number of items: 3
-    First item: one
+Number of items: 3
+First item: one
 
   Notice that the two calls differ in exactly two places: the type asked for in the fourth
   argument, and the property read from the result. That is the whole idea of question 10.
@@ -391,12 +391,12 @@ Answers section further down, numbered to match the questions.
 
   Output:
 
-    Protocol: https:
-    Hostname: shop.example.com
-    Port: 8080
-    Path: /cart
-    Item: 42
-    Hash: #summary
+Protocol: https:
+Hostname: shop.example.com
+Port: 8080
+Path: /cart
+Item: 42
+Hash: #summary
 
   Two details that catch people. `protocol` includes the colon — `"https:"`, not `"https"`.
   And `hash` includes the `#`, just as `search` would include the `?`.

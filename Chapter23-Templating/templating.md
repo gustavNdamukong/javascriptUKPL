@@ -71,7 +71,7 @@ These frameworks essentially replace traditional templating engines in many proj
   - You can include it via a CDN or install via npm
   Install it by running this command:
 
-    npm install handlebars
+npm install handlebars
 
 	 Or use a CDN in the head tag of your HTML page:
 		<head>	

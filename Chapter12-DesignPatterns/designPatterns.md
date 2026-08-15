@@ -10,9 +10,9 @@ Design patterns are reusable solutions to
   maintainability and scalability. Design 
   patterns are categorised into three groups:
 
-   1) Creational Patterns
-    These are concerned with object
-    creation.
+1) Creational Patterns
+These are concerned with object
+creation.
 
     - SINGLETON
     - FACTORY
@@ -756,9 +756,9 @@ The Decorator pattern works exactly like that—wrapping extras around something
 
   The output of this code will be:
 
-    CPU started
-    Memory loaded
-    Hard drive read
+CPU started
+Memory loaded
+Hard drive read
 
 
 
@@ -1439,14 +1439,14 @@ rice.prepareMeal();
   - It ensures a consistent structure while allowing flexibility in specific
     steps.
 
-  Template Method (prepareMeal):
-    This method is defined in the base
-    class (MealPreparation) where the
-    algorithm’s structure is defined. Here,
-    some steps (like boilWater and serve)
-    are common, while others (like cook)
-    are left abstract for subclasses to
-    implement.
+Template Method (prepareMeal):
+  This method is defined in the base
+  class (MealPreparation) where the
+  algorithm’s structure is defined. Here,
+  some steps (like boilWater and serve)
+  are common, while others (like cook)
+  are left abstract for subclasses to
+  implement.
 
   There are concrete Classes (PastaMeal,
   RiceMeal):
@@ -1571,21 +1571,21 @@ This pattern encapsulates requests as objects, allowing you to parameterise meth
   - LightOnCommand,
   - LightOffCommand):
 
-  These command classes accept a
-    receiver class Light. This makes sense
-    because their command action is all
-    about light.
-  Through their execute() methods, these
-    classes indirectly implement the
-    specific actions (turnOn, turnOff) by
-    delegating the work to the Light
-    receiver class which is the class having
-    these turnOn() and turnOff() methods.
-    Which of them is called will depend on
-    the command interface-so it will be
-    turnOn() or turnOff() for
-    LightOnCommand and
-    LightOffCommand respectively.
+These command classes accept a
+  receiver class Light. This makes sense
+  because their command action is all
+  about light.
+Through their execute() methods, these
+  classes indirectly implement the
+  specific actions (turnOn, turnOff) by
+  delegating the work to the Light
+  receiver class which is the class having
+  these turnOn() and turnOff() methods.
+  Which of them is called will depend on
+  the command interface-so it will be
+  turnOn() or turnOff() for
+  LightOnCommand and
+  LightOffCommand respectively.
 
   Invoker (RemoteControl):
   The invoker class stores a command and

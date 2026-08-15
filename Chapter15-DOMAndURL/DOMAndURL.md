@@ -272,17 +272,18 @@ select elements; here’s a list of the most commonly used HTML
 elements and their corresponding DOM interface names (JavaScript object types): This is not the exhaustive list, but rather a few, just so you get the idea.
 
      HTML tag	       DOM Object Type
-`<div>`	HTMLDivElement
-`<p>`	HTMLParagraphElement
-`<h1>`, `<h3>` etc	HTMLHeadingElement
-`<a>` (link)	HTMLAnchorElement
-`<img>`	HTMLImageElement
-`<input>`	HTMLInputElement
-`<textarea>`	HTMLTextAreaElement
-`<form>`	HTMLFormElement
-`<table>`	HTMLTableElement
-`<ul>`, `<ol>`	HTMLUListElement, HTMLOListElement
-`<body>`	HTMLBodyElement
+| `<div>` | HTMLDivElement |
+|---|---|
+| `<p>` | HTMLParagraphElement |
+| `<h1>`, `<h3>` etc | HTMLHeadingElement |
+| `<a>` (link) | HTMLAnchorElement |
+| `<img>` | HTMLImageElement |
+| `<input>` | HTMLInputElement |
+| `<textarea>` | HTMLTextAreaElement |
+| `<form>` | HTMLFormElement |
+| `<table>` | HTMLTableElement |
+| `<ul>`, `<ol>` | HTMLUListElement, HTMLOListElement |
+| `<body>` | HTMLBodyElement |
 
 All I need you to know right now is that all HTML elements have their specific object types, like the `<p>` tag has HTMLParagraphElement. But these object types all inherit from another JavaScript object, HTMLElement, so they get everything it has. (Careful with the word “child” here—in this chapter it means a child node on the page, which is a different idea altogether.) Therefore all the properties and methods of the HTMLElement object are available to them. That is why after selecting an element, we can reference properties on it like .innerHTML, .style, .classList, to manipulate it. Let’s now look at how to select elements on a web page.
 
@@ -295,12 +296,12 @@ All I need you to know right now is that all HTML elements have their specific o
 
 
 ### The getElementById() method
-    It is used like this: document.getElementById("id");
-    This method of the document object grabs an element by the
-    value of its id attribute. It selects that single element and returns
-    it as an HTMLElement object.
-    Pass it the value of the id attribute of the element you want to
-    select, as a string. For example:
+It is used like this: document.getElementById("id");
+This method of the document object grabs an element by the
+value of its id attribute. It selects that single element and returns
+it as an HTMLElement object.
+Pass it the value of the id attribute of the element you want to
+select, as a string. For example:
 
 		<p id='myText'>Some text</p>
 
@@ -309,24 +310,24 @@ All I need you to know right now is that all HTML elements have their specific o
 
 
 ### The getElementsByClassName() method
-    It is used like this:
-    document.getElementsByClassName("className");
-    Just like the document.getElementById() grabs an element by its
-    ID, getElementsByClassName() method as its name suggests,
-    selects elements by the class name that you give to it. Note that
-    the Elements in the method name getElementsByClassName() is
-    spelled with an ’s’. This makes sense because a class attribute
-    is usually assigned to multiple elements anyway.
+It is used like this:
+document.getElementsByClassName("className");
+Just like the document.getElementById() grabs an element by its
+ID, getElementsByClassName() method as its name suggests,
+selects elements by the class name that you give to it. Note that
+the Elements in the method name getElementsByClassName() is
+spelled with an ’s’. This makes sense because a class attribute
+is usually assigned to multiple elements anyway.
 
-    Call this method on the document object passing to it the
-    class you want to target on the web page. Note that this
-    obviously means you will end up with multiple elements, since unlike
-    the id attributes which have to be unique, the same class
-    attribute value can, and is usually assigned to multiple HTML
-    elements. These (multiple) items of the matching class are
-    returned as a live collection ([object HTMLCollection]). Live
-    collection means it automatically updates when the DOM
-    changes. For example:
+Call this method on the document object passing to it the
+class you want to target on the web page. Note that this
+obviously means you will end up with multiple elements, since unlike
+the id attributes which have to be unique, the same class
+attribute value can, and is usually assigned to multiple HTML
+elements. These (multiple) items of the matching class are
+returned as a live collection ([object HTMLCollection]). Live
+collection means it automatically updates when the DOM
+changes. For example:
 
 		<p class='myText'>Some text 1</p>
        		<p class='myText'>Some text 2</p>
@@ -335,14 +336,14 @@ All I need you to know right now is that all HTML elements have their specific o
 		let myText = document
 			.getElementsByClassName("myText");
 
-    This returns a collection of (multiple) elements that have
-    the specified class. This collection returned is an
-    HTMLCollection. You can then access the elements using
-    the bracket notation and the specific index of the
-    element you want in the same way you would do
-    with any array using the indexes like ([0], [1], etc.) or you may
-    even convert it to an array in order to be able to use array
-    methods on it. Example:
+This returns a collection of (multiple) elements that have
+the specified class. This collection returned is an
+HTMLCollection. You can then access the elements using
+the bracket notation and the specific index of the
+element you want in the same way you would do
+with any array using the indexes like ([0], [1], etc.) or you may
+even convert it to an array in order to be able to use array
+methods on it. Example:
 
 		let myText = document
 			.getElementsByClassName("myText");
@@ -353,59 +354,59 @@ All I need you to know right now is that all HTML elements have their specific o
 		// Logs the text inside that first element
 		console.log(myText[0].textContent);
 
-    The output of this will be:
+The output of this will be:
 
-      Some text 1
+Some text 1
 
-    The getElementByClassName() is not the only method of the
-    document object that you can use to select an element by its
-    class. There are also the document.querySelector() and the
-    document.querySelectorAll() which are relatively newer to
-    JavaScript and more elegant, especially because you can pass
-    to them the exact same selector syntax as you use in CSS to
-    select elements. We will talk about them next.
+The getElementByClassName() is not the only method of the
+document object that you can use to select an element by its
+class. There are also the document.querySelector() and the
+document.querySelectorAll() which are relatively newer to
+JavaScript and more elegant, especially because you can pass
+to them the exact same selector syntax as you use in CSS to
+select elements. We will talk about them next.
 
 
 ### The querySelector() method
-  It is used like this: document.querySelector("cssSelector");
-    It returns the first matching element.
-    Pass it the id, class, or tag name of
-    the target element in a string. Tip: it accepts a CSS selector as a
-    string, and this means that it takes the exact same selector used
-    in CSS to target an HTML element. So, for ids, you have to prefix
-    the id name in the string with a hash character for example:
+It is used like this: document.querySelector("cssSelector");
+  It returns the first matching element.
+  Pass it the id, class, or tag name of
+  the target element in a string. Tip: it accepts a CSS selector as a
+  string, and this means that it takes the exact same selector used
+  in CSS to target an HTML element. So, for ids, you have to prefix
+  the id name in the string with a hash character for example:
 
-      "#id"
+"#id"
 
-    and for a class, you prefix it with a dot (.). For example:
+and for a class, you prefix it with a dot (.). For example:
 
-      ".className"
+".className"
 
-    Here is how you would use it to select an element by its id:
+Here is how you would use it to select an element by its id:
 
 			<h1 id="myHeading">The heading</h1>
 
 			let elemById = 	
 				document.querySelector("#myHeading");
 
-    Here is how you would use it to select an element using its class:
+Here is how you would use it to select an element using its class:
 
 			<p class='myText'>Some text 1</p>
 
 			let item = 	
 		       		document.querySelector(".myText");
 
-      Note very carefully—and this is the
-    difference between the .querySelector() and
-    the .getElementsByClassName() methods of the
-    HTMLElement object, that unlike
-    getElementsByClassName() which
-    returns an HTMLCollection of multiple
-    elements that have that class,
-    querySelector() returns ONLY a Single HTMLElement.
-    This single element is the first matching
-    element in the entire document or null if no match is found.
-    For example:
+  Note very carefully—and this is the
+difference between the .querySelector() and
+the .getElementsByClassName() methods of the
+HTMLElement object, that unlike
+getElementsByClassName() which
+returns an HTMLCollection of multiple
+elements that have that class,
+querySelector() returns ONLY a Single HTMLElement.
+This single element is the first matching
+element in the entire document or null if no match is found.
+For example:
 
 			<p class='myText'>Some text 1</p>
         		<p class='myText'>Some text 2</p>
@@ -425,18 +426,18 @@ All I need you to know right now is that all HTML elements have their specific o
 			// first p tag with the content “Some text 1”
 			console.log(myText); 
 
-    If you want to select all the elements matching that class, in the
-    same way that .getElementsByClassName() does, you have to
-    use the querySelectorAll(). Let’s talk about that next.
+If you want to select all the elements matching that class, in the
+same way that .getElementsByClassName() does, you have to
+use the querySelectorAll(). Let’s talk about that next.
 
 
 
 ### The querySelectorAll() method
-  It is used like this: document.querySelectorAll(cssSelector);
-    It returns a static NodeList of all matching elements. This means
-    multiple elements are returned. What it returns is a NodeList
-    unlike the getElementsByClassName() method that returns an
-    HTMLCollection. Here is an example:
+It is used like this: document.querySelectorAll(cssSelector);
+  It returns a static NodeList of all matching elements. This means
+  multiple elements are returned. What it returns is a NodeList
+  unlike the getElementsByClassName() method that returns an
+  HTMLCollection. Here is an example:
 
 		let items = document.querySelectorAll(".myText");
 		console.log(items);
@@ -447,19 +448,19 @@ All I need you to know right now is that all HTML elements have their specific o
 	
 
 #### Difference between HTMLCollection, NodeList, and HTMLElement
-    The first two of these return multiple elements, as opposed to
-    a single element. The HTMLCollection is sometimes referred to as a live
-    HTMLCollection. It’s said to be live because it is tracked by
-    JavaScript and is updated whenever any of the corresponding
-    elements on the web page changes.
-    A static NodeList unlike an HTMLCollection does not update
-    automatically. Also, unlike an HTMLCollection, a NodeList has
-    the advantage that you can directly call an array method
-    like .forEach() on it to loop through its data.
-    Let’s talk about the HTMLCollection and NodeList return types.
-    Let’s learn about which methods of the document object return
-    which, and look at how they (a HTMLCollection and a NodeList)
-    are different from an HTMLElement object (single element).
+The first two of these return multiple elements, as opposed to
+a single element. The HTMLCollection is sometimes referred to as a live
+HTMLCollection. It’s said to be live because it is tracked by
+JavaScript and is updated whenever any of the corresponding
+elements on the web page changes.
+A static NodeList unlike an HTMLCollection does not update
+automatically. Also, unlike an HTMLCollection, a NodeList has
+the advantage that you can directly call an array method
+like .forEach() on it to loop through its data.
+Let’s talk about the HTMLCollection and NodeList return types.
+Let’s learn about which methods of the document object return
+which, and look at how they (a HTMLCollection and a NodeList)
+are different from an HTMLElement object (single element).
 	
 
 #### Document methods that return HTMLCollection
@@ -519,11 +520,11 @@ All I need you to know right now is that all HTML elements have their specific o
 		items.forEach(item => 
     			console.log(item.textContent));
 
-    This will output:
-      Some text 1
-      Some text 2
-      Some text 3
-      Text within a list
+This will output:
+  Some text 1
+  Some text 2
+  Some text 3
+  Text within a list
 
 
   We have seen now that three great methods are key in the world of HTMLCollection and NodeList:
@@ -694,7 +695,7 @@ The output of the console.log(item.textContent); line logs this to the console:
 
 			This will output the text within that <p> tag
 
-      Text within a list
+Text within a list
 
 
 ### Get the value or contents of an HTML element
@@ -716,38 +717,38 @@ The output of the console.log(item.textContent); line logs this to the console:
 		let myHeading = document.querySelector("#myHeading");
 		console.log(myHeading.textContent);
 
-  The output will be:
-    Heading text
+The output will be:
+  Heading text
 
 
 	Let’s extract the content of the second <p> tag on the page
 		let myText = document.querySelectorAll(".myText");
 		console.log(myText[1].textContent);
 
-  The output will be:
-    Some text 2
+The output will be:
+  Some text 2
 
-  Let’s get the content of the <p> tag that is inside the <li> tag that is
-    inside the <ul> tag. As you can see, there are many nested
-    (sub) elements, but I wanted to show you different ways to
-    handle that from the way I showed you above under selecting
-    nested elements. Here you will see the power of the new
-    querySelector() and how you can pass it a series of elements to
-    search through in hierarchy, just like in CSS.
+Let’s get the content of the <p> tag that is inside the <li> tag that is
+  inside the <ul> tag. As you can see, there are many nested
+  (sub) elements, but I wanted to show you different ways to
+  handle that from the way I showed you above under selecting
+  nested elements. Here you will see the power of the new
+  querySelector() and how you can pass it a series of elements to
+  search through in hierarchy, just like in CSS.
 
 		let myUl = document.querySelector("#myUl li p");
 		console.log(myUl.textContent);
 
-  The output as always is:
-    Text within a list
+The output as always is:
+  Text within a list
 
   Let’s try that same example again, but this time using the querySelectorAll() which returns a NodeList that you can directly run array methods on or extract values by index from it, just like you would do with a real array. Notice that the selector is exactly the same as before—all that changes is the method, and that we now have to reach for the first match with [0]:
 
 		let myUl = document.querySelectorAll("#myUl li p");
 		console.log(myUl[0].textContent);
 
-  The output again, is:
-    Text within a list
+The output again, is:
+  Text within a list
 
 
   Let me wrap this DOM selection section with another example on how to extract the value from a form input field this time. Let’s say you have the following input field on your HTML page:
@@ -806,13 +807,13 @@ Notice how to use these properties or methods, you have to reference it on the H
     for an id, ".className" for a class, or just the tag
     name. For example,
 
-    .closest(".editFormDiv") will search up the DOM
-    to find the nearest ancestor with the class name
-    of class .editFormDiv. It is more precise than
-    parentElement simply because you can be
-    specific by passing it the exact id, class name or
-    tag name to fetch from the base element (the
-    element you call it on).
+.closest(".editFormDiv") will search up the DOM
+to find the nearest ancestor with the class name
+of class .editFormDiv. It is more precise than
+parentElement simply because you can be
+specific by passing it the exact id, class name or
+tag name to fetch from the base element (the
+element you call it on).
 
 
 ### Child nodes
@@ -1008,16 +1009,16 @@ Let’s explore the four main properties you’ll use most often.
 			let elem = document.getElementById("pTag");
 			elem.innerHTML = "Hello <b>World</b>";
 
-    This will select an element on the web page with an id of "pTag"
-    and set the following text in it that contains HTML code:
+This will select an element on the web page with an id of "pTag"
+and set the following text in it that contains HTML code:
 	
 			"Hello <b>World</b>"
 
-    That element will now display in the browser:
-      Hello World
-    with the word “World” in bold.
-    Use innerHTML when you want to add content that includes
-    HTML, like links, bold text, or line breaks.
+That element will now display in the browser:
+  Hello World
+with the word “World” in bold.
+Use innerHTML when you want to add content that includes
+HTML, like links, bold text, or line breaks.
 
   - outerHTML
     It gets or sets the entire element itself, including its tags and
@@ -1027,8 +1028,8 @@ Let’s explore the four main properties you’ll use most often.
     Similarly to innerHTML, it handles HTML and not just text—as you
     could probably guess from the HTML in its name.
 		
-    Use outerHTML if you want to replace the entire element, not just
-    its content.
+Use outerHTML if you want to replace the entire element, not just
+its content.
 
   - innerText
     It is similar to textContent, but it respects what is visible on the
@@ -1036,8 +1037,8 @@ Let’s explore the four main properties you’ll use most often.
     innerText won't return it, but textContent will. The syntax, is
     exactly the same as with textContent.
 
-    Use innerText if you care about what the user actually sees, not
-    just what's in the HTML.
+Use innerText if you care about what the user actually sees, not
+just what's in the HTML.
 
 Both the textContent and innerHTML properties insert content into an element on a web page, but it is preferable to use textContent over innerHTML because innerHTML opens a security risk known as XSS (Cross-Site Scripting). This is when someone inserts malicious HTML or JavaScript into your page. For example:
 
@@ -1142,11 +1143,12 @@ Let’s modify this example slightly by adding a border to the created div, and 
 Notice that we changed how we assign the text value to the div (in newDiv). We first of all wrap the text in a pair of `<p>` tags. Then instead of using the .textContent we used earlier-which would display only text, we use .innerHTML so that the string which now contains HTML (in the `<p>` tag) will be parsed as HTML and displayed on the web document as such.
   To add styling, you have to reference the style properties on the style property of the HTML element, which in this case is newDiv. I should point out that when using JavaScript like this to add styling to elements, the style properties are not written in the same way as in CSS. In JavaScript most of the names are the same, however, camel-casing is used. Here is a small example of CSS properties and the equivalent names of the JavaScript HTML element’s style properties—just to give you a hint:
 
-    CSS property	  JavaScript style property
-background-color	backgroundColor
-border-radius	borderRadius
-font-weight	fontWeight
-margin-top	marginTop
+| CSS property | JavaScript style property |
+|---|---|
+| background-color | backgroundColor |
+| border-radius | borderRadius |
+| font-weight | fontWeight |
+| margin-top | marginTop |
 
 We finally make use of the .appendChild() on the body of the web document, which is a method of the HTMLElement object (for all elements) to add (append) the new div as the last element inside the body. 
 
@@ -1302,12 +1304,12 @@ we will expand on this table creation exercise. We will use an array of data, cr
 		document.getElementsByTagName("div")
        		[0].setAttribute("class", "active");
 
-    This will grab all div elements on a page, and
-    set the class value of the first div ([0]) to “active”.
+This will grab all div elements on a page, and
+set the class value of the first div ([0]) to “active”.
 		
-    While we are on creating attributes for an element, another
-    way is to use Object.assign(). Here is how
-    to do it:
+While we are on creating attributes for an element, another
+way is to use Object.assign(). Here is how
+to do it:
 
 			let li = document.querySelector("#li");
 			
@@ -1316,10 +1318,10 @@ we will expand on this table creation exercise. We will use an array of data, cr
             			className: 'list-item draggable'
         		});
 
-    This code selects a list element that has an id of “li”,
-    and then assigns it a few attributes. It assigns an
-    attribute named ‘active’ and gives it a value of ‘true’,
-    and two classes; ‘list-item’ and ‘draggable’.
+This code selects a list element that has an id of “li”,
+and then assigns it a few attributes. It assigns an
+attribute named ‘active’ and gives it a value of ‘true’,
+and two classes; ‘list-item’ and ‘draggable’.
 
 
   - getAttribute("attributeName")
@@ -1329,9 +1331,9 @@ we will expand on this table creation exercise. We will use an array of data, cr
 			document.getElementsByTagName("h1")
        				[0].getAttribute("class");
 
-    This will grab all h1 elements on a page, and
-    retrieve the value of the class attribute of the first
-    one ([0]).
+This will grab all h1 elements on a page, and
+retrieve the value of the class attribute of the first
+one ([0]).
 
   - hasAttribute("attr")
     It checks if an attribute exists. Here it
@@ -1523,18 +1525,19 @@ still what you reach for in some very specific corners, which we will come to.
 with these, and check the online documentation for more complex queries and
 explanations:
 
-  Select all `<book>` nodes                          //book
-  Attribute access (select id attributes)          //@id
-  All `<book>` tags whose id attribute is "b1"       //book[@id="b1"]
-  Filter books by price greater than 10            //book[price > 10]
-  Wildcards (select all nodes)                     //*
-  Axes (advanced) - navigate relationships         //book/child::title
-  Find all `<h1>` tags                               //h1
-  Find links whose href value is "#foo"            //a[@href="#foo"]
-  All `<span>` tags containing the text "Hello"      //span[text()="Hello"]/..
-  A `<p>` tag containing the text "warning"          //p[contains(text(), "warning")]
-  All `<title>` tags that are children of `<book>`     //book/title
-  Books by Orwell costing less than 10             //book[author="Orwell" and price < 10]
+| Select all `<book>` nodes | //book |
+|---|---|
+| Attribute access (select id attributes) | //@id |
+| All `<book>` tags whose id attribute is "b1" | //book[@id="b1"] |
+| Filter books by price greater than 10 | //book[price > 10] |
+| Wildcards (select all nodes) | //* |
+| Axes (advanced) - navigate relationships | //book/child::title |
+| Find all `<h1>` tags | //h1 |
+| Find links whose href value is "#foo" | //a[@href="#foo"] |
+| All `<span>` tags containing the text "Hello" | //span[text()="Hello"]/.. |
+| A `<p>` tag containing the text "warning" | //p[contains(text(), "warning")] |
+| All `<title>` tags that are children of `<book>` | //book/title |
+| Books by Orwell costing less than 10 | //book[author="Orwell" and price < 10] |
 
 These examples show that XPath is more expressive than CSS in certain cases—like selecting based on text content or element position. Mastering this skill will set you apart as a JavaScript developer, and you will be able to work in any niche environment where expertise in handling complex XML documents is required. As you can see, it goes beyond the basics of the other CSS query selectors. Knowing XPath will make you able to take any complex HTML or XML document and make sense of its data.
 
@@ -1557,13 +1560,14 @@ Here’s how the document.evaluate() method works:
 
 	const xpath = "//p";
 
-  const result = document.evaluate(
-    xpath,                  // The XPath expression
-    document,               // Context node (usually `document`)
-    null,                   // Namespace resolver (null for HTML)
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
-    null                    // Initial result (null for new)
-  );
+const result = document.evaluate(
+| xpath, | // The XPath expression |
+|---|---|
+| document, | // Context node (usually `document`) |
+| null, | // Namespace resolver (null for HTML) |
+  XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
+  null                    // Initial result (null for new)
+);
 
 	// Loop through and log matched nodes
 	for (let i = 0; i < result.snapshotLength; i++) {
@@ -1660,13 +1664,14 @@ Here's a simple, working example:
 	// Step 3: Use document.evaluate() to extract titles
 	const xpath = "//book/title";
 
-  const result = xmlDoc.evaluate(
-    xpath,          // XPath expression
-    xmlDoc,         // context node (root of the XML)
-    null,           // namespace resolver (not needed here)
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // result type
-    null            // result (optional, reuse old result)
-  );
+const result = xmlDoc.evaluate(
+| xpath, | // XPath expression |
+|---|---|
+| xmlDoc, | // context node (root of the XML) |
+| null, | // namespace resolver (not needed here) |
+  XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // result type
+  null            // result (optional, reuse old result)
+);
 
 	// Step 4: Loop through results
 	for (let i = 0; i < result.snapshotLength; i++) {
@@ -1713,13 +1718,13 @@ FIRST_ORDERED_NODE_TYPE	               9	Returns the first node (in the order in
 Each result type constant (like XPathResult.STRING_TYPE) is actually a number behind the scenes, and that is what is represented by the code numbers 0-9 which are returned with the result. When handling the returned result in code you can use either the name or the raw number, but the name is much clearer and the number is not recommended for beginners. I just listed the codes here for you to understand it, but you should not have to worry about them.
   If you really ever need to check what type was returned, you can do so by using the XPathResult.ANY_TYPE property. It is the one that does not commit you to a type up front: you ask for ANY_TYPE, and then read back which type you actually got. Here is how to check for it:
 
-  const result = document.evaluate(
-    xpath,
-    document,
-    null,
-    XPathResult.ANY_TYPE,
-    null
-  );
+const result = document.evaluate(
+  xpath,
+  document,
+  null,
+  XPathResult.ANY_TYPE,
+  null
+);
 
 Then retrieve the result with the resultType property like so:
 
@@ -1740,17 +1745,18 @@ This is useful only if you request ANY_TYPE, and then inspect the actual result 
 	
 Here is a list of these access properties of the result object. 
 
-  Property name	Result access property
-ANY_TYPE	You must detect type yourself
-NUMBER_TYPE	.numberValue
-STRING_TYPE	.stringValue
-BOOLEAN_TYPE	.booleanValue
-UNORDERED_NODE_ITERATOR_TYPE	.iterateNext()
-ORDERED_NODE_ITERATOR_TYPE	.iterateNext()
-UNORDERED_NODE_SNAPSHOT_TYPE	.snapshotItem(index)
-ORDERED_NODE_SNAPSHOT_TYPE	.snapshotItem(index)
-ANY_UNORDERED_NODE_TYPE	.singleNodeValue
-FIRST_ORDERED_NODE_TYPE	.singleNodeValue
+| Property name | Result access property |
+|---|---|
+| `ANY_TYPE` | You must detect type yourself |
+| `NUMBER_TYPE` | .numberValue |
+| `STRING_TYPE` | .stringValue |
+| `BOOLEAN_TYPE` | .booleanValue |
+| `UNORDERED_NODE_ITERATOR_TYPE` | .iterateNext() |
+| `ORDERED_NODE_ITERATOR_TYPE` | .iterateNext() |
+| `UNORDERED_NODE_SNAPSHOT_TYPE` | .snapshotItem(index) |
+| `ORDERED_NODE_SNAPSHOT_TYPE` | .snapshotItem(index) |
+| `ANY_UNORDERED_NODE_TYPE` | .singleNodeValue |
+| `FIRST_ORDERED_NODE_TYPE` | .singleNodeValue |
 
 Let’s see some examples of retrieving the returned data in different ways based on the XPathResult type. I intend to leave you with these many examples so you have a deep understanding of these concepts. The key is knowing the nature (type) of the results you want, and passing the XPathResult argument the right property, as well as knowing which property of the result object to use to retrieve the data based on that kind of data which you are expecting. 
   We will look at how to get the following kinds of results from an XPath query return value.
@@ -1814,7 +1820,7 @@ For each example, I will start by stating the following two things:
 	Because there are three <li> items in our HTML example above, the 
 	output is the following logged to the console:
 
-    Number of results is: 3
+Number of results is: 3
 
 
 
@@ -1850,7 +1856,7 @@ For each example, I will start by stating the following two things:
   The aim here is to select only the first title, the
   output is the following logged to the console:
 
-    JavaScript: The Good Parts
+JavaScript: The Good Parts
 
 
 
@@ -1886,11 +1892,11 @@ For each example, I will start by stating the following two things:
   property of the result object. This is because we are expecting a
   boolean, of course.
 
-  Because the second <span> in our HTML does have the text 'Eloquent
-  JavaScript' in it, the output is the following logged to the console:
-    true
-  Otherwise it would have returned:
-    false
+Because the second <span> in our HTML does have the text 'Eloquent
+JavaScript' in it, the output is the following logged to the console:
+  true
+Otherwise it would have returned:
+  false
 
 
 
@@ -1903,13 +1909,13 @@ For each example, I will start by stating the following two things:
 
 		const xpath = "//li";
 
-    const result = document.evaluate(
-      xpath,
-      document,
-      null,
-      XPathResult.ORDERED_NODE_ITERATOR_TYPE,
-      null
-    );
+const result = document.evaluate(
+  xpath,
+  document,
+  null,
+  XPathResult.ORDERED_NODE_ITERATOR_TYPE,
+  null
+);
 
 		// loop through data
 		let node = result.iterateNext();
@@ -1933,9 +1939,9 @@ For each example, I will start by stating the following two things:
 	Because there are three <li> items in our HTML example above, the 
 	output is the following logged to the console:
 
-    Node name: LI
-    Node name: LI
-    Node name: LI
+Node name: LI
+Node name: LI
+Node name: LI
 
 
 
@@ -1973,9 +1979,9 @@ For each example, I will start by stating the following two things:
 	Because there are three <li> items in our HTML example above, the 
 	output is the following logged to the console:
 
-    JavaScript: The Good Parts
-    Eloquent JavaScript
-    You Don’t Know JS
+JavaScript: The Good Parts
+Eloquent JavaScript
+You Don’t Know JS
 
 
 
@@ -2017,7 +2023,7 @@ For each example, I will start by stating the following two things:
 	The output therefore, is the text of the first <li> node being logged to 
 	the console:
 
-    JavaScript: The Good Parts
+JavaScript: The Good Parts
 
 The six examples above demonstrate to you, not only the different ways to do XPath queries on an HTML, but also show you how passing a different XPathResult type to document.evaluate() means that a different format of data will be returned, and a different approach is needed to retrieve the values. We now know how powerful XPath can be. But when do we use XPath, and when are CSS selectors sufficient? Let’s talk about that next.
 	
@@ -2088,13 +2094,13 @@ DOMParser takes that string and turns it into a DOM document you can work with. 
 	const parser = new DOMParser();
 	const xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-  const result = xmlDoc.evaluate(
-    "//book/title/text()",
-    xmlDoc,
-    null,
-    XPathResult.STRING_TYPE,
-    null
-  );
+const result = xmlDoc.evaluate(
+  "//book/title/text()",
+  xmlDoc,
+  null,
+  XPathResult.STRING_TYPE,
+  null
+);
 
 	console.log(result.stringValue); 
 
@@ -2483,8 +2489,8 @@ function deleteTodo(e) {
 
 
 
-    Adding attributes to an element
-    There are a few ways to assign attributes to HTML elements dynamically. The 	following are three ways to add a class or any attribute to an element:
+Adding attributes to an element
+There are a few ways to assign attributes to HTML elements dynamically. The 	following are three ways to add a class or any attribute to an element:
 
 	const li = document.createElement('li');
 
@@ -2906,7 +2912,7 @@ This example demonstrates the following:
   So, the document object, which represents the current
     webpage (DOM) can also be accessed in code like so:
 
-    window.document…
+window.document…
 
   - While document deals with HTML content, window is
   responsible for broader browser-level functionalities like
@@ -3043,8 +3049,8 @@ Example prompt():
 
 This will write the following to your console:
 
-  The URL of your web page is: http://my-website.com/
-    index.html
+The URL of your web page is: http://my-website.com/
+  index.html
 
 
 To reload or refresh a web page, use the reload() method. Here is how to do it:

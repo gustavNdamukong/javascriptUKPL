@@ -98,9 +98,9 @@ So, the take-away from this is this: if you need to store data permanently, use 
 
 	
 
-    How to read data from LocalStorage
+How to read data from LocalStorage
 
-    In this reading demonstration, we will loop through all the todoList items grabbing their id, and their name (value), then format that into a string that can be displayed on 	screen.
+In this reading demonstration, we will loop through all the todoList items grabbing their id, and their name (value), then format that into a string that can be displayed on 	screen.
 
 	/*-----------DISPLAY OF TODOLIST ITEMS-------------*/
 	// manage displaying of existing todoList items to the user. 
@@ -160,7 +160,7 @@ So, the take-away from this is this: if you need to store data permanently, use 
 
 
 
-      How to save data to LocalStorage
+How to save data to LocalStorage
 
 	function addTodo(e) 
 	{
@@ -271,7 +271,7 @@ function getId()
 
 
 
-    How to update data in LocalStorage
+How to update data in LocalStorage
 
 function saveEdit(e)
 {
@@ -329,7 +329,7 @@ function saveEdit(e)
 
 
 
-    How to delete data from LocalStorage
+How to delete data from LocalStorage
 
   This deletion of data from localStorage is done by the method removeItem(). You pass it the key of the storage item/data you wish to delete. Here is the syntax:
 
@@ -528,7 +528,7 @@ Frameworks like React, Vue, and Angular do this behind the scenes using APIs.
 #### Popular databases for JavaScript developers
   There are many database systems out there. Here are a few that are popular in the JavaScript world:
 
-    Type	           Name	     Description
+  Type	           Name	     Description
 NoSQL	MongoDB	Stores data as flexible JSON-like documents. Great for JavaScript because the data format matches JS objects.
 SQL	MySQL	Traditional relational database. Great for apps with structured, interrelated data.
 SQL	PostgreSQL	Another powerful relational DB. Supports complex queries and data relationships.

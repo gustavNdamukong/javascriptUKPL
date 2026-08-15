@@ -399,7 +399,7 @@ The following is a step-by-step explanation of how it all works:
 
 			let painting = false;
 
-    When the mouse is pressed down on the canvas, start drawing:
+When the mouse is pressed down on the canvas, start drawing:
 
 			canvas.addEventListener("mousedown", (e) => {
   				painting = true;
@@ -417,25 +417,25 @@ The following is a step-by-step explanation of how it all works:
   				ctx.stroke();
 			});
 
-    There is more going on here than you might expect from "start
-    drawing", so let us take it slowly.
-    The beginPath() and moveTo() put the pen down at the exact spot
-    the mouse was pressed. Leave them out and the line only starts
-    from the SECOND mouse move, which quietly loses the first few
-    pixels of every stroke.
-    The lineTo(x, y) and stroke() then draw a line from that spot to
-    itself. A line from a point to the same point has no length at all,
-    so you would think it draws nothing. But we set lineCap to "round",
-    and a round cap on a zero-length line is simply a circle. So we get
-    one round dot, the width of the pen, exactly where the user
-    pressed. Without it, clicking once without moving the mouse leaves
-    no mark at all, which is not what anyone expects from a drawing
-    app - try dotting the letter i and you will see the problem.
+There is more going on here than you might expect from "start
+drawing", so let us take it slowly.
+The beginPath() and moveTo() put the pen down at the exact spot
+the mouse was pressed. Leave them out and the line only starts
+from the SECOND mouse move, which quietly loses the first few
+pixels of every stroke.
+The lineTo(x, y) and stroke() then draw a line from that spot to
+itself. A line from a point to the same point has no length at all,
+so you would think it draws nothing. But we set lineCap to "round",
+and a round cap on a zero-length line is simply a circle. So we get
+one round dot, the width of the pen, exactly where the user
+pressed. Without it, clicking once without moving the mouse leaves
+no mark at all, which is not what anyone expects from a drawing
+app - try dotting the letter i and you will see the problem.
 
-    If drawing a line from a point to itself feels like too much of a
-    trick, you can paint that dot directly instead. This is the more
-    advanced way of writing the same four lines, using the arc() method
-    you met when we drew a circle earlier:
+If drawing a line from a point to itself feels like too much of a
+trick, you can paint that dot directly instead. This is the more
+advanced way of writing the same four lines, using the arc() method
+you met when we drew a circle earlier:
 
 			ctx.fillStyle = paintColor;
 			ctx.beginPath();
@@ -446,8 +446,8 @@ The following is a step-by-step explanation of how it all works:
     - though remember that the arc() version fills, so it needs
     fillStyle rather than strokeStyle.
 
-    When the mouse is released, stop drawing. ctx.beginPath()
-    clears the current drawing path to avoid unwanted lines:
+When the mouse is released, stop drawing. ctx.beginPath()
+clears the current drawing path to avoid unwanted lines:
 
 			canvas.addEventListener("mouseup", () => {
   				painting = false;
@@ -461,20 +461,20 @@ The following is a step-by-step explanation of how it all works:
   				if (!painting) return;
 			// // ...
 
-    Get the mouse position inside the canvas:
+Get the mouse position inside the canvas:
 
 			const x = e.offsetX;
   			const y = e.offsetY;
 
-    Set the stroke size, round the line ends, and choose the stroke
-    color:
+Set the stroke size, round the line ends, and choose the stroke
+color:
 
 			ctx.lineWidth = penSize;
   			ctx.lineCap = "round";
   			ctx.strokeStyle = paintColor;
 
-    This is how to draw a line to the new point and start a new path
-    from there. This avoids connecting all paths:
+This is how to draw a line to the new point and start a new path
+from there. This avoids connecting all paths:
 
 			ctx.lineTo(x, y);
   			ctx.stroke();
@@ -902,11 +902,11 @@ In the above example, we have the following code initialising the value to be us
 
 These values are set as properties of the ball object:
 
-  const ball = {
-    x: 50,
-    y: 50,
-    radius: 15,
-    color: "dodgerblue",
+const ball = {
+  x: 50,
+  y: 50,
+  radius: 15,
+  color: "dodgerblue",
 
   		// Moves 10 pixels per key press
   		speed: 10 
@@ -1087,8 +1087,8 @@ The following are the steps to do the collision detection which we do in canMove
 				// // ...
 			};
 
-    In fact, we even used that radius value when
-    creating the ball in the first place.
+In fact, we even used that radius value when
+creating the ball in the first place.
 
 			function drawBall() { 
 				// // ...
@@ -1096,10 +1096,10 @@ The following are the steps to do the collision detection which we do in canMove
 				// // ...
 			}
 
-    The x and y coordinates define one spot in the middle of the
-    circle, while the radius creates a circle around that spot where
-    the distance between that spot and the outer edges of the
-    circle represent the radius.
+The x and y coordinates define one spot in the middle of the
+circle, while the radius creates a circle around that spot where
+the distance between that spot and the outer edges of the
+circle represent the radius.
 
     - To work out if the ball has touched any of the inner walls of the
     canvas, you must find out the position of the outer edges of the
@@ -1128,13 +1128,13 @@ The following are the steps to do the collision detection which we do in canMove
 
 			x - radius == 0
 
-    If it is, then the ball is exactly at the edge, touching the left
-    canvas (x axis) wall. If it is less than 0, then the ball has gone
-    beyond the left edge.
-      To know if the right edge has touched the right inner wall of
-    the canvas, the calculation is exactly the opposite. We simply
-    check if the value of the ball’s right edge is equal to the
-    canvas.width.
+If it is, then the ball is exactly at the edge, touching the left
+canvas (x axis) wall. If it is less than 0, then the ball has gone
+beyond the left edge.
+  To know if the right edge has touched the right inner wall of
+the canvas, the calculation is exactly the opposite. We simply
+check if the value of the ball’s right edge is equal to the
+canvas.width.
 
 			x + radius == canvas.width
 

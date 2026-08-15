@@ -40,7 +40,7 @@ are all together in the Answers section further down, numbered to match the ques
 
 6) Match each built-in error type to what causes it:
 
-    TypeError      ReferenceError      RangeError      SyntaxError
+TypeError      ReferenceError      RangeError      SyntaxError
 
    Clue: try `null.someMethod()`, an undeclared variable, and `(5).toFixed(-1)`.
 
@@ -153,13 +153,13 @@ are all together in the Answers section further down, numbered to match the ques
    error types apart. A thrown string gives you none of that.
 
 
-6) 
-    TypeError       null.someMethod()        — doing something to a value that
-      cannot do it
-    ReferenceError  using an undeclared      — the name does not exist at all
-      variable
-    RangeError      (5).toFixed(-1)          — a number outside an allowed range
-    SyntaxError     a missing bracket        — the code cannot even be parsed
+6)
+  TypeError       null.someMethod()        — doing something to a value that
+  cannot do it
+  ReferenceError  using an undeclared      — the name does not exist at all
+  variable
+  RangeError      (5).toFixed(-1)          — a number outside an allowed range
+  SyntaxError     a missing bracket        — the code cannot even be parsed
 
    `SyntaxError` is the odd one out. The others happen while your program is *running*;
    a SyntaxError happens when JavaScript *reads* your file, which means the program never
@@ -191,8 +191,8 @@ are all together in the Answers section further down, numbered to match the ques
 
    Output:
 
-    Assertion failed: this will not stop anything
-    and this line still runs
+Assertion failed: this will not stop anything
+and this line still runs
 
    That is worth being clear about, because "assert" sounds forceful and in some other languages
    a failed assertion does halt the program. In JavaScript it is purely a reporting tool. If you
@@ -277,9 +277,9 @@ are all together in the Answers section further down, numbered to match the ques
 
   Output:
 
-    Test passed
-    Assertion failed: Test failed: add(1, 2) should equal 4
-    Still running
+Test passed
+Assertion failed: Test failed: add(1, 2) should equal 4
+Still running
 
     The last line is the point of the exercise. The assertion failed, said so, and the program
     carried on regardless — which is exactly why `console.assert` is fine for a quick check but

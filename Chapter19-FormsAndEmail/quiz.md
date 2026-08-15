@@ -95,8 +95,8 @@ are all together in the Answers section further down, numbered to match the ques
 2) `getElementById()` uses the **id** attribute. `form.elements` and `FormData` both use the
 - *name** attribute.
 
-    form.elements.username        // by name
-    formData.get("username")      // by name
+form.elements.username        // by name
+formData.get("username")      // by name
 
    A field with **no `name`** is ignored by `FormData` entirely — it simply will not appear.
    That is a quiet source of "why is my value missing?", because the field looks perfectly

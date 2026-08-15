@@ -237,32 +237,33 @@ JavaScript listens for these user actions and gives you the power to respond imm
 ## Common JavaScript Events
   Here’s a list of the most commonly used events in everyday web development:
 
-Event name	When it happens
-blur	Element loses focus. An element looses focus when the cursor is no longer active on it
-change	When the value of the field changes
-click	User clicks an element
-dblclick	User double-clicks an element
-drag	Item is being dragged
-dragend	Dragging ends
-dragenter	Item is dragged into a droppable area
-dragleave	Item is dragged out of a droppable area
-dragstart	Dragging of an item starts
-dragover	Item is being dragged over a droppable area
-drop	Item is dropped into a droppable area
-focus	Element gains focus. The cursor is active on it.
-input	User types into a field
-keydown	Key is pressed down
-keyup	Key is released
-load	Page or resource finishes loading
-mousedown	Mouse button is pressed down
-mouseenter	Mouse first enters an element (does not bubble)
-mouseout	Mouse moves out of an element
-mouseleave	Mouse leaves an element (does not bubble)
-mouseover	Mouse moves over an element
-mouseup	Mouse button is released
-resize	Window size changes
-scroll	User scrolls the page or an element
-submit	Form is submitted
+| Event name | When it happens |
+|---|---|
+| `blur` | Element loses focus. An element looses focus when the cursor is no longer active on it |
+| `change` | When the value of the field changes |
+| `click` | User clicks an element |
+| `dblclick` | User double-clicks an element |
+| `drag` | Item is being dragged |
+| `dragend` | Dragging ends |
+| `dragenter` | Item is dragged into a droppable area |
+| `dragleave` | Item is dragged out of a droppable area |
+| `dragstart` | Dragging of an item starts |
+| `dragover` | Item is being dragged over a droppable area |
+| `drop` | Item is dropped into a droppable area |
+| `focus` | Element gains focus. The cursor is active on it. |
+| `input` | User types into a field |
+| `keydown` | Key is pressed down |
+| `keyup` | Key is released |
+| `load` | Page or resource finishes loading |
+| `mousedown` | Mouse button is pressed down |
+| `mouseenter` | Mouse first enters an element (does not bubble) |
+| `mouseout` | Mouse moves out of an element |
+| `mouseleave` | Mouse leaves an element (does not bubble) |
+| `mouseover` | Mouse moves over an element |
+| `mouseup` | Mouse button is released |
+| `resize` | Window size changes |
+| `scroll` | User scrolls the page or an element |
+| `submit` | Form is submitted |
 
 Tip: Some mouse events (mouseenter, mouseleave) do not bubble, meaning they don't pass upward through the DOM like mouseover and mouseout do. (We’ll talk about bubbling shortly!)
 
@@ -322,7 +323,7 @@ The way this code logic works is as follows
 The following table shows you the values recorded for the key names on the .key property, and the corresponding codes stored in the .code property of the event object when the arrow keys are pressed. To give you variety on alternative keys, I have also thrown in there, the names and codes recorded when the space bar and letter a keys are pressed.
 
 
-    e.key	            e.code	         e.keyCode (old)
+  e.key	            e.code	         e.keyCode (old)
 "ArrowLeft"	"ArrowLeft"	37
 "ArrowUp"	"ArrowUp"	38
 "ArrowRight"	"ArrowRight"	39

@@ -172,8 +172,8 @@ questions.
 
 1) It prints:
 
-    true
-    false
+true
+false
 
    The == operator compares only the values. JavaScript is happy to convert the string '5'
    into the number 5 in order to make the comparison, so it reports them as equal.
@@ -249,11 +249,12 @@ questions.
 
 
 7) 
-  - a) exactly 10 times                  →  the for loop
-  - b) unknown number of turns           →  the while loop
-  - c) run at least once first           →  the do...while loop
-  - d) properties of an object           →  the for...in loop
-  - e) values in an array, readably      →  the for...of loop
+| - a) exactly 10 times | →  the for loop |
+|---|---|
+| - b) unknown number of turns | →  the while loop |
+| - c) run at least once first | →  the do...while loop |
+| - d) properties of an object | →  the for...in loop |
+| - e) values in an array, readably | →  the for...of loop |
 
    The sixth, forEach(), is an array method rather than a loop keyword. You would use it when
    you want to run a function on every element of an array.
@@ -302,9 +303,9 @@ questions.
 
 10) It prints:
 
-    Tuesday
-    Wednesday
-    Invalid day
+Tuesday
+Wednesday
+Invalid day
 
   What has gone wrong is called fall-through, and it is the single most common mistake made
   with switch statements.
@@ -336,10 +337,10 @@ questions.
 
   This displays the names like so:
 
-    Alice
-    Bob
-    Charlie
-    Diana
+Alice
+Bob
+Charlie
+Diana
 
     We loop through the people array with a while loop and print each name to the screen. Note
     the use of += on document.body.innerHTML, which keeps adding each name to what is already
@@ -363,7 +364,7 @@ questions.
   divisible by 2, which is to say even. If it is, we print it. This displays only the even
   numbers:
 
-    246810
+246810
 
   They run together because we are printing each one straight after the last with nothing in
   between. If you would rather see them separated, add something to the end:
@@ -403,9 +404,9 @@ questions.
 
   The result on screen is:
 
-    Even Numbers: 2, 4, 6, 8, 10
-    Divisible by 3: 3, 9
-    Other Numbers: 1, 5, 7
+Even Numbers: 2, 4, 6, 8, 10
+Divisible by 3: 3, 9
+Other Numbers: 1, 5, 7
 
   Now, the lesson hiding in there. The divisibleBy3 array should arguably contain 6 as well,
   and it does not. That is because 6 is divisible by 2, so it matched the very first
@@ -458,10 +459,10 @@ questions.
 
   This prints:
 
-    John
-    Susan
-    Mary
-    Ann
+John
+Susan
+Mary
+Ann
 
   To prove to yourself that a do...while really does run its first turn before checking
   anything, try adding a condition that says to stop when the name 'John' is met:

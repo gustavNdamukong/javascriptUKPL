@@ -40,9 +40,9 @@ questions.
 
         const person = { "first-name": "Tom", aunt: "Polly" };
 
-    person.aunt
-    person["first-name"]
-    person.first-name
+person.aunt
+person["first-name"]
+person.first-name
 
    Clue: think about what JavaScript sees when it meets a hyphen in the middle of an expression.
 
@@ -193,7 +193,7 @@ questions.
    starting with a digit. "first-name" has a hyphen, so JavaScript does not read it as one
    name. It reads it as a subtraction:
 
-    person.first - name
+person.first - name
 
    which gives you NaN rather than "Tom".
 
@@ -348,14 +348,14 @@ questions.
             <script>
                 let images = new Array();
 
-      // put the images in the array
-      images.push(
-      "amex.png",
-      "visa.png",
-      "pexels-photo.jpeg",
-      "pexels-photo2.jpeg",
-      "logo.jpeg"
-      );
+// put the images in the array
+images.push(
+"amex.png",
+"visa.png",
+"pexels-photo.jpeg",
+"pexels-photo2.jpeg",
+"logo.jpeg"
+);
 
                 // grab the target div
                 let div = document.getElementById("myImgDiv");
@@ -460,9 +460,9 @@ questions.
 
   The result in the console is:
 
-    tomatoes pepper cabbage
-    apple pineapple banana
-    rice pasta beans
+tomatoes pepper cabbage
+apple pineapple banana
+rice pasta beans
 
   The key to mastering loops is this: for every level you move down into the array, you need
   another loop block. This array is two levels deep, so we use two for loops, one nested

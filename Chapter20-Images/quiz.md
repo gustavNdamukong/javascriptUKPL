@@ -174,8 +174,8 @@ are all together in the Answers section further down, numbered to match the ques
 6) **The counter goes up in fours because each pixel is four numbers**, laid out end to end in
    one long list:
 
-    [ R, G, B, A,   R, G, B, A,   R, G, B, A,  ... ]
-    pixel 1        pixel 2        pixel 3
+[ R, G, B, A,   R, G, B, A,   R, G, B, A,  ... ]
+pixel 1        pixel 2        pixel 3
 
    So `data[i]` is red, `data[i+1]` green, `data[i+2]` blue, and `data[i+3]` is the **alpha** —
    how opaque that pixel is.
@@ -205,7 +205,7 @@ are all together in the Answers section further down, numbered to match the ques
    This does not fail on click. It fails immediately, when that line runs, because JavaScript
    looks for a variable called `applFilter` and there is no such thing:
 
-    ReferenceError: applFilter is not defined
+ReferenceError: applFilter is not defined
 
    Two names that differ by one letter are hard to spot, which is a good argument for letting
    your editor autocomplete function names rather than typing them again.

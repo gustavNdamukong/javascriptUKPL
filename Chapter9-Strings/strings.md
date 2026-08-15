@@ -79,31 +79,31 @@ one or more characters that represent a specific character or behaviour. They ar
 		const text = "Hello\nWorld!"; 
 		console.log(text); 
 
-    The output:
-      Hello
-      World!
+The output:
+  Hello
+  World!
 
 	\t Create a horizontal tab by tabbing in
 		const tabbed = "Column1\tColumn2"; 
 		console.log(tabbed); 
 
-    the output:
-      Column1 Column2
+the output:
+  Column1 Column2
 
 	\’  Escape quotes (single/double quotes)
 		const sentence = 'It\'s a beautiful day!'; 
 		console.log(sentence);
 
-    the output:
-      It's a beautiful day!
+the output:
+  It's a beautiful day!
   
 
 	\\ Escape a backslash to display it as a literal character
 		const backslash = "This is a backslash: \\"; 
 		console.log(backslash); 
 
-    The output:
-      This is a backslash: \
+The output:
+  This is a backslash: \
 
 	\r Insert a carriage return (rarely used on its own, often
 		combined with \n for compatibility).
@@ -119,19 +119,19 @@ one or more characters that represent a specific character or behaviour. They ar
 		const backspace = "AB\bC"; 
 		console.log(backspace); 
 
-    The output:
-      AC
+The output:
+  AC
 
 	\uXXXX Escape a unicode character
 		const heart = '\u2764'; 
 		console.log(heart); 
 
-    The output: ❤  (a black heart symbol)
+The output: ❤  (a black heart symbol)
 
-    The \u tells JavaScript that the next four characters are a
-    hexadecimal code identifying one character in the Unicode
-    set. 2764 happens to be the heart. This is how you write
-    characters your keyboard cannot type.
+The \u tells JavaScript that the next four characters are a
+hexadecimal code identifying one character in the Unicode
+set. 2764 happens to be the heart. This is how you write
+characters your keyboard cannot type.
 
 
 
@@ -152,10 +152,10 @@ Here is an example:
 	console.log("This is another example of concatenating "
 		+ "strings without variables");
 
-  Outputs:
-    string one and string two
+Outputs:
+  string one and string two
 
-    This is another example of concatenating strings without variables
+This is another example of concatenating strings without variables
 
   You can also concatenate strings using the += operator. However, though the += operator is mostly used for adding up numbers (see notes under operators), when used with strings, it simply appends a new string to the end of another. Here is an example:
 
@@ -165,10 +165,10 @@ Here is an example:
 	console.log(oneString);
 	console.log(oneString + " make up one long string.");
 
-  Outputs:
-    string one and string two
+Outputs:
+  string one and string two
 
-    string one and string two make up one long string.
+string one and string two make up one long string.
  
  Notice how it is possible to combine literal strings, variables containing strings, or two variables containing strings, as seen in the example above:
 
@@ -273,8 +273,8 @@ Let’s look at another example on how to embed expressions within a template li
 	let stringLength = fullName.length;
 	console.log(stringLength);
 
-  The output is:
-    8
+The output is:
+  8
 
   This is because length counts the blank space between the two parts of the name.
 
@@ -292,8 +292,8 @@ Let’s look at another example on how to embed expressions within a template li
 		let firstLetterOfSport = sport[0];
 		console.log(firstLetterOfSport);
 
-  Outputs:
-    B
+Outputs:
+  B
 
   Note that when using the bracket notation, the counting starts from 0.
 
@@ -305,8 +305,8 @@ Let’s look at another example on how to embed expressions within a template li
 		let lastLetterOfSport = sport[sport.length - 1];
 		console.log(lastLetterOfSport);
 
-    Outputs:
-    g
+Outputs:
+g
 
   In the same way, to get the last but one character of a string, just increase the number
   you are deducting, eg:
@@ -315,8 +315,8 @@ Let’s look at another example on how to embed expressions within a template li
 		let lastButOneLetterOfSport = sport[sport.length - 2];
 		console.log(lastButOneLetterOfSport);
 
-    Outputs:
-    n
+Outputs:
+n
 
 
 

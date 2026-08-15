@@ -109,7 +109,7 @@ questions.
 
 2) The eight falsy values are:
 
-    false     0     -0     0n     ""     null     undefined     NaN
+false     0     -0     0n     ""     null     undefined     NaN
 
    Of the three given, only **""** is falsy. Both **[]** and **{}** are truthy.
 
@@ -120,7 +120,7 @@ questions.
 
 3) It prints:
 
-    Yes
+Yes
 
    Because `[]` is truthy, the if branch runs. If you have come from a language where an empty
    array is falsy, you would expect "No", and this is exactly the sort of thing that produces a
@@ -165,7 +165,7 @@ questions.
 
 6) It prints:
 
-    number2
+number2
 
    not "number". `typeof` binds more tightly than `+`, so JavaScript reads it as `(typeof 2) + 2`
    — that is, the string "number" joined to the number 2, which gives the string "number2".
