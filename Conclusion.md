@@ -8,6 +8,7 @@ Now you're probably wondering: "Where do I go from here?"
 Let me give you a roadmap. Here it is, in a nutshell:
 
   - Learn a JavaScript Framework or Library
+  - Learn TypeScript
   - Explore Backend Development
   - Go Deeper with Databases
 
@@ -23,8 +24,34 @@ Here's what you should explore next:
   - React - the most popular library for building dynamic user interfaces.
   - Vue.js - a beginner-friendly framework that's flexible and fun to use.
   - Angular - a very powerful JavaScript framework for building enterprise 
-    applications
-  - Typescript - a superset of JavaScript
+    applications.
+
+- Learn TypeScript
+  TypeScript deserves a mention of its own, because it is very commonly 
+  misunderstood. It is not a framework or a library, and it is not something you 
+  use instead of JavaScript. TypeScript is a programming language of its own, 
+  built by Microsoft, and what it really is, is JavaScript with types added on 
+  top. That is why you will hear it called a superset of JavaScript—every valid 
+  piece of JavaScript you have written in this book is already valid TypeScript.
+  Microsoft built it to solve a problem that only shows up as applications get 
+  large. As we learned in Chapter 10 (Data Types), JavaScript is loosely typed, 
+  so a variable that held a number can quietly hold a string later on. That 
+  flexibility is wonderful when you are writing a small script, and painful when 
+  you are one of thirty developers working on the same codebase. TypeScript lets 
+  you declare what type a thing is meant to be, and then tells you off before you 
+  ever run the code if you break your own rule. In other words, it catches a whole 
+  class of bugs while you are still typing, rather than in the browser at midnight.
+  Here is the part a lot of developers never quite realise: browsers cannot run 
+  TypeScript. Not one of them. TypeScript compiles down to plain JavaScript first 
+  —the very JavaScript you have been learning—and it is that output the browser 
+  actually runs. All the type information is stripped away in the process. So 
+  TypeScript is not a replacement for what you have learned here. It sits on top 
+  of it, and everything in this book still applies underneath.
+  It has become popular enough that serious JavaScript developers tend to learn it 
+  sooner or later. Angular is written in it, React and Vue both support it, and a 
+  great many job adverts now list it beside JavaScript. Learn JavaScript properly 
+  first—which is what you have just done—and TypeScript will feel like a small 
+  step rather than a new language.
 
 - Explore Backend Development
   While this book focused on frontend JavaScript,
