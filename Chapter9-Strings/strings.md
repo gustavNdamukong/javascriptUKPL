@@ -132,7 +132,12 @@ one or more characters that represent a specific character or behaviour. They ar
 		const heart = '\u2764'; 
 		console.log(heart); 
 
-		The output: ❤
+		The output: ❤  (a black heart symbol)
+
+		The \u tells JavaScript that the next four characters are a 
+		hexadecimal code identifying one character in the Unicode 
+		set. 2764 happens to be the heart. This is how you write 
+		characters your keyboard cannot type.
 
 
 

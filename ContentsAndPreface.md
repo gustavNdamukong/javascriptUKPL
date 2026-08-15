@@ -1,4 +1,4 @@
-🏆 THE JAVASCRIPT BLUEPRINT
+THE JAVASCRIPT BLUEPRINT
 
 
 //————————————————————//
@@ -47,7 +47,7 @@ What next
 (Every chapter ends with its own Quiz — the questions first, then the answers
 listed below them, numbered to match.)
 
-💡Blurb text for the back of the book
+Blurb text for the back of the book
 //————————————————————//
 
 
@@ -718,7 +718,7 @@ Chapter 25 - Asset Management
 (Every chapter ends with its own Quiz — the questions first, then the answers
 listed below them, numbered to match.)
 
--💡Blurb text for the back of the book
+-Blurb text for the back of the book
 //————————————————————//
 
 
