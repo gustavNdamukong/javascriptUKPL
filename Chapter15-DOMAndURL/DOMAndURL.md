@@ -243,21 +243,38 @@ Selecting DOM Elements (Getting elements to work with)
 	document.methodName(idOrClassOfElementYouWant);
 
 Selecting elements on a web page is probably the most frequent task you will have to be carrying out as a JavaScript programmer. If you have to do anything with elements on a web page—which is what JavaScript does, then you have to learn how to select these elements before you can do anything with them. This skill alone will reveal the power of JavaScript to you and give you the confidence to harness the power of this versatile scripting language. 
-  Here is a list of methods we will learn about here.
+  There are five methods to learn here. Three of them are the older ones,
+each built to answer one particular question, and two are newer and more
+flexible. Here they are with the job each one does:
 
-		-document.getElementsByTagName()
-		-document.getElementById()
-		-document.getElementsByClassName()
-		
-		-document.querySelector()
-		-document.querySelectorAll()
+	The three older methods
+	-document.getElementById("id")
+	   Gets ONE element, by its id attribute.
 
-	-Get an element by its id
-	-Get an element by its class
-	-Get all elements having the same class
-	-Get all elements having the same HTML tag
+	-document.getElementsByClassName("class")
+	   Gets ALL elements carrying that class.
 
-These methods will select and return a single or multiple HTMLElement object(s). Actually, to be specific, what it returns when you select a paragraph (p tag), is an HTMLParagraphElement, but this HTMLParagraphElement inherits from the HTMLElement object. The fact is, in the Document Object Model (DOM) every HTML element is represented by a specific JavaScript object type, usually named something like: HTML<TagName>Element, and they are all children of the HTMLElement object. Before we proceed to learn how to 
+	-document.getElementsByTagName("tag")
+	   Gets ALL elements of that tag, such as every <p>.
+
+	The two newer methods
+	-document.querySelector("selector")
+	   Gets the FIRST element matching a CSS selector.
+
+	-document.querySelectorAll("selector")
+	   Gets ALL elements matching a CSS selector.
+
+  Read down that list and you will notice something about the naming that
+is worth holding on to: where the method name says Element, singular, you
+get back one element. Where it says Elements, plural, you get back a
+collection. querySelector and querySelectorAll follow the same rule in
+different words — All in the name means more than one.
+  The two newer methods can do everything the three older ones can, because
+a CSS selector can describe an id ("#myId"), a class (".myClass") or a tag
+("p"). That does not make the older three obsolete, and you will meet all
+five in real code, which is why we cover them all.
+
+These methods will select and return a single or multiple HTMLElement object(s). Actually, to be specific, what it returns when you select a paragraph (p tag), is an HTMLParagraphElement, but this HTMLParagraphElement inherits from the HTMLElement object. The fact is, in the Document Object Model (DOM) every HTML element is represented by a specific JavaScript object type, usually named something like: HTML<TagName>Element, and they all inherit from the HTMLElement object. Before we proceed to learn how to 
 select elements; here’s a list of the most commonly used HTML 
 elements and their corresponding DOM interface names (JavaScript object types): This is not the exhaustive list, but rather a few, just so you get the idea.
 
