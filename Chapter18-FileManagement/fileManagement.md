@@ -197,7 +197,7 @@ The CSS (eg index.css)
 
 Upload a text file and display its contents
 ————————————————————————
-  In this example, we will use the first <section>… element in the HTML code above. I will show this section element again here just for context and clarity.
+  In this example, we will use the first `<section>`… element in the HTML code above. I will show this section element again here just for context and clarity.
 
 	<section>
             	<h2>Upload a Text File and Display Its Content</h2>
@@ -205,7 +205,7 @@ Upload a text file and display its contents
             	<pre id="output">Your file content will appear here...</pre>
         </section>
 
-First we allow the user to upload a file using the file input field with the id attribute of “fileInput”. As soon as the file is uploaded, we will extract its contents and insert them as the value of the <pre> tag with the id attribute of “output”. 
+First we allow the user to upload a file using the file input field with the id attribute of “fileInput”. As soon as the file is uploaded, we will extract its contents and insert them as the value of the `<pre>` tag with the id attribute of “output”. 
 
   Create a text file to test with. Give it any name eg test.txt. Type into this text file the following text, just so we can test the ability to read its text content using JavaScript. 
 
@@ -902,7 +902,7 @@ Next, we wait until the WebSocket connection is fully open—like waiting for a 
 		// ...
 	});
 
-We listen for when the user selects a file (like a video) using a file input (<input type="file" id="videoUploader">). When they do, the code inside this function runs.
+We listen for when the user selects a file (like a video) using a file input (`<input type="file" id="videoUploader">`). When they do, the code inside this function runs.
 
 	document.getElementById("videoUploader")
 	.addEventListener("change", (e) => {
@@ -1385,7 +1385,7 @@ Reading XML files with JavaScript
 There are four common approaches in JavaScript to read and work with XML files, each suited for a different use case. In this section, we’ll explore these methods one by one with hands-on examples. But first, let’s understand what each approach does and when you’d use it:
 
 a) Using the FileReader and DOMParser
-This method is ideal when you want to read local XML files, such as when a user selects a file from their computer using an <input type="file"> element. JavaScript's FileReader object is used to read the contents of the file, and the DOMParser object then converts the raw XML string into a document that can be navigated like a regular HTML page. Once parsed, you can use standard DOM methods (like getElementsByTagName() or querySelector()) to extract and display data from the XML file.
+This method is ideal when you want to read local XML files, such as when a user selects a file from their computer using an `<input type="file">` element. JavaScript's FileReader object is used to read the contents of the file, and the DOMParser object then converts the raw XML string into a document that can be navigated like a regular HTML page. Once parsed, you can use standard DOM methods (like getElementsByTagName() or querySelector()) to extract and display data from the XML file.
 
 	Workflow hint: local file → FileReader → DOMParser → DOM methods
 
@@ -1467,7 +1467,7 @@ Next, place this code in your HTML document.
 	<input type="file" id="xmlFileInput" accept=".xml" />
          <pre id="output"></pre> 
 
-It contains the file input field to allow you select the XML file to upload into the program to process it. Notice the accept=“” attribute which has a value of ‘.xml’ so it accepts XML files. The <pre> tag will be the target element where the parsed XML data will be displayed for you to see.
+It contains the file input field to allow you select the XML file to upload into the program to process it. Notice the accept=“” attribute which has a value of ‘.xml’ so it accepts XML files. The `<pre>` tag will be the target element where the parsed XML data will be displayed for you to see.
 
 Here is the code to place in your JavaScript file:
 
@@ -1701,7 +1701,7 @@ gives you the parsed XML data as a DOM object, so you can use methods of the HTM
 
 Other than the responseXML property, there are other useful properties of the XMLHttpRequest object designed for you to work with other data formats and handle the whole request process efficiently. I will provide you with all the properties when I go in depth into AJAX requests in Chapter 22.
 
-Let’s take a look at what we do with the result in our example. Remember as pointed out above that at this point, we already have an HTMLElement-like object made possible by responseXML and stored in xmlDoc. The next thing we do therefore is to grab all the book (in <book>) tags from the XML data like so:
+Let’s take a look at what we do with the result in our example. Remember as pointed out above that at this point, we already have an HTMLElement-like object made possible by responseXML and stored in xmlDoc. The next thing we do therefore is to grab all the book (in `<book>`) tags from the XML data like so:
 
 	const books = xmlDoc.getElementsByTagName("book");
 
@@ -1724,7 +1724,7 @@ So, there you have it, a good lesson on how to convert an HTMLCollection into an
   		return { title, author };
 	});
 
-Basically, .map(...) – loops through each <book> and creates a new object. Within that loop, we use .querySelector() to find the <title> and <author> tags inside each of those books. We use .textContent to grab the actual text inside the tag. Each object is therefore returned with title and author keys in it. 
+Basically, .map(...) – loops through each `<book>` and creates a new object. Within that loop, we use .querySelector() to find the `<title>` and `<author>` tags inside each of those books. We use .textContent to grab the actual text inside the tag. Each object is therefore returned with title and author keys in it. 
 
 Because this all happens inside map()—which works in a loop fashion, the data of ‘title’ and ‘author’ which we extract from each book is being repeatedly sent back to be pushed into the bookArray variable. The sending back of the extracted data happens because of the return statement inside the map() function:
 
@@ -1791,7 +1791,7 @@ Let’s look at some examples of handling XML files using XPath.
     		</book>
 	</library>
 
-As you can see, this is XML structured data about books. The data contains two books, and you can tell because it contains two <book> tags. Within each book data is the title (<title>) and the author (<author>) of the book. We are going to use XPath to read the data about the books from this XML file, and log the title of each to the console. Here is the code, and I will explain how it works in the code comments as well as below:
+As you can see, this is XML structured data about books. The data contains two books, and you can tell because it contains two `<book>` tags. Within each book data is the title (`<title>`) and the author (`<author>`) of the book. We are going to use XPath to read the data about the books from this XML file, and log the title of each to the console. Here is the code, and I will explain how it works in the code comments as well as below:
 
 
 	const xhr = new XMLHttpRequest();

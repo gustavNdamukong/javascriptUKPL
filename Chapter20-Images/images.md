@@ -30,8 +30,8 @@ JavaScript and images
   JavaScript can be used to handle images — and it’s actually quite versatile in that area. It’s capable of managing many image-related tasks, especially when combined with browser features or server-side tools. That said, how you use it depends on what you're building.
 For small web projects and learning vanilla JavaScript, you’ll mostly use it to change images on a webpage or handle basic uploads. But if you go deeper into building real-world apps — like photo editors, e-commerce platforms, or social networks — JavaScript has the tools to do even more.
 You’ve already learned how to preview images using the DOM, load files with the FileReader API, and respond to file input events in earlier chapters. But what if we want to go beyond simply displaying images?
-What if we want to edit them — crop, apply filters, draw over them, or change their content in more advanced ways? That’s where the power of the HTML5 <canvas> element comes in.
-You were introduced to <canvas> in Chapter 16 (The Canvas Element), where we used it for drawing shapes and making interactive graphics. In this chapter, we’ll take it further and explore how the canvas can act as a powerful tool for image processing.
+What if we want to edit them — crop, apply filters, draw over them, or change their content in more advanced ways? That’s where the power of the HTML5 `<canvas>` element comes in.
+You were introduced to `<canvas>` in Chapter 16 (The Canvas Element), where we used it for drawing shapes and making interactive graphics. In this chapter, we’ll take it further and explore how the canvas can act as a powerful tool for image processing.
 The canvas allows us to:
 
     * Draw images onto it using drawImage()
@@ -45,7 +45,7 @@ In short, while the DOM and FileReader can help load and preview images, it’s 
 	———————————————————————
 On the frontend (in the browser), you can use JavaScript to:
 * Preview uploaded images before sending them to a server
-* Resize or crop images using the <canvas> element
+* Resize or crop images using the `<canvas>` element
 * Switch images dynamically (e.g., for image sliders or galleries)
 * Apply filters or effects (like converting to black-and-white)
 * Delete images from the webpage view (e.g., in a gallery)
@@ -117,7 +117,7 @@ Image manipulation
 	
 	Add a grayscale filter Effect to an image
 	————————————————————
-  Make sure you have an images/ directory in the same folder as this index.html file, with an image in it named ‘urban.jpg’. That is the image used as the src attribute of the <img> tag in this page, and the one we are practising adding a grayscale filter to. 
+  Make sure you have an images/ directory in the same folder as this index.html file, with an image in it named ‘urban.jpg’. That is the image used as the src attribute of the `<img>` tag in this page, and the one we are practising adding a grayscale filter to. 
 
 		<!DOCTYPE html>
 		<html lang="en">
@@ -236,7 +236,7 @@ However, as I mentioned above, it is a great example for interactive photo edito
 
 *Figure 20.1 — A CSS filter changes the view; a canvas changes the pixels*
 
-But if you want to make the grayscale change—or any change to an image file—permanent, so that the user can download or upload the edited image, you have to use the <canvas> element. This is because, the canvas API’s context which is the thing the image is built on, and all the changes you make on it are saved, makes the changes persist. You just have to then make the image downloadable as a new image file. Always remember that because of JavaScript’s restriction on local files, what essentially happens is this; you read an (original) image, re-create it as a new image on the canvas, then download the new image as a new, separate file. The original file remains unmodified. Back to our greyscale example, here is what the <canvas> element will do:
+But if you want to make the grayscale change—or any change to an image file—permanent, so that the user can download or upload the edited image, you have to use the `<canvas>` element. This is because, the canvas API’s context which is the thing the image is built on, and all the changes you make on it are saved, makes the changes persist. You just have to then make the image downloadable as a new image file. Always remember that because of JavaScript’s restriction on local files, what essentially happens is this; you read an (original) image, re-create it as a new image on the canvas, then download the new image as a new, separate file. The original file remains unmodified. Back to our greyscale example, here is what the `<canvas>` element will do:
 
 	-Draw the image to the canvas,
 	-Apply grayscale pixel by pixel,

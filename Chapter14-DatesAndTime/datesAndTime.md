@@ -541,7 +541,7 @@ Ultimately, the movement happens because we are increasingly setting the ball.st
 
 	HTML code
 	——————-
-Create the <img> tag in your HTML code. Notice I have given it a width and height of 500 by 300, and that is relative to the images I have. Tip: to make it work nicely, make all the images have the same dimensions, so the slideshow will flow seamlessly.
+Create the `<img>` tag in your HTML code. Notice I have given it a width and height of 500 by 300, and that is relative to the images I have. Tip: to make it work nicely, make all the images have the same dimensions, so the slideshow will flow seamlessly.
 
 	<img id="slideshow" src="" width="500" height="300" />
 

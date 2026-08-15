@@ -198,7 +198,7 @@ Examples:
 
   However, whether the JavaScript code being used on your web page is being pulled from an external file in your local file system, or from an entirely different website on the internet; knowing where to place the JavaScript
 code on your web page is important. Where you place your script in the document has significant performance and behaviour implications.
-  So, where should you place script tags? Placing the script just before the closing </body> tag is generally considered best practice, especially for scripts that manipulate or depend on elements in the DOM. This ensures the HTML is parsed and elements are available before the script runs, which avoids errors and improves perceived load speed. To know why this happens, one has to understand how a web page is loaded. Imagine a web page being loaded as a sheet of paper coming out of a fax machine. The paper is slowly ejected from the machine in a head-first manner, as it is written to by the fax machine. If the head of this page has the JavaScript code to work on this page, then you will end up with a situation where, the code then tries to read HTML elements below on the page (maybe to add event listeners to them, or select them etc), but these elements may not be available yet because the page is not fully loaded yet. (An event listener is simply code that sits and waits for something to happen, such as a user clicking a button. We will cover them properly in Chapter 24.) You may therefore get errors for elements which you are trying to select but which do not yet exist on the page, because they have not been loaded yet. What the browser hands back when it cannot find an element is null, which simply means ‘nothing found’, so the error message you will actually see reads something like ‘Cannot read properties of null’.  
+  So, where should you place script tags? Placing the script just before the closing `</body>` tag is generally considered best practice, especially for scripts that manipulate or depend on elements in the DOM. This ensures the HTML is parsed and elements are available before the script runs, which avoids errors and improves perceived load speed. To know why this happens, one has to understand how a web page is loaded. Imagine a web page being loaded as a sheet of paper coming out of a fax machine. The paper is slowly ejected from the machine in a head-first manner, as it is written to by the fax machine. If the head of this page has the JavaScript code to work on this page, then you will end up with a situation where, the code then tries to read HTML elements below on the page (maybe to add event listeners to them, or select them etc), but these elements may not be available yet because the page is not fully loaded yet. (An event listener is simply code that sits and waits for something to happen, such as a user clicking a button. We will cover them properly in Chapter 24.) You may therefore get errors for elements which you are trying to select but which do not yet exist on the page, because they have not been loaded yet. What the browser hands back when it cannot find an element is null, which simply means ‘nothing found’, so the error message you will actually see reads something like ‘Cannot read properties of null’.  
 ![Figure 1.2 — Why a script in the head cannot find elements further down the page](images/ch01-fig-02-script-placement.svg)
 
 *Figure 1.2 — Why a script in the head cannot find elements further down the page*
@@ -269,9 +269,9 @@ To comment out multiple lines, begin the first line with a forward slash and an 
 
 	Dealing with browsers that do not support JavaScript (rare)
 	————————————————————————————————
-  While JavaScript is essential for creating dynamic web applications, not all users have it enabled. The <noscript> tag provides a way to display fallback content for those rare cases.
+  While JavaScript is essential for creating dynamic web applications, not all users have it enabled. The `<noscript>` tag provides a way to display fallback content for those rare cases.
 What It Does
-The <noscript> tag tells the browser:
+The `<noscript>` tag tells the browser:
 
 	“If JavaScript is disabled or not supported, show this content within this tag instead.” It’s useful for displaying a message or a simplified version of your feature. Here is an example:
 
@@ -280,15 +280,15 @@ The <noscript> tag tells the browser:
 			browser settings.</p>
 	</noscript>
 
-One rule of thumb is to use the <noscript></noscript> tag for browsers not supporting JavaScript, then provide static HTML alternatives to the functionality you build using JavaScript.
+One rule of thumb is to use the `<noscript></noscript>` tag for browsers not supporting JavaScript, then provide static HTML alternatives to the functionality you build using JavaScript.
 
-  These days, however, you will rarely need to use this because most modern browsers support JavaScript, and most users have it enabled. But there are times when <noscript> is still helpful. Here are examples of scenarios when you may need it:
+  These days, however, you will rarely need to use this because most modern browsers support JavaScript, and most users have it enabled. But there are times when `<noscript>` is still helpful. Here are examples of scenarios when you may need it:
 
 	-To show a warning message when JavaScript is required.
 	-For critical features where accessibility or SEO is a concern.
 	-When you want to provide a basic static version of a feature.
 
-However, if your app fully depends on JavaScript like many modern single-page applications (SPAs), and your audience is mostly using up-to-date browsers, you may not need <noscript> at all. So in conclusion, use <noscript> as a fallback for better accessibility or critical communication, but it’s no longer something that must be used in every project.
+However, if your app fully depends on JavaScript like many modern single-page applications (SPAs), and your audience is mostly using up-to-date browsers, you may not need `<noscript>` at all. So in conclusion, use `<noscript>` as a fallback for better accessibility or critical communication, but it’s no longer something that must be used in every project.
 
 
 

@@ -141,7 +141,7 @@ A node is any item in the DOM (elements, text, comments).
 
 An element (HTMLElement) is a specific type of node that represents an actual HTML tag. 
 
-It is important to be able to tell when you're dealing with a Node and when you are dealing with an Element. When we say some properties or methods of the HTMLElement object (like children) ignore non-element nodes, we mean they only return actual elements and ignore text nodes and comment nodes. What actually are text nodes and comment nodes? Text in your HTML can exist inside elements (like inside a <p> tag) or directly in the DOM as a separate text node. The same applies to comments. It is the ones that are not within HTML elements (tags) that are not considered as element nodes. Here is a demonstration:
+It is important to be able to tell when you're dealing with a Node and when you are dealing with an Element. When we say some properties or methods of the HTMLElement object (like children) ignore non-element nodes, we mean they only return actual elements and ignore text nodes and comment nodes. What actually are text nodes and comment nodes? Text in your HTML can exist inside elements (like inside a `<p>` tag) or directly in the DOM as a separate text node. The same applies to comments. It is the ones that are not within HTML elements (tags) that are not considered as element nodes. Here is a demonstration:
 
 	<div id="parent">
     		Some text  <!-- This is a text node -->
@@ -152,14 +152,14 @@ It is important to be able to tell when you're dealing with a Node and when you 
 		<!-- This is a comment node -->
 	</div>
 
-   -"Some text" → A text node (not inside a <p>, so 
+   -"Some text" → A text node (not inside a `<p>`, so 
 	it's separate in the DOM).
    -<!-- This is a comment node --> → A comment 
 	node (ignored by properties like children).
-   -<p> → A real element, but its inner text is still 
+   -`<p>` → A real element, but its inner text is still 
 	inside a text node.
 
-  Here is the kicker; a <p> tag is an element, so it will always be included in .children. However, the text inside a <p> is a text node, not an element, so children will count (select) the <p> tag, but not the text within it. The childNodes property, on the other hand, does accept text and comments, and so it will return the text within the <p> tag. Here is a demonstration:
+  Here is the kicker; a `<p>` tag is an element, so it will always be included in .children. However, the text inside a `<p>` is a text node, not an element, so children will count (select) the `<p>` tag, but not the text within it. The childNodes property, on the other hand, does accept text and comments, and so it will return the text within the `<p>` tag. Here is a demonstration:
 
 	<p id="para">Hello World!</p>
 
@@ -274,24 +274,24 @@ a CSS selector can describe an id ("#myId"), a class (".myClass") or a tag
 ("p"). That does not make the older three obsolete, and you will meet all
 five in real code, which is why we cover them all.
 
-These methods will select and return a single or multiple HTMLElement object(s). Actually, to be specific, what it returns when you select a paragraph (p tag), is an HTMLParagraphElement, but this HTMLParagraphElement inherits from the HTMLElement object. The fact is, in the Document Object Model (DOM) every HTML element is represented by a specific JavaScript object type, usually named something like: HTML<TagName>Element, and they all inherit from the HTMLElement object. Before we proceed to learn how to 
+These methods will select and return a single or multiple HTMLElement object(s). Actually, to be specific, what it returns when you select a paragraph (p tag), is an HTMLParagraphElement, but this HTMLParagraphElement inherits from the HTMLElement object. The fact is, in the Document Object Model (DOM) every HTML element is represented by a specific JavaScript object type, usually named something like: HTML`<TagName>`Element, and they all inherit from the HTMLElement object. Before we proceed to learn how to 
 select elements; here’s a list of the most commonly used HTML 
 elements and their corresponding DOM interface names (JavaScript object types): This is not the exhaustive list, but rather a few, just so you get the idea.
 
      HTML tag	       DOM Object Type
-<div>	HTMLDivElement
-<p>	HTMLParagraphElement
-<h1>, <h3> etc	HTMLHeadingElement
-<a> (link)	HTMLAnchorElement
-<img>	HTMLImageElement
-<input>	HTMLInputElement
-<textarea>	HTMLTextAreaElement
-<form>	HTMLFormElement
-<table>	HTMLTableElement
-<ul>, <ol>	HTMLUListElement, HTMLOListElement
-<body>	HTMLBodyElement
+`<div>`	HTMLDivElement
+`<p>`	HTMLParagraphElement
+`<h1>`, `<h3>` etc	HTMLHeadingElement
+`<a>` (link)	HTMLAnchorElement
+`<img>`	HTMLImageElement
+`<input>`	HTMLInputElement
+`<textarea>`	HTMLTextAreaElement
+`<form>`	HTMLFormElement
+`<table>`	HTMLTableElement
+`<ul>`, `<ol>`	HTMLUListElement, HTMLOListElement
+`<body>`	HTMLBodyElement
 
-All I need you to know right now is that all HTML elements have their specific object types, like the <p> tag has HTMLParagraphElement. But these object types all inherit from another JavaScript object, HTMLElement, so they get everything it has. (Careful with the word “child” here—in this chapter it means a child node on the page, which is a different idea altogether.) Therefore all the properties and methods of the HTMLElement object are available to them. That is why after selecting an element, we can reference properties on it like .innerHTML, .style, .classList, to manipulate it. Let’s now look at how to select elements on a web page.
+All I need you to know right now is that all HTML elements have their specific object types, like the `<p>` tag has HTMLParagraphElement. But these object types all inherit from another JavaScript object, HTMLElement, so they get everything it has. (Careful with the word “child” here—in this chapter it means a child node on the page, which is a different idea altogether.) Therefore all the properties and methods of the HTMLElement object are available to them. That is why after selecting an element, we can reference properties on it like .innerHTML, .style, .classList, to manipulate it. Let’s now look at how to select elements on a web page.
 
 
 	The getElementsByTagName() method
@@ -614,7 +614,7 @@ The output is:
 	Some text 3
 	Text within a list
 
-Notice that even the <p> tag nested within the <li> tag of a <ul> element was fetched.
+Notice that even the `<p>` tag nested within the `<li>` tag of a `<ul>` element was fetched.
 
   You can use the classic for loop familiar from arrays to loop through both HTMLCollections and NodeLists. It works because the for loop works with anything that has the .length property, and HTMLCollections and NodeLists have it. Here is an example using the same HTML markup as above:
 
@@ -650,7 +650,7 @@ Let’s see how that works.
 
 		The Array.from() method
 		——————————————
-  This uses the .from() method of the JavaScript Array object. The following example will grab and return an HTMLCollection of all <p> tags on the current web page, then use the Array.from() to convert it into a true array.
+  This uses the .from() method of the JavaScript Array object. The following example will grab and return an HTMLCollection of all `<p>` tags on the current web page, then use the Array.from() to convert it into a true array.
 You can then call or apply any array method or property of your choice to manipulate the array. 
 
 	const items = Array.from(document.getElementsByTagName("p"));
@@ -681,7 +681,7 @@ In this example, we use the array .forEach() to loop through the data after conv
   		console.log(item.textContent);
 	});
 
-Here we use the querySelectorAll() method of the document object to select all <p> tags on the current web page. We already know the querySelectorAll() method returns a NodeList—which is why I am using it. When we call this method, we use the Spread operator to capture what it returns into an array like so:
+Here we use the querySelectorAll() method of the document object to select all `<p>` tags on the current web page. We already know the querySelectorAll() method returns a NodeList—which is why I am using it. When we call this method, we use the Spread operator to capture what it returns into an array like so:
 
 	[ ...methodCall ]
 
@@ -779,7 +779,7 @@ The output of the console.log(item.textContent); line logs this to the console:
 	<input type="text" id="nameInput" value="Gustav" />
 
 I have given the field an id of "nameInput" and a value of "Gustav”.
-Normally, form elements should be within a form element (<form> tag) so it would also have other properties like a button which all browsers know how to respond to by submitting the form when it is clicked. Another thing a real form element has is an optional HTTP method in the opening form tag which is meant for the headers of the request being sent to a server by the browser. The header values will help the browser determine how the data from that form is to be transmitted over to a server. So I have not placed this input field inside a form tag because we are just testing here.
+Normally, form elements should be within a form element (`<form>` tag) so it would also have other properties like a button which all browsers know how to respond to by submitting the form when it is clicked. Another thing a real form element has is an optional HTTP method in the opening form tag which is meant for the headers of the request being sent to a server by the browser. The header values will help the browser determine how the data from that form is to be transmitted over to a server. So I have not placed this input field inside a form tag because we are just testing here.
   The value which I gave is also for testing. In a real scenario, that value will only be there once the user has typed something into that input element, and submitted. The general practice is to place what we call an event listener on the form’s submit button, and define that the event we want to listen for is a click event. Our code due to the event listener placed on that button will then be listening for that event to occur (fire). Once the event fires (occurs), we will then grab the value entered into that field because it is always sent through the event object by the browser. We will learn all about event handling and form handling in later chapters. For now, just understand that our "nameInput" field above is just for testing, so there is no form element, and no submit button with an event-listener on it, waiting for the user to submit it after completing the form. This is why I manually give the field a value so we can test extracting it after selecting the field. 
   The following is the code to select the input field and get its value. It works by first of all selecting the target field using the .querySelector() method that you are already familiar with, then we get the value from the .value property of the DOM object. Here it is:
 
@@ -969,7 +969,7 @@ This outputs:
 
 console.log(parent.firstElementChild); 
 
-This outputs: <p>Paragraph 1</p>
+This outputs: `<p>`Paragraph 1`</p>`
 
 
 
@@ -1002,7 +1002,7 @@ Manipulating elements
 
 Changing elements
 ——————————
-  In JavaScript, there are special properties you can use to change the content (what people see) inside elements on a web page. These properties belong to what’s called an HTMLElement, which is just a fancy name for any element you see on a web page—like a <div>, <p>, <h1>, and so on.
+  In JavaScript, there are special properties you can use to change the content (what people see) inside elements on a web page. These properties belong to what’s called an HTMLElement, which is just a fancy name for any element you see on a web page—like a `<div>`, `<p>`, `<h1>`, and so on.
  The way this is done in JavaScript is to select the HTML element, and then reference the document object property on it as you have seen before. You can also select the element first, store it in a variable for example a variable called elem, then you would reference the property you want to change on that variable-which now represents the HTML element, using this syntax: elem.propertyName = "new value";
 
 Let’s explore the four main properties you’ll use most often.
@@ -1076,7 +1076,7 @@ Both the textContent and innerHTML properties insert content into an element on 
 	elem.innerHTML = "<img src='x' onerror='alert(\"Hacked!\")'>";
 
 This could cause popups, data leaks, or worse. If you're inserting user input (like from a form or a database), always use textContent to avoid these dangers. It will treat everything as plain text—so there will be no surprises.
-  Let me talk about why <img src='x' onerror='alert("Hacked!")'> is dangerous. This kind of code is a classic example of XSS (Cross-Site Scripting), and here's how it works:
+  Let me talk about why `<img src='x' onerror='alert("Hacked!")'>` is dangerous. This kind of code is a classic example of XSS (Cross-Site Scripting), and here's how it works:
 
 	-The src='x' is invalid—it points to an image that doesn't exist.
 	-Because the image fails to load, the browser triggers the onerror 
@@ -1153,7 +1153,7 @@ Creating New Elements
 	newDiv.textContent = "New DIV Element is here";
 	document.body.appendChild(newDiv);
 
-Let’s modify this example slightly by adding a border to the created div, and adding some border color, and background color, to blue. Let us also make the text within the div be in a <p> tag, and make it bold and white. 
+Let’s modify this example slightly by adding a border to the created div, and adding some border color, and background color, to blue. Let us also make the text within the div be in a `<p>` tag, and make it bold and white. 
   This should demonstrate to you how you can add attributes and even styling to the elements you create dynamically. Here is the code for that:
 
 	let newDiv = document.createElement("div");
@@ -1173,7 +1173,7 @@ Let’s modify this example slightly by adding a border to the created div, and 
 	// Append to the body
 	document.body.appendChild(newDiv);
 
-Notice that we changed how we assign the text value to the div (in newDiv). We first of all wrap the text in a pair of <p> tags. Then instead of using the .textContent we used earlier-which would display only text, we use .innerHTML so that the string which now contains HTML (in the <p> tag) will be parsed as HTML and displayed on the web document as such.
+Notice that we changed how we assign the text value to the div (in newDiv). We first of all wrap the text in a pair of `<p>` tags. Then instead of using the .textContent we used earlier-which would display only text, we use .innerHTML so that the string which now contains HTML (in the `<p>` tag) will be parsed as HTML and displayed on the web document as such.
   To add styling, you have to reference the style properties on the style property of the HTML element, which in this case is newDiv. I should point out that when using JavaScript like this to add styling to elements, the style properties are not written in the same way as in CSS. In JavaScript most of the names are the same, however, camel-casing is used. Here is a small example of CSS properties and the equivalent names of the JavaScript HTML element’s style properties—just to give you a hint:
 
           CSS property	  JavaScript style property
@@ -1565,17 +1565,17 @@ Syntax examples of XPath (//tag, /html/body, etc.)
 with these, and check the online documentation for more complex queries and
 explanations:
 
-  Select all <book> nodes                          //book
+  Select all `<book>` nodes                          //book
   Attribute access (select id attributes)          //@id
-  All <book> tags whose id attribute is "b1"       //book[@id="b1"]
+  All `<book>` tags whose id attribute is "b1"       //book[@id="b1"]
   Filter books by price greater than 10            //book[price > 10]
   Wildcards (select all nodes)                     //*
   Axes (advanced) - navigate relationships         //book/child::title
-  Find all <h1> tags                               //h1
+  Find all `<h1>` tags                               //h1
   Find links whose href value is "#foo"            //a[@href="#foo"]
-  All <span> tags containing the text "Hello"      //span[text()="Hello"]/..
-  A <p> tag containing the text "warning"          //p[contains(text(), "warning")]
-  All <title> tags that are children of <book>     //book/title
+  All `<span>` tags containing the text "Hello"      //span[text()="Hello"]/..
+  A `<p>` tag containing the text "warning"          //p[contains(text(), "warning")]
+  All `<title>` tags that are children of `<book>`     //book/title
   Books by Orwell costing less than 10             //book[author="Orwell" and price < 10]
 
 These examples show that XPath is more expressive than CSS in certain cases—like selecting based on text content or element position. Mastering this skill will set you apart as a JavaScript developer, and you will be able to work in any niche environment where expertise in handling complex XML documents is required. As you can see, it goes beyond the basics of the other CSS query selectors. Knowing XPath will make you able to take any complex HTML or XML document and make sense of its data.
@@ -1641,7 +1641,7 @@ Let’s see it in action reading data from documents.
 	  	</script>
 	</body>
 
-Let’s see how you would use the document.evaluate() method to run an XPath query on the HTML document to extract all the book titles that are within <span> tags on the web page. Here is the JavaScript code to do that:
+Let’s see how you would use the document.evaluate() method to run an XPath query on the HTML document to extract all the book titles that are within `<span>` tags on the web page. Here is the JavaScript code to do that:
 
 	// XPath expression to find all span elements with class "title"
 	const xpath = "//span[@class='title']";

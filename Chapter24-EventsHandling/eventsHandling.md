@@ -468,7 +468,7 @@ Deep dive into event mechanics
 
 Event bubbling
 —————————
-  When an event happens, it first occurs on the target element (where the user acted). Then, it "bubbles up" through the parent elements all the way to the root (highest parent element) (<html>). Example:
+  When an event happens, it first occurs on the target element (where the user acted). Then, it "bubbles up" through the parent elements all the way to the root (highest parent element) (`<html>`). Example:
 
     * You click a button inside a div.
     * The click event first fires on the button.
@@ -482,7 +482,7 @@ Why it matters: you can listen for an event higher up in the DOM, instead of on 
 Event capturing (aka capture phase)
 ————————————————————
   This is the event propagation pattern that is directly opposite to bubbling. In event capturing mode, instead of bubbling up, events will first travel downward from the root (top-most parent) downward to the target (the element on which the event was triggered). This is called capturing. By default, most event listeners listen during the bubbling phase. But you can make a listener listen during capture phase by setting { capture: true }. This is an advanced concept to grasp for less advanced programmers, so let me take the time to break it down. If I seem to be repeating some words, just follow along, it’s to drive this important topic home in your mind. 
-  In the context of event capturing, "the root" simply means the very top parent element. In a web page, the biggest root is usually the document or <html> tag. But inside a smaller section, like a <div>, the root could be that <div> when you're only considering its children. Let me demonstrate:
+  In the context of event capturing, "the root" simply means the very top parent element. In a web page, the biggest root is usually the document or `<html>` tag. But inside a smaller section, like a `<div>`, the root could be that `<div>` when you're only considering its children. Let me demonstrate:
 
 	<div id="parentDiv">
   		<ul>
@@ -492,7 +492,7 @@ Event capturing (aka capture phase)
 	</div>
 
 In this example; #parentDiv is the root inside this small piece of DOM.
-The <li> elements are children (targets you might click on). Again, the target is the specific element that the user actually interacts with. If you click on Item 2, then the target is the <li> with id="item2". If you click on Item 1, the target is <li> with id="item1".
+The `<li>` elements are children (targets you might click on). Again, the target is the specific element that the user actually interacts with. If you click on Item 2, then the target is the `<li>` with id="item2". If you click on Item 1, the target is `<li>` with id="item1".
   Here is how capturing actually works. With event bubbling, the event starts at the target and bubbles up toward the root. But with capturing,
 the event first starts at the root and travels down the DOM tree — down through each parent, until it reaches the target. Let me demonstrate with a practical working example:
 
@@ -638,7 +638,7 @@ Let’s see an example:
 		});
 	</script>
 
-This works well, and with just one event listener on the <ul>, you handle clicks for any <li>
+This works well, and with just one event listener on the `<ul>`, you handle clicks for any `<li>`
 
 
 

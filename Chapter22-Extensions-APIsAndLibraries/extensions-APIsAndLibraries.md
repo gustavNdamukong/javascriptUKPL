@@ -227,7 +227,7 @@ Then use this resolver when calling document.evaluate():
 
 	Must you use a Namespace in every SOAP request?
 	————————————————————————————
-  You do not need it sometimes. If your XML doesn't use prefixes (e.g. just <Envelope> instead of <soap:Envelope>), you don’t need a resolver. But in most real-world SOAP responses, you will need one, because namespaces are standard practice.
+  You do not need it sometimes. If your XML doesn't use prefixes (e.g. just `<Envelope>` instead of `<soap:Envelope>`), you don’t need a resolver. But in most real-world SOAP responses, you will need one, because namespaces are standard practice.
 
 
 
@@ -300,12 +300,12 @@ Let us look at a complete example of how you would prepare and send a SOAP reque
 
 	xhr.send(soapMessage);
 
-  In the SOAP message-which is the XML string stored in the variable soapMessage, the body or contents of the message you are sending to the sever are within the <soap:Body> section or element. In this example, we are making a call to a function named GetPriceRequest which is located on the API server. We would have known about the existence of this function from the WDSL (Web Service Description Language) that the API providers supplied to us. The WDSL which is the documentation of the API would also contain information about arguments we need to pass to the function, if any is required.
+  In the SOAP message-which is the XML string stored in the variable soapMessage, the body or contents of the message you are sending to the sever are within the `<soap:Body>` section or element. In this example, we are making a call to a function named GetPriceRequest which is located on the API server. We would have known about the existence of this function from the WDSL (Web Service Description Language) that the API providers supplied to us. The WDSL which is the documentation of the API would also contain information about arguments we need to pass to the function, if any is required.
   The first argument passed to the .evaluate() method is the XPath query string ("//soap:Body//Price/text()”). XPath stands for XML Path Language. It’s a way to navigate and select parts of an XML document, like querying a database but for XML.
 In the example above, the XPath string "//soap:Body//Price/text()" tells JavaScript:
 
-* Look anywhere (//) for the <soap:Body> element
-* Then go inside it and look for the <Price> element
+* Look anywhere (//) for the `<soap:Body>` element
+* Then go inside it and look for the `<Price>` element
 * Extract its text content (using /text())
 
 You use document.evaluate() to run XPath queries in JavaScript. It requires a valid XML document (not just a string), which is why using either xhr.responseType = 'document' or using DOMParser is essential because they first of all convert the returned data into a document (DOM) object before you can use DOM methods like document.evaluate() on it. Again, visit chapter 15 (DOM Manipulation) for a full explanation of XPath and the document.evaluete() method.
@@ -711,7 +711,7 @@ We then use DOMParser which we installed into our project using npm earlier-spec
 
 	const doc = new DOMParser().parseFromString(xml);
 
-Next, we extract the data we need from the SOAP message, which in this case is the product name, and we know it is in a <Product> tag. We use xpath (which we installed into our project using npm earlier)-specifically its select1() method. Here is how we do it: 
+Next, we extract the data we need from the SOAP message, which in this case is the product name, and we know it is in a `<Product>` tag. We use xpath (which we installed into our project using npm earlier)-specifically its select1() method. Here is how we do it: 
 
 	const productName = xpath.select1('//Product/text()', doc)?.nodeValue;
 
@@ -1510,7 +1510,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 
   You have here two functions, getPosts() that reads data from an array posts, and renders it as HTML list tags to display the posts. The other function, createPost() adds more data to the posts array.
-  If you ran the code now and looked in your HTML you would find that only post one and post two are displayed as <li> elements. Though we first of all call createPost() before we call getPosts(), you would think that we will get three tags displayed, but we only get two. The <li> element post three created by createPost() above did not appear because the code in createPost() runs in a setTimeout() function which ensures that its task is only executed after a two seconds delay. The issue is that setTimeout() is asynchronous, meaning getPosts() returns before it completes. This means that the next function we call, getPosts(), runs and fetches the current posts data before the additional post is created, hence, it only finds two items in the posts array.
+  If you ran the code now and looked in your HTML you would find that only post one and post two are displayed as `<li>` elements. Though we first of all call createPost() before we call getPosts(), you would think that we will get three tags displayed, but we only get two. The `<li>` element post three created by createPost() above did not appear because the code in createPost() runs in a setTimeout() function which ensures that its task is only executed after a two seconds delay. The issue is that setTimeout() is asynchronous, meaning getPosts() returns before it completes. This means that the next function we call, getPosts(), runs and fetches the current posts data before the additional post is created, hence, it only finds two items in the posts array.
   To resolve this issue, you need to use callbacks, Promises, or async/await. Let’s see how a callback can fix the issue. We will modify the createPost() function to accept a callback function as its second argument. This callback function is getPosts() which should then be called by createPost() after it has finished doing its task of adding data to the posts array. This is to ensure that after updating the data in posts, the list of posts displayed on screen is refreshed by getPosts() to reflect that update. 
   Be sure to pass the getPosts() function then as the second argument to createPost() when you call it. The modified code will look like this:
 

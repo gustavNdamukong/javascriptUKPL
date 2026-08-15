@@ -180,7 +180,7 @@ The values of the variables in this data which was injected into the template (a
 
 	…template(data);
 
-will now replace {{title}} and {{message}} in the <script> template
+will now replace {{title}} and {{message}} in the `<script>` template
 
 
   Handlebars and Mustache are still used, but in modern apps they are largely being replaced by React, Vue and other frameworks. They are useful for server-side rendering and simpler projects that don’t need full-fledged frameworks.

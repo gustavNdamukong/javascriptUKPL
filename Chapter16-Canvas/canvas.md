@@ -23,8 +23,8 @@ CHAPTER 16 - THE CANVAS ELEMENT
 The Canvas element—for drawing on the web
 —————————————————————————
 
-  The <canvas> element is a special part of HTML5 that lets you draw graphics using JavaScript — right in your browser! Think of it like a blank sheet of paper (or canvas!) where you can use code to draw lines, shapes, images, animations, and even build simple games.
-  The <canvas> element was introduced with HTML5, around 2009–2010, as a way to allow developers to draw and animate things directly in the browser without using Flash or plugins. It became a big part of making the web more interactive and powerful. Before canvas, making interactive graphics (like games, charts, or animations) was tricky and usually needed extra software. Now, with canvas and JavaScript, you can draw anything directly on the page, using only your browser.
+  The `<canvas>` element is a special part of HTML5 that lets you draw graphics using JavaScript — right in your browser! Think of it like a blank sheet of paper (or canvas!) where you can use code to draw lines, shapes, images, animations, and even build simple games.
+  The `<canvas>` element was introduced with HTML5, around 2009–2010, as a way to allow developers to draw and animate things directly in the browser without using Flash or plugins. It became a big part of making the web more interactive and powerful. Before canvas, making interactive graphics (like games, charts, or animations) was tricky and usually needed extra software. Now, with canvas and JavaScript, you can draw anything directly on the page, using only your browser.
   The canvas element is supported by all modern web browsers and is used in the following ways:
 
     * Games
@@ -40,7 +40,7 @@ In this section, we will build a drawing application, with which you can draw th
 		style="border:1px solid black;">
 	</canvas>
 
-  How does it relate to other DOM elements? Just like other elements (like <div>, <p>, or <img>), canvas is part of the DOM. You can do the following:
+  How does it relate to other DOM elements? Just like other elements (like `<div>`, `<p>`, or `<img>`), canvas is part of the DOM. You can do the following:
 
 	-create it with document.createElement("canvas")
 	-add it to the page with appendChild()
@@ -48,7 +48,7 @@ In this section, we will build a drawing application, with which you can draw th
 	-style it with CSS	
 	-control it with JavaScript
 
-But unlike an <img>, canvas doesn't have content on its own—you draw everything using a special drawing tool called the canvas context, which comes as part of the Canvas itself. This is why in all Canvas operations in code, you will notice they all begin with a setup of the context, followed by the process of building stuff upon that context.
+But unlike an `<img>`, canvas doesn't have content on its own—you draw everything using a special drawing tool called the canvas context, which comes as part of the Canvas itself. This is why in all Canvas operations in code, you will notice they all begin with a setup of the context, followed by the process of building stuff upon that context.
 Let’s see some examples of the Canvas in action. I think the best way for you to get introduced to the canvas is if I show you practical examples in code, and then explain what the various properties and methods do.
 
 	
@@ -1316,4 +1316,4 @@ calculation. For our one rock it makes no practical difference, and the
 box version is easier to read, which is why the chapter uses it. But now
 you know both, and you know why you would reach for each.
 
-  You’ve just taken your first steps into the world of graphics and animation using the HTML5 <canvas>! From moving a ball around the screen to detecting collisions with obstacles, you now understand how powerful simple shapes, positioning, and logic can be. But this is just the beginning. The canvas API can do so much more — from drawing images and text to creating full-blown games. Explore the official Canvas documentation on MDN (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) to see what’s possible. And if you’re feeling adventurous, try building a maze, a simple pong game, or a mini obstacle course — anything that challenges you to move objects, detect hits, and control motion. 
+  You’ve just taken your first steps into the world of graphics and animation using the HTML5 `<canvas>`! From moving a ball around the screen to detecting collisions with obstacles, you now understand how powerful simple shapes, positioning, and logic can be. But this is just the beginning. The canvas API can do so much more — from drawing images and text to creating full-blown games. Explore the official Canvas documentation on MDN (https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API) to see what’s possible. And if you’re feeling adventurous, try building a maze, a simple pong game, or a mini obstacle course — anything that challenges you to move objects, detect hits, and control motion. 

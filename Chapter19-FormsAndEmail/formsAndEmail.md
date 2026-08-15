@@ -25,7 +25,7 @@ CHAPTER 19 - Forms & Email
   This demonstrates how your programming language allows you to manage web forms and user-submitted input. Forms are a very important part of web development. With forms, you can convert an otherwise boring static website/application into an interactive application which responds to user input and can respond with some data depending on the value or values of the input. With forms you can create an application that conducts a user survey, collect data from users to register them for an event whereby their preferences are taken into consideration, you can order for a product, service or book a reservation etc. With forms, your web application can also collect data from a user and submit them to a server or another remote external application and listen for, and return the response. JavaScript really shines in this domain. 
   There are three ways to handle form data in JavaScript. Let’s start by writing an HTML form to use in demonstration:
 
-<form id="myForm">
+`<form id="myForm">`
     <input type="text" 
 	id="username" 
 	name="username" 	
@@ -39,7 +39,7 @@ CHAPTER 19 - Forms & Email
     <input type="file" name="myFile" />
 
     <button type="submit">Submit</button>
-</form>
+`</form>`
 
 
 
@@ -88,9 +88,9 @@ It is worth being precise about what comes back, because this catches people out
 
 -ii) Using the elements property of HTMLFormElement 
 —————————————
-  JavaScript also provides an elements property to be used for event handling when working with forms. It's a property of the HTMLFormElement interface that allows you to easily access every single form control (input, select, textarea fields, etc.) inside a <form> element. Therefore note that the e.target.elements property is only available to be referenced on <form> elements. That is because the ‘elements’ property belongs to the HTMLFormElement object and not the HTMLElement object. HTMLFormElement is the interface a <form> element is an instance of, which is why the property lives there and not on HTMLElement. Uniquely, access to fields is obtained by using the name attributes of form elements (like so: form.elements.name), and not the id, class attributes or tag names like the selector properties of the HTMLElement object. 
+  JavaScript also provides an elements property to be used for event handling when working with forms. It's a property of the HTMLFormElement interface that allows you to easily access every single form control (input, select, textarea fields, etc.) inside a `<form>` element. Therefore note that the e.target.elements property is only available to be referenced on `<form>` elements. That is because the ‘elements’ property belongs to the HTMLFormElement object and not the HTMLElement object. HTMLFormElement is the interface a `<form>` element is an instance of, which is why the property lives there and not on HTMLElement. Uniquely, access to fields is obtained by using the name attributes of form elements (like so: form.elements.name), and not the id, class attributes or tag names like the selector properties of the HTMLElement object. 
 
-When an event (like submit) is triggered on a form, e.target refers to the <form> element. The .elements property on that form gives you a collection of all input fields inside it.
+When an event (like submit) is triggered on a form, e.target refers to the `<form>` element. The .elements property on that form gives you a collection of all input fields inside it.
 
 Let’s look at a demonstration of how to use the elements property to process our myForm example above. We will add an event listener to our myForm form, and write a closure (anonymous function) to immediately handle the form submission upon the event occurring.
 

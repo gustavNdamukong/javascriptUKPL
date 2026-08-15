@@ -686,7 +686,7 @@ By following these practices, you can write cleaner, more maintainable JavaScrip
 JavaScript modules and variable scope
 ————————————————————
   As your code grows larger, it's common to split it into multiple files to keep things organised. These files can be treated as modules — reusable, self-contained pieces of JavaScript code. (Take care not to confuse this use of the word with the code blocks we met earlier in this chapter. They are unrelated.) But JavaScript handles modules a little differently than regular scripts.
-To declare a JavaScript file as a module, you use the type="module" attribute in your HTML in the <script> tag as you reference the specific JavaScript file:
+To declare a JavaScript file as a module, you use the type="module" attribute in your HTML in the `<script>` tag as you reference the specific JavaScript file:
 
 	<script type="module" src="index.js"></script>
 

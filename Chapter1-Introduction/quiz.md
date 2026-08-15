@@ -24,12 +24,12 @@ QUESTIONS
 
         <script src="/js/main.js"></script>
 
-   Why is there nothing written between the opening <script> and the closing </script>?
+   Why is there nothing written between the opening `<script>` and the closing `</script>`?
 
    Clue: look at what the src attribute is pointing to.
 
 
-3) Where in an HTML document is it usually best to place your <script> tag, and why?
+3) Where in an HTML document is it usually best to place your `<script>` tag, and why?
 
    Clue: think back to the fax machine, and to which parts of the page actually exist at the
    moment your code runs.
@@ -58,7 +58,7 @@ QUESTIONS
    Clue: one of them produces a value. The other is a complete instruction to the computer.
 
 
-7) A friend tells you their web page is broken. Their JavaScript sits inside the <head>, and
+7) A friend tells you their web page is broken. Their JavaScript sits inside the `<head>`, and
    when it runs they get the error "Cannot read properties of null". What has gone wrong, and
    what are two different ways they could fix it?
 
@@ -66,7 +66,7 @@ QUESTIONS
    listen for.
 
 
-8) What is the <noscript> tag for, and would you say every website today must have one?
+8) What is the `<noscript>` tag for, and would you say every website today must have one?
 
    Clue: think about what the browser does with the content inside it, and about how common it
    is nowadays for a visitor to have JavaScript switched off.
@@ -106,10 +106,10 @@ ANSWERS
    the tags. When you use src, you leave the space between the tags empty.
 
 
-3) Just before the closing </body> tag.
+3) Just before the closing `</body>` tag.
 
    The browser reads an HTML page from top to bottom, in order. If your script sits at the top
-   in the <head>, it runs before the rest of the page has been built, so any element it tries
+   in the `<head>`, it runs before the rest of the page has been built, so any element it tries
    to reach further down does not exist yet. Putting the script at the bottom guarantees the
    whole page has been read first, so every element your code needs is already there.
 
@@ -149,7 +149,7 @@ ANSWERS
    full sentence and an expression as a phrase within that sentence.
 
 
-7) The script in the <head> is running before the elements it wants have been built. When the
+7) The script in the `<head>` is running before the elements it wants have been built. When the
    browser cannot find an element, it hands back null, which means "nothing found" — hence the
    error message.
 
@@ -166,10 +166,10 @@ ANSWERS
             // your code here
         });
 
-   A third option, of course, is simply to move the script down to just before </body>.
+   A third option, of course, is simply to move the script down to just before `</body>`.
 
 
-8) The <noscript> tag holds content that the browser will display only if JavaScript is
+8) The `<noscript>` tag holds content that the browser will display only if JavaScript is
    disabled or unsupported. It is a fallback — typically a short message, or a simplified
    version of whatever your JavaScript would have provided.
 

@@ -39,7 +39,7 @@ QUESTIONS
 
 
 5) Both of these try to match an HTML tag. Run them in your head against the text
-   <p><b>Hello</b></p> and say what each one grabs:
+   `<p><b>`Hello`</b></p>` and say what each one grabs:
 
         /<.+>/
         /<[^>]+>/
