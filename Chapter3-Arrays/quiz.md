@@ -348,14 +348,14 @@ person.first - name
             <script>
                 let images = new Array();
 
-// put the images in the array
-images.push(
-"amex.png",
-"visa.png",
-"pexels-photo.jpeg",
-"pexels-photo2.jpeg",
-"logo.jpeg"
-);
+      // put the images in the array
+      images.push(
+      "amex.png",
+      "visa.png",
+      "pexels-photo.jpeg",
+      "pexels-photo2.jpeg",
+      "logo.jpeg"
+      );
 
                 // grab the target div
                 let div = document.getElementById("myImgDiv");

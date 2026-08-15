@@ -71,16 +71,11 @@
       (Encapsulation)
 
 
-
-
-
-
 ## Introduction
   Object Oriented Programming (OOP) refers to the ability of a programming language to handle the building blocks of an application as objects and properties. This offers a much more organised, readable, testable, and scalable approach to building software 
 applications. These benefits it offers and 
 more, will be evident as the OOP topic is 
 broken down in detail.
-
 
 
 #### Relationship between the object data type and Object
@@ -112,9 +107,6 @@ data type. It provides shared functionality, enabling the creation, manipulation
 and behaviour customisation of all JavaScript objects.
 
 
-
-
-
 ### How to create an object
 Objects can be created in various ways
   - Object literals: { key: 'value' }
@@ -122,7 +114,6 @@ Objects can be created in various ways
   new Array(), or new Map().
   - Through classes, functions, or prototype
   inheritance.
-
 
 
 ### The Object Constructor
@@ -145,8 +136,6 @@ an example:
 You can clearly see that in spite of both obj1 and obj2 being created in different ways—one as an object literal and the other via the Object() constructor—both still inherit from the JavaScript Object.
 
 
-
-
 ### Object.prototype
 All objects inherit from Object.prototype unless explicitly created otherwise.
 Object.prototype contains methods like:
@@ -165,7 +154,6 @@ Objects:
 
 	// will output "[object Object]"
 	console.log(myObject.toString()); 
-
 
 
 ### Static Methods of Object
@@ -187,7 +175,6 @@ Here are examples of how these static methods can be used:
 	console.log(Object.entries(obj)); // [['a', 1], ['b', 2]]
 
 
-  ———————————————————————————————
 #### Object.assign() can be used in a couple of different ways
 	// use Object.assign() for copying properties between objects
 	
@@ -196,31 +183,28 @@ Here are examples of how these static methods can be used:
 	const source2 = { c: 3 }; 
 
 	Object.assign(target, source1, source2); 
-#### console.log(target); // { a: 1, b: 2, c: 3 }
+	console.log(target); // { a: 1, b: 2, c: 3 }
 
 
-	—————————————
 	// use Object.assign() to clone an object
 	const original = { name: 'John', age: 30 }; 
 
 	const clone = Object.assign({}, original); 
 	console.log(clone); // { name: 'John', age: 30 }
-#### console.log(clone === original); // false (new reference)
+	console.log(clone === original); // false (new reference)
 
 
-	—————————————
 	// use Object.assign() to add default properties
 	const defaults = { name: 'Anonymous', age: 18 }; 
 	const user = { name: 'Alice' }; 
 
 	const completeUser = Object.assign({}, defaults, user); 
-#### console.log(completeUser); // { name: 'Alice', age: 18 }
+	console.log(completeUser); // { name: 'Alice', age: 18 }
 
 
-  ———————————————————————————————
   Object.create() is also a powerful method and can be used in
   different ways for creating a new object with a specified prototype.
-  ———————————————————————————————
+
   // Example 1: Creating an Object with a Prototype
 
 	const prototypeObject = { 
@@ -231,10 +215,9 @@ Here are examples of how these static methods can be used:
 
 	const newObject = Object.create(prototypeObject); 
 	newObject.name = 'John'; 
-#### newObject.greet(); // "Hello, John"
+	newObject.greet(); // "Hello, John"
 
 
-	————————————-
 	// Example 2: Creating a Null-Prototyped Object
 
 	const nullPrototypeObject = Object.create(null); 
@@ -265,11 +248,8 @@ Here are examples of how these static methods can be used:
       structure).
     - When you need to avoid accidental property conflicts
       with built-in methods.
-  ————————————-
 
 
-
-	————————————-
 	// Example 3: Initialising Properties
 
 	const personPrototype = { 
@@ -283,21 +263,17 @@ Here are examples of how these static methods can be used:
 		age: { value: 25, writable: true }, 
 	}); 
 
-#### console.log(person.describe()); // "Alice is 25 years old."
+	console.log(person.describe()); // "Alice is 25 years old."
 
 
-
-
-
-
-Understanding how to use the prototype property
-Javascript objects work differently from the typical objects in languages like Java of the C family of languages. They use a unique mechanism known as prototypes. Every object in JavaScript carries an internal link to the object it is inheriting from. This is what JavaScript uses to keep track of what object is inheriting from what. This is also referred to as the prototype chain. The prototype property of an object contains its immediate parent (object it is inheriting from). The prototype property of that parent object in turn contains a reference to its own parent object and so forth until it gets to the top most object of the prototype chain, whose own link contains null to indicate that it does not inherit from any object. In JavaScript this top dog of objects is Object.prototype. Again, this prototype-based inheritance mechanism is unique to the JavaScript programming language. The term prototype refers to the object an object is 	created from. It is the mold, the boilerplate, the blueprint if you like. Hopefully you get the idea.
-  To see the prototype of an object, check the value of the __proto__ property like so:
-  personObject2.__proto__
-assuming that there is a personObject2 you had created. Alternatively, and more safely, you can check it using the getPrototypeOf() method of Object, which has been available since ES5 in 2009, like so
-  Object.getPrototypeOf(new Person());
-So we have established that every object carries a link to its parent, and that at the top of the prototype chain sits Object.prototype. But there is a second thing in JavaScript also called "prototype", and it must not be confused with the first. It is specifically available ONLY to functions, so that they can be used to create objects in their capacity as constructor functions.
-  This is the single biggest source of confusion in JavaScript objects, so let us settle it now, before we go any further. There are two different things wearing the same name:
+  Understanding how to use the prototype property
+  Javascript objects work differently from the typical objects in languages like Java of the C family of languages. They use a unique mechanism known as prototypes. Every object in JavaScript carries an internal link to the object it is inheriting from. This is what JavaScript uses to keep track of what object is inheriting from what. This is also referred to as the prototype chain. The prototype property of an object contains its immediate parent (object it is inheriting from). The prototype property of that parent object in turn contains a reference to its own parent object and so forth until it gets to the top most object of the prototype chain, whose own link contains null to indicate that it does not inherit from any object. In JavaScript this top dog of objects is Object.prototype. Again, this prototype-based inheritance mechanism is unique to the JavaScript programming language. The term prototype refers to the object an object is 	created from. It is the mold, the boilerplate, the blueprint if you like. Hopefully you get the idea.
+    To see the prototype of an object, check the value of the __proto__ property like so:
+    personObject2.__proto__
+  assuming that there is a personObject2 you had created. Alternatively, and more safely, you can check it using the getPrototypeOf() method of Object, which has been available since ES5 in 2009, like so
+    Object.getPrototypeOf(new Person());
+  So we have established that every object carries a link to its parent, and that at the top of the prototype chain sits Object.prototype. But there is a second thing in JavaScript also called "prototype", and it must not be confused with the first. It is specifically available ONLY to functions, so that they can be used to create objects in their capacity as constructor functions.
+    This is the single biggest source of confusion in JavaScript objects, so let us settle it now, before we go any further. There are two different things wearing the same name:
 
 		-.prototype  — a real, visible property that ONLY functions have.
 		   It holds the object that instances made from that function
@@ -407,7 +383,6 @@ Full name is John Jones
   Note that when creating a new instance from your object, you have to use the keyword new
 
 
-
 	The traditional two ways of creating an object and their prototypes
 	There are three main ways of creating an object in modern JavaScript, but before we go into the new way of creating objects, we will first of all, talk about the two traditional ways to do so. As we demonstrate the creation of objects, we will explain how the concept of prototypes underpins it all. This is because in JavaScript, you can not fully understand object creation and instantiation if you do not understand the concept of prototypes and how it relates to object creation. Here are two traditional ways to create objects, and make no mistake about the term traditional or old; for they are still meant for everyday use and work perfectly fine. 
 
@@ -415,7 +390,6 @@ Full name is John Jones
     - ii) Constructor objects sometimes referred to as object templates or blueprints.
 
 		
-
   i) Initialiser objects
 Initialiser objects are the simplest form of object creation. The syntax is simple and you basically create a block and assign it to a variable.
 
@@ -435,7 +409,6 @@ If you think it looks exactly like an associative array, then you are absolutely
 You can access the values like so:
 
 		document.body.innerHTML = 'His surname is: ' + person.surname;
-
 
 
 This prints out 'His surname is Johnson'
@@ -477,7 +450,6 @@ The output will be:
 
   So we have three objects in the collection array, and each of these objects has a name property whose value is the colour that this object represents.
   Creating object literals like this is the equivalent of creating an empty object using the new Object() method in JavaScript. The prototype of this new object created using new Object() is Object.prototype, exactly the same as for object literals.
-
 
 
 		ii) Constructor functions
@@ -547,9 +519,9 @@ The output will be:
 		</body>
 		</html>
 
-In this example, we instantiate objects from the constructor object PersonDiv() and depending on if it is a girl, we grab the div from the DOM having the ID of 'girl' and we give the div a background colour of pink, and we place the image of the girl in it.
-If it is a boy, we grab the div from the DOM with the ID of 'boy' and give it a blue 	background color and so on for the 'mum' and 'dad' divs as well.
-  Once more, we use the new keyword to create objects from constructor functions, but 	it would also work on JavaScript's built-in constructor objects like Object, Array, String, 	Date, RegExp etc. You would instantiate objects from these like so:
+  In this example, we instantiate objects from the constructor object PersonDiv() and depending on if it is a girl, we grab the div from the DOM having the ID of 'girl' and we give the div a background colour of pink, and we place the image of the girl in it.
+  If it is a boy, we grab the div from the DOM with the ID of 'boy' and give it a blue 	background color and so on for the 'mum' and 'dad' divs as well.
+    Once more, we use the new keyword to create objects from constructor functions, but 	it would also work on JavaScript's built-in constructor objects like Object, Array, String, 	Date, RegExp etc. You would instantiate objects from these like so:
 
 new Object(), new Array(), new Date(), new RegExp() etc
 
@@ -575,8 +547,6 @@ person1  →  Person.prototype  →  Object.prototype  →  null
 ![Figure 17.2 — The prototype chain: a single line of links](images/ch17-fig-02-prototype-chain.svg)
 
 - Figure 17.2 — The prototype chain: a single line of links*
-
-
 
 
   iii) The new way to create objects and the prototype
@@ -627,8 +597,6 @@ This will print out on screen the following:
 	Let me explain the above code; we start by instantiating the Person constructor object four different times, passing into its constructor each time a different person-a family member. Each person has a different firstname and last name. Then to prove that it worked and has created four separate objects; we place them all into all an array and then loop though this array printing out their first and last names on screen. 
 
 
-
-
   Obects and their prototypes
   We have already discussed how the concept of prototypes is unique to JavaScript. Once more, a prototype is the object from which another is created.
 
@@ -668,9 +636,6 @@ On the other hand, it is also possible to create an object without a prototype. 
 So, if you just do Object.create() without passing it the argument of JavaScript's parent object, you will end up with a really empty object that is void of all the basic built-in properties and methods that come with JavaScript's constructor objects out of the box. Such an object can also be referred to as a prototype-less object, and It will probably not be of much use to you. 
 
 
-
-
-
   Handy properties and methods of Objects
   This in other words refers to the properties and methods of the JavaScript parent of all objects, Object. All the methods and properties below can be tested by referencing or calling them on Object, like so: 
 
@@ -694,7 +659,7 @@ Take for instance, our good old Person class again.
 		to add methods, not properties. Depending on how the object instances are created from the constructor 	function-either using the new keyword, or using 
 		Object.create(), you would add methods to the prototype in slightly different ways. Pay attention to this. Here is an example:
 
-If you created instances from the prototype using the new keyword, for example:
+    If you created instances from the prototype using the new keyword, for example:
 
 			let aunt = new Person('Audrey', 'Kindjo');
 
@@ -709,7 +674,7 @@ Then you can have any of your Person instances use the new methods like this:
 
 			alert('The full name of the aunt is '+aunt.showFullName());
 
-But if you created instances from the prototype using the Object.create() method, for example:
+    But if you created instances from the prototype using the Object.create() method, for example:
 
 			let sister = Object.create(Object.create(Person, 
 				{ 
@@ -795,10 +760,10 @@ example:
 		console.log(sub instanceof superProto);      // TypeError
 
 
-The phrase constructor function is used to refer to the name of
-the class that many objects are to be created (constructed)
-from. Once more, take for example our Person class inheritance
-example above:
+    The phrase constructor function is used to refer to the name of
+    the class that many objects are to be created (constructed)
+    from. Once more, take for example our Person class inheritance
+    example above:
 
 		function Person(fname, lname) {
    			this.firstName = fname;
@@ -825,7 +790,6 @@ example above:
 			+ juanita.isPrototypeOf(gusto));
 
 
-
   - 4) getPrototypeOf()
 
   It is used to get the prototype of an object. Since ES5 you can check an object's prototype using the getOpjectPrototype() on Object. Prior to ES5, there was no equivalent way to do that, though you could determine the prototype of an object by checking the prototype property of its constructor property as we have seen already:
@@ -838,7 +802,6 @@ objectName.constructor.prototype
 
 		//get the prototype - it reveals the Person object
 		console.log(Object.getPrototypeOf(gusto)); 
-
 
 
   - 5) The __proto__ property
@@ -854,7 +817,6 @@ objectName.constructor.prototype
 		let chi = Object.create(Object.prototype);
 
 
-
   - 6) The getOwnPropertyNames() method
 
   This is a method that displays the properties of an
@@ -867,14 +829,13 @@ This writes to the console ‘The props of employee are:
   firstName,lastName’
 
 
-
   - 7) The hasOwnProperty() method (non-inherited)
 
   This is a built-in method that comes from Object.prototype, and it’s
   used to check whether an object has a specific own (non-inherited)
   property. It’s used like this:
 
-object.hasOwnProperty("propertyName")
+    object.hasOwnProperty("propertyName")
 
   Here is an example:
 
@@ -897,14 +858,6 @@ object.hasOwnProperty("propertyName")
 
 		// returns true — inherited
 		console.log("toString" in person); 
-
-
-
-	
-
-
-
-
 
 
 ### Creating a custom method on an object
@@ -941,11 +894,6 @@ The following is the new way introduced with JavaScript ES6 (ECMAscript 2015). N
 The result of this is exactly the same as in the previous example above- 'TestValue' will be written to the console. 
 
 
-
-
-
-
-	
 #### The call(), apply() and bind() methods of Function
 		
 	In JavaScript, functions are objects, as we have learned so far. This means every function inherits from Function.prototype, and the methods living there are therefore available on every function you write. With that said, there are three very important functions you should know; and these are the call(), apply(), and bind() functions. They are special because they serve a specific purpose. Understanding how they work will take your JavaScript mastery to a deeper level. 
@@ -1028,7 +976,6 @@ The result of this is exactly the same as in the previous example above- 'TestVa
    			//that method needs arguments
 
 
-	
 	Now that we have mastered the use of call() and apply(), let us look at the bind() function which, though also used to set the context (this value) of a function call, is used in a slightly different way from the other two. The main difference is that unlike call() and apply(), which run the function immediately and give you the result, bind() prepares and returns a new function with the context (this value) already set, so you can call it whenever you need it. Take the following example:
 	
 		let person = {
@@ -1038,10 +985,10 @@ The result of this is exactly the same as in the previous example above- 'TestVa
     			}
 		};
 
-  setTimeout(person.getName, 1000);
-  Output:
-  undefined
-As you can see clearly from the output, person.getName() returns ‘undefined’ instead of ‘John Doe’.
+    setTimeout(person.getName, 1000);
+    Output:
+      undefined
+  As you can see clearly from the output, person.getName() returns ‘undefined’ instead of ‘John Doe’.
 
 	That’s because setTimeout() received the function person.getName outside of (separately from) the person object. The getName() method has been passed as a callback function to the setTimeout() function, so the this reference while inside setTimeout() then becomes the global Object-if you are running JavaScript in non-strict mode, or it becomes undefined in strict mode. Either way, the value of this as you expected it (to reference the person object) is lost. Hence when 	setTimeout() runs, and person.getName() gets invoked, the name is not found on the global object, and so it comes back as undefined. There are two ways to fix this issue;
 either by wrapping the call to person.getName() inside another anonymous function, or use the bind() method.
@@ -1086,12 +1033,6 @@ either by wrapping the call to person.getName() inside another anonymous functio
 - Figure 17.3 — Losing "this", and giving it back*
 
 
-
-
-
-
-
-
 ## OBJECTS IN DEPTH
 ### Object literals
   This is a simple version of an object in
@@ -1117,7 +1058,6 @@ either by wrapping the call to person.getName() inside another anonymous functio
   separated by a comma though the last 
   item does not have to have a trailing 
   comma. 
-
 
 
 ### JavaScript objects vs object literals
@@ -1201,7 +1141,6 @@ iii) No Constructor Needed: You don’t
   instantiated through a function or class.
 
 
-
 #### Changing object literal values on the fly
   Note that just like with constructor
   functions, you can alter the values of 
@@ -1242,7 +1181,6 @@ iii) No Constructor Needed: You don’t
   how:
 
       delete person.age;
-
 
 
 ### Restricting modification on objects
@@ -1296,8 +1234,6 @@ iii) No Constructor Needed: You don’t
       user.name = 'Grace';  // allowed
       user.age = 36;        // blocked, stays undefined
       delete user.name;     // blocked, name survives
-
-
 
 
 ### The difference between a JavaScript object and JSON
@@ -1406,8 +1342,6 @@ So, while people sometimes loosely say "JSON object," the correct term is just J
 However, when you parse JSON using JSON.parse(), it becomes a JavaScript object. Similarly, when you stringify a JavaScript object using JSON.stringify(), it turns into a JSON-formatted string.
 
 
-
-
 #### Converting a JavaScript object to JSON
   Use JSON.stringify(). Here is how you do
   it:
@@ -1424,9 +1358,6 @@ However, when you parse JSON using JSON.parse(), it becomes a JavaScript object.
       {"name":"John","age":30}
 
 
-
-
-
 #### Converting JSON to a JavaScript object
   Use the JSON.parse(). Here is how to do
   it:
@@ -1441,8 +1372,6 @@ However, when you parse JSON using JSON.parse(), it becomes a JavaScript object.
   This will print out to the console: John
   which is the value of the name property of 
   the person JavaScript object.
-
-
 
 
 ### Destructuring of objects
@@ -1516,10 +1445,6 @@ However, when you parse JSON using JSON.parse(), it becomes a JavaScript object.
        let { msg: greeting = "No message" } = obj;
 
 
-
-
-
-
 #### Simplified object literal creation from function arguments
   I talked about this under the topic of functions, under the heading “Quick object literals from function arguments”, but since this is a topic on objects, I thought I should quickly mention it again. Since you are learning how to create objects, you should remember how that links up with functions and how they work together. The idea is that you sometimes have a function whose only job is to return an object literal from the arguments passed to the function. For example:
 
@@ -1558,10 +1483,6 @@ This function return value will be the object:
      {make: 'Toyota', model: 'Rav4', year: '2025'}
 
   
-
-
-
-
 ### Viewing the contents of an object
   When you want to read an object in the console and its contents are
 nested, printing it directly can be awkward. JSON.stringify() takes two
@@ -1577,9 +1498,6 @@ a readable, tree-shaped view of the whole object.
 represent will be missing from that listing. If your object holds
 methods, they will not appear, because functions are dropped on the way
 in.
-
-
-
 
 
 ### Classes
@@ -1652,8 +1570,6 @@ This ES6 approach improves readability and makes JavaScript more consistent with
   Use ES6 classes whenever possible—they’re clearer and more structured. Constructor functions still work but are now considered outdated for defining classes. Both methods (constructors functions and classes) still rely on prototypes under the hood, but ES6 classes provide a more intuitive way to work with objects.
 
 
-
-
 #### Class inheritance
 
   JavaScript supports class inheritance using the extends keyword. This is a core 
@@ -1711,10 +1627,6 @@ keyword inside a subclass constructor. Overriding is when the child class define
     relationships
 
 
-
-
-
-  			
 ##### Difference between a child class and an instance
 
   The difference between a child class and an instance is a specific version of 
@@ -1744,9 +1656,6 @@ keyword inside a subclass constructor. Overriding is when the child class define
 *Figure 17.4 — A child class is still a blueprint; an instance is a real thing*
 
 
-
-
-
 ##### Call parent constructor from child class
   When one class extends another using the extends keyword, the child class inherits all the methods and properties of the parent. But to properly initialize the parent class, you need to use the 
     
@@ -1768,10 +1677,6 @@ inside the child’s constructor, before any use of this. Here is an example:
   super.methodName()
 
 This can be useful if this child class has a method with the same name, but wants to call that of the parent. 
-
-
-
-
 
 
 ##### Check if an object is an instance of a class
@@ -1831,9 +1736,6 @@ This can be useful if this child class has a method with the same name, but want
   Both of them are classes, or blueprints from which other objects/instances would be created.
 
 
-
-
-
 ##### Function Constructors, object literals and inheritance
 
   In JavaScript, we know the old way of creating a class was via Function, so it evolved from function-based “classes” and object literals to the modern class syntax. The following questions which we have answered for regular classes can also be asked of the old-alternative ways to create classes; 
@@ -1885,7 +1787,6 @@ Let’s answer them below.
   (Animal.call(this, ...)) and access parent methods via the prototype chain.
 
 			
-
 ### Object literals
   Object literals cannot be instantiated with new (they are not constructor 
   functions). But you can extend them using Object.create():
@@ -1907,11 +1808,6 @@ Let’s answer them below.
     - You cannot "instantiate" an object literal.
     - You can extend it.
     - There's no constructor to "call" — only properties/methods to inherit.
-
-
-
-
-
 
 
 #### Class setters and getters
@@ -1969,9 +1865,6 @@ The constructor serves to set an initial default value for the _arg property whe
     	console.log(myObj.arg);
 
 
-
-
-
 #### The difference between import and require
   In the past, developers would use the require() function to pull data from an external file into a file where they need to use it. The modern and better way is to use import and export. This allows you to export code from one file and import it into another file. It also allows you to only import certain functions and variables from the code in the exporting file.
 Here is how: 
@@ -1996,8 +1889,6 @@ The file where we want to import this function is file2.js, so in file2.js we us
 Note also that when you specify the file, you leave out the ‘.js’ extension, so this will do just fine:
 
 	import { capitalizeWord } from "./file1";
-
-
 
 
 #### Exporting multiple functions or variables
@@ -2080,8 +1971,6 @@ Here are the points to take note of:
 	import { capitalizeWord, foo, bar, name, age } from "./file1";
 
 
-
-
 #### Using a wildcard to import all from a file
   Take our example from “Exporting multiple functions or variables” above where we are exporting multiple values, there is another simplified way to pull them in, in the file where they are to be used (file2.js). So instead of writing the variables/functions all out in the curly braces at the ‘import’ statement like so:
 
@@ -2102,8 +1991,6 @@ For example, let us do our capitalising example again:
 	console.log(upper);
 
 This will write JUMP to the console.
-
-
 
 
 #### Export fallback with export default
@@ -2129,16 +2016,11 @@ To import the default export values, here is how. The example below will import 
 You do not need to wrap the imported value within curly braces, the curly braces are meant only for named exports.
 
 
-
-
 ### Other advanced OOP concepts
 
   Once you learn JavaScript, you start to compare it to other programming languages, and then the concept of classes suddenly feels weird and different in JavaScript. You look at other server-side languages like Java, PHP, Python, C# etc and you start to wonder: does JavaScript have concepts like static methods or properties? What about abstract classes, interfaces, dependency injection? Do not worry, you are not alone in this. JavaScript is a language not like the others, not least because its turf is on the front end side of the web. By the way, Node.js has you covered on all of that. It has all those concepts since it is the solution for running JavaScript on the server-side. However, our focus in this book is on vanilla JavaScript, which means core or pure JavaScript with no external frameworks or libraries.
 
 Throwing these questions back to JavaScript, there is good news. JavaScript does have equivalents (or similar concepts) to things like abstract classes, interfaces, dependency injection, and static methods, but they work a bit differently compared to the other programming languages. We will now proceed to list these concepts one after the other, and show in code how they can be implemented just as effectively in JavaScript. 
-
-
-
 
 
 #### Static Methods
@@ -2201,10 +2083,6 @@ And it works just fine.
   So the dividing line is not parent versus child. It is class versus instance. Statics travel down the class line, and never appear on the objects made from it.
 
 
-
-			
-
-
 #### Abstract Classes
   In other programming languages like PHP, an abstract class is a class that cannot be instantiated and is meant to be extended by subclasses. JavaScript doesn’t have built-in abstract classes, but you can simulate them. To implement a JavaScript Equivalent of an abstract class, you should use a base class. Here is how to do it:
 
@@ -2261,10 +2139,6 @@ This is because of this code in the constructor of the Animal class that forbids
 This behaviour makes that class behave exactly like an abstract class of any other programming language.
 
 
-
-
-
-
 #### Interfaces
   Languages like Java or TypeScript have interfaces, which define a contract that classes must follow. A JavaScript superset like TypeScript does support interfaces, though JavaScript itself does not have built-in interfaces. However, in JavaScript you can simulate interfaces using objects or decorators. Here is an example simulating an Interface with a Mixin.
 
@@ -2291,11 +2165,6 @@ This behaviour makes that class behave exactly like an abstract class of any oth
 Here, Logger acts like an interface. Object.assign() is basically used to add log() to User dynamically, so after instantiating User, we can then call log() on the user child class like so:
 
 	user.log("User created!"); 
-
-
-
-
-
 
 
 #### Dependency Injection (DI)
@@ -2332,8 +2201,6 @@ Manual Dependency Injection
 
 Notice that it’s crucial for DI that the database object is passed into UserService instead of being created inside it.
 This makes UserService more flexible and testable.
-
-
 
 
 #### Private methods and properties (Encapsulation)
@@ -2375,7 +2242,7 @@ So, as you see, the issue with this approach is that it does not prevent access�
 	console.log(pers.name); // Undefined (truly private)
  Why did this work? The property was stored in a WeakMap, which is only accessible inside the class. The downside of this approach was, it was complex and harder to maintain.
 
-—————————————————
+
   With the coming of ES2020, both private properties and methods were introduced using #:
 
 

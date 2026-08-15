@@ -47,10 +47,10 @@ answers are all together in the Answers section further down, numbered to match 
 
 7) The chapter gives four ways to read XML. Match each to the situation it suits best:
 
-FileReader + DOMParser
-fetch() + DOMParser
-XMLHttpRequest
-XPath with document.evaluate()
+    FileReader + DOMParser
+    fetch() + DOMParser
+    XMLHttpRequest
+    XPath with document.evaluate()
 
    Clue: one is for local files, one is the modern remote way, one is the old remote way, and
    one is not about fetching at all.

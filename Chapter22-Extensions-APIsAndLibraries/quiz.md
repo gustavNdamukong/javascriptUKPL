@@ -167,13 +167,12 @@ http://my-api.com/clothes
    and it is still exactly what `fetch()` does.
 
 
-6)
-| XMLHttpRequest | the original way to make a request without reloading |
-|---|---|
-| `callbacks` | the original way to handle "when it finishes" |
-| `promises` | fixed callback nesting; gave us .then() and .catch() |
-| fetch() | a cleaner request API, promise-based from the start |
-| async/await | made promise code read like ordinary sequential code |
+6) 
+    XMLHttpRequest   the original way to make a request without reloading
+    callbacks        the original way to handle "when it finishes"
+    promises         fixed callback nesting; gave us .then() and .catch()
+    fetch()          a cleaner request API, promise-based from the start
+    async/await      made promise code read like ordinary sequential code
 
    Two of them (`XMLHttpRequest`, `fetch`) are about **making the request**. Three (callbacks,
    promises, `async/await`) are about **handling the wait**.

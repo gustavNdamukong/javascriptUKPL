@@ -98,7 +98,7 @@ So, the take-away from this is this: if you need to store data permanently, use 
 
 	
 
-How to read data from LocalStorage
+    How to read data from LocalStorage
 
 In this reading demonstration, we will loop through all the todoList items grabbing their id, and their name (value), then format that into a string that can be displayed on 	screen.
 
@@ -329,7 +329,7 @@ function saveEdit(e)
 
 
 
-How to delete data from LocalStorage
+    How to delete data from LocalStorage
 
   This deletion of data from localStorage is done by the method removeItem(). You pass it the key of the storage item/data you wish to delete. Here is the syntax:
 

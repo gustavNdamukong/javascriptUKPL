@@ -1,7 +1,5 @@
 
 
-
-
 # Chapter 3 — ARRAYS
     - Definition
   - The two types of arrays
@@ -55,7 +53,6 @@
   - True array methods and associative arrays
 
 
-
 ### Definition
   An array is similar to a variable in that it is like a virtual container in computer memory to store things, with the only difference that you can store multiple things at once.
   The elements you store in an array can be any data type e.g.
@@ -94,7 +91,6 @@ Outputs:
   ['mango', 'apple', 'guava']
 
 
-
 #### With square brackets
        		let fruits = ['mango', 'apple', 'guava'];
 
@@ -102,7 +98,6 @@ Outputs:
 
 Outputs:
   ['mango', 'apple', 'guava']
-
 
 
 #### Assigning values to a numeric array
@@ -174,11 +169,6 @@ Two items: apple,guava
   that item appended as the last element in the array.
 
 
-	
-  
-
-
-
 #### Retrieve values from a numeric array
   To retrieve values from a numeric array, it depends on how you wish to retrieve the data. You may want to retrieve only a single element or you may wish to loop through the array and retrieve or display every element in it. If you just want to grab only a single element from an index in the array, it’s quicker to use the bracket notation and the index number. The bracket notation will also work with strings too—more on this in Chapter 9 (Strings). Here is how to use the bracket notation to retrieve array values:
 
@@ -236,7 +226,6 @@ This means you have targeted the myArray array’s value at the index of
 contain: [1, 45, 25];
 
          
-            
 #### 2) Associative arrays
   Unlike a numeric array which is basically an ordered (numbered) list; an associative array is an array whose keys are named properties (strings), meaning, instead of numbers, the keys are strings. Unlike most other programming languages which have real associative arrays—arrays whose keys are strings, JavaScript does not have associative arrays. At least it does not have it in the real sense of the word. JavaScript arrays are designed for ordered lists using numbers as keys (called indexes). If you want to store values by name instead of number, you should use an object, not an array. This is a very common misconception that confuses programmers new to JavaScript. So what has come to be known as an associative array in JavaScript is actually an object. That, and the fact that the parent of the associative array is JavaScript’s built-in Object.prototype and not Array.prototype, is the reason why associative arrays are not true arrays in JavaScript. The true arrays are numeric-indexed arrays, whose parent is Array.prototype.
   Once again, associative arrays are simple plain objects and the keys are not numbers. Respect this distinction between the two, and you will be fine. For example, do not create an array in the numeric style using strings instead of numbers. Remember I mentioned earlier that because of their different parents, both array types behave differently. Let me explain why not understanding the difference between the two can cause problems for you. 
@@ -317,16 +306,15 @@ Enough of this repetition, for I know you have got it now. Congratulations, you 
 
 Here is a valid example:
 
-const person = {
-  "name": "Alice",
-  "age": 30,
-  occupation: "Developer",
-| _id: 12345, | // valid |
-|---|---|
-| $status: "active", | // valid |
-| "other-name": "Gray", | // valid (quoted) |
-  "home town": "London",  // valid (quoted)
-};
+  const person = {
+    "name": "Alice",
+    "age": 30,
+    occupation: "Developer",
+    _id: 12345,             // valid
+    $status: "active",      // valid
+    "other-name": "Gray",   // valid (quoted)
+    "home town": "London",  // valid (quoted)
+  };
 
 The property name "other-name" would otherwise be invalid if it was not quoted, because it contains a hyphen. Similarly, the "home town" has a space in it, so it is quoted. These two properties break the identifier rules, and are fixed by quotes. However, because they are fixed by quotes, it changes the way their values can be retrieved. I will address that shortly when I talk about retrieving and updating the values of associative array properties.
 
@@ -345,15 +333,12 @@ If you are wondering why person.name and person["name"] both work, it’s becaus
 Let’s look at how to retrieve values from objects (associative arrays) next.
 
 
-
-
 #### Retrieve values from an associative array
 
   In JavaScript, associative arrays are just objects with named properties — so we can use the same rules for accessing object values to access associative array values. We can therefore do so by either using the dot (.) notation, or the bracket notation ([]). Both of these lines will work:
 
 	person['name'];
 	person.name;
-
 
 
 Let’s talk about these notations, and when to use which. Remember, above we saw how if your property name has spaces or special characters like - (hyphen), it's not a valid identifier, and must be quoted. Even if you use quotes to create the property (like "other-name"), it still isn't a valid identifier—so in that case, you cannot use dot notation to access it. Rather, you should use bracket notation, like this: 
@@ -433,16 +418,15 @@ would not have worked.
 
 Here is another example demonstrating how and when to use the two notations:
 
-const person = {
-  "name": "Alice",
-  "age": 30,
-  occupation: "Developer",
-| _id: 12345, | // valid |
-|---|---|
-| $status: "active", | // valid |
-| "other-name": "Gray", | // valid (quoted) |
-  "home town": "London",  // valid (quoted)
-};
+  const person = {
+    "name": "Alice",
+    "age": 30,
+    occupation: "Developer",
+    _id: 12345,             // valid
+    $status: "active",      // valid
+    "other-name": "Gray",   // valid (quoted)
+    "home town": "London",  // valid (quoted)
+  };
 
 	console.log(person.age);
 	console.log(person.occupation);
@@ -472,9 +456,6 @@ Instead, you must use a bracket notation, like this:
 	console.log(person["other-name"]);
 
 If you're ever unsure which to use, try bracket notation. It always works, even when dot notation does not.
-
-
-
 
 
 #### Assign and update values in an associative array
@@ -522,10 +503,10 @@ The output will be:
 
 The output will be:
   {
-  name: 'Alice',
-  age: 30,
-  'favourite colour': 'blue',
-  country: 'Holland'
+    name: 'Alice',
+    age: 30,
+    'favourite colour': 'blue',
+    country: 'Holland'
   }
 
 
@@ -571,11 +552,6 @@ The other identifiers like ‘country’ and ‘age’ are valid identifiers and
 	person.country = "England";
 
 
-
-
-
-
-
   The difference between an associative   
 #### array and a JSON object
   There is a difference between a JSON
@@ -604,9 +580,6 @@ The other identifiers like ‘country’ and ‘age’ are valid identifiers and
 
   JavaScript objects can use single or double quotes for strings, and their keys can be
   unquoted as long as they are valid identifiers.
-
-
-
 
 
 ## Multi-dimensional arrays
@@ -664,8 +637,6 @@ This is because numeric_2d[1][2] gets the value of the row at index 1 (numeric_2
 	console.log(matrix_3d[2][1][2]);
 
 This will output: 3
-
-
 
 
 #### Multi-dimensional associative
@@ -733,8 +704,6 @@ To create a 3D associative array—that is, a group of nested objects, where the
 When using an object literal ({ ... })—which is what an associative array is—you must have key-value pairs inside the curly brackets to denote new elements (objects). Here, the second element is marked by the david key, and this second object David has a property (key) parents, whose value is also an object. This makes the parents sub-array the third level that makes the assoc_3d array a 3D array. Running the above code results in the following being printed to the console:
 
   His dad is: Mark
-
-
 
 
 #### Mixed multi-dimensional arrays
@@ -809,11 +778,6 @@ The structure of this clients array is complex because it is mixed on several le
   I can hear you asking me how you would then loop through an array that has mixed structures, like an outer array, and a nested group of objects which in turn have properties (keys) whose values are arrays etc. The answer is the purpose of this section, and it is simple. The key is in knowing the structure of the data, and in programming, you will never have to worry about that because you will always be told what structure to expect your data to be in. Once you know the structure—say the outer-most part is an array, then you would start by looping through it like you would any array. Then as you iterate through each deeper level, if you know the data at that level is an object, you would reference the data as you would do with an object, or if you need to loop over it, you know you need to convert it to an array before running a loop on it. You have the tools at your disposal for looping through, and converting the data. Again, to see how to convert objects to arrays, visit the "Looping through arrays" section further below.
 
 
-  
-
-
-		
-
 How to assign values to a
 #### multi-dimensional array
   Working with multi-dimensional arrays is as simple as viewing them as a parent-child structure—with the children being the nested arrays, and the outer array being the parent. Use the bracket notation to reference the keys and sub keys. Basically, you have to use one square bracket for each nested array, beginning with the outer (parent) array. 
@@ -856,7 +820,6 @@ The value of that element which was previously 9 will now be updated to 10. Henc
 	console.log(myArray[2]); 
 
 will return [7, 8, 10]
-
 
 
   How to retrieve values from
@@ -922,11 +885,6 @@ Basically, this object contains a key ‘children’ whose value is an array. Ne
 We can see that the value of its name property is ‘John’, which is why we got John written to the console.
 
 
-
-
-
-
-
 ## Looping through arrays
 
 Looping through a numeric
@@ -977,8 +935,6 @@ The output is:
   Polly
 
 
-
-
 #### ii) Using a forEach() loop
   This works well and it’s more readable than the for loop. The syntax is: 
 
@@ -987,7 +943,6 @@ The output is:
 The output is the same as that of the for loop above.
 
 				
-
 #### iii) Using a for...of loop
   This works well and is more readable than the forEach() loop.
 
@@ -997,7 +952,6 @@ The output is the same as that of the for loop above.
 	}
 
 The output is the same as the examples above.
-
 
 
 #### iv) Using Object.values() and forEach()
@@ -1014,7 +968,6 @@ The values without the keys actually result in the same output as the other loop
   10
   Sid
   Polly
-
 
 
 #### v) Using Object.entries() and forEach()
@@ -1040,8 +993,6 @@ The result is:
   3: Polly
 
 
-	
-			
 #### These last two are not very common, though they work
 
 #### vi) Using Object.keys() and forEach()
@@ -1055,13 +1006,10 @@ The result is:
 	  });
 
 
-
 #### vii) Using the map() method
   It is used more to transform data than to loop. It returns a new array.
 
 	arr.map(value => console.log(value));
-
-
 
 
   Looping through an
@@ -1110,7 +1058,6 @@ Sid
 Polly
 
 
-
 #### ii) Using Object.keys() and forEach()
   The Object.keys() method returns an array of an object's keys, which
   you can then iterate over using forEach(). Here is an example:
@@ -1149,7 +1096,6 @@ The result will be:
   Polly
 
 
-
 #### iv) Using Object.entries() and forEach()
   If you want both keys and values, Object.entries() returns an array
   of [key, value] pairs. Here is an example:
@@ -1168,7 +1114,6 @@ brother: Sid
 aunt: Polly
 
 
-
 #### v) Using for...of with Object.entries()
   The for...of loop works well with Object.entries(). Here’s an example:
 
@@ -1183,7 +1128,6 @@ name: Tom Sawyer
 age: 10
 brother: Sid
 aunt: Polly
-
 
 
 #### vi) Using map() (Not common, but possible)
@@ -1201,17 +1145,12 @@ The result will be:
   Polly
 
 
-
   Which of all these types of loops should you use?
     - Use for...in if you just want a simple loop.
     - Use Object.keys() if you only need keys.
     - Use Object.values() if you only need values.
     - Use Object.entries() if you need both keys and values.
     - Use for...of with Object.entries() for a cleaner approach.
-
-
-
-
 
 
   Looping through a
@@ -1280,8 +1219,6 @@ The result is the same, each number on its own line.
 The result is again the same, each number on its own line.
 
 
-
-
   - b) Loop through an associative
 #### multi-dimensional array
 JavaScript does not have true multi-dimensional associative arrays like other programming languages like PHP. However, you can use an array of objects or a nested object to achieve a similar structure. That is basically what we did under the "Multi-dimensional associative" array section above. If you use an array of objects, you need to iterate differently than an indexed multi-dimensional array. Let’s see some examples:
@@ -1330,9 +1267,6 @@ level. Here is an example:
 			 	console.log(myObject[row][key]); 
 			} 
             	}
-
-
-
 
 
 #### -Rest parameters and the Spread operator
@@ -1411,10 +1345,9 @@ level. Here is an example:
   original arrays.
 
 
-
   Example: Using Spread to copy one array
   to another.
-  —————
+
   This example will put it into perspective, pay attention.
   If you try to copy an array array1 by assigning it
   to another array array2, thinking you have a new array in array2
@@ -1514,10 +1447,10 @@ Are Rest Parameters and the Spread Operator Opposites?
 			    (acc, num) => acc + num, 0);
 		}
 
-This sum() function uses the rest operator (in its parameters)
-so whatever is passed into it will be converted into an array.
-Internally, what is passed to it will become the numbers array,
-which it uses to do its job.
+    This sum() function uses the rest operator (in its parameters)
+    so whatever is passed into it will be converted into an array.
+    Internally, what is passed to it will become the numbers array,
+    which it uses to do its job.
 
 		const nums = [5, 10, 15];
 
@@ -1535,10 +1468,6 @@ which it uses to do its job.
   expands an array, while rest
   (...numbers) collects function
   arguments into an array.
-
-
-
-
 
 
   -Array properties
@@ -1578,8 +1507,6 @@ which it uses to do its job.
   two.
 
 
-
-
 ### -prototype
   prototype allows you to add properties and
   methods to arrays. It lets us add new
@@ -1606,7 +1533,6 @@ which it uses to do its job.
   for an ordinary function instead.
 
 
-
 ### -constructor
   The constructor property identifies the
   constructor function that created the
@@ -1619,7 +1545,6 @@ which it uses to do its job.
 
 	// Output: true
 	console.log(arr.constructor === Array); 
-
 
 
 ### -prototype.length
@@ -1636,13 +1561,6 @@ which it uses to do its job.
 	console.log(Array.prototype.length); 
 
 	
-
-
-
-
-  
-  
-
 ## Array methods
   These are built-in functions provided in JavaScript for use in manipulating arrays. A method is a function that is defined on an object. If the concept of methods or functions is new to you, do not worry. Chapter 7 is devoted entirely to them. Right now, we will look at the most important array methods and how they work. I will describe them, and demonstrate their use with examples.
   To fully grasp array methods, there are a few things to know about them. They are all similar in the way they work. For example, most of them take a function to be run on every item in the array they are called on. This is logical because there is not much else to do with an array if not to do something with each of its elements. They are all therefore some sort of loop, and as array functions, they have to be called on an array. Here is the syntax of their use:
@@ -1675,19 +1593,18 @@ within itself.
 		// Output: [1, 2, 1, 2, 5]
 		console.log(arr); 
 
-In this example, it copies elements
-from index 0 to 2 and places them
-starting at index 2. Elements from
-index 0-2 will grab 1, and 2 (two
-elements), then placing them from
-index 2 means the two copied
-elements (1, 2) will replace two
-elements from the original array ([1,
-2, 1, 2, 5]) and thus end up with this
-output array: [1, 2, 1, 2, 5]
+    In this example, it copies elements
+    from index 0 to 2 and places them
+    starting at index 2. Elements from
+    index 0-2 will grab 1, and 2 (two
+    elements), then placing them from
+    index 2 means the two copied
+    elements (1, 2) will replace two
+    elements from the original array ([1,
+    2, 1, 2, 5]) and thus end up with this
+    output array: [1, 2, 1, 2, 5]
 
 				
-
 #### -every()
 	It is similar to the some() method further down, except that rather 
 	than just one element, it checks whether every element in an array 
@@ -1709,7 +1626,6 @@ output array: [1, 2, 1, 2, 5]
 	18 or over.
 
 				
-
 #### -fill()
 Fills an array with a value. The new
 value overwrites whatever was in
@@ -1721,14 +1637,13 @@ those positions before.
 		// Output: [1, 0, 0, 4]
 		console.log(arr); 
 
-Replaces values from index 1 to 3
-with 0. Note that ‘index 1 to 3’ means
-up to, but not including the element
-at index 3, which is why 4 from the
-original array is not overridden.
+    Replaces values from index 1 to 3
+    with 0. Note that ‘index 1 to 3’ means
+    up to, but not including the element
+    at index 3, which is why 4 from the
+    original array is not overridden.
 	
 				
-
 #### -filter()
 filter() returns a new array of
 elements that pass a condition. This
@@ -1743,7 +1658,6 @@ don't meet the condition.
 		console.log(even); 
 
 				
-
 #### -find()
 Returns the First Element That Meets
 a Condition. It stops at the first
@@ -1757,7 +1671,6 @@ match.
 		console.log(found); 
 
 				
-
 #### -findIndex()
 Returns the Index of the first
 matching Element. It works just like
@@ -1771,8 +1684,6 @@ instead of the value.
 		 // Output: 1
 		console.log(index);
 
-
-	
 
 #### -flat()
 This method flattens the
@@ -1797,9 +1708,6 @@ The argument 2 specifies how deep
 to flatten.
 
 
-	
-				
-
 #### -forEach()
 		It loops through an array, and 
 		executes a function for each array 
@@ -1813,8 +1721,6 @@ to flatten.
 			num => console.log(num * 2)
 		);
 
-
-				
 
 #### -includes()
 It checks If an array contains a value
@@ -1830,8 +1736,6 @@ and returns true if so, or false if not.
 		console.log(colors.includes("blue")); 
 
 				
-
-
 #### -indexOf()
 Finds the first occurrence of a value.
 It returns the index if found, or -1 if
@@ -1851,9 +1755,6 @@ not.
 		console.log(arr.indexOf(100) !== -1);
 		
 		
-	
-
-
 #### -isArray()
   The Array.isArray() method checks
   whether a given value is an array.	 For
@@ -1866,8 +1767,6 @@ not.
 		console.log(Array.isArray("Hello"));   
 
 				
-
-
 #### -join()
 It converts an array into a string. It
 joins the array elements with a
@@ -1885,13 +1784,11 @@ separator at all.
 		console.log(words.join(" ")); 
 	
 
-	
-
 #### -lastIndexOf()
-It finds the last occurrence of a value
-and returns its index or -1 if not
-found. It works just like indexOf()
-except that it searches from the end.
+    It finds the last occurrence of a value
+    and returns its index or -1 if not
+    found. It works just like indexOf()
+    except that it searches from the end.
 
 		const arr = [10, 20, 30, 20, 40];
 
@@ -1899,14 +1796,12 @@ except that it searches from the end.
 		console.log(arr.lastIndexOf(20)); 
 
 
-	
-
 #### -map()
-map() runs a function on every element of an array and hands
-back a brand new array of the results. The original array is left
-untouched, and the new array always has the same number of
-elements as the old one. It is the method you reach for when you
-want to turn a list of one thing into a list of another thing.
+    map() runs a function on every element of an array and hands
+    back a brand new array of the results. The original array is left
+    untouched, and the new array always has the same number of
+    elements as the old one. It is the method you reach for when you
+    want to turn a list of one thing into a list of another thing.
 
 Here it is turning a list of book objects into a block of HTML:
 
@@ -1928,8 +1823,6 @@ Here it is turning a list of book objects into a block of HTML:
 		</script>
 
 
-	
-				
 #### -push()
   This function is used to put things in an array. It’s very useful,
   because people create arrays to hold values or data, so when you
@@ -1956,9 +1849,6 @@ Here it is turning a list of book objects into a block of HTML:
 [[1, 2, 3], ['John', 'Peter']]
 
 	
-
-
-
 	-pop()	
 		This pop() function is a built-in function in JavaScript used to remove the last 
 		element in an array. Here is an example:
@@ -1972,9 +1862,9 @@ Here it is turning a list of book objects into a block of HTML:
 
 			console.log(myArray);
 
-This will have removed the last element from myArray, which is the sub array
-containing names (['John', 'Peter']), and so the output of the contents of the
-myArray will end up being:
+    This will have removed the last element from myArray, which is the sub array
+    containing names (['John', 'Peter']), and so the output of the contents of the
+    myArray will end up being:
 			
 [[1, 2, 3]]
 
@@ -1989,10 +1879,6 @@ of its own if you need to use it. For example:
 			let names = myArray.pop();
 
 The new array names will now contain ['John', 'Peter'].
-	
-
-
-
 	
 
 #### -reduce()
@@ -2041,8 +1927,6 @@ The new array names will now contain ['John', 'Peter'].
   returned by reduce().
 				
 
-
-
 #### -reverse()
   The reverse() method in JavaScript is used to reverse the elements
   of an array in place, meaning it modifies the original array instead of
@@ -2058,9 +1942,6 @@ The new array names will now contain ['John', 'Peter'].
 		console.log(numbers); 
 
 	
-
-
-				
 #### -shift()
 	The shift() function is a direct opposite of the pop() function because 
 	unlike pop() which is used to remove the last item in an array, shift() 
@@ -2094,7 +1975,6 @@ The new array names will now contain ['John', 'Peter'].
   The new array numbers will now contain [1, 2, 3].
 
 	
-					
 #### -unshift()
   The unshift() function is a direct opposite of the push() function
   because unlike push() which adds an item to the end of an array,
@@ -2120,8 +2000,6 @@ The new array names will now contain ['John', 'Peter'].
 	to add to the target array it was called on.
 
 	
-				
-
 #### -slice()
 It extracts a portion of an array, then
 returns the extracted portion as a
@@ -2133,11 +2011,10 @@ original.
 		// Output: [2, 3, 4]
 		console.log(arr.slice(1, 4)); 
 
-This slices the array from index 1 up
-to but not including index 4.
+    This slices the array from index 1 up
+    to but not including index 4.
 		
 	
-
 #### -some()
 It checks if at least one element in the
 given array passes a condition and
@@ -2154,30 +2031,28 @@ the test or false if none passes.
 			); 
 
 		
-		
-
 #### -sort()
-Sorts an array alphabetically or numerically. By default, JavaScript’s
-sort() method converts all elements to strings and sorts them
-alphabetically in ascending order.
-But when it comes to numbers, it has no way of detecting which
-number is bigger than the other. The solution with numbers is to pass
-to sort() a compare function. It will run this function on elements in
-pairs from left to right, subtracting one number from the other and
-thereby determining which is greater than the other. Basically, when
-sorting numbers without a compare function, the results can be
-unexpected. It's easier when you see an example:
+    Sorts an array alphabetically or numerically. By default, JavaScript’s
+    sort() method converts all elements to strings and sorts them
+    alphabetically in ascending order.
+    But when it comes to numbers, it has no way of detecting which
+    number is bigger than the other. The solution with numbers is to pass
+    to sort() a compare function. It will run this function on elements in
+    pairs from left to right, subtracting one number from the other and
+    thereby determining which is greater than the other. Basically, when
+    sorting numbers without a compare function, the results can be
+    unexpected. It's easier when you see an example:
 
 			[1, 100, 2, 20].sort(); 
 
 The above expression is first converted to ["1", "100", "2", "20"] and
 then to [1, 100, 2, 20] instead of [1, 2, 20, 100]
 
-JavaScript doesn’t know that "100" should come after "2", because
-it compares them as strings, character-by-character. The fix is to
-pass a compare function to sort(). This allows you to control how
-items are compared—typically by subtracting one from the other for
-numeric sorting:
+    JavaScript doesn’t know that "100" should come after "2", because
+    it compares them as strings, character-by-character. The fix is to
+    pass a compare function to sort(). This allows you to control how
+    items are compared—typically by subtracting one from the other for
+    numeric sorting:
 
 			[1, 100, 2, 20].sort((a, b) => a - b); 
 
@@ -2243,8 +2118,6 @@ techniques:
 			points.slice(-1).pop()
 
 
-
-
 #### -splice()
     It adds to, or removes elements from an array and returns the
     removed items. In doing so, it modifies the original array.
@@ -2261,13 +2134,13 @@ techniques:
 		 // Output: [1, "a", "b", 4]
 		console.log(arr);
 
-In this example, it removes 2
-elements beginning from index 1 and
-inserts "a" and "b", hence we end
-with the original array having the new
-value of: [1, "a", "b", 4].
-  Any number of arguments after the first two will be added to the
-array starting from the index specified in the first argument.
+    In this example, it removes 2
+    elements beginning from index 1 and
+    inserts "a" and "b", hence we end
+    with the original array having the new
+    value of: [1, "a", "b", 4].
+      Any number of arguments after the first two will be added to the
+    array starting from the index specified in the first argument.
 
 			const arr = [1, 2, 3, 4];
 			arr.splice(1, 2, "a", "b", "c", "d", "z");
@@ -2276,7 +2149,6 @@ array starting from the index specified in the first argument.
 			[1, "a", "b", "c", "d", "z", 4]
 			
 	
-
 #### -toString()
 It converts an array to a string. It is
 similar to join(), but always uses
@@ -2286,9 +2158,6 @@ commas as the separator.
 
 		// Output: "1,2,3"
 		console.log(arr.toString()); 
-
-
-
 
 
 ## True array methods and associative arrays

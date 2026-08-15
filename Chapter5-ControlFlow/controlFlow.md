@@ -127,8 +127,8 @@ The addition operator + is like the addition sign in mathematics (represented by
 The value of sum will be 4.	
 	
 
-  Minus operator
-The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
+    Minus operator
+  The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
 				
 		let num = 3 - 2;
 			
@@ -194,8 +194,8 @@ An incremental operator ++ is used to quickly add 1 to a number. Normally, there
 Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However, if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
 
 
-  Decremental operator
-This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
+    Decremental operator
+  This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
 
   a) By using the subtraction operator
 

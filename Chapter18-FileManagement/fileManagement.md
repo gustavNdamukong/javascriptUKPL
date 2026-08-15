@@ -483,8 +483,8 @@ onload event on the reader when it is done
   				setTimeout(() => URL.revokeObjectURL(url), 1000);
 			});
 
-First, to prepare the contents to be converted into a downloadable
-  file in the browser, we create a bob object from the contents.
+  First, to prepare the contents to be converted into a downloadable
+    file in the browser, we create a bob object from the contents.
 
 			const blob = new Blob([modifiedText], { type: 'text/plain' });
 
@@ -1136,11 +1136,11 @@ There are two (2) ways you could do it. Here they are:
 		// Or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
-The value (string) you pass to io() will be location of your
-WebSocket server, which can be on your local
-machine (eg server.js), in which case you would pass in
-"http://localhost:3000". Note that this is different from
-"ws://localhost:3000".
+    The value (string) you pass to io() will be location of your
+    WebSocket server, which can be on your local
+    machine (eg server.js), in which case you would pass in
+    "http://localhost:3000". Note that this is different from
+    "ws://localhost:3000".
 
   - 2) Alternatively, you can use the Node Package Manager (NPM) tool
     which you should have installed on your machine together with
@@ -1157,11 +1157,11 @@ npm install socket.io-client
 		// or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
-Again, the value (string) you pass to io() will be the
-location of your WebSocket server, which can be on your local
-machine (eg server.js), in which case you would pass in
-"http://localhost:3000". Note that this is different from
-"ws://localhost:3000".
+    Again, the value (string) you pass to io() will be the
+    location of your WebSocket server, which can be on your local
+    machine (eg server.js), in which case you would pass in
+    "http://localhost:3000". Note that this is different from
+    "ws://localhost:3000".
 
 #### Conclusion
 In conclusion, when you are talking to a standard WebSocket server, you create the client end of the connection like so:
@@ -1762,14 +1762,13 @@ As you can see, this is XML structured data about books. The data contains two b
   		const xmlDoc = xhr.responseXML; 
   		// Use XPath on xmlDoc here (document.evaluate())
 
-const result = document.evaluate(
-| "//book/title", | // XPath expression |
-|---|---|
-| xmlDoc, | // Context node (the parsed XML) |
-| null, | // No custom namespace resolver |
-XPathResult.ANY_TYPE, // Type of result
-null                  // No previous result to reuse
-);
+    const result = document.evaluate(
+    "//book/title",       // XPath expression
+      xmlDoc,               // Context node (the parsed XML)
+    null,                 // No custom namespace resolver
+    XPathResult.ANY_TYPE, // Type of result
+    null                  // No previous result to reuse
+    );
 
     		let node = result.iterateNext();
     		while (node) {
@@ -1811,14 +1810,13 @@ Also, because the data has been converted into a document, it is ready for DOM m
 			xmlStr, 'text/xml');
     		// Use XPath here
 
-const result = document.evaluate(
-| "//book/title", | // XPath expression |
-|---|---|
-| xmlDoc, | // Context node (the parsed XML) |
-| null, | // No custom namespace resolver |
-  XPathResult.ANY_TYPE, // Type of result
-  null                  // No previous result to reuse
-);
+    const result = document.evaluate(
+      "//book/title",       // XPath expression
+      xmlDoc,               // Context node (the parsed XML)
+      null,                 // No custom namespace resolver
+      XPathResult.ANY_TYPE, // Type of result
+      null                  // No previous result to reuse
+    );
   
     		let node = result.iterateNext();
     		while (node) {

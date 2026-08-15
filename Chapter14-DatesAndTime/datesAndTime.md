@@ -523,13 +523,13 @@ Create the `<img>` tag in your HTML code. Notice I have given it a width and hei
 
 #### JavaScript code
 
-const images = [
-  "/images/blurred-image.png",
-  "/images/brightened-image.png",
-  "/images/contrasted-image.png",
-  "/images/grayscale-image.png",
-  "/images/resized-image.png",
-];
+  const images = [
+    "/images/blurred-image.png",
+    "/images/brightened-image.png",
+    "/images/contrasted-image.png",
+    "/images/grayscale-image.png",
+    "/images/resized-image.png",
+  ];
   
   	// start at the first image
   	let index = 0; 

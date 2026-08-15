@@ -22,9 +22,6 @@
 - Testing
 
 
-
-
-
   This discusses the tools made available by your programming language to find bugs in your code. It also talks about conventions and best practices for writing 
 reliable, performant and fault-tolerant applications. This is also a section where performance pitfalls are identified and work-arounds given. 
 
@@ -208,17 +205,14 @@ Use Case: Reporting serious issues like failed API calls, missing files,
 Benefit: Makes it easy to visually identify problems in logs.
 
 
-
-
 #### console.warn()
 Purpose: Highlights a warning in yellow, without treating it like a full-
   blown error.
 
-Example:
-  console.warn("This is just a warning.");
-Use Case: When something is suspicious but not necessarily fatal
-  (like deprecated features).
-
+  Example:
+    console.warn("This is just a warning.");
+  Use Case: When something is suspicious but not necessarily fatal
+    (like deprecated features).
 
 
 #### console.info()
@@ -242,7 +236,6 @@ Note: May not always be visible unless you expand the console log
   level settings.
 
 	
-
 #### console.table()
 	Purpose: Displays tabular data as a formatted table.
 	Example:
@@ -257,22 +250,19 @@ Use Case: When printing arrays of objects or data collections. Super
   useful!
 
 
-
 #### console.dir()
-Purpose: Displays an interactive list of the properties of a specified
-  JavaScript object.
-Example:
-  console.dir(document.body);
-Use Case: Useful for exploring DOM objects and nested structures.
-
+  Purpose: Displays an interactive list of the properties of a specified
+    JavaScript object.
+  Example:
+    console.dir(document.body);
+  Use Case: Useful for exploring DOM objects and nested structures.
 
 
 #### console.assert()
-Purpose: Only logs the message if the assertion fails.
-Example:
-  console.assert(2 + 2 === 5, "Math is broken!");
-Use Case: Helpful for adding sanity checks during development.
-
+  Purpose: Only logs the message if the assertion fails.
+  Example:
+    console.assert(2 + 2 === 5, "Math is broken!");
+  Use Case: Helpful for adding sanity checks during development.
 
 
 #### console.group() and console.groupEnd()
@@ -283,7 +273,6 @@ Use Case: Helpful for adding sanity checks during development.
 		console.log("Age: 25");
 		console.groupEnd();
 	Use Case: Organize output when logging a bunch of related data.
-
 
 
 #### console.time() and console.timeEnd()
@@ -297,12 +286,6 @@ Use Case: Helpful for adding sanity checks during development.
   Use Case: Performance testing.
 
 
-
-	
-
-
-
-		
 ## The browser developer tools
   It is very handy to use a debugging tool, and almost all browsers have one built into them that you can use. Here is how to visit the error console for different browsers:
 
@@ -320,10 +303,6 @@ Alternatively, you can use the Firebug Lite JavaScript module which is easier to
   There is also a plug-in in Firefox for JavaScript known as FireBug which is quite popular and very recommended to use. Learn about it and acquire it here:
 
   (http://getfirebug.com)
-
-
-
-
 
 
 #### Stopping code execution for debug
@@ -387,12 +366,6 @@ Bonus tip:
   debugger
 
 
-  
-
-
-
-
-
 ## Throwing and handling exceptions
   In the real world, things go wrong all the time—and programming is no different. Files might not load, users might type unexpected things, and network requests may fail. Vanilla JavaScript (i.e. JavaScript without any external libraries) gives us a way to catch and handle errors using what is known as a try…catch statement. This involves the throwing and handling of exceptions using try, catch, finally. This mechanism allows you to manage runtime errors gracefully. This means that-and this is the whole essence of exceptions, when errors occur in your code, instead of your software stalling and breaking up, which will annoy or frustrate your users, you can ‘catch’ these errors, so that you can deal with the error in a better way. Dealing with the error in a better or graceful way could mean, informing other parts of your code that use that functionality (function or service), so that they can offer the user an alternative result, or it could mean informing the developer (you or your team) of the issue in the code, so it can be fixed as soon as possible. Instead of your whole program crashing when something goes wrong, try...catch lets you:
 write some code to do something. If something goes wrong, catch the error, and handle it without breaking everything. Here is the syntax of try…catch:
@@ -453,7 +426,6 @@ This works well for simple checks to prevent standard errors in your code. Excep
 		}
 
 
-
 		// handling exceptions (using try/catch/finally)
 		try {
 			const result = viewAccount(account, user_id);
@@ -511,11 +483,6 @@ Exceptions work in both synchronous and asynchronous (Promises, async/await) cod
 *Figure 21.1 — A throw travels out of the function, into the catch*
 
 
-
-
-
-
-
 ### The throw statement
   A throw statement lives inside the function that detects the problem — not in the try block. The try block is where you CALL that function, and the catch block is where the thrown value arrives. Look back at the example above and you will see the throw sitting inside viewAccount(), while the try/catch sits around the call to it.
   What is thrown can be one of the following three data types: 
@@ -523,10 +490,6 @@ Exceptions work in both synchronous and asynchronous (Promises, async/await) cod
     * an Error object which can be a JavaScript in-built error object, or your custom error object).
     * an object literal. For example:     throw { code: 401, message: "Account not theirs" };
     *  a simple string error (less common) For example:                       throw “User ” +user_id+ “ trying to access account not theirs”;
-
-
-
-
 
 
 #### Custom exceptions
@@ -551,9 +514,6 @@ Exceptions work in both synchronous and asynchronous (Promises, async/await) cod
 This code will print: CustomError Oops, something went wrong
 
 
-
-
-
 #### Asynchronous exception handling
   When dealing with promises that you know can potentially throw exceptions, use .catch() or try...catch with async/await. Here is an example:
 
@@ -568,7 +528,6 @@ This code will print: CustomError Oops, something went wrong
 Let’s explain what is happening here. Here, we are calling an asynchronous function that we know will throw an exception, which is why we have the .catch() block. If not, we wouldn’t have needed the catch() block. We handle the potential error exception thrown within this catch block.
 
 
-
 ##### Using async/await
 
 	async function fetchData() {
@@ -579,10 +538,6 @@ Let’s explain what is happening here. Here, we are calling an asynchronous fun
 			console.error("Fetch failed:", error);
 		}
 	}
-
-
-
-
 
 
 ### Multiple catch blocks
@@ -600,11 +555,6 @@ Let’s explain what is happening here. Here, we are calling an asynchronous fun
     			console.log("Some other error:", error.message);
   		}
 	}
-
-
-
-
-
 
 
 ### Conclusion and exception handling examples
@@ -655,7 +605,6 @@ Example 1: try…catch where no error is caught:
   Output: Jane
 
   Comments: No error occurred, so the catch block is skipped.
-————————————
 
 
 Example 2: A syntax error is caught:
@@ -672,8 +621,6 @@ Example 2: A syntax error is caught:
 
   Comments: JavaScript throws an error when trying to parse bad
   JSON, but we handle it and avoid a crash.
-—————————————
-
 
 
 Example 3: The use of finally:
@@ -692,8 +639,6 @@ Output: Caught error: Unexpected problem
 
 
   Comments: The finally block runs even though an error occurred.
-——————————————
-
 
 
 Example 4: User input validation:
@@ -729,8 +674,6 @@ Output:
 
 
 	Comments: Because we know we want to be throwing exceptions if validation errors are found, we wrap our whole set of validation checks within a try {} block so we can handle them in the catch block.
-——————————————
-
 
 
 Example 5: Re-throwing and Handling at a Higher Level
@@ -804,10 +747,6 @@ handleUserInput()
             * The other decides how to inform the user or log it.
 
 This pattern is useful when a lower-level function detects an error but wants a higher-level function to decide how to deal with it.
-
-
-
-
 
 
 ## TESTING

@@ -88,12 +88,6 @@
       - Security issues with multiple tab navigation
 		
 
-
-
-
-
-
-
 ## Introduction to the DOM
 
 - The JavaScript programming language really shines in this domain.
@@ -111,9 +105,6 @@ As you can probably already imagine, since attributes are the properties of HTML
  When you first get introduced to JavaScript, the thing that excites most programmers—which is usually the biggest selling point of JavaScript, is DOM manipulation. That was for me as well. We immediately want to get right into selecting DOM elements, traversing the DOM, etc but most of the time, it seems like the tools that JavaScript has to achieve these things are just so many and haphazard. Different learning sources talk of nodes, child nodes, parent nodes, sibling nodes, then there is the ubiquitous HTMLElement object, however, no one seems to be talking about how they are all related to each other or when to use which, and which are the most efficient in any given scenario. If that is you, then you are not alone. I struggled with that too. Personally, I always like to have the full list presented to me in a structured way. The fact is; the DOM can feel like a chaotic mix of tools, but there's actually a structure to it. If it seems complicated to most, it’s only because it’s not being presented in a structured way. Once that structure becomes clear, it will then become easy for you to master it all. Here’s a structured breakdown of the key DOM manipulation tools and how they relate to one another.
 
 
-
-
-
 #### Understanding the DOM Tree (Parent-child relationships)
   The DOM is a hierarchical tree where every element is a node. Nodes can be elements, text, or comments.
 
@@ -125,9 +116,6 @@ Key node relationships:
   - Ancestor-descendant relationships:
     Any element higher in the tree is an
     ancestor.
-
-
-
 
 
 #### The difference between Nodes and Elements
@@ -172,7 +160,6 @@ Why does p.children return empty? Because the p tag has no element children, jus
 ![Figure 15.1 — Every element is a node; not every node is an element](images/ch15-fig-01-nodes-vs-elements.svg)
 
 *Figure 15.1 — Every element is a node; not every node is an element*
-
 
 
   Here are some properties of nodes and elements that you MUST know:
@@ -225,9 +212,6 @@ before it can answer, which makes it slower than textContent.
 not surprise you by changing its answer when somebody edits the CSS. Reach
 for innerText only when you genuinely mean "the text as the visitor sees
 it".
-
-
-
 
 
 #### Selecting DOM Elements (Getting elements to work with)
@@ -310,14 +294,14 @@ select, as a string. For example:
 
 
 ### The getElementsByClassName() method
-It is used like this:
-document.getElementsByClassName("className");
-Just like the document.getElementById() grabs an element by its
-ID, getElementsByClassName() method as its name suggests,
-selects elements by the class name that you give to it. Note that
-the Elements in the method name getElementsByClassName() is
-spelled with an ’s’. This makes sense because a class attribute
-is usually assigned to multiple elements anyway.
+    It is used like this:
+    document.getElementsByClassName("className");
+    Just like the document.getElementById() grabs an element by its
+    ID, getElementsByClassName() method as its name suggests,
+    selects elements by the class name that you give to it. Note that
+    the Elements in the method name getElementsByClassName() is
+    spelled with an ’s’. This makes sense because a class attribute
+    is usually assigned to multiple elements anyway.
 
 Call this method on the document object passing to it the
 class you want to target on the web page. Note that this
@@ -358,13 +342,13 @@ The output of this will be:
 
 Some text 1
 
-The getElementByClassName() is not the only method of the
-document object that you can use to select an element by its
-class. There are also the document.querySelector() and the
-document.querySelectorAll() which are relatively newer to
-JavaScript and more elegant, especially because you can pass
-to them the exact same selector syntax as you use in CSS to
-select elements. We will talk about them next.
+    The getElementByClassName() is not the only method of the
+    document object that you can use to select an element by its
+    class. There are also the document.querySelector() and the
+    document.querySelectorAll() which are relatively newer to
+    JavaScript and more elegant, especially because you can pass
+    to them the exact same selector syntax as you use in CSS to
+    select elements. We will talk about them next.
 
 
 ### The querySelector() method
@@ -426,18 +410,17 @@ For example:
 			// first p tag with the content “Some text 1”
 			console.log(myText); 
 
-If you want to select all the elements matching that class, in the
-same way that .getElementsByClassName() does, you have to
-use the querySelectorAll(). Let’s talk about that next.
-
+    If you want to select all the elements matching that class, in the
+    same way that .getElementsByClassName() does, you have to
+    use the querySelectorAll(). Let’s talk about that next.
 
 
 ### The querySelectorAll() method
-It is used like this: document.querySelectorAll(cssSelector);
-  It returns a static NodeList of all matching elements. This means
-  multiple elements are returned. What it returns is a NodeList
-  unlike the getElementsByClassName() method that returns an
-  HTMLCollection. Here is an example:
+  It is used like this: document.querySelectorAll(cssSelector);
+    It returns a static NodeList of all matching elements. This means
+    multiple elements are returned. What it returns is a NodeList
+    unlike the getElementsByClassName() method that returns an
+    HTMLCollection. Here is an example:
 
 		let items = document.querySelectorAll(".myText");
 		console.log(items);
@@ -445,22 +428,20 @@ It is used like this: document.querySelectorAll(cssSelector);
 		This code logs a NodeList to the console.
 
 
-	
-
 #### Difference between HTMLCollection, NodeList, and HTMLElement
-The first two of these return multiple elements, as opposed to
-a single element. The HTMLCollection is sometimes referred to as a live
-HTMLCollection. It’s said to be live because it is tracked by
-JavaScript and is updated whenever any of the corresponding
-elements on the web page changes.
-A static NodeList unlike an HTMLCollection does not update
-automatically. Also, unlike an HTMLCollection, a NodeList has
-the advantage that you can directly call an array method
-like .forEach() on it to loop through its data.
-Let’s talk about the HTMLCollection and NodeList return types.
-Let’s learn about which methods of the document object return
-which, and look at how they (a HTMLCollection and a NodeList)
-are different from an HTMLElement object (single element).
+    The first two of these return multiple elements, as opposed to
+    a single element. The HTMLCollection is sometimes referred to as a live
+    HTMLCollection. It’s said to be live because it is tracked by
+    JavaScript and is updated whenever any of the corresponding
+    elements on the web page changes.
+    A static NodeList unlike an HTMLCollection does not update
+    automatically. Also, unlike an HTMLCollection, a NodeList has
+    the advantage that you can directly call an array method
+    like .forEach() on it to loop through its data.
+    Let’s talk about the HTMLCollection and NodeList return types.
+    Let’s learn about which methods of the document object return
+    which, and look at how they (a HTMLCollection and a NodeList)
+    are different from an HTMLElement object (single element).
 	
 
 #### Document methods that return HTMLCollection
@@ -482,7 +463,6 @@ are different from an HTMLElement object (single element).
 			let paragraphs = document.getElementsByTagName("p");		
 			let div = document.getElementById("myDiv");
 			let spans = div.getElementsByTagName("span");
-
 
 
 #### Document methods that return NodeList
@@ -545,8 +525,6 @@ I had to show you which DOM methods return an HTMLCollection, and which returns 
 - Figure 15.2 — Live HTMLCollection vs static NodeList*
 
 
-
-
 #### Are HTMLCollections and NodeLists arrays?
   The answer to this is no. This is a very important question, and my answer here should set you apart because it typically takes a lot of developers a while to figure it out. Both entities just so happen to have been endowed with some array-like properties/functions, but that does not make them Arrays. Here are the properties they share with arrays:
 
@@ -560,10 +538,6 @@ Array property/method	      HTMLCollection	          NodeList
 
 HTMLCollections and NodeLists are not real arrays. HTMLCollections only have a .length property and index access but have no array methods at all. NodeLists have a .length property too, have index access, and the .forEach() method—but no other array methods like .map() or .filter().
 If you want to be able to perform array-like operations on them, like loops, and much more, there are ways to do so. Let’s talk about that next.  
-
-
-
-
 
 
 #### Looping through HTMLCollections & NodeLists
@@ -615,10 +589,8 @@ The output is same as above:
   Text within a list
 
 
-
 It is great to be able to loop through your collection of data. Now you have the power to really make use of the data you select from the DOM. What if we could go one step further, and have the full power that we have with arrays on HTMLCollections and NodeLists? There is a way.
     
-
 
 #### Using all array methods on HTMLCollections & NodeLists
   You can have the full power that we have on arrays on HTMLCollections and NodeLists. The way to achieve that is easier than you think. It is: …drumroll… you guessed it right, to convert the collection into an array. Yes, it’s as easy as that. There are two ways to convert an HTMLCollection or NodeList into a true array, and it works the same for both of them. These two ways are:
@@ -646,9 +618,8 @@ You can then call or apply any array method or property of your choice to manipu
 In this example, we use the array .forEach() to loop through the data after converting the HTMLCollection to an array. But it is up to you. Having the data as an array allows you to harness the full power of the built-in JavaScript Array object on your data.
 
 
-
 		The spread operator ...
-		—————————————-
+
   Let’s look at the other way of converting a collection into an array using the spread operator. To get a good understanding of what the Spread operator is, refer back to Chapter 3 (Arrays), in the section where I talked about Rest parameters and the Spread operator. This time let’s convert a NodeList just for balance, but remember that both the Array.from() approach and the spread operator will work regardless of if we are dealing with an HTMLCollection or a NodeList.
 
 	const nodeList = [...document.querySelectorAll("p")];
@@ -671,9 +642,6 @@ The output of the console.log(item.textContent); line logs this to the console:
   Some text 2
   Some text 3
   Text within a list
-
-
-  
 
 
 ### Selecting nested elements
@@ -728,13 +696,13 @@ The output will be:
 The output will be:
   Some text 2
 
-Let’s get the content of the <p> tag that is inside the <li> tag that is
-  inside the <ul> tag. As you can see, there are many nested
-  (sub) elements, but I wanted to show you different ways to
-  handle that from the way I showed you above under selecting
-  nested elements. Here you will see the power of the new
-  querySelector() and how you can pass it a series of elements to
-  search through in hierarchy, just like in CSS.
+  Let’s get the content of the <p> tag that is inside the <li> tag that is
+    inside the <ul> tag. As you can see, there are many nested
+    (sub) elements, but I wanted to show you different ways to
+    handle that from the way I showed you above under selecting
+    nested elements. Here you will see the power of the new
+    querySelector() and how you can pass it a series of elements to
+    search through in hierarchy, just like in CSS.
 
 		let myUl = document.querySelector("#myUl li p");
 		console.log(myUl.textContent);
@@ -767,10 +735,6 @@ The output is: Gustav
 
   In this section, we have learned about how to select the content of an h1, a p tag, a ul/li and one form input element. I will save extracting values from form fields for Chapter 19 where I go in depth into form manipulation. 
 This is because there are better ways to extract values from form fields than the approach in this example. You will learn all about that in Chapter 19. You will come out of that chapter as a pro form handler. 
-
-
-
-
 
 
 ## Traversing the DOM
@@ -807,13 +771,13 @@ Notice how to use these properties or methods, you have to reference it on the H
     for an id, ".className" for a class, or just the tag
     name. For example,
 
-.closest(".editFormDiv") will search up the DOM
-to find the nearest ancestor with the class name
-of class .editFormDiv. It is more precise than
-parentElement simply because you can be
-specific by passing it the exact id, class name or
-tag name to fetch from the base element (the
-element you call it on).
+    .closest(".editFormDiv") will search up the DOM
+    to find the nearest ancestor with the class name
+    of class .editFormDiv. It is more precise than
+    parentElement simply because you can be
+    specific by passing it the exact id, class name or
+    tag name to fetch from the base element (the
+    element you call it on).
 
 
 ### Child nodes
@@ -892,10 +856,6 @@ And if you need all nodes (elements, text, comments), use:
   - previousSibling
 
 
-
-
-
-
 ### Example of DOM traversing
 Here is a simple example to demonstrate DOM traversal using the above HTMLElement properties:
 
@@ -944,10 +904,6 @@ console.log(parent.firstElementChild);
 This outputs: `<p>`Paragraph 1`</p>`
 
 
-
-
-
-
 ### Scrolling & Focus
 
   - scrollIntoView(alignWithTop)
@@ -960,16 +916,10 @@ This outputs: `<p>`Paragraph 1`</p>`
     Removes focus from the element.
 
 
-
-
-
-
-
 ## Manipulating elements
   We are now getting into the fun part. These are methods and properties to manipulate DOM elements. These are HTMLElement object properties and methods, so remember that you will reference or call them on those elements using the dot operator (.) after selecting them from the DOM like so: textElement.property
 
 		
-
 ### Changing elements
   In JavaScript, there are special properties you can use to change the content (what people see) inside elements on a web page. These properties belong to what’s called an HTMLElement, which is just a fancy name for any element you see on a web page—like a `<div>`, `<p>`, `<h1>`, and so on.
  The way this is done in JavaScript is to select the HTML element, and then reference the document object property on it as you have seen before. You can also select the element first, store it in a variable for example a variable called elem, then you would reference the property you want to change on that variable-which now represents the HTML element, using this syntax: elem.propertyName = "new value";
@@ -1069,7 +1019,6 @@ the code that hacker entered will be executed since .innerHTML knows how to read
   - Use security libraries or frameworks that auto-sanitise content (like React, which escapes HTML by default).
 
 
-
 ### Adding/removing elements
   - remove()
     Call it on an HTMLElement, and you do not have to
@@ -1104,10 +1053,6 @@ the code that hacker entered will be executed since .innerHTML knows how to read
   - cloneNode(deep)
     Clones an element (true for deep
     clone).
-
-
-
-
 
 
 ## Creating New Elements
@@ -1261,8 +1206,6 @@ As you can see, creation of elements should be done chronologically, in the orde
 we will expand on this table creation exercise. We will use an array of data, create a table in a similar fashion, then loop through the array, injecting the data as cell values in the new table. At the end, we place the table inside the div on the web page.
 
 
-
-
 ## Working with Attributes & Classes
   As you can imagine, because attributes are properties of HTML elements, the properties and methods provided by JavaScript for working with them are part of the HTMLElement object. You should therefore reference or call them on an HTML element after selecting it.  
 
@@ -1307,9 +1250,9 @@ we will expand on this table creation exercise. We will use an array of data, cr
 This will grab all div elements on a page, and
 set the class value of the first div ([0]) to “active”.
 		
-While we are on creating attributes for an element, another
-way is to use Object.assign(). Here is how
-to do it:
+    While we are on creating attributes for an element, another
+    way is to use Object.assign(). Here is how
+    to do it:
 
 			let li = document.querySelector("#li");
 			
@@ -1318,10 +1261,10 @@ to do it:
             			className: 'list-item draggable'
         		});
 
-This code selects a list element that has an id of “li”,
-and then assigns it a few attributes. It assigns an
-attribute named ‘active’ and gives it a value of ‘true’,
-and two classes; ‘list-item’ and ‘draggable’.
+    This code selects a list element that has an id of “li”,
+    and then assigns it a few attributes. It assigns an
+    attribute named ‘active’ and gives it a value of ‘true’,
+    and two classes; ‘list-item’ and ‘draggable’.
 
 
   - getAttribute("attributeName")
@@ -1363,14 +1306,11 @@ one ([0]).
     class name.
 
 
-
-
-
 ## Handling styling
   JavaScript provides direct access to the styles of HTML elements, which allows you to dynamically update the look and feel of a page. While most of the visual appearance is handled through CSS, JavaScript can manipulate these styles in real time — like changing colours when a user clicks a button, hiding/showing sections, or adjusting sizes for animation effects.
 
 Common styling properties:
-—————————
+
 
   - style
     Accesses and sets inline CSS styles directly on an element. For
@@ -1410,15 +1350,11 @@ Common styling properties:
 			element.classList.toggle("open");
 
 
-
-
-
-
 ## Working with positioning
   Positioning is essential when you need to move elements around, detect their location on the page, or create drag-and-drop interfaces. JavaScript offers several properties that help you calculate positions and adjust layouts dynamically.
 
 Common positioning properties:
-—————————————
+
 
   - offsetParent
     Returns the nearest ancestor element that has a positioning
@@ -1452,9 +1388,6 @@ Common positioning properties:
     calculating absolute positions on the page.
 
 	
-
-
-
 ## Working with events
   When users interact with a web page — by clicking a button, moving their mouse, typing into a form, or scrolling down — JavaScript needs a way to notice these actions and respond. This is where events come in.
 Events are signals that tell JavaScript, "Hey, something just happened on the page!”. Since the DOM is the structure of everything the user sees and interacts with, events are a natural part of DOM management. By listening for events and reacting to them, your JavaScript code can make web pages interactive and dynamic.
@@ -1481,11 +1414,6 @@ In this example, we tell JavaScript:
 "When the user clicks on the button, run this function that shows a message."
 This shows the basic idea of event handling — listening for an action, and responding to it by changing something on the page (or doing anything else you want).
 We'll dive much deeper into how events work, the different types of events, and powerful ways to control them in the dedicated Events chapter, Chapter 24.
-
-
-
-
-
 
 
 ## XPath and selecting DOM Elements
@@ -1553,21 +1481,18 @@ DID YOU KNOW? XPath was actually designed before CSS selectors became popular! W
 Even today, tools like browser dev tools and web scraping software still support XPath because of how powerful it is for navigating complex document structures.
 
 
-
-
 ### Basic Usage of document.evaluate()
 Here’s how the document.evaluate() method works:
 
 	const xpath = "//p";
 
-const result = document.evaluate(
-| xpath, | // The XPath expression |
-|---|---|
-| document, | // Context node (usually `document`) |
-| null, | // Namespace resolver (null for HTML) |
-  XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
-  null                    // Initial result (null for new)
-);
+  const result = document.evaluate(
+    xpath,                  // The XPath expression
+    document,               // Context node (usually `document`)
+    null,                   // Namespace resolver (null for HTML)
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
+    null                    // Initial result (null for new)
+  );
 
 	// Loop through and log matched nodes
 	for (let i = 0; i < result.snapshotLength; i++) {
@@ -1580,8 +1505,6 @@ The 'document' argument—which is the second argument passed to .evaluate(), sh
   XPathResult.propertyName
 
 Let’s see it in action reading data from documents.
-
-
 
 
 #### Use document.evaluate() read HTML document
@@ -1636,8 +1559,6 @@ Here is how it works:
 	   readable text.
 
 
-
-
 ### Use document.evaluate() to read an XML document
   When using document.evaluate(), we often work directly on an HTML document. But if you want to use document.evaluate() on an XML string, you need to first parse the string into a usable XML format (document) using a tool like DOMParser, and then run XPath on that parsed document.
 Here's a simple, working example:
@@ -1664,14 +1585,13 @@ Here's a simple, working example:
 	// Step 3: Use document.evaluate() to extract titles
 	const xpath = "//book/title";
 
-const result = xmlDoc.evaluate(
-| xpath, | // XPath expression |
-|---|---|
-| xmlDoc, | // context node (root of the XML) |
-| null, | // namespace resolver (not needed here) |
-  XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // result type
-  null            // result (optional, reuse old result)
-);
+  const result = xmlDoc.evaluate(
+    xpath,          // XPath expression
+    xmlDoc,         // context node (root of the XML)
+    null,           // namespace resolver (not needed here)
+    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // result type
+    null            // result (optional, reuse old result)
+  );
 
 	// Step 4: Loop through results
 	for (let i = 0; i < result.snapshotLength; i++) {
@@ -1694,10 +1614,6 @@ Here is what happens:
 Remember that in this example we have used an XML string stored in a variable xmlString, but I practical examples, that data could be coming from the result of reading the data from a local file, or an AJAX  made fetch() or XMLHttpResult request etc. The returned data will be received in by your code and stored in a variable, and further processed with the DOMParser() and .evaluate() in exactly the same way as in this example.
 
 
-
-
-
-
 ### The XPathResult types
 
 The possible XPathResult (properties) types are 10 in number, and here is a list of them:
@@ -1718,13 +1634,13 @@ FIRST_ORDERED_NODE_TYPE	               9	Returns the first node (in the order in
 Each result type constant (like XPathResult.STRING_TYPE) is actually a number behind the scenes, and that is what is represented by the code numbers 0-9 which are returned with the result. When handling the returned result in code you can use either the name or the raw number, but the name is much clearer and the number is not recommended for beginners. I just listed the codes here for you to understand it, but you should not have to worry about them.
   If you really ever need to check what type was returned, you can do so by using the XPathResult.ANY_TYPE property. It is the one that does not commit you to a type up front: you ask for ANY_TYPE, and then read back which type you actually got. Here is how to check for it:
 
-const result = document.evaluate(
-  xpath,
-  document,
-  null,
-  XPathResult.ANY_TYPE,
-  null
-);
+  const result = document.evaluate(
+    xpath,
+    document,
+    null,
+    XPathResult.ANY_TYPE,
+    null
+  );
 
 Then retrieve the result with the resultType property like so:
 
@@ -1789,7 +1705,6 @@ For each example, I will start by stating the following two things:
   - How I will retrieve the data returned
 
 
-
 #### 1. Getting a Number (e.g., Count)
     - Type we want: 		XPathResult.NUMBER_TYPE
     - Result retrieval:		.numberValue
@@ -1821,8 +1736,6 @@ For each example, I will start by stating the following two things:
 	output is the following logged to the console:
 
 Number of results is: 3
-
-
 
 
 #### 2. Getting Text (String)
@@ -1859,8 +1772,6 @@ Number of results is: 3
 JavaScript: The Good Parts
 
 
-
-
 #### 3. Boolean Check
     - Type we want: 		XPathResult.BOOLEAN_TYPE
     - Result retrieval:		.booleanValue
@@ -1892,15 +1803,11 @@ JavaScript: The Good Parts
   property of the result object. This is because we are expecting a
   boolean, of course.
 
-Because the second <span> in our HTML does have the text 'Eloquent
-JavaScript' in it, the output is the following logged to the console:
-  true
-Otherwise it would have returned:
-  false
-
-
-
-	
+  Because the second <span> in our HTML does have the text 'Eloquent
+  JavaScript' in it, the output is the following logged to the console:
+    true
+  Otherwise it would have returned:
+    false
 
 
 #### 4. Iterating Nodes (Ordered)
@@ -1909,13 +1816,13 @@ Otherwise it would have returned:
 
 		const xpath = "//li";
 
-const result = document.evaluate(
-  xpath,
-  document,
-  null,
-  XPathResult.ORDERED_NODE_ITERATOR_TYPE,
-  null
-);
+    const result = document.evaluate(
+      xpath,
+      document,
+      null,
+      XPathResult.ORDERED_NODE_ITERATOR_TYPE,
+      null
+    );
 
 		// loop through data
 		let node = result.iterateNext();
@@ -1942,9 +1849,6 @@ const result = document.evaluate(
 Node name: LI
 Node name: LI
 Node name: LI
-
-
-
 
 
 #### 5. Snapshot List of Nodes (Like an Array)
@@ -1982,9 +1886,6 @@ Node name: LI
 JavaScript: The Good Parts
 Eloquent JavaScript
 You Don’t Know JS
-
-
-
 
 
 #### 6. Just the First Node
@@ -2028,7 +1929,6 @@ JavaScript: The Good Parts
 The six examples above demonstrate to you, not only the different ways to do XPath queries on an HTML, but also show you how passing a different XPathResult type to document.evaluate() means that a different format of data will be returned, and a different approach is needed to retrieve the values. We now know how powerful XPath can be. But when do we use XPath, and when are CSS selectors sufficient? Let’s talk about that next.
 	
 
-
 ### When to use XPath instead of CSS selectors
 
 Use XPath when:
@@ -2063,8 +1963,6 @@ or with HTML complicated enough that querySelectorAll() runs out of road.
   You will get the chance to see some more practical examples of how to use XPath to process XML data in Chapter 18 (File Management), where we read XML out of real files.
 
 
-
-
 ## The DOMParser
   In this section above on the document.evaluate() method, you would remember I mentioned that in order to read (parse) data in XML, we must make sure the data is converted from a string into an actual XML document before we can use it in document.evaluate(). The data is usually a string in XML format which you could have obtained through any of the following ways:
 
@@ -2094,23 +1992,18 @@ DOMParser takes that string and turns it into a DOM document you can work with. 
 	const parser = new DOMParser();
 	const xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-const result = xmlDoc.evaluate(
-  "//book/title/text()",
-  xmlDoc,
-  null,
-  XPathResult.STRING_TYPE,
-  null
-);
+  const result = xmlDoc.evaluate(
+    "//book/title/text()",
+    xmlDoc,
+    null,
+    XPathResult.STRING_TYPE,
+    null
+  );
 
 	console.log(result.stringValue); 
 
 The output will be:
   JavaScript: The Good Parts
-
-
-	
-
-
 
 
 ## Examples of DOM manipulation
@@ -2132,8 +2025,6 @@ Select this element in JavaScript like so:
 
 	let ul = document.getElementById('ul');
 			
-
-
 
 #### -Select an element by its class
 To select an element by its class attribute value you should use the getElementsByClassName() method of the document object, and provide it with the name of the class you want to target on the web page. Note that this obviously means you will end up with multiple elements, returned as an HTMLCollection—not an array, as we established earlier in this chapter—since unlike id attributes, the same class is usually used on multiple HTML elements. 
@@ -2166,8 +2057,6 @@ To select an element by its class attribute value you should use the getElements
   better to use querySelectorAll() instead, when you need
   to select more than one item (with these elements
   having the same class).
-
-
 
 
 #### -Create a todo list
@@ -2281,7 +2170,6 @@ h1 {
 }
 
 
-
 #### index.html
 
 	<!doctype html>
@@ -2317,8 +2205,6 @@ h1 {
 	</html>
 
 
-
-
 #### index.js
 let todoString = "";
     todoString = `
@@ -2336,7 +2222,6 @@ let todoString = "";
     </div>`;
 
 
-    
 //------------------------------------------------------------
 // ADD EVENT LISTENERS
 //------------------------------------------------------------
@@ -2487,8 +2372,6 @@ function deleteTodo(e) {
 }
 
 
-
-
 Adding attributes to an element
 There are a few ways to assign attributes to HTML elements dynamically. The 	following are three ways to add a class or any attribute to an element:
 
@@ -2516,8 +2399,6 @@ There are a few ways to assign attributes to HTML elements dynamically. The 	fol
   Pay close attention to how multiple classes are passed. They go in as one single string with a space between them, exactly as you would write them in your HTML. Do not be tempted to put them in an array and separate them with commas: className is a string, so an array of ["list-item", "draggable"] is quietly turned into the text "list-item,draggable", which the browser reads as one strangely-named class rather than two. One string, spaces between the names.
 
 
-
-
 Assign multiple attributes to an element in one go
 	Any of the above ways to assign attributes to an element is fine, but there are times when you would have multiple attributes to an element, and there is a beautiful way to do it in one 	block. This is done by the assign() method of the base JavaScript Object Object. You simply pass the target element as the first argument to assign() and an object as its second 	argument containing all the attributes you want the element to have and their values.  Here is 	an example:
 		Object.assign(li, {
@@ -2526,10 +2407,6 @@ Assign multiple attributes to an element in one go
 		});
 
   There are three things you should note here. The first is that Object.assign() needs the element itself as its first argument—leave it out and you have assigned the attributes to nothing at all. The second is how className must be used instead of class to assign a class to an element when using this approach. The third is the way you pass multiple classes to the same element: as one string, with the class names separated by spaces.
-
-
-
-
 
 
 Concatenate a variable with a string and display the result
@@ -2551,10 +2428,6 @@ Concatenate a variable with a string and display the result
    	</form>
 	</div>
 	</div>`;
-
-
-
-
 
 
 How to dynamically insert content into an element
@@ -2609,14 +2482,8 @@ How to dynamically insert content into an element
 	</div>
 
 
-
-
-
-
-
 #### Implementing drag and drop
   We are going to see how to drag and drop an element. We will see how to drag an element from one container to another. Let’s dive straight into the code, and I will explain how it works at the end.
-
 
 
   The HTML code
@@ -2756,7 +2623,6 @@ How to dynamically insert content into an element
 	}
 
 
-
 Here is an explanation of the code, and how drag and drop generally works. Imagine you're picking up a sticker and moving it to another page in a sticker book. That's exactly what you're doing with drag and drop on a web page. Here is what happens behind the scenes, step-by-step as you drag and drop your item:
 
 - First, we have three divs on our web page, to which we all assign the class attribute of ‘empty’. In the first div, we place another inner div to hold an image, and this is the div we will allow the user to drag from this parent ‘empty’ div to any of the other divs. Notice that the image we are using in this inner div is pulled from this path: /images/urban.jpg’, so in your local project files ensure you have a directory named ‘images’ in which you have an image named ‘urban.jpg’, or change this file name if your image is named something else.
@@ -2774,7 +2640,6 @@ Here is an explanation of the code, and how drag and drop generally works. Imagi
 - Visual Feedback: As you drag, we add a dashed green border to show where the image is hovering over. Once you drop the image, we move image into that new (drop) box.
 
 This makes your web page interactive-no page reloads, just drag, drop, and go.
-
 
 
 #### Dynamically create a table with data from an array
@@ -2894,15 +2759,10 @@ This example demonstrates the following:
   - How to dynamically loop through data to populate a table
 
 
-
-
-
-
 ## THE WINDOW OBJECT
 
   The window object is the global object in JavaScript that represents the browser window or tab in which your script is running. It provides access to, and control over the browser environment, including the document, history, storage, and various methods for controlling the window itself. It helps manage pop-ups, navigation, and storage. Every global variable or function declared in JavaScript automatically becomes a property or method of the window object. Read this last sentence again, it’s so important to keep that in mind. 
   Most window properties and methods are standardised and work across modern browsers. However, always check for browser compatibility when using lesser-known methods.
-
 
 
 ### Relationship between window and document
@@ -2926,7 +2786,6 @@ window.document…
 Here are some common and useful properties and methods of window:
 
 
-
 #### -1) Window Size & Position
 window.innerWidth / window.innerHeight 
   They get the viewport size
@@ -2943,8 +2802,6 @@ Here is an example:
 	window.scrollTo(0, 500);
 
 
-
-
 #### -2) Alerts & User Interaction
 
 window.alert("message")
@@ -2957,7 +2814,6 @@ window.prompt(message, default)
   The prompt() method displays a dialog box that asks for
   user input and returns the entered value. So, we can say it
   is used to capture user input.
-
 
 
   Example alert():
@@ -3039,8 +2895,6 @@ Example prompt():
   theNameTheyEntered”.
 
 
-
-
 #### -3) Reloading a window, and navigating to other windows
   In other words, you could also say refreshing a web page, and redirecting to another browser URL (Uniform Resource Locator). For these, the window object has a property called ‘location’ which has two useful members of its own; a property named ‘href’ and a method named ‘reload()’. The href property refers to the path of the current web page, also known as the browser URL. This is what you will find in the browser’s search bar. It looks something like this: "http://my-website.com/index.html". To get or know the path of a web page, so you can create a link to it, for example, here is how to get it dynamically:
 
@@ -3077,7 +2931,6 @@ You can navigate to another page in multiple ways. Let’s see some ways:
    about.html’.
 
 
-
 #### Using the location.assign() method
   You can also redirect your browser using the assign() method
    of the location property. It does the same job as assigning to 
@@ -3089,16 +2942,10 @@ You can navigate to another page in multiple ways. Let’s see some ways:
 	window.location.assign("https://example.com");
 
 
-
 #### Using the location.replace() method
   This replaces the current page in such a way that there is no history of the previous page—hence you will see no back button in the browser (to go to previous pages). This can have its own uses, in situations where you intentionally do not want the visitor or user accessing any previous view of your application. Just pass it the new URL string as an argument. Here is how to do it:
 
 	window.location.replace("https://example.com");
-
-
-
-
-
 
 
 #### -4) Manipulating the URL with the URL API
@@ -3168,8 +3015,6 @@ When you place this code in your JavaScript and run it in the browser, you will 
 You find that the URL object successfully extracts the value of all the various components of the long and complex URL string. This is better than you could ever manage by extracting it yourself, manually. Let’s pick out a few lessons about how to identify URL string components from here. We can see the path refers to the section after the hostname and the port number.  It is always separated from them by a forward slash (‘/path/to/page’). Note that a query string is the part that comes in your URL after a ‘?’ character, and its syntax is always ‘key=value’. In this example URL, the query string is ‘query’, and its value is ‘123’. A fragment is always the value that follows a hash (#) character, which is ‘section’ in this case. 
 
 
- 
-
 ##### Parsing a URL
   Let us see another example of the URL API in action. Let us use it to quickly extract the value of a specific query string.
 
@@ -3186,7 +3031,6 @@ The result of this code is the following being written to the console:
 We learn here that once you instantiate a URL object, you get a property for handling query strings, and that property is searchParams. To then read the value of any query string in that URL, we simply pass that query string’s name to the get() method of searchParams like so: 
 	
 	url.searchParams.get("queryStringName");
-
 
 
 ## Modifying URL components
@@ -3207,9 +3051,6 @@ We learn from this that to set the value of any query string, we need to pass th
 	newUrl.searchParams.set('id', '123');
 
 
-
-
-
 ##### Modifying query parameters
   Here is how you can dynamically modify the URL of the current web page, and refresh the page so it has the new query string parameters. As you can probably already guess, this will involve using the searchParams.set() method and the window.location properties to modify the query string, and reload the web page, respectively. Here is how: 
 
@@ -3219,9 +3060,6 @@ We learn from this that to set the value of any query string, we need to pass th
 	window.location.href = url.href;
 
 This will reload the current web page, and it will now have a query string of ‘?sort=asc’ added to it.
-
-
-
 
 
 ##### Understanding Blobs
@@ -3237,10 +3075,6 @@ Once it’s packed, the browser knows how to hand it over to the user as a downl
 Then, you can generate a download link using:
 	
   URL.createObjectURL(blob)
-
-
-
-
 
 
 ## Generating links to assets created in memory
@@ -3302,8 +3136,6 @@ Here, we are saying; once the button is clicked, we use the setTimeout() functio
      -Streaming media.
 
 
-
-
 #### -5) Navigating Through Browser History
   JavaScript gives access to the browser's session history. For this it uses the window.history property. Let’s just dive straight into code examples as it should all be self-explanatory to you by now.
 
@@ -3318,7 +3150,6 @@ Here, we are saying; once the button is clicked, we use the setTimeout() functio
 	window.history.forward(); 
 
 
-
 ##### Go multiple steps in history
   There is a way for you to dynamically allow the user or visitor to jump (even multiple pages) to a specific page, going back a step number in history. This can have its own uses, for example, in a scenario where a user is completing a multi-page form, and you want the user to be able to click on a button to return to a specific earlier step in the form. Anyway, for that, you can use the go() method of the history property, which accepts a number as its argument. 
   That number is the number of steps in history to go, where a positive number means forward in history, while a negative number will take the user that many pages back in their browsing history. Here is how to do it:
@@ -3328,11 +3159,6 @@ Here, we are saying; once the button is clicked, we use the setTimeout() functio
 
 	 // Go two pages forward
 	window.history.go(2);  
-
-
-
-
-
 
 
 #### -6) Opening a New Child Window
@@ -3345,8 +3171,6 @@ Here, we are saying; once the button is clicked, we use the setTimeout() functio
 	let childWindow = window.open("https://example.com", "_blank", "width=600,height=400");
 
 When testing this, your web page might be set to block popups, but it will usually tell you if it has blocked it. All you then have to do is click on the warning in browser (usually near the search bar), and choose not to block popups from your web page.
-
-
 
 
 ##### Security issues with multiple tab navigation

@@ -219,9 +219,9 @@ questions.
 
    Output:
 
-Processing: print report
-Processing: send email
-Processing: update record
+    Processing: print report
+    Processing: send email
+    Processing: update record
 
    They come out in the order they went in, because `shift()` takes from the front while
    `push()` adds to the back. Swap `shift()` for `pop()` and you would process them backwards,

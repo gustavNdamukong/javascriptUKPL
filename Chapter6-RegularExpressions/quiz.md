@@ -180,20 +180,20 @@ questions.
 
    Without g you get the first match only. With it, you get all of them:
 
-text.match(/cat/)     // ["cat"]
-text.match(/cat/g)    // ["cat", "cat"]
+    text.match(/cat/)     // ["cat"]
+    text.match(/cat/g)    // ["cat", "cat"]
 
    The word "here" sits at the end of the first line, but the string as a whole ends with
    "slept". So $ on its own finds nothing, because $ means the end of the whole string. Add m
    and $ comes to mean the end of any line:
 
-text.match(/here$/)   // null
-text.match(/here$/m)  // ["here"]
+    text.match(/here$/)   // null
+    text.match(/here$/m)  // ["here"]
 
    And because they are independent, they combine:
 
-text.match(/^cat/g)   // ["cat"]
-text.match(/^cat/gm)  // ["cat", "cat"]
+    text.match(/^cat/g)   // ["cat"]
+    text.match(/^cat/gm)  // ["cat", "cat"]
 
    A useful way to remember it: g asks "how many times?", m asks "what counts as a line?".
 
@@ -201,15 +201,15 @@ text.match(/^cat/gm)  // ["cat", "cat"]
 8) 
 - **test()** is called on the pattern and hands back true or false:
 
-/cats/i.test("Cats are fun.")            // true
+    /cats/i.test("Cats are fun.")            // true
 
 - **match()** is called on the string and hands back what it found:
 
-"Cats are fun.".match(/cats/i)           // ["Cats"]
+    "Cats are fun.".match(/cats/i)           // ["Cats"]
 
 - **replace()** is called on the string and hands back a changed copy of it:
 
-"I like cats".replace(/cats/gi, "dogs")  // "I like dogs"
+    "I like cats".replace(/cats/gi, "dogs")  // "I like dogs"
 
    Note that replace() gives you a new string. It does not alter the one you called it on.
 

@@ -153,13 +153,13 @@ TypeError      ReferenceError      RangeError      SyntaxError
    error types apart. A thrown string gives you none of that.
 
 
-6)
-  TypeError       null.someMethod()        — doing something to a value that
-  cannot do it
-  ReferenceError  using an undeclared      — the name does not exist at all
-  variable
-  RangeError      (5).toFixed(-1)          — a number outside an allowed range
-  SyntaxError     a missing bracket        — the code cannot even be parsed
+6) 
+    TypeError       null.someMethod()        — doing something to a value that
+      cannot do it
+    ReferenceError  using an undeclared      — the name does not exist at all
+      variable
+    RangeError      (5).toFixed(-1)          — a number outside an allowed range
+    SyntaxError     a missing bracket        — the code cannot even be parsed
 
    `SyntaxError` is the odd one out. The others happen while your program is *running*;
    a SyntaxError happens when JavaScript *reads* your file, which means the program never

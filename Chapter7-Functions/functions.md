@@ -28,8 +28,6 @@
   - Arrow Function IIFE
 
 
-
-
 ## -INTRODUCTION
 
 In programming, we often need to perform certain tasks over and over again. Instead of writing the same code multiple times, we can put that code into a function and just call it whenever we need it.
@@ -72,7 +70,6 @@ The arguments you pass can be:
 Yes, in JavaScript, you can pass a function to another function, especially when one task depends on another already-defined task.
 
 
-
 ### Built-in Functions vs Custom Functions
   In JavaScript (and most programming languages), there are two kinds of functions:
   - 1) Built-in functions: These are provided by JavaScript itself to help
@@ -96,7 +93,6 @@ Instead, use this modern approach:
 This method is safer and works well in all modern browsers.
 
 
-
 ### Rules for Naming Functions
 When you create your own functions, JavaScript has some rules for naming them:
   - A function name must start with a letter, an underscore (_) or a
@@ -115,10 +111,6 @@ When you create your own functions, JavaScript has some rules for naming them:
     For example:
 
 			function calculateTotal() { }
-
-
-
-
 
 
 ## -FUNCTIONS DEMONSTRATED
@@ -203,9 +195,6 @@ whether one or all of those strings are literal strings, or they are strings
 stored in a variable.   
 
 
-
-
-
 ## -THE ARGUMENTS OBJECT
 
 In JavaScript, there is a concept known as the `arguments` object. It's an array-like object that is automatically available inside all functions, and contains all the arguments passed to a function, even if the function doesn't explicitly list them as parameters. Eg:
@@ -221,7 +210,7 @@ function sumAll() {
 let result = sumAll(1, 2, 3, 4); // result will be 10
 
 Key Points:
-————-
+
 - `arguments` Object: Inside any function, `arguments` is an array-like object that holds all the arguments passed to the function.
 - I say “array-like” because it behaves like an array (you can access elements with `arguments[0]`, `arguments[1]`, etc.), but it doesn't have all the array methods like `.map()`, `.forEach()`, etc.
   
@@ -261,7 +250,6 @@ used to implement this capability. The keyword ‘rest’ in ‘rest parameters�
 -In conclusion; the `arguments` object is useful, but in modern JavaScript, rest parameters (`...`) are generally preferred for better readability and functionality.
 
 
-
 ## ARGUMENTS WITH DEFAULT VALUES
   There are times when you write a function and want one or more of the arguments you pass into it to have default values. These are values that will be used by the function even if no argument is passed in. Here is a simple example:
 
@@ -299,8 +287,6 @@ give you a ReferenceError.
   You will also have spotted the word "this" inside the function. That is 
 a keyword meaning "the object I belong to", and it has a section of its 
 own later in this chapter.
-
-
 
 
 ## TO RETURN SOMETHING OR TO DO SOMETHING
@@ -353,8 +339,6 @@ of a variable and does not return anything:
 	// no need to capture/store the result of calling the 
 	// function updateStatus() since nothing is returned
 	updateStatus();
-
-
 
 
 ## FUNCTIONS AND VARIABLE SCOPE
@@ -423,8 +407,6 @@ To learn everything about variable scopes, see Chapter 2
 (Variables).
 
 
-
-
 ## ANONYMOUS AND ARROW FUNCTIONS
   An anonymous function is a function without a name. It is often assigned to a variable or passed as an argument.
 
@@ -491,10 +473,6 @@ Here are the key points about arrow functions:
 	   (arguments) => { return value; }
 
 
-
-
-
-
 #### Convert an anonymous function into an arrow function
 
 An anonymous function can always be converted into an arrow function. Let’s convert the above anonymous function into an arrow function. To do so, simply replace ‘function()’ with ‘()  =>’:
@@ -516,10 +494,6 @@ let greet = () => "Hello";
 You therefore see how short and concise our code can be as a result. Always remember that whatever comes after the arrow (=>) is automatically implied to be the return value of the function. What comes on the left side of the arrow will be any parameters—if applicable—with or without parentheses. 
 
 
-
-
-
-
 ## Quick object literals from function arguments
   You sometimes have a function in your code that simply needs to return an object literal from arguments passed to the function. If you do not know what object literals are, quickly hop over to Chapter 17 (Object Oriented Programming) and read about objects and object literals before hopping back here to continue. Here is an example of such a function. Since we are on the topic of functions, just for the purpose of better understanding of the differences, I will write three versions of the same function; one using the traditional function syntax, one in anonymous function syntax, and one in the arrow function syntax. The differences should be very subtle, and you should be able to distinguish between them by now:
 
@@ -536,7 +510,6 @@ function createObject (make, model, year) {
     };
 
 
-
 // anonymous function version
 const createObject = function(make, model, year) {
         return {
@@ -545,7 +518,6 @@ const createObject = function(make, model, year) {
             year: year
         };
     };
-
 
 
 // arrow function version
@@ -591,9 +563,6 @@ This function return value will be the object:
 
 	  
      {make: 'Toyota', model: 'Rav4', year: '2025'}
-
-
-
 
 
 #### Anonymous and arrow functions and the this keyword
@@ -690,9 +659,6 @@ let greet = function() {
 }
 
 
-
-
-
 ## Passing arguments to an arrow function
   Say we have a regular function as below:
 
@@ -760,8 +726,6 @@ there is more than one of them.
 function. It is not. It is reduce()'s own second argument, the value 
 the accumulator starts from, and it sits outside the arrow function 
 entirely.
-
-
 
 
 Immediately Invoked Function Expression 

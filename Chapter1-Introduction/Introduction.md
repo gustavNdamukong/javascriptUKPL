@@ -18,7 +18,6 @@
   - Creating a local development server
 
 
-
   Imagine opening a webpage and seeing more than just plain text and images. Imagine buttons that react, forms that validate instantly, animations that respond to your actions, and content that changes without reloading the page. All this magic? That’s JavaScript.
 This book is your journey into that world—a world where websites come alive and programming becomes exciting, practical, and even fun.
 
@@ -47,7 +46,6 @@ Without JavaScript, websites are static. They just sit there. You can click a li
 JavaScript runs inside your web browser, which is why it’s known as a client-side scripting language. It has direct access to every part of the webpage through something called the DOM (Document Object Model), a structured map of all the HTML elements on the page. This gives JavaScript immense power.
 
 		
-
 ### A Quick Look Back: The History of JavaScript
   JavaScript was created in 1995 by Brendan Eich while he was working at Netscape. Back then, it was built 
 quickly to add a bit of interactivity to web pages. But from those humble beginnings, JavaScript exploded into something massive. At first, developers faced a tough challenge—different web browsers supported JavaScript in different ways. This meant code that worked perfectly in one browser could fail in another. To solve this, libraries like jQuery were created to smooth over browser differences and make JavaScript easier to use. Basically, jQuery was a library built on top of JavaScript, to solve the discrepancies between different browsers. It was successful in achieving that, which was great. With jQuery, you were assured that the JavaScript code you wrote would work on all browsers. That was peace of mind for developers who had to previously test their code on all browsers and write extra functionality to handle browsers that may not support the code they wrote. This is why jQuery quickly became very popular.
@@ -88,7 +86,6 @@ We’ll focus on clarity, simplicity, and hands-on examples, so you’re not jus
 So, if you're ready to learn a powerful language that runs in every web browser, builds beautiful user experiences, and opens doors to all kinds of opportunities, you're in the right place. The JavaScript Blueprint is meant to be the only book you will ever need to master the JavaScript programming language.
 
 	
-	
 ## LANGUAGE SYNTAX
   JavaScript has to be written within script tags, or in a separate .js file that is linked from a script tag, for it to be parsed by the JavaScript interpreter in the browser.
 
@@ -109,7 +106,6 @@ So, if you're ready to learn a powerful language that runs in every web browser,
 	</html>
 
   Do not worry about understanding that line of code just yet. In plain English it says: "find the body of this page, and replace everything inside it with the words Hello world". We will take it apart properly when we reach the DOM in Chapter 15.
-
 
 
 ## Terminating statements
@@ -169,9 +165,6 @@ will be wrongly interpreted as follows, resulting in an error:
 It is therefore recommended to be safe by ending all your statements with semicolons. This will still work well, and have the added benefit of eliminating the risk of any misunderstanding by the parser about where one statement ends and where another starts. Also, while semicolons are not always needed to mark the end of statements, there is an exception that if a statement ends with a variable or function where the first character of the next line is a left parenthesis or a square bracket, then you must finish that line with a semicolon or the code will not work. So, this reinforces the advice that whenever in doubt just use a semicolon.
 
 	
-
-
-
 ## Where to place the script tags in a web document
   JavaScript can be included in an HTML document in several ways: directly within the page (inline), as a reference to a separate local file, or by linking to a file hosted on an external server. The third method is commonly used to load third-party libraries or services like jQuery, Google Analytics, or frameworks such as React or Vue.
 Examples:
@@ -228,10 +221,6 @@ use the ‘load’ event instead.
 - Figure 1.3 — When defer, DOMContentLoaded and load each happen*
 
 
-
-	 
-
-
 ## Commenting code
   This is text that the browser will not treat as code, and will therefore ignore. It’s usually greyed out. It is always good to start learning a language by knowing how to comment out code so that it is not interpreted when your code is run. All programming languages have this feature, and it is very handy in placing notes to yourself and to your fellow developer colleagues when working in a team environment. These notes-to-self (so to speak), can make your life easy as convoluted code written and understood now can seem like Greek when you come back to read it months, or even years later. You can use comments to help yourself or another developer who picks up the project quickly understand what was going on. 
   There are two ways to comment out code, single line (also known as inline commenting), and multi-line comments. To comment out a single line, begin the line with a double forward slash like so:
@@ -251,10 +240,6 @@ To comment out multiple lines, begin the first line with a forward slash and an 
     executed. Note how it also spans multiple lines of
     code. Do not forget to end the comment like so below.
   - /
-
-
-
-
 
 
 ## Dealing with browsers that do not support JavaScript (rare)
@@ -280,8 +265,6 @@ One rule of thumb is to use the `<noscript></noscript>` tag for browsers not sup
 However, if your app fully depends on JavaScript like many modern single-page applications (SPAs), and your audience is mostly using up-to-date browsers, you may not need `<noscript>` at all. So in conclusion, use `<noscript>` as a fallback for better accessibility or critical communication, but it’s no longer something that must be used in every project.
 
 
-
-
 ## Debugging JavaScript errors
   Debugging means being able to find where a fault is in code, for example a typo. This is a very handy skill that every developer should have—the ability to think critically and resolve issues that come about in code as the application is being used. I will give you the three most important tools available to you for debugging in JavaScript. These are:
 
@@ -290,8 +273,6 @@ However, if your app fully depends on JavaScript like many modern single-page ap
   - Handling exceptions
 
 We will talk about how to use them in Chapter 21 (Error Debugging and Testing).
-
-
 
 
 ## Creating a local development server
@@ -312,7 +293,7 @@ We will talk about how to use them in Chapter 21 (Error Debugging and Testing).
 Here’s a step-by-step guide on how to set up a local development environment in Visual Studio Code (VS Code):
  
 Step 1: Create a Project Folder:
-——————————————————
+
   - Go to your computer’s desktop (or any other location you prefer).
   - Create a folder and name it something like js-projects.
   - Inside that folder, you can create other folders for each project, for

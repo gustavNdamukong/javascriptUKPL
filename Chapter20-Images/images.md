@@ -19,9 +19,6 @@
       - Bonus tip - Combining filters
 
 
-
-
-
 ## JavaScript and images
   
   JavaScript can be used to handle images — and it’s actually quite versatile in that area. It’s capable of managing many image-related tasks, especially when combined with browser features or server-side tools. That said, how you use it depends on what you're building.
@@ -55,7 +52,6 @@ For backend image handling, you’ll need to explore the documentation of the ba
 
 What you’ll learn in this chapter is all practical-based. 
 I will go ahead and give you practical, real-world image handling examples using vanilla JavaScript. All the examples run entirely in the browser — no backend required. You’ll even build a basic image editor that uses the canvas to transform images right on the page. Let’s dive straight in.
-
 
 
 ## Image manipulation
@@ -108,7 +104,6 @@ I will go ahead and give you practical, real-world image handling examples using
   the user experience of your application.
 
 
-	
 ### Add a grayscale filter Effect to an image
   Make sure you have an images/ directory in the same folder as this index.html file, with an image in it named ‘urban.jpg’. That is the image used as the src attribute of the `<img>` tag in this page, and the one we are practising adding a grayscale filter to. 
 
@@ -130,7 +125,6 @@ I will go ahead and give you practical, real-world image handling examples using
         		<button id="grayScaleBtn">Make Grayscale</button>
 
 
-
   			<script src="index.js"></script>
 		</body>
 		</html>
@@ -147,8 +141,6 @@ I will go ahead and give you practical, real-world image handling examples using
 			// give the image filter a grayscale effect
 			img.style.filter = 'grayscale(100%)';
 		}
-
-
 
 
 ### Toggle a grayscale filter Effect on an image (on/off)
@@ -171,7 +163,6 @@ I will go ahead and give you practical, real-world image handling examples using
         		<br />
 
         		<button id="grayScaleBtn">Make Grayscale</button>
-
 
 
   			<script src="index.js"></script>
@@ -216,7 +207,6 @@ I will go ahead and give you practical, real-world image handling examples using
     work just the same, using a ternary operator to do the logic makes
     for less and cleaner (readable) code.
 This exercise is a great example for interactive photo editors, or for learning about CSS filters through JavaScript.
-
 
 
 ### Permanently grayscale an image using Canvas
@@ -319,9 +309,6 @@ Add the following code to your JavaScript file (eg index.js)
 This is a very cool feature which can be used in a simple photo editing app so that a user can change an image to grey, and then save it on their computer, and, or upload it to a server.
 
 
-
-
-
 ### Resizing an image using Canvas
   This will let you shrink an image in the browser before uploading or displaying it. Let’s add some styling to make the web page look nice and professional. Create a CSS file eg index.css in the same folder as your index.html file. Place this code in it:
 
@@ -389,7 +376,6 @@ button:hover {
 }
 
 
-
 Your index.html code, should look like this:
 
 		<!DOCTYPE html>
@@ -426,7 +412,6 @@ Your index.html code, should look like this:
   			<script type="module" src="index.js" defer></script>
 		</body>
 		</html>
-
 
 
 Add the following code to your JavaScript file (eg index.js). Note all the comments between the lines to explain everything the code does:
@@ -584,9 +569,6 @@ It is the event (file upload) object’s target.result that we assign to the src
 If we had used big numbers like 100 or 200, the image would have become huge (100 times bigger!), which your browser might not be able to display, making it look like nothing happened. So we stick to small numbers between 0.1 and 2 for safe and smooth resizing.
 
 
-
-
-
 ### Rotate an image in 2d
   With the Canvas you can rotate an image, and it’s a nice thing to be able to do with your mages. We will look at a full working example with a button that allows you upload an image, and another button which rotates the image in increments of 45 degrees clockwise. When you are happy with the rotation, you can download the image as usual. The rotation done is in 2D. Canvas alone does not support real 3D transforms. It's strictly 2D.
 To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an image using the transition an transform properties (just visually, not on canvas). For real 3D rendering in JavaScript, you would need WebGL or a 3D library like Three.js. Let’s look at how to rotate an image in 2D with JavaScript.
@@ -701,7 +683,6 @@ This is a very common pattern when rotating things in canvas:
   translate → rotate → draw → restore.
 
 
-
 #### Add feature to download the rotated image
   You are able to download your rotated image easily just like we did with the example of the resized images because it was done on the canvas.
 Adding the ability to download the resized image will give you a nice feature which you can build and share with your family and friends to use. Achieving this is as simple as adding the following two pieces of code-a download button in your HTML code, and some code in your JavaScript file to listen for a click event on that download button, and download the already created image from the canvas. Here is the code:
@@ -735,9 +716,6 @@ Add this code to the already existing code above for rotating an image:
 From the previous example, it should be clear to you how that download code works. If not just refer back to the explanations in the previous examples. 
 
 
-
-
-————————————-
 ### Adding image filters
  Adding filters to images using the canvas is quite straight forward. You just have to add the relevant filter by calling its method and assigning its result to the context of the image canvas. Available filter methods are brightness(), contrast(), blur(). Without further ado, let’s see them in action.
 
@@ -769,12 +747,9 @@ From the previous example, it should be clear to you how that download code work
 			<canvas id="canvas"></canvas>
 
 
-
-
   			<script type="module" src="index.js" defer></script>
 		</body>
 		</html>
-
 
 
 #### JavaScript code (eg index.js)
@@ -840,9 +815,6 @@ From the previous example, it should be clear to you how that download code work
 Understand that this works because the canvas context which we create at the beginning of every canvas job is the thing on which the dynamically created image is built. Changing the filter on the context therefore automatically makes the change on your image that is drawn on it.
 
 
-
-
-
 #### Adding contrast to an image
 As with brightening up an image, let’s look an a code example that allows you to upload an image, adjust its brightness using a range slider, then download the desired result to your computer. 
   To add contrast to an image, we just need to add the contrast filter to the canvas context. Let’s take a look:
@@ -877,7 +849,6 @@ As with brightening up an image, let’s look an a code example that allows you 
 		</html>
 
   I would recommend you set up your slider input field with the following: min="0" max="3" step="0.1" value="1". A max range of 3 will give you more contrast room to play with. 
-
 
 
 #### JavaScript code (eg index.js)
@@ -937,7 +908,6 @@ As with brightening up an image, let’s look an a code example that allows you 
 	});
 
 
-
 #### Add a blur filter
 As with brightening or adding contrast to an image, the following code example will allow you to upload an image, adjust its blur level using a range slider, then download the desired result to your computer. 
   To add a blur filter to an image, add the blur filter to the canvas context. Here is how:
@@ -974,7 +944,6 @@ As with brightening or adding contrast to an image, the following code example w
 		</html>
 
   I would recommend you set up your slider input field with the following: min="0" max="10" step="1" value="0". The max of 10 gives you more room to fine-tune the blur filter effect.
-
 
 
 #### JavaScript code (eg index.js)
@@ -1037,9 +1006,6 @@ As with brightening or adding contrast to an image, the following code example w
 Notice that the blur() filter function accepts its value in pixels, hence in the draw() function above, we append ‘px’ to the value we pass to blur() like so:
 
 	ctx.filter = `blur(${blurSlider.value}px)`;
-
-
-
 
 
 #### Bonus tip - Combining filters
@@ -1108,8 +1074,6 @@ The following code is a working solution of all three filters. As always, the us
 	}
 
 
-
-
 #### HTML (eg index.html)
 
 		<!DOCTYPE html>
@@ -1162,7 +1126,6 @@ The following code is a working solution of all three filters. As always, the us
   - For brightness, min is 0, max is 200, value is 100
   - For contrast, min is 0, max is 200, and value is 100
   - For blur, the min is 0, max is 10, and value is 0.1
-
 
 
 #### JavaScript code (eg index.js)

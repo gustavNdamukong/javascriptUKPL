@@ -190,11 +190,11 @@ not allow.
        console.log(arr[0]); // 1
        console.log(arr.length); // 5
 
-Used in JavaScript for: almost everything.
-Lists of items, results from an API,
-collections of DOM elements, and as
-the building block for several of the
-structures below.
+   Used in JavaScript for: almost everything.
+    Lists of items, results from an API,
+    collections of DOM elements, and as
+    the building block for several of the
+    structures below.
 
 
 ## LINKED LISTS

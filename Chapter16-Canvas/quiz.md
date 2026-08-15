@@ -20,8 +20,8 @@ are all together in the Answers section further down, numbered to match the ques
 
 2) What is the difference between these two pairs, and when would you use each?
 
-ctx.fillStyle  +  ctx.fill()
-ctx.strokeStyle +  ctx.stroke()
+    ctx.fillStyle  +  ctx.fill()
+    ctx.strokeStyle +  ctx.stroke()
 
    Clue: one colours the inside, the other draws the outline.
 
@@ -139,10 +139,10 @@ ctx.strokeStyle +  ctx.stroke()
    colour the next fill or stroke will use.
 
 
-3)
-  ctx.arc(150, 75, 40, 0, 2 * Math.PI);
-  |    |   |   |      |
-  x    y   r  start  end
+3) 
+    ctx.arc(150, 75, 40, 0, 2 * Math.PI);
+      |    |   |   |      |
+      x    y   r  start  end
 
 - **150** and **75** are the x and y coordinates of the **centre** of the circle.
 - **40** is the **radius** — how far the circle reaches out from that centre.

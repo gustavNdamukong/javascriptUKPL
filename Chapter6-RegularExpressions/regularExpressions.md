@@ -167,17 +167,17 @@ use the + character. Here it is:
 
                   /<[^>]+>/
 
-  Read it as: match an opening angle
-  bracket (<), then one or more
-  characters that are NOT a closing
-  angle bracket, then a closing one.
-  Because [^>] refuses to match a >, the
-  match is forced to stop at the very
-  first > it meets, rather than running on
-  to the last one on the line. That is
-  exactly what we wanted.
-  Note that the [...] and the +
-characters are a combination.
+      Read it as: match an opening angle
+      bracket (<), then one or more
+      characters that are NOT a closing
+      angle bracket, then a closing one.
+      Because [^>] refuses to match a >, the
+      match is forced to stop at the very
+      first > it meets, rather than running on
+      to the last one on the line. That is
+      exactly what we wanted.
+      Note that the [...] and the +
+    characters are a combination.
 
 /?/      Matches an element zero or only 1
   time. It is used to make matches on a

@@ -36,7 +36,6 @@
   false
 
 
-
   In computer programming, a data type is
   a classification identifying one of various 
   types of data, such as floating-point, 
@@ -96,7 +95,6 @@
   syntax and underlying implementation
   differ, the idea of reference types is
   shared across most languages.
-
 
 
    Understanding primitive and reference 
@@ -274,7 +272,6 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
    -Boolean Literal → const bool = true;
 
 
-
 ## Understanding strong and weak typing
   The concepts of ‘strongly typed’ and
   ‘weakly typed’ refer to how strictly a 
@@ -326,16 +323,16 @@ you’re working with.
             age = 25
             name = "John"
 
-# This will cause an error in Python
-# because you cannot concatenate a
-# string with an integer directly
-# Error: TypeError
-result = name + age
+      # This will cause an error in Python
+      # because you cannot concatenate a
+      # string with an integer directly
+      # Error: TypeError
+      result = name + age
 
-# You need to explicitly convert 'age'
-# to a string
-# Now it works: "John25"
-result = name + str(age)
+    # You need to explicitly convert 'age'
+    # to a string
+    # Now it works: "John25"
+    result = name + str(age)
 
 
 #### -2) Weakly typed languages
@@ -476,7 +473,6 @@ might occur.
     Python, JavaScript.
 
 
-
 ## The best way to study data types
   You should do this in two steps; mastering
   the general core concepts that apply to all 
@@ -610,7 +606,7 @@ b) Learn about its memory management
   There are 3 ways to do this:
 
       a) Using the Number() function:
-           ——————
+
             let str = "123"; 
 
             // convert to 123
@@ -632,7 +628,6 @@ c) Using parseInt() (for integers) or
           let num = parseFloat(str);
 
      
-
 #### -3) Casting to a boolean
 
       There are 2 ways to cast to a boolean; 
@@ -681,9 +676,6 @@ c) Using parseInt() (for integers) or
        let arr = str.split('');
 
 
-
-
-
 ## -Types of data in JavaScript
 JavaScript broadly categorises data types into primitive types and non-primitive 
 types.
@@ -710,7 +702,6 @@ I will like to introduce to you at this point, a special numeric value worth kno
 	console.log(Number("abc")); // NaN
 
 I will explain how it works when we come to validating values to see if their type is a number.  
-
 
 
 #### -Non-primitive (1)
@@ -759,9 +750,9 @@ They all have different sizes depending on the type of data they contain.
 
 
 #### Symbols and Iteration
-Symbols are not enumerable, meaning they don’t appear in for...in loops or
-  Object.keys(). However, you can explicitly access them using
-  Object.getOwnPropertySymbols.
+  Symbols are not enumerable, meaning they don’t appear in for...in loops or 
+    Object.keys(). However, you can explicitly access them using
+    Object.getOwnPropertySymbols.
 
 		const sym1 = Symbol('key1'); 
 		const sym2 = Symbol('key2'); 
@@ -871,10 +862,6 @@ A Symbol is useful for the following reasons;
   JavaScript itself uses well-known symbols like Symbol.iterator.
 
 
-
-
-
-
 ### -Undefined vs null values
 
   Both null and undefined mean "there is nothing here", which is why they
@@ -913,8 +900,6 @@ return "object", even though null is not an object at all. It is a bug
 that has been in JavaScript since the very first version, and it can
 never be fixed now because too much existing code depends on it. Just
 remember it, and test for null with === null rather than with typeof.
-
-
 
 
 ### -Convert the datatype of a variable
@@ -967,13 +952,6 @@ Here is how you do it:
 	The customer object: {"name":"Tom Sawyer","age":10,"brother":"Sid","aunt":"Polly"}
 
 
-
-
-
-
-     
-
-
 ### Built-in utility functions for type checking
   JavaScript offers you some very useful built-in helper functions and operators that you can use to check the data type of any value. For example, you will be able to tell in code if a value you are dealing with is a number or not. If you are already thinking that this will be very handy when validating form input values to make sure they conform specific types, you are absolutely spot on. Values validation is one of the most popular uses of these type utility functions and operators. Understanding these will help to make you an efficient JavaScript programmer.
   Here's a clean, alphabetical list of JavaScript’s built-in utility functions for type checking, along with short explanations and simple code examples for each.  
@@ -1007,7 +985,6 @@ Output:
 Output:
   true
   true // Object is the parent of all JavaScript objects
-
 
 
 - 3) isNaN()
@@ -1090,7 +1067,6 @@ Returns:
   which I talk about next.
 
 
-
 - 4) Number.isNaN()
   A stricter version of isNaN(). Only returns true for the actual NaN
   value. If the value was not already a NaN-literally, it will return false.
@@ -1114,7 +1090,6 @@ Output:
 	
   Use Number.isNaN() when you want a strict, reliable check — only
   returns true for the actual NaN value.
-
 
 
 - 5) typeof
@@ -1177,8 +1152,6 @@ that is what you meant:
 	}
 
 
-
-
 -6) value === null
 	This uses the JavaScript identical operator (===) which compares 
 	the values as well as the data types of two values. Here it shows how 
@@ -1186,8 +1159,6 @@ that is what you meant:
 
 		let x = null;
 		console.log(x === null); // true
-
-
 
 
 -7) value === undefined
@@ -1200,13 +1171,6 @@ that is what you meant:
 	let y;
 	
 	console.log(y === undefined); // true
-
-
-
-
-
-
-
 
 
 ## BOOLEANS
@@ -1337,8 +1301,6 @@ and using one gives you a ReferenceError:
    -Distinguishing: strict equality again, and here it matters more than usual. With loose
      equality, 0 == "" and 0 == false are both true, so == would tell you a value is zero when
      it is actually an empty string.
-
-
 
 
   The relationship between data types

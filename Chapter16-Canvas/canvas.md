@@ -417,25 +417,25 @@ When the mouse is pressed down on the canvas, start drawing:
   				ctx.stroke();
 			});
 
-There is more going on here than you might expect from "start
-drawing", so let us take it slowly.
-The beginPath() and moveTo() put the pen down at the exact spot
-the mouse was pressed. Leave them out and the line only starts
-from the SECOND mouse move, which quietly loses the first few
-pixels of every stroke.
-The lineTo(x, y) and stroke() then draw a line from that spot to
-itself. A line from a point to the same point has no length at all,
-so you would think it draws nothing. But we set lineCap to "round",
-and a round cap on a zero-length line is simply a circle. So we get
-one round dot, the width of the pen, exactly where the user
-pressed. Without it, clicking once without moving the mouse leaves
-no mark at all, which is not what anyone expects from a drawing
-app - try dotting the letter i and you will see the problem.
+    There is more going on here than you might expect from "start
+    drawing", so let us take it slowly.
+    The beginPath() and moveTo() put the pen down at the exact spot
+    the mouse was pressed. Leave them out and the line only starts
+    from the SECOND mouse move, which quietly loses the first few
+    pixels of every stroke.
+    The lineTo(x, y) and stroke() then draw a line from that spot to
+    itself. A line from a point to the same point has no length at all,
+    so you would think it draws nothing. But we set lineCap to "round",
+    and a round cap on a zero-length line is simply a circle. So we get
+    one round dot, the width of the pen, exactly where the user
+    pressed. Without it, clicking once without moving the mouse leaves
+    no mark at all, which is not what anyone expects from a drawing
+    app - try dotting the letter i and you will see the problem.
 
-If drawing a line from a point to itself feels like too much of a
-trick, you can paint that dot directly instead. This is the more
-advanced way of writing the same four lines, using the arc() method
-you met when we drew a circle earlier:
+    If drawing a line from a point to itself feels like too much of a
+    trick, you can paint that dot directly instead. This is the more
+    advanced way of writing the same four lines, using the arc() method
+    you met when we drew a circle earlier:
 
 			ctx.fillStyle = paintColor;
 			ctx.beginPath();
@@ -446,8 +446,8 @@ you met when we drew a circle earlier:
     - though remember that the arc() version fills, so it needs
     fillStyle rather than strokeStyle.
 
-When the mouse is released, stop drawing. ctx.beginPath()
-clears the current drawing path to avoid unwanted lines:
+    When the mouse is released, stop drawing. ctx.beginPath()
+    clears the current drawing path to avoid unwanted lines:
 
 			canvas.addEventListener("mouseup", () => {
   				painting = false;
@@ -473,8 +473,8 @@ color:
   			ctx.lineCap = "round";
   			ctx.strokeStyle = paintColor;
 
-This is how to draw a line to the new point and start a new path
-from there. This avoids connecting all paths:
+    This is how to draw a line to the new point and start a new path
+    from there. This avoids connecting all paths:
 
 			ctx.lineTo(x, y);
   			ctx.stroke();
@@ -902,11 +902,11 @@ In the above example, we have the following code initialising the value to be us
 
 These values are set as properties of the ball object:
 
-const ball = {
-  x: 50,
-  y: 50,
-  radius: 15,
-  color: "dodgerblue",
+  const ball = {
+    x: 50,
+    y: 50,
+    radius: 15,
+    color: "dodgerblue",
 
   		// Moves 10 pixels per key press
   		speed: 10 

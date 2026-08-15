@@ -206,13 +206,13 @@ Without the correct namespace, XPath queries (a technology for reading XML data,
 
 Then use this resolver when calling document.evaluate():
 
-const result = xmlDoc.evaluate(
-  "//soap:Body//Price/text()", // your XPath query
-  xmlDoc,
-  nsResolver,
-  XPathResult.STRING_TYPE,
-  null
-);
+  const result = xmlDoc.evaluate(
+    "//soap:Body//Price/text()", // your XPath query
+    xmlDoc,
+    nsResolver,
+    XPathResult.STRING_TYPE,
+    null
+  );
 
 
 
@@ -278,13 +278,13 @@ Let us look at a complete example of how you would prepare and send a SOAP reque
         		return null;
       		};
 
-const result = xmlDoc.evaluate(
-  "//soap:Body//Price/text()",
-  xmlDoc,
-  nsResolver,
-  XPathResult.STRING_TYPE,
-  null
-);
+    const result = xmlDoc.evaluate(
+      "//soap:Body//Price/text()",
+      xmlDoc,
+      nsResolver,
+      XPathResult.STRING_TYPE,
+      null
+    );
 
   		console.log("Price: $" + result.stringValue);
 	};
@@ -459,23 +459,23 @@ npm install xpath
 
   Your package.json file should now look like this:
 
-{
-  "name": "js-test",
-  "version": "1.0.0",
-  "main": "index.js",
-  "scripts": {
-  "test": "echo \"Error: no test specified\" && exit 1”,
-  "start": "node index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": “”,
-  "dependencies": {
-  "express": "^5.1.0”,
-  "xmldom": "^0.6.0",
-  "xpath": "^0.0.34"
-  }
+    {
+      "name": "js-test",
+      "version": "1.0.0",
+      "main": "index.js",
+      "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1”,
+      "start": "node index.js"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "description": “”,
+      "dependencies": {
+      "express": "^5.1.0”,
+      "xmldom": "^0.6.0",
+      "xpath": "^0.0.34"
+      }
 
 		}
 
@@ -563,21 +563,21 @@ your-project-folder/
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(str, "text/xml");
 
-  const product = xml.evaluate(
-  "//Product",
-  xml,
-  null,
-  XPathResult.STRING_TYPE,
-  null
-).stringValue;
+      const product = xml.evaluate(
+      "//Product",
+      xml,
+      null,
+      XPathResult.STRING_TYPE,
+      null
+    ).stringValue;
 
-  const price = xml.evaluate(
-  "//Price",
-  xml,
-  null,
-  XPathResult.STRING_TYPE,
-  null
-).stringValue;
+      const price = xml.evaluate(
+      "//Price",
+      xml,
+      null,
+      XPathResult.STRING_TYPE,
+      null
+    ).stringValue;
 
                 console.log(`Product: ${product}`);
                 console.log(`Price: $${price}`);
@@ -727,21 +727,21 @@ Then, we use skills we have seen before when we learned all about DOM manipulati
 
 We then use XPath with evaluate() to extract the product name and its price sent back from the XML data of the SOAP response.
 
-const product = xml.evaluate(
-  "//Product",
-  xml,
-  null,
-  XPathResult.STRING_TYPE,
-  null
-).stringValue;
+  const product = xml.evaluate(
+    "//Product",
+    xml,
+    null,
+    XPathResult.STRING_TYPE,
+    null
+  ).stringValue;
 
-  const price = xml.evaluate(
-  "//Price",
-  xml,
-  null,
-  XPathResult.STRING_TYPE,
-  null
-).stringValue;
+    const price = xml.evaluate(
+    "//Price",
+    xml,
+    null,
+    XPathResult.STRING_TYPE,
+    null
+  ).stringValue;
 
 We then use that data-in our example, we simply log them to the console:
 
@@ -1234,12 +1234,12 @@ current status or stage of the request. It changes as the request
 progresses. There are five (5) different states the request goes through from start to finish, and they are all recorded on the readyState property. To know what state the request is in, at any given time, you just have to check for the value of readyState. Here's a complete list of the 5 readyState values and what they mean:
 
 
-Value	        Name	      Meaning
-  0	       UNSENT		The request has been created, but .open() has not been called yet
-  1	        OPENED	.open() has been called. You can now set headers or call .send()
-  2	HEADERS_RECEIVED	.send() has been called, and the response headers have been received
-  3	       LOADING	The browser is receiving the response body (data is loading)
-  4	      DONE	The request is complete, and the response is fully received
+  Value	        Name	      Meaning
+      0	       UNSENT		The request has been created, but .open() has not been called yet
+      1	        OPENED	.open() has been called. You can now set headers or call .send()
+      2	HEADERS_RECEIVED	.send() has been called, and the response headers have been received
+      3	       LOADING	The browser is receiving the response body (data is loading)
+      4	      DONE	The request is complete, and the response is fully received
 
 
 You can use an event listener to track the changes in the value of this readyState property as the request progresses, and react to them. This is very powerful because even though your AJAX request calls are happening behind the scenes (asynchronously) of your application without your user being aware, you still have complete control over their progress because you can track these changes, and update your users on what’s going on at any given point.   
@@ -1968,16 +1968,16 @@ If you test this in your browser, you will find that it gets and returns all pho
           			params: { albumId }
         		});
 
-This object literal sent as a second argument to
-axios.get() is also known as the request configuration
-object.
+    This object literal sent as a second argument to
+    axios.get() is also known as the request configuration
+    object.
 
-b) You can also choose to fetch and return a specific (single)
-  photo by passing in the unique id of the photo, if you
-  know it. This id argument is not passed as a second
-  argument to axios.get(). Rather, you have to do so by
-  changing the last value in that endpoint path string-which in this case is /photos. Change it to the id of the
-  photo eg /3 if the id is 3. For example:
+  b) You can also choose to fetch and return a specific (single)
+    photo by passing in the unique id of the photo, if you
+    know it. This id argument is not passed as a second
+    argument to axios.get(). Rather, you have to do so by
+    changing the last value in that endpoint path string-which in this case is /photos. Change it to the id of the
+    photo eg /3 if the id is 3. For example:
 
 		const response = await axios.get(
 			'https://jsonplaceholder.typicode.com/photos/3'
@@ -1990,18 +1990,18 @@ pass it in dynamically like so:
 		const response = await axios.get(`https://
 			jsonplaceholder.typicode.com/photos/${photoId}`);
 
-Notice that because we are mixing a variable with a
-string here, we  have to let JavaScript know that photoId
-is a variable so it can parse. We do this by wrapping the
-whole API endpoint path string in backtick (`…`) and
-place the variable within ${} characters. This is a
-template literal, which is what you use in JavaScript
-whenever you wish to display a string that contains
-dynamic variable, and you want to make it clear to
-the JavaScript parser (interpreter) which of the elements
-in the string are variables. See chapter 23 (Templates),
-where I talk in depth about String Literals & Template
-Strings. The variables must be wrapped in ${} like so:
+    Notice that because we are mixing a variable with a
+    string here, we  have to let JavaScript know that photoId
+    is a variable so it can parse. We do this by wrapping the
+    whole API endpoint path string in backtick (`…`) and
+    place the variable within ${} characters. This is a
+    template literal, which is what you use in JavaScript
+    whenever you wish to display a string that contains
+    dynamic variable, and you want to make it clear to
+    the JavaScript parser (interpreter) which of the elements
+    in the string are variables. See chapter 23 (Templates),
+    where I talk in depth about String Literals & Template
+    Strings. The variables must be wrapped in ${} like so:
 
 		`This is a string ${variableName} and more text`
 

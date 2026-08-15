@@ -335,13 +335,13 @@ However, there are two popular and safe ways to send emails using JavaScript:
 
 Let’s see the steps to set it up.
 
-a) Sign up at emailjs.com and log in.
-b) From the EmailJS dashboard, Add an email service (like Gmail).
-c) Create a new email template, and add dynamic fields like
-  {{name}}, {{message}}, etc. This is done within the EmailJS app
-d) Get your service ID, template ID, and public API key from the
-  EmailJS dashboard.
-e) Include the EmailJS SDK in your HTML for example as a CDN:
+  a) Sign up at emailjs.com and log in.
+  b) From the EmailJS dashboard, Add an email service (like Gmail).
+  c) Create a new email template, and add dynamic fields like
+    {{name}}, {{message}}, etc. This is done within the EmailJS app
+  d) Get your service ID, template ID, and public API key from the
+    EmailJS dashboard.
+  e) Include the EmailJS SDK in your HTML for example as a CDN:
 
 		<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 		<script>

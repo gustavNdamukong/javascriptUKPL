@@ -169,8 +169,8 @@ Answers section further down, numbered to match the questions.
 
    That is the pairing worth memorising, because the two facts pull in opposite directions:
 
-for...of    HTMLCollection: yes    NodeList: yes
-.forEach()  HTMLCollection: NO     NodeList: yes
+    for...of    HTMLCollection: yes    NodeList: yes
+    .forEach()  HTMLCollection: NO     NodeList: yes
 
    Neither of them has `.map()`, `.filter()` or any of the rest.
 
