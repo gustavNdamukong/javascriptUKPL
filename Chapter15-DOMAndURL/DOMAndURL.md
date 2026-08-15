@@ -1628,18 +1628,18 @@ Let’s see it in action reading data from documents.
 	—————————————————————————-
   Here’s a simple and clear example of using XPath to extract data from a regular HTML document (not XML), using document.evaluate(). Imagine you have the following HTML structure containing data about a collection of books that you wish to extract and use:
 
-<body>
-  	<h1>Book List</h1>
-  	<ul>
-    		<li><span class="title">JavaScript: The Good Parts</span></li>
-    		<li><span class="title">Eloquent JavaScript</span></li>
-    		<li><span class="title">You Don’t Know JS</span></li>
-  	</ul>
+	<body>
+	  	<h1>Book List</h1>
+	  	<ul>
+	    		<li><span class="title">JavaScript: The Good Parts</span></li>
+	    		<li><span class="title">Eloquent JavaScript</span></li>
+	    		<li><span class="title">You Don’t Know JS</span></li>
+	  	</ul>
 
-  	<script>
-    		// JavaScript code will go here
-  	</script>
-</body>
+	  	<script>
+	    		// JavaScript code will go here
+	  	</script>
+	</body>
 
 Let’s see how you would use the document.evaluate() method to run an XPath query on the HTML document to extract all the book titles that are within <span> tags on the web page. Here is the JavaScript code to do that:
 
@@ -2339,37 +2339,38 @@ h1 {
 
 index.html
 ——————
-<!doctype html>
-<html>
-    <head>
-        <title>Todo list</title>
-        <link rel="stylesheet" href="/index.css">
-    </head>
-    <body>
-        <h1>Amazing todo list</h1> <button id='addItemButton'>Add</button>
-        <hr class='headingUnderline' />
-        <ul id="gusOneUl">
+
+	<!doctype html>
+	<html>
+	    <head>
+	        <title>Todo list</title>
+	        <link rel="stylesheet" href="/index.css">
+	    </head>
+	    <body>
+	        <h1>Amazing todo list</h1> <button id='addItemButton'>Add</button>
+	        <hr class='headingUnderline' />
+	        <ul id="gusOneUl">
                     
-        </ul>
+	        </ul>
         
-            <div id="gusDiv">
-                <span id='notify'></span>
-                <div id='addItemDiv'>
-                    <form id='addItemForm'>
-                        <input type='text' class='form-control' id='addItemField' />
-                        <button class='cancelAddItem'>X</button>
-                        <input type='submit' class='form-control btn btn-primary-sm' value='Add'>
-                    </form>
-                </div>
+	            <div id="gusDiv">
+	                <span id='notify'></span>
+	                <div id='addItemDiv'>
+	                    <form id='addItemForm'>
+	                        <input type='text' class='form-control' id='addItemField' />
+	                        <button class='cancelAddItem'>X</button>
+	                        <input type='submit' class='form-control btn btn-primary-sm' value='Add'>
+	                    </form>
+	                </div>
                 
-                <ul id="gusUl">
+	                <ul id="gusUl">
                     
-                </ul>
-            </div>
+	                </ul>
+	            </div>
             
-        <script type="module" src="/index.js"></script>
-    </body>
-</html>
+	        <script type="module" src="/index.js"></script>
+	    </body>
+	</html>
 
 
 

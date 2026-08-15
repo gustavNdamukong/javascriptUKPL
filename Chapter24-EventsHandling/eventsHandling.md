@@ -676,39 +676,39 @@ Custom events are powerful for building your own systems inside an app.
 
 Here is the kicker; instead of calling all these updates manually in the login function, you can dispatch a custom userLoggedIn event, and let each part of the app listen for that event and respond. Here is some code to do just that:
 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Custom Event Demo</title>
-</head>
-<body>
+	<!DOCTYPE html>
+	<html>
+	<head>
+	  <title>Custom Event Demo</title>
+	</head>
+	<body>
 
-  <button id="loginBtn">Login</button>
+	  <button id="loginBtn">Login</button>
 
-  <div id="welcomeMsg" style="display: none;">Welcome, user!</div>
-  <button id="logoutBtn" style="display: none;">Logout</button>
+	  <div id="welcomeMsg" style="display: none;">Welcome, user!</div>
+	  <button id="logoutBtn" style="display: none;">Logout</button>
 
-  <script>
-    // 1. Components listening for custom event
-    document.addEventListener("userLoggedIn", function (e) {
-      document.getElementById("welcomeMsg").style.display = "block";
-    });
+	  <script>
+	    // 1. Components listening for custom event
+	    document.addEventListener("userLoggedIn", function (e) {
+	      document.getElementById("welcomeMsg").style.display = "block";
+	    });
 
-    document.addEventListener("userLoggedIn", function (e) {
-      document.getElementById("logoutBtn").style.display = "inline-block";
-    });
+	    document.addEventListener("userLoggedIn", function (e) {
+	      document.getElementById("logoutBtn").style.display = "inline-block";
+	    });
 
-    // 2. Simulate login and dispatch custom event
-    document.getElementById("loginBtn").addEventListener("click", function () {
-      // Do login work here...
+	    // 2. Simulate login and dispatch custom event
+	    document.getElementById("loginBtn").addEventListener("click", function () {
+	      // Do login work here...
 
-      // Now dispatch your custom event
-      const loginEvent = new CustomEvent("userLoggedIn");
-      document.dispatchEvent(loginEvent);
-    });
-  </script>
-</body>
-</html>
+	      // Now dispatch your custom event
+	      const loginEvent = new CustomEvent("userLoggedIn");
+	      document.dispatchEvent(loginEvent);
+	    });
+	  </script>
+	</body>
+	</html>
 
 Once more, here are the key points of what it does:
 

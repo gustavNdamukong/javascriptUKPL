@@ -1943,7 +1943,7 @@ Here is another example of using Axios with async/await:
         <script type="module" src="/index.js" defer></script>
        
     </body>
-</html>
+	</html>
 
 
 
