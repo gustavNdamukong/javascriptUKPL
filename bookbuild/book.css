@@ -1,0 +1,218 @@
+/* The JavaScript Blueprint — book typography
+   Shared by the paperback PDF and the EPUB. Print-specific page rules
+   live in print.css so the EPUB does not inherit them. */
+
+/* ---------- page ---------- */
+/* KDP 6x9 trim. Inner margin is wider to clear the gutter. */
+@page {
+    size: 7in 10in;
+    margin: 0.8in 0.65in 0.9in 0.9in;
+
+    /* the folio, and the chapter name beside it in fine print */
+    @bottom-center {
+        content: counter(page);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 9pt;
+        color: #333;
+        margin-top: 6pt;
+    }
+    @bottom-right {
+        content: string(chaptitle);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 7.5pt;
+        color: #777;
+        margin-top: 6pt;
+    }
+}
+
+/* front matter carries no folio */
+@page :first { @bottom-center { content: none; } @bottom-right { content: none; } }
+
+/* ---------- body text ---------- */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.5;
+    margin: 0;
+    color: #000;
+    text-align: justify;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    orphans: 2;      /* never leave 1 line stranded at the foot of a page */
+    widows: 2;       /* never carry 1 line alone to the next page */
+}
+
+p {
+    margin: 0 0 0.55em 0;
+}
+
+/* Every paragraph indents, including the first after a heading. */
+p {
+    text-indent: 1.2em;
+}
+p + p { margin-top: 0; }
+
+/* ---------- headings ---------- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 600;
+    color: #000;
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+    page-break-after: avoid;    /* a heading never sits alone at a page foot */
+    break-after: avoid;
+    page-break-inside: avoid;
+}
+
+/* Chapter opener */
+h1:not(.quiz) {
+    string-set: chaptitle content();
+}
+
+h1 {
+    font-size: 19.5pt;
+    line-height: 1.15;
+    margin: 0 0 1.4em 0;
+    padding-bottom: 0.35em;
+    border-bottom: 2pt solid #000;
+    page-break-before: always;   /* every chapter starts a fresh page */
+    break-before: page;
+}
+h1:first-of-type { page-break-before: avoid; }
+
+h2 { font-size: 13pt;   margin: 1.8em 0 0.55em; }
+h3 { font-size: 11.5pt; margin: 1.45em 0 0.45em; }
+h4 { font-size: 10.5pt; margin: 1.2em 0 0.35em; font-weight: 700; }
+h5 { font-size: 10.5pt; margin: 1.1em 0 0.3em; font-weight: 600; }
+h6 { font-size: 10pt;   margin: 1em 0 0.3em; font-weight: 600; }
+
+/* ---------- code ---------- */
+/* A rule down the left rather than a grey slab. Large filled boxes eat
+   toner, look muddy in print, and dominate the page. */
+pre {
+    font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+    font-size: 8.5pt;
+    line-height: 1.45;
+    margin: 0.7em 0 0.9em 0;
+    padding: 0.2em 0 0.2em 1.1em;
+    background: none;
+    white-space: pre-wrap;       /* long lines wrap instead of being cut off */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    text-align: left;
+    hyphens: none;
+    -webkit-hyphens: none;
+    /* Long listings are allowed to split. Forcing them whole pushes the
+       listing AND the heading above it onto the next page, which is what
+       leaves half-empty pages through a code-heavy book. */
+    orphans: 3;
+    widows: 3;
+}
+
+code {
+    font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+    font-size: 0.88em;
+}
+
+/* inline code - subtle tint, no border, so it does not fight the prose */
+p code, li code, td code, h1 code, h2 code, h3 code, h4 code {
+    background: #f2f2f2;
+    padding: 0.05em 0.25em;
+    border-radius: 2pt;
+    white-space: nowrap;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+    font-size: inherit;
+    white-space: inherit;
+}
+
+/* ---------- lists ---------- */
+ul, ol {
+    margin: 0.5em 0 0.75em 0;
+    padding-left: 1.5em;
+    text-align: left;
+}
+li { margin-bottom: 0.28em; }
+li > p { text-indent: 0; margin-bottom: 0.3em; }
+li p + p { text-indent: 0; }
+ul ul, ol ol, ul ol, ol ul { margin: 0.28em 0 0.28em 0; }
+
+/* ---------- figures ---------- */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1em auto 0.4em auto;
+    page-break-inside: avoid;
+}
+
+/* the italic line following a figure is its caption */
+p > em:only-child {
+    display: block;
+    text-align: center;
+    font-size: 9pt;
+    color: #333;
+    text-indent: 0;
+    margin-bottom: 1.2em;
+}
+
+/* ---------- misc ---------- */
+strong { font-weight: 700; }
+a { color: #000; text-decoration: none; border-bottom: 0.5pt solid #999; }
+hr { border: none; border-top: 0.5pt solid #ccc; margin: 1.5em 0; }
+
+blockquote {
+    margin: 0.8em 0 0.8em 1.2em;
+    padding-left: 0.8em;
+    border-left: 2pt solid #ddd;
+    font-style: italic;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0.8em 0;
+    font-size: 9.5pt;
+    page-break-inside: avoid;
+}
+th, td { border: 0.5pt solid #bbb; padding: 0.25em 0.5em; text-align: left; }
+th { background: #f2f2f2; font-weight: 600; }
+
+
+/* ---------- generated table of contents ---------- */
+.toc { margin: 0; }
+.toc h1 { page-break-before: always; }
+.toc ul { list-style: none; margin: 0; padding: 0; }
+.toc li { margin: 0 0 0.18em 0; text-indent: 0; }
+.toc li.lvl2 { padding-left: 1.2em; font-size: 0.95em; }
+.toc li.lvl3 { padding-left: 2.4em; font-size: 0.9em; color: #333; }
+.toc a {
+    text-decoration: none;
+    border-bottom: none;
+    color: #000;
+}
+/* a dotted leader out to the page number */
+.toc a::after {
+    content: " " leader('.') " " target-counter(attr(href), page);
+    font-size: 0.95em;
+    color: #333;
+}
+.toc li.lvl1 > a { font-weight: 600; }
+
+
+/* ---------- quiz titles ---------- */
+/* A quiz is part of its chapter, not a chapter of its own, so its title is
+   set lighter than a chapter opener and it does not touch the folio line. */
+h1.quiz {
+    font-size: 14pt;
+    font-weight: 500;
+    border-bottom: 0.5pt solid #999;
+    margin-bottom: 1em;
+}
+h2.quiz, h3.quiz { font-weight: 600; }
+
+.toc li.quiz { padding-left: 1.2em; font-size: 0.92em; font-weight: 400; }
+.toc li.quiz > a { font-weight: 400; color: #333; }
