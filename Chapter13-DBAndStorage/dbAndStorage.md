@@ -528,13 +528,14 @@ Frameworks like React, Vue, and Angular do this behind the scenes using APIs.
 #### Popular databases for JavaScript developers
   There are many database systems out there. Here are a few that are popular in the JavaScript world:
 
-  Type	           Name	     Description
-NoSQL	MongoDB	Stores data as flexible JSON-like documents. Great for JavaScript because the data format matches JS objects.
-SQL	MySQL	Traditional relational database. Great for apps with structured, interrelated data.
-SQL	PostgreSQL	Another powerful relational DB. Supports complex queries and data relationships.
-NoSQL	Firebase	A cloud-hosted NoSQL database from Google. Great for real-time apps and mobile/web projects.
-Hybrid	SQLite	A lightweight, file-based DB often used in mobile and desktop apps.
-Key-Value	Redis	Often used for caching or temporary storage, not as a primary DB. Fast and lightweight.
+| Type | Name | Description |
+|---|---|---|
+| NoSQL | MongoDB | Stores data as flexible JSON-like documents. Great for JavaScript because the data format matches JS objects. |
+| SQL | MySQL | Traditional relational database. Great for apps with structured, interrelated data. |
+| SQL | PostgreSQL | Another powerful relational DB. Supports complex queries and data relationships. |
+| NoSQL | Firebase | A cloud-hosted NoSQL database from Google. Great for real-time apps and mobile/web projects. |
+| Hybrid | SQLite | A lightweight, file-based DB often used in mobile and desktop apps. |
+| Key-Value | Redis | Often used for caching or temporary storage, not as a primary DB. Fast and lightweight. |
 
 
   Don’t worry if databases seem advanced right now — this is just your first step into the world of data. This book focuses on frontend storage like Local Storage and Cookies, while databases are a larger, separate topic.

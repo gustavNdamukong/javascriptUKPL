@@ -322,13 +322,14 @@ The way this code logic works is as follows
 The following table shows you the values recorded for the key names on the .key property, and the corresponding codes stored in the .code property of the event object when the arrow keys are pressed. To give you variety on alternative keys, I have also thrown in there, the names and codes recorded when the space bar and letter a keys are pressed.
 
 
-  e.key	            e.code	         e.keyCode (old)
-"ArrowLeft"	"ArrowLeft"	37
-"ArrowUp"	"ArrowUp"	38
-"ArrowRight"	"ArrowRight"	39
-"ArrowDown" 	"ArrowDown" 	40
-" "	"Space"	32
-"a"	"KeyA"	65
+| e.key | e.code | e.keyCode (old) |
+|---|---|---|
+| "ArrowLeft" | "ArrowLeft" | 37 |
+| "ArrowUp" | "ArrowUp" | 38 |
+| "ArrowRight" | "ArrowRight" | 39 |
+| "ArrowDown" | "ArrowDown" | 40 |
+| " " | "Space" | 32 |
+| "a" | "KeyA" | 65 |
  
 If for example I wanted to detect if the arrawUp key was pressed when keyDown event occurred by using the number code (.keyCode) instead of the .key value, I would do it like so:
 

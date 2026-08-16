@@ -66,7 +66,12 @@ const spine = [];
 const images = new Set();
 
 for (const f of files) {
-    const { html, figures } = renderFile(f, 'images/');
+    let { html, figures } = renderFile(f, 'images/');
+    if (f.name === 'front' && existsSync(join(BASE, 'Dedication.md'))) {
+        const ded = renderFile({ path: join(BASE, 'Dedication.md') }, 'images/').html;
+        html = html.replace(/<h1>CONTENTS AT A GLANCE<\/h1>/,
+            '<div class="dedication">' + ded + '</div>$&');
+    }
     for (const fig of figures) {
         const dest = join(OUT, 'OEBPS', 'images', fig.out);
         try {

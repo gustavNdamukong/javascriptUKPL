@@ -228,3 +228,27 @@ h1.quiz       { bookmark-level: 2; }
 h2            { bookmark-level: 2; bookmark-label: content(); }
 h3            { bookmark-level: 3; bookmark-label: content(); }
 h2.quiz, h3.quiz { bookmark-level: none; }
+
+
+/* ---------- dedication ---------- */
+/* Its own page, centred in the upper third, italic, and no folio - the
+   conventional treatment. */
+.dedication {
+    page: dedication;          /* so the folio can be suppressed below */
+    page-break-before: always;
+    page-break-after: always;
+    margin-top: 30%;
+    text-align: center;
+}
+.dedication p {
+    text-indent: 0;
+    font-style: italic;
+    font-size: 12pt;
+    text-align: center;
+}
+
+/* a dedication page carries neither folio nor running head */
+@page dedication {
+    @bottom-center { content: none; }
+    @bottom-right  { content: none; }
+}

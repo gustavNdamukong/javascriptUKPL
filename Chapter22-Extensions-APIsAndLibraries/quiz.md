@@ -119,12 +119,13 @@ http://my-api.com/clothes
 
 
 3)
-  200   OK                      it worked
-  201   Created                 it worked, and something new exists
-  400   Bad Request             your request was malformed
-  401   Unauthorised            you need to log in
-  404   Not Found               that resource does not exist
-  500   Internal Server Error   the server broke
+| 200 | OK | it worked |
+|---|---|---|
+| 201 | Created | it worked, and something new exists |
+| 400 | Bad Request | your request was malformed |
+| 401 | Unauthorised | you need to log in |
+| 404 | Not Found | that resource does not exist |
+| 500 | Internal Server Error | the server broke |
 
    The first digit is the useful part. **2xx** means success. **4xx** means the problem is at
 - your* end — you asked wrongly, or you are not allowed. **5xx** means the problem is at the
@@ -168,11 +169,12 @@ http://my-api.com/clothes
 
 
 6)
-  XMLHttpRequest   the original way to make a request without reloading
-  callbacks        the original way to handle "when it finishes"
-  promises         fixed callback nesting; gave us .then() and .catch()
-  fetch()          a cleaner request API, promise-based from the start
-  async/await      made promise code read like ordinary sequential code
+| XMLHttpRequest | the original way to make a request without reloading |
+|---|---|
+| `callbacks` | the original way to handle "when it finishes" |
+| `promises` | fixed callback nesting; gave us .then() and .catch() |
+| `fetch()` | a cleaner request API, promise-based from the start |
+| async/await | made promise code read like ordinary sequential code |
 
    Two of them (`XMLHttpRequest`, `fetch`) are about **making the request**. Three (callbacks,
    promises, `async/await`) are about **handling the wait**.

@@ -69,6 +69,15 @@ const tocHtml =
                  `<a href="#${t.id}">${t.text}</a></li>`).join('') +
     '</ul></div>';
 
+// The dedication sits on its own page after the title and before the
+// contents, which is where a reader expects it.
+if (existsSync(join(BASE, 'Dedication.md'))) {
+    const ded = renderFile({ path: join(BASE, 'Dedication.md') }).html;
+    body = body.replace(/<h1[^>]*id="contents-at-a-glance"/,
+        '<div class="dedication">' + ded + '</div>$&');
+    console.log('dedication inserted');
+}
+
 const before = body.length;
 body = body.replace(/<h1[^>]*>CONTENTS<\/h1>[\s\S]*?(?=<h1)/, tocHtml);
 console.log('hand-written CONTENTS replaced:', body.length !== before);

@@ -529,11 +529,12 @@ I had to show you which DOM methods return an HTMLCollection, and which returns 
   The answer to this is no. This is a very important question, and my answer here should set you apart because it typically takes a lot of developers a while to figure it out. Both entities just so happen to have been endowed with some array-like properties/functions, but that does not make them Arrays. Here are the properties they share with arrays:
 
 	
-Array property/method	      HTMLCollection	          NodeList
-  .length	      Yes	    Yes
-  index access	      Yes	    Yes
-  .forEach()	      No	    Yes
-  .map(), .filter()	      No	    No
+| Array property/method | HTMLCollection | NodeList |
+|---|---|---|
+| .length | Yes | Yes |
+| index access | Yes | Yes |
+| .forEach() | No | Yes |
+| .map(), .filter() | No | No |
 
 
 HTMLCollections and NodeLists are not real arrays. HTMLCollections only have a .length property and index access but have no array methods at all. NodeLists have a .length property too, have index access, and the .forEach() method—but no other array methods like .map() or .filter().
@@ -1619,17 +1620,18 @@ Remember that in this example we have used an XML string stored in a variable xm
 The possible XPathResult (properties) types are 10 in number, and here is a list of them:
 
 
-  Property name	       Code	     Description
-ANY_TYPE	               0	
-NUMBER_TYPE	               1	Returns a number result, e.g., from count()
-STRING_TYPE	               2	Returns a string result
-BOOLEAN_TYPE	               3	Returns a boolean (true/false)
-UNORDERED_NODE_ITERATOR_TYPE	               4	Iterator: returns nodes one by one (unordered)
-ORDERED_NODE_ITERATOR_TYPE	               5	Iterator: returns nodes one by one (in document order)
-UNORDERED_NODE_SNAPSHOT_TYPE	               6	Returns a static list of nodes in no guaranteed order
-ORDERED_NODE_SNAPSHOT_TYPE	               7	Returns a static list of nodes in order
-ANY_UNORDERED_NODE_TYPE	               8	Returns any one matching node (not guaranteed to be first)
-FIRST_ORDERED_NODE_TYPE	               9	Returns the first node (in the order in which it occurs on the document)
+| Property name | Code | Description |
+|---|---|---|
+| `ANY_TYPE` | 0 |  |
+| `NUMBER_TYPE` | 1 | Returns a number result, e.g., from count() |
+| `STRING_TYPE` | 2 | Returns a string result |
+| `BOOLEAN_TYPE` | 3 | Returns a boolean (true/false) |
+| `UNORDERED_NODE_ITERATOR_TYPE` | 4 | Iterator: returns nodes one by one (unordered) |
+| `ORDERED_NODE_ITERATOR_TYPE` | 5 | Iterator: returns nodes one by one (in document order) |
+| `UNORDERED_NODE_SNAPSHOT_TYPE` | 6 | Returns a static list of nodes in no guaranteed order |
+| `ORDERED_NODE_SNAPSHOT_TYPE` | 7 | Returns a static list of nodes in order |
+| `ANY_UNORDERED_NODE_TYPE` | 8 | Returns any one matching node (not guaranteed to be first) |
+| `FIRST_ORDERED_NODE_TYPE` | 9 | Returns the first node (in the order in which it occurs on the document) |
 
 Each result type constant (like XPathResult.STRING_TYPE) is actually a number behind the scenes, and that is what is represented by the code numbers 0-9 which are returned with the result. When handling the returned result in code you can use either the name or the raw number, but the name is much clearer and the number is not recommended for beginners. I just listed the codes here for you to understand it, but you should not have to worry about them.
   If you really ever need to check what type was returned, you can do so by using the XPathResult.ANY_TYPE property. It is the one that does not commit you to a type up front: you ask for ANY_TYPE, and then read back which type you actually got. Here is how to check for it:

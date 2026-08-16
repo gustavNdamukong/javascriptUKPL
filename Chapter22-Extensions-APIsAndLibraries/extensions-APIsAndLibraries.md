@@ -1234,12 +1234,13 @@ current status or stage of the request. It changes as the request
 progresses. There are five (5) different states the request goes through from start to finish, and they are all recorded on the readyState property. To know what state the request is in, at any given time, you just have to check for the value of readyState. Here's a complete list of the 5 readyState values and what they mean:
 
 
-Value	        Name	      Meaning
-  0	       UNSENT		The request has been created, but .open() has not been called yet
-  1	        OPENED	.open() has been called. You can now set headers or call .send()
-  2	HEADERS_RECEIVED	.send() has been called, and the response headers have been received
-  3	       LOADING	The browser is receiving the response body (data is loading)
-  4	      DONE	The request is complete, and the response is fully received
+| Value | Name | Meaning |
+|---|---|---|
+| 0 | UNSENT | The request has been created, but .open() has not been called yet |
+| 1 | OPENED | .open() has been called. You can now set headers or call .send() |
+| 2 | HEADERS_RECEIVED | .send() has been called, and the response headers have been received |
+| 3 | LOADING | The browser is receiving the response body (data is loading) |
+| 4 | DONE | The request is complete, and the response is fully received |
 
 
 You can use an event listener to track the changes in the value of this readyState property as the request progresses, and react to them. This is very powerful because even though your AJAX request calls are happening behind the scenes (asynchronously) of your application without your user being aware, you still have complete control over their progress because you can track these changes, and update your users on what’s going on at any given point.   
