@@ -68,11 +68,11 @@ Cookies are written and read differently from how localStorage and sessionStorag
 	document.cookie =
 		`username=JohnDoe; expires=${expiryDate.toUTCString()}; path=/`;
 
-	Take care to keep the ${ ... } together on one line. If the $
-	and the { get separated, JavaScript stops seeing it as a slot
-	to fill in and just treats the whole thing as ordinary text,
-	so your cookie ends up with a literal ${expiryDate...} in it
-	rather than the date.
+Take care to keep the ${ ... } together on one line. If the $
+and the { get separated, JavaScript stops seeing it as a slot
+to fill in and just treats the whole thing as ordinary text,
+so your cookie ends up with a literal ${expiryDate...} in it
+rather than the date.
 
 This code does the following:
   - gets the current date.
@@ -168,10 +168,10 @@ Here is how to use it:
 	deleteCookie("nonExistingCookie"); 
 
 What it does is:
-	-Retrieves all cookies as a string (document.cookie).
-	-Splits them into an array using "; " as the separator.
-	-Checks if any cookie starts with name=.
-	-Deletes it only if it exists.
+  -Retrieves all cookies as a string (document.cookie).
+  -Splits them into an array using "; " as the separator.
+  -Checks if any cookie starts with name=.
+  -Deletes it only if it exists.
 
 
 ## A cookie consent solution

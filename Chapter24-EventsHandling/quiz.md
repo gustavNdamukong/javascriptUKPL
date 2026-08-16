@@ -1,4 +1,4 @@
-# QUIZ — Chapter 24: Events Handling
+# QUIZ — Events Handling
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 24: Events
 Handling. Work through these after reading the chapter, while the material is fresh — recall
@@ -66,7 +66,7 @@ are all together in the Answers section further down, numbered to match the ques
 
 
 11) EXERCISE. Use event delegation: put a single listener on a `<ul>` that reports which `<li>`
-    was clicked — and show it still works for an `<li>` added afterwards.
+  was clicked — and show it still works for an `<li>` added afterwards.
 
   Clue: question 6 tells you which property identifies the actual item.
 
@@ -83,7 +83,7 @@ are all together in the Answers section further down, numbered to match the ques
 
             button.addEventListener("click", myFunction);
 
-- *Prefer `addEventListener()`.** Three reasons:
+**Prefer `addEventListener()`.** Three reasons:
 
 - It keeps your JavaScript out of your HTML, so the markup stays about structure and the
   script stays about behaviour.

@@ -126,15 +126,15 @@ A regular expression (also referred to as regex) is a
   character appears in the subject
   string at all, it will not match.
 
-/<.>/    It will match anything that comes 
-            between ‘<‘ and ‘>’ characters. This 
-            will match the beginning names of an 
-            HTML tag. It won't match blank tags 
-            (<>). Another limitation which we 
-            already know is; it will match only 
-            tags with single letters. For example, 
-            it will match <p> and <b> but will not 
-            match <em>.
+/<.>/    It will match anything that comes
+  between ‘<‘ and ‘>’ characters. This
+  will match the beginning names of an
+  HTML tag. It won't match blank tags
+  (<>). Another limitation which we
+  already know is; it will match only
+  tags with single letters. For example,
+  it will match <p> and <b> but will not
+  match <em>.
 
 /<.*>/   Extends the above pattern, fixing 
       its limitations. It will match blank
@@ -152,12 +152,12 @@ A regular expression (also referred to as regex) is a
       as ‘fuzzy character matching’.
 
 /<.+>/  It can be used instead of /<.*>/ if you
-            do not want to match blank tags
-            (<>). This + character has a 
-            limitation however. In this case, it will 
-            keep matching till the last ‘>’ on the 
-            line of text. This means that you may 
-            end up with a match like this:
+  do not want to match blank tags
+  (<>). This + character has a
+  limitation however. In this case, it will
+  keep matching till the last ‘>’ on the
+  line of text. This means that you may
+  end up with a match like this:
 
                  <p><b>Hello</b></p>
 
@@ -167,17 +167,17 @@ use the + character. Here it is:
 
                   /<[^>]+>/
 
-      Read it as: match an opening angle
-      bracket (<), then one or more
-      characters that are NOT a closing
-      angle bracket, then a closing one.
-      Because [^>] refuses to match a >, the
-      match is forced to stop at the very
-      first > it meets, rather than running on
-      to the last one on the line. That is
-      exactly what we wanted.
-      Note that the [...] and the +
-    characters are a combination.
+  Read it as: match an opening angle
+  bracket (<), then one or more
+  characters that are NOT a closing
+  angle bracket, then a closing one.
+  Because [^>] refuses to match a >, the
+  match is forced to stop at the very
+  first > it meets, rather than running on
+  to the last one on the line. That is
+  exactly what we wanted.
+  Note that the [...] and the +
+characters are a combination.
 
 /?/      Matches an element zero or only 1
   time. It is used to make matches on a
@@ -421,9 +421,9 @@ outcome is to use a pipe character like so:
   of occurrences, of a preceding element.
   You can use a quantifier in 3 ways:
 
-  -i) /[\w]{3}/  with ONE digit. This means you 
-                       wish to match a word character 
-                       if it appears exactly three times.
+-i) /[\w]{3}/  with ONE digit. This means you
+  wish to match a word character
+  if it appears exactly three times.
 
 - ii) {3,}     with ONE digit and a comma.
       This means you wish to match
@@ -565,7 +565,7 @@ or
         /cats/i.test("Cats are fun. I like cats.")
     );
 
-    This will return true to the console.
+This will return true to the console.
 
   If you want to see what was actually
   found rather than just true or false, use

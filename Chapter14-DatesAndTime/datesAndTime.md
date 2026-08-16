@@ -475,9 +475,9 @@ Two conditions are as follows:
 
 This checks if the right edge of the ball has reached (or passed) the right edge of the screen. 
 
-	If position = 750, and ball.offsetWidth = 50, then
-	750 + 50 = 800 — and if the window is also 800px
-	wide, the ball is touching the right edge.
+If position = 750, and ball.offsetWidth = 50, then
+750 + 50 = 800 — and if the window is also 800px
+wide, the ball is touching the right edge.
 
 The second condition is:
 

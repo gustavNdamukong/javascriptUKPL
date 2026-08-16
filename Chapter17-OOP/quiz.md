@@ -1,4 +1,4 @@
-# QUIZ — Chapter 17: OOP
+# QUIZ — OOP
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 17: OOP. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -82,7 +82,7 @@ Dog instanceof Animal
 
         export {name, age};
 
-    Clue: think about scope, and about what the braces in `export { ... }` actually mean.
+Clue: think about scope, and about what the braces in `export { ... }` actually mean.
 
 
 11) What kind of error do you get from reading a `#private` field outside its class, and why is
@@ -92,7 +92,7 @@ Dog instanceof Animal
 
 
 12) EXERCISE. Write a `Person` constructor function taking a name, add a `greet()` method to its
-    prototype after the fact, then create two people and prove they both have it.
+  prototype after the fact, then create two people and prove they both have it.
 
   Clue: add the method to the mould, not to each object.
 
@@ -110,7 +110,7 @@ Dog instanceof Animal
 
 
 15) EXERCISE. Take `{ name: 'Ada', age: 36 }`, convert it to JSON, print it, convert it back, and
-    print the name.
+  print the name.
 
   Clue: two methods, both starting with JSON.
 
@@ -203,7 +203,7 @@ p  →  Person.prototype  →  Object.prototype  →  null
         car.model = 'Camry';
         console.log(car.model);   // still 'Corolla'
 
-- *In strict mode the same line throws a `TypeError`.**
+**In strict mode the same line throws a `TypeError`.**
 
    The silent version is the nastier of the two, because there is nothing to tell you what
    happened. If an assignment seems to be ignored for no reason, a frozen object is worth
@@ -269,12 +269,12 @@ p  →  Person.prototype  →  Object.prototype  →  null
 
   Two things are going on, and the second is the important one.
 
-    First, the braces in `export { ... }` are **not a block of code**. They are a *list of names*
-    you are handing out. That is why declarations never go inside them.
+First, the braces in `export { ... }` are **not a block of code**. They are a *list of names*
+you are handing out. That is why declarations never go inside them.
 
-    Second — and this is why the code above fails — a pair of braces creates a **block**, and
-    `let` and `const` are block-scoped. So `name` and `age` exist only inside those braces and
-    are gone by the time the `export` line runs. There is nothing left to export.
+Second — and this is why the code above fails — a pair of braces creates a **block**, and
+`let` and `const` are block-scoped. So `name` and `age` exist only inside those braces and
+are gone by the time the `export` line runs. There is nothing left to export.
 
   The fix is to drop the block entirely:
 
@@ -357,8 +357,8 @@ SyntaxError: Private field '#privateAge' must be declared in an enclosing class
         console.log(rex.speak());   // "Rex barks."
         console.log(rex.breed);     // "Alsatian"
 
-    The one keyword doing two jobs is `super`. As `super(...)` it calls the parent's
-    **constructor**; as `super.speak()` it calls the parent's **method**.
+The one keyword doing two jobs is `super`. As `super(...)` it calls the parent's
+**constructor**; as `super.speak()` it calls the parent's **method**.
 
   `super(name)` must run before you touch `this` — reaching for `this` first throws a
   `ReferenceError`. In practice, put it on the first line.

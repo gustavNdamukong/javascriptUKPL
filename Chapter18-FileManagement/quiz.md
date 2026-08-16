@@ -1,4 +1,4 @@
-# QUIZ — Chapter 18: File Management
+# QUIZ — File Management
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 18: File
 Management. Work through these after reading the chapter, while the material is fresh — recall
@@ -68,7 +68,7 @@ answers are all together in the Answers section further down, numbered to match 
 
 
 10) EXERCISE. Write the code to let a user pick a `.txt` file and show its contents in a
-    `<pre id="output">`, rejecting anything that is not a plain text file.
+  `<pre id="output">`, rejecting anything that is not a plain text file.
 
   Clue: one event, one FileReader method, and one check on `file.type`.
 
@@ -324,7 +324,7 @@ Title: Book One, Author: Ann
 Title: Book Two, Author: Ben
 
   The point worth taking away is that once `DOMParser` has done its work, the XML behaves
-  - *exactly like HTML** — `getElementsByTagName()`, `querySelector()` and `.textContent` all
+  **exactly like HTML** — `getElementsByTagName()`, `querySelector()` and `.textContent` all
   work just as they did in Chapter 15.
 
 

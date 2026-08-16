@@ -207,8 +207,8 @@
   JavaScript: Object, Array, Function,
   Class, Date, RegExp, etc.
 
-    Object literals {} are reference types because they store values by reference, not directly in memory.
-    Classes (which are just special objects) are also reference types because they use constructors to create instances stored by reference.
+Object literals {} are reference types because they store values by reference, not directly in memory.
+Classes (which are just special objects) are also reference types because they use constructors to create instances stored by reference.
 
 Here are the key differences between
 primitive and reference types
@@ -425,9 +425,9 @@ weak typing.
           // Error: incompatible types
           age = "twenty-five"; 
 
-         In Java, the type of ‘age’ is declared 
-         as ‘int’, and the compiler won’t let you 
-         assign a string to it later.
+In Java, the type of ‘age’ is declared
+as ‘int’, and the compiler won’t let you
+assign a string to it later.
 
 #### 2) Dynamic Typing
   In dynamically typed languages, you do
@@ -584,9 +584,9 @@ b) Learn about its memory management
 
 
 #### -1) Casting to String
-    For this we use either the String() 
-  function or the toSting() method. For 
-  example:
+  For this we use either the String()
+function or the toSting() method. For
+example:
 
 #### String() function
       let num = 123;
@@ -750,9 +750,9 @@ They all have different sizes depending on the type of data they contain.
 
 
 #### Symbols and Iteration
-  Symbols are not enumerable, meaning they don’t appear in for...in loops or 
-    Object.keys(). However, you can explicitly access them using
-    Object.getOwnPropertySymbols.
+Symbols are not enumerable, meaning they don’t appear in for...in loops or
+  Object.keys(). However, you can explicitly access them using
+  Object.getOwnPropertySymbols.
 
 		const sym1 = Symbol('key1'); 
 		const sym2 = Symbol('key2'); 
@@ -1033,12 +1033,12 @@ isNaN("hello") → isNaN(NaN) → true
 
 		isNaN("123");
 
-	Will return false-because "123" becomes the number 123 which is a 
-	number, so it is not considered to be a NaN. So, it is the conversion it 
-	does that can really cause the confusion. You and I know that "123" 
-	is not a number (NaN), and so it should return true, but it gets 
-	converted and therefore returns false-meaning it is a number. Let’s 
-	look at one more example:
+Will return false-because "123" becomes the number 123 which is a
+number, so it is not considered to be a NaN. So, it is the conversion it
+does that can really cause the confusion. You and I know that "123"
+is not a number (NaN), and so it should return true, but it gets
+converted and therefore returns false-meaning it is a number. Let’s
+look at one more example:
 
 		let nan = NaN;
 		let number = 123;
@@ -1121,7 +1121,7 @@ that is what you meant:
 		console.log(typeof null);      // "object" ← (weird quirk!)
 		console.log(typeof undefined); // "undefined"
 
-	You might ask the question: Why does this return a object: 
+You might ask the question: Why does this return a object:
 	
 		console.log(typeof null);
 
@@ -1162,11 +1162,11 @@ that is what you meant:
 
 
 -7) value === undefined
-	This uses the JavaScript identical operator (===) which compares 
-	the values as well as the data types of two values. Here it shows how 
-	you can use it to check if a value is exactly undefined.
-  	This is the way to check if a variable is undefined (or is defined but 	
-	has no value yet). For example:
+  This uses the JavaScript identical operator (===) which compares
+  the values as well as the data types of two values. Here it shows how
+  you can use it to check if a value is exactly undefined.
+  This is the way to check if a variable is undefined (or is defined but
+  has no value yet). For example:
 
 	let y;
 	
@@ -1217,9 +1217,9 @@ and using one gives you a ReferenceError:
 
   Everything else is truthy. That includes some things people often expect to be falsy:
 
-        -an empty array, []
-        -an empty object, {}
-        -the string "0", and even the string "false"
+-an empty array, []
+-an empty object, {}
+-the string "0", and even the string "false"
 
   That first one catches people out constantly, and it is worth pausing on, because in
   several other languages an empty array IS falsy. Not here:
@@ -1298,9 +1298,9 @@ and using one gives you a ReferenceError:
             console.log("The variable is zero.");
         }
 
-   -Distinguishing: strict equality again, and here it matters more than usual. With loose
-     equality, 0 == "" and 0 == false are both true, so == would tell you a value is zero when
-     it is actually an empty string.
+-Distinguishing: strict equality again, and here it matters more than usual. With loose
+  equality, 0 == "" and 0 == false are both true, so == would tell you a value is zero when
+  it is actually an empty string.
 
 
   The relationship between data types

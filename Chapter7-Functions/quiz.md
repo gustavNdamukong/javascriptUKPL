@@ -1,4 +1,4 @@
-# QUIZ — Chapter 7: Functions
+# QUIZ — Functions
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 7: Functions. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -108,34 +108,34 @@ questions.
 
 10) What is an IIFE, and what is the main reason for using one?
 
-    Clue: the first word of the abbreviation tells you when it runs; the benefit has to do with
-    keeping things to yourself.
+Clue: the first word of the abbreviation tells you when it runs; the benefit has to do with
+keeping things to yourself.
 
 
 11) EXERCISE. Write a function called addNumbers that takes two numbers and returns their sum.
-    Call it, store the result in a variable, and print a sentence using that result.
+  Call it, store the result in a variable, and print a sentence using that result.
 
-    Clue: you will need the return keyword, and the + sign will do two different jobs in this
-    exercise.
+Clue: you will need the return keyword, and the + sign will do two different jobs in this
+exercise.
 
 
 12) EXERCISE. Write a function that can add up any quantity of numbers — two, five, twenty —
-    without you having to say in advance how many there will be. Call it twice with different
-    amounts of numbers.
+  without you having to say in advance how many there will be. Call it twice with different
+  amounts of numbers.
 
   Clue: three dots in the parameter list will gather them all into an array for you, and then
   an array method from Chapter 3 will add them up.
 
 
 13) EXERCISE. Write a function called setMember that takes a name and a type, where type
-    defaults to "member" if nothing is passed for it. Prove that the default works by calling it
-    both ways.
+  defaults to "member" if nothing is passed for it. Prove that the default works by calling it
+  both ways.
 
   Clue: you give the default right there in the parameter list, with an equals sign.
 
 
 14) EXERCISE. Take this array and use map() with an arrow function to produce a new array where
-    every number has been tripled. Print both arrays to show the original is untouched.
+  every number has been tripled. Print both arrays to show the original is untouched.
 
         const data = [1, 2, 3, 4];
 
@@ -286,8 +286,8 @@ undefined
 
 
 10) An IIFE is an Immediately Invoked Function Expression: a function that runs the moment it is
-    defined, rather than waiting to be called. It is wrapped in parentheses to make it an
-    expression, and then followed by () to invoke it:
+  defined, rather than waiting to be called. It is wrapped in parentheses to make it an
+  expression, and then followed by () to invoke it:
 
         (function() {
             console.log("I run immediately!");
@@ -322,9 +322,9 @@ undefined
 
 The sum of the two numbers is: 10
 
-    Notice the two jobs the + sign does here. Inside the function it adds two numbers together.
-    In the console.log line it joins a piece of text to a value, which is called concatenation.
-    Same character, different behaviour depending on what sits either side of it.
+Notice the two jobs the + sign does here. Inside the function it adds two numbers together.
+In the console.log line it joins a piece of text to a value, which is called concatenation.
+Same character, different behaviour depending on what sits either side of it.
 
 
 12) Use a rest parameter:
@@ -340,8 +340,8 @@ The sum of the two numbers is: 10
   Because it is a genuine array, you can use array methods on it — here reduce(), from Chapter
   3, to add them all up starting from 0.
 
-    A function that accepts a varying number of arguments like this is called a variadic
-    function.
+A function that accepts a varying number of arguments like this is called a variadic
+function.
 
 
 13) 
@@ -352,8 +352,8 @@ The sum of the two numbers is: 10
         setMember("Dolph");            // Dolph has type: member
         setMember("Dolph", "admin");   // Dolph has type: admin
 
-    The `= "member"` in the parameter list is the default. It is used only when nothing is
-    passed for that parameter. Pass something and yours wins.
+The `= "member"` in the parameter list is the default. It is used only when nothing is
+passed for that parameter. Pass something and yours wins.
 
   Defaults must come after the parameters that have none, otherwise you would have no way of
   skipping them.

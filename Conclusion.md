@@ -112,8 +112,10 @@ code in other applications.
   - Build small projects. Then build bigger ones.
   - Experiment. Explore. Break things and fix them again.
 
-It will be fun
-Then it will be hard
-But that is the same for any art
-You will resolve code, and feel like a seer
-That is the way of an engineer. 
+It will be fun  
+Then it will be hard  
+But that is the same for any art  
+You will resolve code, and feel like a seer  
+That is the way of an engineer.
+
+*Finished writing Friday, June 6, 2025 - Oshawa, Canada*

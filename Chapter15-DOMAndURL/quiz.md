@@ -1,4 +1,4 @@
-# QUIZ — Chapter 15: DOM and URL Manipulation
+# QUIZ — DOM and URL Manipulation
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 15: DOM and URL
 Manipulation. Work through these after reading the chapter, while the material is fresh — recall
@@ -74,7 +74,7 @@ Answers section further down, numbered to match the questions.
 
 
 10) `document.evaluate()` takes five arguments. What is the fourth one for, and why does it
-    change how you read your results?
+  change how you read your results?
 
   Clue: asking for a number and asking for a list of nodes cannot possibly be read back the
   same way.
@@ -93,25 +93,25 @@ Answers section further down, numbered to match the questions.
 
 
 13) EXERCISE. Create a `<div>`, give it the classes `card` and `wide` in one go, put a
-    `<p>Hello</p>` inside it, and add it to the page.
+  `<p>Hello</p>` inside it, and add it to the page.
 
   Clue: remember what question 9 taught you about multiple classes.
 
 
 14) EXERCISE. Using XPath, count the `<li>` elements on a page and print the number. Then use
-    XPath again to get the text of the first `<li>`.
+  XPath again to get the text of the first `<li>`.
 
   Clue: two different XPathResult types, and two different properties to read the answer from.
 
 
 15) EXERCISE. Take the URL `https://shop.example.com:8080/cart?item=42#summary` and print its
-    protocol, hostname, port, pathname, the value of the `item` query parameter, and its hash.
+  protocol, hostname, port, pathname, the value of the `item` query parameter, and its hash.
 
   Clue: one built-in constructor gives you all six.
 
 
 16) EXERCISE. Take the current page's URL, add a query parameter `sort=asc` to it, and print the
-    resulting full URL — without reloading the page.
+  resulting full URL — without reloading the page.
 
   Clue: build a URL object from it, set the parameter, then read `.href` back.
 
@@ -119,7 +119,7 @@ Answers section further down, numbered to match the questions.
 ## ANSWERS
 
 1) A **node** is any item in the DOM — that includes elements, but also text and comments. An
-- *element** is the specific kind of node that represents an actual HTML tag.
+**element** is the specific kind of node that represents an actual HTML tag.
 
 - `parent.childNodes` returns **5** nodes.
 - `parent.children` returns **2** elements.
@@ -250,7 +250,7 @@ div.innerText     // "Visible text"
 
         element.setAttribute("disabled", "");   // <input disabled="">
 
-- *Line 2 fails silently, which is worse.** `className` is a *string*, so handing it an array
+**Line 2 fails silently, which is worse.** `className` is a *string*, so handing it an array
    makes JavaScript convert that array to text — and arrays convert by joining with commas:
 
         className: ['list-item', 'draggable']   ->  "list-item,draggable"
@@ -263,8 +263,8 @@ div.innerText     // "Visible text"
 
 
 10) The fourth argument is the **XPathResult type**. It tells `document.evaluate()` what shape
-    of answer you want — a number, a string, a boolean, an iterator of nodes, or a snapshot list
-    of nodes.
+  of answer you want — a number, a string, a boolean, an iterator of nodes, or a snapshot list
+  of nodes.
 
   It changes how you read the results because each type puts the answer in a different place:
 
@@ -297,8 +297,8 @@ div.innerText     // "Visible text"
   If it is about the *browser* around that content — its size, its address bar, its history —
   it is on `window`.
 
-    One more thing worth remembering: every global variable or function you declare becomes a
-    property of `window`.
+One more thing worth remembering: every global variable or function you declare becomes a
+property of `window`.
 
 
 12) 

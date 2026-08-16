@@ -1,4 +1,4 @@
-# QUIZ — Chapter 12: Design Patterns
+# QUIZ — Design Patterns
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 12: Design Patterns. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -79,14 +79,14 @@ questions.
 11) EXERCISE. Using the Builder pattern, build a Pizza step by step — size, then two toppings —
   and finish with build(). Make the calls chain together on one line.
 
-    Clue: each setter has to return something for the next call to attach to.
+Clue: each setter has to return something for the next call to attach to.
 
 
 12) EXERCISE. Write a Subject that keeps a list of observers and notifies them all. Add two
   observers that print different messages, then notify.
 
-    Clue: the subject holds an array; notifying means looping over it and calling the same
-    method on each.
+Clue: the subject holds an array; notifying means looping over it and calling the same
+method on each.
 
 
 ## ANSWERS
@@ -340,9 +340,9 @@ Displaying cat.png
         console.log(pizza);
         // { toppings: [ 'cheese', 'mushrooms' ], size: 'large' }
 
-    The chaining works because every setter ends with `return this`. Each call hands the builder
-    straight back, so the next call has something to attach to. Take one `return this` out and
-    the chain breaks at that point with "Cannot read properties of undefined".
+The chaining works because every setter ends with `return this`. Each call hands the builder
+straight back, so the next call has something to attach to. Take one `return this` out and
+the chain breaks at that point with "Cannot read properties of undefined".
 
 
 12) 

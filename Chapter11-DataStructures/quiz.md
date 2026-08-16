@@ -1,4 +1,4 @@
-# QUIZ — Chapter 11: Data Structures
+# QUIZ — Data Structures
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 11: Data Structures. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -85,7 +85,7 @@ questions.
 - **Maps and plain objects** — for key-value pairs
 - **Sets** — for collections of unique values
 
-- *Built by you, out of what JavaScript already has:**
+**Built by you, out of what JavaScript already has:**
 
 - **Stacks and queues** — an ordinary array already behaves as both
 - **Tuples** — an array stands in for one

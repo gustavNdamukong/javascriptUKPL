@@ -1,4 +1,4 @@
-# QUIZ — Chapter 19: Forms and Email
+# QUIZ — Forms and Email
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 19: Forms and
 Email. Work through these after reading the chapter, while the material is fresh — recall
@@ -73,7 +73,7 @@ are all together in the Answers section further down, numbered to match the ques
 11) EXERCISE. Write the check that runs only when a file really was chosen, and prints its name,
   type and size.
 
-    Clue: `get()` on an empty file field does not return `undefined`.
+Clue: `get()` on an empty file field does not return `undefined`.
 
 
 ## ANSWERS
@@ -93,7 +93,7 @@ are all together in the Answers section further down, numbered to match the ques
 
 
 2) `getElementById()` uses the **id** attribute. `form.elements` and `FormData` both use the
-- *name** attribute.
+**name** attribute.
 
     form.elements.username        // by name
     formData.get("username")      // by name

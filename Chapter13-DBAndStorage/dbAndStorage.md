@@ -1,5 +1,5 @@
 
-# Chapter 13 — DB / STORAGE & DATA PERSISTENCE
+# Chapter 13 — DATABASES AND STORAGE
 - Storage for data persistence e.g localStorage. Also, everything about database access in terms of SQL queries, database configuration, and database design and management.
 
 - Learn the SQL (Structured Query Language) which is a global standard for communication with most database systems.
@@ -98,7 +98,7 @@ So, the take-away from this is this: if you need to store data permanently, use 
 
 	
 
-    How to read data from LocalStorage
+How to read data from LocalStorage
 
 In this reading demonstration, we will loop through all the todoList items grabbing their id, and their name (value), then format that into a string that can be displayed on 	screen.
 
@@ -329,7 +329,7 @@ function saveEdit(e)
 
 
 
-    How to delete data from LocalStorage
+How to delete data from LocalStorage
 
   This deletion of data from localStorage is done by the method removeItem(). You pass it the key of the storage item/data you wish to delete. Here is the syntax:
 

@@ -3,42 +3,41 @@
 
 By Gustav Ndamukong
 
-(Finished writing Friday, June 6, 2025 - Oshawa, Canada)
 
 
 # CONTENTS AT A GLANCE
 
-PREFACE: How to make the most of this book
-Chapter 1 - Introduction
-Chapter 2 - Variables
-Chapter 3 - Arrays
-Chapter 4 - Constants
-Chapter 5 - Control Flow
-Chapter 6 - Regular Expressions
-Chapter 7 - Functions
-Chapter 8 - Cookies
-Chapter 9 - Strings
-Chapter 10 - Data Types
-Chapter 11 - Data Structures
-Chapter 12 - Design Patterns
-Chapter 13 - Databases and Storage
-Chapter 14 - Dates and Time
-Chapter 15 - DOM and URL Manipulation
-Chapter 16 - The Canvas Element
-Chapter 17 - Object Oriented Programming (OOP)
-Chapter 18 - File Management
-Chapter 19 - Forms and Email
-Chapter 20 - Images
-Chapter 21 - Error Debugging and Testing
-Chapter 22 - Extensions (APIs & Libraries)
-Chapter 23 - Templating
-Chapter 24 - Events Handling
-Chapter 25 - Asset Management
+PREFACE: How to make the most of this book  
+Chapter 1 - Introduction  
+Chapter 2 - Variables  
+Chapter 3 - Arrays  
+Chapter 4 - Constants  
+Chapter 5 - Control Flow  
+Chapter 6 - Regular Expressions  
+Chapter 7 - Functions  
+Chapter 8 - Cookies  
+Chapter 9 - Strings  
+Chapter 10 - Data Types  
+Chapter 11 - Data Structures  
+Chapter 12 - Design Patterns  
+Chapter 13 - Databases and Storage  
+Chapter 14 - Dates and Time  
+Chapter 15 - DOM and URL Manipulation  
+Chapter 16 - The Canvas Element  
+Chapter 17 - Object Oriented Programming (OOP)  
+Chapter 18 - File Management  
+Chapter 19 - Forms and Email  
+Chapter 20 - Images  
+Chapter 21 - Error Debugging and Testing  
+Chapter 22 - Extensions (APIs & Libraries)  
+Chapter 23 - Templating  
+Chapter 24 - Events Handling  
+Chapter 25 - Asset Management  
 
-What next
+What next  
 
-(Every chapter ends with its own Quiz — the questions first, then the answers
-listed below them, numbered to match.)
+(Every chapter ends with its own Quiz — the questions first, then the answers  
+listed below them, numbered to match.)  
 
 
 # CONTENTS
@@ -702,7 +701,7 @@ listed below them, numbered to match.)
 
 
 
-# PREFACE: HOW TO MAKE THE MOST OF THIS BOOK
+# HOW TO MAKE THE MOST OF THIS BOOK
 
   What many beginners aren’t told loudly enough is this: you won’t become a great programmer by just reading about code—you become great by writing it. You can read every book on programming cover to cover, but until you roll up your sleeves and start coding, true understanding will remain out of reach.
 That’s why this book takes a hands-on, example-driven approach. Every chapter ends with a quiz—a set of questions designed to help reinforce key concepts and accelerate your learning. Some of them are small exercises where you write a little code yourself to demonstrate a point. These questions are not random—they’re deliberately structured to build your skill step by step, and every one of them carries a clue, so you should never find yourself stuck. The answers are listed immediately below the questions, at the end of that same chapter, numbered to match, with detailed explanations.

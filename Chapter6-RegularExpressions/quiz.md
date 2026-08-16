@@ -1,4 +1,4 @@
-# QUIZ — Chapter 6: Regular Expressions
+# QUIZ — Regular Expressions
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 6: Regular Expressions. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -73,7 +73,7 @@ questions.
   form field that should contain nothing else, or searching for an SSN inside a longer
   sentence.
 
-    Clue: \d matches a digit, and the curly braces let you say how many of them you want.
+Clue: \d matches a digit, and the curly braces let you say how many of them you want.
 
 
 10) EXERCISE. Write a regex pattern to match five word characters in a row. Then write a
@@ -172,7 +172,7 @@ questions.
 
 7) They do quite different jobs, though both sound as though they mean "match more".
 
-- *g is about how many matches you get back. m is about where ^ and $ apply.**
+**g is about how many matches you get back. m is about where ^ and $ apply.**
 
    Take this three-line string:
 

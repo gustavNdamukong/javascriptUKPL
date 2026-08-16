@@ -190,11 +190,11 @@ not allow.
        console.log(arr[0]); // 1
        console.log(arr.length); // 5
 
-   Used in JavaScript for: almost everything.
-    Lists of items, results from an API,
-    collections of DOM elements, and as
-    the building block for several of the
-    structures below.
+Used in JavaScript for: almost everything.
+Lists of items, results from an API,
+collections of DOM elements, and as
+the building block for several of the
+structures below.
 
 
 ## LINKED LISTS
@@ -371,12 +371,12 @@ Limitations: in languages that have real
            frozen[0] = 99;            // silently ignored
            console.log(frozen[0]);    // still 1
 
-       Used in JavaScript for: returning several
-              values from one function. You will
-              meet this constantly in modern
-              JavaScript, where a function hands
-              back a small array and the caller
-              unpacks it in one line.
+Used in JavaScript for: returning several
+  values from one function. You will
+  meet this constantly in modern
+  JavaScript, where a function hands
+  back a small array and the caller
+  unpacks it in one line.
 
 
 ## Dictionaries (Maps/HashMaps)

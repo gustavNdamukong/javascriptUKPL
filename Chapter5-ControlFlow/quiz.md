@@ -1,4 +1,4 @@
-# QUIZ — Chapter 5: Control Flow
+# QUIZ — Control Flow
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 5: Control Flow. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -342,9 +342,9 @@ Bob
 Charlie
 Diana
 
-    We loop through the people array with a while loop and print each name to the screen. Note
-    the use of += on document.body.innerHTML, which keeps adding each name to what is already
-    there instead of wiping it out and replacing it.
+We loop through the people array with a while loop and print each name to the screen. Note
+the use of += on document.body.innerHTML, which keeps adding each name to what is already
+there instead of wiping it out and replacing it.
 
 
 12) Here is the code:

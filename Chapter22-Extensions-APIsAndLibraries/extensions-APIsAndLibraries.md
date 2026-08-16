@@ -501,12 +501,12 @@ command does is to serves a file index.js where your Node.js code
 to start a server should be. Let’s go ahead and write the code that
 will create the server.
 
-	-Next, let’s proceed to write the code on both the backend to create 
-	   a server in Node.js and Express that will receive API (in this case 
-	   SOAP) requests and send back responses, and also the frontend 
-	   code that will send the requests to the backend and get back the 
-	   response. Before we do that, let’s establish what the file structure 
-	   of the application should look like in your project folder.
+-Next, let’s proceed to write the code on both the backend to create
+  a server in Node.js and Express that will receive API (in this case
+  SOAP) requests and send back responses, and also the frontend
+  code that will send the requests to the backend and get back the
+  response. Before we do that, let’s establish what the file structure
+  of the application should look like in your project folder.
 
 your-project-folder/
 │
@@ -989,7 +989,7 @@ This line builds the data we want to send to the server.
 	params = "username=" + username.value
 
 We take the value from an input field called username and create a string like this:
-	"username=JohnDoe"
+  "username=JohnDoe"
 
 This string will be sent to the server just like a form submission.
 
@@ -1076,8 +1076,8 @@ message will appear in the page.
 
 	} else alert("Ajax error: " + this.statusText)
 
--This is how we send the request to the server — along with the 
-	params we built earlier (username=JohnDoe):
+-This is how we send the request to the server — along with the
+  params we built earlier (username=JohnDoe):
 
   request.send(params)
 
@@ -1204,8 +1204,8 @@ Here’s a version that works without setting responseType. Note that you have t
 
 Notice you can use a document object method like getElementsByTagName(), and if you try to try to get the data from the .response property instead of .responseXML, you will get an error: 
 
-	"xmlDoc.getElementsByTagName is not a function
-    		at xhr.onload"
+"xmlDoc.getElementsByTagName is not a function
+  at xhr.onload"
 
 This works as long as the server sends the XML file with the correct content type.
 
@@ -1234,12 +1234,12 @@ current status or stage of the request. It changes as the request
 progresses. There are five (5) different states the request goes through from start to finish, and they are all recorded on the readyState property. To know what state the request is in, at any given time, you just have to check for the value of readyState. Here's a complete list of the 5 readyState values and what they mean:
 
 
-  Value	        Name	      Meaning
-      0	       UNSENT		The request has been created, but .open() has not been called yet
-      1	        OPENED	.open() has been called. You can now set headers or call .send()
-      2	HEADERS_RECEIVED	.send() has been called, and the response headers have been received
-      3	       LOADING	The browser is receiving the response body (data is loading)
-      4	      DONE	The request is complete, and the response is fully received
+Value	        Name	      Meaning
+  0	       UNSENT		The request has been created, but .open() has not been called yet
+  1	        OPENED	.open() has been called. You can now set headers or call .send()
+  2	HEADERS_RECEIVED	.send() has been called, and the response headers have been received
+  3	       LOADING	The browser is receiving the response body (data is loading)
+  4	      DONE	The request is complete, and the response is fully received
 
 
 You can use an event listener to track the changes in the value of this readyState property as the request progresses, and react to them. This is very powerful because even though your AJAX request calls are happening behind the scenes (asynchronously) of your application without your user being aware, you still have complete control over their progress because you can track these changes, and update your users on what’s going on at any given point.   
@@ -1547,28 +1547,28 @@ And not like so:
 
 When getPosts() finishes its job, it is updating the UI update inside itself, because it has the updated post data from the delayed task of createPost(). This is the crucial part of how this code is made to work.
 
-	-We have now changed the code that calls getPosts() to be 
-	   the callback that we pass to createPost(). That is why we 
-	   get rid of the return statement from getPosts(). We will 
-	   not need it to return the output variable, because by the 
-	   time it does that within the setTimeout() function, the 
-	   other code will have ran and so we will never see any 
-	   update in the browser. To see that update, we need to 
-	   make the UI update directly inside getPosts() so that the 
-	   callback function will run that. That is why in getPosts() 
-	   we replace the return statement with this code to update 
-	   the UI:
+-We have now changed the code that calls getPosts() to be
+  the callback that we pass to createPost(). That is why we
+  get rid of the return statement from getPosts(). We will
+  not need it to return the output variable, because by the
+  time it does that within the setTimeout() function, the
+  other code will have ran and so we will never see any
+  update in the browser. To see that update, we need to
+  make the UI update directly inside getPosts() so that the
+  callback function will run that. That is why in getPosts()
+  we replace the return statement with this code to update
+  the UI:
 
 		ul.innerHTML = output;
 
-	-Note that whenever you call another function and pass a 
-	   function as a callback argument to it, that function being 
-	   passed as a callback should be passed as a reference 
-	   only. This means that you should not include parenthesis 
-	   after the function name as you would do if you were 
-	   running it directly. That is why when we call createPost(), 
-	   we pass it the getPosts callback function as a reference 
-	   like so getPosts and not getPosts():
+-Note that whenever you call another function and pass a
+  function as a callback argument to it, that function being
+  passed as a callback should be passed as a reference
+  only. This means that you should not include parenthesis
+  after the function name as you would do if you were
+  running it directly. That is why when we call createPost(),
+  we pass it the getPosts callback function as a reference
+  like so getPosts and not getPosts():
 
 		createPost( 
     			{ title: 'post three', body: 'This is three'},
@@ -1579,8 +1579,8 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 
 
 
-	-b) A promise
-	To convert the above example to use a promise, we will leave the getPosts() function exactly the same as when using the callback function above, but we will modify the createPost() function to look like this: 
+-b) A promise
+To convert the above example to use a promise, we will leave the getPosts() function exactly the same as when using the callback function above, but we will modify the createPost() function to look like this:
 
 	function getPosts()
 	{
@@ -1629,8 +1629,8 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 
 
 
-		-Promise.all()
-  The promise.all() function is used to handle several promises, for example, replace the call to createPosts() above with the following:
+  -Promise.all()
+The promise.all() function is used to handle several promises, for example, replace the call to createPosts() above with the following:
 		
 		const promise1 = Promise.resolve('Hello world');
 		const promise2 = 10;
@@ -1649,8 +1649,8 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 			.then(values => console.log(values)
 		);
 
-	Note that promise4 uses the fetch API, an online free test API for json data. That is how it gets its json data. This data coming from the fetch API already uses promises, so you just get the response with then().
-	Promise3 uses the setTimeout() function to call after 2 seconds, so the total amount of time promise.all() takes to run is 2 seconds, as it always uses the longest time that any of its	promises takes to resolve.
+Note that promise4 uses the fetch API, an online free test API for json data. That is how it gets its json data. This data coming from the fetch API already uses promises, so you just get the response with then().
+Promise3 uses the setTimeout() function to call after 2 seconds, so the total amount of time promise.all() takes to run is 2 seconds, as it always uses the longest time that any of its	promises takes to resolve.
 
 	
 
@@ -1955,12 +1955,12 @@ Notice that for axios to work, we needed to reference the library’s Content De
 
 If you test this in your browser, you will find that it gets and returns all photos, that the endpoint can return. You can narrow down the result you get back by optionally passing an extra parameter or parameters to the axios.get() method. How you pass the parameter depends on what you want to get from the API. The following are two ways to pass in parameters with the API request, which determine the response returned.
 
-	a) You can choose to fetch and return only photos having an 
-		albumId that matches the albumId passed in. This means 
-		you get back only photos that belong to the album whose 
-		id you passed in. You can do that by passing an object 
-		literal ({…}) as the second argument to the axios.get() 
-		function. For example:
+a) You can choose to fetch and return only photos having an
+  albumId that matches the albumId passed in. This means
+  you get back only photos that belong to the album whose
+  id you passed in. You can do that by passing an object
+  literal ({…}) as the second argument to the axios.get()
+  function. For example:
 
 		const response = await axios.get(
 			'https://jsonplaceholder.typicode.com/photos',
@@ -1968,16 +1968,16 @@ If you test this in your browser, you will find that it gets and returns all pho
           			params: { albumId }
         		});
 
-    This object literal sent as a second argument to
-    axios.get() is also known as the request configuration
-    object.
+This object literal sent as a second argument to
+axios.get() is also known as the request configuration
+object.
 
-  b) You can also choose to fetch and return a specific (single)
-    photo by passing in the unique id of the photo, if you
-    know it. This id argument is not passed as a second
-    argument to axios.get(). Rather, you have to do so by
-    changing the last value in that endpoint path string-which in this case is /photos. Change it to the id of the
-    photo eg /3 if the id is 3. For example:
+b) You can also choose to fetch and return a specific (single)
+  photo by passing in the unique id of the photo, if you
+  know it. This id argument is not passed as a second
+  argument to axios.get(). Rather, you have to do so by
+  changing the last value in that endpoint path string-which in this case is /photos. Change it to the id of the
+  photo eg /3 if the id is 3. For example:
 
 		const response = await axios.get(
 			'https://jsonplaceholder.typicode.com/photos/3'
@@ -1990,20 +1990,20 @@ pass it in dynamically like so:
 		const response = await axios.get(`https://
 			jsonplaceholder.typicode.com/photos/${photoId}`);
 
-    Notice that because we are mixing a variable with a
-    string here, we  have to let JavaScript know that photoId
-    is a variable so it can parse. We do this by wrapping the
-    whole API endpoint path string in backtick (`…`) and
-    place the variable within ${} characters. This is a
-    template literal, which is what you use in JavaScript
-    whenever you wish to display a string that contains
-    dynamic variable, and you want to make it clear to
-    the JavaScript parser (interpreter) which of the elements
-    in the string are variables. See chapter 23 (Templates),
-    where I talk in depth about String Literals & Template
-    Strings. The variables must be wrapped in ${} like so:
+Notice that because we are mixing a variable with a
+string here, we  have to let JavaScript know that photoId
+is a variable so it can parse. We do this by wrapping the
+whole API endpoint path string in backtick (`…`) and
+place the variable within ${} characters. This is a
+template literal, which is what you use in JavaScript
+whenever you wish to display a string that contains
+dynamic variable, and you want to make it clear to
+the JavaScript parser (interpreter) which of the elements
+in the string are variables. See chapter 23 (Templates),
+where I talk in depth about String Literals & Template
+Strings. The variables must be wrapped in ${} like so:
 
-		`This is a string ${variableName} and more text`
+`This is a string ${variableName} and more text`
 
 Of course you do not need to use a string literal,
 especially if there is only one variable. In our case, we

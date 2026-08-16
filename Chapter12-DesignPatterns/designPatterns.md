@@ -1,7 +1,5 @@
 
-//————————————————————//
-	CHAPTER 12 - DESIGN PATTERNS
-///————————————————————//
+# Chapter 12 — DESIGN PATTERNS
 
 Design patterns are reusable solutions to 
   common software design problems. They 

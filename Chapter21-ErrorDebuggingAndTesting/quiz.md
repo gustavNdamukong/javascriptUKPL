@@ -1,4 +1,4 @@
-# QUIZ — Chapter 21: Error, Debugging and Testing
+# QUIZ — Error, Debugging and Testing
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 21: Error,
 Debugging and Testing. Work through these after reading the chapter, while the material is fresh
@@ -73,7 +73,7 @@ TypeError      ReferenceError      RangeError      SyntaxError
 
 
 12) EXERCISE. Write two manual tests for an `add(a, b)` function — one with an `if`, one with
-    `console.assert()` — and make the second one fail on purpose so you can see what happens.
+  `console.assert()` — and make the second one fail on purpose so you can see what happens.
 
   Clue: question 8 tells you what to expect from the failure.
 
@@ -153,13 +153,13 @@ TypeError      ReferenceError      RangeError      SyntaxError
    error types apart. A thrown string gives you none of that.
 
 
-6) 
-    TypeError       null.someMethod()        — doing something to a value that
-      cannot do it
-    ReferenceError  using an undeclared      — the name does not exist at all
-      variable
-    RangeError      (5).toFixed(-1)          — a number outside an allowed range
-    SyntaxError     a missing bracket        — the code cannot even be parsed
+6)
+  TypeError       null.someMethod()        — doing something to a value that
+  cannot do it
+  ReferenceError  using an undeclared      — the name does not exist at all
+  variable
+  RangeError      (5).toFixed(-1)          — a number outside an allowed range
+  SyntaxError     a missing bracket        — the code cannot even be parsed
 
    `SyntaxError` is the odd one out. The others happen while your program is *running*;
    a SyntaxError happens when JavaScript *reads* your file, which means the program never
@@ -281,6 +281,6 @@ Test passed
 Assertion failed: Test failed: add(1, 2) should equal 4
 Still running
 
-    The last line is the point of the exercise. The assertion failed, said so, and the program
-    carried on regardless — which is exactly why `console.assert` is fine for a quick check but
-    not something to build a real test suite on. That is what Jest, Mocha and Vitest are for.
+The last line is the point of the exercise. The assertion failed, said so, and the program
+carried on regardless — which is exactly why `console.assert` is fine for a quick check but
+not something to build a real test suite on. That is what Jest, Mocha and Vitest are for.

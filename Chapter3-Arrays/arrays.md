@@ -1411,8 +1411,8 @@ while array1 will remain:
 
 	console.log(obj2);
 
-	This will log to the console the following:
-		{ a: 1, b: 2, c: 3 }
+This will log to the console the following:
+  { a: 1, b: 2, c: 3 }
 
   - When to Use the Spread Operator?
     - When converting a string into an array
@@ -1447,10 +1447,10 @@ Are Rest Parameters and the Spread Operator Opposites?
 			    (acc, num) => acc + num, 0);
 		}
 
-    This sum() function uses the rest operator (in its parameters)
-    so whatever is passed into it will be converted into an array.
-    Internally, what is passed to it will become the numbers array,
-    which it uses to do its job.
+This sum() function uses the rest operator (in its parameters)
+so whatever is passed into it will be converted into an array.
+Internally, what is passed to it will become the numbers array,
+which it uses to do its job.
 
 		const nums = [5, 10, 15];
 
@@ -1458,11 +1458,11 @@ Are Rest Parameters and the Spread Operator Opposites?
 		// into function arguments)
 		console.log(sum(...nums)); 
 
-		At the point where we need to call the sum() function, we have 
-		an array of numbers nums. However, we know that the sum() 
-		function needs numbers, not an array. We therefore use the 
-		spread operator on the nums array as we pass it as the 
-		arguments to sum() when we call it. 
+At the point where we need to call the sum() function, we have
+an array of numbers nums. However, we know that the sum()
+function needs numbers, not an array. We therefore use the
+spread operator on the nums array as we pass it as the
+arguments to sum() when we call it.
 
   As you can see, Spread (...nums)
   expands an array, while rest
@@ -1593,26 +1593,26 @@ within itself.
 		// Output: [1, 2, 1, 2, 5]
 		console.log(arr); 
 
-    In this example, it copies elements
-    from index 0 to 2 and places them
-    starting at index 2. Elements from
-    index 0-2 will grab 1, and 2 (two
-    elements), then placing them from
-    index 2 means the two copied
-    elements (1, 2) will replace two
-    elements from the original array ([1,
-    2, 1, 2, 5]) and thus end up with this
-    output array: [1, 2, 1, 2, 5]
+In this example, it copies elements
+from index 0 to 2 and places them
+starting at index 2. Elements from
+index 0-2 will grab 1, and 2 (two
+elements), then placing them from
+index 2 means the two copied
+elements (1, 2) will replace two
+elements from the original array ([1,
+2, 1, 2, 5]) and thus end up with this
+output array: [1, 2, 1, 2, 5]
 
 				
 #### -every()
-	It is similar to the some() method further down, except that rather 
-	than just one element, it checks whether every element in an array 
-	passes the test or condition in the function you pass to it. The syntax is the same as 
-	with the some() method. Pass it a function and it will run that 
-	function on all the elements in the array you call it on. If any of the 
-	elements fails the test, it will return false, otherwise it will return true.
-		For example:
+It is similar to the some() method further down, except that rather
+than just one element, it checks whether every element in an array
+passes the test or condition in the function you pass to it. The syntax is the same as
+with the some() method. Pass it a function and it will run that
+function on all the elements in the array you call it on. If any of the
+elements fails the test, it will return false, otherwise it will return true.
+  For example:
 
 			let ages = [32, 33, 16, 40];
 
@@ -1622,8 +1622,8 @@ within itself.
 
 			console.log(ages.every(checkAdult));
 
-	This example will return false because not every age inside ages is 
-	18 or over.
+This example will return false because not every age inside ages is
+18 or over.
 
 				
 #### -fill()
@@ -1637,11 +1637,11 @@ those positions before.
 		// Output: [1, 0, 0, 4]
 		console.log(arr); 
 
-    Replaces values from index 1 to 3
-    with 0. Note that ‘index 1 to 3’ means
-    up to, but not including the element
-    at index 3, which is why 4 from the
-    original array is not overridden.
+Replaces values from index 1 to 3
+with 0. Note that ‘index 1 to 3’ means
+up to, but not including the element
+at index 3, which is why 4 from the
+original array is not overridden.
 	
 				
 #### -filter()
@@ -1709,9 +1709,9 @@ to flatten.
 
 
 #### -forEach()
-		It loops through an array, and 
-		executes a function for each array 
-		element.	
+It loops through an array, and
+executes a function for each array
+element.
 
 		const arr = [1, 2, 3];
 
@@ -1785,10 +1785,10 @@ separator at all.
 	
 
 #### -lastIndexOf()
-    It finds the last occurrence of a value
-    and returns its index or -1 if not
-    found. It works just like indexOf()
-    except that it searches from the end.
+It finds the last occurrence of a value
+and returns its index or -1 if not
+found. It works just like indexOf()
+except that it searches from the end.
 
 		const arr = [10, 20, 30, 20, 40];
 
@@ -1797,11 +1797,11 @@ separator at all.
 
 
 #### -map()
-    map() runs a function on every element of an array and hands
-    back a brand new array of the results. The original array is left
-    untouched, and the new array always has the same number of
-    elements as the old one. It is the method you reach for when you
-    want to turn a list of one thing into a list of another thing.
+map() runs a function on every element of an array and hands
+back a brand new array of the results. The original array is left
+untouched, and the new array always has the same number of
+elements as the old one. It is the method you reach for when you
+want to turn a list of one thing into a list of another thing.
 
 Here it is turning a list of book objects into a block of HTML:
 
@@ -1849,9 +1849,9 @@ Here it is turning a list of book objects into a block of HTML:
 [[1, 2, 3], ['John', 'Peter']]
 
 	
-	-pop()	
-		This pop() function is a built-in function in JavaScript used to remove the last 
-		element in an array. Here is an example:
+-pop()
+  This pop() function is a built-in function in JavaScript used to remove the last
+  element in an array. Here is an example:
 
 			let myArray = [
 				[1, 2, 3],
@@ -1862,9 +1862,9 @@ Here it is turning a list of book objects into a block of HTML:
 
 			console.log(myArray);
 
-    This will have removed the last element from myArray, which is the sub array
-    containing names (['John', 'Peter']), and so the output of the contents of the
-    myArray will end up being:
+This will have removed the last element from myArray, which is the sub array
+containing names (['John', 'Peter']), and so the output of the contents of the
+myArray will end up being:
 			
 [[1, 2, 3]]
 
@@ -1943,9 +1943,9 @@ The new array names will now contain ['John', 'Peter'].
 
 	
 #### -shift()
-	The shift() function is a direct opposite of the pop() function because 
-	unlike pop() which is used to remove the last item in an array, shift() 
-	is used to remove the first element in an array. Here is an example:
+The shift() function is a direct opposite of the pop() function because
+unlike pop() which is used to remove the last item in an array, shift()
+is used to remove the first element in an array. Here is an example:
 
 		let myArray = [
 			[1, 2, 3],
@@ -1995,9 +1995,9 @@ The new array names will now contain ['John', 'Peter'].
 			
 [["Jimmy", "Jack"], ['John', 'Peter']]
 
-	Note that similarly to the push() function, the unshift() function 
-	accepts an argument, which should be the element or item you wish 
-	to add to the target array it was called on.
+Note that similarly to the push() function, the unshift() function
+accepts an argument, which should be the element or item you wish
+to add to the target array it was called on.
 
 	
 #### -slice()
@@ -2011,8 +2011,8 @@ original.
 		// Output: [2, 3, 4]
 		console.log(arr.slice(1, 4)); 
 
-    This slices the array from index 1 up
-    to but not including index 4.
+This slices the array from index 1 up
+to but not including index 4.
 		
 	
 #### -some()
@@ -2032,27 +2032,27 @@ the test or false if none passes.
 
 		
 #### -sort()
-    Sorts an array alphabetically or numerically. By default, JavaScript’s
-    sort() method converts all elements to strings and sorts them
-    alphabetically in ascending order.
-    But when it comes to numbers, it has no way of detecting which
-    number is bigger than the other. The solution with numbers is to pass
-    to sort() a compare function. It will run this function on elements in
-    pairs from left to right, subtracting one number from the other and
-    thereby determining which is greater than the other. Basically, when
-    sorting numbers without a compare function, the results can be
-    unexpected. It's easier when you see an example:
+Sorts an array alphabetically or numerically. By default, JavaScript’s
+sort() method converts all elements to strings and sorts them
+alphabetically in ascending order.
+But when it comes to numbers, it has no way of detecting which
+number is bigger than the other. The solution with numbers is to pass
+to sort() a compare function. It will run this function on elements in
+pairs from left to right, subtracting one number from the other and
+thereby determining which is greater than the other. Basically, when
+sorting numbers without a compare function, the results can be
+unexpected. It's easier when you see an example:
 
 			[1, 100, 2, 20].sort(); 
 
 The above expression is first converted to ["1", "100", "2", "20"] and
 then to [1, 100, 2, 20] instead of [1, 2, 20, 100]
 
-    JavaScript doesn’t know that "100" should come after "2", because
-    it compares them as strings, character-by-character. The fix is to
-    pass a compare function to sort(). This allows you to control how
-    items are compared—typically by subtracting one from the other for
-    numeric sorting:
+JavaScript doesn’t know that "100" should come after "2", because
+it compares them as strings, character-by-character. The fix is to
+pass a compare function to sort(). This allows you to control how
+items are compared—typically by subtracting one from the other for
+numeric sorting:
 
 			[1, 100, 2, 20].sort((a, b) => a - b); 
 
@@ -2088,8 +2088,8 @@ Sort numbers in an array in ascending order
 
 Sort numbers in an array in descending order
 
-		Pass a function to sort() that assumes that the later number is 
-		greater than the one before it—take note of the b-a it returns.
+Pass a function to sort() that assumes that the later number is
+greater than the one before it—take note of the b-a it returns.
 				
 			let points = [20, 80, 1, 8, 25, 10];
 			points.sort(function(a, b) { return b - a; });
@@ -2134,13 +2134,13 @@ techniques:
 		 // Output: [1, "a", "b", 4]
 		console.log(arr);
 
-    In this example, it removes 2
-    elements beginning from index 1 and
-    inserts "a" and "b", hence we end
-    with the original array having the new
-    value of: [1, "a", "b", 4].
-      Any number of arguments after the first two will be added to the
-    array starting from the index specified in the first argument.
+In this example, it removes 2
+elements beginning from index 1 and
+inserts "a" and "b", hence we end
+with the original array having the new
+value of: [1, "a", "b", 4].
+  Any number of arguments after the first two will be added to the
+array starting from the index specified in the first argument.
 
 			const arr = [1, 2, 3, 4];
 			arr.splice(1, 2, "a", "b", "c", "d", "z");

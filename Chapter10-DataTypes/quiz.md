@@ -1,4 +1,4 @@
-# QUIZ — Chapter 10: Data Types
+# QUIZ — Data Types
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 10: Data Types. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -78,8 +78,8 @@ questions.
 
 
 10) EXERCISE. Write a function called isEmptyArray(value) that returns true only when the value
-    really is an array with nothing in it. Test it with an empty array, an array with items, an
-    empty string, and null.
+  really is an array with nothing in it. Test it with an empty array, an array with items, an
+  empty string, and null.
 
   Clue: you need two checks joined with &&: that it is an array at all, and that its length is
   zero.

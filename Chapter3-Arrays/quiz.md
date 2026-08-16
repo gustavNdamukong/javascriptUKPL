@@ -1,4 +1,4 @@
-# QUIZ — Chapter 3: Arrays
+# QUIZ — Arrays
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 3: Arrays. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -91,11 +91,11 @@ person.first-name
 
 11) EXERCISE. Loop through an array running a function on each element.
 
-    Write a function of your own that takes a number and returns that number multiplied by two.
-    Then use it on every element of an array of numbers, and display the results.
+Write a function of your own that takes a number and returns that number multiplied by two.
+Then use it on every element of an array of numbers, and display the results.
 
-    Clue: think about which array method takes a function and runs it on every element of an
-    array, handing you back a new array of the results. You met it in this chapter.
+Clue: think about which array method takes a function and runs it on every element of an
+array, handing you back a new array of the results. You met it in this chapter.
 
 
 12) EXERCISE. Loop through an array of images and display the images on screen.
@@ -113,9 +113,9 @@ person.first-name
   - Use a timer function so that only one image is displayed at a time, and the image changes
   every 5 seconds
 
-    Clue: setInterval() takes two arguments — a function to run, and how long to wait between
-    runs, in milliseconds. Keep a counter of which image you are up to, and send it back to 0
-    when it reaches the end.
+Clue: setInterval() takes two arguments — a function to run, and how long to wait between
+runs, in milliseconds. Keep a counter of which image you are up to, and send it back to 0
+when it reaches the end.
 
 
 13) EXERCISE. Create an array of the numbers 1, 3, 2, 5, 2, 9, 2, 9, 2, 1.
@@ -134,7 +134,7 @@ person.first-name
   (Control Flow), and you see those and many other operators in action, you will grasp their
   essence and power in programming.
 
-    Clue: == checks whether two values are equal. push() adds to an array.
+Clue: == checks whether two values are equal. push() adds to an array.
 
 
 14) EXERCISE. Finally, we should not proceed without exercising with multi-dimensional arrays
@@ -297,8 +297,8 @@ person.first - name
   provides for arrays — the array methods come to mind. Is there one that runs a function on
   every element? Yes: map(). Once you have found the tool, the problem is half solved.
 
-    map() can be given a built-in function or one you write yourself. We will write our own,
-    taking a number as its argument and returning that number doubled:
+map() can be given a built-in function or one you write yourself. We will write our own,
+taking a number as its argument and returning that number doubled:
 
         function multiplier(num)
         {
@@ -312,9 +312,9 @@ person.first - name
 
   This displays a popup saying 2,4,6,8,10.
 
-    Notice that you pass multiplier without brackets after it. You are handing map() the
-    function itself, not the result of calling it. At each turn of the loop, map() passes the
-    current element into multiplier() as num.
+Notice that you pass multiplier without brackets after it. You are handing map() the
+function itself, not the result of calling it. At each turn of the loop, map() passes the
+current element into multiplier() as num.
 
   One more thing worth knowing while we are here. map() itself takes just one argument, the
   function. But the function it hands your elements to can accept a second parameter, and
@@ -379,13 +379,13 @@ person.first - name
         </body>
         </html>
 
-    The code loops through the array of image names, puts each one inside an <img /> tag, and
-    inserts that into the div.
+The code loops through the array of image names, puts each one inside an <img /> tag, and
+inserts that into the div.
 
-    The looping is done by setInterval(). It takes two arguments: a function to perform, and
-    the time to wait between each run. We have passed it an anonymous function to do the work,
-    and 5000 milliseconds, which is 5 seconds. So the images appear in the target div and keep
-    changing every five seconds.
+The looping is done by setInterval(). It takes two arguments: a function to perform, and
+the time to wait between each run. We have passed it an anonymous function to do the work,
+and 5000 milliseconds, which is 5 seconds. So the images appear in the target div and keep
+changing every five seconds.
 
   The pos counter keeps track of which image we are showing. When it reaches the last one, we
   set it back to 0 so the slideshow starts over. Congratulations, you have just built your

@@ -385,8 +385,8 @@ The following is a step-by-step explanation of how it all works:
   These lines grab the HTML elements that show which color is
   selected and display whether the user is using the "Pen" or "Eraser".
 
-	-Next, this grabs the <canvas> element and prepares its 2D drawing 
-	surface (ctx) so we can draw on it.
+-Next, this grabs the <canvas> element and prepares its 2D drawing
+surface (ctx) so we can draw on it.
 
 		const canvas = document.getElementById("paintCanvas");
 		const ctx = canvas.getContext("2d");
@@ -417,25 +417,25 @@ When the mouse is pressed down on the canvas, start drawing:
   				ctx.stroke();
 			});
 
-    There is more going on here than you might expect from "start
-    drawing", so let us take it slowly.
-    The beginPath() and moveTo() put the pen down at the exact spot
-    the mouse was pressed. Leave them out and the line only starts
-    from the SECOND mouse move, which quietly loses the first few
-    pixels of every stroke.
-    The lineTo(x, y) and stroke() then draw a line from that spot to
-    itself. A line from a point to the same point has no length at all,
-    so you would think it draws nothing. But we set lineCap to "round",
-    and a round cap on a zero-length line is simply a circle. So we get
-    one round dot, the width of the pen, exactly where the user
-    pressed. Without it, clicking once without moving the mouse leaves
-    no mark at all, which is not what anyone expects from a drawing
-    app - try dotting the letter i and you will see the problem.
+There is more going on here than you might expect from "start
+drawing", so let us take it slowly.
+The beginPath() and moveTo() put the pen down at the exact spot
+the mouse was pressed. Leave them out and the line only starts
+from the SECOND mouse move, which quietly loses the first few
+pixels of every stroke.
+The lineTo(x, y) and stroke() then draw a line from that spot to
+itself. A line from a point to the same point has no length at all,
+so you would think it draws nothing. But we set lineCap to "round",
+and a round cap on a zero-length line is simply a circle. So we get
+one round dot, the width of the pen, exactly where the user
+pressed. Without it, clicking once without moving the mouse leaves
+no mark at all, which is not what anyone expects from a drawing
+app - try dotting the letter i and you will see the problem.
 
-    If drawing a line from a point to itself feels like too much of a
-    trick, you can paint that dot directly instead. This is the more
-    advanced way of writing the same four lines, using the arc() method
-    you met when we drew a circle earlier:
+If drawing a line from a point to itself feels like too much of a
+trick, you can paint that dot directly instead. This is the more
+advanced way of writing the same four lines, using the arc() method
+you met when we drew a circle earlier:
 
 			ctx.fillStyle = paintColor;
 			ctx.beginPath();
@@ -446,16 +446,16 @@ When the mouse is pressed down on the canvas, start drawing:
     - though remember that the arc() version fills, so it needs
     fillStyle rather than strokeStyle.
 
-    When the mouse is released, stop drawing. ctx.beginPath()
-    clears the current drawing path to avoid unwanted lines:
+When the mouse is released, stop drawing. ctx.beginPath()
+clears the current drawing path to avoid unwanted lines:
 
 			canvas.addEventListener("mouseup", () => {
   				painting = false;
   				ctx.beginPath(); 
 			});
 
-		If the mouse moves but the button isn’t pressed, skip the rest of 
-		the function:
+If the mouse moves but the button isn’t pressed, skip the rest of
+the function:
 
 			canvas.addEventListener("mousemove", (e) => {
   				if (!painting) return;
@@ -473,8 +473,8 @@ color:
   			ctx.lineCap = "round";
   			ctx.strokeStyle = paintColor;
 
-    This is how to draw a line to the new point and start a new path
-    from there. This avoids connecting all paths:
+This is how to draw a line to the new point and start a new path
+from there. This avoids connecting all paths:
 
 			ctx.lineTo(x, y);
   			ctx.stroke();
@@ -554,8 +554,8 @@ color:
 	});
 
 If you're using a brush with a line width, make the eraser slightly thicker.
-This is the approach we took for the eraser in our example above. Here is how we did it: 
-	-we set an event listener for a click on the eraser div element, then increased the brush size (penSize = 20), set the painting color to the same color as the background of our canvas (canvasBackground), and finally we changed the text beside the eraser div from “Pen” to “Eraser” like this: 
+This is the approach we took for the eraser in our example above. Here is how we did it:
+  -we set an event listener for a click on the eraser div element, then increased the brush size (penSize = 20), set the painting color to the same color as the background of our canvas (canvasBackground), and finally we changed the text beside the eraser div from “Pen” to “Eraser” like this:
 
 	indicatorName.textContent = "Eraser";
 
@@ -1000,9 +1000,9 @@ We move the ball a little each time the user presses an arrow key. This is how t
     			draw(); 
   		}
 
-	   The position itself is updated right there in the key handler. The 
-	   draw() function is then called to clear the canvas and redraw 
-	   everything in its new place.
+The position itself is updated right there in the key handler. The
+draw() function is then called to clear the canvas and redraw
+everything in its new place.
 
 Another common way to animate is using the built-in function requestAnimationFrame(). That method is used when we want to make something move continuously or very smoothly—like a character that keeps walking or a bouncing ball. Here is the syntax of using requestAnimationFrame() function:
 
@@ -1067,9 +1067,9 @@ The following are the steps to do the collision detection which we do in canMove
   simple math. Let’s establish some parameters so that you would
   understand perfectly.
 
-		-On the x (horizontal) axis
-			-the position of the left wall of the canvas is 0 (x = 0)
-			-the position of the right wall of the canvas is the width of 				   the canvas (canvas.width)
+-On the x (horizontal) axis
+  -the position of the left wall of the canvas is 0 (x = 0)
+  -the position of the right wall of the canvas is the width of 				   the canvas (canvas.width)
 
     - On the y (vertical) axis
       - the position of the top wall of the canvas is 0 (y = 0)
@@ -1138,22 +1138,22 @@ canvas.width.
 
 			x + radius == canvas.width
 
-		   If it is greater, then we know the ball has gone beyond the right 
-		   edge of the canvas. 
-			The logic we apply in our example code is to check if both 
-		   left and right edges of the ball have not gone beyond the 
-		   canvas edges. That’s why instead of using x - radius == 0 and 
-		   x + radius == canvas.width, we use x - radius < 0 (less than) 
-		   and x + radius > canvas.width for the left canvas edge and right 
-		   canvas edge, respectively. Either of those being true means the 
-		   ball has gone too far. 
-			That check happens in the function canMove(), and read its 
-		   return value carefully, because it is the opposite way round 
-		   from what you might expect. canMove() returns FALSE when the 
-		   ball has hit something, and TRUE when the way is clear. Its 
-		   name is the clue: we are asking "can the ball move?", not "has 
-		   it crashed?". That is why we only allow the ball to move when 
-		   canMove() returns true. 
+If it is greater, then we know the ball has gone beyond the right
+edge of the canvas.
+The logic we apply in our example code is to check if both
+left and right edges of the ball have not gone beyond the
+canvas edges. That’s why instead of using x - radius == 0 and
+x + radius == canvas.width, we use x - radius < 0 (less than)
+and x + radius > canvas.width for the left canvas edge and right
+canvas edge, respectively. Either of those being true means the
+ball has gone too far.
+That check happens in the function canMove(), and read its
+return value carefully, because it is the opposite way round
+from what you might expect. canMove() returns FALSE when the
+ball has hit something, and TRUE when the way is clear. Its
+name is the clue: we are asking "can the ball move?", not "has
+it crashed?". That is why we only allow the ball to move when
+canMove() returns true.
 
 			if (nextX - ball.radius < 0 || nextX + ball.radius > 
 				canvas.width) return false;

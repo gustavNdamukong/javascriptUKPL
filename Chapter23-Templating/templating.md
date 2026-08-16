@@ -1,5 +1,5 @@
 
-# Chapter 23 — TEMPLATES
+# Chapter 23 — TEMPLATING
 
 
 - Introduction to Templates
@@ -41,9 +41,9 @@ Templating engines provide more powerful ways to structure dynamic HTML. Popular
 	-Mustache – deliberately logic-less templates using 
 	    {{ }} placeholders.
 
-	-Handlebars – a superset of Mustache. It keeps the same 
-	    {{ }} syntax and adds helpers, conditionals and loops. 
-	    You use one or the other, not both together.
+-Handlebars – a superset of Mustache. It keeps the same
+  {{ }} syntax and adds helpers, conditionals and loops.
+  You use one or the other, not both together.
 
   - Pug – A whitespace-sensitive, minimalistic templating
   engine.

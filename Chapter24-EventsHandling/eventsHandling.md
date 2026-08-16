@@ -1,5 +1,5 @@
 
-# Chapter 24 — Event Handling
+# Chapter 24 — EVENTS HANDLING
 
   - Event listeners
     - Inline event listener attribute
@@ -24,7 +24,6 @@
     
 
 
-## Event listeners
   One of the biggest reasons for JavaScript’s popularity is how well it handles events-those moments when users interact with your page.
 Think about it:
 
@@ -51,7 +50,7 @@ JavaScript listens for these user actions and gives you the power to respond imm
   JavaScript gives you a few simple ways to listen for events and respond to them. There are two major ways to do so.
 
 #### -i) Inline event listener attribute
-	   This works in two steps; you add the event listener attribute on the target element’s tag, then get that event listener to call an inbuilt or your custom function in response to that event by passing the custom function as the value of the attribute. Here is an example:
+This works in two steps; you add the event listener attribute on the target element’s tag, then get that event listener to call an inbuilt or your custom function in response to that event by passing the custom function as the value of the attribute. Here is an example:
 
 	<button 
 		id="myButton"
@@ -68,29 +67,29 @@ JavaScript listens for these user actions and gives you the power to respond imm
   		console.log("ID is: " + buttonId);
 	}
 
-	Notice that the code that listens for the click 
-	event is onclick="". Its value "myFunction()" is 
-	a function which should exist in your code. 	
-	This function will automatically be called. Also 
-	notice how as the function is called within the 
-	attribute value, an ‘event’ string is passed to it 
-	(onclick="myFunction(event)"). This ‘event’ is 
-	the global event that is generated every time 
-	an event occurs, and so by passing it to the 
-	function you are calling, you are thereby 
-	making that event object available to the 
-	function. This is very important because that 
-	is how that function will know which specific 
-	element triggered the event among all the 
-	many elements you have on your webpage. It 
-	will then be able to attend to that specific field 
-	and accurately respond to the event. Basically, 
-	the special event object holds details about 
-	what triggered the event (which button, what key, 
-	which field, etc). From inside your function, you 
-	can inspect the event object. For example, 
-	e.target.id gives you the ID of the button that was 
-	clicked in our above example:
+Notice that the code that listens for the click
+event is onclick="". Its value "myFunction()" is
+a function which should exist in your code.
+This function will automatically be called. Also
+notice how as the function is called within the
+attribute value, an ‘event’ string is passed to it
+(onclick="myFunction(event)"). This ‘event’ is
+the global event that is generated every time
+an event occurs, and so by passing it to the
+function you are calling, you are thereby
+making that event object available to the
+function. This is very important because that
+is how that function will know which specific
+element triggered the event among all the
+many elements you have on your webpage. It
+will then be able to attend to that specific field
+and accurately respond to the event. Basically,
+the special event object holds details about
+what triggered the event (which button, what key,
+which field, etc). From inside your function, you
+can inspect the event object. For example,
+e.target.id gives you the ID of the button that was
+clicked in our above example:
 
 		function myFunction(e) {
 			// optionally stop event propagation
@@ -122,10 +121,10 @@ JavaScript listens for these user actions and gives you the power to respond imm
 	This function being passed as the second argument 
 	can be implemented in two ways; 
 
-	a) Anonymous Function (Closure)
-	    This is a piece off code in the function’s block to be executed right 
-	     there as a closure (anonymous function). 
-	     Let’s see addEventListener() in action:
+a) Anonymous Function (Closure)
+  This is a piece off code in the function’s block to be executed right
+  there as a closure (anonymous function).
+  Let’s see addEventListener() in action:
 
 #### In a closure
 
@@ -148,12 +147,12 @@ JavaScript listens for these user actions and gives you the power to respond imm
    
 		});
 
-	     Notice how the function ran here in 
-	     response to the click event is an anonymous function. It is known 
-	     as an anonymous function or closure because it has no name, and 
-	     it’s passed directly into the addEventListener() function, instead of 
-	     being defined separately and then called (by its name) from the 
-	     addEventListener() function.
+Notice how the function ran here in
+response to the click event is an anonymous function. It is known
+as an anonymous function or closure because it has no name, and
+it’s passed directly into the addEventListener() function, instead of
+being defined separately and then called (by its name) from the
+addEventListener() function.
 
 
 
@@ -183,44 +182,44 @@ JavaScript listens for these user actions and gives you the power to respond imm
   	.addEventListener("click", myFunction);
 
 
-	Again, addEventListener() takes two 
-	arguments, the element the event is expected 
-	to be triggered on, and the function to run 
-	(which is basically the action to take when 
-	that happens). But I will like to draw your 
-	attention to two things about how this external 
-	function is called, and how the event object is 
-	passed through to your function.
-	  First, when you specify the function, you need 
-	to give only the function name, just like you 
-	would pass in a variable. It should not be 
-	wrapped in quotes for it is a function, and not 
-	a string. Though it is a function you are 
-	referencing here, do not place the parenthesis 
-	after the function name. If you do that, then 
-	JavaScript will attempt to call that function 
-	immediately, instead of waiting for the event, 
-	and so will fail. 
+Again, addEventListener() takes two
+arguments, the element the event is expected
+to be triggered on, and the function to run
+(which is basically the action to take when
+that happens). But I will like to draw your
+attention to two things about how this external
+function is called, and how the event object is
+passed through to your function.
+  First, when you specify the function, you need
+to give only the function name, just like you
+would pass in a variable. It should not be
+wrapped in quotes for it is a function, and not
+a string. Though it is a function you are
+referencing here, do not place the parenthesis
+after the function name. If you do that, then
+JavaScript will attempt to call that function
+immediately, instead of waiting for the event,
+and so will fail.
 
 		// no parenthesis after function name
 		myButton.addEventListener("click", 
 	   	     myFunction); 
 
-	  The second thing to note is how the event 
-	object is passed through to your function. 
-	When we passed the function name to 	
-	addEventListener(), unlike the case of the 
-	event listener attribute where we pass in 
-	‘event’ to our event-handler function as we 
-	reference it, with addEventListener(), you do 
-	not do that. You just need to reference the 
-	name of the function, just like you would write 
-	a variable. The addEventListener() method will 
-	capture that triggered event object and 
-	automatically pass it to the target event-
-	handler function you are referencing. That is 
-	why the handler function should accept an 
-	event object (e) within its parenthesis, eg:
+  The second thing to note is how the event
+object is passed through to your function.
+When we passed the function name to
+addEventListener(), unlike the case of the
+event listener attribute where we pass in
+‘event’ to our event-handler function as we
+reference it, with addEventListener(), you do
+not do that. You just need to reference the
+name of the function, just like you would write
+a variable. The addEventListener() method will
+capture that triggered event object and
+automatically pass it to the target event-
+handler function you are referencing. That is
+why the handler function should accept an
+event object (e) within its parenthesis, eg:
 
 		function myFunction(e) {
 			…

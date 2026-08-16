@@ -50,9 +50,9 @@ reliable, performant and fault-tolerant applications. This is also a section whe
 We will be using them a lot in the code examples in this book to show the results we are getting. You will find that I particularly make use of console.log() and alert() the most.
 	
 
--i) document.write(). 
-	To write text on screen, use the write() method on the document 
-	object:
+-i) document.write().
+  To write text on screen, use the write() method on the document
+  object:
 
 		document.write("String to write here");
 
@@ -70,12 +70,12 @@ We will be using them a lot in the code examples in this book to show the result
 
  		document.body.innerHTML += "My data here";
 
-	Take note of the += that is used instead of just =. This ensures that if 
-	you are looping for example, and wish to display several values on 
-	screen, each subsequent value being written will be displayed 
-	without completely wiping what was previously there. Basically, the 
-	+= makes sure that each new line is added to what's already there, 
-	instead of replacing it.
+Take note of the += that is used instead of just =. This ensures that if
+you are looping for example, and wish to display several values on
+screen, each subsequent value being written will be displayed
+without completely wiping what was previously there. Basically, the
++= makes sure that each new line is added to what's already there,
+instead of replacing it.
 
 - ii) innerHTML
   To display text (also known as a string) inside an element on your
@@ -84,10 +84,10 @@ We will be using them a lot in the code examples in this book to show the result
 
 	selectedElement.innerHTML = "String to display in that element";
 
-	As explained above, it is recommended over using document.write(). 
-	Using document.body.innerHTML lets you safely update the page 
-	content without disrupting the rest of your page. Why does 
-	document.write() do this:
+As explained above, it is recommended over using document.write().
+Using document.body.innerHTML lets you safely update the page
+content without disrupting the rest of your page. Why does
+document.write() do this:
 
         * When the browser finishes loading the HTML, it closes the document stream.
         * If document.write() is used after that, it reopens the stream, which deletes everything on the page and writes fresh content.
@@ -160,24 +160,24 @@ We will be using them a lot in the code examples in this book to show the result
   you get back.
 
 -vi) The console object.
-	Another means to display information and much more, to yourself as 
-	the developer is to write to the console using the console object and 
-	its family of functions. Here is a list of them:
-		-console.log()
-		-console.error()
-		-console.warn()
-		-console.info()
-		-console.debug()
-		-console.table()
-		-console.dir()
-		-console.assert()
-		-console.group() and console.groupEnd()
-		-console.time() and console.timeEnd()
+  Another means to display information and much more, to yourself as
+  the developer is to write to the console using the console object and
+  its family of functions. Here is a list of them:
+  -console.log()
+  -console.error()
+  -console.warn()
+  -console.info()
+  -console.debug()
+  -console.table()
+  -console.dir()
+  -console.assert()
+  -console.group() and console.groupEnd()
+  -console.time() and console.timeEnd()
 
 
 ### console.log()
-	This is the most-commonly used method of the console object used 
-	to print something to the browser's console.
+This is the most-commonly used method of the console object used
+to print something to the browser's console.
 
 	let username = "Alice";
 	console.log("Current user:", username);
@@ -560,9 +560,9 @@ Let’s explain what is happening here. Here, we are calling an asynchronous fun
 ### Conclusion and exception handling examples
 To really sum up the essence of exception handling in programming, here are the key points:
 
-	-You can call code that can potentially throw an exception in the 
-	   try block. This is the most common use case. If a function or API 	
-	   may throw an error, you wrap it in try to catch it safely.
+-You can call code that can potentially throw an exception in the
+  try block. This is the most common use case. If a function or API
+  may throw an error, you wrap it in try to catch it safely.
 
   - You can throw your own exceptions in the try block. This is
   perfectly valid and actually a common practice. You can manually
@@ -673,7 +673,7 @@ Output:
   Valid age: 30
 
 
-	Comments: Because we know we want to be throwing exceptions if validation errors are found, we wrap our whole set of validation checks within a try {} block so we can handle them in the catch block.
+Comments: Because we know we want to be throwing exceptions if validation errors are found, we wrap our whole set of validation checks within a try {} block so we can handle them in the catch block.
 
 
 Example 5: Re-throwing and Handling at a Higher Level

@@ -1,5 +1,5 @@
 
-  CHAPTER 1 - INTRODUCTION
+# Chapter 1 — INTRODUCTION
 
 
   - Welcome to the World of JavaScript
@@ -131,16 +131,16 @@ So, if you're ready to learn a powerful language that runs in every web browser,
 		let x = 5; 
 		console.log(x);
 
-	That second line is your first sight of console.log(), so let’s say what it 
-	is before we go any further. It is a built-in JavaScript command that prints 
-	a value out so that you can look at it. What it prints does not appear on the 
-	web page itself; it goes into the browser console, which you open using your 
-	browser’s developer tools (in most browsers, press F12, or right-click the 
-	page and choose Inspect, then click the Console tab). Keep that console open 
-	while you work through this book, because console.log() is the tool you will 
-	reach for most often to check what your code is actually doing. We will look 
-	at it, and at the developer tools, more closely in Chapter 21 (Error 
-	Debugging and Testing).
+That second line is your first sight of console.log(), so let’s say what it
+is before we go any further. It is a built-in JavaScript command that prints
+a value out so that you can look at it. What it prints does not appear on the
+web page itself; it goes into the browser console, which you open using your
+browser’s developer tools (in most browsers, press F12, or right-click the
+page and choose Inspect, then click the Console tab). Keep that console open
+while you work through this book, because console.log() is the tool you will
+reach for most often to check what your code is actually doing. We will look
+at it, and at the developer tools, more closely in Chapter 21 (Error
+Debugging and Testing).
 
   You do not have to end every statement with a semicolon because JavaScript
   has a feature called Automatic Semicolon Insertion (ASI).
@@ -178,7 +178,7 @@ Examples:
 
 			<script src="https://example.com/scriptName.js"></script>
 
-	(Note: You don’t include JavaScript code between the opening and closing <script> tags when using the src attribute.)
+(Note: You don’t include JavaScript code between the opening and closing <script> tags when using the src attribute.)
 
   However, whether the JavaScript code being used on your web page is being pulled from an external file in your local file system, or from an entirely different website on the internet; knowing where to place the JavaScript
 code on your web page is important. Where you place your script in the document has significant performance and behaviour implications.
@@ -189,15 +189,15 @@ code on your web page is important. Where you place your script in the document 
 
   If you have to place code within the head tag section of your web page, then it’s wise to add some kind of code to make the script wait until your HTML page has loaded before it runs. Let’s look at two ways to do this:
 
-	-a)  Add the defer attribute to the <script> tag itself, so that the 
-		script waits until the HTML has finished being parsed before it 
-		runs. Here is how to do that:
+-a)  Add the defer attribute to the <script> tag itself, so that the
+  script waits until the HTML has finished being parsed before it
+  runs. Here is how to do that:
 
 		<script src="/your-script.js" defer></script>
 
-		Notice the ‘defer’ attribute in the opening <script> tag. It is the 
-		HTML5 short way of declaring attributes. The full way will look 
-		like this: defer="". We leave out the '=""' if it has no value.
+Notice the ‘defer’ attribute in the opening <script> tag. It is the
+HTML5 short way of declaring attributes. The full way will look
+like this: defer="". We leave out the '=""' if it has no value.
 
 One thing to note is that defer only works on a script that loads
 an external file using the src attribute. It has no effect on code

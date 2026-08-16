@@ -105,8 +105,8 @@ the output:
 The output:
   This is a backslash: \
 
-	\r Insert a carriage return (rarely used on its own, often
-		combined with \n for compatibility).
+\r Insert a carriage return (rarely used on its own, often
+  combined with \n for compatibility).
 
 		const carriageReturn = "First part\rSecond part"; 
 		console.log(carriageReturn); 

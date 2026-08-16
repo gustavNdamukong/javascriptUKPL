@@ -291,16 +291,16 @@ own later in this chapter.
 
 ## TO RETURN SOMETHING OR TO DO SOMETHING
 
-  	Most often, you want a function to return some kind of 
-data to you, which you need in your program. This could be 
-the result of a mathematical operation which the function 
-has performed, or just some data that the function has 
-fetched for us. In this case we use a ‘return’ keyword within 
-the body of the function to return the data after the function 
-has completed its job. 
- 	It is very common to capture that returned 
-data in a variable so that you can use it further in your 
-program. Here is an example of a function returning 
+  Most often, you want a function to return some kind of
+data to you, which you need in your program. This could be
+the result of a mathematical operation which the function
+has performed, or just some data that the function has
+fetched for us. In this case we use a ‘return’ keyword within
+the body of the function to return the data after the function
+has completed its job.
+  It is very common to capture that returned
+data in a variable so that you can use it further in your
+program. Here is an example of a function returning
 its result.
 
 	function addNumbers(numOne, numTwo)
@@ -464,11 +464,11 @@ Here are the key points about arrow functions:
 	
 	   (arguments) => value;
 
-	  Note that there is no return keyword in that
-	  line. With a single expression the return is
-	  implied, and writing (arguments) => return value
-	  is a SyntaxError. If you do want to write return
-	  out in full, you need the curly braces around it:
+Note that there is no return keyword in that
+line. With a single expression the return is
+implied, and writing (arguments) => return value
+is a SyntaxError. If you do want to write return
+out in full, you need the curly braces around it:
 
 	   (arguments) => { return value; }
 

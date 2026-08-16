@@ -229,9 +229,9 @@ Next, place the following code in your JavaScript file eg index.js which should 
 
   Here is the full explanation of the code:
 
-	-We use an <input type="file"> to let the user select a file from their 
-		device. Here is how we detect a file upload event on a file input 	
-		field:
+-We use an <input type="file"> to let the user select a file from their
+  device. Here is how we detect a file upload event on a file input
+  field:
 
 		fileInput.addEventListener('change', function () {
 			// any code in this block will run when a file is uploaded
@@ -269,8 +269,8 @@ contents of the file. In this case, we extract the file’s contents—
 which is stored in e.target.result, and assign it to the value of the
 <pre> tag in the DOM.
 	
-	-When reading is complete, the file content is displayed inside a 
-		<pre> block using textContent.
+-When reading is complete, the file content is displayed inside a
+  <pre> block using textContent.
 
   - This is a good demonstration of how to load and show file
     content without uploading to a server—all done in the browser.
@@ -464,9 +464,9 @@ onload event on the reader when it is done
 				// ...
 			}
 
-		Once the download button is clicked, the code in the function 
-		block passed as the second argument of the click event listener 
-		looks like this:
+Once the download button is clicked, the code in the function
+block passed as the second argument of the click event listener
+looks like this:
 
 			downloadBtn.addEventListener('click', () => {
   				const blob = new Blob(
@@ -483,8 +483,8 @@ onload event on the reader when it is done
   				setTimeout(() => URL.revokeObjectURL(url), 1000);
 			});
 
-  First, to prepare the contents to be converted into a downloadable
-    file in the browser, we create a bob object from the contents.
+First, to prepare the contents to be converted into a downloadable
+  file in the browser, we create a bob object from the contents.
 
 			const blob = new Blob([modifiedText], { type: 'text/plain' });
 
@@ -1136,11 +1136,11 @@ There are two (2) ways you could do it. Here they are:
 		// Or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
-    The value (string) you pass to io() will be location of your
-    WebSocket server, which can be on your local
-    machine (eg server.js), in which case you would pass in
-    "http://localhost:3000". Note that this is different from
-    "ws://localhost:3000".
+The value (string) you pass to io() will be location of your
+WebSocket server, which can be on your local
+machine (eg server.js), in which case you would pass in
+"http://localhost:3000". Note that this is different from
+"ws://localhost:3000".
 
   - 2) Alternatively, you can use the Node Package Manager (NPM) tool
     which you should have installed on your machine together with
@@ -1157,11 +1157,11 @@ npm install socket.io-client
 		// or io("http://localhost:3000")
 		const socket = io("https://your-server.com"); 
 
-    Again, the value (string) you pass to io() will be the
-    location of your WebSocket server, which can be on your local
-    machine (eg server.js), in which case you would pass in
-    "http://localhost:3000". Note that this is different from
-    "ws://localhost:3000".
+Again, the value (string) you pass to io() will be the
+location of your WebSocket server, which can be on your local
+machine (eg server.js), in which case you would pass in
+"http://localhost:3000". Note that this is different from
+"ws://localhost:3000".
 
 #### Conclusion
 In conclusion, when you are talking to a standard WebSocket server, you create the client end of the connection like so:
@@ -1475,10 +1475,10 @@ As you can see, it uses the FileReader in combination with the DOMParser. The wo
   		.addEventListener('change', (e) => {
 			// ...
 
-	This line listens for when the user chooses a file from an <input 	
-	type="file" id="xmlFileInput">. When that happens, the code inside 
-	the function runs. The event of ‘change’ is what fires in JavaScript 
-	whenever a file upload HTML field is used to select a file. 
+This line listens for when the user chooses a file from an <input
+type="file" id="xmlFileInput">. When that happens, the code inside
+the function runs. The event of ‘change’ is what fires in JavaScript
+whenever a file upload HTML field is used to select a file.
 
   - Next, it gets the File That Was Chosen
 
@@ -1515,13 +1515,13 @@ As you can see, it uses the FileReader in combination with the DOMParser. The wo
     Document, which we can now work with just like any other
     HTML DOM element.
 
-	-Next we get all the <book> elements
+-Next we get all the <book> elements
 
 		const books = xmlDoc.getElementsByTagName("book");
 
-	This grabs all the <book> elements inside the XML. It returns 
-	something like an array, so we can loop through it.
-	-Loop Through the Books and Extract Info
+This grabs all the <book> elements inside the XML. It returns
+something like an array, so we can loop through it.
+-Loop Through the Books and Extract Info
 
 		let output = "";
 		for (let book of books) {
@@ -1541,8 +1541,8 @@ As you can see, it uses the FileReader in combination with the DOMParser. The wo
 
 		document.getElementById("output").textContent = output;
 
-	-Thus, finally, showing all that data inside the DOM <pre> element 
-		with the ID output.
+-Thus, finally, showing all that data inside the DOM <pre> element
+  with the ID output.
 
 Using the DOMParser is the most modern and recommended way to parse XML files.
 

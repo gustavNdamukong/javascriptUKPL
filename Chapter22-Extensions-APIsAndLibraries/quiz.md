@@ -1,4 +1,4 @@
-# QUIZ — Chapter 22: Extensions (APIs and Libraries)
+# QUIZ — Extensions (APIs and Libraries)
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 22: Extensions
 (APIs and Libraries). Work through these after reading the chapter, while the material is fresh —
@@ -68,7 +68,7 @@ are all together in the Answers section further down, numbered to match the ques
 
 11) EXERCISE. Fix the posts example using a callback, so that the third post appears.
 
-    Clue: pass the function itself, not the result of calling it.
+Clue: pass the function itself, not the result of calling it.
 
 
 12) EXERCISE. Use `Promise.all()` to wait for two promises and print both results together.
@@ -167,12 +167,12 @@ http://my-api.com/clothes
    and it is still exactly what `fetch()` does.
 
 
-6) 
-    XMLHttpRequest   the original way to make a request without reloading
-    callbacks        the original way to handle "when it finishes"
-    promises         fixed callback nesting; gave us .then() and .catch()
-    fetch()          a cleaner request API, promise-based from the start
-    async/await      made promise code read like ordinary sequential code
+6)
+  XMLHttpRequest   the original way to make a request without reloading
+  callbacks        the original way to handle "when it finishes"
+  promises         fixed callback nesting; gave us .then() and .catch()
+  fetch()          a cleaner request API, promise-based from the start
+  async/await      made promise code read like ordinary sequential code
 
    Two of them (`XMLHttpRequest`, `fetch`) are about **making the request**. Three (callbacks,
    promises, `async/await`) are about **handling the wait**.
@@ -195,7 +195,7 @@ http://my-api.com/clothes
 
 
 8) `Promise.all()` takes an array of promises and returns a single promise that resolves once
-- *every one** of them has resolved. What you get back is an **array of results, in the order
+**every one** of them has resolved. What you get back is an **array of results, in the order
    you passed them in** — not the order they finished.
 
         Promise.all([p1, p2, p3])
@@ -219,9 +219,9 @@ http://my-api.com/clothes
 
         getData().then(result => console.log(result));   // Done!
 
-    The function you hand to `new Promise` receives two functions of its own: call **`resolve`**
-    with the value on success, or **`reject`** with an error on failure. Nothing happens until
-    one of them is called — which is exactly why the promise can sit and wait.
+The function you hand to `new Promise` receives two functions of its own: call **`resolve`**
+with the value on success, or **`reject`** with an error on failure. Nothing happens until
+one of them is called — which is exactly why the promise can sit and wait.
 
 
 10) 
@@ -236,8 +236,8 @@ http://my-api.com/clothes
 
         showData();
 
-    `await` pauses inside the async function until the promise settles, so the code reads top to
-    bottom even though it is asynchronous. It only works inside a function marked `async`.
+`await` pauses inside the async function until the promise settles, so the code reads top to
+bottom even though it is asynchronous. It only works inside a function marked `async`.
 
   Note that `try...catch` here does the job `.catch()` does in the `.then()` style — which is
   one of the nicest things about `async/await`, since it means asynchronous errors are caught
@@ -256,10 +256,10 @@ http://my-api.com/clothes
 
   Result: all three posts appear.
 
-    The detail worth getting right is on the last line. You pass **`getPosts`**, not
-    **`getPosts()`**. With the brackets you would call the function immediately and hand
-    `createPost` whatever it returned. Without them you hand over the function itself, for
-    `createPost` to call when it is ready.
+The detail worth getting right is on the last line. You pass **`getPosts`**, not
+**`getPosts()`**. With the brackets you would call the function immediately and hand
+`createPost` whatever it returned. Without them you hand over the function itself, for
+`createPost` to call when it is ready.
 
 
 12) 

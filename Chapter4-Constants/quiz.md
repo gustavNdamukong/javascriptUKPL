@@ -1,4 +1,4 @@
-# QUIZ — Chapter 4: Constants
+# QUIZ — Constants
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 4: Constants. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -64,9 +64,9 @@ to match the questions.
 
 6) EXERCISE. Write a small piece of code that proves the rule from question 1 to yourself.
 
-    -Create a const holding an array of three of your favourite foods
-    -Change the first one to something else, and print the array to show that it worked
-    -Then try to replace the whole array, and see what the browser tells you
+-Create a const holding an array of three of your favourite foods
+-Change the first one to something else, and print the array to show that it worked
+-Then try to replace the whole array, and see what the browser tells you
 
   Clue: keep the second part last, because once it throws an error the lines after it will
   not run.

@@ -1,4 +1,4 @@
-# QUIZ — Chapter 13: Databases and Storage
+# QUIZ — Databases and Storage
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 13: Databases and Storage. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -79,9 +79,9 @@ questions.
 
 1) **localStorage** — stays until you delete it. Closing the browser makes no difference.
 
-- *sessionStorage** — wiped the moment the tab is closed.
+**sessionStorage** — wiped the moment the tab is closed.
 
-- *Cookies** — you set the expiry yourself, and they are sent to the server automatically
+**Cookies** — you set the expiry yourself, and they are sent to the server automatically
    with every request.
 
    The clearest way to separate them is by how long the data lives and who can see it.
@@ -216,9 +216,9 @@ questions.
         console.log(recall("user").name);    // "Alice"
         console.log(recall("nothingHere"));  // null
 
-    The null check matters. `JSON.parse(null)` happens to return null without complaining, so
-    this one would survive without the check — but `JSON.parse()` throws a SyntaxError on most
-    other rubbish it is given, so checking first is the habit worth having.
+The null check matters. `JSON.parse(null)` happens to return null without complaining, so
+this one would survive without the check — but `JSON.parse()` throws a SyntaxError on most
+other rubbish it is given, so checking first is the habit worth having.
 
   Using `JSON.stringify()` on everything, even plain text, keeps the pair symmetrical: whatever
   you put in through remember() comes back out of recall() as the same type it went in as.

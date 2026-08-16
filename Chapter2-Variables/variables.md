@@ -57,19 +57,19 @@ names:
   nationalId
   myCaseDetails etc
 
-  A variable can be declared in three ways in JavaScript: 
-	-The var keyword
-		One way is to use the var keyword, for example:
+A variable can be declared in three ways in JavaScript:
+  -The var keyword
+  One way is to use the var keyword, for example:
 
 			var firstName = "John";
 
-	-The let keyword
-		There is the let keyword. Here is an example.
+-The let keyword
+  There is the let keyword. Here is an example.
 
 			let mySurname = "Doe";
 
-	-The const keyword
-		There is the const keyword. Here is an example:
+-The const keyword
+  There is the const keyword. Here is an example:
 
 			const title = "The Day of The Jackal";
 
@@ -272,8 +272,8 @@ Here, a is restricted to the function, so it behaves as expected.
           // ReferenceError: x is not defined
           console.log(x);
 
-      The variable x only exists inside {} and is 
-      not accessible outside.
+The variable x only exists inside {} and is
+not accessible outside.
 
 
 #### -b) If statement block
@@ -298,8 +298,8 @@ Here, a is restricted to the function, so it behaves as expected.
       // ReferenceError: i is not defined
        console.log(i);
 
-    In this example; i is only available inside 
-    the for loop block.
+In this example; i is only available inside
+the for loop block.
 
 
 #### -d) Function block
@@ -463,39 +463,39 @@ Therefore you can see how when using a block, you can place code in them that pe
 
 
 ##### Global scope
-  As a reminder of all what we have learned so far about variables and scopes, here are the take-away points:
-    -Var variables are always global unless 
-      they are used inside a function (they 
-      are function-scoped). This means that 
-      they only adhere to the rules of 
-      function blocks (blocks that are 
-      functions). Using them in blocks (non-
-      function) will not stop them from being 
-      global, unless the block is within a 
-      function, in which case they will be 
-      scoped to the function and not the 
-      block anyway. There is therefore no 
-      point putting them in a block inside a 
-      function. The bottom line is that using 
-      them in a function is the only thing that 
-      will stop them from being global and 
-      they will be local to that function.
-   -Let and const variables will be global 
-     unless they are used within a block 
-     (they are block-scoped). Note that 
-     functions themselves are blocks (see 
-     types of blocks above), therefore let 
-     and const declared inside a function 
-     behave as function-scoped. So, using 
-     them within a function will stop them 
-     from being global, and they will be local 
-     to that function. Also, unlike variables 
-     declared with var; if you placed let and 
-     const variables inside a block within 
-     the function, they will only be defined 
-     and local to that block within the 
-     function, and reaching for them outside 
-     that block gives a ReferenceError.
+As a reminder of all what we have learned so far about variables and scopes, here are the take-away points:
+  -Var variables are always global unless
+  they are used inside a function (they
+  are function-scoped). This means that
+  they only adhere to the rules of
+  function blocks (blocks that are
+  functions). Using them in blocks (non-
+  function) will not stop them from being
+  global, unless the block is within a
+  function, in which case they will be
+  scoped to the function and not the
+  block anyway. There is therefore no
+  point putting them in a block inside a
+  function. The bottom line is that using
+  them in a function is the only thing that
+  will stop them from being global and
+  they will be local to that function.
+-Let and const variables will be global
+  unless they are used within a block
+  (they are block-scoped). Note that
+  functions themselves are blocks (see
+  types of blocks above), therefore let
+  and const declared inside a function
+  behave as function-scoped. So, using
+  them within a function will stop them
+  from being global, and they will be local
+  to that function. Also, unlike variables
+  declared with var; if you placed let and
+  const variables inside a block within
+  the function, they will only be defined
+  and local to that block within the
+  function, and reaching for them outside
+  that block gives a ReferenceError.
 
   Regardless of the limitations the three types of variables can have when they are scoped, they can all still be used as global variables. Do this simply by not scoping them. So, if a variable is declared with var, let or const outside of any block or function, they are global and can be used throughout your entire script. Let’s demonstrate in code.
 
@@ -584,8 +584,8 @@ Inside displayItem(), the local item variable with the value 'dress' shadows the
 
 var becomes a property of window, while let and const do not. They still work everywhere on the page, but they are not stored on the window object.
 
--b) Re-declaring var globally is allowed, 
-       but let and const are not. For example:
+-b) Re-declaring var globally is allowed,
+  but let and const are not. For example:
 
      var a = 100;
      var a = 200; // OK: works fine
@@ -673,7 +673,7 @@ To declare a JavaScript file as a module, you use the type="module" attribute in
 This tells the browser, “This file uses modular JavaScript — isolate its variables and functions from the global scope.”
 That last part is important:
 
-	When a file is loaded as a module, its variables and functions are private by default. They won’t be accessible globally from your HTML or from other script files unless you explicitly export or attach them to the global window object.
+  When a file is loaded as a module, its variables and functions are private by default. They won’t be accessible globally from your HTML or from other script files unless you explicitly export or attach them to the global window object.
 Let us look at an example that will cause an error of a missing function:
 
 Let’s say you define a function like this in your index.js file:
@@ -704,17 +704,17 @@ That’s because fetchPhotos() exists inside the module, not in the global scope
   So how do you resolve this issue? You have two options:
 
 Option 1: Attach the function to the global window object.
-	Inside your index.js, just add:
+  Inside your index.js, just add:
 
 		window.fetchPhotos = fetchPhotos;
 
-	This explicitly exposes the fetchPhotos() function to the global 
-	scope, so HTML can use it.
+This explicitly exposes the fetchPhotos() function to the global
+scope, so HTML can use it.
 
-Option 2: Remove the type="module" attribute from your 
-	<script> tag.
-	If you're not using modern features like import and export, you 
-	can simply treat your script as a regular script:
+Option 2: Remove the type="module" attribute from your
+  <script> tag.
+  If you're not using modern features like import and export, you
+  can simply treat your script as a regular script:
 
 	<script src="index.js"></script>
 

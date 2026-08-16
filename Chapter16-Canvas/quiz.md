@@ -1,4 +1,4 @@
-# QUIZ — Chapter 16: The Canvas Element
+# QUIZ — The Canvas Element
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 16: The Canvas
 Element. Work through these after reading the chapter, while the material is fresh — recall
@@ -306,9 +306,9 @@ are all together in the Answers section further down, numbered to match the ques
             return true;
         }
 
-    The radius is the whole point. `ball.x` is the **centre**, so comparing it to the walls on
-    its own would let half the ball disappear off the edge before anything complained. Subtract
-    the radius to get the left and top edges, add it to get the right and bottom.
+The radius is the whole point. `ball.x` is the **centre**, so comparing it to the walls on
+its own would let half the ball disappear off the edge before anything complained. Subtract
+the radius to get the left and top edges, add it to get the right and bottom.
 
   The same four checks written more compactly, once you are comfortable with them:
 

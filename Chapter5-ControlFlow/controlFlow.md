@@ -1,7 +1,7 @@
 
 
 
-# Chapter 5 — CONTROL FLOW (OCLS)
+# Chapter 5 — CONTROL FLOW
 
 - OCLS (Operators, Conditionals, Loops, Switch)
 
@@ -127,8 +127,8 @@ The addition operator + is like the addition sign in mathematics (represented by
 The value of sum will be 4.	
 	
 
-    Minus operator
-  The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
+  Minus operator
+The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
 				
 		let num = 3 - 2;
 			
@@ -194,8 +194,8 @@ An incremental operator ++ is used to quickly add 1 to a number. Normally, there
 Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However, if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
 
 
-    Decremental operator
-  This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
+  Decremental operator
+This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
 
   a) By using the subtraction operator
 
@@ -227,7 +227,7 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
 #### -3) Comparison operators
 
 ##### Equality operator
-	The equal operator == is used to check if a value is equal to another value. It checks if the values of both operands match (but not their types). A common mistake is to mistake this for the assignment operator. This equal operator is usually used in conditional statements to verify if the value of a 	variable for example is equal to a specific value. We will learn all about 	conditional statements shortly, when we come to look at conditionals. For now, just remember that you need two mathematical equal signs, not just one, to check if two values are the same. It looks like this:	
+The equal operator == is used to check if a value is equal to another value. It checks if the values of both operands match (but not their types). A common mistake is to mistake this for the assignment operator. This equal operator is usually used in conditional statements to verify if the value of a 	variable for example is equal to a specific value. We will learn all about 	conditional statements shortly, when we come to look at conditionals. For now, just remember that you need two mathematical equal signs, not just one, to check if two values are the same. It looks like this:
 
 		let colour = "green";
 
@@ -235,7 +235,7 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
     			console.log("The colour is green");
 		}
 			
-	In this example, we have assigned the value of “green” to a variable colour, then used the equal operator (==) to check if its value is actually equal to “green”.
+In this example, we have assigned the value of “green” to a variable colour, then used the equal operator (==) to check if its value is actually equal to “green”.
 
 	
 ##### Strict equality operator
@@ -271,30 +271,30 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
 So always remember that when the == (equal) operator does not seem to 	work, just use the === (identical) operator and it will save the day as === checks both the value and the type.			
 
 		
-	Greater than operator
-	The greater than operator > is the same as the greater than sign in math. For 	example:
+Greater than operator
+The greater than operator > is the same as the greater than sign in math. For 	example:
  				
 		let greaterThan = 2 > 1;
 			
 The value of greaterThan is true.
 
 
-	Less than operator
-	The less than operator < is the same as the less than sign in math. For 	example:
+Less than operator
+The less than operator < is the same as the less than sign in math. For 	example:
 			
 		let lessThan = 2 < 1;
 			
 The value of lessThan is false because 2 is not less than 1.
 
-	Greater than or equal to operator
-	The greater than or equal to operator >= specifies that the value on the left is either greater than, or equal to the number on the right. It is the same as the greater than or equal to sign in math. For example:
+Greater than or equal to operator
+The greater than or equal to operator >= specifies that the value on the left is either greater than, or equal to the number on the right. It is the same as the greater than or equal to sign in math. For example:
 				
 	let greaterThanOrEqualTo = 2 >= 1;
 			
 The value of greaterThanOrEqualTo is true because 2 is greater than 1.
 
-	Less than or equal to operator			
-	The less than or equal to operator <= specifies that the value on the left is either less than, or equal to the number on the right. It is the same as 		the less than or equal to sign in math. For example:
+Less than or equal to operator
+The less than or equal to operator <= specifies that the value on the left is either less than, or equal to the number on the right. It is the same as 		the less than or equal to sign in math. For example:
 
 			let lessThanOrEqualTo = 2 <= 2;
 			
@@ -325,8 +325,8 @@ For example:
 The value of the variable isTwo will be true. This is because the value of the 	variable two is 2 and not 1, so isTwo which states that two is not equal to 1 is 	correct, hence the result is true. != is known as the “Not Equal” operator. In the same way, you can flip a true or false result round using the Logical Not (!), or check that two things differ in value or in type using the Strict Not Equal (!==).
 
 
-		OR operator
-	The OR operator or || works with two conditional expressions, one on either side of the double pipe characters. It states that if the conditional on either side of its double pipe characters (||) is true, then the result is true. It will only return false if both conditionals are false. Basically, as long as one conditional on either side of its pipe characters is true, then the whole expression is true. For example:
+  OR operator
+The OR operator or || works with two conditional expressions, one on either side of the double pipe characters. It states that if the conditional on either side of its double pipe characters (||) is true, then the result is true. It will only return false if both conditionals are false. Basically, as long as one conditional on either side of its pipe characters is true, then the whole expression is true. For example:
 				
 		if (trafficLightColor == 'green' || trafficLightColor == 'amber')
 		{
@@ -334,8 +334,8 @@ The value of the variable isTwo will be true. This is because the value of the 	
 		}			
 
 	
-		And operator			
-	The And or && operator is very similar to the OR operator. The only 		difference is that unlike with the OR operator where if just one conditional is 	true, it passes, with the And operator, both conditionals on either side of it must be true for it to return true. For example:
+  And operator
+The And or && operator is very similar to the OR operator. The only 		difference is that unlike with the OR operator where if just one conditional is 	true, it passes, with the And operator, both conditionals on either side of it must be true for it to return true. For example:
 				
 		if (trafficLightColor == 'red' && carStops == false)
 		{
@@ -343,8 +343,8 @@ The value of the variable isTwo will be true. This is because the value of the 	
 		}
 
 
-		Ternary operator
-	The ternary operator is a quick way to assign a value to a variable based on a conditional statement. It is a shorthand version of the if...else statement that allows quick assignments. A ternary operator is very powerful and handy. You would typically use it in situations where there is not much code you need to write if an expression is true. The conditional could be as short as one line of code. If you had to write a lot of code, then the block ({}) that an if statement provides would be preferable. With a ternary operator, you probably just need to set a variable’s value depending on some condition, so it is quick and short. Here is the syntax:
+  Ternary operator
+The ternary operator is a quick way to assign a value to a variable based on a conditional statement. It is a shorthand version of the if...else statement that allows quick assignments. A ternary operator is very powerful and handy. You would typically use it in situations where there is not much code you need to write if an expression is true. The conditional could be as short as one line of code. If you had to write a lot of code, then the block ({}) that an if statement provides would be preferable. With a ternary operator, you probably just need to set a variable’s value depending on some condition, so it is quick and short. Here is the syntax:
 
 	condition ? runIfTrue : runIfFalse;
 
@@ -413,9 +413,9 @@ It is completely valid, and += means that the value on the right (after the = ch
 		let c = 6;
 		c *= 2;		// c is now 12
 
-	Note that these operators always work on a variable. You cannot write
-	1 += 5; because there is nothing there to update - 1 is just the number
-	1, and it will always be the number 1.
+Note that these operators always work on a variable. You cannot write
+1 += 5; because there is nothing there to update - 1 is just the number
+1, and it will always be the number 1.
 
 
   The operator always goes before the equal sign:
@@ -796,8 +796,8 @@ Cherry
 
 #### -6) The forEach() Loop (Used for Arrays)
 
-		         The forEach() method is an array method that executes a 
-			function on each element.
+  The forEach() method is an array method that executes a
+function on each element.
 
 Here is the syntax:
 

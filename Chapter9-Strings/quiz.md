@@ -1,4 +1,4 @@
-# QUIZ — Chapter 9: Strings
+# QUIZ — Strings
 
 This page contains the Q & A (questions and answers) for this chapter — Chapter 9: Strings. Work through
 these after reading the chapter, while the material is fresh — recall practice is what cements
@@ -106,11 +106,11 @@ sport[sport.length - 2]
 
    Two ways to fix it:
 
-- *Use a different kind of quote inside:**
+**Use a different kind of quote inside:**
 
         const sentence = "He said hello to 'her'";
 
-- *Or escape the inner quotes with a backslash:**
+**Or escape the inner quotes with a backslash:**
 
         const sentence = "He said hello to \"her\"";
 
