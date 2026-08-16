@@ -124,8 +124,8 @@ A variable can be declared in three ways in JavaScript:
   will then exist but its value will be undefined. You can then assign a value to it 
  later. Here is how to declare a variable with no value:
 
-let userName;
-let age;
+	let userName;
+	let age;
 
 Once you have declared the variable, when assigning a value to it later, you will 
  no longer need to use the var or let keyword. For example, to assign values to 
@@ -313,7 +313,7 @@ the for loop block.
        // ReferenceError: z is not defined
        console.log(z); 
 
-  Functions are also considered blocks, and variables declared inside them are scoped to the function (function-scoped).
+	  Functions are also considered blocks, and variables declared inside them are scoped to the function (function-scoped).
 
 
 
@@ -351,8 +351,8 @@ This {} simply defines a scope. It doesn’t store values like an object or an a
          age: 25
      };
 
-// This will write to the console: Alice
-console.log(person.name);
+	// This will write to the console: Alice
+	console.log(person.name);
 
 This {} is an object literal, which is used to store data. Let’s look at some key differences to help us distinguish between a block and an object: 
 - A block does not have keys—it just
@@ -417,7 +417,7 @@ Here is an example of fetching and processing API data in an isolated block.
         console.log("Finished processing.");
     }
 
-fetchUserData();
+	fetchUserData();
 
 The fetchUserData() function has a block inside of it. Outside that block, the blocked-scoped variables ‘response’, ‘data’, ‘username’, and ‘age’ no longer exist. This is because they are out of scope, and that is the idea. The benefit is a tidier program, where a name only exists for as long as it is actually needed.
 
@@ -499,10 +499,10 @@ As a reminder of all what we have learned so far about variables and scopes, her
 
   Regardless of the limitations the three types of variables can have when they are scoped, they can all still be used as global variables. Do this simply by not scoping them. So, if a variable is declared with var, let or const outside of any block or function, they are global and can be used throughout your entire script. Let’s demonstrate in code.
 
-  const fee = 20;  // Global constant
-  const price = 100; // Global constant
-  let count = 0;  // Global variable
-  var shopName = "OvalFoods"; // Global variable
+	  const fee = 20;  // Global constant
+	  const price = 100; // Global constant
+	  let count = 0;  // Global variable
+	  var shopName = "OvalFoods"; // Global variable
 
     function getAmount(quantity = 1)  
     {
@@ -521,7 +521,7 @@ The fee and price variables are declared with const at the top level, making the
 
 The count and shopName variables are declared with let and var respectively at the top level, making them global variables as well. Notice that getAmount() names its own parameter quantity rather than count. Had we named it count too, it would have hidden the global count from view inside the function, which is a trap we look at in a moment under shadowing.
 
-The function getAmount() is able to access these global variables, and so will any other code on this page whether they are in a function, a block or neither.
+	The function getAmount() is able to access these global variables, and so will any other code on this page whether they are in a function, a block or neither.
 
   We have not talked about a variable declared with neither of the keywords var, let or const. This is also possible when you are running JavaScript in non-strict mode. Strict mode is a stricter set of rules that you can switch on by putting the line "use strict"; at the top of your file, and which JavaScript modules turn on automatically. Normally strict mode will force you to add those keywords (declarations), but non-strict mode will not. So in non-strict mode, a variable declared without any of those keywords is automatically a global variable. 
 
@@ -582,7 +582,7 @@ Inside displayItem(), the local item variable with the value 'dress' shadows the
       // undefined (const is not attached)
       console.log(window.z);
 
-var becomes a property of window, while let and const do not. They still work everywhere on the page, but they are not stored on the window object.
+	var becomes a property of window, while let and const do not. They still work everywhere on the page, but they are not stored on the window object.
 
 -b) Re-declaring var globally is allowed,
   but let and const are not. For example:
@@ -599,13 +599,13 @@ var becomes a property of window, while let and const do not. They still work ev
 Note that re-declaring is not re-assigning. 
 Re-declaring is the same as in the above example where we use the var, or let or const keyword (declaration) as if declaring the variable for the first time like so:
 
-   let b = 300;
-   let b = 400;
+	   let b = 300;
+	   let b = 400;
 
 Re-assigning is when you simply update the value of an already existing variable, for example: 
 
-   let count = 0;
-   count = 1;
+	   let count = 0;
+	   count = 1;
 
 The assigning code references the variable name (count) without needing to re-declare it (using let) and updates its value. 
 

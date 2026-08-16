@@ -444,7 +444,7 @@ Here is another example demonstrating how and when to use the two notations:
   Gray
   London
 
-But console.log(person.other-name);
+	But console.log(person.other-name);
 
 Will not throw an error, but will hand you back NaN, which in JavaScript is a special value meaning “Not a Number”. You can use dot notation (object.key) only if the property name is a valid JavaScript identifier (no spaces, no hyphens, no starting numbers). If the name contains symbols or spaces, you must use bracket notation. JavaScript interprets obj.other-name as a math expression: 
 
@@ -609,7 +609,7 @@ So you can have a mix of both types of arrays in the same multi-dimensional stru
 	];
 
 
-console.log(numeric_2d[1]);
+	console.log(numeric_2d[1]);
 
 This console statement writes the value of the second element in the numeric_2d array (numeric_2d[1]), counting the index from 0, to the console. The output will be 
 	

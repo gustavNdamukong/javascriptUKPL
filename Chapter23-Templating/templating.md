@@ -148,7 +148,7 @@ In this example, we select our template script tag, which has the id attribute v
 
 Next, we prepare our data to inject into our template, to be assigned to the template variables, which in our case are title and message. We assign this data to a variable named data.
 
-Next, we select the target element where we wish to inject the template on our web page. In our case, that target HTML element is the div with the id of “output”. As we select this target div, we inject our template and data into it by assigning to it the template() function (which our template has now become), that in turn takes our data as its argument. For clarity, it would also work if we did it like so:
+	Next, we select the target element where we wish to inject the template on our web page. In our case, that target HTML element is the div with the id of “output”. As we select this target div, we inject our template and data into it by assigning to it the template() function (which our template has now become), that in turn takes our data as its argument. For clarity, it would also work if we did it like so:
 
 	// our template is now a function that accepts our data
 	const templateAndData = template(data);

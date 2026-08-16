@@ -322,7 +322,7 @@ For example:
 		let two = 2;
 		let isTwo = two != 1;
 			
-The value of the variable isTwo will be true. This is because the value of the 	variable two is 2 and not 1, so isTwo which states that two is not equal to 1 is 	correct, hence the result is true. != is known as the “Not Equal” operator. In the same way, you can flip a true or false result round using the Logical Not (!), or check that two things differ in value or in type using the Strict Not Equal (!==).
+	The value of the variable isTwo will be true. This is because the value of the 	variable two is 2 and not 1, so isTwo which states that two is not equal to 1 is 	correct, hence the result is true. != is known as the “Not Equal” operator. In the same way, you can flip a true or false result round using the Logical Not (!), or check that two things differ in value or in type using the Strict Not Equal (!==).
 
 
   OR operator
@@ -376,13 +376,13 @@ Here, the value of light is 'red', so the last message, 'Stop', will be printed.
 
 #### Combining math operators with the assignment operator
 
-  Sometimes, you will come across two operators being combined like this: += for example 
+	  Sometimes, you will come across two operators being combined like this: += for example 
 
 	let price = 10;
 	let tax = 3; 
 	let totalPrice = price += tax;
 
-It is completely valid, and += means that the value on the right (after the = character) is added to the value on the left (before the + character), rather than used to replace it. Note and remember that the += operator also works for strings and adds to (extends) a string.
+	It is completely valid, and += means that the value on the right (after the = character) is added to the value on the left (before the + character), rather than used to replace it. Note and remember that the += operator also works for strings and adds to (extends) a string.
 
 | =  e.g.  j = 3 | which means j = 3 |
 |---|---|

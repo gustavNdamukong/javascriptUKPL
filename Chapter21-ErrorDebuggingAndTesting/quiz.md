@@ -87,7 +87,7 @@ TypeError      ReferenceError      RangeError      SyntaxError
    So the same line behaves completely differently depending on timing, which is a horrible
    property for a function to have.
 
-   The replacement is `innerHTML`, and specifically `+=` rather than `=`:
+	   The replacement is `innerHTML`, and specifically `+=` rather than `=`:
 
         document.body.innerHTML += "My data here";
 

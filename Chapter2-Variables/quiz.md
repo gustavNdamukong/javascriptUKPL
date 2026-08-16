@@ -237,8 +237,8 @@ Error: ReferenceError: Cannot access 'price' before initialization
         let total = 0;
         total = 1;        // re-assigning - perfectly fine
 
-   var allows re-declaration, which is one of the ways it lets mistakes slip through unnoticed.
-   let and const do not.
+	   var allows re-declaration, which is one of the ways it lets mistakes slip through unnoticed.
+	   let and const do not.
 
 
 9) It prints:

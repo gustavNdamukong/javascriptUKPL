@@ -256,7 +256,7 @@ The above object is created directly using {}.
     car.brand = "Toyota";
     car.model = "Camry";
 
-This above object is created dynamically using new Object(), then properties are added later.
+	This above object is created dynamically using new Object(), then properties are added later.
 
   Why use object literals?
   - More concise (faster to write than new
@@ -852,7 +852,7 @@ Let me explain the above example. Symbol('secret') in JavaScript is how you crea
   - But if you know the Symbol, you can still access the value using
   user[secretKey].
 
-A Symbol is useful for the following reasons; 
+	A Symbol is useful for the following reasons; 
 
   - It helps avoid property name collisions (two pieces of code
   accidentally using the same key).

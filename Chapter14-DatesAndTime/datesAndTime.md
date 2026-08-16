@@ -35,45 +35,45 @@ JavaScript provides a built-in Date object for handling dates and times. The Dat
 ## Create a date
   You can create a date in several ways, here are some examples:
 
-   // Current date & time
-   let now = new Date();
+	   // Current date & time
+	   let now = new Date();
 
-   // Mar 16, 2024 (Months are 0-indexed)
-   let specificDate = new Date(2024, 2, 16);
+	   // Mar 16, 2024 (Months are 0-indexed)
+	   let specificDate = new Date(2024, 2, 16);
 
-   // ISO 8601 format (UTC)
-   let fromString = new   
-        Date("2024-03-16T12:00:00Z");
+	   // ISO 8601 format (UTC)
+	   let fromString = new   
+	        Date("2024-03-16T12:00:00Z");
 
-   // Using milliseconds
-   let fromTimestamp = new 
-        Date(1710590400000);
+	   // Using milliseconds
+	   let fromTimestamp = new 
+	        Date(1710590400000);
 
 
 
 ## Formatting dates
 JavaScript provides basic date formatting with various methods of the Date object. The way you use them is to first of all create a date—which will be an instance of the Date object, then call any of the formatting methods on it to format the date. Here are the Date formatting methods in action:
 
-  let now = new Date();
+	  let now = new Date();
 
- // Make a string of the date eg: "Sat Mar 16
-// 2024"
-console.log(now.toDateString());
+	 // Make a string of the date eg: "Sat Mar 16
+	// 2024"
+	console.log(now.toDateString());
 
-// show the date in terms of time eg: 
-// "12:34:56 GMT+0200"
-console.log(now.toTimeString()); 
+	// show the date in terms of time eg: 
+	// "12:34:56 GMT+0200"
+	console.log(now.toTimeString()); 
 
-// convert to an ISO string eg: 
-// "2024-03-16T10:34:56.789Z" (UTC)
-console.log(now.toISOString()); 
+	// convert to an ISO string eg: 
+	// "2024-03-16T10:34:56.789Z" (UTC)
+	console.log(now.toISOString()); 
 
-// Formats based on user's locale
-console.log(now.toLocaleString());
+	// Formats based on user's locale
+	console.log(now.toLocaleString());
 
   However, for advanced formatting, Intl.DateTimeFormat is recommended. For example:
 
-  let now = new Date();
+	  let now = new Date();
 
   let formatter = 
        new Intl.DateTimeFormat(
@@ -86,9 +86,9 @@ console.log(now.toLocaleString());
            }
        );
 
-   // this will print to the console something
-   // like this: "Saturday, March 16, 2024"
-   console.log(formatter.format(now));
+	   // this will print to the console something
+	   // like this: "Saturday, March 16, 2024"
+	   console.log(formatter.format(now));
 
 As you can see, the way the DateTimeFormat() method of the Intl object works, is as follows:
 - the first argument is the locale, which is a language-and-region

@@ -772,8 +772,8 @@ Here is the modified code to implement pixel erasing using clearRect():
 
 #### JavaScript code
 
-const canvas = document.getElementById("gameCanvas");
-const ctx = canvas.getContext("2d");
+	const canvas = document.getElementById("gameCanvas");
+	const ctx = canvas.getContext("2d");
 
 // Ball object
 const ball = {
@@ -795,40 +795,40 @@ const rock = {
   color: "gray"
 };
 
-// Draw the ball
-function drawBall() {
-  ctx.beginPath();
-  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
-  ctx.fillStyle = ball.color;
-  ctx.fill();
-  ctx.closePath();
-}
+	// Draw the ball
+	function drawBall() {
+	  ctx.beginPath();
+	  ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+	  ctx.fillStyle = ball.color;
+	  ctx.fill();
+	  ctx.closePath();
+	}
 
-// Draw the rock
-function drawRock() {
-  ctx.fillStyle = rock.color;
-  ctx.fillRect(rock.x, rock.y, rock.width, rock.height);
-}
+	// Draw the rock
+	function drawRock() {
+	  ctx.fillStyle = rock.color;
+	  ctx.fillRect(rock.x, rock.y, rock.width, rock.height);
+	}
 
-// Check if ball will hit the wall or rock
-function canMove(dx, dy) {
-  const nextX = ball.x + dx;
-  const nextY = ball.y + dy;
+	// Check if ball will hit the wall or rock
+	function canMove(dx, dy) {
+	  const nextX = ball.x + dx;
+	  const nextY = ball.y + dy;
 
-  // Check canvas boundaries
-  if (nextX - ball.radius < 0 || nextX + ball.radius > canvas.width) return false;
-  if (nextY - ball.radius < 0 || nextY + ball.radius > canvas.height) return false;
+	  // Check canvas boundaries
+	  if (nextX - ball.radius < 0 || nextX + ball.radius > canvas.width) return false;
+	  if (nextY - ball.radius < 0 || nextY + ball.radius > canvas.height) return false;
 
-  // Check rock collision
-  const ballLeft = nextX - ball.radius;
-  const ballRight = nextX + ball.radius;
-  const ballTop = nextY - ball.radius;
-  const ballBottom = nextY + ball.radius;
+	  // Check rock collision
+	  const ballLeft = nextX - ball.radius;
+	  const ballRight = nextX + ball.radius;
+	  const ballTop = nextY - ball.radius;
+	  const ballBottom = nextY + ball.radius;
 
-  const rockLeft = rock.x;
-  const rockRight = rock.x + rock.width;
-  const rockTop = rock.y;
-  const rockBottom = rock.y + rock.height;
+	  const rockLeft = rock.x;
+	  const rockRight = rock.x + rock.width;
+	  const rockTop = rock.y;
+	  const rockBottom = rock.y + rock.height;
 
   const hitRock =
     ballRight > rockLeft &&
@@ -836,18 +836,18 @@ function canMove(dx, dy) {
     ballBottom > rockTop &&
     ballTop < rockBottom;
 
-  return !hitRock; // Only move if no collision
-}
+	  return !hitRock; // Only move if no collision
+	}
 
-// Handle arrow key movement
-document.addEventListener("keydown", (e) => {
-  let dx = 0;
-  let dy = 0;
+	// Handle arrow key movement
+	document.addEventListener("keydown", (e) => {
+	  let dx = 0;
+	  let dy = 0;
 
-  if (e.key === "ArrowUp") dy = -ball.speed;
-  if (e.key === "ArrowDown") dy = ball.speed;
-  if (e.key === "ArrowLeft") dx = -ball.speed;
-  if (e.key === "ArrowRight") dx = ball.speed;
+	  if (e.key === "ArrowUp") dy = -ball.speed;
+	  if (e.key === "ArrowDown") dy = ball.speed;
+	  if (e.key === "ArrowLeft") dx = -ball.speed;
+	  if (e.key === "ArrowRight") dx = ball.speed;
 
   // Redraw canvas with updated position
   if (canMove(dx, dy)) {
@@ -857,19 +857,19 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Redraw everything
-function draw() {
-  // Clear the canvas
-  ctx.clearRect(0, 0, canvas.width, canvas.height); 
-  // Draw the obstacle
-  drawRock(); 
+	// Redraw everything
+	function draw() {
+	  // Clear the canvas
+	  ctx.clearRect(0, 0, canvas.width, canvas.height); 
+	  // Draw the obstacle
+	  drawRock(); 
   
-  // Draw the ball
-  drawBall();  
-}
+	  // Draw the ball
+	  drawBall();  
+	}
 
-// Initial draw
-draw(); 
+	// Initial draw
+	draw(); 
 
 
 Explanation:
@@ -1004,7 +1004,7 @@ The position itself is updated right there in the key handler. The
 draw() function is then called to clear the canvas and redraw
 everything in its new place.
 
-Another common way to animate is using the built-in function requestAnimationFrame(). That method is used when we want to make something move continuously or very smoothly—like a character that keeps walking or a bouncing ball. Here is the syntax of using requestAnimationFrame() function:
+	Another common way to animate is using the built-in function requestAnimationFrame(). That method is used when we want to make something move continuously or very smoothly—like a character that keeps walking or a bouncing ball. Here is the syntax of using requestAnimationFrame() function:
 
 	function animate() {
   		// Move something

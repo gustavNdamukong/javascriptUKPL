@@ -58,7 +58,7 @@ down, numbered to match the questions.
    Clue: one is about a name, the other is about a missing value.
 
 
-8) `rex` is created from `class Dog extends Animal`. What do these three give you?
+	8) `rex` is created from `class Dog extends Animal`. What do these three give you?
 
 rex instanceof Dog
 rex instanceof Animal

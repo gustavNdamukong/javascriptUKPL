@@ -33,7 +33,7 @@ questions.
    Clue: read that line and try to say out loud what the third and fourth arguments mean.
 
 
-4) What does the Factory pattern give you that calling `new Dog()` directly does not?
+	4) What does the Factory pattern give you that calling `new Dog()` directly does not?
 
    Clue: think about who has to know the name of the class.
 
@@ -131,7 +131,7 @@ method on each.
 3) `build()` is the finishing step of the Builder pattern. It hands back the completed object,
    and it is the natural place to check the object is valid before letting it out.
 
-   What is wrong with that `new User(...)` line is that it is unreadable:
+	   What is wrong with that `new User(...)` line is that it is unreadable:
 
         const user = new User("John", 25, true, false, "admin");
 
@@ -179,7 +179,7 @@ method on each.
    `Dog` at all. So if you later rename the class, split it in two, or decide that "dog" should
    return a `Puppy` on Tuesdays, you change the factory and nothing else.
 
-   With `new Dog()` scattered through your program, every one of those places has to change.
+	   With `new Dog()` scattered through your program, every one of those places has to change.
 
 
 5) The console shows:

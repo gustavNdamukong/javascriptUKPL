@@ -154,8 +154,8 @@ In this reading demonstration, we will loop through all the todoList items grabb
       
 	ul.appendChild(li);
       
-   });
-}
+	   });
+	}
 
 
 
@@ -232,13 +232,13 @@ How to save data to LocalStorage
 				JSON.stringify(stuffTodo)
 			);
          
-			// refresh page so the landing page part of the 
-			// code gets the updated list
-         		window.location.reload();
-      		}
-   	}
-   	e.preventDefault();
-}
+				// refresh page so the landing page part of the 
+				// code gets the updated list
+	         		window.location.reload();
+	      		}
+	   	}
+	   	e.preventDefault();
+	}
 
 
 
@@ -263,10 +263,10 @@ function getId()
 					LOCAL_STORAGE_TODO_KEY
 				)).length - 1].id);
       
-		let idFigure = IdNum + 1;
-      		return idFigure;
-   	}
-}
+			let idFigure = IdNum + 1;
+	      		return idFigure;
+	   	}
+	}
 
 
 
@@ -388,8 +388,8 @@ Here is an example of removing an item from our example todo list.
       		}
    	});
    
-   	item.classList.add('todo-list-item-fall');
-}
+	   	item.classList.add('todo-list-item-fall');
+	}
 
 
 

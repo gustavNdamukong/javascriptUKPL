@@ -46,11 +46,11 @@
 ### -i) Extracting the value from form fields
   With this approach, you simply use any of the available element selector properties of the HTMLElement object to select a form field and then grab its value. Here is an example, here is how you extract the values of the username and the email fields of the above form by selecting them based on their id attributes:
 
-let username = 	
-	document.getElementById("username").value;
+	let username = 	
+		document.getElementById("username").value;
 
-let email = 	
-	document.getElementById("email").value;
+	let email = 	
+		document.getElementById("email").value;
 
   This works, but it is not flexible because it requires you to manually select each field and get its value. It could be tedious and hard to maintain for large forms with many fields, especially if some of those form fields may be dynamically added.
   If you have a file field to process, for example:
@@ -90,8 +90,8 @@ When an event (like submit) is triggered on a form, e.target refers to the `<for
 
 Let’s look at a demonstration of how to use the elements property to process our myForm example above. We will add an event listener to our myForm form, and write a closure (anonymous function) to immediately handle the form submission upon the event occurring.
 
-   document.getElementById("myForm")
-	.addEventListener("submit", function(e) {
+	   document.getElementById("myForm")
+		.addEventListener("submit", function(e) {
 
 	// Prevent page refresh
     	e.preventDefault(); 
@@ -105,9 +105,9 @@ Let’s look at a demonstration of how to use the elements property to process o
 	// Logs all form elements
     	console.log(formElements); 
 
-	let username = formElements.username.value;
-	let email = formElements.email.value;
-   });
+		let username = formElements.username.value;
+		let email = formElements.email.value;
+	   });
 
 
 This is how .elements works:
@@ -200,8 +200,8 @@ You do this for as many fields on your form as you wish to retrieve values for.
 Notice how we have used the get() method of the FormData object to retrieve the values submitted by the user of our form. The event listened for was a ‘submit’ event, which is the first argument passed to the addEventListener() method of the HTMLElement object, which is the method used in listening for events. The second argument to addEventListener() is your desired action (the thing you want done) in response to that event occurring. This is usually a named function in your code which will automatically be run, or a closure (anonymous function) which is run in the same way. See Chapter 24 (Events Handling) to learn more about how events work in JavaScript. 
   Notice also that inside myFunction, we invoke the FormData() object, passing it a reference (selection) of our form-which was selected by its id like so: document.getElementById("myForm") before adding the submit event listener to it.
 
-document.getElementById("myForm")
-		.addEventListener("submit", myFunction); 
+	document.getElementById("myForm")
+			.addEventListener("submit", myFunction); 
 
 The reference passed to FormData() is written as e.target which always refers to the element that triggered the event (the element the event occurred on). FormData() will then know how to wrap itself around that form element and apply all its methods on it.
 

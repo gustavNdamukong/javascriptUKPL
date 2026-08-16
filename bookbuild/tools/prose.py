@@ -23,7 +23,7 @@ FUNC = {'the','of','to','is','a','and','you','it','that','this','which','when',
 HARD_CODE = re.compile(
     r'^\s*(?://|#|/\*|\*/)'                        # a comment line
     r'|^\s*[\}\)\]];?\s*$'                         # only closes a block
-    r'|^\s*</?[a-zA-Z][\w-]*[^>]*>\s*$'            # a line that is only a tag
+    r'|^\s*</?[a-zA-Z][\w:.-]*[^>]*>\s*$'          # only a tag (incl. ns:name)
     r'|;\s*(?://.*)?$'                             # ends in a semicolon
     r'|^\s*(?:const|let|var)\s+[\w$]+'             # a declaration
     r'|^\s*(?:return|import|export|def|elif|else)\b'

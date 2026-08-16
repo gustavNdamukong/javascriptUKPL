@@ -60,7 +60,7 @@ questions.
    Clue: typeof grabs hold of what is next to it before the + gets a look in.
 
 
-7) What is the difference between == and === when comparing null and undefined?
+	7) What is the difference between == and === when comparing null and undefined?
 
    Clue: one of them cares about the type, the other does not.
 

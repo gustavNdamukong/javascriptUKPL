@@ -763,9 +763,9 @@ This pattern is useful when a lower-level function detects an error but wants a 
   		console.log('Test failed');
 	}
 
-// This LOGS an error if the condition is false. Note that it does not
-// throw - the lines after it still run
-console.assert(add(1, 2) === 3, 'Test failed: add(1, 2) should equal 3');
+	// This LOGS an error if the condition is false. Note that it does not
+	// throw - the lines after it still run
+	console.assert(add(1, 2) === 3, 'Test failed: add(1, 2) should equal 3');
 
 Using console.assert() will log an error to the console and display the message string that you pass as its second argument (in this case above: 'Test failed: add(1, 2) should equal 3'), if the expression in its first argument evaluates to false.
   While manual testing like this is fine for beginners or toy projects, and for learning logic and debugging, it is not scalable for large or real-world apps. In professional JavaScript development, we use libraries like:

@@ -374,7 +374,7 @@ As I indicated earlier, setting up such a backend server is beyond the scope of 
 
 
 #### Setting up a local SOAP server with Node.js
-  If you have a local server and hosted a SOAP API on your local server, it will be possible to access this SOAP API from frontend code running on the same server. Let us just say you host a SOAP API on your local server (e.g., localhost:3000/soap-api) and your frontend code (HTML/JS) is also served from the same origin (e.g., `localhost:3000/index.html`), you can access the SOAP API without CORS issues. The reason why it works is simple; 
+	  If you have a local server and hosted a SOAP API on your local server, it will be possible to access this SOAP API from frontend code running on the same server. Let us just say you host a SOAP API on your local server (e.g., localhost:3000/soap-api) and your frontend code (HTML/JS) is also served from the same origin (e.g., `localhost:3000/index.html`), you can access the SOAP API without CORS issues. The reason why it works is simple; 
 
   - The Same-Origin Policy (SOP) allows frontend code to freely interact
   with APIs on the same domain/port/protocol.
@@ -592,83 +592,83 @@ your-project-folder/
 
 
 #### BACKEND CODE (index.js)
-// server.js (SOAP API running on localhost:3000)
-const express = require('express');
-const path = require('path');
-const { DOMParser } = require('xmldom');  // npm install xmldom
-const xpath = require('xpath');           // npm install xpath
+	// server.js (SOAP API running on localhost:3000)
+	const express = require('express');
+	const path = require('path');
+	const { DOMParser } = require('xmldom');  // npm install xmldom
+	const xpath = require('xpath');           // npm install xpath
 
-const app = express();
-const PORT = 3000;
+	const app = express();
+	const PORT = 3000;
 
-// This line says "Please treat any request with 
-// Content-Type: text/xml as text and populate req.body"
-app.use(express.text({ type: 'text/xml' }));
+	// This line says "Please treat any request with 
+	// Content-Type: text/xml as text and populate req.body"
+	app.use(express.text({ type: 'text/xml' }));
 
-// Dummy function to return product prices
-function getProductPrice(productName) {
-  // in a live app, products & their prices would ideally come from a database
-  const prices = {
-    "Apple": 1.2,
-    "Banana": 0.5,
-    "Orange": 0.8
-  };
+	// Dummy function to return product prices
+	function getProductPrice(productName) {
+	  // in a live app, products & their prices would ideally come from a database
+	  const prices = {
+	    "Apple": 1.2,
+	    "Banana": 0.5,
+	    "Orange": 0.8
+	  };
 
-  // convert the first character of product name to uppercase 
-  // & return its price
-  return prices[productName.charAt(0).toUpperCase() + productName.slice(1)] || 0;
-}
+	  // convert the first character of product name to uppercase 
+	  // & return its price
+	  return prices[productName.charAt(0).toUpperCase() + productName.slice(1)] || 0;
+	}
 
-// Serve frontend HTML
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
+	// Serve frontend HTML
+	app.get('/', (req, res) => {
+	  res.sendFile(path.join(__dirname, 'index.html'));
+	});
 
-// Serve WSDL hint (optional)
-app.get('/wsdl', (req, res) => {
-  res.sendFile(path.join(__dirname, 'service.wsdl'));
-});
-/*
-OR
-app.get('/wsdl', (req, res) => {
-  res.type('text/xml').send(`<!-- Insert WSDL XML as string here -->`);
-});
-*/
+	// Serve WSDL hint (optional)
+	app.get('/wsdl', (req, res) => {
+	  res.sendFile(path.join(__dirname, 'service.wsdl'));
+	});
+	/*
+	OR
+	app.get('/wsdl', (req, res) => {
+	  res.type('text/xml').send(`<!-- Insert WSDL XML as string here -->`);
+	});
+	*/
 
-app.post('/soap-api', (req, res) => {
-  console.log('SOAP Request Received:', req.body);
+	app.post('/soap-api', (req, res) => {
+	  console.log('SOAP Request Received:', req.body);
 
-  const xml = req.body;
-  const doc = new DOMParser().parseFromString(xml);
-   const node = xpath.select1('//Product/text()', doc);
-   const productName = node ? node.nodeValue : undefined;
-
-
-  console.log('Product requested:', productName);
-
-  const price = getProductPrice(productName);
-
-  const soapResponse = `
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Body>
-        <GetPriceResponse>
-          <Product>${productName}</Product>
-          <Price>${price}</Price>
-        </GetPriceResponse>
-      </soap:Body>
-    </soap:Envelope>
-  `;
-
-  res.set('Content-Type', 'text/xml');
-  res.send(soapResponse);
+	  const xml = req.body;
+	  const doc = new DOMParser().parseFromString(xml);
+	   const node = xpath.select1('//Product/text()', doc);
+	   const productName = node ? node.nodeValue : undefined;
 
 
-});
+	  console.log('Product requested:', productName);
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+	  const price = getProductPrice(productName);
+
+	  const soapResponse = `
+	    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	      <soap:Body>
+	        <GetPriceResponse>
+	          <Product>${productName}</Product>
+	          <Price>${price}</Price>
+	        </GetPriceResponse>
+	      </soap:Body>
+	    </soap:Envelope>
+	  `;
+
+	  res.set('Content-Type', 'text/xml');
+	  res.send(soapResponse);
 
 
-Let me explain what the code does more clearly. The frontend code sends a SOAP request, specifying that it wants to make a call to the SOAP function getProductPrice(). We make this request using JavaScript’s Fetch API.
+	});
+
+	app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
+
+
+	Let me explain what the code does more clearly. The frontend code sends a SOAP request, specifying that it wants to make a call to the SOAP function getProductPrice(). We make this request using JavaScript’s Fetch API.
 
 	const soapBody = `
                 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -706,16 +706,16 @@ Once we got the product name, we used it to get the price of that product, then 
 
 	const price = getProductPrice(productName);
 
-  const soapResponse = `
-    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Body>
-        <GetPriceResponse>
-          <Product>${productName}</Product>
-          <Price>${price}</Price>
-        </GetPriceResponse>
-      </soap:Body>
-    </soap:Envelope>
-  `;
+	  const soapResponse = `
+	    <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+	      <soap:Body>
+	        <GetPriceResponse>
+	          <Product>${productName}</Product>
+	          <Price>${price}</Price>
+	        </GetPriceResponse>
+	      </soap:Body>
+	    </soap:Envelope>
+	  `;
 
 Back to the frontend, we receive this response, and extract its text:
 
@@ -851,15 +851,15 @@ You don’t need to know the server-side code. Just know that it’s doing the w
 
 Here is how you can check the status from the response you get back after a fetch() HTTP request:
 
-fetch('https://api.example.com/users')
-  .then(response => {
-    	if (!response.ok) {
-      		throw new Error('Request failed with status ' + response.status);
-    	}
-    	return response.json();
-  })
-  .then(data => console.log(data))
-  .catch(error => console.error(error));
+	fetch('https://api.example.com/users')
+	  .then(response => {
+	    	if (!response.ok) {
+	      		throw new Error('Request failed with status ' + response.status);
+	    	}
+	    	return response.json();
+	  })
+	  .then(data => console.log(data))
+	  .catch(error => console.error(error));
 
 
   In conclusion, the take-away points on APIs can be summed up as such. APIs allow your JavaScript code to talk to external systems (like databases or services). JavaScript uses HTTP requests (usually through fetch(), but also using the older XMLHttpRequest) to send or get data.
@@ -999,7 +999,7 @@ This creates a new XMLHttpRequest object.
 
 We are opening a new request here:
 
-  request.open("POST", "auth/checkUsername", true)
+	  request.open("POST", "auth/checkUsername", true)
 
 - "POST" means we're sending data (not just fetching).
 - "auth/checkUsername" is the URL (a file or route on the server) that will
@@ -1056,7 +1056,7 @@ We are opening a new request here:
 		// use thisResponseText here
 	}
 
-The “this.responseText” line is referencing the responseText property of the current object, which is XMLHttpRequest object. Basically, if its value is null, therefore, nothing was returned from the server. That is why we check to see if its value is not equal to null (this.responseText !== null) before we proceed to use the data returned within that block. In this example, we take the data returned by the server, and inject it into the DOM as the value of an element on our web page with the id attribute of “info”.
+	The “this.responseText” line is referencing the responseText property of the current object, which is XMLHttpRequest object. Basically, if its value is null, therefore, nothing was returned from the server. That is why we check to see if its value is not equal to null (this.responseText !== null) before we proceed to use the data returned within that block. In this example, we take the data returned by the server, and inject it into the DOM as the value of an element on our web page with the id attribute of “info”.
 
 	document.getElementById('info').innerHTML = this.responseText
 
@@ -1079,7 +1079,7 @@ message will appear in the page.
 -This is how we send the request to the server — along with the
   params we built earlier (username=JohnDoe):
 
-  request.send(params)
+	  request.send(params)
 
 - That’s all the JavaScript frontend code needed to make the AJAX
   request. But let’s talk a little about how the backend (server-side) will
@@ -1933,7 +1933,7 @@ Here is another example of using Axios with async/await:
       }
     }
 
-window.fetchPhotos = fetchPhotos;
+	window.fetchPhotos = fetchPhotos;
 
 In this example, we use Axios to access the publicly available endpoint for API testing. We specify that the data we want to get back as a response is photos. This is because we know the endpoint has that resource, and the API providers or their documentation has told us so. It is the same endpoint  we saw in a previous example which returned a collection of dummy users’ data. 
 
@@ -2017,23 +2017,23 @@ the string like so, and it will work just the same:
 Now you know how to pass data to an API endpoint when using Axios. Remember that if you have many variables to send through, it’s usually easier for you to send that data in the second argument of axios.get() as an object literal. This is usually the case with POST requests when you want to create some resource on the server you are passing data to. This data could be user data you have collected from a signup form on your website, or their shopping cart data after they click on Checkout etc. This data, which is sent as an object literal, also known as a request configuration object can also just contain different kinds of data to be used by the receiving server to determine how it will respond to the request. Whatever the case, it is up to the creators of the API to determine what kind of data, or format of it is to be sent as data in requests to the API endpoints, and which endpoints (URLs) to use for each request type.
   Once more, here is how to fetch only one piece of data, the data of a photo with the id of 8:
 
-   async function fetchPhotos() {
-      try {
-        const photoId = 8;
+	   async function fetchPhotos() {
+	      try {
+	        const photoId = 8;
 
         const response = await axios.get(
 			'https://jsonplaceholder.typicode.com/photos/' + photoId
 		); 
 
-        // Display in the page
-        document.getElementById('output').textContent = 
-		JSON.stringify(response.data, null, 2);
-      	} catch (error) {
-        	console.error('Error fetching photos:', error);
-      	}
-   }
+	        // Display in the page
+	        document.getElementById('output').textContent = 
+			JSON.stringify(response.data, null, 2);
+	      	} catch (error) {
+	        	console.error('Error fetching photos:', error);
+	      	}
+	   }
 
-   window.fetchPhotos = fetchPhotos;
+	   window.fetchPhotos = fetchPhotos;
 
 
   Another thing to be aware of is that you, as the consumer of the API are not responsible for what the endpoint, or the URL of the API should look like, or what kind of data is to be sent with the request you make to the API, or what kind of data it will return. All that is the job of the creators of the API service. You responsibility is to ask for, or look up the documentation online, so you can get all this information.  

@@ -289,19 +289,19 @@ class MacFactory extends GUIFactory {
   	}
 }
 
-// Client
-function renderUI(factory) {
-  	const button = factory.createButton();
-  	const checkbox = factory.createCheckbox();
+	// Client
+	function renderUI(factory) {
+	  	const button = factory.createButton();
+	  	const checkbox = factory.createCheckbox();
   
-	button.render();
-  	checkbox.check();
-}
+		button.render();
+	  	checkbox.check();
+	}
 
 
-// Example of using the abstract    
-renderUI(new WindowsFactory());
-renderUI(new MacFactory());
+	// Example of using the abstract    
+	renderUI(new WindowsFactory());
+	renderUI(new MacFactory());
 
 #### Key points
 - Abstract Factory pattern allows
@@ -397,11 +397,11 @@ class ConstructionEngineer {
   }
 }
 
-// Usage
-const builder = new WoodenHouseBuilder();
-const engineer = new ConstructionEngineer(builder);
-const house = engineer.constructHouse();
-house.show();
+	// Usage
+	const builder = new WoodenHouseBuilder();
+	const engineer = new ConstructionEngineer(builder);
+	const house = engineer.constructHouse();
+	house.show();
 
 The output of this code will be:
 
@@ -452,19 +452,19 @@ The output of this code will be:
 }
 
 
-// Usage
-const originalDocument = new TextDocument("Original Content");
-const clonedDocument = originalDocument.clone();
+	// Usage
+	const originalDocument = new TextDocument("Original Content");
+	const clonedDocument = originalDocument.clone();
 
 
-// Display the contents of both the 
-// original and the cloned document
+	// Display the contents of both the 
+	// original and the cloned document
 
-// The output: Document content: Original Content
-originalDocument.showContent(); 
+	// The output: Document content: Original Content
+	originalDocument.showContent(); 
 
-// The output: Document content: Original Content
-clonedDocument.showContent();   
+	// The output: Document content: Original Content
+	clonedDocument.showContent();   
 
 
   Key points:
@@ -536,11 +536,11 @@ class PrinterAdapter {
   	}
 }
 
-// Usage
-const oldPrinter = new OldPrinter();
-const adaptedPrinter = new PrinterAdapter(oldPrinter);
+	// Usage
+	const oldPrinter = new OldPrinter();
+	const adaptedPrinter = new PrinterAdapter(oldPrinter);
 
-adaptedPrinter.print("Hello World!"); // works like the new printer
+	adaptedPrinter.print("Hello World!"); // works like the new printer
 
   Imagine you bought a new phone charger, but your wall socket is old and doesn't match the charger plug. What do you do? Use a plug adapter! It lets the new charger connect to the old socket.
 In this pattern, PrinterAdapter plays the role of the plug adapter. It makes the old printer work with new code that expects a different method (print instead of printText).
@@ -587,12 +587,12 @@ class SugarDecorator {
   	}
 }
 
-// Usage
-let myCoffee = new Coffee();
-myCoffee = new MilkDecorator(myCoffee);
-myCoffee = new SugarDecorator(myCoffee);
+	// Usage
+	let myCoffee = new Coffee();
+	myCoffee = new MilkDecorator(myCoffee);
+	myCoffee = new SugarDecorator(myCoffee);
 
-console.log(`Total cost: $${myCoffee.cost()}`);
+	console.log(`Total cost: $${myCoffee.cost()}`);
 
 The result in the console will be something like this:
 
@@ -855,19 +855,19 @@ messy details behind a single, simple interface.
   	}
 }
 
-// Usage
-const root = new Folder('Root');
-const file1 = new File('file1.txt');
-const file2 = new File('file2.txt');
+	// Usage
+	const root = new Folder('Root');
+	const file1 = new File('file1.txt');
+	const file2 = new File('file2.txt');
 
-const subFolder = new Folder('SubFolder');
-subFolder.add(new File('file3.txt'));
+	const subFolder = new Folder('SubFolder');
+	subFolder.add(new File('file3.txt'));
 
-root.add(file1);
-root.add(subFolder);
-root.add(file2);
+	root.add(file1);
+	root.add(subFolder);
+	root.add(file2);
 
-root.display();
+	root.display();
 
 The output will look like so:
 
@@ -940,14 +940,14 @@ Think of your computer's folders and files. A folder can contain both files and 
       			this.realImage = new RealImage(this.filename);
     		}
     		
-		this.realImage.display();
-  	}
-   }
+			this.realImage.display();
+	  	}
+	   }
 
-// Usage
-const image = new ProxyImage('cat.png');
-image.display(); // Loads and displays
-image.display(); // Only displays, doesn't load again
+	// Usage
+	const image = new ProxyImage('cat.png');
+	image.display(); // Loads and displays
+	image.display(); // Only displays, doesn't load again
 
 The output will be:
 
@@ -1009,12 +1009,12 @@ Nonetheless, I will teach you about them here.
     }
 
 
-// Usage
-const circle1 = new Circle(5, 10, 15, new DrawingAPI1());
-const circle2 = new Circle(2, 4, 8, new DrawingAPI2());
+	// Usage
+	const circle1 = new Circle(5, 10, 15, new DrawingAPI1());
+	const circle2 = new Circle(2, 4, 8, new DrawingAPI2());
 
-circle1.draw();
-circle2.draw();
+	circle1.draw();
+	circle2.draw();
 
 
 The output in the console here will be:
@@ -1062,16 +1062,16 @@ The output in the console here will be:
     }
 
 
-// Usage
-const factory = new TreeFactory();
+	// Usage
+	const factory = new TreeFactory();
 
-const tree1 = factory.getTreeType('Oak', 'Green');
-tree1.draw(10, 20);
+	const tree1 = factory.getTreeType('Oak', 'Green');
+	tree1.draw(10, 20);
 
-const tree2 = factory.getTreeType('Oak', 'Green');
-tree2.draw(15, 25);
+	const tree2 = factory.getTreeType('Oak', 'Green');
+	tree2.draw(15, 25);
 
-console.log(tree1 === tree2); // true
+	console.log(tree1 === tree2); // true
 
 
 The output in the console here will be:
@@ -1132,12 +1132,12 @@ The output in the console here will be:
   	}
     }
 
-// Usage
-const subject = new Subject();
-const observer = new Observer();
+	// Usage
+	const subject = new Subject();
+	const observer = new Observer();
 
-subject.addObserver(observer);
-subject.notify();
+	subject.addObserver(observer);
+	subject.notify();
 
 
 The output in the console will say:
@@ -1211,12 +1211,12 @@ This is how this works:
   		}
       }
 
-// Client usage
-const paypalContext = new PaymentContext(new PayPalStrategy());
-console.log(paypalContext.executePayment(100)); // Paid $100 using PayPal
+	// Client usage
+	const paypalContext = new PaymentContext(new PayPalStrategy());
+	console.log(paypalContext.executePayment(100)); // Paid $100 using PayPal
 
-const cardContext = new PaymentContext(new CreditCardStrategy());
-console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
+	const cardContext = new PaymentContext(new CreditCardStrategy());
+	console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
 
 
    // The output in the console: 
@@ -1343,14 +1343,14 @@ console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
     }
 
 
-// Usage
-const pasta = new PastaMeal();
-pasta.prepareMeal();
-// Prints three lines - see the full output below
+	// Usage
+	const pasta = new PastaMeal();
+	pasta.prepareMeal();
+	// Prints three lines - see the full output below
 
-const rice = new RiceMeal();
-rice.prepareMeal();
-// Prints three lines - see the full output below
+	const rice = new RiceMeal();
+	rice.prepareMeal();
+	// Prints three lines - see the full output below
 
 
    The output in the console will be: 
@@ -1590,12 +1590,12 @@ class BookIterator {
   	}
 }
 
-// Client usage
-const collection = new BookCollection();
-collection.addBook("Design Patterns");
-collection.addBook("Clean Code");
+	// Client usage
+	const collection = new BookCollection();
+	collection.addBook("Design Patterns");
+	collection.addBook("Clean Code");
 
-const iterator = collection.getIterator();
+	const iterator = collection.getIterator();
 
 while (iterator.hasNext()) {
   console.log(iterator.next());

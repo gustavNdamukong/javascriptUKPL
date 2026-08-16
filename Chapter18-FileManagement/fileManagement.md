@@ -164,12 +164,12 @@ The following examples are carefully chosen to give you enough information on va
   }
 
   #dropZone {
-    border: 2px dashed #888;
-    padding: 20px;
-    text-align: center;
-    color: #444;
-    margin-top: 10px;
-  }
+	    border: 2px dashed #888;
+	    padding: 20px;
+	    text-align: center;
+	    color: #444;
+	    margin-top: 10px;
+	  }
 
   button {
     margin-top: 10px;
@@ -935,7 +935,7 @@ If we haven’t reached the end of the file yet, we call readNextChunk() to read
   		console.log("File upload complete.");
 	}
 
-Here is the custom function readNextChunk() which will keep reading the file until all the chunks are read. It does so by slicing the next piece of the file—from where we left off (offset) to the next chunk, each time it is called. While doing so, we tell the FileReader to read each of the slices as an ArrayBuffer (a binary format we can send).
+	Here is the custom function readNextChunk() which will keep reading the file until all the chunks are read. It does so by slicing the next piece of the file—from where we left off (offset) to the next chunk, each time it is called. While doing so, we tell the FileReader to read each of the slices as an ArrayBuffer (a binary format we can send).
 
 We start the whole process by reading the first chunk. This kicks off the reading and sending loop.
 
@@ -1166,11 +1166,11 @@ machine (eg server.js), in which case you would pass in
 #### Conclusion
 In conclusion, when you are talking to a standard WebSocket server, you create the client end of the connection like so:
 
-  new WebSocket("ws://...")
+	  new WebSocket("ws://...")
 
 Whereas, for communicating with a Socket.IO server, you create that client like so:
 
-  io("http://...")
+	  io("http://...")
 
 Note that both of those lines run in the BROWSER and create a client. The server is the separate program you started with node server.js.
 
@@ -1652,8 +1652,8 @@ Actually, we check for two things:
   a) if the value of the readyState property is 4, and
   b) if the value of the status property is 200
 
-xhr.readyState === 4 means the request is done and we got a response.
-xhr.status === 200 means the server said ‘OK’, and everything went well.
+	xhr.readyState === 4 means the request is done and we got a response.
+	xhr.status === 200 means the server said ‘OK’, and everything went well.
 
 Only when both are true do we process the response.
 Next, we receive the XML data returned and store it in a variable xmlDoc.
@@ -1701,7 +1701,7 @@ The bookArray then ends up as an array containing multiple book objects like thi
   		{ title: "Eloquent JavaScript", author: "Marijn Haverbeke" }
 	]
 
-That is it, we finally display the array in the console using console.table();
+	That is it, we finally display the array in the console using console.table();
 
 	console.table(bookArray); 
 

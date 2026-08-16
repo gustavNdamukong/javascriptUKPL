@@ -205,7 +205,7 @@ Here are examples of how these static methods can be used:
   Object.create() is also a powerful method and can be used in
   different ways for creating a new object with a specified prototype.
 
-  // Example 1: Creating an Object with a Prototype
+	  // Example 1: Creating an Object with a Prototype
 
 	const prototypeObject = { 
 		greet() { 
@@ -523,7 +523,7 @@ In this example, we instantiate objects from the constructor object PersonDiv() 
 If it is a boy, we grab the div from the DOM with the ID of 'boy' and give it a blue 	background color and so on for the 'mum' and 'dad' divs as well.
   Once more, we use the new keyword to create objects from constructor functions, but 	it would also work on JavaScript's built-in constructor objects like Object, Array, String, 	Date, RegExp etc. You would instantiate objects from these like so:
 
-new Object(), new Array(), new Date(), new RegExp() etc
+	new Object(), new Array(), new Date(), new RegExp() etc
 
 	When it comes to prototypes and objects created from a constructor function, it is important to get the relationship exactly right, because it is easy to state it one step out. The object you get back from new Person() does NOT have the Person function as its prototype. It has Person.prototype — the object hanging off the function, which is the mould we talked about earlier.
 	So for let person1 = new Person('Tom'), the chain runs like this:
@@ -798,7 +798,7 @@ objectName.constructor.prototype
 	
 Just to recap again; that was possible because all objects created with the new keyword, or from constructor functions inherit a constructor property which points to the constructor function that is their prototype. Object literals also have a constructor property whose prototype property points to the JavaScript Object. Here is the syntax e.g.
 
-  Object.getPrototypeOf(objectName)
+	  Object.getPrototypeOf(objectName)
 
 		//get the prototype - it reveals the Person object
 		console.log(Object.getPrototypeOf(gusto)); 
@@ -1388,9 +1388,9 @@ However, when you parse JSON using JSON.parse(), it becomes a JavaScript object.
     let obj = { msg: "Hello", title: "Welcome", 
                      footer: "Goodbye" };
 
-   let message = obj.msg;
-   let title = obj.title;
-   let footer = obj.footer;
+	   let message = obj.msg;
+	   let title = obj.title;
+	   let footer = obj.footer;
 
   Instead of assigning all three values to   
   the three variables in three separate lines 
@@ -1400,7 +1400,7 @@ However, when you parse JSON using JSON.parse(), it becomes a JavaScript object.
   corresponding values from the object in 
   one line of code. Simply do it like so:
 
-  let { msg, title, footer } = obj;
+	  let { msg, title, footer } = obj;
 
   Now msg, title and footer will be separate 
   variables containing values from obj. It’s 
@@ -1674,7 +1674,7 @@ inside the child’s constructor, before any use of this. Here is an example:
 
   You can also call any parent method from within the child class using the following syntax:
 
-  super.methodName()
+	  super.methodName()
 
 This can be useful if this child class has a method with the same name, but wants to call that of the parent. 
 
@@ -2052,7 +2052,7 @@ A static method belongs to the class itself, not to instances of the class. Such
 	// Output: TypeError: mathObject.add is not a function
 	console.log(mathObject.add(3, 3));
 
-The above example class MathHelper has two methods, one static ‘add()’ and one non-static ‘subtract()’. The rule to hold on to is this: a static method lives on the CLASS, not on the objects made from it. That is why calling add() on the class itself works:
+	The above example class MathHelper has two methods, one static ‘add()’ and one non-static ‘subtract()’. The rule to hold on to is this: a static method lives on the CLASS, not on the objects made from it. That is why calling add() on the class itself works:
 
 	MathHelper.add(5, 3);   // 8
 

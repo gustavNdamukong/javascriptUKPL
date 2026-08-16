@@ -327,23 +327,23 @@ h1 {
 }
 
 #openWindowBtn {
-    background-color: cornflowerblue;
-}
+	    background-color: cornflowerblue;
+	}
 
 
-input[type="file"] {
-    display: block;
-    margin-bottom: 20px;
-}
+	input[type="file"] {
+	    display: block;
+	    margin-bottom: 20px;
+	}
 
 label {
     font-weight: bold;
 }
 
 #scale {
-    width: 100%;
-    margin-top: 5px;
-}
+	    width: 100%;
+	    margin-top: 5px;
+	}
 
 canvas {
     display: block;
@@ -371,9 +371,9 @@ button:hover {
 }
 
 #scaleValue {
-    font-weight: normal;
-    color: #007acc;
-}
+	    font-weight: normal;
+	    color: #007acc;
+	}
 
 
 Your index.html code, should look like this:
@@ -599,41 +599,41 @@ To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an im
 
 #### index.js code
 
-const upload = document.getElementById('upload');
-const rotateBtn = document.getElementById('rotateBtn');
-const canvas = document.getElementById('canvas');
-const ctx = canvas.getContext('2d');
-const downloadBtn = document.getElementById('downloadImgBtn');
+	const upload = document.getElementById('upload');
+	const rotateBtn = document.getElementById('rotateBtn');
+	const canvas = document.getElementById('canvas');
+	const ctx = canvas.getContext('2d');
+	const downloadBtn = document.getElementById('downloadImgBtn');
 
-let img = new Image();
-let rotation = 0; // Keep track of rotation in degrees
+	let img = new Image();
+	let rotation = 0; // Keep track of rotation in degrees
 
-// When an image is uploaded
-upload.addEventListener('change', function () {
-  const file = this.files[0];
-  const reader = new FileReader();
+	// When an image is uploaded
+	upload.addEventListener('change', function () {
+	  const file = this.files[0];
+	  const reader = new FileReader();
 
-  reader.onload = function (event) {
-    img = new Image();
-    img.onload = function () {
-      rotation = 0; // Reset rotation
-      drawRotatedImage();
-    };
-    img.src = event.target.result;
-  };
+	  reader.onload = function (event) {
+	    img = new Image();
+	    img.onload = function () {
+	      rotation = 0; // Reset rotation
+	      drawRotatedImage();
+	    };
+	    img.src = event.target.result;
+	  };
 
-  reader.readAsDataURL(file);
-});
+	  reader.readAsDataURL(file);
+	});
 
-// When the rotate button is clicked
-rotateBtn.addEventListener('click', function () {
-  rotation = (rotation + 90) % 360; // Rotate by 90 degrees each time
-  drawRotatedImage();
-});
+	// When the rotate button is clicked
+	rotateBtn.addEventListener('click', function () {
+	  rotation = (rotation + 90) % 360; // Rotate by 90 degrees each time
+	  drawRotatedImage();
+	});
 
-// Function to draw the image at the current rotation
-function drawRotatedImage() {
-  const angleInRadians = rotation * Math.PI / 180;
+	// Function to draw the image at the current rotation
+	function drawRotatedImage() {
+	  const angleInRadians = rotation * Math.PI / 180;
 
   // Adjust canvas size based on rotation (to fit image properly)
   if (rotation % 180 === 0) {
@@ -644,20 +644,20 @@ function drawRotatedImage() {
     canvas.height = img.width;
   }
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.save();
+	  ctx.clearRect(0, 0, canvas.width, canvas.height);
+	  ctx.save();
 
-  // Move the canvas "zero point" to the center
-  ctx.translate(canvas.width / 2, canvas.height / 2);
+	  // Move the canvas "zero point" to the center
+	  ctx.translate(canvas.width / 2, canvas.height / 2);
 
-  // Rotate the canvas
-  ctx.rotate(angleInRadians);
+	  // Rotate the canvas
+	  ctx.rotate(angleInRadians);
 
-  // Draw the image from the new origin, with image centered
-  ctx.drawImage(img, -img.width / 2, -img.height / 2);
+	  // Draw the image from the new origin, with image centered
+	  ctx.drawImage(img, -img.width / 2, -img.height / 2);
 
-  ctx.restore(); // Go back to normal canvas settings
-}
+	  ctx.restore(); // Go back to normal canvas settings
+	}
 
 
 Use the same CSS code as all the other examples-in a file in the same directory as this index.js and index.html.

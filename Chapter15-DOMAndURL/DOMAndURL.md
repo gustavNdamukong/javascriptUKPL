@@ -740,9 +740,9 @@ This is because there are better ways to extract values from form fields than th
 ## Traversing the DOM
   These are properties and methods provided for traversing DOM elements. You would call or refer to them on the HTML element object, for example after selecting it. For example, the following code will display the value of the id property (attribute) of the parent element of the text box stored in textElement:
 
-let textElement =   
-     document.getElementById("idOfTextField"); 
-console.log(textElement.parentNode.id);
+	let textElement =   
+	     document.getElementById("idOfTextField"); 
+	console.log(textElement.parentNode.id);
 
 Notice how to use these properties or methods, you have to reference it on the HTML element itself using the dot operator (.) like so HTMLElement.propertyName.
 
@@ -893,13 +893,13 @@ This outputs:
 	]
 
 
-console.log(parent.firstChild); 
+	console.log(parent.firstChild); 
 
 This outputs: 
   #text
   (because of the space and line breaks)
 
-console.log(parent.firstElementChild); 
+	console.log(parent.firstElementChild); 
 
 This outputs: `<p>`Paragraph 1`</p>`
 
@@ -2098,52 +2098,52 @@ h1 {
 }
 
 #addItemButton {
-    position: relative;
-    top: -0.2em;
-    width: 5em;
-    height: 2.3em;
-    background-color: dodgerblue;
-    color: white;
-    border-radius: 5px;
-    margin-left: 1rem;
-}
+	    position: relative;
+	    top: -0.2em;
+	    width: 5em;
+	    height: 2.3em;
+	    background-color: dodgerblue;
+	    color: white;
+	    border-radius: 5px;
+	    margin-left: 1rem;
+	}
 
 #addItemDiv {
-    display: none;
-}
+	    display: none;
+	}
 
-.itemDiv {
-    height: auto;
-    border: solid 1px dodgerblue;
-    border-radius: 5px;
-    background-color: cornsilk;
-    color: green;
-    font-size: 1rem;
-    font-weight: bold;
-    padding: 1rem 0rem 0.8rem 0rem;
-}
+	.itemDiv {
+	    height: auto;
+	    border: solid 1px dodgerblue;
+	    border-radius: 5px;
+	    background-color: cornsilk;
+	    color: green;
+	    font-size: 1rem;
+	    font-weight: bold;
+	    padding: 1rem 0rem 0.8rem 0rem;
+	}
 
 #notify {
-    display: none;
-    color: red;
-    font-size: 2em;
-}
+	    display: none;
+	    color: red;
+	    font-size: 2em;
+	}
 
 .cancelAddItem, .cancelEdit, .deleteButton {
     background-color: red;
     color: white;
 }
 
-.cancelEdit {
-    width: 2em;
-    height: 1.5em;
-}
+	.cancelEdit {
+	    width: 2em;
+	    height: 1.5em;
+	}
 
-.editButton {
-    background-color: orange;
-    color: white;
-    border-radius: 5px;
-}
+	.editButton {
+	    background-color: orange;
+	    color: white;
+	    border-radius: 5px;
+	}
 
 .editButton, .deleteButton {
     float: right;
@@ -2151,23 +2151,23 @@ h1 {
    margin-top: -0.5em;
 }
 
-.editFormDiv {
-    display: none;
-}
+	.editFormDiv {
+	    display: none;
+	}
 
 #gusUl li {
-    list-style: none;
-}
+	    list-style: none;
+	}
 
-.btn-primary-sm {
-    background-color: dodgerblue;
-    color: white;
-    border-radius: 5px;
-}
+	.btn-primary-sm {
+	    background-color: dodgerblue;
+	    color: white;
+	    border-radius: 5px;
+	}
 
-.headingUnderline {
-    background-color: white;
-}
+	.headingUnderline {
+	    background-color: white;
+	}
 
 
 #### index.html
@@ -2222,26 +2222,26 @@ let todoString = "";
     </div>`;
 
 
-//------------------------------------------------------------
-// ADD EVENT LISTENERS
-//------------------------------------------------------------
-let addItemButton = document.querySelector("#addItemButton"); 
-addItemButton.addEventListener("click", openAddItemDiv); 
+	//------------------------------------------------------------
+	// ADD EVENT LISTENERS
+	//------------------------------------------------------------
+	let addItemButton = document.querySelector("#addItemButton"); 
+	addItemButton.addEventListener("click", openAddItemDiv); 
 
-let addItemForm = document.querySelector("#addItemForm");
-addItemForm.addEventListener("submit", addTodoItem);
+	let addItemForm = document.querySelector("#addItemForm");
+	addItemForm.addEventListener("submit", addTodoItem);
 
-let cancelAddItemButton = document.querySelector(".cancelAddItem");
-cancelAddItemButton.addEventListener("click", cancelNewItem);
+	let cancelAddItemButton = document.querySelector(".cancelAddItem");
+	cancelAddItemButton.addEventListener("click", cancelNewItem);
 
-//------------------------------------------------------------
+	//------------------------------------------------------------
     
 
-//------------------------------------------------------------
-    // THE FUNCTIONS
-//------------------------------------------------------------
-function addTodoItem(e) {
-    e.preventDefault();
+	//------------------------------------------------------------
+	    // THE FUNCTIONS
+	//------------------------------------------------------------
+	function addTodoItem(e) {
+	    e.preventDefault();
     
     // get the value of the new todo item
     let newTodoItem = document.querySelector("#addItemField").value;
@@ -2287,39 +2287,39 @@ function addTodoItem(e) {
     }
 }
 
-function openAddItemDiv(e) {
-    e.preventDefault();
-    let addItemDiv = document.querySelector("#addItemDiv");
-    addItemDiv.style.display = "block";
-}
+	function openAddItemDiv(e) {
+	    e.preventDefault();
+	    let addItemDiv = document.querySelector("#addItemDiv");
+	    addItemDiv.style.display = "block";
+	}
 
-function cancelNewItem(e) {
-    e.preventDefault();
-    // clear any text from the field
-    e.target.previousElementSibling.value = ""; 
+	function cancelNewItem(e) {
+	    e.preventDefault();
+	    // clear any text from the field
+	    e.target.previousElementSibling.value = ""; 
     
-    // hide the add item form
-    let addItemDiv = document.querySelector("#addItemDiv");
-    addItemDiv.style.display = "none";
-}
+	    // hide the add item form
+	    let addItemDiv = document.querySelector("#addItemDiv");
+	    addItemDiv.style.display = "none";
+	}
 
 
-function openEdit(e) { 
-    e.preventDefault();
+	function openEdit(e) { 
+	    e.preventDefault();
 
     let editFormDiv = e.target.nextElementSibling;
     editFormDiv.style.display = "block";
     
-    // it will be nice to pre-fill the edit form with old value
-    let todoTargetTextSpan = e.target.parentElement.firstElementChild;
-    let oldText = todoTargetTextSpan.textContent;
-    editFormDiv.firstElementChild.firstElementChild.value = oldText;
-}
+	    // it will be nice to pre-fill the edit form with old value
+	    let todoTargetTextSpan = e.target.parentElement.firstElementChild;
+	    let oldText = todoTargetTextSpan.textContent;
+	    editFormDiv.firstElementChild.firstElementChild.value = oldText;
+	}
 
-function cancelEdit(e) {
-    e.preventDefault();
-    // clear any input text from edit field
-    e.target.previousElementSibling.value = ""; 
+	function cancelEdit(e) {
+	    e.preventDefault();
+	    // clear any input text from edit field
+	    e.target.previousElementSibling.value = ""; 
     
     // Find the closest ancestor with class .editFormDiv and hide it
     let editFormDiv = e.target.closest(".editFormDiv");
@@ -2329,10 +2329,10 @@ function cancelEdit(e) {
 }
 
 
-function saveEdit(e) {
-    e.preventDefault();
-    // get the todo text target span
-    let todoTargetTextSpan = e.target.parentElement.parentElement.firstElementChild;
+	function saveEdit(e) {
+	    e.preventDefault();
+	    // get the todo text target span
+	    let todoTargetTextSpan = e.target.parentElement.parentElement.firstElementChild;
       
     // Get new text from input field
     let newText = e.target.querySelector(".editField").value;
@@ -2352,24 +2352,24 @@ function saveEdit(e) {
 }
     
 
-function notify() {
-    let warning = document.querySelector("#notify");
-    warning.textContent = "Please enter a value";
-    warning.style.display = "block";
+	function notify() {
+	    let warning = document.querySelector("#notify");
+	    warning.textContent = "Please enter a value";
+	    warning.style.display = "block";
 
-    // Hide the warning after 2 seconds
-    setTimeout(() => {
-        warning.textContent = "";
-        // Hide the message
-        warning.style.display = "none"; 
-    }, 2000);
-}
+	    // Hide the warning after 2 seconds
+	    setTimeout(() => {
+	        warning.textContent = "";
+	        // Hide the message
+	        warning.style.display = "none"; 
+	    }, 2000);
+	}
 
-function deleteTodo(e) {
-    e.preventDefault();
-    //remove the current li element
-    e.target.closest("li").remove();
-}
+	function deleteTodo(e) {
+	    e.preventDefault();
+	    //remove the current li element
+	    e.target.closest("li").remove();
+	}
 
 
 Adding attributes to an element
@@ -3074,7 +3074,7 @@ Once it’s packed, the browser knows how to hand it over to the user as a downl
 
 Then, you can generate a download link using:
 	
-  URL.createObjectURL(blob)
+	  URL.createObjectURL(blob)
 
 
 ## Generating links to assets created in memory
@@ -3102,23 +3102,23 @@ Then, you can generate a download link using:
 
 Let us look at a very common use case for the createObjectURL() method, which is to generate a downloadable file from text content. We will see more examples like this in Chapter 18 (File Management), but I need you to see the createObjectURL() method in action here so you can understand its practical use.
 
-// Create a Blob from text content
-const text = "Hello, world! This is a downloadable file.";
-const blob = new Blob([text], { type: 'text/plain' });
+	// Create a Blob from text content
+	const text = "Hello, world! This is a downloadable file.";
+	const blob = new Blob([text], { type: 'text/plain' });
 
-// Generate a URL for the Blob
-const url = URL.createObjectURL(blob);
+	// Generate a URL for the Blob
+	const url = URL.createObjectURL(blob);
 
-// Create a download link
-const a = document.createElement('a');
-a.href = url;
+	// Create a download link
+	const a = document.createElement('a');
+	a.href = url;
 
-// Set the filename of your choice
-a.download = 'example.txt';
-a.textContent = 'Download File';
+	// Set the filename of your choice
+	a.download = 'example.txt';
+	a.textContent = 'Download File';
 
-// Append the link to the DOM (optional)
-document.body.appendChild(a);
+	// Append the link to the DOM (optional)
+	document.body.appendChild(a);
 
 Elsewhere in your code, make sure to clean up the URL link created in memory when it is no longer needed by revoking the URL when done. This will prevent memory leaks. A memory leak in programming occurs when a computer program fails to release memory it no longer needs, causing unnecessary memory consumption over time. This can slow down or crash the system as available memory gets exhausted.
   If you created a link or button in the browser to reference the URL (link) to the object as we did in the example above, then the best way to clear that from memory by implementing the revoke action (after the file is downloaded) is to add an event listener to that same button or link. Let’s add one for our example:

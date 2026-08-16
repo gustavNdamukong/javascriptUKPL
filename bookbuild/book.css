@@ -120,7 +120,10 @@ p code, li code, td code, h1 code, h2 code, h3 code, h4 code {
     background: #f2f2f2;
     padding: 0.05em 0.25em;
     border-radius: 2pt;
-    white-space: nowrap;
+    /* long inline code - a whole HTML template, say - must be allowed to
+       break, or it runs off the measure and is cut off at the page edge */
+    word-break: break-word;
+    overflow-wrap: anywhere;
 }
 
 pre code {
