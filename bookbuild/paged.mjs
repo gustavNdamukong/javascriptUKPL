@@ -19,6 +19,7 @@ for (const c of readdirSync(BASE).filter(d => /^Chapter\d+-/.test(d))
     if (existsSync(join(BASE, c, 'quiz.md'))) files.push(join(BASE, c, 'quiz.md'));
 }
 if (existsSync(join(BASE, 'Conclusion.md'))) files.push(join(BASE, 'Conclusion.md'));
+if (existsSync(join(BASE, 'AboutTheAuthor.md'))) files.push(join(BASE, 'AboutTheAuthor.md'));
 
 const slug = s => s.toLowerCase().replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
@@ -68,6 +69,15 @@ const tocHtml =
        .map(t => `<li class="lvl${t.level}${t.quiz ? ' quiz' : ''}">` +
                  `<a href="#${t.id}">${t.text}</a></li>`).join('') +
     '</ul></div>';
+
+// The copyright page sits immediately after the title page, and the
+// dedication after that - the usual order of front matter.
+if (existsSync(join(BASE, 'Copyright.md'))) {
+    const cp = renderFile({ path: join(BASE, 'Copyright.md') }).html;
+    body = body.replace(/<h1[^>]*id="contents-at-a-glance"/,
+        '<div class="copyright">' + cp + '</div>$&');
+    console.log('copyright page inserted');
+}
 
 // The dedication sits on its own page after the title and before the
 // contents, which is where a reader expects it.

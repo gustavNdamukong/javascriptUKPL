@@ -29,6 +29,8 @@ for (const c of readdirSync(BASE).filter(d => /^Chapter\d+-/.test(d))
 }
 if (existsSync(join(BASE, 'Conclusion.md')))
     files.push({ path: join(BASE, 'Conclusion.md'), name: 'conclusion' });
+if (existsSync(join(BASE, 'AboutTheAuthor.md')))
+    files.push({ path: join(BASE, 'AboutTheAuthor.md'), name: 'author' });
 
 // ---- stylesheet: reflowable, so no page geometry ------------------------
 const css = `
@@ -67,6 +69,11 @@ const images = new Set();
 
 for (const f of files) {
     let { html, figures } = renderFile(f, 'images/');
+    if (f.name === 'front' && existsSync(join(BASE, 'Copyright.md'))) {
+        const cp = renderFile({ path: join(BASE, 'Copyright.md') }, 'images/').html;
+        html = html.replace(/<h1>CONTENTS AT A GLANCE<\/h1>/,
+            '<div class="copyright">' + cp + '</div>$&');
+    }
     if (f.name === 'front' && existsSync(join(BASE, 'Dedication.md'))) {
         const ded = renderFile({ path: join(BASE, 'Dedication.md') }, 'images/').html;
         html = html.replace(/<h1>CONTENTS AT A GLANCE<\/h1>/,
