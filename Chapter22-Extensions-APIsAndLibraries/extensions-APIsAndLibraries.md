@@ -97,8 +97,9 @@ These are the HTTP/1.1 protocol methods defined in the RFC 7231 specification. T
 The first argument to fetch() is the URL or endpoint of the resource. This is basically the path of the API server we are sending the request to. You can usually tell from the URL what resource is being targeted-in this case, the resource we need in this users (/users).
   The second argument passed to fetch() is an object which usually contains things like the HTTP method (eg POST, UPDATE etc), headers, and the body. This object is referred to as the init object, or options object. In some documentations, it is referred to as the configuration object that controls settings like:
 
-    * The HTTP method eg GET, POST, etc
-    * Request headers as an object or instance of the built-in JavaScript Headers class. Here is an example of how you can use a Headers class instead of an object literal like in our example above:
+- The HTTP method eg GET, POST, etc
+- Request headers as an object or instance of the built-in JavaScript Headers class. Here is an example of how you can use a Headers class instead of an object literal like in our example above:
+
  			// create the headers object
   			const myHeaders = new Headers();
   			myHeaders.append('Content-Type', 'application/json');

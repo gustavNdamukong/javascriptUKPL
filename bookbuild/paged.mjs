@@ -21,6 +21,12 @@ for (const c of readdirSync(BASE).filter(d => /^Chapter\d+-/.test(d))
 if (existsSync(join(BASE, 'Conclusion.md'))) files.push(join(BASE, 'Conclusion.md'));
 if (existsSync(join(BASE, 'AboutTheAuthor.md'))) files.push(join(BASE, 'AboutTheAuthor.md'));
 
+// A paragraph containing hard line breaks is a list or a verse - the contents
+// at a glance, the closing poem - not running prose. Indenting its first line
+// only makes that line look stray.
+const markVerse = h => h.replace(/<p>((?:(?!<\/p>)[\s\S])*?<br\s*\/?>[\s\S]*?)<\/p>/g,
+    '<p class="verse">$1</p>');
+
 const slug = s => s.toLowerCase().replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 
@@ -57,7 +63,7 @@ for (const p of files) {
         if (!isQuiz || lvl === '1') toc.push({ level: +lvl, text, id, quiz: isQuiz });
         return `<h${lvl} id="${id}"${cls}>${inner}</h${lvl}>`;
     });
-    body += withIds + '\n';
+    body += markVerse(withIds) + '\n';
 }
 
 // The hand-written CONTENTS section in the source has no page numbers and can

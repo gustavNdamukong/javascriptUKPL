@@ -118,4 +118,4 @@ But that is the same for any art
 You will resolve code, and feel like a seer  
 That is the way of an engineer.
 
-*Finished writing Friday, June 6, 2025 - Oshawa, Canada*
+*Written in Oshawa, Canada. Finished 2026.*

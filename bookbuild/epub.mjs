@@ -12,6 +12,12 @@ mkdirSync(join(OUT, 'OEBPS', 'images'), { recursive: true });
 mkdirSync(join(OUT, 'META-INF'), { recursive: true });
 
 const esc = s => s.replace(/&(?!#?\w+;)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+// A paragraph containing hard line breaks is a list or a verse - the contents
+// at a glance, the closing poem - not running prose. Indenting its first line
+// only makes that line look stray.
+const markVerse = h => h.replace(/<p>((?:(?!<\/p>)[\s\S])*?<br\s*\/?>[\s\S]*?)<\/p>/g,
+    '<p class="verse">$1</p>');
+
 const slug = s => s.toLowerCase().replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 
@@ -58,6 +64,7 @@ img { max-width: 100%; height: auto; display: block; margin: 1em auto 0.3em; }
 table { border-collapse: collapse; margin: 0.8em 0; font-size: 0.9em; }
 th, td { border: 1px solid #bbb; padding: 0.25em 0.5em; text-align: left; }
 th { background: #f2f2f2; }
+p.verse { text-indent: 0; }
 
 /* front matter. An e-reader has no fixed page, but it honours a page break,
    which is what gives each of these a screen of its own. */
@@ -115,7 +122,7 @@ for (const f of files) {
     // XHTML must be well formed. Void elements need closing, and a bare
     // ampersand - legal in HTML, and common in prose like "HTMLCollections
     // & NodeLists" - is a parse error here.
-    const xhtml = withIds
+    const xhtml = markVerse(withIds)
         .replace(/<(img|br|hr)([^>]*?)\s*\/?>/g, '<$1$2 />')
         .replace(/&nbsp;/g, '&#160;')
         .replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]*|#\d+|#x[0-9a-fA-F]+);)/g, '&amp;');

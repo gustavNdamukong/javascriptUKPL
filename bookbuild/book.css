@@ -268,3 +268,6 @@ h2.quiz, h3.quiz { bookmark-level: none; }
     @bottom-center { content: none; }
     @bottom-right  { content: none; }
 }
+
+/* a hard-broken block - contents list, verse - does not indent its first line */
+p.verse { text-indent: 0; }
