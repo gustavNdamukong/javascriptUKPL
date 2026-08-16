@@ -58,6 +58,18 @@ img { max-width: 100%; height: auto; display: block; margin: 1em auto 0.3em; }
 table { border-collapse: collapse; margin: 0.8em 0; font-size: 0.9em; }
 th, td { border: 1px solid #bbb; padding: 0.25em 0.5em; text-align: left; }
 th { background: #f2f2f2; }
+
+/* front matter. An e-reader has no fixed page, but it honours a page break,
+   which is what gives each of these a screen of its own. */
+.copyright { font-size: 0.85em; page-break-after: always; margin-top: 1em; }
+.copyright p { text-indent: 0; text-align: left; margin-bottom: 0.7em; }
+.dedication {
+    page-break-before: always;
+    page-break-after: always;
+    text-align: center;
+    margin-top: 25%;
+}
+.dedication p { text-indent: 0; font-style: italic; text-align: center; font-size: 1.1em; }
 `;
 writeFileSync(join(OUT, 'OEBPS', 'style.css'), css);
 
