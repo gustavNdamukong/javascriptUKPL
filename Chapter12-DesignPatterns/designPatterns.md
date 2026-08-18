@@ -154,11 +154,11 @@ used for shared resources like databases, configuration, or logging. The followi
   some text to the console saying we are making a connection with the
   database. Here is what it looks like:
 
-		#connectToDatabase() {
-
 ```
-        console.log("Establishing new database connection...");
-        return { connected: true, db: "my_database" };
+#connectToDatabase() {
+
+    console.log("Establishing new database connection...");
+    return { connected: true, db: "my_database" };
 }
 ```
 
@@ -232,61 +232,65 @@ used for shared resources like databases, configuration, or logging. The followi
  
 #### JavaScript Code Example
          
+```
 // Abstract Products
 class Button {
-  	render() {}
+    render() {}
 }
 class Checkbox {
-  	check() {}
+    check() {}
 }
 
 // Concrete Products for Windows
 class WindowsButton extends Button {
-  	render() {
-    		console.log("Rendering Windows Button");
-  	}
+    render() {
+            console.log("Rendering Windows Button");
+    }
 }
 
 class WindowsCheckbox extends Checkbox {
-  	check() {
-    		console.log("Checking Windows Checkbox");
-  	}
+    check() {
+            console.log("Checking Windows Checkbox");
+    }
 }
 
 // Concrete Products for Mac
 class MacButton extends Button {
-  	render() {
-    		console.log("Rendering Mac Button");
-  	}
+    render() {
+            console.log("Rendering Mac Button");
+    }
 }
 
 class MacCheckbox extends Checkbox {
-  	check() {
-    		console.log("Checking Mac Checkbox");
-  	}
+    check() {
+            console.log("Checking Mac Checkbox");
+    }
 }
 
 // Abstract Factory
 class GUIFactory {
-  	createButton() {}
-  	createCheckbox() {}
+    createButton() {}
+    createCheckbox() {}
 }
 
 // Concrete Factories
 class WindowsFactory extends GUIFactory {
-  	createButton() {
-    		return new WindowsButton();
-  	}
+    createButton() {
+            return new WindowsButton();
+    }
+```
   	
 	createCheckbox() {
     		return new WindowsCheckbox();
   	}
 }
 
+```
 class MacFactory extends GUIFactory {
-  	createButton() {
-    		return new MacButton();
-  	}
+    createButton() {
+            return new MacButton();
+    }
+```
   
 	createCheckbox() {
     		return new MacCheckbox();
@@ -331,83 +335,83 @@ class MacFactory extends GUIFactory {
 
  JavaScript Code Example:
 
+```
 // Product
 class House {
-	constructor() {
-    		this.walls = "";
-    		this.doors = "";
-    		this.windows = "";
-    		this.roof = "";
-  	}
+    constructor() {
+        this.walls = "";
+        this.doors = "";
+        this.windows = "";
+        this.roof = "";
+    }
 
-  	show() {
-    	    	console.log(
-      			`House with ${this.walls} walls, ${this.doors} doors, `
-			+ `${this.windows} windows, and a ${this.roof} roof`
-   		);
-  	}
+    show() {
+        console.log(
+            `House with ${this.walls} walls, ${this.doors} doors, `
+            + `${this.windows} windows, and a ${this.roof} roof`
+        );
+    }
 }
 
 
 // Builder Interface
 class HouseBuilder {
-  	buildWalls() {}
-  	buildDoors() {}
-  	buildWindows() {}
-  	buildRoof() {}
-  	getHouse() {}
+    buildWalls() {}
+    buildDoors() {}
+    buildWindows() {}
+    buildRoof() {}
+    getHouse() {}
 }
 
 // Concrete Builder
 class WoodenHouseBuilder extends HouseBuilder {
-  constructor() {
-    super();
-    this.house = new House();
-  }
+    constructor() {
+        super();
+        this.house = new House();
+    }
 
-```
-buildWalls() {
-  this.house.walls = "Wooden";
-}
+    buildWalls() {
+        this.house.walls = "Wooden";
+    }
 
-buildDoors() {
-  this.house.doors = "Wooden";
-}
+    buildDoors() {
+        this.house.doors = "Wooden";
+    }
 
-buildWindows() {
-  this.house.windows = "Wooden";
-}
+    buildWindows() {
+        this.house.windows = "Wooden";
+    }
 
-buildRoof() {
-  this.house.roof = "Wooden";
-}
-```
+    buildRoof() {
+        this.house.roof = "Wooden";
+    }
 
-  getHouse() {
-    return this.house;
-  }
+    getHouse() {
+        return this.house;
+    }
 }
 
 // Director
 class ConstructionEngineer {
-  constructor(builder) {
-    this.builder = builder;
-  }
+    constructor(builder) {
+        this.builder = builder;
+    }
 
-  constructHouse() {
-    this.builder.buildWalls();
-    this.builder.buildDoors();
-    this.builder.buildWindows();
-    this.builder.buildRoof();
-    return this.builder.getHouse();
-  }
+    constructHouse() {
+        this.builder.buildWalls();
+        this.builder.buildDoors();
+        this.builder.buildWindows();
+        this.builder.buildRoof();
+        return this.builder.getHouse();
+    }
 }
 
-	// Usage
-	const builder = new WoodenHouseBuilder();
-	const engineer = new ConstructionEngineer(builder);
-	const house = engineer.constructHouse();
-	house.show();
+// Usage
+const builder = new WoodenHouseBuilder();
+const engineer = new ConstructionEngineer(builder);
+const house = engineer.constructHouse();
+house.show();
+```
 
 The output of this code will be:
 
@@ -519,25 +523,28 @@ fall under this group:
   player.
 
 #### JavaScript code example
+
+```
 // Old API
 class OldPrinter {
-  	printText(text) {
-    		console.log(`Old Printer: ${text}`);
-  	}
+    printText(text) {
+            console.log(`Old Printer: ${text}`);
+    }
 }
 
 // New expected interface
 class NewPrinter {
-  	print(text) {
-    		console.log(`New Printer: ${text}`);
-  	}
+    print(text) {
+            console.log(`New Printer: ${text}`);
+    }
 }
 
 // Adapter
 class PrinterAdapter {
-  	constructor(oldPrinter) {
-    		this.oldPrinter = oldPrinter;
-  	}
+    constructor(oldPrinter) {
+            this.oldPrinter = oldPrinter;
+    }
+```
 
   	print(text) {
     		this.oldPrinter.printText(text); // adapts the method
@@ -567,28 +574,32 @@ In this pattern, PrinterAdapter plays the role of the plug adapter. It makes the
 
     JavaScript example:
 
+```
 // Base
 class Coffee {
-  	cost() {
-    		return 5;
-  	}
+    cost() {
+            return 5;
+    }
 }
 
 // Decorator
 class MilkDecorator {
-  	constructor(coffee) {
-    		this.coffee = coffee;
-  	}
+    constructor(coffee) {
+            this.coffee = coffee;
+    }
+```
 
   	cost() {
     		return this.coffee.cost() + 1;
   	}
 }
 
+```
 class SugarDecorator {
-  	constructor(coffee) {
-    		this.coffee = coffee;
-  	}
+    constructor(coffee) {
+            this.coffee = coffee;
+    }
+```
 
   	cost() {
     		return this.coffee.cost() + 0.5;
@@ -1577,11 +1588,13 @@ Through their execute() methods, these
   JavaScript Example:
 
 
+```
 // Collection class
 class BookCollection {
-  	constructor() {
-    		this.books = [];
-  	}
+    constructor() {
+            this.books = [];
+    }
+```
 
   	addBook(book) {
     		this.books.push(book);
@@ -1592,12 +1605,14 @@ class BookCollection {
   	}
 }
 
+```
 // Iterator class
 class BookIterator {
-  	constructor(books) {
-    		this.books = books;
-    		this.index = 0;
-  	}
+    constructor(books) {
+            this.books = books;
+            this.index = 0;
+    }
+```
 
   	hasNext() {
     		return this.index < this.books.length;
@@ -1615,9 +1630,11 @@ class BookIterator {
 
 	const iterator = collection.getIterator();
 
+```
 while (iterator.hasNext()) {
   console.log(iterator.next());
 }
+```
 
 
 The output in the console will be:

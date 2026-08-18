@@ -506,12 +506,14 @@ The output will be:
 	console.log(person);
 
 The output will be:
-  {
-    name: 'Alice',
-    age: 30,
-    'favourite colour': 'blue',
-    country: 'Holland'
-  }
+```
+{
+  name: 'Alice',
+  age: 30,
+  'favourite colour': 'blue',
+  country: 'Holland'
+}
+```
 
 
 In this example, we create an array with some data already in it, then add a new key-value pair, country, that did not exist before. Updating the value of a key that already exists is what we look at next.
@@ -1229,11 +1231,14 @@ JavaScript does not have true multi-dimensional associative arrays like other pr
 
 #### An array of objects
 The outer array is a true array (with number indexes) while the inner elements are objects (associative arrays). The way to loop through this as we saw before in the Mixed multi-dimensional arrays section is to interact with the data as its structure guides you. Take for example the following array:
-		let myArray = [ 
-			{ a: 1, b: 2, c: 3 }, 
-			{ a: 4, b: 5, c: 6 }, 
-			{ a: 7, b: 8, c: 9 } 
-		]; 
+
+```
+let myArray = [ 
+    { a: 1, b: 2, c: 3 }, 
+    { a: 4, b: 5, c: 6 }, 
+    { a: 7, b: 8, c: 9 } 
+]; 
+```
 
 In this case, you should do your regular loop on the first (outer) array using any of the ways you know how to loop through an array on it. Within the iteration, because you know the inner elements will be objects, act accordingly and loop through the objects using any of the ways to loop through an object. In this case we use a forEach() loop for the true outer array, and a for...in loop to loop through the inner objects.
 
@@ -2192,22 +2197,41 @@ I came up with the abbreviation KVE (for Keys, Values, Entries), to help me reme
 	};
 
 
-Object.keys()
-  console.log(Object.keys(person));
+#### Object.keys()
+
+```
+console.log(Object.keys(person));
+```
+
 The output of this is the array:
-  ["name", "age", "city"]
 
+```
+["name", "age", "city"]
+```
 
-Object.values()
-  console.log(Object.values(person));
+#### Object.values()
+
+```
+console.log(Object.values(person));
+```
+
 The output is the array:
-  ["Alice", 30, "London"]
 
+```
+["Alice", 30, "London"]
+```
 
-Object.entries()
-  console.log(Object.entries(person));
+#### Object.entries()
+
+```
+console.log(Object.entries(person));
+```
+
 The output is the array:
-  [["name", "Alice"], ["age", 30], ["city", "London"]]
+
+```
+[["name", "Alice"], ["age", 30], ["city", "London"]]
+```
 
 
 Having converted an object into an array, you can now use .filter(), .map(), or any array method on these results. For example, associative arrays or objects do not have the .length property, so if you tried to use it on an object like so:

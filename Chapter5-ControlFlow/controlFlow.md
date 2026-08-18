@@ -916,18 +916,20 @@ alternative to multiple if...else if...else statements.
 
 Here is the syntax:
 
+```
 switch (expression) { 
-	case value1: 
-	      // Code to execute if expression === 
+    case value1: 
+          // Code to execute if expression === 
             //value1 
-		break; 
-	case value2: 
-		// Code to execute if expression === 
+        break; 
+    case value2: 
+        // Code to execute if expression === 
              // value2 
-		break; 
-	default: 
-		// Code to run if no case matches 
-	 }
+        break; 
+    default: 
+        // Code to run if no case matches 
+     }
+```
 
 This is how it works:
 

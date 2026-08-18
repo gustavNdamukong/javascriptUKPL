@@ -199,6 +199,7 @@ stored in a variable.
 
 In JavaScript, there is a concept known as the `arguments` object. It's an array-like object that is automatically available inside all functions, and contains all the arguments passed to a function, even if the function doesn't explicitly list them as parameters. Eg:
 
+```
 function sumAll() {
     let sum = 0;
     for (let i = 0; i < arguments.length; i++) {
@@ -206,6 +207,7 @@ function sumAll() {
     }
     return sum;
 }
+```
 
 	let result = sumAll(1, 2, 3, 4); // result will be 10
 
@@ -502,6 +504,7 @@ We can shorten the syntax even further. If all we are returning in the function 
 (These three are alternatives to each other, not three things
 to write out one after the other. Pick whichever you prefer.)
 
+```
 // traditional function
 function createObject (make, model, year) {
         return {
@@ -510,8 +513,10 @@ function createObject (make, model, year) {
             year: year
         };
     };
+```
 
 
+```
 // anonymous function version
 const createObject = function(make, model, year) {
         return {
@@ -520,8 +525,10 @@ const createObject = function(make, model, year) {
             year: year
         };
     };
+```
 
 
+```
 // arrow function version
 const createObject = (make, model, year) => {
         return {
@@ -530,6 +537,7 @@ const createObject = (make, model, year) => {
             year: year
         };
   };
+```
     
 console.log(
 	createObject('Toyota', 'Rav4', '2025')
@@ -617,6 +625,7 @@ older trick is to capture (store) the ‘this’ word in a variable
 inside that function so that the arrow can reach that variable. 
 Here is an example:
 
+```
 const obj = {
     value: 10,
     fixUsingLexicalScope: function() {
@@ -627,6 +636,7 @@ const obj = {
         arrowFunction();
     }
 };
+```
 
 	obj.fixUsingLexicalScope(); // 10
 
@@ -636,6 +646,7 @@ do not actually need it. An arrow function written inside a regular
 method already inherits that method's this, so the self variable is
 doing no work:
 
+```
 const obj = {
     value: 10,
     fixWithoutSelf: function() {
@@ -645,6 +656,7 @@ const obj = {
         arrowFunction();
     }
 };
+```
 
 	obj.fixWithoutSelf(); // 10
 

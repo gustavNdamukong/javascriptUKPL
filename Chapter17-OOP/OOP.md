@@ -1453,6 +1453,7 @@ However, when you parse JSON using JSON.parse(), it becomes a JavaScript object.
 #### Simplified object literal creation from function arguments
   I talked about this under the topic of functions, under the heading “Quick object literals from function arguments”, but since this is a topic on objects, I thought I should quickly mention it again. Since you are learning how to create objects, you should remember how that links up with functions and how they work together. The idea is that you sometimes have a function whose only job is to return an object literal from the arguments passed to the function. For example:
 
+```
 // arrow function version
 const createObject = (make, model, year) => {
         return {
@@ -1461,6 +1462,7 @@ const createObject = (make, model, year) => {
             year: year
         };
   };
+```
     
 console.log(
 	createObject('Toyota', 'Rav4', '2025')

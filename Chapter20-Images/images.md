@@ -312,7 +312,9 @@ This is a very cool feature which can be used in a simple photo editing app so t
 ### Resizing an image using Canvas
   This will let you shrink an image in the browser before uploading or displaying it. Let’s add some styling to make the web page look nice and professional. Create a CSS file eg index.css in the same folder as your index.html file. Place this code in it:
 
+```
 body {
+
     font-family: Arial, sans-serif;
     padding: 30px;
     max-width: 600px;
@@ -327,23 +329,24 @@ h1 {
 }
 
 #openWindowBtn {
-	    background-color: cornflowerblue;
-	}
+    background-color: cornflowerblue;
+}
 
 
-	input[type="file"] {
-	    display: block;
-	    margin-bottom: 20px;
-	}
+input[type="file"] {
+    display: block;
+    margin-bottom: 20px;
+}
 
 label {
+
     font-weight: bold;
 }
 
 #scale {
-	    width: 100%;
-	    margin-top: 5px;
-	}
+    width: 100%;
+    margin-top: 5px;
+}
 
 canvas {
     display: block;
@@ -371,9 +374,10 @@ button:hover {
 }
 
 #scaleValue {
-	    font-weight: normal;
-	    color: #007acc;
-	}
+    font-weight: normal;
+    color: #007acc;
+}
+```
 
 
 Your index.html code, should look like this:

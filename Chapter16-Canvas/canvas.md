@@ -775,17 +775,20 @@ Here is the modified code to implement pixel erasing using clearRect():
 	const canvas = document.getElementById("gameCanvas");
 	const ctx = canvas.getContext("2d");
 
+```
 // Ball object
 const ball = {
   x: 50,
   y: 50,
   radius: 15,
   color: "dodgerblue",
+```
 
   // Moves 10 pixels per key press
   speed: 10 
 };
 
+```
 // Rock object
 const rock = {
   x: 220,
@@ -794,6 +797,7 @@ const rock = {
   height: 60,
   color: "gray"
 };
+```
 
 	// Draw the ball
 	function drawBall() {

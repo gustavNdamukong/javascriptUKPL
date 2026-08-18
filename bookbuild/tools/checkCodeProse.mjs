@@ -77,7 +77,11 @@ const WEAK = [
     // a trailing comment on a line of code - but not the // in a URL
     /^(?!.*:\/\/).*\S\s+\/\/\s/,
     // an array element: "Alice",  /  42,
-    /^\s*(["'][^"']*["']|-?\d[\d_.]*)\s*,\s*(\/\/.*)?$/
+    /^\s*(["'][^"']*["']|-?\d[\d_.]*)\s*,\s*(\/\/.*)?$/,
+    // anything opening a block: `body {`, `h1 {`, `.editButton, .delete {`.
+    // A CSS selector matches nothing else here, and leaving it unrecognised
+    // made the fixer start a fence AFTER `body {`, stranding the selector.
+    /\{\s*$/
 ];
 const isStrongCode = l => STRONG.some(re => re.test(l));
 const isCodeish = l => isStrongCode(l) || WEAK.some(re => re.test(l));
@@ -125,12 +129,22 @@ function check(path) {
         return 'unknown';
     };
 
+    // Lines belonging to a fenced block are already unambiguous, and a fence
+    // needs no blank line before it, so "The output will be:" sitting directly
+    // on top of one would otherwise be swept into the listing's chunk and
+    // reported as a listing line that failed to render.
+    const fenced = new Array(lines.length).fill(false);
+    for (let k = 0, inFence = false; k < lines.length; k++) {
+        if (/^\s*```/.test(lines[k])) { fenced[k] = true; inFence = !inFence; }
+        else if (inFence) fenced[k] = true;
+    }
+
     const out = [];
     let i = 0;
     while (i < lines.length) {
-        if (!lines[i].trim()) { i++; continue; }
+        if (!lines[i].trim() || fenced[i]) { i++; continue; }
         let j = i;
-        while (j < lines.length && lines[j].trim()) j++;
+        while (j < lines.length && lines[j].trim() && !fenced[j]) j++;
         const chunk = [];
         for (let k = i; k < j; k++) chunk.push(k);
 
@@ -156,7 +170,15 @@ function check(path) {
             (strong >= 2 || (strong >= 1 && codey / chunk.length >= 0.6));
         const isProseChunk = prosey / chunk.length >= 0.6 && codey / chunk.length < 0.4;
 
-        if (isCodeChunk && asProse.length && minInd >= 1)
+        // A listing does not have to be indented to be a listing. Plenty sit
+        // flush at column 0 - a whole `function sumAll() {...}`, a stylesheet,
+        // a 21-line class - and those never come near the four-column bar, so
+        // they are set as prose in their entirety. Requiring an indent here
+        // hid 39 of them.
+        // A bullet list is prose by construction, however much code the items
+        // quote - "- `<p>` → A real element..." is a sentence, not a listing.
+        const isList = /^\s*([-*+]|\d+[.)])\s+/.test(lines[chunk[0]]);
+        if (isCodeChunk && asProse.length && !isList)
             out.push({ type: 'code', from: i, to: j - 1, asProse, asCode, size: chunk.length });
         else if (isProseChunk && asCode.length && !asProse.length)
             out.push({ type: 'prose', from: i, to: j - 1, asProse, asCode, size: chunk.length });

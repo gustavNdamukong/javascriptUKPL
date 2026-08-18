@@ -125,23 +125,25 @@ An element (HTMLElement) is a specific type of node that represents an actual HT
 
 It is important to be able to tell when you're dealing with a Node and when you are dealing with an Element. When we say some properties or methods of the HTMLElement object (like children) ignore non-element nodes, we mean they only return actual elements and ignore text nodes and comment nodes. What actually are text nodes and comment nodes? Text in your HTML can exist inside elements (like inside a `<p>` tag) or directly in the DOM as a separate text node. The same applies to comments. It is the ones that are not within HTML elements (tags) that are not considered as element nodes. Here is a demonstration:
 
+```
 <div id="parent">
   Some text  <!-- This is a text node -->
   <p>Paragraph text</p>  <!-- The <p> is
   an element, but its text inside is a
   text node -->
-    
-		<!-- This is a comment node -->
-	</div>
 
--"Some text" → A text node (not inside a `<p>`, so
-it's separate in the DOM).
--<!-- This is a comment node --> → A comment
-node (ignored by properties like children).
--`<p>` → A real element, but its inner text is still
-inside a text node.
+        <!-- This is a comment node -->
+    </div>
+```
 
-  Here is the kicker; a `<p>` tag is an element, so it will always be included in .children. However, the text inside a `<p>` is a text node, not an element, so children will count (select) the `<p>` tag, but not the text within it. The childNodes property, on the other hand, does accept text and comments, and so it will return the text within the `<p>` tag. Here is a demonstration:
+- "Some text" → A text node (not inside a `<p>`, so
+  it's separate in the DOM).
+- <!-- This is a comment node --> → A comment
+  node (ignored by properties like children).
+- `<p>` → A real element, but its inner text is still
+  inside a text node.
+
+Here is the kicker; a `<p>` tag is an element, so it will always be included in .children. However, the text inside a `<p>` is a text node, not an element, so children will count (select) the `<p>` tag, but not the text within it. The childNodes property, on the other hand, does accept text and comments, and so it will return the text within the `<p>` tag. Here is a demonstration:
 
 	<p id="para">Hello World!</p>
 
@@ -874,11 +876,14 @@ Here is a simple example to demonstrate DOM traversal using the above HTMLElemen
 This outputs a NodeList of FIVE nodes, not three:
 	[
 		#text,                    (the line break and "Text Node")
-		<p>Paragraph 1</p>, 
-		#text,                    (the line break between them)
-		<p>Paragraph 2</p>,
-		#text                     (the line break before </div>)
-	]
+
+```
+    <p>Paragraph 1</p>, 
+    #text,                    (the line break between them)
+    <p>Paragraph 2</p>,
+    #text                     (the line break before </div>)
+]
+```
 
 That is worth staring at for a moment, because it is exactly the trap
 this section is warning you about. Every line break and run of spaces
@@ -888,10 +893,12 @@ things here are whitespace you never typed on purpose.
 	console.log(parent.children); 
 
 This outputs: 
-	[
-		<p>Paragraph 1</p>, 
-		<p>Paragraph 2</p>
-	]
+```
+[
+    <p>Paragraph 1</p>, 
+    <p>Paragraph 2</p>
+]
+```
 
 
 	console.log(parent.firstChild); 
@@ -922,8 +929,11 @@ This outputs: `<p>`Paragraph 1`</p>`
 
 		
 ### Changing elements
-  In JavaScript, there are special properties you can use to change the content (what people see) inside elements on a web page. These properties belong to what’s called an HTMLElement, which is just a fancy name for any element you see on a web page—like a `<div>`, `<p>`, `<h1>`, and so on.
- The way this is done in JavaScript is to select the HTML element, and then reference the document object property on it as you have seen before. You can also select the element first, store it in a variable for example a variable called elem, then you would reference the property you want to change on that variable-which now represents the HTML element, using this syntax: elem.propertyName = "new value";
+
+```
+ In JavaScript, there are special properties you can use to change the content (what people see) inside elements on a web page. These properties belong to what’s called an HTMLElement, which is just a fancy name for any element you see on a web page—like a `<div>`, `<p>`, `<h1>`, and so on.
+The way this is done in JavaScript is to select the HTML element, and then reference the document object property on it as you have seen before. You can also select the element first, store it in a variable for example a variable called elem, then you would reference the property you want to change on that variable-which now represents the HTML element, using this syntax: elem.propertyName = "new value";
+```
 
 Let’s explore the four main properties you’ll use most often.
   - textContent
@@ -2093,7 +2103,9 @@ To select an element by its class attribute value you should use the getElements
 
 
 #### index.css
+```
 body {
+
     font-family: Arial, Helvetica, sans-serif;
     background: #27292c;
     color: white;
@@ -2102,80 +2114,83 @@ body {
 
 h1 {
     margin-top: 40px;
-    display: inline; 
+    display: inline;
 }
 
 #addItemButton {
-	    position: relative;
-	    top: -0.2em;
-	    width: 5em;
-	    height: 2.3em;
-	    background-color: dodgerblue;
-	    color: white;
-	    border-radius: 5px;
-	    margin-left: 1rem;
-	}
+    position: relative;
+    top: -0.2em;
+    width: 5em;
+    height: 2.3em;
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 5px;
+    margin-left: 1rem;
+}
 
 #addItemDiv {
-	    display: none;
-	}
+    display: none;
+}
 
-	.itemDiv {
-	    height: auto;
-	    border: solid 1px dodgerblue;
-	    border-radius: 5px;
-	    background-color: cornsilk;
-	    color: green;
-	    font-size: 1rem;
-	    font-weight: bold;
-	    padding: 1rem 0rem 0.8rem 0rem;
-	}
+.itemDiv {
+    height: auto;
+    border: solid 1px dodgerblue;
+    border-radius: 5px;
+    background-color: cornsilk;
+    color: green;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 1rem 0rem 0.8rem 0rem;
+}
 
 #notify {
-	    display: none;
-	    color: red;
-	    font-size: 2em;
-	}
+
+    display: none;
+    color: red;
+    font-size: 2em;
+}
 
 .cancelAddItem, .cancelEdit, .deleteButton {
     background-color: red;
     color: white;
 }
 
-	.cancelEdit {
-	    width: 2em;
-	    height: 1.5em;
-	}
+.cancelEdit {
+    width: 2em;
+    height: 1.5em;
+}
 
-	.editButton {
-	    background-color: orange;
-	    color: white;
-	    border-radius: 5px;
-	}
+.editButton {
+    background-color: orange;
+    color: white;
+    border-radius: 5px;
+}
 
 .editButton, .deleteButton {
     float: right;
     margin-right: 1rem;
-   margin-top: -0.5em;
+    margin-top: -0.5em;
 }
 
-	.editFormDiv {
-	    display: none;
-	}
+.editFormDiv {
+    display: none;
+}
 
 #gusUl li {
-	    list-style: none;
-	}
 
-	.btn-primary-sm {
-	    background-color: dodgerblue;
-	    color: white;
-	    border-radius: 5px;
-	}
+    list-style: none;
+}
 
-	.headingUnderline {
-	    background-color: white;
-	}
+.btn-primary-sm {
+    background-color: dodgerblue;
+    color: white;
+    border-radius: 5px;
+}
+
+.headingUnderline {
+    background-color: white;
+}
+```
 
 
 #### index.html
@@ -2214,6 +2229,8 @@ h1 {
 
 
 #### index.js
+
+```
 let todoString = "";
     todoString = `
     <div class='itemDiv'>
@@ -2228,6 +2245,7 @@ let todoString = "";
     </form>
     </div>
     </div>`;
+```
 
 
 	//------------------------------------------------------------

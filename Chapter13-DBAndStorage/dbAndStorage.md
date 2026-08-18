@@ -245,25 +245,27 @@ How to save data to LocalStorage
 
 
 
+```
 function getId()
 {
-   	if ((JSON.parse(localStorage.getItem(
-		LOCAL_STORAGE_TODO_KEY)) === null) || 		
-		(JSON.parse(localStorage.getItem(
-			LOCAL_STORAGE_TODO_KEY)).length == 0))
-   	{
-      		return 1;
-   	}
-   	else
-   	{
-      		// JSON.parse() returns an array, so get the ID of the 
-		// last element and increment it by 1
-       		let IdNum = 	
-			parseInt(JSON.parse(localStorage.getItem(
-				LOCAL_STORAGE_TODO_KEY))	
-				[JSON.parse(localStorage.getItem(
-					LOCAL_STORAGE_TODO_KEY
-				)).length - 1].id);
+    if ((JSON.parse(localStorage.getItem(
+        LOCAL_STORAGE_TODO_KEY)) === null) ||       
+        (JSON.parse(localStorage.getItem(
+            LOCAL_STORAGE_TODO_KEY)).length == 0))
+    {
+            return 1;
+    }
+    else
+    {
+            // JSON.parse() returns an array, so get the ID of the 
+        // last element and increment it by 1
+            let IdNum =     
+            parseInt(JSON.parse(localStorage.getItem(
+                LOCAL_STORAGE_TODO_KEY))    
+                [JSON.parse(localStorage.getItem(
+                    LOCAL_STORAGE_TODO_KEY
+                )).length - 1].id);
+```
       
 			let idFigure = IdNum + 1;
 	      		return idFigure;
@@ -275,12 +277,14 @@ function getId()
 
 How to update data in LocalStorage
 
+```
 function saveEdit(e)
 {
-   	//grab the edit form's parent div
-   	let editFormDiv = e.target.parentNode;
-   	let todoId = parseInt((editFormDiv.id).split('editFormDiv')
-		[1]);
+    //grab the edit form's parent div
+    let editFormDiv = e.target.parentNode;
+    let todoId = parseInt((editFormDiv.id).split('editFormDiv')
+        [1]);
+```
    
 	let savedValue = e.target.children[0].value;
    

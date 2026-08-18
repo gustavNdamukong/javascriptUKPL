@@ -266,10 +266,11 @@ This above object is created dynamically using new Object(), then properties are
   than object constructors.
 
 Here is a list of other “Literals” in JavaScript. The word “literal” is used in JavaScript for other direct-value creations too:
-   -Array Literal → const arr = [1, 2, 3];
-   -String Literal → const str = "hello";
-   -Number Literal → const num = 42;
-   -Boolean Literal → const bool = true;
+
+- Array Literal → const arr = [1, 2, 3];
+- String Literal → const str = "hello";
+- Number Literal → const num = 42;
+- Boolean Literal → const bool = true;
 
 
 ## Understanding strong and weak typing
