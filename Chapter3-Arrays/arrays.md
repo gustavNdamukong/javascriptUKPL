@@ -306,15 +306,17 @@ Enough of this repetition, for I know you have got it now. Congratulations, you 
 
 Here is a valid example:
 
-  const person = {
-    "name": "Alice",
-    "age": 30,
-    occupation: "Developer",
-    _id: 12345,             // valid
-    $status: "active",      // valid
-    "other-name": "Gray",   // valid (quoted)
-    "home town": "London",  // valid (quoted)
-  };
+```
+const person = {
+  "name": "Alice",
+  "age": 30,
+  occupation: "Developer",
+  _id: 12345,             // valid
+  $status: "active",      // valid
+  "other-name": "Gray",   // valid (quoted)
+  "home town": "London",  // valid (quoted)
+};
+```
 
 The property name "other-name" would otherwise be invalid if it was not quoted, because it contains a hyphen. Similarly, the "home town" has a space in it, so it is quoted. These two properties break the identifier rules, and are fixed by quotes. However, because they are fixed by quotes, it changes the way their values can be retrieved. I will address that shortly when I talk about retrieving and updating the values of associative array properties.
 
@@ -418,15 +420,17 @@ would not have worked.
 
 Here is another example demonstrating how and when to use the two notations:
 
-  const person = {
-    "name": "Alice",
-    "age": 30,
-    occupation: "Developer",
-    _id: 12345,             // valid
-    $status: "active",      // valid
-    "other-name": "Gray",   // valid (quoted)
-    "home town": "London",  // valid (quoted)
-  };
+```
+const person = {
+  "name": "Alice",
+  "age": 30,
+  occupation: "Developer",
+  _id: 12345,             // valid
+  $status: "active",      // valid
+  "other-name": "Gray",   // valid (quoted)
+  "home town": "London",  // valid (quoted)
+};
+```
 
 	console.log(person.age);
 	console.log(person.occupation);
@@ -1474,8 +1478,7 @@ arguments to sum() when we call it.
   arguments into an array.
 
 
-  -Array properties
- //———————————
+## Array properties
   JavaScript arrays come with several built-in properties that help in working with them efficiently. Here, we will cover the most commonly used ones that every programmer should know. Let’s look at four of them: length, prototype, constructor and prototype.length.
 		   
 ### -length

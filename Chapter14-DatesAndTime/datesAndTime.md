@@ -75,16 +75,18 @@ JavaScript provides basic date formatting with various methods of the Date objec
 
 	  let now = new Date();
 
-  let formatter = 
-       new Intl.DateTimeFormat(
-           "en-US", 
-           { 
-              weekday: "long", 
-              year: "numeric", 
-              month: "long", 
-              day: "numeric" 
-           }
-       );
+```
+let formatter = 
+     new Intl.DateTimeFormat(
+         "en-US", 
+         { 
+            weekday: "long", 
+            year: "numeric", 
+            month: "long", 
+            day: "numeric" 
+         }
+     );
+```
 
 	   // this will print to the console something
 	   // like this: "Saturday, March 16, 2024"
@@ -523,13 +525,15 @@ Create the `<img>` tag in your HTML code. Notice I have given it a width and hei
 
 #### JavaScript code
 
-  const images = [
-    "/images/blurred-image.png",
-    "/images/brightened-image.png",
-    "/images/contrasted-image.png",
-    "/images/grayscale-image.png",
-    "/images/resized-image.png",
-  ];
+```
+const images = [
+  "/images/blurred-image.png",
+  "/images/brightened-image.png",
+  "/images/contrasted-image.png",
+  "/images/grayscale-image.png",
+  "/images/resized-image.png",
+];
+```
   
   	// start at the first image
   	let index = 0; 

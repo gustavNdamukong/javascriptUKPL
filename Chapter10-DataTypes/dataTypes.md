@@ -298,20 +298,24 @@ Here is a list of other “Literals” in JavaScript. The word “literal” is 
   convert it.
 
   Examples
-       Java:
-               int num = 5;
-               String text = "Hello";
 
-              // Trying to combine them without 
-              // converting would throw an error
+  Java:
 
-              // Error: incompatible types
-              String result = num + text; 
+```
+int num = 5;
+String text = "Hello";
 
-             // You must convert 'num' to a string
-              // Now it works: "5Hello"
-             String result = 
-                       String.valueOf(num) + text; 
+// Trying to combine them without
+// converting would throw an error
+
+// Error: incompatible types
+String result = num + text;
+
+// You must convert 'num' to a string
+// Now it works: "5Hello"
+String result =
+    String.valueOf(num) + text;
+```
 
 So, in Java, you can’t mix an integer
 and a string without first converting
@@ -356,19 +360,23 @@ you’re working with.
   results.
 
   Examples:
-        JavaScript
-                let num = 5;
-                let text = "Hello";
 
-              // JavaScript will automatically 
-              // convert the number to a string 
-              // and combine them
-              let result = num + text;  // "5Hello"
+  JavaScript
 
-             // Another example:
-             // the value of sum will be "510", 
-             // not 15
-            let sum = "5" + 10; 
+```
+let num = 5;
+let text = "Hello";
+
+// JavaScript will automatically
+// convert the number to a string
+// and combine them
+let result = num + text;  // "5Hello"
+
+// Another example:
+// the value of sum will be "510",
+// not 15
+let sum = "5" + 10;
+```
 
 So, in JavaScript, when you try to
 combine a number with a string, the

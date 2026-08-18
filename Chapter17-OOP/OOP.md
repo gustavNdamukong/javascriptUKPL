@@ -1162,8 +1162,11 @@ instantiated through a function or class.
 
   Change the value of the 'name' property 
   like this:
-        // Dot notation
-        person.name = 'Jane'; 
+
+```
+// Dot notation
+person.name = 'Jane'; 
+```
 
   Change the value of the 'age' property:
 

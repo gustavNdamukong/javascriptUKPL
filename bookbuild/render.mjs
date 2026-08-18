@@ -11,6 +11,11 @@ const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&
 // Nothing in this book is live markup - every tag in the prose is example
 // code the reader is meant to see. Escaping it is what stops a stray
 // </body> in an example from closing the document early.
+// Do NOT strip HTML comments here. It is tempting - it would have hidden the
+// "FIGURE 1.1 PLACEHOLDER" note that reached the finished EPUB - but Chapter 15
+// teaches DOM node types, and `<!-- This is a comment node -->` is the example
+// the reader is meant to see. Silently swallowing comments deletes the lesson.
+// Forgotten author notes are caught by tools/checkPlaceholders.mjs instead.
 marked.use({
     renderer: {
         html(t) { return esc(typeof t === 'string' ? t : t.raw); },

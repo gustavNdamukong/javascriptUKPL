@@ -155,12 +155,16 @@ used for shared resources like databases, configuration, or logging. The followi
   database. Here is what it looks like:
 
 		#connectToDatabase() {
-    			console.log("Establishing new database connection...");
-    			return { connected: true, db: "my_database" };
-  		}
-	-Finally, note that we have logged the result of the expression that 
-	   checks if the db1 and db2 instances are the same instance to see if the 
-	   Singleton implementation worked. 
+
+```
+        console.log("Establishing new database connection...");
+        return { connected: true, db: "my_database" };
+}
+```
+
+-Finally, note that we have logged the result of the expression that 
+   checks if the db1 and db2 instances are the same instance to see if the 
+   Singleton implementation worked. 
 
 		console.log(db1 === db2); 
 

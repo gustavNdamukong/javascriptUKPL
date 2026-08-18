@@ -902,11 +902,13 @@ In the above example, we have the following code initialising the value to be us
 
 These values are set as properties of the ball object:
 
-  const ball = {
-    x: 50,
-    y: 50,
-    radius: 15,
-    color: "dodgerblue",
+```
+const ball = {
+  x: 50,
+  y: 50,
+  radius: 15,
+  color: "dodgerblue",
+```
 
   		// Moves 10 pixels per key press
   		speed: 10 

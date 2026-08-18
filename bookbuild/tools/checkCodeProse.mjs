@@ -67,7 +67,18 @@ const STRONG = [
     /;\s*$/,
     /^\s*\/\//                                              // a comment line
 ];
-const WEAK = [/\w+\.\w+\(/, /===|!==|\+=|&&|\|\|/, /^\s*(if|for|while|else|switch|case|try|catch)\b/];
+const WEAK = [
+    /\w+\.\w+\(/, /===|!==|\+=|&&|\|\|/,
+    /^\s*(if|for|while|else|switch|case|try|catch)\b/,
+    // an object literal entry: "age": 30,   /   occupation: "Developer",
+    // Anchored on the trailing comma or brace so that a sentence opening
+    // "Note: this matters." cannot match.
+    /^\s*(["'][^"']*["']|[\w$]+)\s*:\s*.+?[,{[]\s*(\/\/.*)?$/,
+    // a trailing comment on a line of code - but not the // in a URL
+    /^(?!.*:\/\/).*\S\s+\/\/\s/,
+    // an array element: "Alice",  /  42,
+    /^\s*(["'][^"']*["']|-?\d[\d_.]*)\s*,\s*(\/\/.*)?$/
+];
 const isStrongCode = l => STRONG.some(re => re.test(l));
 const isCodeish = l => isStrongCode(l) || WEAK.some(re => re.test(l));
 
@@ -136,7 +147,13 @@ function check(path) {
         const asProse = chunk.filter((k, n) => fates[n] === 'prose' && !isProseish(lines[k]));
         const asCode  = chunk.filter((k, n) => fates[n] === 'code');
 
-        const isCodeChunk  = strong >= 1 && codey / chunk.length >= 0.6 && prosey / chunk.length < 0.34;
+        // Two independent structural signals are enough on their own. An object
+        // literal is mostly `"age": 30,` lines that read as neither code nor
+        // prose, so the ratio alone misses it - but its `const x = {` opener and
+        // its `};` closer are unmistakable. The prose guard still applies, so a
+        // paragraph that happens to mention <script> twice cannot qualify.
+        const isCodeChunk = prosey / chunk.length < 0.34 &&
+            (strong >= 2 || (strong >= 1 && codey / chunk.length >= 0.6));
         const isProseChunk = prosey / chunk.length >= 0.6 && codey / chunk.length < 0.4;
 
         if (isCodeChunk && asProse.length && minInd >= 1)
@@ -172,7 +189,7 @@ function check(path) {
         sample: f.asCode.slice(0, 3).map(k => `${String(k + 1).padStart(4)}: ${lines[k].trim().slice(0, 96)}`)
     });
 }
-export { check, bookFiles, indentOf };
+export { check, bookFiles, indentOf, isProseish, isCodeish };
 
 // ---- reading order -------------------------------------------------------
 function bookFiles() {

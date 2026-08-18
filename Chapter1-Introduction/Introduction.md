@@ -31,15 +31,9 @@ This book is your journey into that world—a world where websites come alive an
   A web page is built from three separate technologies, each with its own job. HTML (HyperText Markup Language) provides the content and the structure—the headings, paragraphs, images, buttons and form fields. CSS (Cascading Style Sheets) controls how all of that looks—the colours, fonts, spacing and layout. JavaScript is the third of the three, and it is the one that makes the page do things.
   This book assumes you have seen a little HTML before, but you do not need to be an expert at it. We will explain any HTML we use as we go.
 
-<!-- FIGURE 1.1 PLACEHOLDER - image not yet created.
-  File to add:  images/ch01-fig-01-three-technologies.png
-  Shows: Three panels of the same page: bare HTML wireframe, then styled with CSS, then reacting to a click via JavaScript.
-  When the image exists, delete this comment and the two lines below become live:
-
 ![Figure 1.1 — The three technologies that build a web page](images/ch01-fig-01-three-technologies.png)
 
 *Figure 1.1 — The three technologies that build a web page*
--->
 
   If HTML is the skeleton of a webpage and CSS is the skin and clothes, JavaScript is the muscle. It gives websites power, movement, and interactivity.
 Without JavaScript, websites are static. They just sit there. You can click a link and go to another page, but that’s about it. With JavaScript, you can make pages respond to a user’s actions, show a message, fetch more data without reloading, change what’s on the page in real time, and so much more.

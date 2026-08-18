@@ -19,7 +19,7 @@
 import { marked } from 'marked';
 import { readFileSync, writeFileSync } from 'fs';
 import { relative } from 'path';
-import { check, bookFiles, indentOf } from './checkCodeProse.mjs';
+import { check, bookFiles, indentOf, isProseish, isCodeish } from './checkCodeProse.mjs';
 
 const BASE = '/Users/user/UKPL/javascriptUKPL';
 const esc = s => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -54,21 +54,41 @@ function listContentIndent(lines, idx) {
 function candidates(lines, f) {
     const out = [];
     const ci = listContentIndent(lines, f.from);
-    const body = lines.slice(f.from - 1, f.to).map(expand);
 
     if (f.type === 'code') {
+        // A chunk can hold a sentence and a listing with no blank line between
+        // them - "Change the value of the 'name' property like this:" sitting
+        // directly on top of the code. Fencing the whole chunk would set that
+        // sentence in monospace, so the fence is pulled back to where the code
+        // actually starts and ends, and a blank line put in its place.
+        //
+        // Trimming on "does this line look like code?" rather than "does it
+        // look like prose?" matters: a wrapped paragraph ends on a short line
+        // ("Singleton implementation worked.") that is too brief to read as
+        // prose on its own, but is plainly not code either.
+        let a = f.from, b = f.to;
+        while (a <= b && !isCodeish(lines[a - 1])) a++;
+        while (b >= a && !isCodeish(lines[b - 1])) b--;
+        if (a > b) return out;
+
+        const body = lines.slice(a - 1, b).map(expand);
         const live = body.filter(l => l.trim());
         const base = Math.min(...live.map(indentOf));
         const dedented = body.map(l => (l.trim() ? l.slice(base) : ''));
+        const gapBefore = a > 1 && lines[a - 2].trim() ? [''] : [];
+        const gapAfter  = b < lines.length && (lines[b] ?? '').trim() ? [''] : [];
         for (const ind of [...new Set([ci ?? 0, 0])]) {
             const pad = ' '.repeat(ind);
             out.push({
-                label: `fence at ${ind}`,
-                from: f.from, to: f.to,
-                text: [pad + '```', ...dedented.map(l => (l ? pad + l : '')), pad + '```']
+                label: `fence at ${ind}${a > f.from || b < f.to ? ' (prose trimmed)' : ''}`,
+                from: a, to: b,
+                text: [...gapBefore, pad + '```',
+                       ...dedented.map(l => (l ? pad + l : '')),
+                       pad + '```', ...gapAfter]
             });
         }
     } else {
+        const body = lines.slice(f.from - 1, f.to).map(expand);
         // only the lines the renderer actually set as code get moved
         const lo = Math.min(...f.targets), hi = Math.max(...f.targets);
         const seg = lines.slice(lo - 1, hi).map(expand);

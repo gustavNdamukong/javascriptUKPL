@@ -207,13 +207,15 @@ Without the correct namespace, XPath queries (a technology for reading XML data,
 
 Then use this resolver when calling document.evaluate():
 
-  const result = xmlDoc.evaluate(
-    "//soap:Body//Price/text()", // your XPath query
-    xmlDoc,
-    nsResolver,
-    XPathResult.STRING_TYPE,
-    null
-  );
+```
+const result = xmlDoc.evaluate(
+  "//soap:Body//Price/text()", // your XPath query
+  xmlDoc,
+  nsResolver,
+  XPathResult.STRING_TYPE,
+  null
+);
+```
 
 
 

@@ -1487,13 +1487,15 @@ Here’s how the document.evaluate() method works:
 
 	const xpath = "//p";
 
-  const result = document.evaluate(
-    xpath,                  // The XPath expression
-    document,               // Context node (usually `document`)
-    null,                   // Namespace resolver (null for HTML)
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
-    null                    // Initial result (null for new)
-  );
+```
+const result = document.evaluate(
+  xpath,                  // The XPath expression
+  document,               // Context node (usually `document`)
+  null,                   // Namespace resolver (null for HTML)
+  XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
+  null                    // Initial result (null for new)
+);
+```
 
 	// Loop through and log matched nodes
 	for (let i = 0; i < result.snapshotLength; i++) {
@@ -1636,13 +1638,15 @@ The possible XPathResult (properties) types are 10 in number, and here is a list
 Each result type constant (like XPathResult.STRING_TYPE) is actually a number behind the scenes, and that is what is represented by the code numbers 0-9 which are returned with the result. When handling the returned result in code you can use either the name or the raw number, but the name is much clearer and the number is not recommended for beginners. I just listed the codes here for you to understand it, but you should not have to worry about them.
   If you really ever need to check what type was returned, you can do so by using the XPathResult.ANY_TYPE property. It is the one that does not commit you to a type up front: you ask for ANY_TYPE, and then read back which type you actually got. Here is how to check for it:
 
-  const result = document.evaluate(
-    xpath,
-    document,
-    null,
-    XPathResult.ANY_TYPE,
-    null
-  );
+```
+const result = document.evaluate(
+  xpath,
+  document,
+  null,
+  XPathResult.ANY_TYPE,
+  null
+);
+```
 
 Then retrieve the result with the resultType property like so:
 
@@ -1994,13 +1998,15 @@ DOMParser takes that string and turns it into a DOM document you can work with. 
 	const parser = new DOMParser();
 	const xmlDoc = parser.parseFromString(xmlString, "text/xml");
 
-  const result = xmlDoc.evaluate(
-    "//book/title/text()",
-    xmlDoc,
-    null,
-    XPathResult.STRING_TYPE,
-    null
-  );
+```
+const result = xmlDoc.evaluate(
+  "//book/title/text()",
+  xmlDoc,
+  null,
+  XPathResult.STRING_TYPE,
+  null
+);
+```
 
 	console.log(result.stringValue); 
 
