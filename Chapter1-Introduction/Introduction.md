@@ -164,13 +164,13 @@ It is therefore recommended to be safe by ending all your statements with semico
 Examples:
 
 
-- i) Referencing a local script file:
+- Referencing a local script file:
 
   ```
   <script src="/filePath/script.js"></script>
   ```
 
-- ii) Loading an external script from the internet:
+- Loading an external script from the internet:
 
   ```
   <script src="https://example.com/scriptName.js"></script>
@@ -201,7 +201,7 @@ One thing to note is that defer only works on a script that loads
 an external file using the src attribute. It has no effect on code
 written directly between the opening and closing script tags.
 
-  - b) Use the DOMContentLoaded event. Here is how to use it:
+  - Use the DOMContentLoaded event. Here is how to use it:
 
 		document.addEventListener('DOMContentLoaded', function () {
 			// your code here. Only runs once the HTML has been fully

@@ -36,10 +36,10 @@
       associative array
     - Looping through a
       multi-dimensional array
-      - a) Loop through a
+      - Loop through a
       multi-dimensional
       index array
-      - b) Loop through an
+      - Loop through an
       associative
       multi-dimensional array
   - Rest parameters and the spread
@@ -1160,7 +1160,7 @@ The result will be:
   Looping through a
 #### multi-dimensional array
 
-  - a) Loop through a multi-dimensional
+  - Loop through a multi-dimensional
 #### index array
   There are three ways to loop through a multi-dimensional indexed array. 
 You can do it in any of the following ways:
@@ -1170,7 +1170,7 @@ You can do it in any of the following ways:
   - the flat() method.
 
 
-  - i) Nested for loop
+  - Nested for loop
 
 		let myArray = [ 
 			[1, 2, 3], 
@@ -1199,7 +1199,7 @@ The result is each number printed on its own line:
 9
 
 
-  - ii) Using the forEach() method
+  - Using the forEach() method
 				
 		myArray.forEach(
 			row => { 
@@ -1212,7 +1212,7 @@ The result is each number printed on its own line:
 The result is the same, each number on its own line.
 
 
-  - iii) Using the flat() method
+  - Using the flat() method
     This method is for when you just need a single loop, that is,
     if you don't need to maintain the structure and just want to
     iterate over all the elements. This method flattens the array into
@@ -1223,7 +1223,7 @@ The result is the same, each number on its own line.
 The result is again the same, each number on its own line.
 
 
-  - b) Loop through an associative
+  - Loop through an associative
 #### multi-dimensional array
 JavaScript does not have true multi-dimensional associative arrays like other programming languages like PHP. However, you can use an array of objects or a nested object to achieve a similar structure. That is basically what we did under the "Multi-dimensional associative" array section above. If you use an array of objects, you need to iterate differently than an indexed multi-dimensional array. Let’s see some examples:
 
@@ -1273,10 +1273,10 @@ level. Here is an example:
             	}
 
 
-#### -Rest parameters and the Spread operator
+#### Rest parameters and the Spread operator
   When working with arrays in JavaScript, understanding rest parameters (...rest) and the spread operator (...spread) is crucial. These two concepts provide a flexible way to handle array elements, whether you're collecting values into an array or expanding an array into individual elements.
 
-- a) Rest Parameters (...rest) – Collecting
+- Rest Parameters (...rest) – Collecting
   Values into an Array
 
   Rest parameters are used in function
@@ -1313,7 +1313,7 @@ level. Here is an example:
     the older arguments object.
 
 
-- b) The Spread Operator (...spread) –
+- The Spread Operator (...spread) –
   Expanding an Array into Individual
   Elements
 
@@ -1481,7 +1481,7 @@ arguments to sum() when we call it.
 ## Array properties
   JavaScript arrays come with several built-in properties that help in working with them efficiently. Here, we will cover the most commonly used ones that every programmer should know. Let’s look at four of them: length, prototype, constructor and prototype.length.
 		   
-### -length
+### length
   The length property returns the number of
   elements in an array. It tells us how
   many elements are in an array. It is
@@ -1514,7 +1514,7 @@ arguments to sum() when we call it.
   two.
 
 
-### -prototype
+### prototype
   prototype allows you to add properties and
   methods to arrays. It lets us add new
   methods that apply to all arrays, thereby
@@ -1540,7 +1540,7 @@ arguments to sum() when we call it.
   for an ordinary function instead.
 
 
-### -constructor
+### constructor
   The constructor property identifies the
   constructor function that created the
   array. It can help verify if an object is an
@@ -1554,7 +1554,7 @@ arguments to sum() when we call it.
 	console.log(arr.constructor === Array); 
 
 
-### -prototype.length
+### prototype.length
   The prototype.length property refers to
   the length of the default array’s prototype.
   It returns the length of the JavaScript
@@ -1590,7 +1590,7 @@ arguments to sum() when we call it.
 		console.log(result); 
 				
 
-#### -copyWithin()
+#### copyWithin()
 Modifies the array by copying values
 within itself.
 
@@ -1612,7 +1612,7 @@ elements from the original array ([1,
 output array: [1, 2, 1, 2, 5]
 
 				
-#### -every()
+#### every()
 It is similar to the some() method further down, except that rather
 than just one element, it checks whether every element in an array
 passes the test or condition in the function you pass to it. The syntax is the same as
@@ -1633,7 +1633,7 @@ This example will return false because not every age inside ages is
 18 or over.
 
 				
-#### -fill()
+#### fill()
 Fills an array with a value. The new
 value overwrites whatever was in
 those positions before.
@@ -1651,7 +1651,7 @@ at index 3, which is why 4 from the
 original array is not overridden.
 	
 				
-#### -filter()
+#### filter()
 filter() returns a new array of
 elements that pass a condition. This
 means that it ‘filters out’ values that
@@ -1665,7 +1665,7 @@ don't meet the condition.
 		console.log(even); 
 
 				
-#### -find()
+#### find()
 Returns the First Element That Meets
 a Condition. It stops at the first
 match.
@@ -1678,7 +1678,7 @@ match.
 		console.log(found); 
 
 				
-#### -findIndex()
+#### findIndex()
 Returns the Index of the first
 matching Element. It works just like
 find() except that, it returns the index
@@ -1692,7 +1692,7 @@ instead of the value.
 		console.log(index);
 
 
-#### -flat()
+#### flat()
 This method flattens the
 multi-dimensional array into a single-dimensional array.
 
@@ -1715,7 +1715,7 @@ The argument 2 specifies how deep
 to flatten.
 
 
-#### -forEach()
+#### forEach()
 It loops through an array, and
 executes a function for each array
 element.
@@ -1729,7 +1729,7 @@ element.
 		);
 
 
-#### -includes()
+#### includes()
 It checks If an array contains a value
 and returns true if so, or false if not.
 
@@ -1743,7 +1743,7 @@ and returns true if so, or false if not.
 		console.log(colors.includes("blue")); 
 
 				
-#### -indexOf()
+#### indexOf()
 Finds the first occurrence of a value.
 It returns the index if found, or -1 if
 not.
@@ -1762,7 +1762,7 @@ not.
 		console.log(arr.indexOf(100) !== -1);
 		
 		
-#### -isArray()
+#### isArray()
   The Array.isArray() method checks
   whether a given value is an array.	 For
   example:
@@ -1774,7 +1774,7 @@ not.
 		console.log(Array.isArray("Hello"));   
 
 				
-#### -join()
+#### join()
 It converts an array into a string. It
 joins the array elements with a
 specified separator. This means that
@@ -1791,7 +1791,7 @@ separator at all.
 		console.log(words.join(" ")); 
 	
 
-#### -lastIndexOf()
+#### lastIndexOf()
 It finds the last occurrence of a value
 and returns its index or -1 if not
 found. It works just like indexOf()
@@ -1803,7 +1803,7 @@ except that it searches from the end.
 		console.log(arr.lastIndexOf(20)); 
 
 
-#### -map()
+#### map()
 map() runs a function on every element of an array and hands
 back a brand new array of the results. The original array is left
 untouched, and the new array always has the same number of
@@ -1830,7 +1830,7 @@ Here it is turning a list of book objects into a block of HTML:
 		</script>
 
 
-#### -push()
+#### push()
   This function is used to put things in an array. It’s very useful,
   because people create arrays to hold values or data, so when you
   are working with arrays, you will sooner or later want to place items
@@ -1888,7 +1888,7 @@ of its own if you need to use it. For example:
 The new array names will now contain ['John', 'Peter'].
 	
 
-#### -reduce()
+#### reduce()
   Reduce the values of an array to a single value (from left-to-right).
   The reduce() method accepts a function or closure that takes not
   just the item to iterate over like most of the other array methods do,
@@ -1934,7 +1934,7 @@ The new array names will now contain ['John', 'Peter'].
   returned by reduce().
 				
 
-#### -reverse()
+#### reverse()
   The reverse() method in JavaScript is used to reverse the elements
   of an array in place, meaning it modifies the original array instead of
   creating a new one. No arguments are needed. It returns the same
@@ -1949,7 +1949,7 @@ The new array names will now contain ['John', 'Peter'].
 		console.log(numbers); 
 
 	
-#### -shift()
+#### shift()
 The shift() function is a direct opposite of the pop() function because
 unlike pop() which is used to remove the last item in an array, shift()
 is used to remove the first element in an array. Here is an example:
@@ -1982,7 +1982,7 @@ is used to remove the first element in an array. Here is an example:
   The new array numbers will now contain [1, 2, 3].
 
 	
-#### -unshift()
+#### unshift()
   The unshift() function is a direct opposite of the push() function
   because unlike push() which adds an item to the end of an array,
   unshift() adds an element at the beginning of an array. Here
@@ -2007,7 +2007,7 @@ accepts an argument, which should be the element or item you wish
 to add to the target array it was called on.
 
 	
-#### -slice()
+#### slice()
 It extracts a portion of an array, then
 returns the extracted portion as a
 new array without modifying the
@@ -2022,7 +2022,7 @@ This slices the array from index 1 up
 to but not including index 4.
 		
 	
-#### -some()
+#### some()
 It checks if at least one element in the
 given array passes a condition and
 returns true if any element passes
@@ -2038,7 +2038,7 @@ the test or false if none passes.
 			); 
 
 		
-#### -sort()
+#### sort()
 Sorts an array alphabetically or numerically. By default, JavaScript’s
 sort() method converts all elements to strings and sorts them
 alphabetically in ascending order.
@@ -2125,15 +2125,15 @@ techniques:
 			points.slice(-1).pop()
 
 
-#### -splice()
+#### splice()
 It adds to, or removes elements from an array and returns the
 removed items. In doing so, it modifies the original array.
   It takes one required argument and any number of optional ones
 after it:
-  - i) The index at which to remove an element (required)
-  - ii) The number of elements to remove (optional). If it's 0,
+  - The index at which to remove an element (required)
+  - The number of elements to remove (optional). If it's 0,
   nothing will be removed from the array
-  - iii) Items to be put into that index (optional).
+  - Items to be put into that index (optional).
 
 		const arr = [1, 2, 3, 4];
 		arr.splice(1, 2, "a", "b");
@@ -2156,7 +2156,7 @@ array starting from the index specified in the first argument.
 			[1, "a", "b", "c", "d", "z", 4]
 			
 	
-#### -toString()
+#### toString()
 It converts an array to a string. It is
 similar to join(), but always uses
 commas as the separator.

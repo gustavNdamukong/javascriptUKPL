@@ -26,10 +26,10 @@
     - The readyState property
   - Modern Way (Using fetch())
   - Asynchronous programming
-    - a) Callback
-    - b) A promise
+    - Callback
+    - A promise
       - promise.all()
-    - c) Async/Await
+    - Async/Await
   - Using Axios (External Library)
 - WebSockets
   - Why Use WebSockets
@@ -1450,7 +1450,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
  Let us dive right in, and demonstrate with examples, a callback, then move on to show how a promise would be used, and finally, how Async/Await would be used to solve the same problem.
 
 
-  - a) Callback
+  - Callback
 
 		<!doctype html>
 		<html>
@@ -1674,7 +1674,7 @@ Promise3 uses the setTimeout() function to call after 2 seconds, so the total am
 
 
 
-  - c) Async/Await
+  - Async/Await
   
   Async/await literally stands for asynchronous and await. You use them together on a block of code to get the desired result. Start by declaring it one space before the function keyword to mark that function so JavaScript knows that it should be run asynchronously. That is exactly its purpose; to allow you to create your custom asynchronous functions.
 
@@ -2149,7 +2149,7 @@ chapter has been about using that subset well.
 
 
 ## LIBRARIES
-#### -Notie, is an easy to use notification library
+#### Notie, is an easy to use notification library
 - Note: see how i implemented it in the
   Golang ‘Hotel-booking’ app on github.
 - Get it from:

@@ -28,7 +28,7 @@
   - Arrow Function IIFE
 
 
-## -INTRODUCTION
+## INTRODUCTION
 
 In programming, we often need to perform certain tasks over and over again. Instead of writing the same code multiple times, we can put that code into a function and just call it whenever we need it.
 
@@ -113,7 +113,7 @@ When you create your own functions, JavaScript has some rules for naming them:
 			function calculateTotal() { }
 
 
-## -FUNCTIONS DEMONSTRATED
+## FUNCTIONS DEMONSTRATED
 
   The syntax of a function is as follows: the keyword function, 
 followed by the name of the function, followed by a pair of 
@@ -195,7 +195,7 @@ whether one or all of those strings are literal strings, or they are strings
 stored in a variable.   
 
 
-## -THE ARGUMENTS OBJECT
+## THE ARGUMENTS OBJECT
 
 In JavaScript, there is a concept known as the `arguments` object. It's an array-like object that is automatically available inside all functions, and contains all the arguments passed to a function, even if the function doesn't explicitly list them as parameters. Eg:
 

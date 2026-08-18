@@ -138,9 +138,9 @@ questions.
   numbers array with a while loop and, using an if...else if conditional and the modulus
   operator, do the following checks:
 
-  - i) check whether the number is divisible by 2, and put it in evenNumbers if it is
-  - ii) check whether the number is divisible by 3, and put it in divisibleBy3 if it is
-  - iii) otherwise put the number in otherNumbers
+  - check whether the number is divisible by 2, and put it in evenNumbers if it is
+  - check whether the number is divisible by 3, and put it in divisibleBy3 if it is
+  - otherwise put the number in otherNumbers
 
   Once out of the loop, display the contents of all three arrays.
 

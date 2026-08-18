@@ -33,10 +33,10 @@
   - Conditionals
     - if statements
     - Checking Multiple Conditions
-      - a) Independent Conditions
-      - b) Mutually Exclusive Conditions
+      - Independent Conditions
+      - Mutually Exclusive Conditions
       (Two Choices)
-      - c) Mutually Exclusive Conditions
+      - Mutually Exclusive Conditions
       (More Than Two Choices)
     - Additional notes on conditionals
   - Loops (6)
@@ -86,7 +86,7 @@ like comparing two values, adding up values etc.
 
 		
 
-#### -1) Mathematical operators
+#### 1) Mathematical operators
 
 Operators give you the ability to perform calculations so you can make accurate logical decisions. The following is a list of mathematical operators with practical examples to show how they work. Here is a list of operator characters and their meanings:
 
@@ -212,7 +212,7 @@ Note: In count-- where the operator is on the right side of the variable being d
 
 
 
-#### -2) Assignment operators
+#### 2) Assignment operators
   The assignment operator is used to assign a value to something. We saw this when learning about variables. It is how we assign values to variables. It is used to assign the value on the right of the operator to the operand on the left of it.
 				
 		let number = 10;
@@ -224,7 +224,7 @@ This assigns the value of 10 to the number variable. It looks like the equal sig
 
 
 
-#### -3) Comparison operators
+#### 3) Comparison operators
 
 ##### Equality operator
 The equal operator == is used to check if a value is equal to another value. It checks if the values of both operands match (but not their types). A common mistake is to mistake this for the assignment operator. This equal operator is usually used in conditional statements to verify if the value of a 	variable for example is equal to a specific value. We will learn all about 	conditional statements shortly, when we come to look at conditionals. For now, just remember that you need two mathematical equal signs, not just one, to check if two values are the same. It looks like this:
@@ -311,7 +311,7 @@ The value of lessThanOrEqualTo is true because 2 is equal to 2.
     - And operator
     - Ternary operator
 
-##### -Not operator
+##### Not operator
 	The ! operator, also known as the Not or Logical Not operator, is used to determine whether an expression is not equal to a value. It comes in three forms: 
 	!	Logical NOT
 	!=	Not Equal
@@ -429,7 +429,7 @@ Note that these operators always work on a variable. You cannot write
 
 
 ### CONDITIONALS
-#### -If statements
+#### If statements
   In programming, the powerful concept behind writing intelligent systems is the ability of code to perform logic. It does this by evaluating parameters and conditions, then taking action based on the value of those conditions. The topic "conditionals" comes from this idea of a program taking an action based on a condition.
 This condition is usually an expression that returns true, and so your if code takes an action when that expression evaluates as true. You set up the expression to return true based on whatever value you’re checking for. A conditional is therefore used to make decisions in code.
 The main tool for implementing conditionals in programming is known as an if statement. All programming languages have them. No programming language would be useful without the ability to perform logic and make decisions based on conditions.
@@ -605,7 +605,7 @@ Each of these loop types has its own structure and best use case, and we’ll go
 
 
 
-#### -1) The For loop
+#### 1) The For loop
   Use a for loop when you know how
   many times the loop should run. It is by far the most commonly used loop, and it has a very simple and easy to read syntax. The action inside its curly braces is only run while the condition in its parentheses is true. That condition is entirely up to you: very often it counts up to the number of elements in an array, but as the example below shows, it does not have to involve an array at all. Here is the syntax:
 
@@ -629,7 +629,7 @@ Each of these loop types has its own structure and best use case, and we’ll go
 
 
 
-#### -2) The While loop
+#### 2) The While loop
   Used when you don’t know how many times the loop should run, because that depends on a condition. The while loop is very similar to the for loop in that it runs only when a condition is true. The key difference is flexibility: unlike the for loop, which often checks the number of elements in an array, the while loop can check any condition at all. That means you can use it in a wide variety of situations—not just for arrays, but for any kind of condition you want to keep checking.
 
 Here is the syntax:
@@ -704,7 +704,7 @@ Here, the while loop runs while i is less than the number of fruits in the array
 
 
 			
-#### -3) The Do...while loop
+#### 3) The Do...while loop
 
   do...while loops are less common than other types of loops, but they are useful in situations where a block of code needs to run at least once before a condition is checked.
   A good example would be a website where every user must have at least one profile picture, but can optionally upload more. You might want to display the first picture by default, and then show any extra ones only if they exist. A do...while loop is perfect for this, because it will always run once—showing the first picture—before checking whether additional pictures are available to display.
@@ -741,7 +741,7 @@ This loop runs once to display the first fruit, then continues checking if more 
 
 
 
-#### -4) The For...in loop (Used for Objects and Arrays)
+#### 4) The For...in loop (Used for Objects and Arrays)
 
   Used to loop over object properties. A word of caution: it can also loop
   over arrays, but it is not recommended because it may include inherited
@@ -769,7 +769,7 @@ city: New York
 
 
 
-#### -5) The For...of loop (Used for Arrays, Strings, Maps, Sets, etc.)
+#### 5) The For...of loop (Used for Arrays, Strings, Maps, Sets, etc.)
 
   It offers a cleaner way to iterate over iterable objects like arrays
   and strings.
@@ -796,7 +796,7 @@ Cherry
 
 
 
-#### -6) The forEach() Loop (Used for Arrays)
+#### 6) The forEach() Loop (Used for Arrays)
 
   The forEach() method is an array method that executes a
 function on each element.

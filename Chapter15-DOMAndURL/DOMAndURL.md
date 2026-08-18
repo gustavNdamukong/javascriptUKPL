@@ -2016,7 +2016,7 @@ The output will be:
 
 ## Examples of DOM manipulation
 
-#### -Select an element by its ID value
+#### Select an element by its ID value
   This is achieved using the JavaScript document 
 object's getElementById() method 	of which all HTML 
 elements are children. You therefore need to call 
@@ -2034,7 +2034,7 @@ Select this element in JavaScript like so:
 	let ul = document.getElementById('ul');
 			
 
-#### -Select an element by its class
+#### Select an element by its class
 To select an element by its class attribute value you should use the getElementsByClassName() method of the document object, and provide it with the name of the class you want to target on the web page. Note that this obviously means you will end up with multiple elements, returned as an HTMLCollection—not an array, as we established earlier in this chapter—since unlike id attributes, the same class is usually used on multiple HTML elements. 
 
 	const items = 
@@ -2067,7 +2067,7 @@ To select an element by its class attribute value you should use the getElements
   having the same class).
 
 
-#### -Create a todo list
+#### Create a todo list
   This will be a very practical demonstration of how you can use the properties and methods that the HTMLElement object offers to manipulate HTML elements. A todo list is simply list (li) elements that you manage by dynamically creating and injecting them into the DOM, and also manage the values they contain. It will involve three files, the style sheet (in index.css), the HTML code (in index.html), and the JavaScript code (in index.js).
   Here is how it works:
 
@@ -2419,8 +2419,8 @@ Assign multiple attributes to an element in one go
 
 Concatenate a variable with a string and display the result
     It can be challenging to display a string that contains a variable and have the variable parsed and its value displayed. The trick is to do two things;
-    - a) first, create the string using back ticks which will make your spacing and indentation respected by the browser.
-    - b) Secondly, start with a dollar sign, followed by a pair of curly braces around the variable. The following example is how you should do it:
+    - first, create the string using back ticks which will make your spacing and indentation respected by the browser.
+    - Secondly, start with a dollar sign, followed by a pair of curly braces around the variable. The following example is how you should do it:
 
 		let todoString = "";
 	todoString = `
@@ -2794,7 +2794,7 @@ window.document…
 Here are some common and useful properties and methods of window:
 
 
-#### -1) Window Size & Position
+#### 1) Window Size & Position
 window.innerWidth / window.innerHeight 
   They get the viewport size
 
@@ -2810,7 +2810,7 @@ Here is an example:
 	window.scrollTo(0, 500);
 
 
-#### -2) Alerts & User Interaction
+#### 2) Alerts & User Interaction
 
 window.alert("message")
   This displays an alert box
@@ -2903,7 +2903,7 @@ Example prompt():
   theNameTheyEntered”.
 
 
-#### -3) Reloading a window, and navigating to other windows
+#### 3) Reloading a window, and navigating to other windows
   In other words, you could also say refreshing a web page, and redirecting to another browser URL (Uniform Resource Locator). For these, the window object has a property called ‘location’ which has two useful members of its own; a property named ‘href’ and a method named ‘reload()’. The href property refers to the path of the current web page, also known as the browser URL. This is what you will find in the browser’s search bar. It looks something like this: "http://my-website.com/index.html". To get or know the path of a web page, so you can create a link to it, for example, here is how to get it dynamically:
 
 	let url = window.location.href;
@@ -2956,7 +2956,7 @@ You can navigate to another page in multiple ways. Let’s see some ways:
 	window.location.replace("https://example.com");
 
 
-#### -4) Manipulating the URL with the URL API
+#### 4) Manipulating the URL with the URL API
   We will start here by defining what a URL is, and what an API is. In JavaScript and general web development, URL stands for Uniform Resource Locator. It is a string that specifies the address of a resource on the internet. This resource can be a web page, an image, or an API. That is why you can copy a link of an image on the internet and share it on your web page or social media platform, and visitors who click it can be taken to wherever that link is on the internet to view it. That long text that represents the image link is essentially the path to the website where the image is stored, and it usually points to the website name (domain), and it can even contain the folder name where that file is stored on the server that hosts that domain (website). 
   An API (Application Programming Interface) is like a waiter in a restaurant. Imagine you are at a table looking at a menu. You choose what you want to eat, but you don’t go to the kitchen and cook it yourself. Instead, you tell the waiter, and they bring your order from the kitchen to you. An API works the same way in coding. The application (A in API) is the kitchen and the food. As the user (visitor), you do not need to know or see the code used to make the food ready. Rather, it is made easy so that you indirectly run the program through an interface (PI in API) made up of a menu and waiter. An API helps different programs or websites talk to each other. You (the user) make a request, the API takes that request to the system (like a website or a database), and then it brings back what you asked for-like delivering your food. In practice, an API is usually a software application to provide some service that someone has written, which comes with some sort of documentation on how to use it. See this documentation as that restaurant menu, where the developers of the API have made it easy for you by telling you the various methods on the API to call to achieve any of the services it provides, and the type and format of the result you will get back. The various methods to call will be executed on variations of the URL string that lead to the domain on which the API is hosted. Depending on the modification of the URL, each request will trigger a different action on the server, and thus, a different kind of response. A request endpoint could look something like this:
 
@@ -3144,7 +3144,7 @@ Here, we are saying; once the button is clicked, we use the setTimeout() functio
   -Streaming media.
 
 
-#### -5) Navigating Through Browser History
+#### 5) Navigating Through Browser History
   JavaScript gives access to the browser's session history. For this it uses the window.history property. Let’s just dive straight into code examples as it should all be self-explanatory to you by now.
 
 
@@ -3169,7 +3169,7 @@ Here, we are saying; once the button is clicked, we use the setTimeout() functio
 	window.history.go(2);  
 
 
-#### -6) Opening a New Child Window
+#### 6) Opening a New Child Window
   You can open a new browser window (or tab) from a parent window.
 
 

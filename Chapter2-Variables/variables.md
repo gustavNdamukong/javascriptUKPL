@@ -28,9 +28,9 @@ of text, a boolean, an array, a function, or the value held by another variable.
 ## Variable creation and naming rules
   Variable names should adhere to these rules:
 
-- i) Variables may include a-z, A-Z, 0-9, the $ symbol and the underscore.
-- ii) No other characters are allowed. That means no spaces, and no punctuation.
-- iii) The first character of the variable name must be a letter (a-z or A-Z),
+- Variables may include a-z, A-Z, 0-9, the $ symbol and the underscore.
+- No other characters are allowed. That means no spaces, and no punctuation.
+- The first character of the variable name must be a letter (a-z or A-Z),
   the $ symbol, or the underscore. It may NOT be a digit, so a name like
   1stName is not allowed. Digits are fine anywhere after the first
   character, as in name1. However, the $
@@ -38,7 +38,7 @@ of text, a boolean, an array, a function, or the value held by another variable.
   character used in other scripting languages like PHP for variables, or any
   third party library you might be using now or in the future like jQuery
   which uses it too.
-- iv) Names are case sensitive. It has to be, as variables are meant to identify
+- Names are case sensitive. It has to be, as variables are meant to identify
   resources and so must be unique.
 
   This means that these two variables are not the same:
@@ -46,7 +46,7 @@ of text, a boolean, an array, a function, or the value held by another variable.
 		let myCaseDetails;
 		let Mycasedetails;
 
-- v) There is no limit on variable name length.
+- There is no limit on variable name length.
 
   By convention, programmers usually name variables using camel casing. This means that the variable name should start with a lowercase letter, 
 and any other word that makes up the name will be started in uppercase,
@@ -263,7 +263,7 @@ Here, a is restricted to the function, so it behaves as expected.
 ##### Types of blocks
   Remember we have established that a block in JavaScript is a group of code enclosed within a pair of curly braces. The main types of block you will meet in JavaScript are: a standalone block, an if statement, a loop (for or while loop), and a function. There are others besides these, such as try/catch and switch blocks, which we will meet in later chapters. Here they are with examples:
 
-#### -a) Standalone block
+#### a) Standalone block
           {
               let x = 10;
               console.log(x); // 10
@@ -276,7 +276,7 @@ The variable x only exists inside {} and is
 not accessible outside.
 
 
-#### -b) If statement block
+#### b) If statement block
         if (true) {
             let y = 20;
             console.log(y); // 20
@@ -287,7 +287,7 @@ not accessible outside.
 
 
 
-#### -c) Loop (for or while loop) block
+#### c) Loop (for or while loop) block
   Both the for loop and the while loop of JavaScript are blocks. Let’s see an example of a for loop:
 
      for (let i = 0; i < 3; i++) {
@@ -302,7 +302,7 @@ In this example; i is only available inside
 the for loop block.
 
 
-#### -d) Function block
+#### d) Function block
        function example() {
            let z = 50;
            console.log(z); // 50
@@ -459,9 +459,9 @@ This example demonstrates JavaScript’s prowess in manipulating the DOM. Here w
   In this code, the messageBox element is only used inside the block. Once it’s appended and scheduled for removal, there’s no need to keep the variable around.
 
 Therefore you can see how when using a block, you can place code in them that performs actual logic like fetching data, modifying the DOM, handling calculations, etc. The key idea is:
-  - a) Do the necessary work inside the
+  - Do the necessary work inside the
       block.
-  - b) Let the variables automatically
+  - Let the variables automatically
       disappear when they are no longer
       needed.
 
@@ -568,7 +568,7 @@ Inside displayItem(), the local item variable with the value 'dress' shadows the
 #### Two differences between var vs let and const in the global scope
   There are two important differences between the behaviour of var and let or const in the global scope. Even though let and const can be used globally, they do not behave exactly like var in the global scope. Here are the differences:
 
-- a) var attaches to the window object (in
+- var attaches to the window object (in
   browsers), let and const do not. The
   window object is the browser’s own
   global object, where it keeps everything

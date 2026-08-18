@@ -28,16 +28,16 @@ A regular expression (also referred to as regex) is a
   and extract parts of a string.
  
   Here are its features:
-  - i) Pattern Matching:
+  - Pattern Matching:
     Regular expressions allow you to
     define patterns that match specific
     sequences in text. For example, finding
     email addresses, phone numbers, or
     validating formats like dates.
-  - ii) Search and Replace: Regex can be
+  - Search and Replace: Regex can be
     used to find occurrences of patterns in
     text and replace them with new strings.
-  - iii) Flexible and Powerful: It provides a
+  - Flexible and Powerful: It provides a
     flexible way to define complex string
     patterns using literals, wildcards,
     quantifiers, and special characters.
@@ -425,11 +425,11 @@ outcome is to use a pipe character like so:
   wish to match a word character
   if it appears exactly three times.
 
-- ii) {3,}     with ONE digit and a comma.
+- {3,}     with ONE digit and a comma.
       This means you wish to match
       the preceding character if it
       appears 3 or more times.
-- iii) {2,3}   with TWO digits separated by a
+- {2,3}   with TWO digits separated by a
       comma. This means you wish to
       match the preceding character if
       it appears anything from two to
@@ -549,10 +549,10 @@ or
   JavaScript only with two methods. These 
   methods are:
 
-  - i) test() ———-returns boolean
-  - ii) replace()
+  - test() ———-returns boolean
+  - replace()
 
-#### -i) test()
+#### i) test()
   You call this test() function on your regex
   pattern string.  You pass to it as an 
   argument, the subject string (the string you 
@@ -584,7 +584,7 @@ This will return true to the console.
 
 
 
-#### -ii) replace()
+#### ii) replace()
   This function is used to match and replace 
   a string from within another text (subject 
   string). Unlike the test() function which you 

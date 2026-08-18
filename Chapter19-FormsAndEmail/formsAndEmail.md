@@ -2,10 +2,10 @@
 # Chapter 19 — FORMS AND EMAIL
 
 - The three ways to handle form data in JavaScript
-  - i) Extracting the value from form fields
-  - ii) Using the elements property of
+  - Extracting the value from form fields
+  - Using the elements property of
     HTMLFormElement
-  - iii) Using the FormData object
+  - Using the FormData object
     - The FormData object and files
     - Mastering FormData and form fields
     - Multiple checkboxes with the same name
@@ -43,7 +43,7 @@
 
 
 
-### -i) Extracting the value from form fields
+### i) Extracting the value from form fields
   With this approach, you simply use any of the available element selector properties of the HTMLElement object to select a form field and then grab its value. Here is an example, here is how you extract the values of the username and the email fields of the above form by selecting them based on their id attributes:
 
 	let username = 	
@@ -83,7 +83,7 @@ It is worth being precise about what comes back, because this catches people out
 
 
 
-#### -ii) Using the elements property of HTMLFormElement
+#### ii) Using the elements property of HTMLFormElement
   JavaScript also provides an elements property to be used for event handling when working with forms. It's a property of the HTMLFormElement interface that allows you to easily access every single form control (input, select, textarea fields, etc.) inside a `<form>` element. Therefore note that the e.target.elements property is only available to be referenced on `<form>` elements. That is because the ‘elements’ property belongs to the HTMLFormElement object and not the HTMLElement object. HTMLFormElement is the interface a `<form>` element is an instance of, which is why the property lives there and not on HTMLElement. Uniquely, access to fields is obtained by using the name attributes of form elements (like so: form.elements.name), and not the id, class attributes or tag names like the selector properties of the HTMLElement object. 
 
 When an event (like submit) is triggered on a form, e.target refers to the `<form>` element. The .elements property on that form gives you a collection of all input fields inside it.
@@ -206,7 +206,7 @@ Notice how we have used the get() method of the FormData object to retrieve the 
 The reference passed to FormData() is written as e.target which always refers to the element that triggered the event (the element the event occurred on). FormData() will then know how to wrap itself around that form element and apply all its methods on it.
 
 
-#### -iv)The FormData object and files
+#### iv)The FormData object and files
   The FormData object handles file inputs too. It is built for working with all kinds of form fields—including file fields, and it treats them intelligently. Notice in our example above, we have a file field with the name attribute of “myFile”. We retrieve its value after the form submission like so:
 
 	let file = formData.get("myFile");

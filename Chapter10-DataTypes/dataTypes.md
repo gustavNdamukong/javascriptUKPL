@@ -339,7 +339,7 @@ you’re working with.
     result = name + str(age)
 
 
-#### -2) Weakly typed languages
+#### 2) Weakly typed languages
   In a weakly typed language, the language
   is more flexible and will try to convert data 
   types automatically when needed, even if it 
@@ -591,7 +591,7 @@ b) Learn about its memory management
     - cast to an array
 
 
-#### -1) Casting to String
+#### 1) Casting to String
   For this we use either the String()
 function or the toSting() method. For
 example:
@@ -610,7 +610,7 @@ example:
       let str = num.toString();
 
 
-#### -2) Casting to a number
+#### 2) Casting to a number
   There are 3 ways to do this:
 
       a) Using the Number() function:
@@ -636,7 +636,7 @@ c) Using parseInt() (for integers) or
           let num = parseFloat(str);
 
      
-#### -3) Casting to a boolean
+#### 3) Casting to a boolean
 
       There are 2 ways to cast to a boolean; 
   using the Boolean() function or using 
@@ -655,7 +655,7 @@ c) Using parseInt() (for integers) or
        let bool = !!value;
 
 
-#### -4) Casting to an object
+#### 4) Casting to an object
   This is done by wrapping a primitive in its
   object equivalent.
 
@@ -665,7 +665,7 @@ c) Using parseInt() (for integers) or
     let obj = Object(num);
 
 
-#### -5) Casting to an array
+#### 5) Casting to an array
   This is done in 2 ways. You can either do
   it using Array.from() (for iterable or array-like functions), or you can use split() for 
   strings.
@@ -684,23 +684,23 @@ c) Using parseInt() (for integers) or
        let arr = str.split('');
 
 
-## -Types of data in JavaScript
+## Types of data in JavaScript
 JavaScript broadly categorises data types into primitive types and non-primitive 
 types.
 
-#### -Primitive (7)
+#### Primitive (7)
   These are immutable (meaning they what they are in value and are not 
 references, so they cannot be changed), and represent single values. Their values are literally what they appear to be. In JavaScript 
 there are 5 primitive data types, plus two types Symbols and BigInt added in later specifications of JavaScript. Here is an abbreviation I came up with-use it or find your own way to remember them: SNBUNSB (SN BUN SB).
 
-  - i) String (literal value like ‘hello world’)
-  - ii) Number (represents both integers and floating-point numbers, like
+  - String (literal value like ‘hello world’)
+  - Number (represents both integers and floating-point numbers, like
     42, or 3.14)
-  - iii) Boolean (represents true or false values)
-  - iv) Undefined (represents an uninitialised variable or missing value)
-  - v) Null (represents the intentional absence of a value)
-  - vi) Symbol (introduced in ES6: and represents a unique identifier)
-  - vii) BigInt (introduced in ES11: Represents large integers beyond the
+  - Boolean (represents true or false values)
+  - Undefined (represents an uninitialised variable or missing value)
+  - Null (represents the intentional absence of a value)
+  - Symbol (introduced in ES6: and represents a unique identifier)
+  - BigInt (introduced in ES11: Represents large integers beyond the
     range of Number)
 
 I will like to introduce to you at this point, a special numeric value worth knowing because it is very useful in handling numbers in JavaScript. It is NaN. NaN is a special numeric value that means 'Not a Number'. It is part of the Number type in JavaScript. However, it is not a data type, but rather a special numeric value within the Number data type. It represents the result of an invalid or undefined mathematical operation. For example:
@@ -712,7 +712,7 @@ I will like to introduce to you at this point, a special numeric value worth kno
 I will explain how it works when we come to validating values to see if their type is a number.  
 
 
-#### -Non-primitive (1)
+#### Non-primitive (1)
 These are objects, which can store multiple values or complex entities.
 Object: The base for many structures, including the following which we 
 know are all objects in JavaScript:
@@ -872,7 +872,7 @@ Let me explain the above example. Symbol('secret') in JavaScript is how you crea
   JavaScript itself uses well-known symbols like Symbol.iterator.
 
 
-### -Undefined vs null values
+### Undefined vs null values
 
   Both null and undefined mean "there is nothing here", which is why they
 are so often confused. The difference is in who put the nothing there.
@@ -912,7 +912,7 @@ never be fixed now because too much existing code depends on it. Just
 remember it, and test for null with === null rather than with typeof.
 
 
-### -Convert the datatype of a variable
+### Convert the datatype of a variable
   One way to convert a value from one type to another is JavaScript's
 parseInt() function, which turns a string into a whole number. Here is
 how you would use it:
@@ -1225,13 +1225,13 @@ and using one gives you a ReferenceError:
 
   because everything not on it is truthy:
 
-    - i)    false          the boolean itself
-    - ii)   0   and  -0    zero, either sign
-    - iii)  0n             zero as a BigInt
-    - iv)   ""             an empty string
-    - v)    null           a deliberate "no value"
-    - vi)   undefined      a value never set
-    - vii)  NaN            "Not a Number"
+    - false          the boolean itself
+    - 0   and  -0    zero, either sign
+    - 0n             zero as a BigInt
+    - ""             an empty string
+    - null           a deliberate "no value"
+    - undefined      a value never set
+    - NaN            "Not a Number"
 
   Everything else is truthy. That includes some things people often expect to be falsy:
 

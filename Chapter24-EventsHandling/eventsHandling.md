@@ -49,7 +49,7 @@ JavaScript listens for these user actions and gives you the power to respond imm
 
   JavaScript gives you a few simple ways to listen for events and respond to them. There are two major ways to do so.
 
-#### -i) Inline event listener attribute
+#### i) Inline event listener attribute
 This works in two steps; you add the event listener attribute on the target element’s tag, then get that event listener to call an inbuilt or your custom function in response to that event by passing the custom function as the value of the attribute. Here is an example:
 
 	<button 
@@ -105,7 +105,7 @@ clicked in our above example:
 
 
 
-#### -iI) The addEventListener() method
+#### iI) The addEventListener() method
   Instead of adding event listeners inside your HTML,
   JavaScript also provides a cleaner, more powerful
   way: programmatically adding an event listener
