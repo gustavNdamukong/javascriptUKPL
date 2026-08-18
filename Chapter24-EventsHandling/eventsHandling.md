@@ -593,9 +593,9 @@ Take for example, you may have a parent form that needs to stop certain clicks f
 ### Event delegation
   Event Delegation is a smart technique:
 
-    * Instead of attaching event listeners to hundreds of child elements,
-    * You attach one listener to a common parent,
-    * Then use the event.target inside your function to know exactly which child triggered the event.
+* Instead of attaching event listeners to hundreds of child elements,
+* You attach one listener to a common parent,
+* Then use the event.target inside your function to know exactly which child triggered the event.
 
 Let’s see an example:
 

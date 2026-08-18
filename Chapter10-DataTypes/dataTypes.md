@@ -256,7 +256,7 @@ The above object is created directly using {}.
     car.brand = "Toyota";
     car.model = "Camry";
 
-	This above object is created dynamically using new Object(), then properties are added later.
+This above object is created dynamically using new Object(), then properties are added later.
 
   Why use object literals?
   - More concise (faster to write than new
@@ -852,7 +852,9 @@ Let me explain the above example. Symbol('secret') in JavaScript is how you crea
   - But if you know the Symbol, you can still access the value using
   user[secretKey].
 
-	A Symbol is useful for the following reasons; 
+    ```
+    A Symbol is useful for the following reasons; 
+    ```
 
   - It helps avoid property name collisions (two pieces of code
   accidentally using the same key).
@@ -959,12 +961,14 @@ Here is how you do it:
 - 1) Array.isArray()
   Checks if a value is an array. For example:
 
-	console.log(Array.isArray([1, 2, 3])); 
-	console.log(Array.isArray("hello"));  
+  ```
+  console.log(Array.isArray([1, 2, 3])); 
+  console.log(Array.isArray("hello"));  
 
-	// let’s pass it a variable
-	let someText = "This is some text";
-	console.log(Array.isArray(someText));
+  // let’s pass it a variable
+  let someText = "This is some text";
+  console.log(Array.isArray(someText));
+  ```
 
 Output:
   true // [1, 2, 3] is an array
@@ -976,11 +980,13 @@ Output:
   Checks if an object is an instance of a particular class or
   constructor. For example
 
-	class Animal {}
-	const dog = new Animal();
+  ```
+  class Animal {}
+  const dog = new Animal();
 
-	console.log(dog instanceof Animal);
-	console.log(dog instanceof Object); 
+  console.log(dog instanceof Animal);
+  console.log(dog instanceof Object); 
+  ```
 
 Output:
   true
@@ -990,8 +996,10 @@ Output:
 - 3) isNaN()
   Checks if a value is Not-a-Number. It coerces the value to a number 	first. For example
 
-	console.log(isNaN("hello"));
-	console.log(isNaN(42));
+  ```
+  console.log(isNaN("hello"));
+  console.log(isNaN(42));
+  ```
 
 
 Output:
@@ -1077,10 +1085,12 @@ Returns:
 	let numberString = "123";
 	let helloString = "hello";
 
-	console.log(Number.isNaN(nan));      
-	console.log(Number.isNaN(number));   
-	console.log(Number.isNaN(numberString));   
-	console.log(Number.isNaN(helloString));
+  ```
+  console.log(Number.isNaN(nan));      
+  console.log(Number.isNaN(number));   
+  console.log(Number.isNaN(numberString));   
+  console.log(Number.isNaN(helloString));
+  ```
 
 Output:
   true
@@ -1242,11 +1252,13 @@ and using one gives you a ReferenceError:
 - 1) null
    null represents a deliberate absence of a value.
 
-        let value = null;
+  ```
+  let value = null;
 
-        if (value === null) {
-            console.log("The variable is null.");
-        }
+  if (value === null) {
+      console.log("The variable is null.");
+  }
+  ```
 
    -Distinguishing: use strict equality (===). Do not use == here, because null == undefined
      is true, and you would not be able to tell the two apart.
@@ -1257,18 +1269,22 @@ and using one gives you a ReferenceError:
 
         let value;
 
-        if (value === undefined) {
-            console.log("The variable is undefined.");
-        }
+  ```
+  if (value === undefined) {
+      console.log("The variable is undefined.");
+  }
+  ```
 
 - 3) An empty string ("")
    A string with no characters in it.
 
-        let value = "";
+  ```
+  let value = "";
 
-        if (value === "") {
-            console.log("The variable is an empty string.");
-        }
+  if (value === "") {
+      console.log("The variable is an empty string.");
+  }
+  ```
 
 - Distinguishing: strict equality works perfectly well for strings, because a string is a
   primitive and is compared by its value.
@@ -1292,11 +1308,13 @@ and using one gives you a ReferenceError:
 - 5) Zero (0)
    The number zero.
 
-        let value = 0;
+  ```
+  let value = 0;
 
-        if (value === 0) {
-            console.log("The variable is zero.");
-        }
+  if (value === 0) {
+      console.log("The variable is zero.");
+  }
+  ```
 
 -Distinguishing: strict equality again, and here it matters more than usual. With loose
   equality, 0 == "" and 0 == false are both true, so == would tell you a value is zero when

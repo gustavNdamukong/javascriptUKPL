@@ -219,7 +219,19 @@ const EPUB = '/tmp/kdpsample/TheJavaScriptBlueprint.epub';
 rmSync(EPUB, { force: true });
 execSync(`cd "${OUT}" && zip -X -0 -q "${EPUB}" mimetype && zip -X -9 -qr "${EPUB}" META-INF OEBPS`);
 
+// /tmp is cleared on reboot, so the build is also dropped somewhere it will
+// survive, and on the Desktop where it is picked up for reading. Books keeps
+// its own unpacked copy of anything added to it, so seeing these changes means
+// deleting the book from the Books library and adding this file again.
+const COPIES = [
+    join(BASE, 'build', 'TheJavaScriptBlueprint.epub'),
+    join(process.env.HOME, 'Desktop', 'TheJavaScriptBlueprint.epub')
+];
+mkdirSync(join(BASE, 'build'), { recursive: true });
+for (const c of COPIES) copyFileSync(EPUB, c);
+
 console.log('documents :', files.length);
 console.log('nav entries:', nav.length);
 console.log('images    :', images.size);
 console.log('epub      :', EPUB);
+for (const c of COPIES) console.log('   copied to:', c);

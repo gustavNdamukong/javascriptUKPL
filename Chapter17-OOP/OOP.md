@@ -279,11 +279,11 @@ So we have established that every object carries a link to its parent, and that 
   It holds the object that instances made from that function
   will inherit from.
 
-    - __proto__   — the internal link that EVERY object has, pointing
-    at the object it actually inherits from. (Its proper name in
-    the specification is [[Prototype]]. You read it with
-    Object.getPrototypeOf(), and modern browser consoles now show
-    it as [[Prototype]] rather than __proto__.)
+  - __proto__   — the internal link that EVERY object has, pointing
+  at the object it actually inherits from. (Its proper name in
+  the specification is [[Prototype]]. You read it with
+  Object.getPrototypeOf(), and modern browser consoles now show
+  it as [[Prototype]] rather than __proto__.)
 
   They are not two kinds of the same thing. They are the two ends of one
 relationship, and this single line of code shows how they meet:
@@ -386,8 +386,8 @@ In the same way, when we generate new instances of objects from our blueprint Pe
 The traditional two ways of creating an object and their prototypes
 There are three main ways of creating an object in modern JavaScript, but before we go into the new way of creating objects, we will first of all, talk about the two traditional ways to do so. As we demonstrate the creation of objects, we will explain how the concept of prototypes underpins it all. This is because in JavaScript, you can not fully understand object creation and instantiation if you do not understand the concept of prototypes and how it relates to object creation. Here are two traditional ways to create objects, and make no mistake about the term traditional or old; for they are still meant for everyday use and work perfectly fine.
 
-    - i) Initialiser objects also known as object literals.
-    - ii) Constructor objects sometimes referred to as object templates or blueprints.
+  - i) Initialiser objects also known as object literals.
+  - ii) Constructor objects sometimes referred to as object templates or blueprints.
 
 		
   i) Initialiser objects
@@ -525,8 +525,8 @@ If it is a boy, we grab the div from the DOM with the ID of 'boy' and give it a 
 
 	new Object(), new Array(), new Date(), new RegExp() etc
 
-	When it comes to prototypes and objects created from a constructor function, it is important to get the relationship exactly right, because it is easy to state it one step out. The object you get back from new Person() does NOT have the Person function as its prototype. It has Person.prototype — the object hanging off the function, which is the mould we talked about earlier.
-	So for let person1 = new Person('Tom'), the chain runs like this:
+When it comes to prototypes and objects created from a constructor function, it is important to get the relationship exactly right, because it is easy to state it one step out. The object you get back from new Person() does NOT have the Person function as its prototype. It has Person.prototype — the object hanging off the function, which is the mould we talked about earlier.
+So for let person1 = new Person('Tom'), the chain runs like this:
 
 person1  →  Person.prototype  →  Object.prototype  →  null
 
@@ -730,16 +730,18 @@ However, while the constructor.prototype of an object literal will always point 
   - 3) isPrototypeOf() and the instanceof operator
     It is used to verify if an object is the prototype of another object. Here is the syntax: objectParent.isPrototypeOf(objectName)
 
-		let obj1 = {x:1}
+    ```
+    let obj1 = {x:1}
 
-		//check if the prototype of obj1 is Object()
-		Object.prototype.isPrototypeOf(obj1); //the result is true
+    //check if the prototype of obj1 is Object()
+    Object.prototype.isPrototypeOf(obj1); //the result is true
 
-		//further create an object from obj1
-		let obj2 = Object.create(obj1);
+    //further create an object from obj1
+    let obj2 = Object.create(obj1);
 
-		// check if the prototype of obj2 is obj1
-		obj1.isPrototypeOf(obj2); //the result is true
+    // check if the prototype of obj2 is obj1
+    obj1.isPrototypeOf(obj2); //the result is true
+    ```
 
 Note that isPrototypeOf() works in exactly the same way as the
 instanceof operator, but is even more effective. It is more
@@ -896,10 +898,10 @@ The result of this is exactly the same as in the previous example above- 'TestVa
 
 #### The call(), apply() and bind() methods of Function
 		
-	In JavaScript, functions are objects, as we have learned so far. This means every function inherits from Function.prototype, and the methods living there are therefore available on every function you write. With that said, there are three very important functions you should know; and these are the call(), apply(), and bind() functions. They are special because they serve a specific purpose. Understanding how they work will take your JavaScript mastery to a deeper level. 
-	So, the three methods call(), apply() and bind() are methods of the function object. In other words, these are methods that JavaScript has provided you with to use on functions. You can therefore call them on any function (both built-in ones and your own) and it will work. These functions solve a very pertinent problem when it comes to functions, and that is the problem of resolving the context in which a function is called. When it comes to objects, context refers to the current object on which a function is being run at any point in time. This current object is represented by the this keyword. In the flow of your program, your objects will often interact with one another and you will invariably find yourself needing to call functions or methods of other objects outside of the object in which you are operating for various reasons. One reason could be to extend the functionality of the object you are in by making it do something it cannot do, or utilise (re-use) a feature already offered by another function rather than rewriting it all over again. It is generally known in the programming world that code should be re-used wherever possible in order to avoid code duplication. 
-	With that said; when calling one object from within another object, or in other words; when a method of an object is being passed to another function as a callback (which essentially means calling another/external function inside a function), the this keyword is lost. This is because the function has been separated from the object it belongs to, so JavaScript no longer has anything to point this at. What happens then depends on the mode you are running in: in strict mode this becomes undefined, and in non-strict mode it falls back to the global object. Either way it is not the object you wanted, and the usual symptom is a value coming back as undefined, or a "Cannot read properties of undefined" error a moment later. The three methods call(), 	apply() and bind() make it possible for you to tell JavaScript which object has the context, or better put; which of the objects should be referenced by this. 
-	We will start by looking at call() and apply() as they are used in exactly the same way apart from a slight difference in their syntax. To call a function of another object B from inside another object A as if the method of B is a method of object A, you can use the call() method. To do so, while operating from within object A, you call the function of the external class B, followed by the keyword .call(), and pass as the first parameter to the call() function the object to be referenced by this. Here is an example of two objects Car and MotorBike:
+In JavaScript, functions are objects, as we have learned so far. This means every function inherits from Function.prototype, and the methods living there are therefore available on every function you write. With that said, there are three very important functions you should know; and these are the call(), apply(), and bind() functions. They are special because they serve a specific purpose. Understanding how they work will take your JavaScript mastery to a deeper level. 
+So, the three methods call(), apply() and bind() are methods of the function object. In other words, these are methods that JavaScript has provided you with to use on functions. You can therefore call them on any function (both built-in ones and your own) and it will work. These functions solve a very pertinent problem when it comes to functions, and that is the problem of resolving the context in which a function is called. When it comes to objects, context refers to the current object on which a function is being run at any point in time. This current object is represented by the this keyword. In the flow of your program, your objects will often interact with one another and you will invariably find yourself needing to call functions or methods of other objects outside of the object in which you are operating for various reasons. One reason could be to extend the functionality of the object you are in by making it do something it cannot do, or utilise (re-use) a feature already offered by another function rather than rewriting it all over again. It is generally known in the programming world that code should be re-used wherever possible in order to avoid code duplication. 
+With that said; when calling one object from within another object, or in other words; when a method of an object is being passed to another function as a callback (which essentially means calling another/external function inside a function), the this keyword is lost. This is because the function has been separated from the object it belongs to, so JavaScript no longer has anything to point this at. What happens then depends on the mode you are running in: in strict mode this becomes undefined, and in non-strict mode it falls back to the global object. Either way it is not the object you wanted, and the usual symptom is a value coming back as undefined, or a "Cannot read properties of undefined" error a moment later. The three methods call(),    apply() and bind() make it possible for you to tell JavaScript which object has the context, or better put; which of the objects should be referenced by this. 
+We will start by looking at call() and apply() as they are used in exactly the same way apart from a slight difference in their syntax. To call a function of another object B from inside another object A as if the method of B is a method of object A, you can use the call() method. To do so, while operating from within object A, you call the function of the external class B, followed by the keyword .call(), and pass as the first parameter to the call() function the object to be referenced by this. Here is an example of two objects Car and MotorBike:
 
 		function Car(name, fuel)
 		{
@@ -1488,8 +1490,10 @@ This function return value will be the object:
 nested, printing it directly can be awkward. JSON.stringify() takes two
 optional extra arguments that turn it into a neat, indented listing:
 
-   console.log(JSON.stringify(YOUROBJECT, 
-    null, 4));
+```
+console.log(JSON.stringify(YOUROBJECT, 
+ null, 4));
+```
 
   The second argument (null here) is a filter you will rarely need, and
 the third is how many spaces to indent each level by. Using 4 gives you
@@ -2052,7 +2056,7 @@ A static method belongs to the class itself, not to instances of the class. Such
 	// Output: TypeError: mathObject.add is not a function
 	console.log(mathObject.add(3, 3));
 
-	The above example class MathHelper has two methods, one static ‘add()’ and one non-static ‘subtract()’. The rule to hold on to is this: a static method lives on the CLASS, not on the objects made from it. That is why calling add() on the class itself works:
+The above example class MathHelper has two methods, one static ‘add()’ and one non-static ‘subtract()’. The rule to hold on to is this: a static method lives on the CLASS, not on the objects made from it. That is why calling add() on the class itself works:
 
 	MathHelper.add(5, 3);   // 8
 

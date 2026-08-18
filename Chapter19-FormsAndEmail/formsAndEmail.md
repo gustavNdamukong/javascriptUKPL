@@ -470,15 +470,15 @@ Visit: https://myaccount.google.com
 
   c) Generate an App Password
 
-    - Once 2-Step Verification is enabled, go back to the Security section.
-    - Under “Signing in to Google”, you’ll now see a link: App passwords.
-    - Click it (you may need to log in again).
+  - Once 2-Step Verification is enabled, go back to the Security section.
+  - Under “Signing in to Google”, you’ll now see a link: App passwords.
+  - Click it (you may need to log in again).
 
   d) Create a New App Password
 
-    - Under “Select app”, choose Mail.
-    - Under “Select device”, choose Other and type something like NodeMailer App.
-    - Click Generate. You’ll now see a 16-character password that looks something like this:
+- Under “Select app”, choose Mail.
+- Under “Select device”, choose Other and type something like NodeMailer App.
+- Click Generate. You’ll now see a 16-character password that looks something like this:
 
 abcd efgh ijkl mnop
 

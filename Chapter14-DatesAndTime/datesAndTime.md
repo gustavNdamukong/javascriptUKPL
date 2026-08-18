@@ -590,13 +590,17 @@ In these animation examples, you have learned the following:
 
 - You can do all sorts eg inline date pickers, date ranges etc. It's about copying and pasting the CDN links into your code in the JavaScript sections of your HTML page, then pasting in the JavaScript code that calls the datepicker class. For a date range, I did something like this:
 
-	<input type="date" id="dateField" name="dateFields" />
+  ```
+  <input type="date" id="dateField" name="dateFields" />
+  ```
 
   	const elem = document.getElementById("dateField");
 
-	const rangePicker = new DateRangePicker(
-			elem, 
-			{
-   				format: "dd-mm-yyyy"
-			}
-		);
+  ```
+  const rangePicker = new DateRangePicker(
+          elem, 
+          {
+              format: "dd-mm-yyyy"
+          }
+      );
+  ```

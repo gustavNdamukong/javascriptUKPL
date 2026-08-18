@@ -361,21 +361,23 @@ class WoodenHouseBuilder extends HouseBuilder {
     this.house = new House();
   }
 
-  buildWalls() {
-    this.house.walls = "Wooden";
-  }
+```
+buildWalls() {
+  this.house.walls = "Wooden";
+}
 
-  buildDoors() {
-    this.house.doors = "Wooden";
-  }
+buildDoors() {
+  this.house.doors = "Wooden";
+}
 
-  buildWindows() {
-    this.house.windows = "Wooden";
-  }
+buildWindows() {
+  this.house.windows = "Wooden";
+}
 
-  buildRoof() {
-    this.house.roof = "Wooden";
-  }
+buildRoof() {
+  this.house.roof = "Wooden";
+}
+```
 
   getHouse() {
     return this.house;
@@ -437,10 +439,12 @@ The output of this code will be:
   JavaScript Code Example:
 
         
- class TextDocument {
-  	constructor(content) {
-    		this.content = content;
-  	}
+```
+class TextDocument {
+   constructor(content) {
+           this.content = content;
+   }
+```
 
   	clone() {
     		return new TextDocument(this.content);
@@ -827,23 +831,27 @@ messy details behind a single, simple interface.
   JavaScript Example:
 
      
-  // Leaf
-  class File {
-  	constructor(name) {
-    		this.name = name;
-  	}
+```
+// Leaf
+class File {
+  constructor(name) {
+          this.name = name;
+  }
+```
 
   	display(indent = '') {
     		console.log(`${indent}- File: ${this.name}`);
   	}
   }
 
- // Composite
- class Folder {
-  	constructor(name) {
-    		this.name = name;
-    		this.children = [];
-  	}
+```
+// Composite
+class Folder {
+   constructor(name) {
+           this.name = name;
+           this.children = [];
+   }
+```
 
   	add(item) {
     		this.children.push(item);
@@ -912,12 +920,14 @@ Think of your computer's folders and files. A folder can contain both files and 
    JavaScript Code Example:
 
           
-   // Real object
-   class RealImage {
-  	constructor(filename) {
-    		this.filename = filename;
-    		this.load();
-  	}
+```
+// Real object
+class RealImage {
+ constructor(filename) {
+         this.filename = filename;
+         this.load();
+ }
+```
 
   	load() {
     		console.log(`Loading ${this.filename}`);
@@ -928,12 +938,14 @@ Think of your computer's folders and files. A folder can contain both files and 
   	}
    }
 
-   // Proxy
-   class ProxyImage {
-  	constructor(filename) {
-    		this.filename = filename;
-    		this.realImage = null;
-  	}
+```
+// Proxy
+class ProxyImage {
+ constructor(filename) {
+         this.filename = filename;
+         this.realImage = null;
+ }
+```
 
   	display() {
     		if (!this.realImage) {
@@ -1045,11 +1057,13 @@ The output in the console here will be:
   	}
     }
 
-   // Factory
-   class TreeFactory {
-  	constructor() {
-    		this.treeTypes = {};
-  	}
+```
+// Factory
+class TreeFactory {
+ constructor() {
+         this.treeTypes = {};
+ }
+```
 
   	getTreeType(name, color) {
     		const key = name + color;

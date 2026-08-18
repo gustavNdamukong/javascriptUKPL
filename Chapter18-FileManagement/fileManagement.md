@@ -135,55 +135,57 @@ The following examples are carefully chosen to give you enough information on va
 
 #### The CSS (eg index.css)
 
-  body {
-    font-family: Arial, sans-serif;
-    padding: 20px;
-    background: #f7f7f7;
-  }
+```
+body {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #f7f7f7;
+}
 
-  h2 {
-    border-bottom: 2px solid #ccc;
-    padding-bottom: 4px;
-  }
+h2 {
+  border-bottom: 2px solid #ccc;
+  padding-bottom: 4px;
+}
 
-  section {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 30px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-  }
+section {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
 
-  pre {
-    background: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    max-height: 200px;
-    overflow-y: auto;
-  }
+pre {
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  white-space: pre-wrap;
+  max-height: 200px;
+  overflow-y: auto;
+}
 
-  #dropZone {
-	    border: 2px dashed #888;
-	    padding: 20px;
-	    text-align: center;
-	    color: #444;
-	    margin-top: 10px;
-	  }
+#dropZone {
+      border: 2px dashed #888;
+      padding: 20px;
+      text-align: center;
+      color: #444;
+      margin-top: 10px;
+    }
 
-  button {
-    margin-top: 10px;
-    padding: 8px 15px;
-    background: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
+button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
 
-  button:hover {
-    background: #0056b3;
-  }
+button:hover {
+  background: #0056b3;
+}
+```
 
 
 
@@ -418,10 +420,10 @@ item. It is in this code block that most of the work happens. Here
 we proceed to get the file, and this time we are getting the
 dragged-and-dropped file instead of a file input.
 		
-    When a file is dragged into the #dropZone area, we use
-    JavaScript to prevent the default browser behaviour and read the
-    file. Next, we revert the border colour of the dropZone from
-    green to what it was before.
+  When a file is dragged into the #dropZone area, we use
+  JavaScript to prevent the default browser behaviour and read the
+  file. Next, we revert the border colour of the dropZone from
+  green to what it was before.
   - Next, we get the file, but notice carefully an important difference
     with
     where we are getting the file from. In other examples when we
@@ -448,10 +450,10 @@ onload event on the reader when it is done
 				// ...
 			}
 
-    Once this onload event fires, we know the file has been read, so
-    in its block is a function that responds to that. In this function,
-    we grab the content of the file, which is in e.target.result and
-    store it in a variable ‘modifiedText’.
+  Once this onload event fires, we know the file has been read, so
+  in its block is a function that responds to that. In this function,
+  we grab the content of the file, which is in e.target.result and
+  store it in a variable ‘modifiedText’.
   - As a basic modification, we append some custom text: '\n\n--- File
     Modified! ---' to it using the concatenation operator (+) and
     assign that modified text content (in modifiedText) to the <pre>
@@ -615,23 +617,27 @@ Using URL.createObjectURL(), a temporary download link is created, and a file is
 
 - b) Have a stylesheet e.g index.css with this code
 
-	table, th, td {
-    		border: 1px solid black;
-    		border-collapse: collapse;
-    		padding: 8px;
-  	}
+  ```
+  table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+          padding: 8px;
+  }
+  ```
 
 
 
 - c) Have an HTML file (e.g. index.html) with this code:
 
-	<!DOCTYPE html>
-	<html>
-    	<head>
-        	<title>The JavaScript Blueprint</title>
-        	<link rel="stylesheet" href="index.css" type="text/css">
-    	</head>
-    	<body>
+  ```
+  <!DOCTYPE html>
+  <html>
+      <head>
+          <title>The JavaScript Blueprint</title>
+          <link rel="stylesheet" href="index.css" type="text/css">
+      </head>
+      <body>
+  ```
         
         	<h1>Read CSV File and Display as Table</h1>
         	<input type="file" id="csvFile" accept=".csv">
@@ -646,39 +652,41 @@ Using URL.createObjectURL(), a temporary download link is created, and a file is
 
 - d) Have a JavaScript file (e.g. index.js) with this code in it:
 
-	document.getElementById('csvFile').addEventListener('change', function(event) {
-    		const file = event.target.files[0];
-   		 if (!file) return;
+  ```
+  document.getElementById('csvFile').addEventListener('change', function(event) {
+          const file = event.target.files[0];
+       if (!file) return;
 
-   	 	const reader = new FileReader();
-    		reader.onload = function(e) {
-      			const text = e.target.result;
-      			displayCSVAsTable(text);
-    		};
-    		reader.readAsText(file);
-  	});
+      const reader = new FileReader();
+          reader.onload = function(e) {
+              const text = e.target.result;
+              displayCSVAsTable(text);
+          };
+          reader.readAsText(file);
+  });
 
-  	function displayCSVAsTable(csvText) {
-    		const rows = csvText.trim().split('\n');
-    		const table = document.createElement('table');
+  function displayCSVAsTable(csvText) {
+          const rows = csvText.trim().split('\n');
+          const table = document.createElement('table');
 
-    		rows.forEach((row, rowIndex) => {
-      			const tr = document.createElement('tr');
-      			const cells = row.split(',');
+          rows.forEach((row, rowIndex) => {
+              const tr = document.createElement('tr');
+              const cells = row.split(',');
 
-      			cells.forEach(cell => {
-        		const td = rowIndex === 0 ? document.createElement('th') : 				document.createElement('td');
-        			td.textContent = cell;
-        			tr.appendChild(td);
-      			});
+              cells.forEach(cell => {
+              const td = rowIndex === 0 ? document.createElement('th') :              document.createElement('td');
+                  td.textContent = cell;
+                  tr.appendChild(td);
+              });
 
-      			table.appendChild(tr);
-    		});
+              table.appendChild(tr);
+          });
 
-    		// Clear old tables
-    		document.getElementById('tableContainer').innerHTML = '';  
-    		document.getElementById('tableContainer').appendChild(table);
-  	}
+          // Clear old tables
+          document.getElementById('tableContainer').innerHTML = '';  
+          document.getElementById('tableContainer').appendChild(table);
+  }
+  ```
 
   You should be very familiar with this FileReader code flow by now. Here is the brief run-down of it:
 	
@@ -935,7 +943,7 @@ If we haven’t reached the end of the file yet, we call readNextChunk() to read
   		console.log("File upload complete.");
 	}
 
-	Here is the custom function readNextChunk() which will keep reading the file until all the chunks are read. It does so by slicing the next piece of the file—from where we left off (offset) to the next chunk, each time it is called. While doing so, we tell the FileReader to read each of the slices as an ArrayBuffer (a binary format we can send).
+Here is the custom function readNextChunk() which will keep reading the file until all the chunks are read. It does so by slicing the next piece of the file—from where we left off (offset) to the next chunk, each time it is called. While doing so, we tell the FileReader to read each of the slices as an ArrayBuffer (a binary format we can send).
 
 We start the whole process by reading the first chunk. This kicks off the reading and sending loop.
 
@@ -1192,29 +1200,33 @@ npm install cors
 
   - Use it in your server file (server.js in our example). Here’s an example server (server.js) with CORS enabled:
 
-	const express = require('express');
-	const http = require('http');
-	const WebSocket = require('ws');
-	const cors = require('cors');
+    ```
+    const express = require('express');
+    const http = require('http');
+    const WebSocket = require('ws');
+    const cors = require('cors');
 
-	const app = express();
-	app.use(cors()); // Allow all origins by default
+    const app = express();
+    app.use(cors()); // Allow all origins by default
+    ```
 
 	const server = http.createServer(app);
 	const wss = new WebSocket.Server({ server });
 
-	wss.on('connection', (ws) => {
-  		console.log('A client connected via WebSocket.');
+    ```
+    wss.on('connection', (ws) => {
+        console.log('A client connected via WebSocket.');
 
-  		ws.on('message', (message) => {
-    			console.log('Received:', message);
-    			// You can save chunks here
-  		});
+        ws.on('message', (message) => {
+                console.log('Received:', message);
+                // You can save chunks here
+        });
 
-  		ws.on('close', () => {
-    			console.log('Client disconnected.');
- 	 	});
-	});
+        ws.on('close', () => {
+                console.log('Client disconnected.');
+        });
+    });
+    ```
 
 	server.listen(3000, () => {
   		console.log('Server running on http://localhost:3000');
@@ -1267,9 +1279,9 @@ Without the server.listen(…) line, no server will be started.
   When sending large files, for example video files via a WebSocket, that is not the same thing as real video streaming like Netflix or YouTube. Once uploaded to the (remote) server, the job of WebSocket is done. Though you can start processing or displaying the file on the remote server as it arrives, how you manage this playback process is a separate thing. You would need to build your own video player logic to play the data in chunks. Real streaming services offered by platforms like Netflix or YouTube use smart streaming protocols like HLS (HTTP Live Streaming) and MPEG-DASH (Dynamic Adaptive Streaming over HTTP). 
   These streaming protocols offer the following:
 
-    * Chop the video into small, downloadable segments to pass down to the video player via the <video> HTML element of a web page. 
-    * Allow the video player on a web page to request for only the needed segments
-    * Enable adaptive quality (e.g., switch from 1080p to 720p if internet is slow)
+* Chop the video into small, downloadable segments to pass down to the video player via the <video> HTML element of a web page. 
+* Allow the video player on a web page to request for only the needed segments
+* Enable adaptive quality (e.g., switch from 1080p to 720p if internet is slow)
 
 This makes video smooth, fast, and user-friendly — which WebSocket by itself doesn’t provide.
   So, in conclusion, WebSockets can be used to stream media, but not in the traditional sense. It is not optimised for that. While you can stream binary chunks of a video or audio file over WebSocket, you’ll need to build your own playback logic. Real video streaming uses smarter protocols like HLS or MPEG-DASH, which streaming services like YouTube and Netflix use. Here is when you can use WebSockets for media:

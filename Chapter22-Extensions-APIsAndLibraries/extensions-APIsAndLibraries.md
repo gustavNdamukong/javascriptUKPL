@@ -669,7 +669,7 @@ your-project-folder/
 	app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
 
 
-	Let me explain what the code does more clearly. The frontend code sends a SOAP request, specifying that it wants to make a call to the SOAP function getProductPrice(). We make this request using JavaScript’s Fetch API.
+Let me explain what the code does more clearly. The frontend code sends a SOAP request, specifying that it wants to make a call to the SOAP function getProductPrice(). We make this request using JavaScript’s Fetch API.
 
 	const soapBody = `
                 <soap:Envelope xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
@@ -1011,9 +1011,11 @@ We are opening a new request here:
 - This next block of code sends a Content-Type value meant to be sent as
   part of the header of the request. This particular Content-Type is important for this request. It tells the server how the data it is sending across is formatted:
 
-	request.setRequestHeader(
-		"Content-Type", "application/x-www-form-urlencoded"
-	)
+  ```
+  request.setRequestHeader(
+      "Content-Type", "application/x-www-form-urlencoded"
+  )
+  ```
 
   We're saying: "Hey server, I'm sending form-style data — just like a
   normal HTML form would."
@@ -1030,9 +1032,11 @@ We are opening a new request here:
   returned 	from the server. So, this is where we check if the request is
   finished:
 
-	 if (this.readyState == 4) {
-		…
-	}
+  ```
+   if (this.readyState == 4) {
+      …
+  }
+  ```
 
   See below, the different values of the readyState property and what
   they mean. So here, we confirm if the request is done. If it is, we move
@@ -1040,9 +1044,11 @@ We are opening a new request here:
 
 - This next line checks if the server responded with success:
 
-	if (this.status == 200) {
-		…
-	}
+  ```
+  if (this.status == 200) {
+      …
+  }
+  ```
 
   Universally, in API programming, the group of status codes normally returned are as follows:
 
@@ -1053,9 +1059,11 @@ We are opening a new request here:
 
 - Now we check: Did the server actually send us back some text?
 
-	if (this.responseText != null) {
-		// use thisResponseText here
-	}
+  ```
+  if (this.responseText != null) {
+      // use thisResponseText here
+  }
+  ```
 
 	The “this.responseText” line is referencing the responseText property of the current object, which is XMLHttpRequest object. Basically, if its value is null, therefore, nothing was returned from the server. That is why we check to see if its value is not equal to null (this.responseText !== null) before we proceed to use the data returned within that block. In this example, we take the data returned by the server, and inject it into the DOM as the value of an element on our web page with the id attribute of “info”.
 
@@ -1380,9 +1388,11 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 - 3) fetch() – Makes network requests (AJAX calls, APIs).
 
-	fetch("https://jsonplaceholder.typicode.com/posts")
-    		.then(response => response.json())
-    		.then(data => console.log(data));
+  ```
+  fetch("https://jsonplaceholder.typicode.com/posts")
+          .then(response => response.json())
+          .then(data => console.log(data));
+  ```
 
 
 -4) Promise-based APIs – Many modern APIs return Promises, 
@@ -1408,20 +1418,24 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 - 6) WebSockets & Event Listeners – These run
     asynchronously, waiting for events to happen.
 
-		document.addEventListener("click", () => 	
-			console.log("Clicked!"));
+  ```
+  document.addEventListener("click", () =>    
+      console.log("Clicked!"));
+  ```
 
 
 - 7) async/await functions – Used to simplify Promises.
 
-		async function getData() {
-    			let response = await fetch(
-				"https://jsonplaceholder.typicode.com/posts"
-			);
-    
-			let data = await response.json();
-    			console.log(data);
-		}
+  ```
+  async function getData() {
+          let response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+      );
+
+      let data = await response.json();
+          console.log(data);
+  }
+  ```
 
 		getData();
 
@@ -2144,6 +2158,7 @@ chapter has been about using that subset well.
    references on your web page. Then write 
   custom function like this to use it:
 
+  ```
   function notify(msg, msgType) 
   {
       notie.alert({
@@ -2151,6 +2166,7 @@ chapter has been about using that subset well.
         text: msg
       });
   }
+  ```
 
  -Finally; wherever you wish to use it in your 
    code, call your custom function to notify 

@@ -599,9 +599,11 @@ This will return true to the console.
   string ‘cats’ and replace them with ‘dogs’, 
   do it like so:
 
-  console.log(
-      "Cats are fun. I like cats".replace(/cats/gi, "dogs")
-  );
+```
+console.log(
+    "Cats are fun. I like cats".replace(/cats/gi, "dogs")
+);
+```
 
   The limitation of replace() is that it
   replaces the subject with exactly the text 

@@ -46,7 +46,7 @@ questions.
 
 6) Read this SQL query and say in plain English what it asks for:
 
-        SELECT * FROM products WHERE category = 'books'
+   SELECT * FROM products WHERE category = 'books'
 
    Clue: three of the four words do most of the work — one picks, one says where from, and one
    narrows it down.

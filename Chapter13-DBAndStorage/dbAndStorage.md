@@ -90,10 +90,12 @@ So, the take-away from this is this: if you need to store data permanently, use 
 
   We will proceed to learn how we can go about reading from this data and how to write to it. 	We will also look at how to update specific records in that data, and how to delete specific 	records in that data. 
 
-	const LOCAL_STORAGE_TODO_KEY = 'nlm.todoList';
-		
-	//an array to hold all current todoList items
-	let stuffTodo = [];
+  ```
+  const LOCAL_STORAGE_TODO_KEY = 'nlm.todoList';
+
+  //an array to hold all current todoList items
+  let stuffTodo = [];
+  ```
 
 
 	
@@ -467,7 +469,7 @@ Think of it like a filing cabinet for your web app, where you can keep things li
 
 In the example above, the string inside the query() method is called an SQL query string. It’s a command sent to the database that tells it what data to fetch.
 
-	"SELECT * FROM products WHERE category = 'books'"
+"SELECT * FROM products WHERE category = 'books'"
 
 SQL (Structured Query Language) is very readable and beginner-friendly — especially for common operations like selecting, inserting, updating, or deleting data. As you can see, the query reads like a regular English phrase. Here’s what that query means:
 

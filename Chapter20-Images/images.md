@@ -551,9 +551,9 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
 
     *   In summary; here are the steps:
         
-    - reader.readAsDataURL(file) triggers the reading.
-    - Only after the reading is done does reader.onload run.
-    - Inside that callback, we assign that file value to img.src.
+  - reader.readAsDataURL(file) triggers the reading.
+  - Only after the reading is done does reader.onload run.
+  - Inside that callback, we assign that file value to img.src.
 
   The img.src = event.target.result; doesn't run immediately — it only runs after the FileReader has finished loading the file and fired the onload event.
 The key in grasping this process lies in understanding that the event that is triggered when a file is uploaded has a result property which is the uploaded file itself. That is why when we listen in the code for that upload event like so:
@@ -635,14 +635,16 @@ To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an im
 	function drawRotatedImage() {
 	  const angleInRadians = rotation * Math.PI / 180;
 
-  // Adjust canvas size based on rotation (to fit image properly)
-  if (rotation % 180 === 0) {
-    canvas.width = img.width;
-    canvas.height = img.height;
-  } else {
-    canvas.width = img.height;
-    canvas.height = img.width;
-  }
+```
+// Adjust canvas size based on rotation (to fit image properly)
+if (rotation % 180 === 0) {
+  canvas.width = img.width;
+  canvas.height = img.height;
+} else {
+  canvas.width = img.height;
+  canvas.height = img.width;
+}
+```
 
 	  ctx.clearRect(0, 0, canvas.width, canvas.height);
 	  ctx.save();

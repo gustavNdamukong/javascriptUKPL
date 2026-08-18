@@ -549,7 +549,9 @@ green nor amber, then it can only be red.
 - Curly braces {} are optional for single-line statements:
 
 
-	if (true) console.log("This works without braces.");
+  ```
+  if (true) console.log("This works without braces.");
+  ```
 
 But if you have multiple lines, you must use curly braces:
 
@@ -941,31 +943,33 @@ This is how it works:
       // Example: 3 means Wednesday
       let day = 3;
 
-	switch (day) {
-    		case 1:
-        		console.log("Monday");
-        		break;
-    		case 2:
-        		console.log("Tuesday");
-        		break;
-    		case 3:
-        		console.log("Wednesday");
-        		break;
-    		case 4:
-        		console.log("Thursday");
-        		break;
-    		case 5:
-        		console.log("Friday");
-        		break;
-    		case 6:
-        		console.log("Saturday");
-        		break;
-    		case 7:
-        		console.log("Sunday");
-        		break;
-    		default:
-        		console.log("Invalid day");
-	}
+  ```
+  switch (day) {
+          case 1:
+              console.log("Monday");
+              break;
+          case 2:
+              console.log("Tuesday");
+              break;
+          case 3:
+              console.log("Wednesday");
+              break;
+          case 4:
+              console.log("Thursday");
+              break;
+          case 5:
+              console.log("Friday");
+              break;
+          case 6:
+              console.log("Saturday");
+              break;
+          case 7:
+              console.log("Sunday");
+              break;
+          default:
+              console.log("Invalid day");
+  }
+  ```
 
 
 This will be the output:

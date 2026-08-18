@@ -442,9 +442,9 @@ you met when we drew a circle earlier:
 			ctx.arc(x, y, penSize / 2, 0, 2 * Math.PI);
 			ctx.fill();
 
-    Both produce the same dot. Use whichever reads more clearly to you
-    - though remember that the arc() version fills, so it needs
-    fillStyle rather than strokeStyle.
+Both produce the same dot. Use whichever reads more clearly to you
+- though remember that the arc() version fills, so it needs
+fillStyle rather than strokeStyle.
 
 When the mouse is released, stop drawing. ctx.beginPath()
 clears the current drawing path to avoid unwanted lines:
@@ -830,11 +830,11 @@ const rock = {
 	  const rockTop = rock.y;
 	  const rockBottom = rock.y + rock.height;
 
-  const hitRock =
-    ballRight > rockLeft &&
-    ballLeft < rockRight &&
-    ballBottom > rockTop &&
-    ballTop < rockBottom;
+      const hitRock =
+        ballRight > rockLeft &&
+        ballLeft < rockRight &&
+        ballBottom > rockTop &&
+        ballTop < rockBottom;
 
 	  return !hitRock; // Only move if no collision
 	}
@@ -1004,7 +1004,7 @@ The position itself is updated right there in the key handler. The
 draw() function is then called to clear the canvas and redraw
 everything in its new place.
 
-	Another common way to animate is using the built-in function requestAnimationFrame(). That method is used when we want to make something move continuously or very smoothly—like a character that keeps walking or a bouncing ball. Here is the syntax of using requestAnimationFrame() function:
+Another common way to animate is using the built-in function requestAnimationFrame(). That method is used when we want to make something move continuously or very smoothly—like a character that keeps walking or a bouncing ball. Here is the syntax of using requestAnimationFrame() function:
 
 	function animate() {
   		// Move something
@@ -1076,10 +1076,10 @@ The following are the steps to do the collision detection which we do in canMove
       - the position of the bottom wall of the canvas is the height
       of the canvas (canvas.height)
 
-    - The radius of the circular ball is the distance between the
-    centre of the ball and the edge of the ball. We already know
-    the radius of our ball because we have it as the radius property
-    of the ball object.
+- The radius of the circular ball is the distance between the
+centre of the ball and the edge of the ball. We already know
+the radius of our ball because we have it as the radius property
+of the ball object.
 
 			const ball = { 
 				// // ...
@@ -1101,21 +1101,21 @@ circle, while the radius creates a circle around that spot where
 the distance between that spot and the outer edges of the
 circle represent the radius.
 
-    - To work out if the ball has touched any of the inner walls of the
-    canvas, you must find out the position of the outer edges of the
-    ball, because it takes into consideration the radius.
+- To work out if the ball has touched any of the inner walls of the
+canvas, you must find out the position of the outer edges of the
+ball, because it takes into consideration the radius.
 
-    - To calculate the position of the outer edge of the circle, it
-    depends on if we are talking about the left edge, or the top
-    edge, or the right edge, or the bottom edge. This is easy to
-    work out, just stay with me. For left and right edges, we are
-    looking at the horizontal line, or x axis, while for the top and
-    bottom edges, we are talking about the vertical or y axis. We
-    already know that on the x axis, to move left, you reduce the x
-    value, and to move right, you increase the x value, just as on
-    the y axis you have to reduce the y value to move upwards,
-    and increase it to move downwards. To work out the position of
-    the outer edges of the ball, do this:
+- To calculate the position of the outer edge of the circle, it
+depends on if we are talking about the left edge, or the top
+edge, or the right edge, or the bottom edge. This is easy to
+work out, just stay with me. For left and right edges, we are
+looking at the horizontal line, or x axis, while for the top and
+bottom edges, we are talking about the vertical or y axis. We
+already know that on the x axis, to move left, you reduce the x
+value, and to move right, you increase the x value, just as on
+the y axis you have to reduce the y value to move upwards,
+and increase it to move downwards. To work out the position of
+the outer edges of the ball, do this:
 
       - left edge: 		x - radius
       - right edge: 		x + radius
@@ -1158,28 +1158,28 @@ canMove() returns true.
 			if (nextX - ball.radius < 0 || nextX + ball.radius > 
 				canvas.width) return false;
 
-    Here nextX is the new value of the x position after the user hits
-    to move the ball on the x axis. This is getting the position of the
-    left edge of the ball since we are subtracting the radius
-    (ball.radius) from that x value. We then check if it is less than
-    0. We run the same check for the right canvas wall. The pipe
-    characters (||) separating the two if conditions makes sure we
-    run both checks in one if statement.
-      Similarly, we also check the top and bottom edges in
-    canMove(). Again, touching either edge makes the function
-    return false, and we only allow the ball to move when it
-    returns true.
+Here nextX is the new value of the x position after the user hits
+to move the ball on the x axis. This is getting the position of the
+left edge of the ball since we are subtracting the radius
+(ball.radius) from that x value. We then check if it is less than
+0. We run the same check for the right canvas wall. The pipe
+characters (||) separating the two if conditions makes sure we
+run both checks in one if statement.
+  Similarly, we also check the top and bottom edges in
+canMove(). Again, touching either edge makes the function
+return false, and we only allow the ball to move when it
+returns true.
 
 			if (nextY - ball.radius < 0 || nextY + ball.radius > 
 				canvas.height) return false;
 
-    Here nextY is the new value of the y position after the user hits
-    to move the ball on the y axis. This is getting the position of the
-    top edge of the ball since we are subtracting the radius
-    (ball.radius) from that y value. We then check if it is less than
-    0. We run the same check for the bottom canvas wall. The pipe
-    characters (||) separating the two if conditions makes sure we
-    run both checks in one if statement.
+Here nextY is the new value of the y position after the user hits
+to move the ball on the y axis. This is getting the position of the
+top edge of the ball since we are subtracting the radius
+(ball.radius) from that y value. We then check if it is less than
+0. We run the same check for the bottom canvas wall. The pipe
+characters (||) separating the two if conditions makes sure we
+run both checks in one if statement.
 
 
 ##### Detecting the collision of two shapes

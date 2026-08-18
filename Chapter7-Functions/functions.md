@@ -240,7 +240,7 @@ Here is an example:
 	console.log(sum(1, 2, 3, 4)); // 10
 	console.log(sum(5, 10));      // 15
 
-	Rest gathers the multiple arguments passed to the function into an array for use within the function (numbers becomes [1, 2, 3, 4] in the first call). Now that numbers is an array, that’s why in this example, the array function reduce() is called on numbers. Again, be reminded that ...numbers could just as well be ...data or ...rest and it will all still work in the same way.
+Rest gathers the multiple arguments passed to the function into an array for use within the function (numbers becomes [1, 2, 3, 4] in the first call). Now that numbers is an array, that’s why in this example, the array function reduce() is called on numbers. Again, be reminded that ...numbers could just as well be ...data or ...rest and it will all still work in the same way.
   
 
 -A JavaScript function like this that accepts 
@@ -462,7 +462,9 @@ Here are the key points about arrow functions:
   function, while the right side of the arrow
   constitutes the return value.
 	
-	   (arguments) => value;
+    ```
+    (arguments) => value;
+    ```
 
 Note that there is no return keyword in that
 line. With a single expression the return is

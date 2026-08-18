@@ -1283,16 +1283,18 @@ level. Here is an example:
   Example: Using Rest Parameters to
   Collect Arguments into an Array
 
-	function combineStrings(...words) {
-    		// Joins collected words into a 
-		// sentence
-		return words.join(" "); 
-	}
+  ```
+  function combineStrings(...words) {
+          // Joins collected words into a 
+      // sentence
+      return words.join(" "); 
+  }
 
-	// Output: "Hello world from 
-	// JavaScript"
-	console.log(combineStrings("Hello", 
-		"world", "from", "JavaScript")); 
+  // Output: "Hello world from 
+  // JavaScript"
+  console.log(combineStrings("Hello", 
+      "world", "from", "JavaScript")); 
+  ```
 
   Rest parameters collect multiple values
   and turn them into an array, making it
@@ -1406,10 +1408,12 @@ while array1 will remain:
   as well, since objects are used as associative arrays. Here is an
   example of copying the contents of one object literal to another:
 
-	const obj1 = { a: 1, b: 2 };
-	const obj2 = { ...obj1, c: 3 };
+  ```
+  const obj1 = { a: 1, b: 2 };
+  const obj2 = { ...obj1, c: 3 };
 
-	console.log(obj2);
+  console.log(obj2);
+  ```
 
 This will log to the console the following:
   { a: 1, b: 2, c: 3 }
@@ -2119,14 +2123,14 @@ techniques:
 
 
 #### -splice()
-    It adds to, or removes elements from an array and returns the
-    removed items. In doing so, it modifies the original array.
-      It takes one required argument and any number of optional ones
-    after it:
-      - i) The index at which to remove an element (required)
-      - ii) The number of elements to remove (optional). If it's 0,
-      nothing will be removed from the array
-      - iii) Items to be put into that index (optional).
+It adds to, or removes elements from an array and returns the
+removed items. In doing so, it modifies the original array.
+  It takes one required argument and any number of optional ones
+after it:
+  - i) The index at which to remove an element (required)
+  - ii) The number of elements to remove (optional). If it's 0,
+  nothing will be removed from the array
+  - iii) Items to be put into that index (optional).
 
 		const arr = [1, 2, 3, 4];
 		arr.splice(1, 2, "a", "b");

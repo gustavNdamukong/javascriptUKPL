@@ -95,15 +95,21 @@ function check(path) {
     // A line's fate is decided by which pool it turns up in. Short lines - a
     // lone brace, a `});` - occur all over the file and would match anywhere,
     // so only lines long enough to be distinctive get a vote.
-    let codePool = '';
+    // Code is matched whole-line: a listing line is set as code only if it IS
+    // a line of a code block. Substring matching would call this prose line
+    //     "SELECT * FROM products WHERE category = 'books'"
+    // code, because it appears inside a db.query(...) call listed above it.
+    // Prose still needs substring matching, since a paragraph runs its source
+    // lines together.
+    const codeLines = new Set();
     for (const m of html.matchAll(/<pre><code[^>]*>([\s\S]*?)<\/code><\/pre>/g))
-        codePool += unesc(m[1]) + '\n';
+        for (const l of unesc(m[1]).split('\n')) { const t = l.trim(); if (t) codeLines.add(t); }
     const prosePool = unesc(html.replace(/<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g, '')
                                 .replace(/<[^>]+>/g, ''));
     const DISTINCT = 12;
     const fateOf = t => {
         if (t.length < DISTINCT) return 'unknown';
-        if (codePool.includes(t)) return 'code';
+        if (codeLines.has(t)) return 'code';
         if (prosePool.includes(t)) return 'prose';
         return 'unknown';
     };
@@ -123,7 +129,11 @@ function check(path) {
         const minInd = Math.min(...chunk.map(k => indentOf(lines[k])));
 
         const fates  = chunk.map(k => fateOf(lines[k].trim()));
-        const asProse = chunk.filter((k, n) => fates[n] === 'prose');
+        // A sentence sitting at the foot of a listing with no blank line before
+        // it - "Why did this work? The property was stored in a WeakMap..." -
+        // is prose that correctly renders as prose, not a listing line that
+        // failed to render as code. It must not count as evidence of a fault.
+        const asProse = chunk.filter((k, n) => fates[n] === 'prose' && !isProseish(lines[k]));
         const asCode  = chunk.filter((k, n) => fates[n] === 'code');
 
         const isCodeChunk  = strong >= 1 && codey / chunk.length >= 0.6 && prosey / chunk.length < 0.34;
@@ -149,17 +159,20 @@ function check(path) {
     }
 
     return merged.map(f => f.type === 'code' ? {
+        type: 'code', from: f.from + 1, to: f.to + 1, targets: f.asProse.map(k => k + 1),
         kind: f.asCode.length ? 'CODE AS PROSE (listing torn in half)' : 'CODE AS PROSE (whole listing)',
         line: f.asProse[0] + 1,
         detail: `lines ${f.from + 1}-${f.to + 1}, ${f.asProse.length} listing line(s) set as prose`,
         sample: f.asProse.slice(0, 4).map(k => `${String(k + 1).padStart(4)}: ${lines[k].trim().slice(0, 96)}`)
     } : {
+        type: 'prose', from: f.from + 1, to: f.to + 1, targets: f.asCode.map(k => k + 1),
         kind: 'PROSE AS CODE',
         line: f.from + 1,
         detail: `lines ${f.from + 1}-${f.to + 1}, ${f.asCode.length} sentence line(s) set in monospace`,
         sample: f.asCode.slice(0, 3).map(k => `${String(k + 1).padStart(4)}: ${lines[k].trim().slice(0, 96)}`)
     });
 }
+export { check, bookFiles, indentOf };
 
 // ---- reading order -------------------------------------------------------
 function bookFiles() {
@@ -176,6 +189,8 @@ function bookFiles() {
     return f;
 }
 
+// CLI only when run directly, so the fixer can import check()
+if (process.argv[1] && import.meta.url.endsWith(process.argv[1].split('/').pop())) {
 const args = process.argv.slice(2);
 const files = args.length ? args : bookFiles();
 const quiet = process.env.QUIET === '1';
@@ -196,3 +211,4 @@ for (const p of files) {
 console.log('\n' + '-'.repeat(64));
 for (const [f, n] of perFile) console.log(String(n).padStart(4), f);
 console.log(String(total).padStart(4), 'TOTAL');
+}

@@ -82,16 +82,18 @@ instead of replacing it.
   web page, you can use the very popular innerHTML property of
   document elements:
 
-	selectedElement.innerHTML = "String to display in that element";
+  ```
+  selectedElement.innerHTML = "String to display in that element";
+  ```
 
 As explained above, it is recommended over using document.write().
 Using document.body.innerHTML lets you safely update the page
 content without disrupting the rest of your page. Why does
 document.write() do this:
 
-        * When the browser finishes loading the HTML, it closes the document stream.
-        * If document.write() is used after that, it reopens the stream, which deletes everything on the page and writes fresh content.
-        * So it disrupts the existing structure, styles, and scripts.
+  * When the browser finishes loading the HTML, it closes the document stream.
+  * If document.write() is used after that, it reopens the stream, which deletes everything on the page and writes fresh content.
+  * So it disrupts the existing structure, styles, and scripts.
 
   The better alternative is to use
 
@@ -324,12 +326,12 @@ for that to happen. For example:
                 	console.log("Name is", name);
             	}
 
-    - Code stops at 'debugger' line when DevTools is open
-    - You have to be on the Sources tab in DevTools
-    - From the DevTools in your browser, you will then be able to step
-    in and out of, or skip over functions.
-    - With each click on the to ‘Step into function’ will keep skipping
-    to the next line.
+- Code stops at 'debugger' line when DevTools is open
+- You have to be on the Sources tab in DevTools
+- From the DevTools in your browser, you will then be able to step
+in and out of, or skip over functions.
+- With each click on the to ‘Step into function’ will keep skipping
+to the next line.
 
 This is great for temporarily inspecting variables without needing
 to manually set breakpoints in DevTools.
@@ -684,44 +686,48 @@ Example 5: Re-throwing and Handling at a Higher Level
   - Have it caught and handled by a higher-level handler.
 
 
-	// A function that may throw an error
-	function validateUsername(username) {
-  		try {
-    			if (!username) {
-      				throw new Error("Username is required");
-   			}
-    
-			if (username.length < 4) {
-      				throw new Error(
-					"Username must be at least 4 characters"
-				);
-    			}
-    			console.log("Username is valid!");
-  		} catch (error) {
-    			console.warn("Validation failed, re-throwing...");
+    ```
+    // A function that may throw an error
+    function validateUsername(username) {
+        try {
+                if (!username) {
+                    throw new Error("Username is required");
+            }
 
-			// Re-throw to be handled elsewhere
-    			throw error; 
-  		}
-	}
+            if (username.length < 4) {
+                    throw new Error(
+                    "Username must be at least 4 characters"
+                );
+                }
+                console.log("Username is valid!");
+        } catch (error) {
+                console.warn("Validation failed, re-throwing...");
+
+            // Re-throw to be handled elsewhere
+                throw error; 
+        }
+    }
+    ```
 
 
-	// A higher-level handler that wraps the call
-	function handleUserInput() {
-  		try {
-    			// Simulate user input
+    ```
+    // A higher-level handler that wraps the call
+    function handleUserInput() {
+        try {
+                // Simulate user input
 
-			// Too short on purpose
-    			const input = "Tom"; 
-    			validateUsername(input);
-  		} catch (err) {
-    			console.error("Error handled at a higher level:");
-    			console.error("Message:", err.message);
-  		}
-	}
+            // Too short on purpose
+                const input = "Tom"; 
+                validateUsername(input);
+        } catch (err) {
+                console.error("Error handled at a higher level:");
+                console.error("Message:", err.message);
+        }
+    }
 
-	// Run the code
-	handleUserInput();
+    // Run the code
+    handleUserInput();
+    ```
 
 
   Comments:

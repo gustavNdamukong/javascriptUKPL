@@ -325,8 +325,8 @@ SyntaxError: Private field '#privateAge' must be declared in an enclosing class
   `hasOwnProperty()` asks only about the object itself, ignoring everything up the chain. So
   this is the tool for telling "this object has it" apart from "this object can reach it".
 
-    The same is true of class methods, which is worth knowing: `class Dog { speak() {} }` puts
-    `speak` on `Dog.prototype`, not on each dog.
+The same is true of class methods, which is worth knowing: `class Dog { speak() {} }` puts
+`speak` on `Dog.prototype`, not on each dog.
 
 
 14) 

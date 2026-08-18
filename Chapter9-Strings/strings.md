@@ -20,9 +20,11 @@
   marks or backticks. In JavaScript, you can create a string by wrapping the text within either 
   Double quotes, single quotes, or backticks. For example:
 
-	let firstName = "John";
-	let surname = 'Doe';
-	let nickname = `Johnny`;
+  ```
+  let firstName = "John";
+  let surname = 'Doe';
+  let nickname = `Johnny`;
+  ```
 
 
 
