@@ -123,9 +123,19 @@ export function normaliseCode(html) {
         const out = lines.map((l, i) => {
             if (raw[i] === null) return '';
             let n;
-            // each closer steps out one from the last line, and consecutive
-            // closers keep stepping so a nested block unwinds properly
-            if (isCloser(l)) n = Math.max(0, prev - 1);
+            // Each closer steps out one from the last line, and consecutive
+            // closers keep stepping so a nested block unwinds properly. But
+            // stepping out by one is wrong when the line before was a wrapped
+            // continuation rather than a nesting level:
+            //
+            //     thing.textContent =
+            //         JSON.stringify(x);
+            //     }              <- steps out from the continuation, not the {
+            //
+            // So take the author's own column when it asks for a shallower
+            // level than that, and only fall back to stepping out when the
+            // closer was left too deep.
+            if (isCloser(l)) n = Math.min(lvlOf(raw[i]), Math.max(0, prev - 1));
             else n = lvlOf(raw[i]);
             prev = n;
             return ' '.repeat(n * 4) + l.trim();

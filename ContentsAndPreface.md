@@ -715,19 +715,21 @@ Here’s how to get the most out of it:
 - You should set up a simple local project with an index.html file, using the following skeleton:
 
 
-	<!DOCTYPE html>
-	<html lang="en">
-	<head>
-		<meta charset="UTF-8">
-		<title>JavaScript Master</title>
-	</head>
-	<body>
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JavaScript Master</title>
+</head>
+<body>
 
-		<script>
-			// Your JavaScript code here
-		</script>
-	</body>
-	</html>
+    <script>
+        // Your JavaScript code here
+    </script>
+</body>
+</html>
+```
 
    The book is designed so you can try everything in real time, right in your browser. Whether you're completely new to JavaScript or revisiting it after a while, this book is your companion. I’ve resolved the very challenges I faced when learning over a decade ago, and now I’m handing you a smoother, smarter path forward.
 Let’s dive in—and start building something amazing together.

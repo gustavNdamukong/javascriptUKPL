@@ -170,13 +170,17 @@ It is therefore recommended to be safe by ending all your statements with semico
 Examples:
 
 
-    - i) Referencing a local script file:
-		
-			<script src="/filePath/script.js"></script>
+- i) Referencing a local script file:
 
-    - ii) Loading an external script from the internet:
+  ```
+  <script src="/filePath/script.js"></script>
+  ```
 
-			<script src="https://example.com/scriptName.js"></script>
+- ii) Loading an external script from the internet:
+
+  ```
+  <script src="https://example.com/scriptName.js"></script>
+  ```
 
 (Note: You don’t include JavaScript code between the opening and closing <script> tags when using the src attribute.)
 
@@ -335,18 +339,20 @@ Live Server
   - So go ahead and create one within your project folder. The code in your
     index.html file can look like this:
 
-	<!DOCTYPE html>
-	<html lang="en">
-		<head>
-			<meta charset="UTF-8">
-			<title>The JavaScript Blueprint</title>
-		</head>
-		<body>
-			<h1>The JavaScript Blueprint</h1>
+    ```
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>The JavaScript Blueprint</title>
+        </head>
+        <body>
+            <h1>The JavaScript Blueprint</h1>
 
-			<script src="index.js"></script>
-		</body>
-	</html>
+            <script src="index.js"></script>
+        </body>
+    </html>
+    ```
 
   - Next, create a new file that will contain your JavaScript code in the
     same folder. It is a JavaScript file and so should have the ‘.js’

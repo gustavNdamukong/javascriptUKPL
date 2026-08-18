@@ -313,7 +313,7 @@ the for loop block.
        // ReferenceError: z is not defined
        console.log(z); 
 
-	  Functions are also considered blocks, and variables declared inside them are scoped to the function (function-scoped).
+  Functions are also considered blocks, and variables declared inside them are scoped to the function (function-scoped).
 
 
 
@@ -393,29 +393,31 @@ Here is an example of fetching and processing API data in an isolated block.
   understand every line. Look only at the curly braces, and at which variables 
   survive outside them. That is the single point being made here.
 
-   async function fetchUserData() 
-   {
-        console.log("Fetching user data...");
+```
+async function fetchUserData()
+{
+    console.log("Fetching user data...");
 
-         // start of block
-        {
-            let response = await fetch("https://api.example.com/user");
-            let data = await response.json();
+    // start of block
+    {
+        let response = await fetch("https://api.example.com/user");
+        let data = await response.json();
 
-            let username = data.name;
-            let age = data.age;
+        let username = data.name;
+        let age = data.age;
 
-            console.log(`User: ${username}, 
-                Age: ${age}`);
-         } // end of block
+        console.log(`User: ${username},
+            Age: ${age}`);
+    } // end of block
 
-        // Now, outside the above block, the 
-        // variables ‘response’, ‘data’, 
-        // ‘username’ and ‘age’ are all out of 
-        // scope, and that is the idea.
+    // Now, outside the above block, the
+    // variables 'response', 'data',
+    // 'username' and 'age' are all out of
+    // scope, and that is the idea.
 
-        console.log("Finished processing.");
-    }
+    console.log("Finished processing.");
+}
+```
 
 	fetchUserData();
 
@@ -427,28 +429,31 @@ The fetchUserData() function has a block inside of it. Outside that block, the b
   is about temporary DOM Manipulation
   Without Polluting Scope.
 
-      document.querySelector("#btn")
-            .addEventListener("click", () => {
-               
-           // block start
-            {
-                 let messageBox =   
-                     document.createElement("div");
-                 messageBox.textContent =
-                     "Action completed!";
-                 messageBox.style.color = 
-                     "green";
-              
-                  // place the div on the DOM
-                 document.body.appendChild(
-                       messageBox);
+```
+document.querySelector("#btn")
+    .addEventListener("click", () => {
 
-                setTimeout(() => {
-                  // Remove it after 3 seconds
-                  messageBox.remove();
-                }, 3000);
-            } // end of block 
-        });
+        // block start
+        {
+            let messageBox =
+                document.createElement("div");
+            messageBox.textContent =
+                "Action completed!";
+            messageBox.style.color =
+                "green";
+
+            // place the div on the DOM
+            document.body.appendChild(
+                messageBox);
+
+            setTimeout(() => {
+                // Remove it after 3 seconds
+                messageBox.remove();
+            }, 3000);
+        } // end of block
+
+    });
+```
 
 This example demonstrates JavaScript’s prowess in manipulating the DOM. Here we create an HTML div element and store it in a variable named messageBox, and insert it into the DOM so it can be seen in the browser. It then sets a timer so that the div is removed from the DOM again after 3 seconds. Working with the Document is something that may be new to you now, but we will dive deeper into it and demystify everything when we come to talk about DOM Manipulation in Chapter 15.
   In this code, the messageBox element is only used inside the block. Once it’s appended and scheduled for removal, there’s no need to keep the variable around.
@@ -521,7 +526,7 @@ The fee and price variables are declared with const at the top level, making the
 
 The count and shopName variables are declared with let and var respectively at the top level, making them global variables as well. Notice that getAmount() names its own parameter quantity rather than count. Had we named it count too, it would have hidden the global count from view inside the function, which is a trap we look at in a moment under shadowing.
 
-	The function getAmount() is able to access these global variables, and so will any other code on this page whether they are in a function, a block or neither.
+  The function getAmount() is able to access these global variables, and so will any other code on this page whether they are in a function, a block or neither.
 
   We have not talked about a variable declared with neither of the keywords var, let or const. This is also possible when you are running JavaScript in non-strict mode. Strict mode is a stricter set of rules that you can switch on by putting the line "use strict"; at the top of your file, and which JavaScript modules turn on automatically. Normally strict mode will force you to add those keywords (declarations), but non-strict mode will not. So in non-strict mode, a variable declared without any of those keywords is automatically a global variable. 
 
@@ -678,15 +683,17 @@ Let us look at an example that will cause an error of a missing function:
 
 Let’s say you define a function like this in your index.js file:
 
-   // index.js
-   async function fetchPhotos() {
-  	const response = await axios.get('https://jsonplaceholder.typicode.com/photos', {
-    			params: { albumId: 1 }
-  	});
+```
+// index.js
+async function fetchPhotos() {
+    const response = await axios.get('https://jsonplaceholder.typicode.com/photos', {
+        params: { albumId: 1 }
+    });
 
-  	document.getElementById('output').textContent = 	
-		JSON.stringify(response.data, null, 2);
-   }
+    document.getElementById('output').textContent =
+        JSON.stringify(response.data, null, 2);
+}
+```
 
 Do not worry about understanding what the code does for now. It uses an external library called Axios to make an AJAX request to fetch photos from the URL 'https://jsonplaceholder.typicode.com/photos'.
 We will come back to this same example in Chapter 22 (Extensions - APIs & Libraries), where I will explain how it all works. So, let’s say in your HTML code you do:
@@ -720,8 +727,8 @@ Option 2: Remove the type="module" attribute from your
 
 Now everything defined in index.js becomes globally available by default. So, here are the take-away points of learning:
 
-    - If you want to use import/export and keep code modular, use type="module" and export what you need. (import and export are the commands modules use to share code between files. We cover them in Chapter 17.)
+- If you want to use import/export and keep code modular, use type="module" and export what you need. (import and export are the commands modules use to share code between files. We cover them in Chapter 17.)
 
-    - If you need HTML or other scripts to access your functions, attach them to window, or don't use type="module".
+- If you need HTML or other scripts to access your functions, attach them to window, or don't use type="module".
 
 Using modules is recommended for modern apps, but if you're just starting out or building simple pages, you can safely skip type="module" for now. As you advance, understanding how scope works in modules will help you write cleaner, more secure code.

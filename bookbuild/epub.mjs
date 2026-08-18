@@ -41,7 +41,22 @@ if (existsSync(join(BASE, 'AboutTheAuthor.md')))
 // ---- stylesheet: reflowable, so no page geometry ------------------------
 const css = `
 html, body { margin: 0; padding: 0; }
-body { font-family: sans-serif; line-height: 1.5; }
+/* A reader justifies body text by default. Without hyphenation it can only
+   justify by stretching the spaces, so one long unbreakable token - a URL, or
+   document.getElementById() - blows the line it lands on wide open:
+       Visit      that      URL:
+   Hyphenation gives it somewhere else to break. print.css has always had this;
+   the EPUB was the one missing it. */
+body {
+    font-family: sans-serif; line-height: 1.5;
+    hyphens: auto; -webkit-hyphens: auto; -epub-hyphens: auto;
+}
+/* and where a token still will not fit, let it break rather than push the line */
+p, li, td { overflow-wrap: break-word; word-wrap: break-word; }
+/* headings and code are never hyphenated */
+h1, h2, h3, h4, h5, h6, pre, code {
+    hyphens: none; -webkit-hyphens: none; -epub-hyphens: none;
+}
 h1, h2, h3, h4, h5, h6 { font-family: sans-serif; line-height: 1.2; page-break-after: avoid; }
 h1 { font-size: 1.7em; margin: 1em 0 0.8em; border-bottom: 2px solid #000; padding-bottom: 0.2em; }
 h1.quiz { font-size: 1.25em; font-weight: 500; border-bottom: 1px solid #999; }
@@ -196,6 +211,15 @@ writeFileSync(join(OUT, 'META-INF', 'container.xml'),
 </container>`);
 writeFileSync(join(OUT, 'mimetype'), 'application/epub+zip');
 
+// ---- package ------------------------------------------------------------
+// An EPUB is a zip with two rules: mimetype comes first, and it is stored
+// rather than deflated, so a reader can identify the file from its first
+// bytes without unpacking it.
+const EPUB = '/tmp/kdpsample/TheJavaScriptBlueprint.epub';
+rmSync(EPUB, { force: true });
+execSync(`cd "${OUT}" && zip -X -0 -q "${EPUB}" mimetype && zip -X -9 -qr "${EPUB}" META-INF OEBPS`);
+
 console.log('documents :', files.length);
 console.log('nav entries:', nav.length);
 console.log('images    :', images.size);
+console.log('epub      :', EPUB);
