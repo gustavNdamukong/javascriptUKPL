@@ -63,6 +63,15 @@ h1.quiz { font-size: 1.25em; font-weight: 500; border-bottom: 1px solid #999; }
 h2 { font-size: 1.3em; margin: 1.4em 0 0.5em; }
 h3 { font-size: 1.12em; margin: 1.2em 0 0.4em; }
 h4, h5, h6 { font-size: 1em; margin: 1em 0 0.3em; }
+/* h4 is set at body size, so weight alone barely marks it as a heading - and it
+   is the level the book leans on most. A hairline rule gives it a floor to sit
+   on. Light on purpose: it fires on every h4, and the heavier rule belongs to
+   the chapter opener. */
+/* A mid grey at low alpha rather than a fixed light grey, so the rule stays
+   visible whichever background the reader has chosen - #ddd would disappear
+   against Books' dark theme. */
+h4 { margin: 1.2em 0 0.5em; padding-bottom: 0.18em;
+     border-bottom: 1px solid rgba(128, 128, 128, 0.45); }
 p { margin: 0 0 0.6em; text-indent: 1.2em; }
 li > p, li p + p { text-indent: 0; }
 ul, ol { margin: 0.4em 0 0.7em; }

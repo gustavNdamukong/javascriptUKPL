@@ -83,7 +83,17 @@ h1:first-of-type { page-break-before: avoid; }
 
 h2 { font-size: 13pt;   margin: 1.8em 0 0.55em; }
 h3 { font-size: 11.5pt; margin: 1.45em 0 0.45em; }
-h4 { font-size: 10.5pt; margin: 1.2em 0 0.35em; font-weight: 700; }
+/* h4 is set at body size, so weight alone barely marks it as a heading - and
+   it is the level the book leans on most. A hairline rule gives it a floor to
+   sit on without adding another type size. Kept light: this fires on every h4
+   in the book, and the heavier 2pt rule stays reserved for a chapter opener. */
+h4 {
+    font-size: 10.5pt;
+    margin: 1.2em 0 0.5em;
+    font-weight: 700;
+    padding-bottom: 0.18em;
+    border-bottom: 0.25pt solid #ccc;
+}
 h5 { font-size: 10.5pt; margin: 1.1em 0 0.3em; font-weight: 600; }
 h6 { font-size: 10pt;   margin: 1em 0 0.3em; font-weight: 600; }
 
