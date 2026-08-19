@@ -140,9 +140,15 @@ are all together in the Answers section further down, numbered to match the ques
 
 
 3) 
-    ctx.arc(150, 75, 40, 0, 2 * Math.PI);
-      |    |   |   |      |
-      x    y   r  start  end
+   ```text
+   ctx.arc(150, 75, 40, 0, 2 * Math.PI);
+           |    |   |   |  |
+           |    |   |   |  end angle
+           |    |   |   start angle
+           |    |   radius
+           |    y
+           x
+   ```
 
 - **150** and **75** are the x and y coordinates of the **centre** of the circle.
 - **40** is the **radius** — how far the circle reaches out from that centre.

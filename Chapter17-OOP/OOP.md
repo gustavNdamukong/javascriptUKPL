@@ -649,7 +649,7 @@ On the other hand, it is also possible to create an object without a prototype. 
 So, if you just do Object.create() without passing it the argument of JavaScript's parent object, you will end up with a really empty object that is void of all the basic built-in properties and methods that come with JavaScript's constructor objects out of the box. Such an object can also be referred to as a prototype-less object, and It will probably not be of much use to you. 
 
 
-  Handy properties and methods of Objects
+### Handy properties and methods of Objects
   This in other words refers to the properties and methods of the JavaScript parent of all objects, Object. All the methods and properties below can be tested by referencing or calling them on Object, like so: 
 
   Object.propertyName

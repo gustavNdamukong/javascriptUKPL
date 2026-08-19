@@ -119,7 +119,7 @@ Operators give you the ability to perform calculations so you can make accurate 
   than a single line, so it has a section of its own further down.
 
 
-  Addition operator
+##### Addition operator
 The addition operator + is like the addition sign in mathematics (represented by the plus sign) and it is used to add two numbers together. It should not be mistaken for the concatenation operator that binds variables to a string. For example:
 
 		let sum = 2 + 2;
@@ -127,7 +127,7 @@ The addition operator + is like the addition sign in mathematics (represented by
 The value of sum will be 4.	
 	
 
-  Minus operator
+##### Minus operator
 The minus operator - is the same as the minus operator we are familiar with in math. It is used to subtract one number from the other. For example:
 				
 		let num = 3 - 2;
@@ -135,7 +135,7 @@ The minus operator - is the same as the minus operator we are familiar with in m
 The value of num will be 1.
 
 						
-  Division operator
+##### Division operator
 The division operator / is used to divide one number by the other. It divides the value on the left by the value on the right. The result is called the quotient. For example:
 				
 		let num = 4 / 2;
@@ -143,7 +143,7 @@ The division operator / is used to divide one number by the other. It divides th
 The value of num will be 2.
 
 						
-  Multiplication operator
+##### Multiplication operator
 The multiplication operator * is used to multiply a number by a number. It multiplies the value on the left by the value on the right. The result is called the product. For example:
 				
 	let num = 2 * 2;
@@ -178,7 +178,7 @@ The value of num will be 1.
 	
 
 
-  Incremental operator
+##### Incremental operator
 An incremental operator ++ is used to quickly add 1 to a number. Normally, there are two ways to increase a number’s value:
 
   a) By using the addition operator
@@ -195,7 +195,7 @@ An incremental operator ++ is used to quickly add 1 to a number. Normally, there
 Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However, if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
 
 
-  Decremental operator
+##### Decremental operator
 This is the direct opposite of the incremental operator. It is used to subtract 1 from a number. There are two ways to decrease a number’s value:
 
   a) By using the subtraction operator
@@ -273,7 +273,7 @@ The above example will display an alert popup saying 'fiveString and    fiveNumb
 So always remember that when the == (equal) operator does not seem to 	work, just use the === (identical) operator and it will save the day as === checks both the value and the type.			
 
 		
-Greater than operator
+##### Greater than operator
 The greater than operator > is the same as the greater than sign in math. For 	example:
  				
 		let greaterThan = 2 > 1;
@@ -281,21 +281,21 @@ The greater than operator > is the same as the greater than sign in math. For 	e
 The value of greaterThan is true.
 
 
-Less than operator
+##### Less than operator
 The less than operator < is the same as the less than sign in math. For 	example:
 			
 		let lessThan = 2 < 1;
 			
 The value of lessThan is false because 2 is not less than 1.
 
-Greater than or equal to operator
+##### Greater than or equal to operator
 The greater than or equal to operator >= specifies that the value on the left is either greater than, or equal to the number on the right. It is the same as the greater than or equal to sign in math. For example:
 				
 	let greaterThanOrEqualTo = 2 >= 1;
 			
 The value of greaterThanOrEqualTo is true because 2 is greater than 1.
 
-Less than or equal to operator
+##### Less than or equal to operator
 The less than or equal to operator <= specifies that the value on the left is either less than, or equal to the number on the right. It is the same as 		the less than or equal to sign in math. For example:
 
 			let lessThanOrEqualTo = 2 <= 2;
@@ -327,7 +327,7 @@ For example:
 The value of the variable isTwo will be true. This is because the value of the  variable two is 2 and not 1, so isTwo which states that two is not equal to 1 is    correct, hence the result is true. != is known as the “Not Equal” operator. In the same way, you can flip a true or false result round using the Logical Not (!), or check that two things differ in value or in type using the Strict Not Equal (!==).
 
 
-  OR operator
+##### OR operator
 The OR operator or || works with two conditional expressions, one on either side of the double pipe characters. It states that if the conditional on either side of its double pipe characters (||) is true, then the result is true. It will only return false if both conditionals are false. Basically, as long as one conditional on either side of its pipe characters is true, then the whole expression is true. For example:
 				
 		if (trafficLightColor == 'green' || trafficLightColor == 'amber')
@@ -336,7 +336,7 @@ The OR operator or || works with two conditional expressions, one on either side
 		}			
 
 	
-  And operator
+##### And operator
 The And or && operator is very similar to the OR operator. The only 		difference is that unlike with the OR operator where if just one conditional is 	true, it passes, with the And operator, both conditionals on either side of it must be true for it to return true. For example:
 				
 		if (trafficLightColor == 'red' && carStops == false)
@@ -345,7 +345,7 @@ The And or && operator is very similar to the OR operator. The only 		difference
 		}
 
 
-  Ternary operator
+##### Ternary operator
 The ternary operator is a quick way to assign a value to a variable based on a conditional statement. It is a shorthand version of the if...else statement that allows quick assignments. A ternary operator is very powerful and handy. You would typically use it in situations where there is not much code you need to write if an expression is true. The conditional could be as short as one line of code. If you had to write a lot of code, then the block ({}) that an if statement provides would be preferable. With a ternary operator, you probably just need to set a variable’s value depending on some condition, so it is quick and short. Here is the syntax:
 
 	condition ? runIfTrue : runIfFalse;

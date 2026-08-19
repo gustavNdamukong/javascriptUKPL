@@ -2426,7 +2426,7 @@ let todoString = "";
 	}
 
 
-Adding attributes to an element
+#### Adding attributes to an element
 There are a few ways to assign attributes to HTML elements dynamically. The 	following are three ways to add a class or any attribute to an element:
 
 	const li = document.createElement('li');
@@ -2453,7 +2453,7 @@ There are a few ways to assign attributes to HTML elements dynamically. The 	fol
   Pay close attention to how multiple classes are passed. They go in as one single string with a space between them, exactly as you would write them in your HTML. Do not be tempted to put them in an array and separate them with commas: className is a string, so an array of ["list-item", "draggable"] is quietly turned into the text "list-item,draggable", which the browser reads as one strangely-named class rather than two. One string, spaces between the names.
 
 
-Assign multiple attributes to an element in one go
+#### Assign multiple attributes to an element in one go
   Any of the above ways to assign attributes to an element is fine, but there are times when you would have multiple attributes to an element, and there is a beautiful way to do it in one 	block. This is done by the assign() method of the base JavaScript Object Object. You simply pass the target element as the first argument to assign() and an object as its second 	argument containing all the attributes you want the element to have and their values.  Here is 	an example:
 
 ```
