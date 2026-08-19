@@ -88,7 +88,15 @@ pre {
     white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word;
 }
 code { font-family: monospace; font-size: 0.88em; }
-p code, li code { background: rgba(128, 128, 128, 0.18); padding: 0 0.2em; overflow-wrap: anywhere; }
+/* A long inline token - \`ShapeFactory.createShape(...)\` - that refuses to break
+   is pushed whole onto the next line, and the line it left behind is stretched
+   to fill the measure. That is what opens a gap mid-sentence. print.css carries
+   word-break as well as overflow-wrap; older WebKit needs it, and Books is
+   older WebKit. */
+p code, li code, td code {
+    background: rgba(128, 128, 128, 0.18); padding: 0 0.2em;
+    word-break: break-word; overflow-wrap: anywhere;
+}
 pre code { background: none; padding: 0; font-size: inherit; }
 img { max-width: 100%; height: auto; display: block; margin: 1em auto 0.3em; }
 table { border-collapse: collapse; margin: 0.8em 0; font-size: 0.9em; }

@@ -563,9 +563,7 @@ The other identifiers like ‘country’ and ‘age’ are valid identifiers and
 	person.age = 40;
 	person.country = "England";
 
-
-  The difference between an associative   
-#### array and a JSON object
+#### The difference between an associative array and a JSON object
   There is a difference between a JSON
   object and an associative array in 
   JavaScript, though they can look similar. 
@@ -789,9 +787,7 @@ The structure of this clients array is complex because it is mixed on several le
   The only confusion as I mentioned above, is when programmers fail to make that distinction in data types and go ahead and put objects and arrays in the same pot, so-to-speak. Basically, as long as you understand that you can loop through a (true) array but you cannot directly loop through an object (‘associative’ array), then you will be fine.
   I can hear you asking me how you would then loop through an array that has mixed structures, like an outer array, and a nested group of objects which in turn have properties (keys) whose values are arrays etc. The answer is the purpose of this section, and it is simple. The key is in knowing the structure of the data, and in programming, you will never have to worry about that because you will always be told what structure to expect your data to be in. Once you know the structure—say the outer-most part is an array, then you would start by looping through it like you would any array. Then as you iterate through each deeper level, if you know the data at that level is an object, you would reference the data as you would do with an object, or if you need to loop over it, you know you need to convert it to an array before running a loop on it. You have the tools at your disposal for looping through, and converting the data. Again, to see how to convert objects to arrays, visit the "Looping through arrays" section further below.
 
-
-How to assign values to a
-#### multi-dimensional array
+#### How to assign values to a multi-dimensional array
   Working with multi-dimensional arrays is as simple as viewing them as a parent-child structure—with the children being the nested arrays, and the outer array being the parent. Use the bracket notation to reference the keys and sub keys. Basically, you have to use one square bracket for each nested array, beginning with the outer (parent) array. 
   Once you can access an element within an array, assigning a value to it is done in the same way as you would do for a normal (single-dimension) array. This is easier demonstrated than explained. What I will explain here will cover how to assign values as well as how to update values in multi-dimensional arrays. Take the following 2D array example:
 
@@ -835,9 +831,7 @@ The value of that element which was previously 9 will now be updated to 10. Henc
 
 will return [7, 8, 10]
 
-
-  How to retrieve values from
-#### a multi-dimensional array
+#### How to retrieve values from a multi-dimensional array
   You may have noticed that I have already touched on how to access/retrieve data from multi-dimensional arrays when I introduced them above. Even when we looked at "Mixed multi-dimensional arrays", I showed you how to access the data in the mixed structure. It was only normal for me to show how to access the nested arrays in order to show you what the parent-child hierarchy structure looked like. Let us refresh our minds again. I will start with a numeric nested array.
 
   	let myArray = [
@@ -900,9 +894,7 @@ We can see that the value of its name property is ‘John’, which is why we go
 
 
 ## Looping through arrays
-
-Looping through a numeric
-#### array
+#### Looping through a numeric array
   There are multiple ways to loop through an indexed (numeric) array in JavaScript. You can use:
 
   - for loop (different from for...in)
@@ -1025,9 +1017,7 @@ The result is:
 
 	arr.map(value => console.log(value));
 
-
-  Looping through an
-#### associative array
+#### Looping through an associative array
   In JavaScript, real arrays use numbered indexes and support array methods like .forEach() and .map() and many other methods which make looping through numeric arrays to get data from them easy and effective. 
 On the other hand, if you are working with associative arrays, these are actually plain objects and not true arrays, so you cannot use these methods designed for (true) arrays on the objects. But there is a way to work around that limitation.
   To loop through associative arrays, you have to convert the object to an array, then loop through it as you would do on an array. JavaScript provides you with three special methods to achieve this. These methods are: 
@@ -1166,12 +1156,8 @@ The result will be:
     - Use Object.entries() if you need both keys and values.
     - Use for...of with Object.entries() for a cleaner approach.
 
-
-  Looping through a
-#### multi-dimensional array
-
-  a) Loop through a multi-dimensional
-#### index array
+#### Looping through a multi-dimensional array
+#### a) Loop through a multi-dimensional index array
   There are three ways to loop through a multi-dimensional indexed array. 
 You can do it in any of the following ways:
 
@@ -1232,9 +1218,7 @@ The result is the same, each number on its own line.
 
 The result is again the same, each number on its own line.  
 
-
-  b) Loop through an associative
-#### multi-dimensional array
+#### b) Loop through an associative multi-dimensional array
 JavaScript does not have true multi-dimensional associative arrays like other programming languages like PHP. However, you can use an array of objects or a nested object to achieve a similar structure. That is basically what we did under the "Multi-dimensional associative" array section above. If you use an array of objects, you need to iterate differently than an indexed multi-dimensional array. Let’s see some examples:
 
 #### An array of objects

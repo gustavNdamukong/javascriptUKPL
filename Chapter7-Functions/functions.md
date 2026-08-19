@@ -752,9 +752,7 @@ function. It is not. It is reduce()'s own second argument, the value
 the accumulator starts from, and it sits outside the arrow function 
 entirely.
 
-
-Immediately Invoked Function Expression 
-#### (IIFE)
+#### Immediately Invoked Function Expression (IIFE)
   An IIFE (Immediately Invoked Function Expression) is a self-executing function that runs immediately after it is defined. It is wrapped in parentheses to make it an expression, and then followed by () to invoke it immediately.
 
 Here is the basic syntax:

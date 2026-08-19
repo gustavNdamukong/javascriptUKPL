@@ -142,7 +142,7 @@ used for shared resources like databases, configuration, or logging. The followi
   situations like managing a single database connection in a web
   application.
   - The connectToDatabase() method is declared private using the
-  # prefix. Because the connectToDatabase() is a private method, it
+  \# prefix. Because the connectToDatabase() is a private method, it
   cannot be called directly, and that is the intention. That is why it is
   called by the class itself, from the constructor, when you instantiate the
   class in order to make the database connection.

@@ -96,9 +96,7 @@
   differ, the idea of reference types is
   shared across most languages.
 
-
-   Understanding primitive and reference 
-#### types
+#### Understanding primitive and reference types
   Sure! Let’s break down primitive types
   and reference types in simple terms.
 
@@ -620,17 +618,12 @@ example:
 
             // convert to 123
            let num = Number(str);
-
-  b) Using unary plus (+)
-#### operator
+#### b) Using unary plus (+) operator
             let str = "123";
 
            // converts to 123
            let num = +str;
-
-c) Using parseInt() (for integers) or
-  parseFloat() (for floating-point
-#### numbers)
+#### c) Using parseInt() (for integers) or parseFloat() (for floating-point numbers)
           let str = "123.45";
 
           // convert to 123.45
@@ -1343,9 +1336,7 @@ and using one gives you a ReferenceError:
   equality, 0 == "" and 0 == false are both true, so == would tell you a value is zero when
   it is actually an empty string.
 
-
-  The relationship between data types
-#### and the Built-in Object of JavaScript
+#### The relationship between data types and the Built-in Object of JavaScript
   JavaScript has a built-in object named Object
 which is the parent of all JavaScript objects. This means 
 That all objects automatically inherit from it, and this is 

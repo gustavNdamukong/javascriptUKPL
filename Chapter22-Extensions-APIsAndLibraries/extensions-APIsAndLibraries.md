@@ -158,9 +158,7 @@ The first argument to fetch() is the URL or endpoint of the resource. This is ba
 
 
 
-	
-  Understanding SOAP APIs (and why they’re usually handled outside
-#### the browser)
+#### Understanding SOAP APIs (and why they’re usually handled outside the browser)
 
   While modern frontend development mostly revolves around REST APIs and JSON, there's another important type of web service called SOAP—short for Simple Object Access Protocol, and it works differently. SOAP uses XML to structure messages used for communication between applications over a network. It was widely adopted since the early 2000s in enterprise software systems for building web services, before REST became popular. Although SOAP is still in use today (especially in finance, healthcare, telecom and enterprise software, where strict message formats and contracts are important.), it's important to know that most SOAP APIs are not accessible directly from the browser. This is because browsers block cross-origin requests unless the API explicitly allows it through something called CORS (Cross-Origin Resource Sharing)—which SOAP APIs often don't.
 So why learn about SOAP in a JavaScript book? Because understanding SOAP helps you:
