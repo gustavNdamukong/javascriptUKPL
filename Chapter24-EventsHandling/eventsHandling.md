@@ -115,8 +115,8 @@ clicked in our above example:
   You call the addEventListener() method on any element.
   It takes two main arguments:
 
-		-1) The event type (like "click", "submit", "mouseover", etc.).
-		-2) A function (event handler) to run when the event happens.
+  - The event type (like "click", "submit", "mouseover", etc.).
+  - A function (event handler) to run when the event happens.
 
 	This function being passed as the second argument 
 	can be implemented in two ways; 

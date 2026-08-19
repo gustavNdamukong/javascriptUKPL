@@ -137,7 +137,7 @@ sport[sport.length - 2]
    That is the same + you would use for arithmetic. Given numbers it adds them; given strings it
    joins them end to end.
 
-	   There is also `+=`, which appends to a string you already have:
+   There is also `+=`, which appends to a string you already have:
 
         let oneString = "string one and ";
         oneString += "string two";

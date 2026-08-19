@@ -469,9 +469,9 @@ Visit: https://myaccount.google.com
 
   b) Turn on 2-Step Verification (if you haven't already)
 
-    - Click Security in the left sidebar.
-    - Under “Signing in to Google”, click 2-Step Verification.
-    - Follow the steps to enable it.
+  - Click Security in the left sidebar.
+  - Under “Signing in to Google”, click 2-Step Verification.
+  - Follow the steps to enable it.
 
   c) Generate an App Password
 

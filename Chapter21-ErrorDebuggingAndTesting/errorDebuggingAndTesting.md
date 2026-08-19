@@ -197,9 +197,10 @@ Use Case: Checking values during development, tracing flow, or
 
 
 #### console.error()
-	Purpose: Displays an error message, usually in red text in the 
-		console.
-	Example:
+  Purpose: Displays an error message, usually in red text in the
+  console.
+  Example:
+
 		console.error("Something went wrong!");
 
 Use Case: Reporting serious issues like failed API calls, missing files,
@@ -212,14 +213,18 @@ Purpose: Highlights a warning in yellow, without treating it like a full-
   blown error.
 
   Example:
+
     console.warn("This is just a warning.");
+
   Use Case: When something is suspicious but not necessarily fatal
     (like deprecated features).
 
 
 #### console.info()
-	Purpose: Prints information messages.
-	Example:
+  Purpose: Prints information messages.
+
+  Example:
+
 		console.info("This is some useful info.");
 
 Use Case: Not as commonly used, but can be useful for providing
@@ -228,8 +233,10 @@ Use Case: Not as commonly used, but can be useful for providing
 
 
 #### console.debug()
-	Purpose: Specifically for debugging messages.
-	Example: 
+  Purpose: Specifically for debugging messages.
+
+  Example:
+
 		console.debug("This is a debug message.");
 	
 Use Case: Used when you want something that can be hidden in
@@ -239,8 +246,10 @@ Note: May not always be visible unless you expand the console log
 
 	
 #### console.table()
-	Purpose: Displays tabular data as a formatted table.
-	Example:
+  Purpose: Displays tabular data as a formatted table.
+
+  Example:
+
 		const users = [
   			{ name: "Alice", age: 25 },
   			{ name: "Bob", age: 30 },
@@ -256,30 +265,39 @@ Use Case: When printing arrays of objects or data collections. Super
   Purpose: Displays an interactive list of the properties of a specified
     JavaScript object.
   Example:
+
     console.dir(document.body);
+
   Use Case: Useful for exploring DOM objects and nested structures.
 
 
 #### console.assert()
   Purpose: Only logs the message if the assertion fails.
   Example:
+
     console.assert(2 + 2 === 5, "Math is broken!");
+
   Use Case: Helpful for adding sanity checks during development.
 
 
 #### console.group() and console.groupEnd()
-	Purpose: Groups console messages together.
-	Example:
+  Purpose: Groups console messages together.
+
+  Example:
+
 		console.group("User Details");
 		console.log("Name: Alice");
 		console.log("Age: 25");
 		console.groupEnd();
-	Use Case: Organize output when logging a bunch of related data.
+
+  Use Case: Organize output when logging a bunch of related data.
 
 
 #### console.time() and console.timeEnd()
-	Purpose: Measures how long an operation takes.
-	Example:
+  Purpose: Measures how long an operation takes.
+
+  Example:
+
 		console.time("loop");
 		for (let i = 0; i < 100000; i++) {}
 		console.timeEnd("loop");
@@ -742,13 +760,13 @@ handleUserInput()
 				  	// final handler
   				└── catch (err)                
 
-		-validateUsername() is a lower-level function responsible for 
-			checking user input.
-		-If the input is bad, it throws an error and catches it locally 
-			first, then re-throws it.
-		-handleUserInput() is a higher-level function. It’s in charge of 
-			user interaction logic, so it wraps the call in try...catch and 
-			catches the re-thrown error.
+  - validateUsername() is a lower-level function responsible for
+    checking user input.
+  - If the input is bad, it throws an error and catches it locally
+    first, then re-throws it.
+  - handleUserInput() is a higher-level function. It’s in charge of
+    user interaction logic, so it wraps the call in try...catch and
+    catches the re-thrown error.
 		-This allows separation of responsibilities:
             * One function checks for correctness.
             * The other decides how to inform the user or log it.

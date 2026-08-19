@@ -159,7 +159,7 @@ Outputs:
 
 This is another example of concatenating strings without variables
 
-	  You can also concatenate strings using the += operator. However, though the += operator is mostly used for adding up numbers (see notes under operators), when used with strings, it simply appends a new string to the end of another. Here is an example:
+You can also concatenate strings using the += operator. However, though the += operator is mostly used for adding up numbers (see notes under operators), when used with strings, it simply appends a new string to the end of another. Here is an example:
 
 	let oneString = "string one and ";
 	oneString += "string two"; 

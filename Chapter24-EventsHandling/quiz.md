@@ -271,5 +271,5 @@ Child clicked
   delegated listener never knew about individual items in the first place, so a new one needs
   no special treatment.
 
-    The `if (e.target.tagName === "LI")` check matters: clicks on padding inside the `<ul>` also
-    reach the listener, and without the check you would report those too.
+  The `if (e.target.tagName === "LI")` check matters: clicks on padding inside the `<ul>` also
+  reach the listener, and without the check you would report those too.

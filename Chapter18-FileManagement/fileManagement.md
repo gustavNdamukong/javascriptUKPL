@@ -530,10 +530,10 @@ event by calling the click() method on the anchor element.
 
 			a.click();
 
-    This is amazing, to see that in JavaScript, you can dynamically
-    simulate, so-to-speak, a click on a link or button, or any element
-    for that matter; all in memory without that element ever existing
-    in the browser.
+  This is amazing, to see that in JavaScript, you can dynamically
+  simulate, so-to-speak, a click on a link or button, or any element
+  for that matter; all in memory without that element ever existing
+  in the browser.
   - At the end of the code in the click event listener, after the file is
     supposed to have been downloaded, we close with a call to the
     revokeObjectURL() method of the URL API. This will discard the
@@ -1409,8 +1409,8 @@ When you need precise control over what part of the XML to extract—especially 
 
         	xmlDoc.getElementsByTagName("book");
 
-    	-Query with CSS selectors using .querySelector() for example select 
-	   an <author> tag like this:
+  - Query with CSS selectors using .querySelector() for example select
+    an <author> tag like this:
 
         	xmlDoc.querySelector("author");
 
@@ -1675,8 +1675,8 @@ Actually, we check for two things:
   a) if the value of the readyState property is 4, and
   b) if the value of the status property is 200
 
-	xhr.readyState === 4 means the request is done and we got a response.
-	xhr.status === 200 means the server said ‘OK’, and everything went well.
+xhr.readyState === 4 means the request is done and we got a response.
+xhr.status === 200 means the server said ‘OK’, and everything went well.
 
 Only when both are true do we process the response.
 Next, we receive the XML data returned and store it in a variable xmlDoc.

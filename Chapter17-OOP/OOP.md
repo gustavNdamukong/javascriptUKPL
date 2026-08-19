@@ -622,7 +622,7 @@ The prototype of juanita is a blank constructor function which contains another 
    			this.lastName = lname;
 		}
 
-	The Object.create() method therefore has to be passed an argument which is the object to be used as the prototype of the new object to be created. But you can also create a blank or empty object whose prototype is the JavaScript Object, just as is the case when creating an object using {}, or new Object() which do not need to be passed any previously created object. To do so, just pass to Object.create() the Object.prototype. For example:
+The Object.create() method therefore has to be passed an argument which is the object to be used as the prototype of the new object to be created. But you can also create a blank or empty object whose prototype is the JavaScript Object, just as is the case when creating an object using {}, or new Object() which do not need to be passed any previously created object. To do so, just pass to Object.create() the Object.prototype. For example:
       
 		let chi = Object.create(Object.prototype);
       		console.log(chi); 

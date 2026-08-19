@@ -1091,14 +1091,14 @@ The following are the steps to do the collision detection which we do in canMove
   simple math. Let’s establish some parameters so that you would
   understand perfectly.
 
--On the x (horizontal) axis
-  -the position of the left wall of the canvas is 0 (x = 0)
-  -the position of the right wall of the canvas is the width of 				   the canvas (canvas.width)
-
-    - On the y (vertical) axis
-      - the position of the top wall of the canvas is 0 (y = 0)
-      - the position of the bottom wall of the canvas is the height
-      of the canvas (canvas.height)
+- On the x (horizontal) axis
+  - the position of the left wall of the canvas is 0 (x = 0)
+  - the position of the right wall of the canvas is the width of
+    the canvas (canvas.width)
+- On the y (vertical) axis
+  - the position of the top wall of the canvas is 0 (y = 0)
+  - the position of the bottom wall of the canvas is the height
+    of the canvas (canvas.height)
 
 - The radius of the circular ball is the distance between the
 centre of the ball and the edge of the ball. We already know

@@ -83,9 +83,6 @@ const WEAK = [
     // made the fixer start a fence AFTER `body {`, stranding the selector.
     /\{\s*$/
 ];
-const isStrongCode = l => STRONG.some(re => re.test(l));
-const isCodeish = l => isStrongCode(l) || WEAK.some(re => re.test(l));
-
 // A sentence: several words, mostly letters, no code structure.
 const isProseish = l => {
     const t = l.trim().replace(/^[-*]\s+/, '').replace(/^\d+[.)]\s+/, '');
@@ -94,12 +91,25 @@ const isProseish = l => {
     // A trailing comment is the one place a listing carries a real sentence
     // ("sayHello();   // now it runs"). Judge the code in front of it.
     const code = t.replace(/\/\/.*$/, '').trim();
-    if (/[{};]\s*$/.test(code) || /=>/.test(code) || /^\/\//.test(t)) return false;
+    // Ending in a brace or semicolon usually means code - but not when the line
+    // is a long sentence that happens to quote a snippet at the end:
+    //   "...using this syntax: elem.propertyName = "new value";"
+    // so that test only applies to lines short enough to BE code.
+    const wordy = t.split(/\s+/).length >= 12;
+    if ((!wordy && /[{};]\s*$/.test(code)) || /=>/.test(code) || /^\/\//.test(t)) return false;
     if (/^[A-Za-z_$][\w$.]*\s*\([^)]*\)\s*;?$/.test(code)) return false;   // a bare call
     if (/^<|^(let|const|var)\s+[A-Za-z_$][\w$]*\s*[=;,]/.test(t)) return false;
     const alpha = (t.match(/[A-Za-z ]/g) || []).length / t.length;
     return alpha > 0.84;
 };
+
+const isStrongCode = l => STRONG.some(re => re.test(l));
+// A sentence wins over a weak code signal. "That's because setTimeout()
+// received the function person.getName..." is a paragraph, but it mentions a
+// method call, and counting that as code was enough to stop whole paragraphs
+// set in monospace from being reported - one of them 645 characters long.
+const isCodeish = l => isStrongCode(l) || (!isProseish(l) && WEAK.some(re => re.test(l)));
+
 
 // ---- per file ------------------------------------------------------------
 function check(path) {

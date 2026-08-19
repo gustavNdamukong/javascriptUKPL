@@ -453,7 +453,7 @@ HTMLCollection. There are only two methods.
       - getElementsByClassName()
       - getElementsByTagName()
 
-        * document.getElementsByClassName("className"). It will work just the same if you call it within a specific element—basically using that element as the root or base within which to search for a match, as opposed to using the document object. For example; the first example code will return an HTMLCollection of all elements having a class value of "item". The second example will return an HTMLCollection of all elements with the class "divItems" that are found within the div that has the id of "myDiv", only: 
+* document.getElementsByClassName("className"). It will work just the same if you call it within a specific element—basically using that element as the root or base within which to search for a match, as opposed to using the document object. For example; the first example code will return an HTMLCollection of all elements having a class value of "item". The second example will return an HTMLCollection of all elements with the class "divItems" that are found within the div that has the id of "myDiv", only: 
 
 			let items = document.getElementsByClassName("item");
 
@@ -692,7 +692,8 @@ The output will be:
   Heading text
 
 
-	Let’s extract the content of the second <p> tag on the page
+Let’s extract the content of the second <p> tag on the page
+
 		let myText = document.querySelectorAll(".myText");
 		console.log(myText[1].textContent);
 
@@ -930,10 +931,9 @@ This outputs: `<p>`Paragraph 1`</p>`
 		
 ### Changing elements
 
-```
- In JavaScript, there are special properties you can use to change the content (what people see) inside elements on a web page. These properties belong to what’s called an HTMLElement, which is just a fancy name for any element you see on a web page—like a `<div>`, `<p>`, `<h1>`, and so on.
+In JavaScript, there are special properties you can use to change the content (what people see) inside elements on a web page. These properties belong to what’s called an HTMLElement, which is just a fancy name for any element you see on a web page—like a `<div>`, `<p>`, `<h1>`, and so on.
+
 The way this is done in JavaScript is to select the HTML element, and then reference the document object property on it as you have seen before. You can also select the element first, store it in a variable for example a variable called elem, then you would reference the property you want to change on that variable-which now represents the HTML element, using this syntax: elem.propertyName = "new value";
-```
 
 Let’s explore the four main properties you’ll use most often.
   - textContent
@@ -1464,9 +1464,8 @@ still what you reach for in some very specific corners, which we will come to.
 
     // *[@id='main'] You probably guessed
     // this one; yes, it selects every
-    *
-                     element on this web document that has the id of "main"
-                     (id="main").
+    // element on this web document that
+    // has the id of "main" (id="main").
 
   Here is a fuller list to give you an idea of the range. Play and experiment
 with these, and check the online documentation for more complex queries and

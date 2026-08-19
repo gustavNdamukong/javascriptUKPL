@@ -131,6 +131,10 @@ for (const path of bookFiles()) {
         const text = line.slice(at + 2).trim();
         if (!text) { out.push(line); continue; }
 
+        // A rule - // ------------ - is one long token with nothing to wrap.
+        // It came out unchanged anyway, but it was being counted as work done.
+        if (/^[-=*_~#]+$/.test(text)) { out.push(line); continue; }
+
         if (!before.trim()) {                       // a full-line comment: wrap it
             out.push(...commentLines(pad, text, LIMIT));
             wrapped++; touched++;
