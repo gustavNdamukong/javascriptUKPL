@@ -58,8 +58,14 @@ h1, h2, h3, h4, h5, h6, pre, code {
     hyphens: none; -webkit-hyphens: none; -epub-hyphens: none;
 }
 h1, h2, h3, h4, h5, h6 { font-family: sans-serif; line-height: 1.2; page-break-after: avoid; }
-h1 { font-size: 1.7em; margin: 1em 0 0.8em; border-bottom: 2px solid #000; padding-bottom: 0.2em; }
-h1.quiz { font-size: 1.25em; font-weight: 500; border-bottom: 1px solid #999; }
+/* Colours here have to survive the reader's theme. A reader repaints the page
+   and the text but leaves author colours alone, so anything fixed to one end of
+   the scale breaks at the other: a #000 rule vanishes on a dark page, a #f2f2f2
+   panel turns into a white slab under light text.
+   currentColor follows whatever colour the reader is using for text, and a mid
+   grey at low alpha darkens a light page and lightens a dark one. */
+h1 { font-size: 1.7em; margin: 1em 0 0.8em; border-bottom: 2px solid currentColor; padding-bottom: 0.2em; }
+h1.quiz { font-size: 1.25em; font-weight: 500; border-bottom: 1px solid rgba(128, 128, 128, 0.6); }
 h2 { font-size: 1.3em; margin: 1.4em 0 0.5em; }
 h3 { font-size: 1.12em; margin: 1.2em 0 0.4em; }
 h4, h5, h6 { font-size: 1em; margin: 1em 0 0.3em; }
@@ -82,12 +88,12 @@ pre {
     white-space: pre-wrap; word-wrap: break-word; overflow-wrap: break-word;
 }
 code { font-family: monospace; font-size: 0.88em; }
-p code, li code { background: #f2f2f2; padding: 0 0.2em; overflow-wrap: anywhere; }
+p code, li code { background: rgba(128, 128, 128, 0.18); padding: 0 0.2em; overflow-wrap: anywhere; }
 pre code { background: none; padding: 0; font-size: inherit; }
 img { max-width: 100%; height: auto; display: block; margin: 1em auto 0.3em; }
 table { border-collapse: collapse; margin: 0.8em 0; font-size: 0.9em; }
-th, td { border: 1px solid #bbb; padding: 0.25em 0.5em; text-align: left; }
-th { background: #f2f2f2; }
+th, td { border: 1px solid rgba(128, 128, 128, 0.5); padding: 0.25em 0.5em; text-align: left; }
+th { background: rgba(128, 128, 128, 0.18); }
 p.verse { text-indent: 0; }
 
 /* front matter. An e-reader has no fixed page, but it honours a page break,
@@ -195,11 +201,16 @@ writeFileSync(join(OUT, 'OEBPS', 'content.opf'),
 `<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://www.idpf.org/2007/opf" version="3.0" unique-identifier="bookid">
   <metadata xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <!-- The identifier names the WORK and must stay put, so a reader can carry
+         a reader's bookmarks and position across editions. dcterms:modified
+         below is what tells it the content changed - it was frozen at a
+         constant, so every rebuild claimed to be the same unmodified book, and
+         Books had no reason to drop what it had already cached. -->
     <dc:identifier id="bookid">urn:uuid:javascript-blueprint-ndamukong</dc:identifier>
     <dc:title>The JavaScript Blueprint</dc:title>
     <dc:creator>Gustav Ndamukong</dc:creator>
     <dc:language>en</dc:language>
-    <meta property="dcterms:modified">2026-01-01T00:00:00Z</meta>
+    <meta property="dcterms:modified">${new Date().toISOString().replace(/\.\d+Z$/, 'Z')}</meta>
   </metadata>
   <manifest>
     <item id="nav" href="nav.xhtml" media-type="application/xhtml+xml" properties="nav"/>
