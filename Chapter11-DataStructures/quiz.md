@@ -124,8 +124,10 @@ questions.
    The nearest you can get is to freeze it:
 
         const frozen = Object.freeze([1, "apple"]);
-        frozen[0] = 99;            // silently ignored
-        console.log(frozen[0]);    // still 1
+        // silently ignored
+        frozen[0] = 99;
+        console.log(frozen[0]);
+        // still 1
 
    Note that the attempt fails quietly rather than throwing an error, which is worth knowing.
 
@@ -142,8 +144,10 @@ questions.
         scores.set("alice", 10);
         scores.set(42, "the answer");
 
-        console.log(scores.get("alice"));  // 10
-        console.log(scores.size);          // 2
+        console.log(scores.get("alice"));
+        // 10
+        console.log(scores.size);
+        // 2
 
 
 5) 
@@ -202,7 +206,8 @@ questions.
         // "checkout" - go back
         console.log(history.pop());
         // "products" - go back again
-        console.log(history);         // ["home"]
+        console.log(history);
+        // ["home"]
 
    A stack is exactly right here, because "back" always means the most recent page, which is
    the last one added. That really is how the back button works.
@@ -269,7 +274,8 @@ questions.
   A Set does both jobs at once. Building one from the array removes the repeats, and you can
   either spread it back into an array as above, or ask the Set itself how many it holds:
 
-        console.log(new Set(names).size);   // 3
+        console.log(new Set(names).size);
+        // 3
 
   Notice the order is preserved: Ada, Grace, Alan appear in the order they were first seen.
   A Set will not hold duplicates, but it does remember the order things arrived in.

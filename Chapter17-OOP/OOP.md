@@ -170,9 +170,11 @@ Here are examples of how these static methods can be used:
 
 	const obj = { a: 1, b: 2 }; 
 
-	console.log(Object.keys(obj)); // ['a', 'b'] 
+	console.log(Object.keys(obj));
+	// ['a', 'b']
 	console.log(Object.values(obj)); // [1, 2] 
-	console.log(Object.entries(obj)); // [['a', 1], ['b', 2]]
+	console.log(Object.entries(obj));
+	// [['a', 1], ['b', 2]]
 
 
 #### Object.assign() can be used in a couple of different ways
@@ -184,15 +186,18 @@ Here are examples of how these static methods can be used:
 	const source2 = { c: 3 }; 
 
 	Object.assign(target, source1, source2); 
-	console.log(target); // { a: 1, b: 2, c: 3 }
+	console.log(target);
+	// { a: 1, b: 2, c: 3 }
 
 
 	// use Object.assign() to clone an object
 	const original = { name: 'John', age: 30 }; 
 
 	const clone = Object.assign({}, original); 
-	console.log(clone); // { name: 'John', age: 30 }
-	console.log(clone === original); // false (new reference)
+	console.log(clone);
+	// { name: 'John', age: 30 }
+	console.log(clone === original);
+	// false (new reference)
 
 
 	// use Object.assign() to add default properties
@@ -200,7 +205,8 @@ Here are examples of how these static methods can be used:
 	const user = { name: 'Alice' }; 
 
 	const completeUser = Object.assign({}, defaults, user); 
-	console.log(completeUser); // { name: 'Alice', age: 18 }
+	console.log(completeUser);
+	// { name: 'Alice', age: 18 }
 
 
   Object.create() is also a powerful method and can be used in
@@ -264,7 +270,8 @@ Here are examples of how these static methods can be used:
 		age: { value: 25, writable: true }, 
 	}); 
 
-	console.log(person.describe()); // "Alice is 25 years old."
+	console.log(person.describe());
+	// "Alice is 25 years old."
 
 
 Understanding how to use the prototype property
@@ -747,7 +754,8 @@ However, while the constructor.prototype of an object literal will always point 
     let obj2 = Object.create(obj1);
 
     // check if the prototype of obj2 is obj1
-    obj1.isPrototypeOf(obj2); //the result is true
+    // the result is true
+    obj1.isPrototypeOf(obj2);
     ```
 
 Note that isPrototypeOf() works in exactly the same way as the
@@ -765,8 +773,10 @@ example:
 
 		var sub = Object.create(subProto);
 
-		console.log(superProto.isPrototypeOf(sub));  // true
-		console.log(sub instanceof superProto);      // TypeError
+		console.log(superProto.isPrototypeOf(sub));
+		// true
+		console.log(sub instanceof superProto);
+		// TypeError
 
 
 The phrase constructor function is used to refer to the name of
@@ -1258,8 +1268,10 @@ person.name = 'Jane';
       Object.seal(user);
 
       user.name = 'Grace';  // allowed
-      user.age = 36;        // blocked, stays undefined
-      delete user.name;     // blocked, name survives
+      // blocked, stays undefined
+      user.age = 36;
+      // blocked, name survives
+      delete user.name;
 
 
 ### The difference between a JavaScript object and JSON
@@ -1701,7 +1713,8 @@ inside the childâ€™s constructor, before any use of this. Here is an example:
     	class Dog extends Animal {
         	constructor(name, breed) {
 	 		// pass argument(s) needed by parent constructor
-            		super(name); // Call parent constructor
+            		// Call parent constructor
+            		super(name);
             		this.breed = breed;
         	}
     	}
@@ -2116,7 +2129,8 @@ And it works just fine.
 	console.log(ChildHelper.add(5, 3));
 
 	// but its instances still cannot see it
-	console.log(new ChildHelper().add);   // undefined
+	console.log(new ChildHelper().add);
+	// undefined
 
   So the dividing line is not parent versus child. It is class versus instance. Statics travel down the class line, and never appear on the objects made from it.
 
@@ -2155,7 +2169,8 @@ Here is an example:
 	}
 
 	let myDog = new Dog();
-	console.log(myDog.makeSound()); // Output: Woof!
+	console.log(myDog.makeSound());
+	// Output: Woof!
 
 	// Error: Cannot instantiate an abstract class!
 	let myAnimal = new Animal();
@@ -2228,7 +2243,8 @@ Manual Dependency Injection
     		}
 	}
 
-	let db = new Database(); // Create dependency
+	// Create dependency
+	let db = new Database();
 
 	// Inject dependency
 	let userService = new UserService(db); 
@@ -2276,8 +2292,10 @@ So, as you see, the issue with this approach is that it does not prevent accessâ
 	})();
 
 	let pers = new Person("Alice");
-	console.log(pers.getName()); // Output: Alice
-	console.log(pers.name); // Undefined (truly private)
+	console.log(pers.getName());
+	// Output: Alice
+	console.log(pers.name);
+	// Undefined (truly private)
  Why did this work? The property was stored in a WeakMap, which is only accessible inside the class. The downside of this approach was, it was complex and harder to maintain.
 
 

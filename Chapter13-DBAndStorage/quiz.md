@@ -189,7 +189,8 @@ questions.
         // On the way out: turn the text back into an array
         const stored = JSON.parse(localStorage.getItem("todos"));
 
-        console.log(stored[1].name);   // "Walk the dog"
+        console.log(stored[1].name);
+        // "Walk the dog"
 
    This is the single most important thing to know about localStorage: **it stores text and
    nothing else.** Hand it an array or an object without `JSON.stringify()` and it will store
@@ -215,8 +216,10 @@ questions.
 
         remember("user", { name: "Alice", theme: "dark" });
 
-        console.log(recall("user").name);    // "Alice"
-        console.log(recall("nothingHere"));  // null
+        console.log(recall("user").name);
+        // "Alice"
+        console.log(recall("nothingHere"));
+        // null
 
 The null check matters. `JSON.parse(null)` happens to return null without complaining, so
 this one would survive without the check — but `JSON.parse()` throws a SyntaxError on most

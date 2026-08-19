@@ -259,8 +259,10 @@ Displaying cat.png
         logger1.log("First message");
         logger2.log("Second message");
 
-        console.log(logger1 === logger2);        // true
-        console.log(logger1.messages.length);    // 2
+        console.log(logger1 === logger2);
+        // true
+        console.log(logger1.messages.length);
+        // 2
 
    The last two lines are the proof. They are the same object, so the message logged through
    `logger2` is sitting in `logger1`'s list as well.
@@ -302,8 +304,10 @@ Displaying cat.png
         const c = ShapeFactory.createShape("circle", 2);
         const s = ShapeFactory.createShape("square", 3);
 
-        console.log(c.area().toFixed(2));   // 12.57
-        console.log(s.area());              // 9
+        console.log(c.area().toFixed(2));
+        // 12.57
+        console.log(s.area());
+        // 9
 
    `static` means the method belongs to the class itself, so you call it as
    `ShapeFactory.createShape(...)` without ever making a ShapeFactory object. There would be no

@@ -295,7 +295,8 @@ Bob,30
         const rows = csv.trim().split('\n');
         const cells = rows[1].split(',');
 
-        console.log(cells);   // ['Alice', '25']
+        console.log(cells);
+        // ['Alice', '25']
 
   `trim()` first, because a CSV file usually ends with a newline. Without it, `split('\n')`
   hands you an empty string as a final row, and you end up building a blank table row from

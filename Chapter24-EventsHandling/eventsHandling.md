@@ -501,7 +501,8 @@ the event first starts at the root and travels down the DOM tree — down throug
   		alert(
 			"Parent DIV handled the click FIRST during CAPTURING phase!"
 		);
-	}, true);  // <- This 'true' enables capturing
+	// <- This 'true' enables capturing
+	}, true);
 
 	// Add event listener to item1 (normal bubbling)
 	item1.addEventListener("click", function(e) {

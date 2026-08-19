@@ -317,7 +317,8 @@ Use Case: When printing arrays of objects or data collections. Super
 
 Alternatively, you can use the Firebug Lite JavaScript module which is easier to use. To use it, place the following code in your HTML, right before the body tag:
 
-	<script src=’http://tinyurl.com/fblite’></script>
+	// tinyurl.com/fblite’></script>
+	<script src=’http:
 
   The way the browser debuggers work is to display the line of the code and hint you on the cause whenever you run code that has some kind of error in the syntax. Firefox is the best for debugging JS as it reports a clearer message.
   There is also a plug-in in Firefox for JavaScript known as FireBug which is quite popular and very recommended to use. Learn about it and acquire it here:

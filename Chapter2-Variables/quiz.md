@@ -224,8 +224,10 @@ Error: ReferenceError: Cannot access 'price' before initialization
         const z = 30;
 
         console.log(window.x);   // OK: 10
-        console.log(window.y);   // undefined
-        console.log(window.z);   // undefined
+        console.log(window.y);
+        // undefined
+        console.log(window.z);
+        // undefined
 
    A top-level var becomes a property of the window object. let and const do not. They still
    work everywhere on the page, but they are not stored on window.
@@ -239,7 +241,8 @@ Error: ReferenceError: Cannot access 'price' before initialization
         let count = 1;
 
         let total = 0;
-        total = 1;        // re-assigning - perfectly fine
+        // re-assigning - perfectly fine
+        total = 1;
 
    var allows re-declaration, which is one of the ways it lets mistakes slip through unnoticed.
    let and const do not.

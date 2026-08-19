@@ -625,7 +625,8 @@ To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an im
 	const downloadBtn = document.getElementById('downloadImgBtn');
 
 	let img = new Image();
-	let rotation = 0; // Keep track of rotation in degrees
+	// Keep track of rotation in degrees
+	let rotation = 0;
 
 	// When an image is uploaded
 	upload.addEventListener('change', function () {
@@ -680,7 +681,8 @@ if (rotation % 180 === 0) {
 	  // origin, with image centered
 	  ctx.drawImage(img, -img.width / 2, -img.height / 2);
 
-	  ctx.restore(); // Go back to normal canvas settings
+	  // Go back to normal canvas settings
+	  ctx.restore();
 	}
 
 
@@ -1182,7 +1184,8 @@ The following code is a working solution of all three filters. As always, the us
             			canvas.width = img.width;
             			canvas.height = img.height;
 
-            			applyFilters(); // Initial draw
+            			// Initial draw
+            			applyFilters();
         		};
 
         		img.src = e.target.result;

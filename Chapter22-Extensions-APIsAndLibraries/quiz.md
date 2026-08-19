@@ -143,8 +143,10 @@ http://my-api.com/clothes
         fetch('https://api.example.com/nope')
             .then(response => {
                 // we ARE here, even for a 404
-                console.log(response.ok);      // false
-                console.log(response.status);  // 404
+                console.log(response.ok);
+                // false
+                console.log(response.status);
+                // 404
             });
 
    `fetch()` only rejects when the request itself could not be made — no network, DNS failure,
@@ -234,7 +236,8 @@ one of them is called — which is exactly why the promise can sit and wait.
         async function showData() {
             try {
                 const result = await getData();
-                console.log(result);          // Done!
+                console.log(result);
+                // Done!
             } catch (error) {
                 console.error("Failed:", error);
             }
@@ -279,7 +282,8 @@ The detail worth getting right is on the last line. You pass **`getPosts`**, not
             .then(results => {
                 console.log(results);
                 // ['Hello world', 'Second result']
-                console.log(results[0]);   // Hello world
+                console.log(results[0]);
+                // Hello world
             });
 
   Notice that `promise1` was ready instantly and `promise2` took half a second, yet the results

@@ -547,7 +547,8 @@ class PrinterAdapter {
 ```
 
   	print(text) {
-    		this.oldPrinter.printText(text); // adapts the method
+    		// adapts the method
+    		this.oldPrinter.printText(text);
   	}
 }
 
@@ -975,7 +976,8 @@ class ProxyImage {
 	// Usage
 	const image = new ProxyImage('cat.png');
 	image.display(); // Loads and displays
-	image.display(); // Only displays, doesn't load again
+	// Only displays, doesn't load again
+	image.display();
 
 The output will be:
 
@@ -1506,10 +1508,12 @@ Template Method (prepareMeal):
     const remote = new RemoteControl();
 
     remote.setCommand(new LightOnCommand(light));
-    remote.pressButton(); // Output: Light is ON
+    remote.pressButton();
+    // Output: Light is ON
 
     remote.setCommand(new LightOffCommand(light));
-    remote.pressButton(); // Output: Light is OFF
+    remote.pressButton();
+    // Output: Light is OFF
 
 The output of this code in the console will be:
 	

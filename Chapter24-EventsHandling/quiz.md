@@ -228,7 +228,8 @@ Parent clicked
 10) 
         document.getElementById("parent").addEventListener("click", () => {
             console.log("Parent clicked");
-        }, true);            // <- the only change
+        // <- the only change
+        }, true);
 
         document.getElementById("child").addEventListener("click", () => {
             console.log("Child clicked");

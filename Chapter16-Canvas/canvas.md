@@ -615,7 +615,8 @@ Here is the modified code to implement pixel erasing using clearRect():
   	// in two different variables.
   	// is the mouse button being held?
   	let mouseDown = false;
-  	let isErasing = false;   // which tool are we using?
+  	// which tool are we using?
+  	let isErasing = false;
 
   	// Start drawing or erasing
   	canvas.addEventListener("mousedown", (e) => {
@@ -860,7 +861,8 @@ const rock = {
         ballBottom > rockTop &&
         ballTop < rockBottom;
 
-	  return !hitRock; // Only move if no collision
+	  // Only move if no collision
+	  return !hitRock;
 	}
 
 	// Handle arrow key movement
@@ -1041,7 +1043,8 @@ Another common way to animate is using the built-in function requestAnimationFra
 	function animate() {
   		// Move something
   		draw(); // Draw new position
-  		requestAnimationFrame(animate); // Loop forever
+  		// Loop forever
+  		requestAnimationFrame(animate);
 	}
 
 	animate();

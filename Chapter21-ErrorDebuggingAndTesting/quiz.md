@@ -133,9 +133,11 @@ TypeError      ReferenceError      RangeError      SyntaxError
         }
 
         try {
-            viewAccount(account, user_id);   // called here
+            // called here
+            viewAccount(account, user_id);
         } catch (error) {
-            console.error(error.message);    // handled here
+            console.error(error.message);
+            // handled here
         }
 
    The `try` block is where you **call** the risky function; the `catch` block is where the
@@ -175,7 +177,8 @@ TypeError      ReferenceError      RangeError      SyntaxError
         } catch (error) {
             console.error(error.message);
         } finally {
-            closeConnection();   // happens either way
+            // happens either way
+            closeConnection();
         }
 
    It is worth using when there is **cleanup that must happen regardless** — closing a
@@ -209,8 +212,10 @@ and this line still runs
         }
 
         try {
-            console.log(divide(10, 2));   // 5
-            console.log(divide(10, 0));   // throws
+            console.log(divide(10, 2));
+            // 5
+            console.log(divide(10, 0));
+            // throws
         } catch (error) {
             console.error("Error:", error.message);
             // Error: Cannot divide by zero

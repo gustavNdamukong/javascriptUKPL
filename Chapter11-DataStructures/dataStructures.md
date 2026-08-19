@@ -277,7 +277,8 @@ Limitations: restricted access, since you
 
      stack.push(1);       // push
      stack.push(2);
-     console.log(stack.pop());  // 2 - last in, first out
+     console.log(stack.pop());
+     // 2 - last in, first out
      console.log(stack);        // [1]
 
 Used in JavaScript for: undo and redo
@@ -319,7 +320,8 @@ Limitations: restricted access, since you
       queue.push("second");
       console.log(queue.shift());
       // "first" - first in, first out
-      console.log(queue);          // ["second"]
+      console.log(queue);
+      // ["second"]
 
 Used in JavaScript for: anything that must
   happen in order - a list of jobs
@@ -369,8 +371,10 @@ Limitations: in languages that have real
            // Freezing it, to get closer to a
            // real tuple
            const frozen = Object.freeze([1, "apple"]);
-           frozen[0] = 99;            // silently ignored
-           console.log(frozen[0]);    // still 1
+           // silently ignored
+           frozen[0] = 99;
+           console.log(frozen[0]);
+           // still 1
 
 Used in JavaScript for: returning several
   values from one function. You will
@@ -402,15 +406,18 @@ Limitations: keys must be unique. With a
 
       // As a plain object
       let person = { name: "Alice", age: 30 };
-      console.log(person.name);      // "Alice"
+      console.log(person.name);
+      // "Alice"
 
       // As a Map, which allows any type of key
       let scores = new Map();
       scores.set("alice", 10);
       scores.set(42, "the answer");
 
-      console.log(scores.get("alice"));  // 10
-      console.log(scores.size);          // 2
+      console.log(scores.get("alice"));
+      // 10
+      console.log(scores.size);
+      // 2
 
 Used in JavaScript for: settings and
   configuration, counting how often
@@ -442,9 +449,11 @@ Limitations: values must be unique, and
         // A Set
         let mySet = new Set([1, 2, 3, 4]);
 
-        mySet.add(4);       // already there, ignored
+        // already there, ignored
+        mySet.add(4);
         console.log(mySet.size);       // 4
-        console.log(mySet.has(3));     // true
+        console.log(mySet.has(3));
+        // true
 
         // The neatest use: removing duplicates
         // from an array
@@ -500,7 +509,8 @@ Limitations: in languages like C and Go a
         }
 
         let alice = new Person("Alice", 30);
-        console.log(alice.name);   // "Alice"
+        console.log(alice.name);
+        // "Alice"
 
 Used in JavaScript for: any time you have
   several facts about one thing and
@@ -590,13 +600,15 @@ Limitations: each type has its own. A Set
   object.
 
            // The three collections you will use most
-           let arr = [1, 2, 3];      // Array
+           // Array
+           let arr = [1, 2, 3];
            arr.push(4);
 
            let myMap = new Map();    // Map
            myMap.set("key", "value");
 
-           let mySet = new Set([1, 2, 3]);  // Set
+           // Set
+           let mySet = new Set([1, 2, 3]);
            mySet.add(4);
 
            console.log(arr.length, myMap.size, mySet.size);

@@ -418,7 +418,8 @@ Hash: #summary
 
   If the page was at `https://example.com/products`, this prints:
 
-        https://example.com/products?sort=asc
+        // example.com/products?sort=asc
+        https:
 
   Remember which method does what: **`get()` reads** a parameter, **`set()` writes** one. And
   `set()` replaces the parameter if it is already there rather than adding a second copy of it,

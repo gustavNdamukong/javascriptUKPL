@@ -40,6 +40,7 @@ const unesc = s => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;
 const argv = process.argv.slice(2);
 const dry = !argv.includes('--write');
 const LIMIT = +(argv[argv.indexOf('--limit') + 1] || 0) || 60;
+const trailingOnly = argv.includes('--trailing-only');
 
 // Where does a real comment start? Not inside a string, and not the // of a URL.
 function commentAt(line) {
@@ -134,6 +135,13 @@ for (const path of bookFiles()) {
         // A rule - // ------------ - is one long token with nothing to wrap.
         // It came out unchanged anyway, but it was being counted as work done.
         if (/^[-=*_~#]+$/.test(text)) { out.push(line); continue; }
+
+        // --trailing-only treats the acute case alone. A trailing comment that
+        // wraps drops its text under the code with no // to mark it; a full-line
+        // comment that wraps at least announces itself on the line above. At a
+        // tight threshold the second is 297 changes and taller listings
+        // everywhere, so the two are separable on purpose.
+        if (trailingOnly && !before.trim()) { out.push(line); continue; }
 
         if (!before.trim()) {                       // a full-line comment: wrap it
             out.push(...commentLines(pad, text, LIMIT));

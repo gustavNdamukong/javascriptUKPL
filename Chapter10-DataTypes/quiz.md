@@ -136,7 +136,8 @@ Yes
 4) It never works because two arrays are never strictly equal to one another, even when both
    are empty:
 
-        console.log([] === []);   // false, always
+        console.log([] === []);
+        // false, always
 
    An array is a reference type, as we saw in Chapter 3. The name does not hold the array
    itself, only a pointer to where it lives. So `myData === []` is comparing a pointer to your
@@ -154,7 +155,8 @@ Yes
 
 5) It returns "object".
 
-        console.log(typeof null);   // "object"
+        console.log(typeof null);
+        // "object"
 
    And no, that is not correct. null is not an object. It is a bug that has been in JavaScript
    since the very first version in 1995, and it can never be fixed now, because far too much
@@ -174,7 +176,8 @@ number2
 
    If you meant to check the type of the sum, put brackets round it:
 
-        console.log(typeof (2 + 2));   // "number"
+        console.log(typeof (2 + 2));
+        // "number"
 
 
 7) 
@@ -192,8 +195,10 @@ number2
 
 8) The typeof operator:
 
-        console.log(typeof 5);     // "number"
-        console.log(typeof "5");   // "string"
+        console.log(typeof 5);
+        // "number"
+        console.log(typeof "5");
+        // "string"
 
    For the string "5" it gives you **"string"**, not "number". The quotes are what matter, not
    what is inside them. A number that arrived from a form field or a URL will be a string until
@@ -222,10 +227,14 @@ number2
             return Array.isArray(value) && value.length === 0;
         }
 
-        console.log(isEmptyArray([]));          // true
-        console.log(isEmptyArray([1, 2, 3]));   // false
-        console.log(isEmptyArray(""));          // false
-        console.log(isEmptyArray(null));        // false
+        console.log(isEmptyArray([]));
+        // true
+        console.log(isEmptyArray([1, 2, 3]));
+        // false
+        console.log(isEmptyArray(""));
+        // false
+        console.log(isEmptyArray(null));
+        // false
 
    The `Array.isArray()` check has to come first, and not only for tidiness. An empty string
    also has a length of 0, so without it `isEmptyArray("")` would wrongly say true. And null has

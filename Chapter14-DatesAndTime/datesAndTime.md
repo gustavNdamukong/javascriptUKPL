@@ -163,8 +163,10 @@ It automatically shows you the date and time in the user's local time zone.
 But if you need to read that same moment as UTC, you can use methods like:
 
 	now.getUTCFullYear();   // UTC year
-	now.getUTCMonth();      // UTC month (0-based, Jan = 0)
-	now.getUTCDate();       // UTC day of the month
+	// UTC month (0-based, Jan = 0)
+	now.getUTCMonth();
+	// UTC day of the month
+	now.getUTCDate();
 	now.getUTCHours();      // UTC hours
 	now.getUTCMinutes();    // UTC minutes
 	now.getUTCSeconds();    // UTC seconds
@@ -212,8 +214,10 @@ are for:
 
 	let now = new Date();
 
-	now.getHours();      // 12 - the hour where the user is
-	now.getUTCHours();   // 16 - the same instant, read as UTC
+	now.getHours();
+	// 12 - the hour where the user is
+	now.getUTCHours();
+	// 16 - the same instant, read as UTC
 
 One date. Two ways of reading it. No conversion anywhere.
 
@@ -434,8 +438,10 @@ Create the div element that will be the ball
 #### JavaScript code
 
 	const ball = document.getElementById("ball");
-  	let position = 0; // starting left position
-  	let direction = 1; // 1 means right, -1 means left
+  	// starting left position
+  	let position = 0;
+  	let direction = 1;
+  	// 1 means right, -1 means left
   	const speed = 5; // pixels per frame
 
   	const intervalId = setInterval(() => {

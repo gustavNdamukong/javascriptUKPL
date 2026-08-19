@@ -114,7 +114,8 @@ Clue: `get()` on an empty file field does not return `undefined`.
    don't do your usual thing."
 
         form.addEventListener("submit", function (e) {
-            e.preventDefault();   // stop the reload first
+            // stop the reload first
+            e.preventDefault();
             // ...now do the work
         });
 
@@ -144,7 +145,8 @@ Clue: `get()` on an empty file field does not return `undefined`.
 
    The `File` object is what you get by reaching into the list:
 
-        let file = fileInput.files[0];      // a File
+        // a File
+        let file = fileInput.files[0];
         // how many were chosen
         let count = fileInput.files.length;
 
@@ -152,7 +154,8 @@ Clue: `get()` on an empty file field does not return `undefined`.
 6) `formData.get("fruits")` returns **only the first checked value**. To get them all, use
    `getAll()`:
 
-        formData.getAll("fruits");   // ['apple', 'banana']
+        formData.getAll("fruits");
+        // ['apple', 'banana']
 
    Two things to note. The capital **A** matters — `getall()` does not exist, and JavaScript is
    case-sensitive, so you would get `TypeError: formData.getall is not a function`.
@@ -204,7 +207,8 @@ Clue: `get()` on an empty file field does not return `undefined`.
 
         const chosen = formData.getAll("fruits");
 
-        console.log(chosen);          // ['apple', 'cherry']
+        console.log(chosen);
+        // ['apple', 'cherry']
         console.log(chosen.length);   // 2
 
   Only the **checked** boxes appear. Unchecked checkboxes are not submitted at all — which is
@@ -221,9 +225,12 @@ Clue: `get()` on an empty file field does not return `undefined`.
         // by id, the direct way
         const byId = document.getElementById("username").value;
 
-        console.log(byName);          // "JohnDoe"
-        console.log(byId);            // "JohnDoe"
-        console.log(byName === byId); // true
+        console.log(byName);
+        // "JohnDoe"
+        console.log(byId);
+        // "JohnDoe"
+        console.log(byName === byId);
+        // true
 
   Both reach the same input; they just arrive by different routes. `form.elements` is keyed by
   the **name** attribute, `getElementById` by the **id**. In the chapter's example form the

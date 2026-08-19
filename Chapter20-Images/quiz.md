@@ -146,7 +146,8 @@ are all together in the Answers section further down, numbered to match the ques
         img.src = event.target.result;
         canvas.width = img.width;
         // 0 - the image has not loaded yet
-        ctx.drawImage(img, 0, 0);      // draws nothing
+        // draws nothing
+        ctx.drawImage(img, 0, 0);
 
    So the order looks backwards but is not: you say what should happen *when* it loads, and only
    then give it a `src` to set the loading off.

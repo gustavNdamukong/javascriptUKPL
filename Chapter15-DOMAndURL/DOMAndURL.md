@@ -1203,14 +1203,20 @@ Let us count the times we use document.createElement() in the example:
     2. document.createElement("table")
     // row for table headings
     3. document.createElement("tr")
-    4. document.createElement("th") // First Name heading
-    5. document.createElement("th") // Surname heading
+    // First Name heading
+    4. document.createElement("th")
+    // Surname heading
+    5. document.createElement("th")
     6. document.createElement("tr") // row 1 
-    7. document.createElement("td") // row 1 First name
-    8. document.createElement("td") // row 1 Surname
+    // row 1 First name
+    7. document.createElement("td")
+    // row 1 Surname
+    8. document.createElement("td")
     9. document.createElement("tr") // row 2 
-    10. document.createElement("td") // row 2 First name
-    11. document.createElement("td") // row 2 Surname
+    // row 2 First name
+    10. document.createElement("td")
+    // row 2 Surname
+    11. document.createElement("td")
 
 As you can see, creation of elements should be done chronologically, in the order in which they come in the DOM, and appended to the parent element. 
   You do not have to create a closing tag for the element. Once you create an element with the .createElement() method, it knows to close the element’s tag when it is done creating and adding any attributes and data to it.
@@ -1506,13 +1512,16 @@ Here’s how the document.evaluate() method works:
 
 ```
 const result = document.evaluate(
-  xpath,                  // The XPath expression
+  // The XPath expression
+  xpath,
   // Context node (usually `document`)
   document,
   // Namespace resolver (null for HTML)
   null,
-  XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
-  null                    // Initial result (null for new)
+  // Result type
+  XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
+  // Initial result (null for new)
+  null
 );
 ```
 
@@ -1553,7 +1562,8 @@ Let’s see how you would use the document.evaluate() method to run an XPath que
 
 	// Run XPath query on the current HTML document
 	const result = document.evaluate(
-  		xpath,              // the XPath expression
+  		// the XPath expression
+  		xpath,
   		// context node — default for HTML document
   		document,
   		// namespace resolver (not needed for HTML)
@@ -1738,7 +1748,8 @@ For each example, I will start by stating the following two things:
     - Result retrieval:		.numberValue
 
 
-		const xpath = "count(//li)"; // get number of list items
+		// get number of list items
+		const xpath = "count(//li)";
 
 		// Run XPath query on the current HTML document
 		const result = document.evaluate(
@@ -1855,7 +1866,8 @@ Otherwise it would have returned:
 		// loop through data
 		let node = result.iterateNext();
 		while (node) {
-  			console.log("Node name: "+node.nodeName); // e.g. LI
+  			console.log("Node name: "+node.nodeName);
+  			// e.g. LI
   			node = result.iterateNext();
 		}
 
@@ -3044,7 +3056,8 @@ Each of these parts can be useful in various scenarios, such as routing, fetchin
 
 When you place this code in your JavaScript and run it in the browser, you will get the following result written to your console:
 
-	The URL is: https://www.example.com:8080/path/to/page?
+	// www.example.com:8080/path/to/page?
+	The URL is: https:
 		query=123#section
 
   Protocol: https:

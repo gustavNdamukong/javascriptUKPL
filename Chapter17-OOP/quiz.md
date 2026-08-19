@@ -132,7 +132,8 @@ Clue: think about scope, and about what the braces in `export { ... }` actually 
 
    They are not two kinds of the same thing. They are two ends of one relationship:
 
-        person1.__proto__ === Person.prototype   // true
+        person1.__proto__ === Person.prototype
+        // true
 
    A function owns a mould. An object remembers which mould it came from.
 
@@ -158,7 +159,8 @@ p  →  Person.prototype  →  Object.prototype  →  null
    Ordinary objects do not have a `.prototype` property at all — only functions do. If you want
    an object's prototype you have to ask for it the other way:
 
-        Object.getPrototypeOf({});   // Object.prototype
+        // Object.prototype
+        Object.getPrototypeOf({});
 
    Getting this the wrong way round is the single most common confusion in JavaScript objects,
    which is why it is worth being able to prove it in one line.
@@ -208,7 +210,8 @@ p  →  Person.prototype  →  Object.prototype  →  null
         let car = { brand: 'Toyota', model: 'Corolla' };
         Object.freeze(car);
         car.model = 'Camry';
-        console.log(car.model);   // still 'Corolla'
+        console.log(car.model);
+        // still 'Corolla'
 
 **In strict mode the same line throws a `TypeError`.**
 
@@ -222,8 +225,10 @@ p  →  Person.prototype  →  Object.prototype  →  null
 
 
 7) 
-        let { msg: greeting } = obj;   // RENAME
-        let { msg = greeting } = obj;  // DEFAULT
+        // RENAME
+        let { msg: greeting } = obj;
+        // DEFAULT
+        let { msg = greeting } = obj;
 
    The **colon renames**: take the value of `obj.msg` and put it in a variable called `greeting`.
 
@@ -321,8 +326,10 @@ SyntaxError: Private field '#privateAge' must be declared in an enclosing class
         let p1 = new Person("Tom");
         let p2 = new Person("John");
 
-        console.log(p1.greet());   // "Hello, Tom"
-        console.log(p2.greet());   // "Hello, John"
+        console.log(p1.greet());
+        // "Hello, Tom"
+        console.log(p2.greet());
+        // "Hello, John"
 
   Both objects get the method even though it was added after they were created. That is the
   power of the prototype: they do not each hold a copy, they all look up the same one.
@@ -368,8 +375,10 @@ The same is true of class methods, which is worth knowing: `class Dog { speak() 
 
         let rex = new Dog("Rex", "Alsatian");
 
-        console.log(rex.speak());   // "Rex barks."
-        console.log(rex.breed);     // "Alsatian"
+        console.log(rex.speak());
+        // "Rex barks."
+        console.log(rex.breed);
+        // "Alsatian"
 
 The one keyword doing two jobs is `super`. As `super(...)` it calls the parent's
 **constructor**; as `super.speak()` it calls the parent's **method**.
@@ -386,7 +395,8 @@ The one keyword doing two jobs is `super`. As `super(...)` it calls the parent's
         // {"name":"Ada","age":36}
 
         let back = JSON.parse(json);
-        console.log(back.name);         // Ada
+        console.log(back.name);
+        // Ada
 
   Note what JSON gives you back is a **new** object, not the original one. And remember what
   does not survive the trip: functions and `undefined` values are dropped entirely, and a

@@ -100,7 +100,8 @@ A variable can be declared in three ways in JavaScript:
 
 	a = 'dog';
 
-	console.log(a); // will return the string value 'dog'
+	console.log(a);
+	// will return the string value 'dog'
 
   As a quick reminder from Chapter 1, console.log() is the built-in command that 
   prints a value out so you can look at it, and what it prints goes into the browser 
@@ -155,17 +156,20 @@ function, a name, a pair of round brackets, and then the code itself inside curl
   Writing that out does not run anything. It only puts the parcel aside under the name
 sayHello. To actually run it, you call it, by writing its name followed by round brackets:
 
-	sayHello();   // now it runs, and prints Hello
+	// now it runs, and prints Hello
+	sayHello();
 
   Those round brackets can also carry values into the function. A value you hand over in
 this way is called an argument, and the name the function uses for it on the inside is
 called a parameter:
 
-	function greet(name) {      // name is the parameter
+	// name is the parameter
+	function greet(name) {
 		console.log("Hello " + name);
 	}
 
-	greet("John");            // "John" is the argument
+	greet("John");
+	// "John" is the argument
 
   JavaScript also comes with a good many functions already built in, ready for you to call.
 You have met console.log() already. Two more you will see shortly are alert(), which pops up
@@ -507,7 +511,8 @@ As a reminder of all what we have learned so far about variables and scopes, her
 	  const fee = 20;  // Global constant
 	  const price = 100; // Global constant
 	  let count = 0;  // Global variable
-	  var shopName = "OvalFoods"; // Global variable
+	  // Global variable
+	  var shopName = "OvalFoods";
 
     function getAmount(quantity = 1)  
     {
@@ -628,7 +633,8 @@ hoisted up, even though the line you wrote it on stays where it is.
 can refer to it before the line that declares it, and instead of an error you 
 simply get undefined:
 
-    console.log(price); // undefined, not an error
+    console.log(price);
+    // undefined, not an error
     var price = 100;
 
   That is rarely what anybody wants. It hides mistakes, because a typo or a line 

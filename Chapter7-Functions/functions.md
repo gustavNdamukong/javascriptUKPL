@@ -209,7 +209,8 @@ function sumAll() {
 }
 ```
 
-	let result = sumAll(1, 2, 3, 4); // result will be 10
+	// result will be 10
+	let result = sumAll(1, 2, 3, 4);
 
 Key Points:
 
@@ -586,7 +587,8 @@ Here is an example of how the this keyword works differently with both function 
 	const obj = {
     		value: 10,
     		regularFunction: function() {
-        	   console.log(this.value); // Works: 10
+        	   console.log(this.value);
+        	   // Works: 10
    	       },
     	   	arrowFunction: () => {
 		   // Undefined (inherits from parent scope)
@@ -609,7 +611,8 @@ fix that replaces the arrow function with a regular function:
 const obj = {
     value: 10,
     regularFunction: function() {
-        console.log(this.value); // Works: 10
+        console.log(this.value);
+        // Works: 10
     },
 
     // Changed from an arrow function to a regular one.
@@ -637,7 +640,8 @@ const obj = {
     fixUsingLexicalScope: function() {
         const self = this; // Capture this
         const arrowFunction = () => {
-            console.log(self.value); // Works: 10
+            console.log(self.value);
+            // Works: 10
         };
         arrowFunction();
     }

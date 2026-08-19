@@ -191,7 +191,8 @@ exercise.
             return a + b;
         }
 
-        let sum = addNumbers(5, 5);   // sum is 10
+        // sum is 10
+        let sum = addNumbers(5, 5);
 
    Write a function that just **does** something when there is no answer to hand back — it
    changes something, or displays something, and that is the whole job:
@@ -200,7 +201,8 @@ exercise.
             appStatus = false;
         }
 
-        updateStatus();   // nothing to capture
+        // nothing to capture
+        updateStatus();
 
    The giveaway is whether it makes sense to put the call on the right-hand side of an equals
    sign.
@@ -305,7 +307,8 @@ undefined
             return secret;
         })();
 
-        console.log(result);          // "Hidden Data"
+        console.log(result);
+        // "Hidden Data"
         console.log(typeof secret);
         // "undefined" - it never escaped
 
@@ -337,8 +340,10 @@ Same character, different behaviour depending on what sits either side of it.
             return numbers.reduce((total, num) => total + num, 0);
         }
 
-        console.log(addAll(1, 2, 3, 4));      // 10
-        console.log(addAll(5, 10));           // 15
+        console.log(addAll(1, 2, 3, 4));
+        // 10
+        console.log(addAll(5, 10));
+        // 15
 
   The three dots gather however many arguments were passed into a real array called numbers.
   Because it is a genuine array, you can use array methods on it — here reduce(), from Chapter
@@ -370,8 +375,10 @@ passed for that parameter. Pass something and yours wins.
 
         const tripled = data.map(num => num * 3);
 
-        console.log(data);      // [1, 2, 3, 4]
-        console.log(tripled);   // [3, 6, 9, 12]
+        console.log(data);
+        // [1, 2, 3, 4]
+        console.log(tripled);
+        // [3, 6, 9, 12]
 
     map() hands each element to your arrow function one at a time and collects up whatever you
     return, giving you a brand new array. The original is left exactly as it was, which is why

@@ -133,7 +133,8 @@ It is the same as above (retrieving from value directly). You would select the f
 
 	let form = document.getElementById("myForm");
 	let fileInput = form.elements["profilePic"];
-	let file = fileInput.files[0]; // Just like before
+	// Just like before
+	let file = fileInput.files[0];
 
 Here are some points to bear in mind:
   - form.elements["fieldName"] works like accessing a property from an

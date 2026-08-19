@@ -291,7 +291,8 @@ person.first - name
    All three hand you back a real array, which means you can then use any array method on the
    result. That includes .length, which is how you count an object's properties:
 
-        console.log(Object.keys(person).length);   // 3
+        console.log(Object.keys(person).length);
+        // 3
 
 
 11) When you meet a problem in programming, the first thing to do is think about what tool the

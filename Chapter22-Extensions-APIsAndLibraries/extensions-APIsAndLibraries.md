@@ -109,7 +109,8 @@ The first argument to fetch() is the URL or endpoint of the resource. This is ba
   			// define the fetch options
   			const requestOptions = {
     				method: 'POST',
-    				headers: myHeaders, // use the Headers instance
+    				// use the Headers instance
+    				headers: myHeaders,
     				body: JSON.stringify(
 					{key: 'value'}
 				), // request data (aka payload)
@@ -209,7 +210,8 @@ Then use this resolver when calling document.evaluate():
 
 ```
 const result = xmlDoc.evaluate(
-  "//soap:Body//Price/text()", // your XPath query
+  // your XPath query
+  "//soap:Body//Price/text()",
   xmlDoc,
   nsResolver,
   XPathResult.STRING_TYPE,
@@ -1854,7 +1856,8 @@ Without async/await:
 	fetch("https://jsonplaceholder.typicode.com/users")
     	// Convert resp to JSON
     	.then(response => response.json())
-    	.then(data => console.log(data)) // Log the response
+    	.then(data => console.log(data))
+    	// Log the response
     	.catch(error => console.error("Error:", error));
 
 

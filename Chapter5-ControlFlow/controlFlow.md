@@ -189,7 +189,8 @@ An incremental operator ++ is used to quickly add 1 to a number. Normally, there
   b) By using the incremental operator
 
 		let count = 1;
-		let value = count++; // value is 1, but count becomes 2
+		// value is 1, but count becomes 2
+		let value = count++;
 
 Note: In count++ where the operator is on the right side of the variable being incremented (count), the value is assigned to the new variable (in this case value) before the incrementing happens. The value of the value variable will now still be 1, while that of count is 2. However, if you want to increment the value of count first before assigning it to value so that value will also have the incremented (updated) value of count, use ++count with the ++ operator on the left side of the count variable.		
 
@@ -205,7 +206,8 @@ This is the direct opposite of the incremental operator. It is used to subtract 
   b) By using the decremental operator
 
 		let count = 2;
-		let value = count--; // value is 2, but count becomes 1
+		// value is 2, but count becomes 1
+		let value = count--;
 			
 Note: In count-- where the operator is on the right side of the variable being decremented (count), the value is assigned to the new variable (in this case value) before the decrementing happens. The value of the value variable will now still be 2, while that of count is 1. However, if you want to decrement the value of count first before assigning it to value so that value will also have the decremented (updated) value of count, use --count with the -- operator on the left side of the count variable.
 
@@ -583,7 +585,8 @@ Loops are one of the most powerful features in any programming language because 
 Here’s a quick look at how you might retrieve an item from an array using a counter:
 
 		let myArray = ['boy', 'girl'];
-		let girl = myArray[1]; // 'girl' is at index 1
+		let girl = myArray[1];
+		// 'girl' is at index 1
 
 Remember, arrays in JavaScript always start counting from zero (0), so the first element is at index 0, the second at index 1, and so on.
   JavaScript gives you several types of loops, and each one is useful in different situations. You’ve already seen some loops when we talked about arrays, but now let’s look at all the main loop types available in JavaScript.
@@ -857,7 +860,8 @@ Here is an example:
 
 			for (let i = 0; i < 10; i++) {
   				if (i === 5) {
-    					break; // Exit the loop when i is 5
+    					// Exit the loop when i is 5
+    					break;
   				}
   
 				console.log(i);
@@ -883,7 +887,8 @@ This is helpful when you want to ignore certain values but still finish the loop
 
 			for (let i = 0; i < 5; i++) { 
 				if (i === 2) { 
-					continue; // Skip printing when i is 2
+					// Skip printing when i is 2
+					continue;
 				} 
 					
 				console.log(i); 

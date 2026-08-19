@@ -195,8 +195,10 @@ My name is Alice
         // clash with your outer quotes
         const line2 = "He said \"it's fine\"";
 
-        console.log(line1);   // He said "it's fine"
-        console.log(line2);   // He said "it's fine"
+        console.log(line1);
+        // He said "it's fine"
+        console.log(line2);
+        // He said "it's fine"
 
    Both print the same thing. The first is easier to read, which is a good reason to prefer it.
    Notice that in the second version the single quote in "it's" needs no escaping at all, because
@@ -230,8 +232,10 @@ Hello, John Doe!
             return text[text.length - 1];
         }
 
-        console.log(lastCharacter("Boxing"));      // g
-        console.log(lastCharacter("Football"));    // l
+        console.log(lastCharacter("Boxing"));
+        // g
+        console.log(lastCharacter("Football"));
+        // l
 
   Because we work the position out from `text.length` rather than typing a number in, this
   works on a string of any length without being told how long it is.

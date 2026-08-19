@@ -861,7 +861,8 @@ The following is an example of sending a Video File in Binary Chunks over WebSoc
 		document.getElementById("videoUploader")
 		.addEventListener("change", (e) => {
     			const file = e.target.files[0];
-    			const chunkSize = 64 * 1024; // 64KB per chunk
+    			const chunkSize = 64 * 1024;
+    			// 64KB per chunk
     			let offset = 0;
 
     			const reader = new FileReader();
@@ -919,7 +920,8 @@ We get the first file they selected, and store it in a variable called file.
 
 We decide to slice the file into pieces (chunks) that are 64 kilobytes (KB) each. That’s a reasonable size—not too big, not too small.
 
-	const chunkSize = 64 * 1024; // 64KB per chunk
+	const chunkSize = 64 * 1024;
+	// 64KB per chunk
 
 We start from the beginning of the file. As we send chunks, this number keeps track of where we are.
 
@@ -1221,7 +1223,8 @@ npm install cors
     const cors = require('cors');
 
     const app = express();
-    app.use(cors()); // Allow all origins by default
+    // Allow all origins by default
+    app.use(cors());
     ```
 
     ```
@@ -1800,11 +1803,15 @@ As you can see, this is XML structured data about books. The data contains two b
   		// Use XPath on xmlDoc here (document.evaluate())
 
     const result = document.evaluate(
-    "//book/title",       // XPath expression
-      xmlDoc,               // Context node (the parsed XML)
-    null,                 // No custom namespace resolver
+    // XPath expression
+    "//book/title",
+      // Context node (the parsed XML)
+      xmlDoc,
+    // No custom namespace resolver
+    null,
     XPathResult.ANY_TYPE, // Type of result
-    null                  // No previous result to reuse
+    // No previous result to reuse
+    null
     );
 
     		let node = result.iterateNext();
@@ -1848,11 +1855,16 @@ Also, because the data has been converted into a document, it is ready for DOM m
     		// Use XPath here
 
     const result = document.evaluate(
-      "//book/title",       // XPath expression
-      xmlDoc,               // Context node (the parsed XML)
-      null,                 // No custom namespace resolver
-      XPathResult.ANY_TYPE, // Type of result
-      null                  // No previous result to reuse
+      // XPath expression
+      "//book/title",
+      // Context node (the parsed XML)
+      xmlDoc,
+      // No custom namespace resolver
+      null,
+      // Type of result
+      XPathResult.ANY_TYPE,
+      // No previous result to reuse
+      null
     );
   
     		let node = result.iterateNext();

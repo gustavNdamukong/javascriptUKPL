@@ -162,10 +162,14 @@ are all together in the Answers section further down, numbered to match the ques
    Something appears only when you call `fill()` or `stroke()`. That is the pattern for every
    shape in this chapter:
 
-        ctx.beginPath();        // start a new shape
-        ctx.arc(...);           // describe it
-        ctx.fillStyle = "red";  // choose the colour
-        ctx.fill();             // NOW it appears
+        // start a new shape
+        ctx.beginPath();
+        // describe it
+        ctx.arc(...);
+        // choose the colour
+        ctx.fillStyle = "red";
+        // NOW it appears
+        ctx.fill();
 
    `fillRect()` is the exception that proves the rule — it describes *and* paints in one go,
    which is why the rectangle example is shorter than the circle one.
@@ -195,7 +199,8 @@ are all together in the Answers section further down, numbered to match the ques
 
         canvas.addEventListener("mouseup", () => {
             painting = false;
-            ctx.beginPath();   // lift the pen
+            // lift the pen
+            ctx.beginPath();
         });
 
 

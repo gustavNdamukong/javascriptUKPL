@@ -887,9 +887,11 @@ its own.
 
 	let notSetYet;
 	// undefined - nobody assigned anything
-	let deliberatelyEmpty = null;   // null - we chose this
+	let deliberatelyEmpty = null;
+	// null - we chose this
 
-	console.log(notSetYet);         // undefined
+	console.log(notSetYet);
+	// undefined
 	console.log(deliberatelyEmpty); // null
 
   A useful way to hold on to it: undefined is the absence of a value,
@@ -1046,7 +1048,8 @@ Output:
 isNaN("hello") → isNaN(NaN) → true
 
 	That’s why 
-		console.log(isNaN("hello")); // returns true
+		console.log(isNaN("hello"));
+		// returns true
 
   It is important to understand this distinction because this behavior
   can be confusing. Let’s take this other example
@@ -1133,7 +1136,8 @@ Output:
 Take care with typeof and arithmetic. It binds more
 tightly than +, so this does not do what it looks like:
 
-		typeof 2 + 2;     // "number2", not "number"
+		typeof 2 + 2;
+		// "number2", not "number"
 
 That is (typeof 2) + 2, which is the string "number"
 joined to the number 2. Put brackets round the sum if
@@ -1142,11 +1146,13 @@ that is what you meant:
 		typeof (2 + 2);   // "number"
 		console.log(typeof "hello");   // "string"
 		console.log(typeof 42);        // "number"
-		console.log(typeof true);      // "boolean"
+		console.log(typeof true);
+		// "boolean"
 		console.log(typeof {});        // "object"
 		console.log(typeof null);
 		// "object" ← (weird quirk!)
-		console.log(typeof undefined); // "undefined"
+		console.log(typeof undefined);
+		// "undefined"
 
 You might ask the question: Why does this return a object:
 	

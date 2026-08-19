@@ -373,12 +373,14 @@ Let’s look at the differences between the two types of notations.
 			}; 
 
 
-		console.log(obj["first-name"]); // will return: Tom
+		console.log(obj["first-name"]);
+		// will return: Tom
 
 - When the property name is stored in a variable. For example:
 
 		let key = "aunt"; 
-		console.log(obj[key]); // will return Polly
+		console.log(obj[key]);
+		// will return Polly
 
 -When you need to access properties dynamically inside a loop or   
   function. For example:
