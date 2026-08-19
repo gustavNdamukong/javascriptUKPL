@@ -1620,13 +1620,13 @@ Here's a simple, working example:
 	// Step 3: Use document.evaluate() to extract titles
 	const xpath = "//book/title";
 
-  const result = xmlDoc.evaluate(
-    xpath,          // XPath expression
-    xmlDoc,         // context node (root of the XML)
-    null,           // namespace resolver (not needed here)
-    XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // result type
-    null            // result (optional, reuse old result)
-  );
+    const result = xmlDoc.evaluate(
+        xpath,          // XPath expression
+        xmlDoc,         // context node (root of the XML)
+        null,           // namespace resolver (not needed here)
+        XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // result type
+        null            // result (optional, reuse old result)
+    );
 
 	// Step 4: Loop through results
 	for (let i = 0; i < result.snapshotLength; i++) {
@@ -2455,10 +2455,14 @@ There are a few ways to assign attributes to HTML elements dynamically. The 	fol
 
 Assign multiple attributes to an element in one go
   Any of the above ways to assign attributes to an element is fine, but there are times when you would have multiple attributes to an element, and there is a beautiful way to do it in one 	block. This is done by the assign() method of the base JavaScript Object Object. You simply pass the target element as the first argument to assign() and an object as its second 	argument containing all the attributes you want the element to have and their values.  Here is 	an example:
-  Object.assign(li, {
-  'draggable': 'true',
-  className: 'list-item draggable'
-  });
+
+```
+Object.assign(li, {
+    'draggable': 'true',
+    className: 'list-item draggable'
+});
+```
+
 
   There are three things you should note here. The first is that Object.assign() needs the element itself as its first argument—leave it out and you have assigned the attributes to nothing at all. The second is how className must be used instead of class to assign a class to an element when using this approach. The third is the way you pass multiple classes to the same element: as one string, with the class names separated by spaces.
 
