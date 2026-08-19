@@ -1597,7 +1597,7 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 
 
 
--b) A promise
+b) A promise
 To convert the above example to use a promise, we will leave the getPosts() function exactly the same as when using the callback function above, but we will modify the createPost() function to look like this:
 
 	function getPosts()

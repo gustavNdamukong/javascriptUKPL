@@ -84,9 +84,13 @@ to match the questions.
 
 2) The second line throws.
 
-        scores[0] = 99;        // fine - scores is now [99, 20, 30]
-        scores = [99, 20, 30]; // TypeError: Assignment to constant variable.
+   ```
+   // fine - scores is now [99, 20, 30]
+   scores[0] = 99;
 
+   // TypeError: Assignment to constant variable.
+   scores = [99, 20, 30];
+   ```
    Changing scores[0] reaches inside the array and changes one of its elements. The array
    itself is still the same array, sitting in the same place in memory, so const has nothing to
    object to.
@@ -97,9 +101,13 @@ to match the questions.
 
 3) The second line again.
 
-        person.age = 31;                        // fine
-        person = { name: "Alice", age: 31 };    // TypeError: Assignment to constant variable.
+   ```
+   // fine
+   person.age = 31;
 
+   // TypeError: Assignment to constant variable.
+   person = { name: "Alice", age: 31 };
+   ```
    Setting person.age changes a property inside the object that person already points at.
    The second line tries to swap in a different object altogether, which const will not allow.
 
@@ -127,16 +135,21 @@ to match the questions.
 
 6) Here is one way to do it:
 
-        const foods = ["rice", "beans", "plantain"];
+   ```
+   const foods = ["rice", "beans", "plantain"];
 
-        // this works, because we are changing what is inside the array
-        foods[0] = "yam";
-        console.log(foods);
-        // Output: ["yam", "beans", "plantain"]
+   // this works, because we are
+   // changing what is inside the array
+   foods[0] = "yam";
+   console.log(foods);
+   // Output: ["yam", "beans", "plantain"]
 
-        // this fails, because we are trying to swap the whole array
-        foods = ["bread", "eggs", "tea"];
-        // TypeError: Assignment to constant variable.
+   // this fails, because we are
+   // trying to swap the whole array
+   foods = ["bread", "eggs", "tea"];
+   // TypeError: Assignment to
+   // constant variable.
+   ```
 
    Run it and watch the console. The first change prints happily. The second one stops the
    program with a TypeError, and nothing after it runs — which is why it is worth putting that

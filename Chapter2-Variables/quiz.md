@@ -101,9 +101,9 @@ first-name
 10) EXERCISE. This exercise will teach you how to generate HTML elements in JavaScript and
   insert them into the HTML section of your code.
 
--a) Create a div element in your HTML with a specific ID
--b) Within your JavaScript tag, create a variable assigning it a paragraph HTML element
--c) Dynamically (using JavaScript) grab the div and insert that <p> tag inside of it
+a) Create a div element in your HTML with a specific ID
+b) Within your JavaScript tag, create a variable assigning it a paragraph HTML element
+c) Dynamically (using JavaScript) grab the div and insert that <p> tag inside of it
 
 Clue: you will need document.getElementById() to grab the div, and innerHTML to put
 something inside it. Remember that an HTML tag written in JavaScript is just a string, so

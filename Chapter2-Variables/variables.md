@@ -568,13 +568,13 @@ Inside displayItem(), the local item variable with the value 'dress' shadows the
 #### Two differences between var vs let and const in the global scope
   There are two important differences between the behaviour of var and let or const in the global scope. Even though let and const can be used globally, they do not behave exactly like var in the global scope. Here are the differences:
 
-- var attaches to the window object (in
-  browsers), let and const do not. The
-  window object is the browser’s own
-  global object, where it keeps everything
-  that is available everywhere on the
-  page. We look at it properly in
-  Chapter 15.
+a) var attaches to the window object (in
+   browsers), let and const do not. The
+   window object is the browser’s own
+   global object, where it keeps everything
+   that is available everywhere on the
+   page. We look at it properly in
+   Chapter 15.
 
       var x = 10;
       let y = 20;
@@ -587,10 +587,10 @@ Inside displayItem(), the local item variable with the value 'dress' shadows the
       // undefined (const is not attached)
       console.log(window.z);
 
-	var becomes a property of window, while let and const do not. They still work everywhere on the page, but they are not stored on the window object.
+   var becomes a property of window, while let and const do not. They still work everywhere on the page, but they are not stored on the window object.
 
--b) Re-declaring var globally is allowed,
-  but let and const are not. For example:
+b) Re-declaring var globally is allowed,
+   but let and const are not. For example:
 
      var a = 100;
      var a = 200; // OK: works fine

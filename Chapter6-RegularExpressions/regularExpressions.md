@@ -421,7 +421,7 @@ outcome is to use a pipe character like so:
   of occurrences, of a preceding element.
   You can use a quantifier in 3 ways:
 
--i) /[\w]{3}/  with ONE digit. This means you
+i) /[\w]{3}/  with ONE digit. This means you
   wish to match a word character
   if it appears exactly three times.
 

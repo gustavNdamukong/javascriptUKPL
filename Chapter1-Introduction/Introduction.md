@@ -187,7 +187,7 @@ code on your web page is important. Where you place your script in the document 
 
   If you have to place code within the head tag section of your web page, then it’s wise to add some kind of code to make the script wait until your HTML page has loaded before it runs. Let’s look at two ways to do this:
 
--a)  Add the defer attribute to the <script> tag itself, so that the
+a)  Add the defer attribute to the <script> tag itself, so that the
   script waits until the HTML has finished being parsed before it
   runs. Here is how to do that:
 

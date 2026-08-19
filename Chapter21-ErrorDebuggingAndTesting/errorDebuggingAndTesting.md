@@ -50,7 +50,7 @@ reliable, performant and fault-tolerant applications. This is also a section whe
 We will be using them a lot in the code examples in this book to show the results we are getting. You will find that I particularly make use of console.log() and alert() the most.
 	
 
--i) document.write().
+i) document.write().
   To write text on screen, use the write() method on the document
   object:
 
@@ -161,7 +161,7 @@ document.write() do this:
   and if the user presses OK without touching it, that is exactly what
   you get back.
 
--vi) The console object.
+vi) The console object.
   Another means to display information and much more, to yourself as
   the developer is to write to the console using the console object and
   its family of functions. Here is a list of them:
