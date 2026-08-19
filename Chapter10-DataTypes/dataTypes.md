@@ -1060,10 +1060,12 @@ is not a number (NaN), and so it should return true, but it gets
 converted and therefore returns false-meaning it is a number. Let’s
 look at one more example:
 
-		let nan = NaN;
-		let number = 123;
-		let numberString = "123";
-		let helloString = "hello";
+```
+let nan = NaN;
+let number = 123;
+let numberString = "123";
+let helloString = "hello";
+```
 
 		console.log(isNaN(nan));      
 		console.log(isNaN(number));   
@@ -1092,10 +1094,12 @@ Returns:
   value. If the value was not already a NaN-literally, it will return false.
   For example
 
-	let nan = NaN;
-	let number = 123;
-	let numberString = "123";
-	let helloString = "hello";
+  ```
+  let nan = NaN;
+  let number = 123;
+  let numberString = "123";
+  let helloString = "hello";
+  ```
 
   ```
   console.log(Number.isNaN(nan));      

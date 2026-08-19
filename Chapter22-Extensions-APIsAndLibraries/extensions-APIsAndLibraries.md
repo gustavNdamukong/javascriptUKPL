@@ -567,13 +567,15 @@ your-project-folder/
                 const parser = new DOMParser();
                 const xml = parser.parseFromString(str, "text/xml");
 
-      const product = xml.evaluate(
-      "//Product",
-      xml,
-      null,
-      XPathResult.STRING_TYPE,
-      null
-    ).stringValue;
+```
+  const product = xml.evaluate(
+  "//Product",
+  xml,
+  null,
+  XPathResult.STRING_TYPE,
+  null
+).stringValue;
+```
 
       const price = xml.evaluate(
       "//Price",
@@ -735,13 +737,15 @@ Then, we use skills we have seen before when we learned all about DOM manipulati
 
 We then use XPath with evaluate() to extract the product name and its price sent back from the XML data of the SOAP response.
 
-  const product = xml.evaluate(
-    "//Product",
-    xml,
-    null,
-    XPathResult.STRING_TYPE,
-    null
-  ).stringValue;
+```
+const product = xml.evaluate(
+  "//Product",
+  xml,
+  null,
+  XPathResult.STRING_TYPE,
+  null
+).stringValue;
+```
 
     const price = xml.evaluate(
     "//Price",

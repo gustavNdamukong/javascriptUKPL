@@ -131,6 +131,22 @@ function check(path) {
         for (const l of unesc(m[1]).split('\n')) { const t = l.trim(); if (t) codeLines.add(t); }
     const prosePool = unesc(html.replace(/<pre><code[^>]*>[\s\S]*?<\/code><\/pre>/g, '')
                                 .replace(/<[^>]+>/g, ''));
+    // Per-line matching cannot cope with a chapter that lists the same code
+    // twice - once correctly, once not. Every line of the broken copy is found
+    // in the good one, so nothing looks wrong. Matching the WHOLE chunk against
+    // the prose settles it: the good copy is not in there, the broken one is.
+    const flat = s => s.replace(/\s+/g, ' ').trim();
+    const proseFlat = flat(prosePool);
+    // One line is too small to match on: `xhr.open("GET", ...)` appears both as
+    // a listing and as a bullet in the same chapter, and matching the listing
+    // against the bullet's text called working code broken. Several lines in a
+    // row are what make the match mean something.
+    const chunkIsProse = ls => {
+        if (ls.length < 2) return false;
+        const t = flat(ls.join(' '));
+        if (ls.length < 3 && t.length < 60) return false;
+        return t.length >= 40 && proseFlat.includes(t);
+    };
     const DISTINCT = 12;
     const fateOf = t => {
         if (t.length < DISTINCT) return 'unknown';
@@ -168,7 +184,10 @@ function check(path) {
         // it - "Why did this work? The property was stored in a WeakMap..." -
         // is prose that correctly renders as prose, not a listing line that
         // failed to render as code. It must not count as evidence of a fault.
-        const asProse = chunk.filter((k, n) => fates[n] === 'prose' && !isProseish(lines[k]));
+        let asProse = chunk.filter((k, n) => fates[n] === 'prose' && !isProseish(lines[k]));
+        // whole-chunk evidence beats per-line evidence
+        if (!asProse.length && chunkIsProse(chunk.map(k => lines[k])))
+            asProse = chunk.filter(k => !isProseish(lines[k]));
         const asCode  = chunk.filter((k, n) => fates[n] === 'code');
 
         // Two independent structural signals are enough on their own. An object

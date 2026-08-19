@@ -180,7 +180,7 @@ result. Here is how to do it:
 
 The output of this function call will be:
 
-  Hello Gustav
+  Hello John
 
 Notice how the function takes the value handed to it and, in combining 
 it with the string “Hello”, closes that string first and then joins it to 
@@ -539,9 +539,11 @@ const createObject = (make, model, year) => {
   };
 ```
     
+```
 console.log(
-	createObject('Toyota', 'Rav4', '2025')
+    createObject('Toyota', 'Rav4', '2025')
 );
+```
 
 
 This function return value will be the object:
@@ -555,9 +557,11 @@ This function return value will be the object:
 		(make, model, year) => 
 			({make, model, year});
 
-	console.log(
-		createObject('Toyota', 'Rav4', '2025')
-	);
+```
+console.log(
+    createObject('Toyota', 'Rav4', '2025')
+);
+```
 
  One detail there is easy to miss and worth pausing on. The object
  literal is wrapped in its own pair of round brackets:
@@ -601,23 +605,25 @@ global scope (or undefined in strict mode).
 To make the arrowFunction() above work, here is a good 
 fix that replaces the arrow function with a regular function:
 
+```
 const obj = {
     value: 10,
     regularFunction: function() {
         console.log(this.value); // Works: 10
     },
 
-	    // Changed from an arrow function to a regular one.
-	    // Note the name no longer really fits, but it is kept
-	    // here so you can see exactly what changed.
-	    arrowFunction: function() { 
-	        // Works: 10
-	        console.log(this.value); 
-	    }
-	};
+    // Changed from an arrow function to a regular one.
+    // Note the name no longer really fits, but it is kept
+    // here so you can see exactly what changed.
+    arrowFunction: function() {
+        // Works: 10
+        console.log(this.value);
+    }
+};
 
-	obj.regularFunction(); // 10
-	obj.arrowFunction();   // 10 - now it works
+obj.regularFunction(); // 10
+obj.arrowFunction();   // 10 - now it works
+```
 
 Alternatively, if you still want to use an arrow function, one 
 older trick is to capture (store) the ‘this’ word in a variable 

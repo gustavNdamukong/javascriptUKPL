@@ -817,13 +817,15 @@ To change the value of a child array entirely, we can do it like so:
 
 	myArray[2][2] = 10;
 
+```
 console.log(myArray[2]); 
 This will update the value of the 3rd element (index 2 counting from 0) of the 3rd child array of myArray. 
-	let myArray = [
-		// ...
-		// ...
-		[7, 8, 9]
-	];
+    let myArray = [
+        // ...
+        // ...
+        [7, 8, 9]
+    ];
+```
 
 The value of that element which was previously 9 will now be updated to 10. Hence 
 

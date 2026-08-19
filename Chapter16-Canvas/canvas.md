@@ -802,9 +802,11 @@ const ball = {
   color: "dodgerblue",
 ```
 
+```
   // Moves 10 pixels per key press
   speed: 10 
 };
+```
 
 ```
 // Rock object
@@ -871,6 +873,7 @@ const rock = {
 	  if (e.key === "ArrowLeft") dx = -ball.speed;
 	  if (e.key === "ArrowRight") dx = ball.speed;
 
+```
   // Redraw canvas with updated position
   if (canMove(dx, dy)) {
     ball.x += dx;
@@ -878,6 +881,7 @@ const rock = {
     draw(); 
   }
 });
+```
 
 	// Redraw everything
 	function draw() {
@@ -932,9 +936,11 @@ const ball = {
   color: "dodgerblue",
 ```
 
-  		// Moves 10 pixels per key press
-  		speed: 10 
-	};
+```
+    // Moves 10 pixels per key press
+    speed: 10 
+};
+```
 
 These are later used when creating the ball on the canvas using the ctx.arc() method in drawBall() function. Having x, y coordinates of 50, 50 each means the ball starts 50 pixels from the left and 50 pixels from the top of the canvas. 
   In order to detect the position of an object, we use the x and y coordinates, like we do for the ball in this example using ball.x and ball.y. 
@@ -1017,12 +1023,14 @@ We move the ball a little each time the user presses an arrow key. This is how t
   y, property values with the new values stored in the dx and dy
   variables:
 
-		// Redraw canvas with updated position
-		if (canMove(dx, dy)) {
-    			ball.x += dx;
-    			ball.y += dy;
-    			draw(); 
-  		}
+    ```
+    // Redraw canvas with updated position
+    if (canMove(dx, dy)) {
+            ball.x += dx;
+            ball.y += dy;
+            draw(); 
+    }
+    ```
 
 The position itself is updated right there in the key handler. The
 draw() function is then called to clear the canvas and redraw

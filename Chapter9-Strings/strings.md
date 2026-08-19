@@ -65,14 +65,16 @@ use will not affect performance or functionality. Both single and double quotes 
 scenarios as shown below. They are basically a combination of the escape character (\) and 
 one or more characters that represent a specific character or behaviour. They are used for formatting or representing special characters within strings.
 
-  \n  a newline character
-  \t   a tab
-  \'  escape a single quote
-  \"  escape a double quote
-  \\  escape a backslash, when you want the backslash itself to appear in the text rather than act as an escape character
-  \r   carriage return 
-  \b  a backspace
-  \uXXXX escape a unicode character
+| Escape sequence | What it does |
+|---|---|
+| `\n` | a newline character |
+| `\t` | a tab |
+| `\'` | escape a single quote |
+| `\"` | escape a double quote |
+| `\\` | escape a backslash, when you want the backslash itself to appear in the text rather than act as an escape character |
+| `\r` | carriage return |
+| `\b` | a backspace |
+| `\uXXXX` | escape a unicode character |
 
 
 #### Examples of usage

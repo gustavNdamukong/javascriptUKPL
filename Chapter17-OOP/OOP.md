@@ -1485,9 +1485,11 @@ const createObject = (make, model, year) => {
   };
 ```
     
+```
 console.log(
-	createObject('Toyota', 'Rav4', '2025')
+    createObject('Toyota', 'Rav4', '2025')
 );
+```
 
 
 This function return value will be the object:
@@ -1501,9 +1503,11 @@ This function return value will be the object:
 		(make, model, year) => 
 			({make, model, year});
 
-	console.log(
-		createObject('Toyota', 'Rav4', '2025')
-	);
+```
+console.log(
+    createObject('Toyota', 'Rav4', '2025')
+);
+```
 
  The return value of this simplified code is still the same:
 
@@ -1998,13 +2002,17 @@ Here are the points to take note of:
   except you simply add all the multiple values to the
   curly braces separated by commas eg:
 
-	import { capitalizeWord, foo, bar, name, age } from "./file1";
+    ```
+    import { capitalizeWord, foo, bar, name, age } from "./file1";
+    ```
 
 
 #### Using a wildcard to import all from a file
   Take our example from “Exporting multiple functions or variables” above where we are exporting multiple values, there is another simplified way to pull them in, in the file where they are to be used (file2.js). So instead of writing the variables/functions all out in the curly braces at the ‘import’ statement like so:
 
-	import { capitalizeWord, foo, bar, name, age } from "./file1";
+```
+import { capitalizeWord, foo, bar, name, age } from "./file1";
+```
 
 Simply do this:
 

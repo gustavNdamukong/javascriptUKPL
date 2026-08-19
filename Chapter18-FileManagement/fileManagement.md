@@ -251,9 +251,11 @@ Next, place the following code in your JavaScript file eg index.js which should 
     is of the type we are expecting (text). If not, we display a
     message telling the user that only a text file is accepted.
 
-			if (file && file.type === 'text/plain') {
-				// ...
-			}
+    ```
+    if (file && file.type === 'text/plain') {
+        // ...
+    }
+    ```
 
   - The FileReader object is used to read the file as plain text with
     readAsText(file). This is an asynchronous call, and it is the thing
@@ -291,9 +293,11 @@ which is stored in e.target.result, and assign it to the value of the
 ## Drag and drop a file, modify and download it
   This demo lets a user drag a text file, then the contents of the file will be read, modified by appending a line of text to it, and bundled into a downloadable separate file which can then be downloaded by the user. To download the modified (new) file, the user has to click on the ‘Download Modified File’ button and the file will be downloaded to their machine. The uploaded file has to be a text file, otherwise it will not work, as we have a check (validation) in place making sure it only does what it is meant to do if the dragged-and-dropped file is of type ‘text/plain’ (a text file). The validation looks like this:
 
-	if (file && file.type === 'text/plain') {
-		// ...
-	}
+```
+if (file && file.type === 'text/plain') {
+    // ...
+}
+```
 
 As seen in the example HTML code above, here is the section element that holds the HTML code for this exercise:
 
@@ -1220,8 +1224,10 @@ npm install cors
     app.use(cors()); // Allow all origins by default
     ```
 
-	const server = http.createServer(app);
-	const wss = new WebSocket.Server({ server });
+    ```
+    const server = http.createServer(app);
+    const wss = new WebSocket.Server({ server });
+    ```
 
     ```
     wss.on('connection', (ws) => {
@@ -1238,9 +1244,11 @@ npm install cors
     });
     ```
 
-	server.listen(3000, () => {
-  		console.log('Server running on http://localhost:3000');
-	});
+    ```
+    server.listen(3000, () => {
+        console.log('Server running on http://localhost:3000');
+    });
+    ```
 
 
 Notice how we import the cors package and then use it like so:
@@ -1257,9 +1265,11 @@ If you want to allow only a specific origin, just pass that origin (domain) as a
 Here is a bonus tip: If the browser ever blocks a request and says something like “CORS policy error”, it’s usually because the server hasn’t allowed your frontend to access it. Just use the cors package and you're good to go.
   You may have noticed that when we set up the WebSocket server earlier, we never had a line like this: 
 
-	server.listen(3000, () => { 
-		console.log('Server running on http://localhost:3000'); 
-	});
+```
+server.listen(3000, () => { 
+    console.log('Server running on http://localhost:3000'); 
+});
+```
 
 This is because, earlier, we set up only a WebSocket server and not an HTTP server. So we just did:
 
@@ -1269,14 +1279,18 @@ We didn’t use http.createServer() or Express. That style runs WebSocket-only, 
 
 This time around, when adding CORS, we needed an HTTP server for that, and therefore we absolutely needed this line:
 
-	server.listen(3000, () => {
-  		console.log('Server running on http://localhost:3000');
-	});
+```
+server.listen(3000, () => {
+    console.log('Server running on http://localhost:3000');
+});
+```
 
 That line starts the HTTP server, which is required because we attached the WebSocket server to it like this:
 
-	const server = http.createServer(app);
-	const wss = new WebSocket.Server({ server });
+```
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+```
 
 Without the server.listen(…) line, no server will be started.
 

@@ -74,11 +74,14 @@ These frameworks essentially replace traditional templating engines in many proj
 npm install handlebars
 
 Or use a CDN in the head tag of your HTML page:
-		<head>	
-		<script
-		    src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js">
-		</script>
-		</head>
+
+```
+<head>  
+<script
+    src="https://cdn.jsdelivr.net/npm/handlebars/dist/handlebars.min.js">
+</script>
+</head>
+```
 
 
 
