@@ -100,8 +100,10 @@ questions.
 - **null** is one you set deliberately. It is a programmer saying "this is empty, and I meant
   it". JavaScript will never hand you null by itself.
 
-        let notSetYet;                  // undefined - nobody assigned anything
-        let deliberatelyEmpty = null;   // null - we chose this
+        let notSetYet;
+        // undefined - nobody assigned anything
+        let deliberatelyEmpty = null;
+        // null - we chose this
 
    A short way to hold on to it: undefined is the absence of a value, null is the presence of an
    empty one.
@@ -202,10 +204,14 @@ number2
         let notSetYet;
         let deliberatelyEmpty = null;
 
-        console.log(notSetYet);                          // undefined
-        console.log(deliberatelyEmpty);                  // null
-        console.log(notSetYet == deliberatelyEmpty);     // true
-        console.log(notSetYet === deliberatelyEmpty);    // false
+        console.log(notSetYet);
+        // undefined
+        console.log(deliberatelyEmpty);
+        // null
+        console.log(notSetYet == deliberatelyEmpty);
+        // true
+        console.log(notSetYet === deliberatelyEmpty);
+        // false
 
    The last two lines are the whole point. Loosely, JavaScript considers them the same sort of
    nothing. Strictly, it does not, because their types differ.

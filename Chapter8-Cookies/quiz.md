@@ -199,8 +199,10 @@ questions.
             }
         }
 
-        deleteCookie("username");            // Cookie "username" deleted.
-        deleteCookie("nonExistingCookie");   // Cookie "nonExistingCookie" not found.
+        // Cookie "username" deleted.
+        deleteCookie("username");
+        // Cookie "nonExistingCookie" not found.
+        deleteCookie("nonExistingCookie");
 
    some() runs the test on each cookie and stops the moment one passes, handing back true or
    false. We check with `startsWith(name + "=")` rather than just the name, so that looking for

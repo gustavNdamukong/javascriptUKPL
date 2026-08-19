@@ -144,7 +144,8 @@ are all together in the Answers section further down, numbered to match the ques
    draw. Code like this, placed after `img.src = ...`, would run too early:
 
         img.src = event.target.result;
-        canvas.width = img.width;      // 0 - the image has not loaded yet
+        canvas.width = img.width;
+        // 0 - the image has not loaded yet
         ctx.drawImage(img, 0, 0);      // draws nothing
 
    So the order looks backwards but is not: you say what should happen *when* it loads, and only
@@ -155,7 +156,8 @@ are all together in the Answers section further down, numbered to match the ques
         // 1. draw the image onto the canvas
         ctx.drawImage(img, 0, 0);
 
-        // 2. edit the pixels (or set ctx.filter before drawing)
+        // 2. edit the pixels (or set
+        // ctx.filter before drawing)
         const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
         // ...change imageData.data...
         ctx.putImageData(imageData, 0, 0);
@@ -249,8 +251,10 @@ ReferenceError: applFilter is not defined
             data[i] = data[i+1] = data[i+2] = avg;
         }
 
-        console.log(data[0], data[1], data[2]);   // 85 85 85
-        console.log(data[4], data[5], data[6]);   // 85 85 85
+        console.log(data[0], data[1], data[2]);
+        // 85 85 85
+        console.log(data[4], data[5], data[6]);
+        // 85 85 85
 
   Both pixels come out as **85**, because 255 ÷ 3 is 85 whether the 255 was in the red slot or
   the blue one. Two very different colours land on the same grey — which is exactly what

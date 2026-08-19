@@ -189,8 +189,11 @@ false
 2) The % operator, called modulo, gives you the remainder left over after dividing one number
    by another.
 
-        console.log(10 % 5);   // 0, because 5 goes into 10 exactly
-        console.log(11 % 2);   // 1, because 2 goes into 11 five times with 1 left over
+        console.log(10 % 5);
+        // 0, because 5 goes into 10 exactly
+        console.log(11 % 2);
+        // 1, because 2 goes into 11
+        // five times with 1 left over
 
    To test whether a number is even, divide it by 2 and see whether anything is left over. If
    nothing is, the number is even:
@@ -424,7 +427,8 @@ Other Numbers: 1, 5, 7
         {
             if (numbers[i] % 2 === 0)
             {
-                // it is an even number (exactly divisible by 2)
+                // it is an even number
+                // (exactly divisible by 2)
                 evenNumbers.push(numbers[i]);
             }
 

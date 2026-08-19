@@ -214,7 +214,8 @@ The reference passed to FormData() is written as e.target which always refers to
  The formData.get("myFile") will return a File object (or null if no file was selected). This is why it is a good idea when handling a form submission to check if the file field has a value before doing anything with it. This way, you do nothing if no file was uploaded. That is why we have this check right after the retrieving of the file value above:
 
 	if (file && file.name) {
-		// a file was uploaded, you can retrieve its properties and, or, process 
+		// a file was uploaded, you can retrieve
+		// its properties and, or, process
 		//	it here…
 	} else {
       		console.log("No file selected.");
@@ -287,7 +288,8 @@ If you have several checkboxes like this:
 
 formData.get("fruits") will return only the first checked value. To get all selected values, use its getAll() method — note the capital A, because JavaScript is case-sensitive and getall() does not exist:
 
-	formData.getAll("fruits"); // will return ['apple', 'banana']
+	// will return ['apple', 'banana']
+	formData.getAll("fruits");
 
 
 #### Multiple File Uploads
@@ -297,7 +299,8 @@ If your form’s file field allows multiple files—meaning its file field has t
 
 To get all the files, use its getAll() method like so:
 
-	formData.getAll("photos"); // will return [File, File, File…]
+	// will return [File, File, File…]
+	formData.getAll("photos");
 
 Using getAll() gives you an ordinary ARRAY of File objects, rather than the single File object that get() returns. That is worth remembering, because an array means you can go straight to .map(), .filter() and the rest without converting anything first.
 
@@ -408,12 +411,14 @@ npm install nodemailer
 	// send-email.js
 	const nodemailer = require('nodemailer');
 
-	// Step 1: Create a transporter (using Gmail in this example)
+	// Step 1: Create a transporter
+	// (using Gmail in this example)
 	const transporter = nodemailer.createTransport({
   		service: 'gmail',
   		auth: {
    			user: 'yourgmail@gmail.com',
-    			pass: 'yourgmailpassword' // Use App Password if 2FA is on
+    			// Use App Password if 2FA is on
+    			pass: 'yourgmailpassword'
   		}
 	});
 

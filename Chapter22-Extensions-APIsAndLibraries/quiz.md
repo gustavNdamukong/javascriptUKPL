@@ -185,8 +185,10 @@ http://my-api.com/clothes
 
 7) Because **nothing waited for the timeout to finish**.
 
-        createPost({ title: 'post three' });   // schedules a push in 2 seconds
-        ul.innerHTML = getPosts();             // runs immediately
+        // schedules a push in 2 seconds
+        createPost({ title: 'post three' });
+        // runs immediately
+        ul.innerHTML = getPosts();
 
    `setTimeout()` is asynchronous. `createPost()` returns straight away, having only *scheduled*
    the work. So `getPosts()` runs about two seconds too early, reads an array that still has two
@@ -201,7 +203,8 @@ http://my-api.com/clothes
    you passed them in** — not the order they finished.
 
         Promise.all([p1, p2, p3])
-            .then(results => console.log(results));   // [r1, r2, r3]
+            .then(results => console.log(results));
+            // [r1, r2, r3]
 
    If **any one of them rejects**, the whole thing rejects immediately with that first error, and
    you never see the results of the ones that succeeded. It is all or nothing.
@@ -219,7 +222,8 @@ http://my-api.com/clothes
             });
         }
 
-        getData().then(result => console.log(result));   // Done!
+        getData().then(result => console.log(result));
+        // Done!
 
 The function you hand to `new Promise` receives two functions of its own: call **`resolve`**
 with the value on success, or **`reject`** with an error on failure. Nothing happens until
@@ -250,7 +254,8 @@ bottom even though it is asynchronous. It only works inside a function marked `a
         function createPost(post, callback) {
             setTimeout(() => {
                 posts.push(post);
-                callback();          // now the list refreshes
+                // now the list refreshes
+                callback();
             }, 2000);
         }
 
@@ -272,7 +277,8 @@ The detail worth getting right is on the last line. You pass **`getPosts`**, not
 
         Promise.all([promise1, promise2])
             .then(results => {
-                console.log(results);      // ['Hello world', 'Second result']
+                console.log(results);
+                // ['Hello world', 'Second result']
                 console.log(results[0]);   // Hello world
             });
 

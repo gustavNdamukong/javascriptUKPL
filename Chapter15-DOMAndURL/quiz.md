@@ -243,12 +243,14 @@ div.innerText     // "Visible text"
 9) **Line 1 throws immediately.**
 
         element.setAttribute("disabled");
-        // TypeError: 2 arguments required, but only 1 present
+        // TypeError: 2 arguments
+        // required, but only 1 present
 
    `setAttribute` always needs both. For attributes that do not take a value, like `disabled` or
    `required`, you pass an empty string:
 
-        element.setAttribute("disabled", "");   // <input disabled="">
+        // <input disabled="">
+        element.setAttribute("disabled", "");
 
 **Line 2 fails silently, which is worse.** `className` is a *string*, so handing it an array
    makes JavaScript convert that array to text — and arrays convert by joining with commas:
@@ -355,7 +357,8 @@ Third note
         );
         console.log("Number of items: " + countResult.numberValue);
 
-        // 2. the text of the first one - we want a STRING back
+        // 2. the text of the first
+        // one - we want a STRING back
         const textResult = document.evaluate(
             "(//li)[1]/text()",
             document,

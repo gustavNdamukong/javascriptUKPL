@@ -163,7 +163,8 @@ it goes in quotes.
 2) Declaring a variable means creating it. Initialising it means giving it its first value.
 
         let a;              // declared only
-        let b = 5;          // declared and initialised in one go
+        // declared and initialised in one go
+        let b = 5;
 
    A variable that has been declared but never given a value holds the special value
    undefined. It does not hold null. undefined means "nothing has been put in here yet",
@@ -206,8 +207,10 @@ Error: ReferenceError: Cannot access 'price' before initialization
 
 6) Yes to the first, no to the second.
 
-        colours.push("blue");   // fine - colours is now ["red", "green", "blue"]
-        colours = ["blue"];     // TypeError: Assignment to constant variable
+        // fine - colours is now ["red", "green", "blue"]
+        colours.push("blue");
+        // TypeError: Assignment to constant variable
+        colours = ["blue"];
 
    const stops you from pointing the name at something else. It does not freeze what is inside.
    With an array or an object, the contents can still be changed. This catches almost everybody
@@ -232,7 +235,8 @@ Error: ReferenceError: Cannot access 'price' before initialization
    time. Re-assigning means simply updating the value of a variable that already exists.
 
         let count = 0;
-        let count = 1;    // re-declaring - SyntaxError with let
+        // re-declaring - SyntaxError with let
+        let count = 1;
 
         let total = 0;
         total = 1;        // re-assigning - perfectly fine

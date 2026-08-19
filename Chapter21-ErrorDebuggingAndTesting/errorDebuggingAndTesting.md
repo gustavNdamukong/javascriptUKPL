@@ -322,7 +322,8 @@ for that to happen. For example:
 
            	function checkUser() {
                 	let name = "Alice";
-                	debugger; // Pause here when DevTools are open
+                	// Pause here when DevTools are open
+                	debugger;
                 	console.log("Name is", name);
             	}
 
@@ -769,7 +770,8 @@ This pattern is useful when a lower-level function detects an error but wants a 
   		console.log('Test failed');
 	}
 
-	// This LOGS an error if the condition is false. Note that it does not
+	// This LOGS an error if the condition
+	// is false. Note that it does not
 	// throw - the lines after it still run
 	console.assert(add(1, 2) === 3, 'Test failed: add(1, 2) should equal 3');
 

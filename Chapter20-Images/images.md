@@ -420,7 +420,8 @@ Your index.html code, should look like this:
 
 Add the following code to your JavaScript file (eg index.js). Note all the comments between the lines to explain everything the code does:
 
-	// First, grab references to important HTML elements by their ID
+	// First, grab references to important
+	// HTML elements by their ID
 	// File input
 	const upload = document.getElementById('upload'); 
 
@@ -445,7 +446,8 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
 	// When the user selects an image file...
 	upload.addEventListener('change', function () {
 
-    		// Get the selected/uploaded file. Store it in a variable 'file'
+    		// Get the selected/uploaded file.
+    		// Store it in a variable 'file'
     		const file = this.files[0]; 
 
     		// Create a FileReader to read the file
@@ -458,33 +460,43 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
 			// it is an empty frame waiting for a src
        			img = new Image(); 
 
-        		// Setting src starts a download, which takes time, so we
-        		// say in advance what should happen once it has finished.
+        		// Setting src starts a download,
+        		// which takes time, so we
+        		// say in advance what should
+        		// happen once it has finished.
         		// Nothing is drawn until this fires
         		img.onload = function () {
-            			// By now the picture really is loaded, so draw it
+            			// By now the picture really
+            			// is loaded, so draw it
             			drawImageAtScale(scaleInput.value); 
         		}; 
 
-        		// Giving it a src is what sets everything above in motion.
-        		// The file was read as base64 text, which an Image can
+        		// Giving it a src is what sets
+        		// everything above in motion.
+        		// The file was read as base64
+        		// text, which an Image can
         		// take as a source just like a URL
         		img.src = event.target.result; 
     		};
 
     		// Start reading the image file as a data URL
-    		// We do not assign file to img because the Image() object doesn't 
-		// accept a file directly. Instead, you read the file as a base64 URL, 
-		// then assign it to the src attribute of img (the newly drawn image 
+    		// We do not assign file to img
+    		// because the Image() object doesn't
+		// accept a file directly. Instead,
+		// you read the file as a base64 URL,
+		// then assign it to the src attribute
+		// of img (the newly drawn image
 		// object)
     		reader.readAsDataURL(file); 
     		downloadBtn.style.display = 'inline-block'; 
 	});
 
-	// This function draws the image on the canvas, resized based on the 
+	// This function draws the image on
+	// the canvas, resized based on the
 	// slider
 	function drawImageAtScale(scale) {
-    		// Convert slider value (string) to a number so we can use that to 
+    		// Convert slider value (string) to
+    		// a number so we can use that to
 		// calculate percentages
     		const scaleNum = parseFloat(scale); 
 
@@ -503,9 +515,12 @@ Add the following code to your JavaScript file (eg index.js). Note all the comme
 
 	// When the slider is moved...
 	scaleInput.addEventListener('input', function () {
-    		// Show the scale value next to the slider. The slider holds a
-    		// MULTIPLIER (1 = full size), but the label reads "%", so we
-    		// convert. Without this you would see "Resize (%): 1.5%"
+    		// Show the scale value next to
+    		// the slider. The slider holds a
+    		// MULTIPLIER (1 = full size),
+    		// but the label reads "%", so we
+    		// convert. Without this you
+    		// would see "Resize (%): 1.5%"
     		// beside an image that had just grown by half.
     		scaleValue.textContent = Math.round(this.value * 100); 
 
@@ -631,7 +646,8 @@ To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an im
 
 	// When the rotate button is clicked
 	rotateBtn.addEventListener('click', function () {
-	  rotation = (rotation + 90) % 360; // Rotate by 90 degrees each time
+	  // Rotate by 90 degrees each time
+	  rotation = (rotation + 90) % 360;
 	  drawRotatedImage();
 	});
 
@@ -640,7 +656,8 @@ To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an im
 	  const angleInRadians = rotation * Math.PI / 180;
 
 ```
-// Adjust canvas size based on rotation (to fit image properly)
+// Adjust canvas size based on
+// rotation (to fit image properly)
 if (rotation % 180 === 0) {
   canvas.width = img.width;
   canvas.height = img.height;
@@ -659,7 +676,8 @@ if (rotation % 180 === 0) {
 	  // Rotate the canvas
 	  ctx.rotate(angleInRadians);
 
-	  // Draw the image from the new origin, with image centered
+	  // Draw the image from the new
+	  // origin, with image centered
 	  ctx.drawImage(img, -img.width / 2, -img.height / 2);
 
 	  ctx.restore(); // Go back to normal canvas settings
@@ -785,7 +803,8 @@ From the previous example, it should be clear to you how that download code work
             			draw();
         		};
 
-        		//img.src = 'your-image.jpg'; // Or load from file input
+        		// img.src = 'your-image.jpg';
+        		// // Or load from file input
         		img.src = event.target.result; 
     		}
     		reader.readAsDataURL(file); 
@@ -884,7 +903,8 @@ As with brightening up an image, let’s look an a code example that allows you 
             			draw();
         		};
 
-        		//img.src = 'your-image.jpg'; // Or load from file input
+        		// img.src = 'your-image.jpg';
+        		// // Or load from file input
         		img.src = event.target.result; 
     		}
     		reader.readAsDataURL(file); 
@@ -979,7 +999,8 @@ As with brightening or adding contrast to an image, the following code example w
             			draw();
         		};
 
-        		//img.src = 'your-image.jpg'; // Or load from file input
+        		// img.src = 'your-image.jpg';
+        		// // Or load from file input
         		img.src = event.target.result; 
     		}
     		reader.readAsDataURL(file); 

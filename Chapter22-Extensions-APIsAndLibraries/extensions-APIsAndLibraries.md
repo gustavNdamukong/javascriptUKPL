@@ -255,7 +255,8 @@ Let us look at a complete example of how you would prepare and send a SOAP reque
 	const xhr = new XMLHttpRequest();
 	xhr.open('POST', 'https://example.com/soap-endpoint');
 
-	// Important: Set the Content-Type to indicate a SOAP message
+	// Important: Set the Content-Type
+	// to indicate a SOAP message
 	xhr.setRequestHeader('Content-Type', 'text/xml');
 
 	// Optional but useful: expect an XML document
@@ -598,8 +599,10 @@ your-project-folder/
 	// server.js (SOAP API running on localhost:3000)
 	const express = require('express');
 	const path = require('path');
-	const { DOMParser } = require('xmldom');  // npm install xmldom
-	const xpath = require('xpath');           // npm install xpath
+	// npm install xmldom
+	const { DOMParser } = require('xmldom');
+	// npm install xpath
+	const xpath = require('xpath');
 
 	const app = express();
 	const PORT = 3000;
@@ -610,14 +613,16 @@ your-project-folder/
 
 	// Dummy function to return product prices
 	function getProductPrice(productName) {
-	  // in a live app, products & their prices would ideally come from a database
+	  // in a live app, products & their prices
+	  // would ideally come from a database
 	  const prices = {
 	    "Apple": 1.2,
 	    "Banana": 0.5,
 	    "Orange": 0.8
 	  };
 
-	  // convert the first character of product name to uppercase 
+	  // convert the first character
+	  // of product name to uppercase
 	  // & return its price
 	  return prices[productName.charAt(0).toUpperCase() + productName.slice(1)] || 0;
 	}
@@ -1120,7 +1125,8 @@ You can still use it to:
 To receive and XML response, you would use the responseXML property of the XMLHttpRequest object instead of the responseText. For example:
 
 	if (this.responseXML !== null) {
-        	// Get data from this.responseXML, not this.responseText e.g.
+        	// Get data from this.responseXML,
+        	// not this.responseText e.g.
 		let xmlData = this.responseXML 
         } 
 	else 
@@ -1145,7 +1151,8 @@ Basically, the property that will contain the returned data always depends on th
 		"https://jsonplaceholder.typicode.com/users",
 		true
 	);
-	xhr.responseType = 'document'; // specifying doc type wanted back
+	// specifying doc type wanted back
+	xhr.responseType = 'document';
 	xhr.onload = function () {
     		if (xhr.status === 200) {
 		    // Logs the response from the server
@@ -1314,7 +1321,8 @@ Let’s convert the exact same example we wrote above for the XMLHttpRequest obj
   		if (!response.ok) {
    			throw new Error("Network response was not OK");
   		}
- 		return response.text(); // Read the response as plain text
+ 		// Read the response as plain text
+ 		return response.text();
 	})
 	.then(data => {
   		document.getElementById("info").innerHTML = data;
@@ -1715,7 +1723,8 @@ Promise3 uses the setTimeout() function to call after 2 seconds, so the total am
         	return new Promise((resolve) => {
             		setTimeout(() => {
                 		posts.push(post);
-                		// Resolves the promise after pushing the post
+                		// Resolves the promise
+                		// after pushing the post
                	 		resolve();
            	 	}, 2000);
         	});
@@ -1765,7 +1774,8 @@ be able to correctly pause execution until the Promise resolves.
         		setTimeout(() => {
             			let output = '';
             			posts.forEach((post) => {
-                		// List items are created as a template literal
+                		// List items are created
+                		// as a template literal
                 		output += `<li>${post.title}</li>`; 
             			});
             
@@ -1838,7 +1848,8 @@ Let me point out that, as you can see, you may use await as often as needed when
 Without async/await:
 
 	fetch("https://jsonplaceholder.typicode.com/users")
-    	.then(response => response.json()) // Convert resp to JSON
+    	// Convert resp to JSON
+    	.then(response => response.json())
     	.then(data => console.log(data)) // Log the response
     	.catch(error => console.error("Error:", error));
 

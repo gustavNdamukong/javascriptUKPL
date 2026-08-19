@@ -253,7 +253,8 @@ the opposite direction—building a date out of components that you already
 know are in UTC.
   Compare these two lines:
 
-	// "the 20th of March 2025 at 16:00, wherever this code runs"
+	// "the 20th of March 2025 at
+	// 16:00, wherever this code runs"
 	let a = new Date(2025, 2, 20, 16, 0, 0);
 
 	// "the 20th of March 2025 at 16:00 UTC, everywhere"
@@ -311,7 +312,8 @@ So basically, to convert a UTC time to local time we just need to call the .toSt
 ### setTimeout()
 This function lets you run code once after a specified delay (in milliseconds). Think of it like saying: "Do this, but wait a little bit first."
 
-	// Waits 2 seconds (2000 milliseconds) and runs this code once 
+	// Waits 2 seconds (2000 milliseconds)
+	// and runs this code once
 	setTimeout(() => {
   		console.log("Hello after 2 seconds");
 	}, 2000);
@@ -547,7 +549,8 @@ const images = [
     		// move to next image
     		index++; 
   
-    		// if we've reached the end, start again at the beginning
+    		// if we've reached the end,
+    		// start again at the beginning
     		if (index >= images.length) {
       			index = 0;
     		}

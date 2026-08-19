@@ -117,7 +117,8 @@ fruits.push().) The push() method can take a single item or several
 of them, separated by commas, and they can be of any type: strings,
 numbers, booleans, even other arrays. Let’s see how to do that:
 
-		// create an empty array as normal using the Array() constructor
+		// create an empty array as normal
+		// using the Array() constructor
 		// or the square brackets as we have seen above
 		let fruits = new Array();
 		// OR
@@ -242,7 +243,8 @@ contain: [1, 45, 25];
 	student[0] = "Math";
 
 	// Let's examine the array
-	// Output is: [ 'Math', name: 'Amina', age: 12, grade: '6' ]
+	// Output is: [ 'Math', name:
+	// 'Amina', age: 12, grade: '6' ]
 	console.log(student);   
 
 	// Output is: 1 — only the numeric item is counted    
@@ -285,7 +287,8 @@ The name of the array (object) is student. An example of a key is name, and its 
 	// Output is: 2
 	console.log(student.subjects.length); 
 
-	// Output is Math and English, each printed on its own line.
+	// Output is Math and English,
+	// each printed on its own line.
 	// (The => arrow is a short way of writing a function.
 	//  We come to those in Chapter 7.)
 	student.subjects.forEach(sub => console.log(sub)); 
@@ -380,7 +383,8 @@ Let’s look at the differences between the two types of notations.
 -When you need to access properties dynamically inside a loop or   
   function. For example:
 
-		// Iterates over all values displaying the value at each key
+		// Iterates over all values
+		// displaying the value at each key
 		for (let key in obj) 
 		{ 
 			console.log(obj[key]);

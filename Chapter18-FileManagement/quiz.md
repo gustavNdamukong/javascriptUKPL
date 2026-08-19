@@ -143,7 +143,8 @@ answers are all together in the Answers section further down, numbered to match 
             console.log(e.target.result);
         };
 
-        reader.readAsText(file);   // this just starts it off
+        // this just starts it off
+        reader.readAsText(file);
 
    `onload` is the callback that fires when the read completes, and `e.target.result` is where
    the contents arrive. Put your code anywhere else and you will be working with `undefined`.
@@ -343,7 +344,8 @@ Title: Book Two, Author: Ben
         a.download = 'notes.txt';
         a.click();
 
-        // 4. and clean up - but give the download a moment to start first
+        // 4. and clean up - but give the
+        // download a moment to start first
         setTimeout(() => URL.revokeObjectURL(url), 1000);
 
   That last step is the one people forget. A blob URL holds the data in memory until you

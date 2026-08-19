@@ -105,8 +105,10 @@ How to read data from LocalStorage
 In this reading demonstration, we will loop through all the todoList items grabbing their id, and their name (value), then format that into a string that can be displayed on 	screen.
 
 	/*-----------DISPLAY OF TODOLIST ITEMS-------------*/
-	// manage displaying of existing todoList items to the user. 
-	// You get the data from localStorage if there are previously 
+	// manage displaying of existing
+	// todoList items to the user.
+	// You get the data from localStorage
+	// if there are previously
 	// saved todoList items, grab them
 	if (JSON.parse(localStorage.getItem(
 		LOCAL_STORAGE_TODO_KEY)) !== null) {
@@ -180,7 +182,8 @@ How to save data to LocalStorage
    		}
    		else
    		{
-      		     //get the ID to be used for the ingoing todoList Item
+      		     // get the ID to be used for
+      		     // the ingoing todoList Item
       		     let id = getId();
       		    
 		     //create an object to hold the todoList item
@@ -192,8 +195,10 @@ How to save data to LocalStorage
       
 		     // clear the item just submitted from the input field
       		     // input.value = "";
-      		     // Check in the local storage for todoList items 
-		     // already saved there. if there's nothing in storage, 
+      		     // Check in the local storage
+      		     // for todoList items
+		     // already saved there. if
+		     // there's nothing in storage,
 		     // use what user has submitted
       		     if (JSON.parse(localStorage.getItem(
 			LOCAL_STORAGE_TODO_KEY)) === null)
@@ -213,12 +218,14 @@ How to save data to LocalStorage
       		else
       		{
          		// there are items already saved in storage, so 
-			// grab them n add to the array to be saved (this is 			// coz when saving anything to localStorage, prev 
+			// grab them n add to the array to be saved (this is
+			// // coz when saving anything to localStorage, prev
 			// data is overridden)
          		JSON.parse(localStorage.getItem(
 				LOCAL_STORAGE_TODO_KEY)).map(
 					todoFromStorage => {
-               			    	      // push in all items from local storage 
+               			    	      // push in all items
+               			    	      // from local storage
 					      // into our array as well as the new 
 					      // todoList item the user just 
 					      // submitted
@@ -257,7 +264,8 @@ function getId()
     }
     else
     {
-            // JSON.parse() returns an array, so get the ID of the 
+            // JSON.parse() returns an
+            // array, so get the ID of the
         // last element and increment it by 1
             let IdNum =     
             parseInt(JSON.parse(localStorage.getItem(
@@ -386,7 +394,8 @@ Here is an example of removing an item from our example todo list.
    	item.addEventListener('transitionend', () => {
       		item.remove();
 
-   		// check if the todoitems are less than two and hide the 
+   		// check if the todoitems are
+   		// less than two and hide the
 		// clear all button
    		if (ul.children.length < 2)
    		{

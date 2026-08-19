@@ -211,7 +211,8 @@ First we allow the user to upload a file using the file input field with the id 
 
 Next, place the following code in your JavaScript file eg index.js which should be in the same directory as the index.html file of your project.
 
-	// --------- 1) Upload a text file and display its contents  ---------
+	// --------- 1) Upload a text file
+	// and display its contents ---------
 	const fileInput = document.getElementById('fileInput');
 	const output = document.getElementById('output');
 
@@ -236,7 +237,8 @@ Next, place the following code in your JavaScript file eg index.js which should 
   field:
 
 		fileInput.addEventListener('change', function () {
-			// any code in this block will run when a file is uploaded
+			// any code in this block will
+			// run when a file is uploaded
 		});
 
   - Once that upload event fires (occurs), we capture the uploaded file
@@ -307,7 +309,8 @@ As seen in the example HTML code above, here is the section element that holds t
 
 Here is the full JavaScript code:
 
-	// --------- 2) Drag and drop a file, modify and download it ---------
+	// --------- 2) Drag and drop a file,
+	// modify and download it ---------
 	const dropZone = document.getElementById('dropZone');
 	const modifiedContent = document.getElementById('modifiedContent');
 	const downloadBtn = document.getElementById('downloadBtn');
@@ -353,8 +356,10 @@ Here is the full JavaScript code:
   		a.download = 'modified-file.txt';
   		a.click();
 
-  		// give the browser a moment to start the download before we
-  		// throw the URL away - revoking on the next line can cancel it
+  		// give the browser a moment to
+  		// start the download before we
+  		// throw the URL away - revoking
+  		// on the next line can cancel it
   		setTimeout(() => URL.revokeObjectURL(url), 1000);
 	});
 
@@ -480,8 +485,10 @@ looks like this:
   				a.download = 'modified-file.txt';
   				a.click();
 
-  				// give the browser a moment to start the download before we
-  				// throw the URL away - revoking on the next line can cancel it
+  				// give the browser a moment to
+  				// start the download before we
+  				// throw the URL away - revoking
+  				// on the next line can cancel it
   				setTimeout(() => URL.revokeObjectURL(url), 1000);
 			});
 
@@ -582,8 +589,10 @@ Notice how you pass as the first argument, the data you want to put in the BLOB 
   		a.download = 'data.csv';
   		a.click();
 
-  		// give the browser a moment to start the download before we
-  		// throw the URL away - revoking on the next line can cancel it
+  		// give the browser a moment to
+  		// start the download before we
+  		// throw the URL away - revoking
+  		// on the next line can cancel it
   		setTimeout(() => URL.revokeObjectURL(url), 1000);
 	});
 
@@ -745,7 +754,8 @@ This is important because people can rename malicious files to trick file upload
       				const arrayBuffer = e.target.result;
       				const bytes = new Uint8Array(arrayBuffer);
 
-     	 			// Check the PNG magic number. Its full signature is
+     	 			// Check the PNG magic number.
+     	 			// Its full signature is
      	 			// eight bytes, but the first four identify it.
       				const isPng = bytes[0] === 0x89 &&
                     		bytes[1] === 0x50 &&
@@ -1615,7 +1625,8 @@ Using fetch is the best way to deal with remote XML files.
     			const xmlDoc = xhr.responseXML;
     			const books = xmlDoc.getElementsByTagName("book");
     
-    			// Convert HTMLCollection (books) to array & map through 
+    			// Convert HTMLCollection (books)
+    			// to array & map through
 			// the data
     			const bookArray = Array.from(books)
 				.map(book => {

@@ -143,9 +143,12 @@ p  →  Person.prototype  →  Object.prototype  →  null
 
    You can walk it:
 
-        Object.getPrototypeOf(p) === Person.prototype;               // true
-        Object.getPrototypeOf(Person.prototype) === Object.prototype; // true
-        Object.getPrototypeOf(Object.prototype);                      // null
+        Object.getPrototypeOf(p) === Person.prototype;
+        // true
+        Object.getPrototypeOf(Person.prototype) === Object.prototype;
+        // true
+        Object.getPrototypeOf(Object.prototype);
+        // null
 
    Every chain ends at `null`. That is how JavaScript knows to stop looking.
 
@@ -168,10 +171,12 @@ p  →  Person.prototype  →  Object.prototype  →  null
 
    The three fixes all amount to the same idea — send the owner along with the function:
 
-        // 1. wrap it, so the owner is named again at call time
+        // 1. wrap it, so the owner is
+        // named again at call time
         setTimeout(function () { person.getName(); }, 1000);
 
-        // 2. bind it, which returns a NEW function with this fixed
+        // 2. bind it, which returns a
+        // NEW function with this fixed
         let f = person.getName.bind(person);
         setTimeout(f, 1000);
 
@@ -182,8 +187,10 @@ p  →  Person.prototype  →  Object.prototype  →  null
 5) **`call()` and `apply()` run the function immediately.** The only difference between those two
    is how you hand over the arguments:
 
-        car.multiply.call(bike, 2, 2);      // a list of arguments
-        car.multiply.apply(bike, [2, 2]);   // an array of arguments
+        // a list of arguments
+        car.multiply.call(bike, 2, 2);
+        // an array of arguments
+        car.multiply.apply(bike, [2, 2]);
 
    **`bind()` does not run anything.** It returns a *new* function with `this` already fixed, for
    you to call whenever you like:
@@ -252,14 +259,18 @@ p  →  Person.prototype  →  Object.prototype  →  null
             static add(a, b) { return a + b; }
         }
 
-        MathHelper.add(5, 3);          // 8  - on the class, fine
+        MathHelper.add(5, 3);
+        // 8 - on the class, fine
 
         let obj = new MathHelper();
-        obj.add(3, 3);                 // TypeError: obj.add is not a function
+        // TypeError: obj.add is not a function
+        obj.add(3, 3);
 
         class ChildHelper extends MathHelper {}
-        ChildHelper.add(5, 3);         // 8  - the child class inherits it
-        new ChildHelper().add;         // undefined - but its instances do not
+        ChildHelper.add(5, 3);
+        // 8 - the child class inherits it
+        new ChildHelper().add;
+        // undefined - but its instances do not
 
    So the dividing line is not parent versus child. It is **class versus instance**. Statics
    travel down the class line and never appear on the objects made from those classes.
@@ -318,9 +329,12 @@ SyntaxError: Private field '#privateAge' must be declared in an enclosing class
 
 
 13) 
-        console.log(p1.greet);                        // function - it can use it
-        console.log(p1.hasOwnProperty("greet"));      // false - but it does not own it
-        console.log(Person.prototype.hasOwnProperty("greet"));  // true - the mould owns it
+        console.log(p1.greet);
+        // function - it can use it
+        console.log(p1.hasOwnProperty("greet"));
+        // false - but it does not own it
+        console.log(Person.prototype.hasOwnProperty("greet"));
+        // true - the mould owns it
 
   `hasOwnProperty()` asks only about the object itself, ignoring everything up the chain. So
   this is the tool for telling "this object has it" apart from "this object can reach it".
@@ -368,7 +382,8 @@ The one keyword doing two jobs is `super`. As `super(...)` it calls the parent's
         let person = { name: 'Ada', age: 36 };
 
         let json = JSON.stringify(person);
-        console.log(json);              // {"name":"Ada","age":36}
+        console.log(json);
+        // {"name":"Ada","age":36}
 
         let back = JSON.parse(json);
         console.log(back.name);         // Ada
@@ -387,9 +402,12 @@ The one keyword doing two jobs is `super`. As `super(...)` it calls the parent's
             footer = "No footer"
         } = obj;
 
-        console.log(msg);      // "Hello"    - present, so kept
-        console.log(title);    // "No title"  - missing, so defaulted
-        console.log(footer);   // "No footer" - missing, so defaulted
+        console.log(msg);
+        // "Hello" - present, so kept
+        console.log(title);
+        // "No title" - missing, so defaulted
+        console.log(footer);
+        // "No footer" - missing, so defaulted
 
   The equals sign is what you need, as question 7 established. Reach for a colon here and you
   get `SyntaxError: Invalid destructuring assignment target`, because a colon expects a

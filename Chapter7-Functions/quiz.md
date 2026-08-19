@@ -163,7 +163,8 @@ exercise.
 
    You would find it the moment you called it with anything else:
 
-        greeting("Somebody Else");   // still prints "Hello John"
+        // still prints "Hello John"
+        greeting("Somebody Else");
 
    The fix is to make the body use the parameter it was given:
 
@@ -237,9 +238,11 @@ ReferenceError: testLocalVar is not defined
 
    The two correct forms are:
 
-        const double = (num) => num * 2;          // implicit return, no braces
+        // implicit return, no braces
+        const double = (num) => num * 2;
 
-        const double = (num) => { return num * 2; };   // explicit return, with braces
+        // explicit return, with braces
+        const double = (num) => { return num * 2; };
 
    Pick one or the other. You cannot half-do it.
 
@@ -303,7 +306,8 @@ undefined
         })();
 
         console.log(result);          // "Hidden Data"
-        console.log(typeof secret);   // "undefined" - it never escaped
+        console.log(typeof secret);
+        // "undefined" - it never escaped
 
   It is also handy for setup code that should run exactly once.
 
@@ -349,8 +353,10 @@ function.
             console.log(name + " has type: " + type);
         }
 
-        setMember("Dolph");            // Dolph has type: member
-        setMember("Dolph", "admin");   // Dolph has type: admin
+        // Dolph has type: member
+        setMember("Dolph");
+        // Dolph has type: admin
+        setMember("Dolph", "admin");
 
 The `= "member"` in the parameter list is the default. It is used only when nothing is
 passed for that parameter. Pass something and yours wins.

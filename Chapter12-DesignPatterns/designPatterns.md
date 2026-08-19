@@ -555,7 +555,8 @@ class PrinterAdapter {
 	const oldPrinter = new OldPrinter();
 	const adaptedPrinter = new PrinterAdapter(oldPrinter);
 
-	adaptedPrinter.print("Hello World!"); // works like the new printer
+	// works like the new printer
+	adaptedPrinter.print("Hello World!");
 
   Imagine you bought a new phone charger, but your wall socket is old and doesn't match the charger plug. What do you do? Use a plug adapter! It lets the new charger connect to the old socket.
 In this pattern, PrinterAdapter plays the role of the plug adapter. It makes the old printer work with new code that expects a different method (print instead of printText).
@@ -1242,10 +1243,12 @@ This is how this works:
 
 	// Client usage
 	const paypalContext = new PaymentContext(new PayPalStrategy());
-	console.log(paypalContext.executePayment(100)); // Paid $100 using PayPal
+	console.log(paypalContext.executePayment(100));
+	// Paid $100 using PayPal
 
 	const cardContext = new PaymentContext(new CreditCardStrategy());
-	console.log(cardContext.executePayment(200)); // Paid $200 using Credit Card
+	console.log(cardContext.executePayment(200));
+	// Paid $200 using Credit Card
 
 
    // The output in the console: 
@@ -1340,7 +1343,8 @@ This is how this works:
     class MealPreparation {
   	prepareMeal() {
     		this.boilWater();
-    		this.cook(); // this will be different in each subclass
+    		// this will be different in each subclass
+    		this.cook();
     		this.serve();
   	}
 

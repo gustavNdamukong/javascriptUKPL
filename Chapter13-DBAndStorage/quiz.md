@@ -159,12 +159,14 @@ questions.
         localStorage.setItem("theme", "dark");
 
         // read it back
-        console.log(localStorage.getItem("theme"));    // "dark"
+        console.log(localStorage.getItem("theme"));
+        // "dark"
 
         // delete it
         localStorage.removeItem("theme");
 
-        console.log(localStorage.getItem("theme"));    // null
+        console.log(localStorage.getItem("theme"));
+        // null
 
    Notice that reading a key which is not there gives you `null`, not an error and not
    undefined. That is useful, because it means you can check for it directly:

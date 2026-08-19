@@ -127,7 +127,8 @@ TypeError      ReferenceError      RangeError      SyntaxError
 
         function viewAccount(account, user_id) {
             if (account.user_id != user_id) {
-                throw new Error("Not your account");   // detected here
+                // detected here
+                throw new Error("Not your account");
             }
         }
 
@@ -211,7 +212,8 @@ and this line still runs
             console.log(divide(10, 2));   // 5
             console.log(divide(10, 0));   // throws
         } catch (error) {
-            console.error("Error:", error.message);   // Error: Cannot divide by zero
+            console.error("Error:", error.message);
+            // Error: Cannot divide by zero
         }
 
   Note that the first call prints `5` before the second one throws. Everything in a `try` block

@@ -154,7 +154,8 @@ Debugging and Testing).
 will be wrongly interpreted as follows, resulting in an error:
 
 	let x = 5; 
-	let y = x(2 + 3).toString(); // Error: TypeError: x is not a function
+	// Error: TypeError: x is not a function
+	let y = x(2 + 3).toString();
 
 It is therefore recommended to be safe by ending all your statements with semicolons. This will still work well, and have the added benefit of eliminating the risk of any misunderstanding by the parser about where one statement ends and where another starts. Also, while semicolons are not always needed to mark the end of statements, there is an exception that if a statement ends with a variable or function where the first character of the next line is a left parenthesis or a square bracket, then you must finish that line with a semicolon or the code will not work. So, this reinforces the advice that whenever in doubt just use a semicolon.
 

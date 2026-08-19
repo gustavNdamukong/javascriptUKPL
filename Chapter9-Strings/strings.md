@@ -285,7 +285,8 @@ The output is:
 	const str = "Hello, World!"; 
 	console.log(str.charAt(0)); // Outputs "H" 
 	console.log(str.charAt(7)); // Outputs: "W" 
-	console.log(str.charAt(20)); // Outputs: "" (empty string, index out of range)
+	console.log(str.charAt(20));
+	// Outputs: "" (empty string, index out of range)
 
   Another quick way to get the character at an index is to use the bracket notation.
   Here is how to do it:

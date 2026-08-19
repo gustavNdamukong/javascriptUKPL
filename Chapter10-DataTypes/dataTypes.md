@@ -885,7 +885,8 @@ returns nothing at all.
 is empty, and I meant it to be". JavaScript will never hand you null on
 its own.
 
-	let notSetYet;              // undefined - nobody assigned anything
+	let notSetYet;
+	// undefined - nobody assigned anything
 	let deliberatelyEmpty = null;   // null - we chose this
 
 	console.log(notSetYet);         // undefined
@@ -950,13 +951,15 @@ Here is how you do it:
     	};
 
 
-	// convert the testData array into a string using JSON.stringify()
+	// convert the testData array into
+	// a string using JSON.stringify()
 	console.log("The testData array contains: " + JSON.stringify(testData));
 	// this will output:
 
   The testData array contains: [5,10,20,25]
 
-	// convert the customer object into a string using JSON.stringify()
+	// convert the customer object into
+	// a string using JSON.stringify()
 	console.log("The customer object: " + JSON.stringify(customer));
 	// It will output:
 
@@ -1137,7 +1140,8 @@ that is what you meant:
 		console.log(typeof 42);        // "number"
 		console.log(typeof true);      // "boolean"
 		console.log(typeof {});        // "object"
-		console.log(typeof null);      // "object" ← (weird quirk!)
+		console.log(typeof null);
+		// "object" ← (weird quirk!)
 		console.log(typeof undefined); // "undefined"
 
 You might ask the question: Why does this return a object:

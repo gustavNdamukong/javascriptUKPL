@@ -651,7 +651,8 @@ const obj = {
     value: 10,
     fixWithoutSelf: function() {
         const arrowFunction = () => {
-            console.log(this.value); // Works: 10, no self needed
+            console.log(this.value);
+            // Works: 10, no self needed
         };
         arrowFunction();
     }

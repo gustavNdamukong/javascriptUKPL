@@ -246,7 +246,8 @@ leads to some baffling afternoons.
 	const storageType = cookieStorage;
 	const consentPropertyName = 'jdc_consent';
 
-	// Show the popup only if we have not already been told "Okay"
+	// Show the popup only if we have
+	// not already been told "Okay"
 	const shouldShowPopup = () => !storageType.getItem(consentPropertyName);
 
 	const saveToStorage = () =>
@@ -276,9 +277,12 @@ leads to some baffling afternoons.
   If you would rather store the visitor's answer in localStorage or
 sessionStorage instead of a cookie, you only have to change one line:
 
-	const storageType = localStorage;      // survives the browser closing
-	const storageType = sessionStorage;    // forgotten when the browser closes
-	const storageType = cookieStorage;     // our own wrapper, above
+	// survives the browser closing
+	const storageType = localStorage;
+	// forgotten when the browser closes
+	const storageType = sessionStorage;
+	// our own wrapper, above
+	const storageType = cookieStorage;
 
   That is the benefit of having wrapped the cookie code to look like the
 other two. Everything below that line stays exactly as it is.

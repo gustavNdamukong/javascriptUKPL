@@ -98,7 +98,8 @@ questions.
 1) It creates the **16th of March 2024**, not the 3rd.
 
         let d = new Date(2024, 2, 16);
-        console.log(d.toDateString());   // "Sat Mar 16 2024"
+        console.log(d.toDateString());
+        // "Sat Mar 16 2024"
 
    The months are **0-indexed**, exactly like array positions. So January is 0, February is 1,
    and March is 2. The day of the month, confusingly, is not — the 16 really does mean the
@@ -120,8 +121,10 @@ questions.
 
 
 3) 
-        localTime.toString();      // the user's own time zone
-        localTime.toUTCString();   // the same instant, as UTC
+        // the user's own time zone
+        localTime.toString();
+        // the same instant, as UTC
+        localTime.toUTCString();
 
    `toString()` is the plain one, and it is what you get automatically if you print a Date
    without calling anything. For a user in New York at midday:
@@ -217,9 +220,11 @@ Thu, 20 Mar 2025 16:00:00 GMT     // what people expect
         // remember: month 11 is December, not November
         let christmas = new Date(2025, 11, 25, 9, 30, 0);
 
-        console.log(christmas.toDateString());   // "Thu Dec 25 2025"
+        console.log(christmas.toDateString());
+        // "Thu Dec 25 2025"
         console.log(christmas.toString());
-        // "Thu Dec 25 2025 09:30:00 GMT+0000 (Greenwich Mean Time)"
+        // "Thu Dec 25 2025 09:30:00
+        // GMT+0000 (Greenwich Mean Time)"
 
    If you wrote `new Date(2025, 12, 25)` you would get the **25th of January 2026**, because
    month 12 has run off the end of the year and JavaScript rolls it over without complaining.
@@ -248,7 +253,8 @@ Thu, 20 Mar 2025 16:00:00 GMT     // what people expect
             console.log(now.toLocaleTimeString());
         }
 
-        // start it - and keep the ID so we can stop it later
+        // start it - and keep the ID
+        // so we can stop it later
         updateClock();
         const clockId = setInterval(updateClock, 1000);
 

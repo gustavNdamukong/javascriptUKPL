@@ -252,7 +252,8 @@ person.first - name
 
    The fix is to pass sort() a compare function:
 
-        [1, 100, 2, 20].sort((a, b) => a - b);   // [1, 2, 20, 100]
+        [1, 100, 2, 20].sort((a, b) => a - b);
+        // [1, 2, 20, 100]
 
    It works because if a - b is negative, a is placed before b; if positive, b goes first; and
    if 0, their order stays as it was. Swap it to b - a to sort in descending order.
@@ -284,7 +285,8 @@ person.first - name
         // ["Alice", 30, "London"]
 
         console.log(Object.entries(person));
-        // [["name", "Alice"], ["age", 30], ["city", "London"]]
+        // [["name", "Alice"], ["age",
+        // 30], ["city", "London"]]
 
    All three hand you back a real array, which means you can then use any array method on the
    result. That includes .length, which is how you count an object's properties:

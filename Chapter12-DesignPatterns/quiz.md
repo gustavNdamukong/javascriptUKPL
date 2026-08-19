@@ -338,7 +338,8 @@ Displaying cat.png
             .build();
 
         console.log(pizza);
-        // { toppings: [ 'cheese', 'mushrooms' ], size: 'large' }
+        // { toppings: [ 'cheese',
+        // 'mushrooms' ], size: 'large' }
 
 The chaining works because every setter ends with `return this`. Each call hands the builder
 straight back, so the next call has something to attach to. Take one `return this` out and

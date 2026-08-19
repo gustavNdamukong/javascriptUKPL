@@ -317,7 +317,8 @@ Limitations: restricted access, since you
 
       queue.push("first");    // enqueue
       queue.push("second");
-      console.log(queue.shift());  // "first" - first in, first out
+      console.log(queue.shift());
+      // "first" - first in, first out
       console.log(queue);          // ["second"]
 
 Used in JavaScript for: anything that must

@@ -282,12 +282,14 @@ are all together in the Answers section further down, numbered to match the ques
 
 12) 
         function isInsideCanvas() {
-            // the left edge of the ball must not be past the left wall
+            // the left edge of the ball must
+            // not be past the left wall
             if (ball.x - ball.radius < 0) {
                 return false;
             }
 
-            // the right edge must not be past the right wall
+            // the right edge must not
+            // be past the right wall
             if (ball.x + ball.radius > canvas.width) {
                 return false;
             }
@@ -297,7 +299,8 @@ are all together in the Answers section further down, numbered to match the ques
                 return false;
             }
 
-            // the bottom edge must not be past the bottom wall
+            // the bottom edge must not
+            // be past the bottom wall
             if (ball.y + ball.radius > canvas.height) {
                 return false;
             }

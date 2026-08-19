@@ -198,8 +198,10 @@ questions.
         history.push("products");
         history.push("checkout");
 
-        console.log(history.pop());   // "checkout" - go back
-        console.log(history.pop());   // "products" - go back again
+        console.log(history.pop());
+        // "checkout" - go back
+        console.log(history.pop());
+        // "products" - go back again
         console.log(history);         // ["home"]
 
    A stack is exactly right here, because "back" always means the most recent page, which is
@@ -260,7 +262,8 @@ questions.
 
         const unique = [...new Set(names)];
 
-        console.log(unique);          // ["Ada", "Grace", "Alan"]
+        console.log(unique);
+        // ["Ada", "Grace", "Alan"]
         console.log(unique.length);   // 3
 
   A Set does both jobs at once. Building one from the array removes the repeats, and you can

@@ -145,7 +145,8 @@ Clue: `get()` on an empty file field does not return `undefined`.
    The `File` object is what you get by reaching into the list:
 
         let file = fileInput.files[0];      // a File
-        let count = fileInput.files.length; // how many were chosen
+        // how many were chosen
+        let count = fileInput.files.length;
 
 
 6) `formData.get("fruits")` returns **only the first checked value**. To get them all, use

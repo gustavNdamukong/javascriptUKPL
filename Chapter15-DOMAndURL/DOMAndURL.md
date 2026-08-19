@@ -1201,7 +1201,8 @@ Let us count the times we use document.createElement() in the example:
 	
     1. document.createElement("div")
     2. document.createElement("table")
-    3. document.createElement("tr") // row for table headings
+    // row for table headings
+    3. document.createElement("tr")
     4. document.createElement("th") // First Name heading
     5. document.createElement("th") // Surname heading
     6. document.createElement("tr") // row 1 
@@ -1446,17 +1447,24 @@ still what you reach for in some very specific corners, which we will come to.
 #### Syntax examples of XPath (//tag, /html/body, etc.)
   XPath expressions use a path-like syntax to describe elements in a document. Here are a few examples:
 
-    * //p            Selects all <p> elements in the document, no matter
+    // p Selects all <p> elements in the document, no matter
+    *
                      where they are.
 
     * /html/body/div Selects a specific <div> that is a direct child of the
                      <body> and <html> elements.
 
-    * //div[@class='box']   Selects all <div> elements with the class box.
+    // div[@class='box'] Selects all
+    // <div> elements with the class box.
+    *
 
-    * //ul/li[2]     Selects the second <li> element inside every <ul>.
+    // ul/li[2] Selects the second
+    // <li> element inside every <ul>.
+    *
 
-    * //*[@id='main']   You probably guessed this one; yes, it selects every
+    // *[@id='main'] You probably guessed
+    // this one; yes, it selects every
+    *
                      element on this web document that has the id of "main"
                      (id="main").
 
@@ -1500,8 +1508,10 @@ Here’s how the document.evaluate() method works:
 ```
 const result = document.evaluate(
   xpath,                  // The XPath expression
-  document,               // Context node (usually `document`)
-  null,                   // Namespace resolver (null for HTML)
+  // Context node (usually `document`)
+  document,
+  // Namespace resolver (null for HTML)
+  null,
   XPathResult.ORDERED_NODE_SNAPSHOT_TYPE, // Result type
   null                    // Initial result (null for new)
 );
@@ -1538,14 +1548,17 @@ Let’s see it in action reading data from documents.
 
 Let’s see how you would use the document.evaluate() method to run an XPath query on the HTML document to extract all the book titles that are within `<span>` tags on the web page. Here is the JavaScript code to do that:
 
-	// XPath expression to find all span elements with class "title"
+	// XPath expression to find all
+	// span elements with class "title"
 	const xpath = "//span[@class='title']";
 
 	// Run XPath query on the current HTML document
 	const result = document.evaluate(
   		xpath,              // the XPath expression
-  		document,           // context node — default for HTML document
-  		null,               // namespace resolver (not needed for HTML)
+  		// context node — default for HTML document
+  		document,
+  		// namespace resolver (not needed for HTML)
+  		null,
   		XPathResult.ORDERED_NODE_SNAPSHOT_TYPE,
   		null
 	);
@@ -2248,9 +2261,9 @@ let todoString = "";
 ```
 
 
-	//------------------------------------------------------------
+	// ------------------------------------------------------------
 	// ADD EVENT LISTENERS
-	//------------------------------------------------------------
+	// ------------------------------------------------------------
 	let addItemButton = document.querySelector("#addItemButton"); 
 	addItemButton.addEventListener("click", openAddItemDiv); 
 
@@ -2260,12 +2273,12 @@ let todoString = "";
 	let cancelAddItemButton = document.querySelector(".cancelAddItem");
 	cancelAddItemButton.addEventListener("click", cancelNewItem);
 
-	//------------------------------------------------------------
+	// ------------------------------------------------------------
     
 
-	//------------------------------------------------------------
+	// ------------------------------------------------------------
 	    // THE FUNCTIONS
-	//------------------------------------------------------------
+	// ------------------------------------------------------------
 	function addTodoItem(e) {
 	    e.preventDefault();
     
@@ -2290,10 +2303,12 @@ let todoString = "";
         let addItemDiv = document.querySelector("#addItemDiv");
         addItemDiv.style.display = "none";
         //---------------------------------------------
-        // ADD EVENT LISTENERS TO BUTTONS (editButton, cancelEdit, saveEdit)
+        // ADD EVENT LISTENERS TO BUTTONS
+        // (editButton, cancelEdit, saveEdit)
         //---------------------------------------------
 
-        // Find the .editButton inside that specific parent <li>
+        // Find the .editButton inside
+        // that specific parent <li>
         let editButton = li.firstElementChild.querySelector(".editButton");
         // Add click event listener to the found editButton
         editButton.addEventListener("click", openEdit);
@@ -2336,7 +2351,8 @@ let todoString = "";
     let editFormDiv = e.target.nextElementSibling;
     editFormDiv.style.display = "block";
     
-	    // it will be nice to pre-fill the edit form with old value
+	    // it will be nice to pre-fill
+	    // the edit form with old value
 	    let todoTargetTextSpan = e.target.parentElement.firstElementChild;
 	    let oldText = todoTargetTextSpan.textContent;
 	    editFormDiv.firstElementChild.firstElementChild.value = oldText;
@@ -2347,7 +2363,8 @@ let todoString = "";
 	    // clear any input text from edit field
 	    e.target.previousElementSibling.value = ""; 
     
-    // Find the closest ancestor with class .editFormDiv and hide it
+    // Find the closest ancestor with
+    // class .editFormDiv and hide it
     let editFormDiv = e.target.closest(".editFormDiv");
     if (editFormDiv) {
         editFormDiv.style.display = "none";

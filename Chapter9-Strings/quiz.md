@@ -186,11 +186,13 @@ My name is Alice
 
 8) Two ways:
 
-        // 1. Choose outer quotes that do not clash. Backticks work
+        // 1. Choose outer quotes that
+        // do not clash. Backticks work
         //    for both kinds at once.
         const line1 = `He said "it's fine"`;
 
-        // 2. Or escape whichever ones clash with your outer quotes
+        // 2. Or escape whichever ones
+        // clash with your outer quotes
         const line2 = "He said \"it's fine\"";
 
         console.log(line1);   // He said "it's fine"

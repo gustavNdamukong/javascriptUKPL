@@ -258,13 +258,17 @@ This one is going to be more complex than the three examples above, but it reall
 		ctx.lineCap = "round";
 		ctx.strokeStyle = paintColor;
 
-		// Start a fresh path, and place the pen on that exact spot
+		// Start a fresh path, and place
+		// the pen on that exact spot
 		ctx.beginPath();
 		ctx.moveTo(x, y);
 
-		// Now draw a line from that spot to itself. That sounds like a
-		// pointless thing to do, but because lineCap is "round" it paints
-		// one round dot. This is what makes a plain click leave a mark.
+		// Now draw a line from that spot
+		// to itself. That sounds like a
+		// pointless thing to do, but because
+		// lineCap is "round" it paints
+		// one round dot. This is what makes
+		// a plain click leave a mark.
 		ctx.lineTo(x, y);
 		ctx.stroke();
 	});
@@ -294,8 +298,10 @@ This one is going to be more complex than the three examples above, but it reall
 		 // Draw line to current position
   		ctx.lineTo(x, y);
   		ctx.stroke();     // Render it
- 		 ctx.beginPath();  // Begin a new path so lines don’t all connect
-  		ctx.moveTo(x, y); // Move the pen to the current mouse position
+ 		 // Begin a new path so lines don’t all connect
+ 		 ctx.beginPath();
+  		// Move the pen to the current mouse position
+  		ctx.moveTo(x, y);
 	});
 
 	// Paint box
@@ -332,7 +338,8 @@ This one is going to be more complex than the three examples above, but it reall
     		const x = e.clientX - rect.left;
     		const y = e.clientY - rect.top;
   
-    		// Loop through paint colors, check which one the user clicked
+    		// Loop through paint colors, check
+    		// which one the user clicked
     		paint_colors.forEach((paint) => {
       			const dx = x - paint.x;
       			const dy = y - paint.y;
@@ -600,10 +607,14 @@ Here is the modified code to implement pixel erasing using clearRect():
   	let penSize = 4; 
   	let canvasBackground = "white";
 
-  	// Two separate pieces of state. This is the important bit: whether
-  	// the button is held down is a different question from which tool
-  	// is selected, so we keep them in two different variables.
-  	let mouseDown = false;   // is the mouse button being held?
+  	// Two separate pieces of state. This
+  	// is the important bit: whether
+  	// the button is held down is a
+  	// different question from which tool
+  	// is selected, so we keep them
+  	// in two different variables.
+  	// is the mouse button being held?
+  	let mouseDown = false;
   	let isErasing = false;   // which tool are we using?
 
   	// Start drawing or erasing
@@ -618,7 +629,8 @@ Here is the modified code to implement pixel erasing using clearRect():
           		ctx.clearRect(x - penSize / 2, y - penSize / 2, penSize, penSize);
       		}
       		else {
-          		// Set the pen up, put it down, and mark the spot so that a
+          		// Set the pen up, put it down,
+          		// and mark the spot so that a
           		// click on its own still leaves a dot
           		ctx.lineWidth = penSize;
           		ctx.lineCap = "round";
@@ -635,12 +647,14 @@ Here is the modified code to implement pixel erasing using clearRect():
   	canvas.addEventListener("mouseup", () => {
       		mouseDown = false;
 
-    		// reset path to avoid drawing a line when mouse is moved
+    		// reset path to avoid drawing
+    		// a line when mouse is moved
     		// without holding click
       		ctx.beginPath(); 
   	});
 
-  	// If the pointer leaves the canvas we stop too, otherwise letting go
+  	// If the pointer leaves the canvas
+  	// we stop too, otherwise letting go
   	// outside the canvas would leave mouseDown stuck on true
   	canvas.addEventListener("mouseleave", () => {
       		mouseDown = false;
@@ -657,7 +671,8 @@ Here is the modified code to implement pixel erasing using clearRect():
       		const y = e.offsetY;
 
       		if (isErasing) {
-          		// Erase a square under the cursor, the size of the pen
+          		// Erase a square under the
+          		// cursor, the size of the pen
           		ctx.clearRect(
               			x - penSize / 2, y - penSize / 2, penSize, penSize
           		);
@@ -706,7 +721,8 @@ Here is the modified code to implement pixel erasing using clearRect():
 
   	// Listen for clicks on paintBox canvas
   	paintBox.addEventListener("click", (e) => {
-      		// We know user would not click in paintBox if erasing
+      		// We know user would not click
+      		// in paintBox if erasing
       		isErasing = false; 
       		indicatorName.textContent = "Pen";
       		penSize = 4;
@@ -714,7 +730,8 @@ Here is the modified code to implement pixel erasing using clearRect():
         	const x = e.clientX - rect.left;
         	const y = e.clientY - rect.top;
   
-        	// Loop through paint colors, check which one the user clicked
+        	// Loop through paint colors, check
+        	// which one the user clicked
         	paint_colors.forEach((paint) => {
             		const dx = x - paint.x;
             		const dy = y - paint.y;
@@ -733,7 +750,8 @@ Here is the modified code to implement pixel erasing using clearRect():
 	// show user the active color
 	let eraser = document.getElementById("eraser");
 	eraser.addEventListener("click", (e) => {
-    		// switch tool only - whether the button is down is not our business
+    		// switch tool only - whether the
+    		// button is down is not our business
     		isErasing = true; 
 
 		// make the eraser square bigger than the pen
@@ -1269,8 +1287,10 @@ point. If that distance is smaller than the radius, they really are
 touching:
 
 	function circleHitsRock(cx, cy) {
-	    // Find the closest point on the rock to the ball's centre.
-	    // Math.max and Math.min together "clamp" the ball's centre so
+	    // Find the closest point on the
+	    // rock to the ball's centre.
+	    // Math.max and Math.min together
+	    // "clamp" the ball's centre so
 	    // that it never falls outside the rock's edges.
 	    const closestX = Math.max(
 	        rock.x, Math.min(cx, rock.x + rock.width)
@@ -1279,14 +1299,16 @@ touching:
 	        rock.y, Math.min(cy, rock.y + rock.height)
 	    );
 
-	    // How far is the ball's centre from that closest point?
+	    // How far is the ball's centre
+	    // from that closest point?
 	    const distanceX = cx - closestX;
 	    const distanceY = cy - closestY;
 	    const distance = Math.sqrt(
 	        distanceX * distanceX + distanceY * distanceY
 	    );
 
-	    // Touching only if that distance is less than the radius
+	    // Touching only if that distance
+	    // is less than the radius
 	    return distance < ball.radius;
 	}
 

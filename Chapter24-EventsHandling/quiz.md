@@ -159,8 +159,10 @@ document → #parentDiv (capturing handler fires) → #item1 (target, its handle
    With delegation they differ, and that difference is the whole point:
 
         list.addEventListener("click", function (e) {
-            console.log(e.target);         // the <li> you clicked
-            console.log(e.currentTarget);  // the <ul> holding the listener
+            console.log(e.target);
+            // the <li> you clicked
+            console.log(e.currentTarget);
+            // the <ul> holding the listener
         });
 
 
@@ -174,11 +176,13 @@ document → #parentDiv (capturing handler fires) → #item1 (target, its handle
    They solve different problems and are not interchangeable:
 
         form.addEventListener("submit", function (e) {
-            e.preventDefault();     // do not reload the page
+            // do not reload the page
+            e.preventDefault();
         });
 
         button.addEventListener("click", function (e) {
-            e.stopPropagation();    // do not let the parent hear this
+            // do not let the parent hear this
+            e.stopPropagation();
         });
 
    A common mistake is reaching for `stopPropagation()` when a form keeps reloading. That will
@@ -191,7 +195,8 @@ document → #parentDiv (capturing handler fires) → #item1 (target, its handle
 
         document.getElementById("myButton")
             .addEventListener("click", function (e) {
-                console.log("ID is: " + e.target.id);   // ID is: myButton
+                console.log("ID is: " + e.target.id);
+                // ID is: myButton
             });
 
    The handler receives the **event object** as its first parameter — usually called `e` or
@@ -253,7 +258,8 @@ Child clicked
             }
         });
 
-        // now add a third item, AFTER the listener was set up
+        // now add a third item, AFTER
+        // the listener was set up
         const newItem = document.createElement("li");
         newItem.textContent = "Item 3";
         list.appendChild(newItem);

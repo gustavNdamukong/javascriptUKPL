@@ -176,7 +176,8 @@ Here are examples of how these static methods can be used:
 
 
 #### Object.assign() can be used in a couple of different ways
-	// use Object.assign() for copying properties between objects
+	// use Object.assign() for copying
+	// properties between objects
 	
 	const target = { a: 1 }; 
 	const source1 = { b: 2 }; 
@@ -294,11 +295,15 @@ relationship, and this single line of code shows how they meet:
 
 		let person1 = new Person('Tom');
 
-		// The link on the INSTANCE points at the property on the FUNCTION
-		console.log(person1.__proto__ === Person.prototype);  // true
+		// The link on the INSTANCE points
+		// at the property on the FUNCTION
+		console.log(person1.__proto__ === Person.prototype);
+		// true
 
-		// And the instance itself has no .prototype property at all
-		console.log(person1.prototype);                       // undefined
+		// And the instance itself has
+		// no .prototype property at all
+		console.log(person1.prototype);
+		// undefined
 
   Read those last two lines together and the whole thing falls into
 place. Person.prototype is the mould. person1.__proto__ is the arrow
@@ -435,7 +440,8 @@ __proto__: Object
    			collection.push(temporal);
 		}
 
-		// note the += on each line. A plain = would REPLACE what is
+		// note the += on each line. A
+		// plain = would REPLACE what is
 		// already there, so only the last line would ever be seen
 		document.body.innerHTML += 'HERE IS THE collection: '+collection+'<br>';
 		document.body.innerHTML += 'FIRST OBJECT IN collection: '+collection[0].name+'<br>';
@@ -734,7 +740,8 @@ However, while the constructor.prototype of an object literal will always point 
     let obj1 = {x:1}
 
     //check if the prototype of obj1 is Object()
-    Object.prototype.isPrototypeOf(obj1); //the result is true
+    // the result is true
+    Object.prototype.isPrototypeOf(obj1);
 
     //further create an object from obj1
     let obj2 = Object.create(obj1);
@@ -849,7 +856,8 @@ This writes to the console ‘The props of employee are:
 	// will return true
 	console.log(person.hasOwnProperty("name")); 
 
-	// returns false (because toString is inherited from prototype)
+	// returns false (because toString
+	// is inherited from prototype)
 	console.log(person.hasOwnProperty("toString")); 
 
 	
@@ -964,17 +972,23 @@ However, the Car object has two methods that the Motorbike object does not have,
 		//-Next, let's see how you would pass arguments to 
 		// the method you are calling on the other object.
 		// alert(bike.multiply(2,2));
-		//I expect this to throw an error in the console saying 'bike.multiply is not a function'.
-  		 //Comment this line out to proceed with running the rest of the code on this page.
+		// I expect this to throw an error in the console
+		// saying 'bike.multiply is not a function'.
+  		 // Comment this line out to proceed with
+  		 // running the rest of the code on this page.
 		alert(car.multiply.call(bike, 2, 2));
 		//I expect the popup to say 4
-		//-Notice we just called multiply() on Motorbike (bike) as if it was a method of the Motorbike object
-		//-Notice that after the first argument, call() takes comma-separated values to pass as arguments
-   			//to the method it is calling-if that method needs arguments
+		// -Notice we just called multiply() on Motorbike
+		// (bike) as if it was a method of the Motorbike object
+		// -Notice that after the first argument, call()
+		// takes comma-separated values to pass as arguments
+   			// to the method it is calling-if
+   			// that method needs arguments
 
 		alert(car.multiply.apply(bike, [2, 2]));
 		//I expect the popup to say 4
-		//-Notice that apply() takes an array of values to pass as arguments to the method it is calling-if
+		// -Notice that apply() takes an array of values to
+		// pass as arguments to the method it is calling-if
    			//that method needs arguments
 
 
@@ -1017,16 +1031,23 @@ You first of all prepare or bind the method getName() outside of the person obje
 		alert(getType());
 		//I expect the popup to say 'Harley Davidson-petrol'
 
-		//-Notice that unlike with the call() and apply() methods, when binding, we are kind 			
-		//of like creating a stand-alone function separate from the object it belongs to, 			
-		//which we can just call alone and it will automatically already know what 			
-		//context to use, and what arguments to use. For example when we just call:
+		// -Notice that unlike with the call() and
+		// apply() methods, when binding, we are kind
+		// of like creating a stand-alone function
+		// separate from the object it belongs to,
+		// which we can just call alone and it
+		// will automatically already know what
+		// context to use, and what arguments to
+		// use. For example when we just call:
    		// getType();
 
 		let multiply = car.multiply.bind(bike, 2, 2);
 		alert(multiply());
 		//I expect the popup to say 4
-		//-Notice that just like call(), if the method being called with bind needs arguments, these are passed to bind() after the first argument as comma-separated values.
+		// -Notice that just like call(), if the method
+		// being called with bind needs arguments,
+		// these are passed to bind() after the first
+		// argument as comma-separated values.
 
 The bind() method allows an object to borrow a method from another object without making a copy of that method. This is known as function borrowing in JavaScript, and it's very powerful because it broadens the capabilities of your classes and objects while promoting code reuse.
 
