@@ -27,13 +27,13 @@ reliable, performant and fault-tolerant applications. This is also a section whe
 
 
 ## Displaying values on screen
-  All programming languages offer you built-in tools which could be properties or functions to use in displaying stuff on the screen. These are very handy as you can use them in:
+  All programming languages offer you built-in tools which could be properties or functions to use in displaying stuff on the screen. These are very handy as you can use them in:  
 
-  - the working of your application to dynamically write text or display
-    data on screen, for example in certain parts of your web page,
-  - or you can also use them to inform/warn the user of something or
-    even prompt the user to enter some information
-  - or you can use them during development to print out data held in
+  i) the working of your application to dynamically write text or display
+    data on screen, for example in certain parts of your web page,  
+  ii) or you can also use them to inform/warn the user of something or
+    even prompt the user to enter some information  
+  iii) or you can use them during development to print out data held in
     maybe a variable in order to view its contents so you know what
     type of data you are dealing with, or to help you debug a part of
     your web page that is not working properly.
@@ -75,9 +75,9 @@ you are looping for example, and wish to display several values on
 screen, each subsequent value being written will be displayed
 without completely wiping what was previously there. Basically, the
 += makes sure that each new line is added to what's already there,
-instead of replacing it.
+instead of replacing it.  
 
-- innerHTML
+ii) innerHTML
   To display text (also known as a string) inside an element on your
   web page, you can use the very popular innerHTML property of
   document elements:
@@ -102,17 +102,17 @@ document.write() do this:
   Because of the following points:
     - It appends content safely to the page.
     - It keeps the rest of your HTML intact.
-    - It doesn’t cause errors or wipe the screen.
+    - It doesn’t cause errors or wipe the screen.  
 
 
-- alert()
+iii) alert()
   To display a popup on screen to inform or warn the user of something
   and have them click OK to dismiss the popup, use the alert()
   function:
 
-		alert("String to display here");
+		alert("String to display here");  
 
-- confirm()
+iv) confirm()
   To display a popup that will require a user to confirm an action by
   clicking on 'Confirm' in order to proceed, or abort the action by
   clicking on 'Cancel', use the confirm() function. Ideally, you will
@@ -134,10 +134,10 @@ document.write() do this:
 		} else {
 			// the user clicked on Cancel
     			alert('You said no!');
-		}
+		}  
 
 
-- prompt()
+v) prompt()
   To retrieve some information from the user through a popup text box,
   use the good old prompt() function. Just like with the confirm popup,
   you can capture what the user enters by assigning the prompt to a
@@ -327,9 +327,9 @@ Alternatively, you can use the Firebug Lite JavaScript module which is easier to
 
 #### Stopping code execution for debug
   It is possible when running some code, to set points (aka breakpoints) in the code where you want the execution to stop. This is when you wish to stop the execution in separate sections to investigate at what point in the code something-usually an error, is occurring. This is usually made possible as a tool in IDEs (Integrated Development Environments). In IDE is basically an advanced text editor for writing code which has evolved over the years to add more features that go beyond just writing code (text). VS Code is one of such IDEs, and you can see how within VS Code you can do more than just type out code. You can create and run a simple server to test your code as we did with the ‘Live Server’ extension in VS Code. Within most IDEs including VS Code, you also have an integrated Terminal application which means you can navigate or connect eg via SSH to your server (local or remote) and run commands, all without leaving your code/text editor. This is how such modern code editors came to earn the name of Integrated Development Environment (IDE).
-  Let’s look at two ways in which you can place break points in your code.
+  Let’s look at two ways in which you can place break points in your code.  
 
-  - Stopping Code Execution for Debugging in JavaScript
+  a) Stopping Code Execution for Debugging in JavaScript
     You can pause JavaScript code in the browser which will be
     picked up by the break point tools in the browser DevTools.
     Just type ‘debugger’; at the line you want execution to stop at.
@@ -353,10 +353,10 @@ in and out of, or skip over functions.
 to the next line.
 
 This is great for temporarily inspecting variables without needing
-to manually set breakpoints in DevTools.
+to manually set breakpoints in DevTools.  
 
 
-  - Using Breakpoints in Browser DevTools
+  b) Using Breakpoints in Browser DevTools
     Without writing code to stop execution, you can achieve the
     same thing directly in DevTools of your browser. To do so, follow
     these steps:

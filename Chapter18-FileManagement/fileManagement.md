@@ -612,19 +612,19 @@ Using URL.createObjectURL(), a temporary download link is created, and a file is
 
 
 ## Read data from a CSV file and inject into the DOM
-  This code lets a user select the CSV file, reads its content using FileReader, and displays it as an HTML table. The example is as follows:
+  This code lets a user select the CSV file, reads its content using FileReader, and displays it as an HTML table. The example is as follows:  
 
-- Create a CSV file in the root of your local project folder. Name the file
+a) Create a CSV file in the root of your local project folder. Name the file
   anything you want, like ‘employees’. Add this dummy people data in it:
 
   Name,Age,Email,Country
   Alice,25,alice@example.com,USA
   Bob,30,bob@example.com,UK
-  Charlie,28,charlie@example.com,Canada
+  Charlie,28,charlie@example.com,Canada  
 
 
 
-- Have a stylesheet e.g index.css with this code
+b) Have a stylesheet e.g index.css with this code
 
   ```
   table, th, td {
@@ -632,11 +632,11 @@ Using URL.createObjectURL(), a temporary download link is created, and a file is
           border-collapse: collapse;
           padding: 8px;
   }
-  ```
+  ```  
 
 
 
-- Have an HTML file (e.g. index.html) with this code:
+c) Have an HTML file (e.g. index.html) with this code:
 
   ```
   <!DOCTYPE html>
@@ -655,11 +655,11 @@ Using URL.createObjectURL(), a temporary download link is created, and a file is
 
 		<script type="module" src="index.js" defer></script>
     	</body>
-	</html>
+	</html>  
 
 
 
-- Have a JavaScript file (e.g. index.js) with this code in it:
+d) Have a JavaScript file (e.g. index.js) with this code in it:
 
   ```
   document.getElementById('csvFile').addEventListener('change', function(event) {
@@ -712,24 +712,24 @@ Using URL.createObjectURL(), a temporary download link is created, and a file is
 
 ## Reading a file’s raw binary data with readAsArrayBuffer()
   We have already used two methods for turning file data into something downloadable, and it is worth being clear about where each one lives, because neither belongs to the File Reader API. createObjectURL() is a method of the URL object and is suitable for handling blobs, while toDataURL() is a method of a canvas element and is suitable for canvas images. The File Reader API’s own methods are the readAs... family we listed earlier, and there is one of those we have not talked about yet: readAsArrayBuffer(). The readAsArrayBuffer() method of the FileReader API is used to read a file's raw binary data. It reads the contents of a file (or blob) and returns it as an ArrayBuffer, which is a low-level representation of binary data. 
-  It can be used in different scenarios. Here are scenarios when you may need to use the readAsArrayBuffer() method:
+  It can be used in different scenarios. Here are scenarios when you may need to use the readAsArrayBuffer() method:  
 
-- When you’re working with binary files, such as:
+a) When you’re working with binary files, such as:
 
   - Images
   - Videos
   - PDFs
   - Custom binary formats
-  - Audio files (e.g., .mp3, .wav)
+  - Audio files (e.g., .mp3, .wav)  
 
-- When you want to pass binary data to another API, like:
+b) When you want to pass binary data to another API, like:
 
   - WebSockets (to send binary data in real time)
   - fetch()/XMLHttpRequest for uploading
   - Blob() constructor for creating new binary blobs
-  - Encryption/Decryption libraries
+  - Encryption/Decryption libraries  
 
-- When you want to manipulate or inspect the binary contents using DataView, Uint8Array, etc.
+c) When you want to manipulate or inspect the binary contents using DataView, Uint8Array, etc.
 
 All this information is about being able to read into a file down to the binary level. But if you are like me, it does not mean much. You prefer to see it in practice, and that’s the best way to learn. Let’s look at an example of readAsArrayBuffer() being used. 
 

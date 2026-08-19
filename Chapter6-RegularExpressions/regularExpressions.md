@@ -27,17 +27,17 @@ A regular expression (also referred to as regex) is a
   defining specific patterns that help identify 
   and extract parts of a string.
  
-  Here are its features:
-  - Pattern Matching:
+  Here are its features:  
+  i) Pattern Matching:
     Regular expressions allow you to
     define patterns that match specific
     sequences in text. For example, finding
     email addresses, phone numbers, or
-    validating formats like dates.
-  - Search and Replace: Regex can be
+    validating formats like dates.  
+  ii) Search and Replace: Regex can be
     used to find occurrences of patterns in
-    text and replace them with new strings.
-  - Flexible and Powerful: It provides a
+    text and replace them with new strings.  
+  iii) Flexible and Powerful: It provides a
     flexible way to define complex string
     patterns using literals, wildcards,
     quantifiers, and special characters.
@@ -423,13 +423,13 @@ outcome is to use a pipe character like so:
 
 i) /[\w]{3}/  with ONE digit. This means you
   wish to match a word character
-  if it appears exactly three times.
+  if it appears exactly three times.  
 
-- {3,}     with ONE digit and a comma.
+ii) {3,}     with ONE digit and a comma.
       This means you wish to match
       the preceding character if it
-      appears 3 or more times.
-- {2,3}   with TWO digits separated by a
+      appears 3 or more times.  
+iii) {2,3}   with TWO digits separated by a
       comma. This means you wish to
       match the preceding character if
       it appears anything from two to
@@ -547,10 +547,10 @@ or
 #### Regular expressions in JavaScript
   Regular expressions are used in
   JavaScript only with two methods. These 
-  methods are:
+  methods are:  
 
-  - test() ———-returns boolean
-  - replace()
+  i) test() ———-returns boolean  
+  ii) replace()
 
 #### i) test()
   You call this test() function on your regex

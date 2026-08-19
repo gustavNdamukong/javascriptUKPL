@@ -692,16 +692,16 @@ types.
 #### Primitive (7)
   These are immutable (meaning they what they are in value and are not 
 references, so they cannot be changed), and represent single values. Their values are literally what they appear to be. In JavaScript 
-there are 5 primitive data types, plus two types Symbols and BigInt added in later specifications of JavaScript. Here is an abbreviation I came up with-use it or find your own way to remember them: SNBUNSB (SN BUN SB).
+there are 5 primitive data types, plus two types Symbols and BigInt added in later specifications of JavaScript. Here is an abbreviation I came up with-use it or find your own way to remember them: SNBUNSB (SN BUN SB).  
 
-  - String (literal value like ‘hello world’)
-  - Number (represents both integers and floating-point numbers, like
-    42, or 3.14)
-  - Boolean (represents true or false values)
-  - Undefined (represents an uninitialised variable or missing value)
-  - Null (represents the intentional absence of a value)
-  - Symbol (introduced in ES6: and represents a unique identifier)
-  - BigInt (introduced in ES11: Represents large integers beyond the
+  i) String (literal value like ‘hello world’)  
+  ii) Number (represents both integers and floating-point numbers, like
+    42, or 3.14)  
+  iii) Boolean (represents true or false values)  
+  iv) Undefined (represents an uninitialised variable or missing value)  
+  v) Null (represents the intentional absence of a value)  
+  vi) Symbol (introduced in ES6: and represents a unique identifier)  
+  vii) BigInt (introduced in ES11: Represents large integers beyond the
     range of Number)
 
 I will like to introduce to you at this point, a special numeric value worth knowing because it is very useful in handling numbers in JavaScript. It is NaN. NaN is a special numeric value that means 'Not a Number'. It is part of the Number type in JavaScript. However, it is not a data type, but rather a special numeric value within the Number data type. It represents the result of an invalid or undefined mathematical operation. For example:
@@ -1228,15 +1228,15 @@ and using one gives you a ReferenceError:
 
 - Figure 10.1 — The eight falsy values, and everything else*
 
-  because everything not on it is truthy:
+  because everything not on it is truthy:  
 
-    - false          the boolean itself
-    - 0   and  -0    zero, either sign
-    - 0n             zero as a BigInt
-    - ""             an empty string
-    - null           a deliberate "no value"
-    - undefined      a value never set
-    - NaN            "Not a Number"
+    i) false          the boolean itself  
+    ii) 0   and  -0    zero, either sign  
+    iii) 0n             zero as a BigInt  
+    iv) ""             an empty string  
+    v) null           a deliberate "no value"  
+    vi) undefined      a value never set  
+    vii) NaN            "Not a Number"
 
   Everything else is truthy. That includes some things people often expect to be falsy:
 

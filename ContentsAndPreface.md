@@ -112,11 +112,11 @@ Chapter 3 - Arrays
 - Looping through an
   associative array
 - Looping through a
-  multi-dimensional array
-- Loop through a
+  multi-dimensional array  
+a) Loop through a
   multi-dimensional
-  index array
-- Loop through an
+  index array  
+b) Loop through an
   associative
   multi-dimensional array
 - Rest parameters and the spread
@@ -163,10 +163,10 @@ Chapter 5 - Control Flow
 - Combining math operators with the assignment operator
 - Conditionals
 - if statements
-- Checking Multiple Conditions
-- Independent Conditions
-- Mutually Exclusive Conditions (Two Choices)
-- Mutually Exclusive Conditions (More Than Two Choices)
+- Checking Multiple Conditions  
+a) Independent Conditions  
+b) Mutually Exclusive Conditions (Two Choices)  
+c) Mutually Exclusive Conditions (More Than Two Choices)
 - Additional notes on conditionals
 - Loops (6)
 - The For loop
@@ -565,11 +565,11 @@ Chapter 18 - File Management
 - Limitations of the FileReader API
 
 Chapter 19 - Forms and Email
-- The three ways to handle form data in JavaScript
-- Extracting the value from form fields
-- Using the elements property of
-  HTMLFormElement
-- Using the FormData object
+- The three ways to handle form data in JavaScript  
+i) Extracting the value from form fields  
+ii) Using the elements property of
+  HTMLFormElement  
+iii) Using the FormData object
 - The FormData object and files
 - Mastering FormData and form fields
 - Multiple checkboxes with the same name
@@ -644,11 +644,11 @@ Chapter 22 - Extensions (APIs & Libraries)
 - The responseType property
 - The readyState property
 - Modern Way (Using fetch())
-- Asynchronous programming
-- Callback
-- A promise
-- promise.all()
-- Async/Await
+- Asynchronous programming  
+a) Callback  
+b) A promise
+- promise.all()  
+c) Async/Await
 - Using Axios (External Library)
 - WebSockets
 - Why Use WebSockets

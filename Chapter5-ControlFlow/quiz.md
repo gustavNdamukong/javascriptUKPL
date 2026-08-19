@@ -70,12 +70,12 @@ questions.
 
 7) Match each job to the loop you would reach for:
 
-  - a) You want to run something exactly 10 times
-  - b) You want to keep going until something happens, and you have no idea how many turns
-    that will take
-  - c) You want the code to run at least once before the condition is even checked
-  - d) You want to go through the named properties of an object
-  - e) You want to go through the values in an array, simply and readably
+  a) You want to run something exactly 10 times  
+  b) You want to keep going until something happens, and you have no idea how many turns
+    that will take  
+  c) You want the code to run at least once before the condition is even checked  
+  d) You want to go through the named properties of an object  
+  e) You want to go through the values in an array, simply and readably
 
    Clue: five of the six loop types from this chapter, one each.
 
@@ -136,11 +136,11 @@ questions.
 13) EXERCISE. Create a numbers array containing the numbers 1 to 10, stored in a constant.
   Create three empty arrays: evenNumbers, divisibleBy3 and otherNumbers. Loop through the
   numbers array with a while loop and, using an if...else if conditional and the modulus
-  operator, do the following checks:
+  operator, do the following checks:  
 
-  - check whether the number is divisible by 2, and put it in evenNumbers if it is
-  - check whether the number is divisible by 3, and put it in divisibleBy3 if it is
-  - otherwise put the number in otherNumbers
+  i) check whether the number is divisible by 2, and put it in evenNumbers if it is  
+  ii) check whether the number is divisible by 3, and put it in divisibleBy3 if it is  
+  iii) otherwise put the number in otherNumbers
 
   Once out of the loop, display the contents of all three arrays.
 

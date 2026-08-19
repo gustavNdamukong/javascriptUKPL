@@ -2452,9 +2452,9 @@ Assign multiple attributes to an element in one go
 
 
 Concatenate a variable with a string and display the result
-    It can be challenging to display a string that contains a variable and have the variable parsed and its value displayed. The trick is to do two things;
-    - first, create the string using back ticks which will make your spacing and indentation respected by the browser.
-    - Secondly, start with a dollar sign, followed by a pair of curly braces around the variable. The following example is how you should do it:
+    It can be challenging to display a string that contains a variable and have the variable parsed and its value displayed. The trick is to do two things;  
+    a) first, create the string using back ticks which will make your spacing and indentation respected by the browser.  
+    b) Secondly, start with a dollar sign, followed by a pair of curly braces around the variable. The following example is how you should do it:
 
 		let todoString = "";
 	todoString = `

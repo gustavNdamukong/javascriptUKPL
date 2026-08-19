@@ -111,12 +111,12 @@ it goes in quotes.
 
 
 11) EXERCISE. This exercise will teach you how to get the user to supply some information to
-  your application, and then take and use that information.
+  your application, and then take and use that information.  
 
-  - Display a prompt on screen asking the user to enter their forename
-  - Display a prompt on screen asking the user to enter their surname
-  - Store those values in variables, then
-  - Show an alert telling them what their forename and surname are
+  a) Display a prompt on screen asking the user to enter their forename  
+  b) Display a prompt on screen asking the user to enter their surname  
+  c) Store those values in variables, then  
+  d) Show an alert telling them what their forename and surname are
 
   When you refresh your web page in the browser, you should see two prompt dialog popups one
   after the other; one asking you to enter your forename, and if you enter the value for your
@@ -129,13 +129,13 @@ it goes in quotes.
   message. Join your text and your variables together with the + sign.
 
 
-12) EXERCISE. This one will show you how to modify the value of an HTML element.
+12) EXERCISE. This one will show you how to modify the value of an HTML element.  
 
-  - Create a div in your HTML and give it an ID
-  - Place a p tag with some text manually in the div in your HTML. Refresh your web page in
-    the browser and you should see the text in the p tag displayed on screen
-  - Next, create a variable in JavaScript and assign an image tag to it
-  - Dynamically grab the div, remove the p tag with text inside of it, and replace it with
+  a) Create a div in your HTML and give it an ID  
+  b) Place a p tag with some text manually in the div in your HTML. Refresh your web page in
+    the browser and you should see the text in the p tag displayed on screen  
+  c) Next, create a variable in JavaScript and assign an image tag to it  
+  d) Dynamically grab the div, remove the p tag with text inside of it, and replace it with
     the image you have created in JavaScript
 
   When you refresh your web page, the image should be displaying in the place of the text

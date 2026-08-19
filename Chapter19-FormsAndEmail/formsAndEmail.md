@@ -1,11 +1,11 @@
 
 # Chapter 19 — FORMS AND EMAIL
 
-- The three ways to handle form data in JavaScript
-  - Extracting the value from form fields
-  - Using the elements property of
-    HTMLFormElement
-  - Using the FormData object
+- The three ways to handle form data in JavaScript  
+  i) Extracting the value from form fields  
+  ii) Using the elements property of
+    HTMLFormElement  
+  iii) Using the FormData object
     - The FormData object and files
     - Mastering FormData and form fields
     - Multiple checkboxes with the same name

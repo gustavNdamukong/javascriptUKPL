@@ -162,16 +162,16 @@ It is therefore recommended to be safe by ending all your statements with semico
 	
 ## Where to place the script tags in a web document
   JavaScript can be included in an HTML document in several ways: directly within the page (inline), as a reference to a separate local file, or by linking to a file hosted on an external server. The third method is commonly used to load third-party libraries or services like jQuery, Google Analytics, or frameworks such as React or Vue.
-Examples:
+Examples:  
 
 
-- Referencing a local script file:
+i) Referencing a local script file:
 
   ```
   <script src="/filePath/script.js"></script>
-  ```
+  ```  
 
-- Loading an external script from the internet:
+ii) Loading an external script from the internet:
 
   ```
   <script src="https://example.com/scriptName.js"></script>
@@ -200,9 +200,9 @@ like this: defer="". We leave out the '=""' if it has no value.
 
 One thing to note is that defer only works on a script that loads
 an external file using the src attribute. It has no effect on code
-written directly between the opening and closing script tags.
+written directly between the opening and closing script tags.  
 
-  - Use the DOMContentLoaded event. Here is how to use it:
+  b) Use the DOMContentLoaded event. Here is how to use it:
 
 		document.addEventListener('DOMContentLoaded', function () {
 			// your code here. Only runs once the HTML has been fully

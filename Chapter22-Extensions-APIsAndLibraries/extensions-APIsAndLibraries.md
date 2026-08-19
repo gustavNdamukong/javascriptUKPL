@@ -25,11 +25,11 @@
     - The responseType property
     - The readyState property
   - Modern Way (Using fetch())
-  - Asynchronous programming
-    - Callback
-    - A promise
-      - promise.all()
-    - Async/Await
+  - Asynchronous programming  
+    a) Callback  
+    b) A promise
+      - promise.all()  
+    c) Async/Await
   - Using Axios (External Library)
 - WebSockets
   - Why Use WebSockets
@@ -1455,10 +1455,10 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 ![Figure 22.1 — The same wait, written three ways](images/ch22-fig-01-three-async-styles.svg)
 
 - Figure 22.1 — The same wait, written three ways*
- Let us dive right in, and demonstrate with examples, a callback, then move on to show how a promise would be used, and finally, how Async/Await would be used to solve the same problem.
+ Let us dive right in, and demonstrate with examples, a callback, then move on to show how a promise would be used, and finally, how Async/Await would be used to solve the same problem.  
 
 
-  - Callback
+  a) Callback
 
 		<!doctype html>
 		<html>
@@ -1599,7 +1599,7 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 		createPost( 
     			{ title: 'post three', body: 'This is three'},
     			getPosts
-		);
+		);  
 
 	
 
@@ -1676,13 +1676,13 @@ The promise.all() function is used to handle several promises, for example, repl
 		);
 
 Note that promise4 uses the fetch API, an online free test API for json data. That is how it gets its json data. This data coming from the fetch API already uses promises, so you just get the response with then().
-Promise3 uses the setTimeout() function to call after 2 seconds, so the total amount of time promise.all() takes to run is 2 seconds, as it always uses the longest time that any of its	promises takes to resolve.
+Promise3 uses the setTimeout() function to call after 2 seconds, so the total amount of time promise.all() takes to run is 2 seconds, as it always uses the longest time that any of its	promises takes to resolve.  
 
 	
 
 
 
-  - Async/Await
+  c) Async/Await
   
   Async/await literally stands for asynchronous and await. You use them together on a block of code to get the desired result. Start by declaring it one space before the function keyword to mark that function so JavaScript knows that it should be run asynchronously. That is exactly its purpose; to allow you to create your custom asynchronous functions.
 

@@ -32,11 +32,11 @@
     - Combining math operators with the assignment operator
   - Conditionals
     - if statements
-    - Checking Multiple Conditions
-      - Independent Conditions
-      - Mutually Exclusive Conditions
-      (Two Choices)
-      - Mutually Exclusive Conditions
+    - Checking Multiple Conditions  
+      a) Independent Conditions  
+      b) Mutually Exclusive Conditions
+      (Two Choices)  
+      c) Mutually Exclusive Conditions
       (More Than Two Choices)
     - Additional notes on conditionals
   - Loops (6)

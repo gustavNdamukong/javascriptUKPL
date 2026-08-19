@@ -389,10 +389,10 @@ In the same way, when we generate new instances of objects from our blueprint Pe
 
 
 The traditional two ways of creating an object and their prototypes
-There are three main ways of creating an object in modern JavaScript, but before we go into the new way of creating objects, we will first of all, talk about the two traditional ways to do so. As we demonstrate the creation of objects, we will explain how the concept of prototypes underpins it all. This is because in JavaScript, you can not fully understand object creation and instantiation if you do not understand the concept of prototypes and how it relates to object creation. Here are two traditional ways to create objects, and make no mistake about the term traditional or old; for they are still meant for everyday use and work perfectly fine.
+There are three main ways of creating an object in modern JavaScript, but before we go into the new way of creating objects, we will first of all, talk about the two traditional ways to do so. As we demonstrate the creation of objects, we will explain how the concept of prototypes underpins it all. This is because in JavaScript, you can not fully understand object creation and instantiation if you do not understand the concept of prototypes and how it relates to object creation. Here are two traditional ways to create objects, and make no mistake about the term traditional or old; for they are still meant for everyday use and work perfectly fine.  
 
-  - Initialiser objects also known as object literals.
-  - Constructor objects sometimes referred to as object templates or blueprints.
+  i) Initialiser objects also known as object literals.  
+  ii) Constructor objects sometimes referred to as object templates or blueprints.
 
 		
   i) Initialiser objects
@@ -1014,9 +1014,9 @@ either by wrapping the call to person.getName() inside another anonymous functio
 			person.getName(); 
 		}, 1000);
 
-This will work because the anonymous function will get the person object from the outer scope and then call the method getName() on it.
+This will work because the anonymous function will get the person object from the outer scope and then call the method getName() on it.  
 
-  - Using the bind() method
+  ii) Using the bind() method
 		
 You first of all prepare or bind the method getName() outside of the person object before you proceed to use it outside of the person object. Once you bind it (with the bind() function), bind() will automatically set the context for you, and you can then safely use it. For example:
 
@@ -1144,15 +1144,15 @@ created using a constructor function:
   keyword, unlike the object literal where the 
   object is created directly.
   Here are some reasons why you would
-  use object literals:
+  use object literals:  
 
-  - Convenience. They provide a way to
+  i) Convenience. They provide a way to
     quickly create objects when you know
-    the properties in advance.
-  - Efficiency. They reduce the need for
+    the properties in advance.  
+  ii) Efficiency. They reduce the need for
     additional code to create and initialise
-    objects.
-  - Clarity. Object literals are easy to
+    objects.  
+  iii) Clarity. Object literals are easy to
     read and understand, especially for
     simple objects.
 

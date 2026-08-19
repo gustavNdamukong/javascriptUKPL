@@ -35,11 +35,11 @@
     - Looping through an
       associative array
     - Looping through a
-      multi-dimensional array
-      - Loop through a
+      multi-dimensional array  
+      a) Loop through a
       multi-dimensional
-      index array
-      - Loop through an
+      index array  
+      b) Loop through an
       associative
       multi-dimensional array
   - Rest parameters and the spread
@@ -1166,17 +1166,17 @@ The result will be:
   Looping through a
 #### multi-dimensional array
 
-  - Loop through a multi-dimensional
+  a) Loop through a multi-dimensional
 #### index array
   There are three ways to loop through a multi-dimensional indexed array. 
 You can do it in any of the following ways:
 
   - a nested for loop,
   - a forEach() method, or
-  - the flat() method.
+  - the flat() method.  
 
 
-  - Nested for loop
+  i) Nested for loop
 
 		let myArray = [ 
 			[1, 2, 3], 
@@ -1202,10 +1202,10 @@ The result is each number printed on its own line:
 6
 7
 8
-9
+9  
 
 
-  - Using the forEach() method
+  ii) Using the forEach() method
 				
 		myArray.forEach(
 			row => { 
@@ -1215,10 +1215,10 @@ The result is each number printed on its own line:
 			}
 		);
 
-The result is the same, each number on its own line.
+The result is the same, each number on its own line.  
 
 
-  - Using the flat() method
+  iii) Using the flat() method
     This method is for when you just need a single loop, that is,
     if you don't need to maintain the structure and just want to
     iterate over all the elements. This method flattens the array into
@@ -1226,10 +1226,10 @@ The result is the same, each number on its own line.
 
 		myArray.flat().forEach(element => console.log(element));
 
-The result is again the same, each number on its own line.
+The result is again the same, each number on its own line.  
 
 
-  - Loop through an associative
+  b) Loop through an associative
 #### multi-dimensional array
 JavaScript does not have true multi-dimensional associative arrays like other programming languages like PHP. However, you can use an array of objects or a nested object to achieve a similar structure. That is basically what we did under the "Multi-dimensional associative" array section above. If you use an array of objects, you need to iterate differently than an indexed multi-dimensional array. Let’s see some examples:
 
@@ -1283,9 +1283,9 @@ level. Here is an example:
 
 
 #### Rest parameters and the Spread operator
-  When working with arrays in JavaScript, understanding rest parameters (...rest) and the spread operator (...spread) is crucial. These two concepts provide a flexible way to handle array elements, whether you're collecting values into an array or expanding an array into individual elements.
+  When working with arrays in JavaScript, understanding rest parameters (...rest) and the spread operator (...spread) is crucial. These two concepts provide a flexible way to handle array elements, whether you're collecting values into an array or expanding an array into individual elements.  
 
-- Rest Parameters (...rest) – Collecting
+a) Rest Parameters (...rest) – Collecting
   Values into an Array
 
   Rest parameters are used in function
@@ -1319,10 +1319,10 @@ level. Here is an example:
     variable number of arguments.
     - When you want to work with
     arguments as an array instead of
-    the older arguments object.
+    the older arguments object.  
 
 
-- The Spread Operator (...spread) –
+b) The Spread Operator (...spread) –
   Expanding an Array into Individual
   Elements
 
@@ -2138,11 +2138,11 @@ techniques:
 It adds to, or removes elements from an array and returns the
 removed items. In doing so, it modifies the original array.
   It takes one required argument and any number of optional ones
-after it:
-  - The index at which to remove an element (required)
-  - The number of elements to remove (optional). If it's 0,
-  nothing will be removed from the array
-  - Items to be put into that index (optional).
+after it:  
+  i) The index at which to remove an element (required)  
+  ii) The number of elements to remove (optional). If it's 0,
+  nothing will be removed from the array  
+  iii) Items to be put into that index (optional).
 
 		const arr = [1, 2, 3, 4];
 		arr.splice(1, 2, "a", "b");
