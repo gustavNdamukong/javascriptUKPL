@@ -6,7 +6,13 @@
 /node_modules/
 bookbuild/node_modules/
 /dist/
-/build/
+# Build outputs are ignored EXCEPT the two finished books. Gustav wants those
+# in the repo as crash insurance - the machine can restart overnight and they
+# take half an hour to rebuild. Note the /build/* form: with a bare /build/,
+# git never descends into the directory and the exceptions below are ignored too.
+/build/*
+!/build/TheJavaScriptBlueprint.epub
+!/build/TheJavaScriptBlueprint-print.pdf
 npm-debug.log*
 yarn-error.log*
 

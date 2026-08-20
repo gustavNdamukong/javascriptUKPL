@@ -14,7 +14,8 @@
 //
 //   node printpdf.mjs [out.pdf]
 import puppeteer from 'puppeteer-core';
-import { existsSync } from 'fs';
+import { existsSync, copyFileSync, mkdirSync } from 'fs';
+import { dirname } from 'path';
 
 const CHROME = '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome';
 const PAGE = '/tmp/kdpsample/out/paged.html';
@@ -63,6 +64,16 @@ try {
         timeout: 0
     });
     console.log('  written:', OUT);
+
+    // Also drop a copy in build/, which is committed. /tmp is cleared on
+    // reboot and the Desktop is not in the repo; this is the copy that
+    // survives a crash.
+    const keep = '/Users/user/UKPL/javascriptUKPL/build/TheJavaScriptBlueprint-print.pdf';
+    if (OUT !== keep) {
+        mkdirSync(dirname(keep), { recursive: true });
+        copyFileSync(OUT, keep);
+        console.log('  kept in the repo:', keep);
+    }
 } finally {
     await browser.close();
 }
