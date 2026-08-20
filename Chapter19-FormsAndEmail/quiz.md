@@ -98,7 +98,7 @@ Clue: `get()` on an empty file field does not return `undefined`.
     form.elements.username        // by name
     formData.get("username")      // by name
 
-   A field with **no `name`** is ignored by `FormData` entirely — it simply will not appear.
+   A field with **no `name`** attribute is ignored by `FormData` entirely — it simply will not appear.
    That is a quiet source of "why is my value missing?", because the field looks perfectly
    normal on the page and may well have an id.
 
