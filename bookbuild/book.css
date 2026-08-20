@@ -3,7 +3,9 @@
    live in print.css so the EPUB does not inherit them. */
 
 /* ---------- page ---------- */
-/* KDP 6x9 trim. Inner margin is wider to clear the gutter. */
+/* KDP 7x10 trim. Inner margin is wider to clear the gutter.
+   NOT 6x9, which this comment claimed for months: the book is 779 pages at
+   7x10 and would be about 950 at 6x9, over KDP's 828 ceiling. */
 @page {
     size: 7in 10in;
     margin: 0.8in 0.65in 0.9in 0.9in;
