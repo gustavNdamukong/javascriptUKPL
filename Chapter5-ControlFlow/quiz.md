@@ -252,12 +252,13 @@ false
 
 
 7) 
-| - a) exactly 10 times | →  the for loop |
-|---|---|
-| - b) unknown number of turns | →  the while loop |
-| - c) run at least once first | →  the do...while loop |
-| - d) properties of an object | →  the for...in loop |
-| - e) values in an array, readably | →  the for...of loop |
+   | Job | Loop |
+   |---|---|
+   | a) exactly 10 times | → the for loop |
+   | b) unknown number of turns | → the while loop |
+   | c) run at least once first | → the do...while loop |
+   | d) properties of an object | → the for...in loop |
+   | e) values in an array, readably | → the for...of loop |
 
    The sixth, forEach(), is an array method rather than a loop keyword. You would use it when
    you want to run a function on every element of an array.
