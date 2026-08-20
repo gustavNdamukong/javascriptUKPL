@@ -213,9 +213,27 @@ th { background: #f2f2f2; font-weight: 600; }
     border-bottom: none;
     color: #000;
 }
-/* a dotted leader out to the page number */
+/* A dotted leader out to the page number.
+   NOT leader('.'): Paged.js gives us @page margin boxes and target-counter,
+   but not leader(), and Chrome on its own gives us none of the three. The
+   dotted rule is therefore drawn as a flexible box between the title and the
+   number, which needs nothing beyond ordinary CSS and stretches the same way. */
+.toc a {
+    display: flex;
+    align-items: baseline;
+}
+.toc a::before {
+    content: "";
+    order: 1;
+    flex: 1 1 auto;
+    border-bottom: 0.5pt dotted #999;
+    margin: 0 0.4em;
+    transform: translateY(-0.15em);
+}
 .toc a::after {
-    content: " " leader('.') " " target-counter(attr(href), page);
+    content: target-counter(attr(href), page);
+    order: 2;
+    flex: 0 0 auto;
     font-size: 0.95em;
     color: #333;
 }

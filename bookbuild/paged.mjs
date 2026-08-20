@@ -1,7 +1,7 @@
 // Assembles the book for WeasyPrint: heading ids, a generated page-numbered
 // table of contents, and the running-header hooks.
 import { renderFile } from './render.mjs';
-import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync } from 'fs';
+import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, copyFileSync } from 'fs';
 import { execSync } from 'child_process';
 import { join } from 'path';
 
@@ -9,6 +9,9 @@ const BASE = '/Users/user/UKPL/javascriptUKPL';
 const SP = '/private/tmp/claude-501/-Users-user/5cb49476-179c-47d7-9348-055b74d5737b/scratchpad';
 const OUT = '/tmp/kdpsample/out';
 mkdirSync(join(OUT, 'images'), { recursive: true });
+// the polyfill has to sit beside the page that loads it
+copyFileSync(new URL('./node_modules/pagedjs/dist/paged.polyfill.js', import.meta.url),
+             join(OUT, 'paged.polyfill.js'));
 
 const files = [];
 if (existsSync(join(BASE, 'ContentsAndPreface.md'))) files.push(join(BASE, 'ContentsAndPreface.md'));
@@ -111,7 +114,19 @@ console.log('hand-written CONTENTS replaced:', body.length !== before);
 const css = readFileSync(new URL('./book.css', import.meta.url), 'utf8');
 writeFileSync(join(OUT, 'paged.html'),
     `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
-    `<title>The JavaScript Blueprint</title><style>${css}</style></head><body>${body}</body></html>`);
+    `<title>The JavaScript Blueprint</title><style>${css}</style></head><body>${body}</body>
+<!-- Chrome implements no CSS Paged Media at all: no @page margin boxes, so no
+     folio and no running head; no target-counter, so a contents with no page
+     numbers. The stylesheet was written for WeasyPrint, which does support
+     them, and nothing warned that Chrome was dropping them silently. Paged.js
+     paginates in the page itself and implements the lot. -->
+<script>
+  // Paged.js lays the book out asynchronously, long after the page reports
+  // itself loaded. Chrome will happily print halfway through - it produced a
+  // 4-page book that way. This flag is what the printer waits for.
+  window.PagedConfig = { auto: true, after: () => { window.__pagedDone = true; } };
+</script>
+<script src="paged.polyfill.js"></script></html>`);
 
 console.log('files      :', files.length);
 console.log('figures    :', nfig);
