@@ -731,9 +731,44 @@ Option 2: Remove the type="module" attribute from your
 
 	<script src="index.js"></script>
 
-Now everything defined in index.js becomes globally available by default. So, here are the take-away points of learning:
+Now everything defined in index.js becomes globally available by default.
 
-- If you want to use import/export and keep code modular, use type="module" and export what you need. (import and export are the commands modules use to share code between files. We cover them in Chapter 17.)
+  Both of those options answer the same question: how do I reach this function
+  from my HTML? There is a third case, and it is the one modules were really
+  built for — reaching it from another JavaScript file.
+
+  For that, neither window nor removing type="module" is the answer. The file
+  that owns the value has to hand it out, using the export keyword:
+
+```
+// index.js
+export async function fetchPhotos() {
+    // ...the same code as before
+}
+```
+
+  And the file that wants to use it has to ask for it by name, using the import
+  keyword:
+
+```
+// main.js
+import { fetchPhotos } from './index.js';
+
+fetchPhotos();
+```
+
+  The two always come as a pair. One file offers the value with export, the
+  other asks for it with import, and neither one works on its own.
+
+  Notice also what this does NOT do. Adding export to index.js would not have
+  fixed the onclick error above, because export makes a value available to other
+  MODULES, not to HTML. That is what Option 1 was for. It is worth keeping the
+  two apart in your mind: window is how you reach JavaScript from HTML, and
+  import/export is how one JavaScript file reaches another.
+
+So, here are the take-away points of learning:
+
+- If you want to use import/export and keep code modular, use type="module" and export what you need. The import and export keywords are the commands modules use to share code between files: export in the file that owns the value, import in the file that needs it. Do not worry, we will cover modules and the importing and exporting of values between files in Chapter 17 (Object Oriented Programming), specifically under the sub-heading: 'Sharing data between files' from the 'Objects in depth' heading. 
 
 - If you need HTML or other scripts to access your functions, attach them to window, or don't use type="module".
 

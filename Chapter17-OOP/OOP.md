@@ -58,6 +58,7 @@
       Classes)
       - Object literals
       - Class setters and getters
+    - Sharing data between files
       - The difference between import and require
       - Exporting multiple functions or variables
       - Using a wildcard to import all from a file
@@ -1911,6 +1912,8 @@ The constructor serves to set an initial default value for the _arg property whe
 	// call the getter to get the value
     	console.log(myObj.arg);
 
+
+### Sharing data between files
 
 #### The difference between import and require
   In the past, developers would use the require() function to pull data from an external file into a file where they need to use it. The modern and better way is to use import and export. This allows you to export code from one file and import it into another file. It also allows you to only import certain functions and variables from the code in the exporting file.

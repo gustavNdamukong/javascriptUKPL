@@ -526,6 +526,7 @@ Chapter 17 - Object Oriented Programming (OOP)
   Classes)
 - Object literals
 - Class setters and getters
+- Sharing data between files
 - The difference between import and require
 - Exporting multiple functions or variables
 - Using a wildcard to import all from a file
