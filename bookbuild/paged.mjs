@@ -69,7 +69,22 @@ for (const p of files) {
         if (n > 1) id += '-' + n;
         const cls = isQuiz ? ' class="quiz"' : '';
         if (!isQuiz || lvl === '1') toc.push({ level: +lvl, text, id, quiz: isQuiz });
-        return `<h${lvl} id="${id}"${cls}>${inner}</h${lvl}>`;
+
+        // The running head takes the TITLE only, not "Chapter 15 - " as well.
+        // The full string wraps onto two lines in the margin box, and the
+        // number is redundant sitting next to the folio anyway. Marking the
+        // part after the dash gives the header something short to use, while
+        // the heading on the page still reads in full.
+        let out = inner;
+        if (lvl === '1' && !isQuiz) {
+            const dash = inner.indexOf('\u2014');
+            if (dash > -1)
+                out = inner.slice(0, dash + 1) +
+                      '<span class="runhead">' + inner.slice(dash + 1).trim() + '</span>';
+            else
+                out = '<span class="runhead">' + inner + '</span>';
+        }
+        return `<h${lvl} id="${id}"${cls}>${out}</h${lvl}>`;
     });
     body += markVerse(withIds) + '\n';
 }

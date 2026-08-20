@@ -2467,10 +2467,10 @@ Object.assign(li, {
   There are three things you should note here. The first is that Object.assign() needs the element itself as its first argument—leave it out and you have assigned the attributes to nothing at all. The second is how className must be used instead of class to assign a class to an element when using this approach. The third is the way you pass multiple classes to the same element: as one string, with the class names separated by spaces.
 
 
-Concatenate a variable with a string and display the result
-    It can be challenging to display a string that contains a variable and have the variable parsed and its value displayed. The trick is to do two things;  
-    a) first, create the string using back ticks which will make your spacing and indentation respected by the browser.  
-    b) Secondly, start with a dollar sign, followed by a pair of curly braces around the variable. The following example is how you should do it:
+#### Concatenate a variable with a string and display the result
+  It can be challenging to display a string that contains a variable and have the variable parsed and its value displayed. The trick is to do two things;
+  a) first, create the string using back ticks which will make your spacing and indentation respected by the browser.
+  b) Secondly, start with a dollar sign, followed by a pair of curly braces around the variable. The following example is how you should do it:
 
 		let todoString = "";
 	todoString = `
@@ -2488,7 +2488,7 @@ Concatenate a variable with a string and display the result
 	</div>`;
 
 
-How to dynamically insert content into an element
+#### How to dynamically insert content into an element
   There are two ways to do this; using either the textContent or the innerHTML properties of the JavaScript HTMLElement object of which your web page elements are instances. This means that you can just refer to any of these properties of your element, and assign whatever content you want to them as a string. Here is an example:
 
 #### index.html

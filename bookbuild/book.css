@@ -18,6 +18,7 @@
     }
     @bottom-right {
         content: string(chaptitle);
+        white-space: nowrap;
         font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
         font-size: 7.5pt;
         color: #777;
@@ -68,8 +69,11 @@ h1, h2, h3, h4, h5, h6 {
     page-break-inside: avoid;
 }
 
-/* Chapter opener */
-h1:not(.quiz) {
+/* Chapter opener. The running head is set from the TITLE alone - the .runhead
+   span paged.mjs puts around the part after the dash - because the full
+   "Chapter 15 - DOM AND URL MANIPULATION" wraps onto two lines in the margin
+   box, and the number is redundant beside the folio. */
+h1:not(.quiz) .runhead {
     string-set: chaptitle content();
 }
 

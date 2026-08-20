@@ -380,9 +380,9 @@ passed for that parameter. Pass something and yours wins.
         console.log(tripled);
         // [3, 6, 9, 12]
 
-    map() hands each element to your arrow function one at a time and collects up whatever you
-    return, giving you a brand new array. The original is left exactly as it was, which is why
-    printing both shows data unchanged.
+map() hands each element to your arrow function one at a time and collects up whatever you
+return, giving you a brand new array. The original is left exactly as it was, which is why
+printing both shows data unchanged.
 
     Because there is only one parameter, num needs no parentheses around it. The name is yours
     to choose — `n => n * 3` would work just as well, so long as both sides of the arrow agree.

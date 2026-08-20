@@ -106,8 +106,10 @@ are all together in the Answers section further down, numbered to match the ques
 
    The first thing you must do is ask it for its **drawing context**:
 
-        let canvas = document.getElementById("myCanvas");
-        let ctx = canvas.getContext("2d");
+   ```
+   let canvas = document.getElementById("myCanvas");
+   let ctx = canvas.getContext("2d");
+   ```
 
    The context is the actual drawing tool — every method in this chapter is called on `ctx`, not
    on the canvas element. That is why every canvas program in this chapter starts with those two

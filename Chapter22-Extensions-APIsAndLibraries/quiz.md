@@ -155,9 +155,11 @@ http://my-api.com/clothes
 
    That is why the chapter checks explicitly:
 
-        if (!response.ok) {
-            throw new Error('Request failed with status ' + response.status);
-        }
+   ```
+   if (!response.ok) {
+       throw new Error('Request failed with status ' + response.status);
+   }
+   ```
 
 
 5) **Asynchronous JavaScript And XML.**

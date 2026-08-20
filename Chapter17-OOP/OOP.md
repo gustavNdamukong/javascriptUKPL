@@ -274,7 +274,7 @@ Here are examples of how these static methods can be used:
 	// "Alice is 25 years old."
 
 
-Understanding how to use the prototype property
+#### Understanding how to use the prototype property
 Javascript objects work differently from the typical objects in languages like Java of the C family of languages. They use a unique mechanism known as prototypes. Every object in JavaScript carries an internal link to the object it is inheriting from. This is what JavaScript uses to keep track of what object is inheriting from what. This is also referred to as the prototype chain. The prototype property of an object contains its immediate parent (object it is inheriting from). The prototype property of that parent object in turn contains a reference to its own parent object and so forth until it gets to the top most object of the prototype chain, whose own link contains null to indicate that it does not inherit from any object. In JavaScript this top dog of objects is Object.prototype. Again, this prototype-based inheritance mechanism is unique to the JavaScript programming language. The term prototype refers to the object an object is 	created from. It is the mold, the boilerplate, the blueprint if you like. Hopefully you get the idea.
   To see the prototype of an object, check the value of the __proto__ property like so:
   personObject2.__proto__
@@ -395,7 +395,7 @@ In the same way, when we generate new instances of objects from our blueprint Pe
   Note that when creating a new instance from your object, you have to use the keyword new
 
 
-The traditional two ways of creating an object and their prototypes
+#### The traditional two ways of creating an object and their prototypes
 There are three main ways of creating an object in modern JavaScript, but before we go into the new way of creating objects, we will first of all, talk about the two traditional ways to do so. As we demonstrate the creation of objects, we will explain how the concept of prototypes underpins it all. This is because in JavaScript, you can not fully understand object creation and instantiation if you do not understand the concept of prototypes and how it relates to object creation. Here are two traditional ways to create objects, and make no mistake about the term traditional or old; for they are still meant for everyday use and work perfectly fine.  
 
   i) Initialiser objects also known as object literals.  
