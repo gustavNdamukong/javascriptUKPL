@@ -6,14 +6,21 @@ import { execSync } from 'child_process';
 import { join, basename } from 'path';
 
 const BASE = '/Users/user/UKPL/javascriptUKPL';
-// The figures are vector. Shipping the SVG keeps them sharp at any zoom, which
-// a flattened 900px PNG cannot be - that was the whole complaint. Apple Books
-// renders SVG natively.
+// The figures are vector, and shipping the SVG itself looked like the right
+// answer - sharp at any zoom, half the file size. It renders on Books for Mac
+// and NOT on Books for iOS, where every figure comes up as a placeholder. One
+// Apple reader failing is enough to rule it out for a book being sold: Kindle's
+// SVG support is no better than iOS's.
 //
-// RASTERISE=1 falls back to PNG, at 2400px rather than the old 900. Kindle's
-// SVG support has historically been patchy, so if the KDP conversion mangles a
-// figure, build with RASTERISE=1 and the same book ships raster instead.
-const RASTERISE = process.env.RASTERISE === '1';
+// So the default is raster, but at 1800px rather than the 900px it used to be.
+// That is sharp on any phone or tablet at 2x or 3x, and it cannot fail to
+// render anywhere.
+//
+// SVG=1 ships vector instead, for a reader known to handle it. That path also
+// prepends the XML declaration the source files lack, which is the likeliest
+// reason iOS refused them.
+const FIGURE_WIDTH = +(process.env.FIGURE_WIDTH || 1800);
+const SHIP_SVG = process.env.SVG === '1';
 const OUT = '/tmp/kdpsample/epub';
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'OEBPS', 'images'), { recursive: true });
@@ -133,7 +140,7 @@ const spine = [];
 const images = new Set();
 
 for (const f of files) {
-    let { html, figures } = renderFile(f, 'images/', RASTERISE);
+    let { html, figures } = renderFile(f, 'images/', !SHIP_SVG);
     if (f.name === 'front' && existsSync(join(BASE, 'Copyright.md'))) {
         const cp = renderFile({ path: join(BASE, 'Copyright.md') }, 'images/').html;
         html = html.replace(/<h1>CONTENTS AT A GLANCE<\/h1>/,
@@ -147,10 +154,20 @@ for (const f of files) {
     for (const fig of figures) {
         const dest = join(OUT, 'OEBPS', 'images', fig.out);
         try {
-            if (RASTERISE && /\.svg$/i.test(fig.src))
-                execSync(`rsvg-convert -w 2400 "${fig.src}" -o "${dest}"`);
-            else
+            if (/\.svg$/i.test(fig.src)) {
+                if (SHIP_SVG) {
+                    // A standalone SVG should declare itself. These do not, and
+                    // that is the likeliest reason iOS Books would not draw them.
+                    const body = readFileSync(fig.src, 'utf8');
+                    writeFileSync(dest, /^\s*<\?xml/.test(body)
+                        ? body
+                        : '<?xml version="1.0" encoding="UTF-8"?>\n' + body);
+                } else {
+                    execSync(`rsvg-convert -w ${FIGURE_WIDTH} "${fig.src}" -o "${dest}"`);
+                }
+            } else {
                 copyFileSync(fig.src, dest);
+            }
             images.add(fig.out);
         } catch { console.log('  figure failed:', fig.src); }
     }

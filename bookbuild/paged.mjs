@@ -39,7 +39,12 @@ for (const p of files) {
     for (const fig of figures) {
         try {
             if (/\.svg$/i.test(fig.src))
-                execSync(`rsvg-convert -d 300 -p 300 "${fig.src}" -o "${OUT}/images/${fig.out}"`);
+                // -d/-p are only DPI HINTS, and these SVGs carry an explicit width="900",
+                // which wins - so the print build was quietly producing the same 900px
+                // file as the screen build, about 165 DPI across the text measure. An
+                // explicit output width is what actually controls it. 2400px across the
+                // 5.45in measure is ~440 DPI, comfortably past the 300 KDP asks for.
+                execSync(`rsvg-convert -w 2400 "${fig.src}" -o "${OUT}/images/${fig.out}"`);
             else
                 execSync(`cp "${fig.src}" "${OUT}/images/${fig.out}"`);
             nfig++;
