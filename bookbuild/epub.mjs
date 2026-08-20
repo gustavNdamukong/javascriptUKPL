@@ -6,6 +6,14 @@ import { execSync } from 'child_process';
 import { join, basename } from 'path';
 
 const BASE = '/Users/user/UKPL/javascriptUKPL';
+// The figures are vector. Shipping the SVG keeps them sharp at any zoom, which
+// a flattened 900px PNG cannot be - that was the whole complaint. Apple Books
+// renders SVG natively.
+//
+// RASTERISE=1 falls back to PNG, at 2400px rather than the old 900. Kindle's
+// SVG support has historically been patchy, so if the KDP conversion mangles a
+// figure, build with RASTERISE=1 and the same book ships raster instead.
+const RASTERISE = process.env.RASTERISE === '1';
 const OUT = '/tmp/kdpsample/epub';
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(join(OUT, 'OEBPS', 'images'), { recursive: true });
@@ -125,7 +133,7 @@ const spine = [];
 const images = new Set();
 
 for (const f of files) {
-    let { html, figures } = renderFile(f, 'images/');
+    let { html, figures } = renderFile(f, 'images/', RASTERISE);
     if (f.name === 'front' && existsSync(join(BASE, 'Copyright.md'))) {
         const cp = renderFile({ path: join(BASE, 'Copyright.md') }, 'images/').html;
         html = html.replace(/<h1>CONTENTS AT A GLANCE<\/h1>/,
@@ -139,8 +147,10 @@ for (const f of files) {
     for (const fig of figures) {
         const dest = join(OUT, 'OEBPS', 'images', fig.out);
         try {
-            if (/\.svg$/i.test(fig.src)) execSync(`rsvg-convert -d 200 -p 200 "${fig.src}" -o "${dest}"`);
-            else copyFileSync(fig.src, dest);
+            if (RASTERISE && /\.svg$/i.test(fig.src))
+                execSync(`rsvg-convert -w 2400 "${fig.src}" -o "${dest}"`);
+            else
+                copyFileSync(fig.src, dest);
             images.add(fig.out);
         } catch { console.log('  figure failed:', fig.src); }
     }
@@ -202,8 +212,11 @@ ${navList}
 </body></html>`);
 
 // ---- package -------------------------------------------------------------
+const mediaType = n =>
+    n.endsWith('.svg') ? 'image/svg+xml' :
+    n.endsWith('.png') ? 'image/png' : 'image/jpeg';
 const imgItems = [...images].map((n, i) =>
-    `<item id="img${i}" href="images/${n}" media-type="image/${n.endsWith('.png') ? 'png' : 'jpeg'}"/>`).join('\n    ');
+    `<item id="img${i}" href="images/${n}" media-type="${mediaType(n)}"/>`).join('\n    ');
 
 writeFileSync(join(OUT, 'OEBPS', 'content.opf'),
 `<?xml version="1.0" encoding="utf-8"?>
