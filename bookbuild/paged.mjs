@@ -103,7 +103,12 @@ const before = body.length;
 body = body.replace(/<h1[^>]*>CONTENTS<\/h1>[\s\S]*?(?=<h1)/, tocHtml);
 console.log('hand-written CONTENTS replaced:', body.length !== before);
 
-const css = readFileSync(join(SP, 'book.css'), 'utf8');
+// book.css comes from the REPO, not from a scratchpad. It used to be read from
+// SP, a temp directory belonging to a long-finished session, so every change
+// made to the tracked stylesheet - the h4 rule, the leading, all of it - was
+// silently absent from the full print build while the single-chapter build
+// (one.mjs, which reads ./book.css) showed it correctly.
+const css = readFileSync(new URL('./book.css', import.meta.url), 'utf8');
 writeFileSync(join(OUT, 'paged.html'),
     `<!doctype html><html lang="en"><head><meta charset="utf-8">` +
     `<title>The JavaScript Blueprint</title><style>${css}</style></head><body>${body}</body></html>`);

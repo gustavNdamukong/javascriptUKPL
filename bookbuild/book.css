@@ -32,7 +32,10 @@
 body {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 10.5pt;
-    line-height: 1.5;
+    /* 1.42 rather than 1.5: measured at 31 pages across the book, and still
+       comfortable for a 10.5pt sans body. Page count matters here because the
+       book sits near KDP's 828-page ceiling. */
+    line-height: 1.42;
     margin: 0;
     color: #000;
     text-align: justify;
@@ -103,8 +106,11 @@ h6 { font-size: 10pt;   margin: 1em 0 0.3em; font-weight: 600; }
 pre {
     font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
     font-size: 8.5pt;
-    line-height: 1.45;
-    margin: 0.7em 0 0.9em 0;
+    /* Listings are set tighter than prose, as they are in most programming
+       books - a line of code is short and does not need prose leading. Another
+       31 pages. */
+    line-height: 1.32;
+    margin: 0.5em 0 0.6em 0;
     padding: 0.2em 0 0.2em 1.1em;
     background: none;
     white-space: pre-wrap;       /* long lines wrap instead of being cut off */
