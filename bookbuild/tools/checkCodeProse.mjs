@@ -56,6 +56,7 @@ const indentOf = l => {
 // A sentence may open with the word "var" ("var becomes a property of
 // window..."), so a keyword alone is not enough - it has to be followed by a
 // name and then something a declaration would actually have.
+const semicolonOnly = /;\s*$/;
 const STRONG = [
     /<\/[a-z][a-z0-9]*>|<[a-z][a-z0-9]*(\s[^>]*)?\/?>/i,   // an HTML tag
     /<!DOCTYPE/i,
@@ -64,7 +65,7 @@ const STRONG = [
     /=>/,
     /^\s*[)\]}]+[;,]?\s*(\/\/.*)?$/,                        // a line of closers
     /^\s*\{\s*$/,
-    /;\s*$/,
+    semicolonOnly,
     /^\s*\/\//                                              // a comment line
 ];
 const WEAK = [
@@ -103,7 +104,14 @@ const isProseish = l => {
     return alpha > 0.84;
 };
 
-const isStrongCode = l => STRONG.some(re => re.test(l));
+// A trailing semicolon is the one strong signal a SENTENCE can produce - "...
+// and the reason why it works is simple;" - and treating that as code was
+// enough to stop a whole paragraph set in monospace from being reported. For a
+// line that reads as prose, only the structural signals count.
+const isStrongCode = l =>
+    isProseish(l)
+        ? STRONG.filter(re => re !== semicolonOnly).some(re => re.test(l))
+        : STRONG.some(re => re.test(l));
 // A sentence wins over a weak code signal. "That's because setTimeout()
 // received the function person.getName..." is a paragraph, but it mentions a
 // method call, and counting that as code was enough to stop whole paragraphs

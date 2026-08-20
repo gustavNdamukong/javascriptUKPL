@@ -1741,7 +1741,7 @@ The bookArray then ends up as an array containing multiple book objects like thi
   		{ title: "Eloquent JavaScript", author: "Marijn Haverbeke" }
 	]
 
-	That is it, we finally display the array in the console using console.table();
+  That is it, we finally display the array in the console using console.table();
 
 	console.table(bookArray); 
 

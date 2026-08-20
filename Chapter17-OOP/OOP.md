@@ -1016,8 +1016,8 @@ Now that we have mastered the use of call() and apply(), let us look at the bind
       undefined
   As you can see clearly from the output, person.getName() returns ‘undefined’ instead of ‘John Doe’.
 
-	That’s because setTimeout() received the function person.getName outside of (separately from) the person object. The getName() method has been passed as a callback function to the setTimeout() function, so the this reference while inside setTimeout() then becomes the global Object-if you are running JavaScript in non-strict mode, or it becomes undefined in strict mode. Either way, the value of this as you expected it (to reference the person object) is lost. Hence when 	setTimeout() runs, and person.getName() gets invoked, the name is not found on the global object, and so it comes back as undefined. There are two ways to fix this issue;
-either by wrapping the call to person.getName() inside another anonymous function, or use the bind() method.
+  That’s because setTimeout() received the function person.getName outside of (separately from) the person object. The getName() method has been passed as a callback function to the setTimeout() function, so the this reference while inside setTimeout() then becomes the global Object-if you are running JavaScript in non-strict mode, or it becomes undefined in strict mode. Either way, the value of this as you expected it (to reference the person object) is lost. Hence when 	setTimeout() runs, and person.getName() gets invoked, the name is not found on the global object, and so it comes back as undefined. There are two ways to fix this issue;
+  either by wrapping the call to person.getName() inside another anonymous function, or use the bind() method.
 	
 	-i) Using an anonymous function
 		setTimeout(function () { 

@@ -378,7 +378,7 @@ As I indicated earlier, setting up such a backend server is beyond the scope of 
 
 
 #### Setting up a local SOAP server with Node.js
-	  If you have a local server and hosted a SOAP API on your local server, it will be possible to access this SOAP API from frontend code running on the same server. Let us just say you host a SOAP API on your local server (e.g., localhost:3000/soap-api) and your frontend code (HTML/JS) is also served from the same origin (e.g., `localhost:3000/index.html`), you can access the SOAP API without CORS issues. The reason why it works is simple; 
+  If you have a local server and hosted a SOAP API on your local server, it will be possible to access this SOAP API from frontend code running on the same server. Let us just say you host a SOAP API on your local server (e.g., localhost:3000/soap-api) and your frontend code (HTML/JS) is also served from the same origin (e.g., `localhost:3000/index.html`), you can access the SOAP API without CORS issues. The reason why it works is simple;
 
   - The Same-Origin Policy (SOP) allows frontend code to freely interact
   with APIs on the same domain/port/protocol.

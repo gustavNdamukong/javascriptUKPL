@@ -509,9 +509,9 @@ Exceptions work in both synchronous and asynchronous (Promises, async/await) cod
   A throw statement lives inside the function that detects the problem — not in the try block. The try block is where you CALL that function, and the catch block is where the thrown value arrives. Look back at the example above and you will see the throw sitting inside viewAccount(), while the try/catch sits around the call to it.
   What is thrown can be one of the following three data types: 
 
-    * an Error object which can be a JavaScript in-built error object, or your custom error object).
-    * an object literal. For example:     throw { code: 401, message: "Account not theirs" };
-    *  a simple string error (less common) For example:                       throw “User ” +user_id+ “ trying to access account not theirs”;
+  * an Error object which can be a JavaScript in-built error object, or your custom error object).
+  * an object literal. For example:     throw { code: 401, message: "Account not theirs" };
+  *  a simple string error (less common) For example:                       throw “User ” +user_id+ “ trying to access account not theirs”;
 
 
 #### Custom exceptions
@@ -751,15 +751,16 @@ Example 5: Re-throwing and Handling at a Higher Level
 
 
   Comments:
-    - The structure of this pattern is like this:
 
+  - The structure of this pattern is like this:
+
+```text
 handleUserInput()
-└── validateUsername("Tom")
-└── throw new Error(...)   // thrown
-└── catch & re-throw error
-
-				  	// final handler
-  				└── catch (err)                
+├── validateUsername("Tom")
+│   ├── throw new Error(...)     // thrown
+│   └── catch & re-throw error
+└── catch (err)                  // final handler
+```
 
   - validateUsername() is a lower-level function responsible for
     checking user input.
