@@ -20,6 +20,10 @@ JavaScript is a trademark of Oracle Corporation. Other product and company names
 mentioned may be the trademarks of their respective owners, and are used here in
 an editorial fashion only, with no intention of infringement.
 
+Published by Nolimit Media Press
+Toronto, Ontario, Canada
+nolimitmedia.ca
+
 First edition
 
 ISBN: 000-0-0000000-0-0
