@@ -29,8 +29,9 @@
       - The hasOwnProperty() method (non-inherited)
       - Check all properties of an object (including inherited)
     - Creating a custom method on an object
-    - The call(), apply() and bind()
-    methods of Function
+    - The call(), apply() and bind() methods of Function
+      - Passing arguments when using call() and apply()
+      - The bind() function
   - OBJECTS IN DEPTH
     - Object literals
     - JavaScript objects vs object literals
@@ -918,153 +919,348 @@ The result of this is exactly the same as in the previous example above- 'TestVa
 #### The call(), apply() and bind() methods of Function
 		
 In JavaScript, functions are objects, as we have learned so far. This means every function inherits from Function.prototype, and the methods living there are therefore available on every function you write. With that said, there are three very important functions you should know; and these are the call(), apply(), and bind() functions. They are special because they serve a specific purpose. Understanding how they work will take your JavaScript mastery to a deeper level. 
-So, the three methods call(), apply() and bind() are methods of the function object. In other words, these are methods that JavaScript has provided you with to use on functions. You can therefore call them on any function (both built-in ones and your own) and it will work. These functions solve a very pertinent problem when it comes to functions, and that is the problem of resolving the context in which a function is called. When it comes to objects, context refers to the current object on which a function is being run at any point in time. This current object is represented by the this keyword. In the flow of your program, your objects will often interact with one another and you will invariably find yourself needing to call functions or methods of other objects outside of the object in which you are operating for various reasons. One reason could be to extend the functionality of the object you are in by making it do something it cannot do, or utilise (re-use) a feature already offered by another function rather than rewriting it all over again. It is generally known in the programming world that code should be re-used wherever possible in order to avoid code duplication. 
-With that said; when calling one object from within another object, or in other words; when a method of an object is being passed to another function as a callback (which essentially means calling another/external function inside a function), the this keyword is lost. This is because the function has been separated from the object it belongs to, so JavaScript no longer has anything to point this at. What happens then depends on the mode you are running in: in strict mode this becomes undefined, and in non-strict mode it falls back to the global object. Either way it is not the object you wanted, and the usual symptom is a value coming back as undefined, or a "Cannot read properties of undefined" error a moment later. The three methods call(),    apply() and bind() make it possible for you to tell JavaScript which object has the context, or better put; which of the objects should be referenced by this. 
-We will start by looking at call() and apply() as they are used in exactly the same way apart from a slight difference in their syntax. To call a function of another object B from inside another object A as if the method of B is a method of object A, you can use the call() method. To do so, while operating from within object A, you call the function of the external class B, followed by the keyword .call(), and pass as the first parameter to the call() function the object to be referenced by this. Here is an example of two objects Car and MotorBike:
+So, the three methods call(), apply() and bind() are methods of the function object. In other words, these are methods that JavaScript has provided you with to use on functions. You can therefore call them on any function (both built-in ones and your own) and it will work. These functions solve a very pertinent problem when it comes to functions, and that is the problem of resolving the context in which a function is called. When it comes to objects, context refers to the current object on which a function is being run at any point in time. This current object is represented by the this keyword. 
 
-		function Car(name, fuel)
-		{
-   			this.name = name;
-			this.fuel = fuel;
+In the flow of your program, your objects will often interact with one another and you will invariably find yourself needing to call functions or methods of other objects outside of the object in which you are operating for various reasons. One reason could be to extend the functionality of the object you are in by making it do something it cannot do, or utilise (re-use) a feature already offered by another function rather than rewriting it all over again. It is generally known in the programming world that code should be re-used wherever possible in order to avoid code duplication. 
 
-   			this.getName = function()
-   			{
-      				return this.name;
-   			}
+With that said; when calling one object from within another object, or in other words; when a method of an object is being passed to another function as a callback (which essentially means calling another/external function inside a function), the this keyword is lost. This is because the function has been separated from the object it belongs to, so JavaScript no longer has anything to point the 'this' keyword at. What happens then depends on the mode you are running in. If your JavaScript is in strict mode, you will get an error of undefined, and in non-strict mode, the value of 'this' will default back to the global object. Either way, 'this' will not represent the object you wanted, and the usual symptom is a value coming back with the error undefined, or a "Cannot read properties of undefined". The three methods call(), apply() and bind() make it possible for you to tell JavaScript which object has the context, or better put; which of the objects should be referenced by 'this'. 
 
-			this.getType = function()
-			{
-   				return this.name+'-'+this.fuel;
-			}
+Let us start by looking at call() and apply() as they are used in exactly the same way apart from a slight difference in their syntax. To call a function of another object B from inside another object A as if the method of B is a method of object A, you can use the call() method. To do so, while within object A, you call the function of the external class B, followed by the keyword .call(), and pass the object you want to be referenced by 'this' as the first argument to the call() function . Here is an example of two objects Car and MotorBike:
 
-			this.multiply = function(first, second)
-			{
-   				return (first * second);
-			}
-		}
+```
+function Car(name, fuel)
+{
+    this.name = name;
+    this.fuel = fuel;
 
-		function Motorbike(name, fuel)
-		{
-   			this.name = name;
-			this.fuel = fuel;
+    this.getName = function()
+    {
+        return this.name;
+    }
 
-   			this.getName = function()
-   			{
-      				return this.name;
-   			}
-		}
+    this.getType = function()
+    {
+        return this.name+'-'+this.fuel;
+    }
 
-Both objects have the same properties name and fuel, though their values will be different. They both also have in common a method called getName() which returns the value of the name property.
-However, the Car object has two methods that the Motorbike object does not have, and these are the getType() method and the multiply() method. The getType() method returns the name and fuel type of a car in a nice format of the name followed by a hyphen 	and then the fuel type. The other method multiply() does not make sense in the context of this example of automobiles, but I included it as an example of how you would call a 	method of an object that takes arguments from another object. Now let’s see how you can use call() and apply() to pass arguments to a method of another class when you call it.
+    this.multiply = function(first, second)
+    {
+        return (first * second);
+    }
+}
 
-		let car = new Car('Mercedes', 'petrol');
-		let bike = new Motorbike('Harley Davidson', 
-			'petrol');
-		alert(car.getName());
-		//I expect the popup to say 'Mercedes'
+function Motorbike(name, fuel)
+{
+    this.name = name;
+    this.fuel = fuel;
+
+    this.getName = function()
+    {
+        return this.name;
+    }
+}
+```
+
+Both objects have the same properties name and fuel, though their values will be different. They both also have in common a method called getName() which returns the value of their name property.
+
+However, the Car object has two methods that the Motorbike object does not have, and these are getType(), and the multiply(). The getType() method returns the name and fuel type of a car in a nice format which is the name property joined to a hyphen and joined to its fuel property. 
+
+this.getType = function()
+
+```
+{
+    return this.name+'-'+this.fuel;
+}
+```
+
+
+The other method multiply() does not make sense in the context of this example of automobiles, but I included it as an example of how you would call a method of an object that takes arguments from another object. 
+
+this.multiply = function(first, second)
+
+```
+{
+    return (first * second);
+}
+```
+
+Now let’s see how you can use call() and apply() to call the method of another (external) class, and even pass arguments to the method.
+
+	let car = new Car('Mercedes', 'petrol');
+
+	let bike = new Motorbike('Harley Davidson', 'petrol');
+
+	alert(car.getName());
 		
-		alert(bike.getName());
-		//I expect the popup to say 'Harley Davidson'
+This will display a popup that says 'Mercedes'
+		
+	alert(bike.getName());
 
-		alert(bike.getName.call(car));
-		//I expect the popup to say 'Mercedes'
-		alert(car.getName.apply(bike));
-		//I expect the popup to say 'Harley Davidson'
+This will display a popup that says 'Harley Davidson'
 
-		alert(car.getType());
-		//I expect the popup to say 'Mercedes-petrol'
-		alert(car.getType.call(bike));
-		//I expect the popup to say 'Harley Davidson-
-		// petrol'
-		//-Notice how we call getType() on Motorbike 
-		// (bike) as if it was a method of the Motorbike 
-		// object.
+Now pay attention, and see how we can call a method of a class, and call call() or apply() on that method, passing the class we want to be referenced by 'this' within that method we are calling as the argument. This may sound confusing at first, but it really is not once you get it. Understanding it is simple once you pay attention to it. It is the kind of knowledge that separates an expert from a novice JavaScript learner. It's best to see it in action, so lets call the getName() method of the Bike function (object), and use call to make the getName() method of Bike refer to the Car class instead.
 
-		//-Next, let's see how you would pass arguments to 
-		// the method you are calling on the other object.
-		// alert(bike.multiply(2,2));
-		// I expect this to throw an error in the console
-		// saying 'bike.multiply is not a function'.
-  		 // Comment this line out to proceed with
-  		 // running the rest of the code on this page.
-		alert(car.multiply.call(bike, 2, 2));
-		//I expect the popup to say 4
-		// -Notice we just called multiply() on Motorbike
-		// (bike) as if it was a method of the Motorbike object
-		// -Notice that after the first argument, call()
-		// takes comma-separated values to pass as arguments
-   			// to the method it is calling-if
-   			// that method needs arguments
+```
+let car = new Car('Mercedes', 'petrol');
+  let bike = new Motorbike('Harley Davidson', 'petrol');
+```
 
-		alert(car.multiply.apply(bike, [2, 2]));
-		//I expect the popup to say 4
-		// -Notice that apply() takes an array of values to
-		// pass as arguments to the method it is calling-if
-   			//that method needs arguments
+	alert(bike.getName.call(car));
 
+If you run this code, instead of the popup saying 'Harley Davidson' as you would expect because the Motorbike's getName() method returns its own name, it will say:
 
-Now that we have mastered the use of call() and apply(), let us look at the bind() function which, though also used to set the context (this value) of a function call, is used in a slightly different way from the other two. The main difference is that unlike call() and apply(), which run the function immediately and give you the result, bind() prepares and returns a new function with the context (this value) already set, so you can call it whenever you need it. Take the following example:
+  'Mercedes'
+  
+I hope you can now see why. We didn't just do bike.getName() but we used call() on it too like this: bike.getName.call(car). That car argument passed to call() is key. It is what tells getName() that 'this' (which is what it uses internally to reference its own name property) should be the Car object, not itself
+
+  this.getName = function()
+
+```
+{
+    return this.name;
+}
+```
+
+Let's do the same thing by calling the getName() of the Car function, but this time using apply(), which does the same thing as call():
+
+	alert(car.getName.apply(bike));
+
+Now you already know what the alert() popup will display when you run this code. Instead of displaying 'Mercedes' which car.getName() does, it will display:
+
+  'Harley Davidson' 
+  
+which is the name property of the Bike object (function). We passed bike to apply() to tell the getName() method of the car object that 'this' refers to the bike object and not itself.
+
+Similarly;
+
+	alert(car.getType());
+
+will display a popup that says: 
+
+  'Mercedes-petrol'
+
+while this:
+		
+```
+alert(car.getType.call(bike));
+```
+
+will display a popup that says: 
+
+  'Harley Davidson-petrol'
+
+This is like magic, don't you agree? It's exciting stuff. We basically call getType() on the car object, but because of call(), it's instead the getType() of the bike object that ends up being called behind the scenes, and it's all because we slapped call() on the call chain, and passed it which object we wanted to become 'this'.
+I think you've got it now, so let's proceed.
+
+#### Passing arguments when using call() and apply()
+  What if the method of the external class you are calling needs arguments to be passed in?
+These two functions do exactly the same thing. The only difference appears when the underlying method to be called needs arguments passed in. The difference between them then only lies in how the arguments are passed. 
+  Let's see how you would pass arguments to the method you are calling on the other object, 
+if it requires arguments. That is why i created the multiply() method in the Car object, and made it accept two arguments for its parameters first and second. Here is the method again:
+
+```
+function Car(name, fuel)
+{
+    ...
+    this.multiply = function(first, second)
+    {
+        return (first * second);
+    }
+}
+```
+
+Let's do a quick recap before we dive in. So, we already know that if we call multiply() on the bike object, it would not work, because multiply() is a method defined on the Car object and not the Motorbike object. So this will throw an error in the console saying 'bike.multiply is not a function':
+
+	alert(bike.multiply(2,2));
+
+while this will run correctly with no errors, and display 4, since multiply() returns the product of its two parameters:
+
+```
+alert(car.multiply.call(bike, 2, 2));
+```
 	
-		let person = {
-		    name: 'John Doe',
-    			getName: function() {
-        			console.log(this.name);
-    			}
-		};
+Notice how you can pass in as many arguments you want, from the second argument of call() onwards, separated by commas if there are multiple. These arguments are destined for the method that will be called, whatever it will be.
+If you are wondering why the above code did not throw an error, then you are observant. we used call() on car.multiply, like so:
 
-    setTimeout(person.getName, 1000);
-    Output:
+  car.multiply.call(...)
+
+which means the JavaScript parser/interpreter should have tried to call a multiply() method on the bike object, and not the car object-especially as we used call() and passed it the context of bike (call(bike, 2, 2)).
+
+Here is the catch, and why it did not error; it never called, or attempted to call multiply() on the bike object. This is because, if you look at the multiply() method of car again, you will see that there is no use of the 'this' keyword anywhere inside it. 
+
+```
+function Car(name, fuel)
+{
+    ...
+    this.multiply = function(first, second)
+    {
+        return (first * second);
+    }
+}
+```
+
+In that case call() always hands over the arguments you give it to the method that will be called - whatever it will be; which in this case is multiply() of car. To be precise about what happens: call() does set 'this' to bike, exactly as you asked it to. It is multiply() that never looks at 'this', so the setting makes no difference to the result. The function that runs is still the one you reached for, car's multiply().
+
+So, we now know that if an object's method does not use the 'this' keyword inside of itself, then there is no need to call it using call() or apply(), or bind(). We will learn about bind() in a second. Now that is out of the way, let us do the same thing, only this time we will actually call a multiply() method on the Motorbike object so that it is actually an external method call, and also, this time we will also use apply() instead of call(), so that we see that they are all the same, except for a systax difference when arguments need to be passed in. 
+
+Let's go ahead and create two new methods; one multiply() on Motorbike, and one resolve()  on the Car object. The multiply() on Motorbike will mirror the multiply() already in Car. However, let's make the Motorbike object's own multiply() do a division of its two arguments internally and return the results to make it clearly different from the multiplication result of Car.multiply(). Here is the final code of Car with its new resolve() method: 
+
+```
+function Car(name, fuel)
+{
+    this.name = name;
+    this.fuel = fuel;
+
+    this.getName = function()
+    {
+        return this.name;
+    }
+
+    this.getType = function()
+    {
+        return this.name+'-'+this.fuel;
+    }
+
+    this.multiply = function(first, second)
+    {
+        return (first * second);
+    }
+
+    this.resolve = function(first, second)
+    {
+        return this.multiply(first, second);
+        //return (first * second);
+    }
+}
+```
+
+Here is the full Motorbike object with its new multiply() method added:
+
+```
+function Motorbike(name, fuel)
+{
+    this.name = name;
+    this.fuel = fuel;
+
+    this.getName = function()
+    {
+        return this.name;
+    }
+
+    this.multiply = function(first, second)
+    {
+        return (first / second);
+    }
+}
+```
+
+Notice how we have structured the code here. The multiply did not use 'this' as we know already, but we have made sure its new resolve() method uses 'this' to reference its own multiply() method. Then the new multiply() of the Motorbike class mirrors that of car in name, so that we can get the resolve() method to call either one based on the context we give it, and we will be able to tell from the output which method of which class was evoked 
+Here is a demonstration in code of how it works. Obviously, we need to start by building the objects, so let's do that:
+
+```
+let car = new Car('Mercedes', 'petrol');
+let bike = new Motorbike('Harley Davidson', 'petrol');
+```
+
+Next, let's first of all call the resolve() method of Car:
+
+```
+alert(car.resolve(2, 2));
+```
+
+The output is 4, and it is straight forward; Car's resolve() makes a direct call to its multiply()
+
+```
+alert(car.resolve.call(bike, 2, 2)); 
+```
+
+Here the output in the alert popup is 1, which is correct. Motorbike's multiply() is run since we used call(bike) and gave it the context of the bike object.
+
+  alert(car.resolve.apply(bike, [2, 2])); // with array
+
+Here the output in the alert popup is 1 which is also correct. Motorbike's multiply() is run since we used apply(bike) and gave it the context of the bike object.
+
+Notice the difference between how we pass arguments to call() and how we pass it apply().
+Both of them take the first argument to be the context of 'this'. As for the second parameter; while call() takes multiple arguments destined for the method to be called as comma-separated values from the second parameter, apply() takes an array of arguments as its second parameter. This is the only difference between them, otherwise they all work the same way.  
+
+
+#### The bind() function
+
+Now that we have mastered the use of call() and apply(), let us look at the bind() function which, though also used to set the context ('this' keyword) of a function call, is also used in a slightly different way from the other two. The main difference is that unlike call() and apply(), which run the function immediately and give you the result, bind() prepares and returns a new function with the context ('this' keyword) already set, that you can call whenever you need it. Take the following example:
+	
+```
+let person = {
+    name: 'John Doe',
+    getName: function() {
+        console.log(this.name);
+    }
+};
+
+setTimeout(person.getName, 1000);
+```
+
+  The output of this code will be:
+
       undefined
-  As you can see clearly from the output, person.getName() returns ‘undefined’ instead of ‘John Doe’.
 
-  That’s because setTimeout() received the function person.getName outside of (separately from) the person object. The getName() method has been passed as a callback function to the setTimeout() function, so the this reference while inside setTimeout() then becomes the global Object-if you are running JavaScript in non-strict mode, or it becomes undefined in strict mode. Either way, the value of this as you expected it (to reference the person object) is lost. Hence when 	setTimeout() runs, and person.getName() gets invoked, the name is not found on the global object, and so it comes back as undefined. There are two ways to fix this issue;
-  either by wrapping the call to person.getName() inside another anonymous function, or use the bind() method.
+  So, person.getName() returns ‘undefined’ instead of ‘John Doe’.
+
+  That’s because setTimeout() received the function person.getName outside of (separately from) the person object. The getName() method has been passed as a callback function to the setTimeout() function, so the 'this' reference which is used in getName() will not be the same inside setTimeout(). While inside setTimeout(), getName() is not inside its original object, so 'this' will then refer to the global Object instead. 
+    Actually, 'this' will be the global Object if you are running JavaScript in non-strict 
+  mode, but in strict mode, it will be undefined. Either way, the value of 'this' as you expected it (to reference the person object) is lost. Hence when setTimeout() runs, and person.getName() gets invoked, the name is not found on the global object, or it comes back as undefined, either way, it fails. There are two ways to fix this issue;
+  
+Either you wrap the call to person.getName() inside another anonymous function, or use the bind() method.
 	
-	-i) Using an anonymous function
+	1) Using an anonymous function
+
 		setTimeout(function () { 
 			person.getName(); 
 		}, 1000);
 
 This will work because the anonymous function will get the person object from the outer scope and then call the method getName() on it.  
 
-  ii) Using the bind() method
+  2) Using the bind() method
 		
 You first of all prepare or bind the method getName() outside of the person object before you proceed to use it outside of the person object. Once you bind it (with the bind() function), bind() will automatically set the context for you, and you can then safely use it. For example:
 
-		let f = person.getName.bind(person);
-		setTimeout(f, 1000);
+		let p = person.getName.bind(person);
+		setTimeout(p, 1000);
 	
-  - What if just like we did with call() and apply(), you want to use bind() to make an object have some extra functionality by calling a method from another object which it does not have. This is also easy to do, though it's done slightly differently from the way call() and apply() do it. The following example is how you can make the Motorbike object borrow and make use of the getType() and the multiply() methods of the Car object.
+What if just like we did with call() and apply(), you want to use bind() to make an 
+  object have some extra functionality by calling a method from another object which it does not have. This is also easy to do, though it's done slightly differently from the way call() and apply() do it. The following example is how you can make the Motorbike object borrow and make use of the getType() and the multiply() methods of the Car object.
 
 		let car = new Car('Mercedes', 'petrol');
 		let bike = new Motorbike('Harley Davidson', 'petrol');
 		let getType = car.getType.bind(bike);
 		alert(getType());
-		//I expect the popup to say 'Harley Davidson-petrol'
 
-		// -Notice that unlike with the call() and
-		// apply() methods, when binding, we are kind
-		// of like creating a stand-alone function
-		// separate from the object it belongs to,
-		// which we can just call alone and it
-		// will automatically already know what
-		// context to use, and what arguments to
-		// use. For example when we just call:
-   		// getType();
+This will display a popup that says 'Harley Davidson-petrol'
 
-		let multiply = car.multiply.bind(bike, 2, 2);
-		alert(multiply());
-		//I expect the popup to say 4
-		// -Notice that just like call(), if the method
-		// being called with bind needs arguments,
-		// these are passed to bind() after the first
-		// argument as comma-separated values.
+Notice that unlike with the call() and apply() methods, when binding, we are kind of like creating a stand-alone function separate from the object it belongs to, which we can just call as a standalone whenever we need it, and it will automatically already know what context, and what arguments to use. For example when we just call:
+   		
+    getType();
 
-The bind() method allows an object to borrow a method from another object without making a copy of that method. This is known as function borrowing in JavaScript, and it's very powerful because it broadens the capabilities of your classes and objects while promoting code reuse.
+  Let's create such a standalone function from the resolve() method of the Car object, then bind it to the Motorbike object so that it's the Motorbike method that will be called instead of a method of Car, just as we have seen being done using call() and apply() above. Let's name this function divide:
+
+```
+let car = new Car('Mercedes', 'petrol');
+let bike = new Motorbike('Harley Davidson', 'petrol');
+```
+
+    let divide = car.resolve.bind(bike, 6, 3);
+    alert(divide());
+
+This will display a popup with 2
+
+  That is the output of dividing 6 by 3, which is what the multiply() method in Motorbike object does, if you remember-it actually divides unlike the multiply() of Car that multiplies. That is proof that bike.multiply() was called and not car.multiply()
+		
+  Notice that just like with the call() function, if the method being called with bind needs arguments, the arguments are passed to bind() after the first argument as comma-separated values.
+
+In a nutshell, the bind() function allows an object to borrow a method from another object without making a copy of that method. This is known as function borrowing in JavaScript, and it's very powerful because it broadens the capabilities of your classes and objects while promoting code reuse.
 
 ![Figure 17.3 — Losing "this", and giving it back](images/ch17-fig-03-losing-this.svg)
 
-- Figure 17.3 — Losing "this", and giving it back*
+*Figure 17.3 — Losing "this", and giving it back*
 
 
 ## OBJECTS IN DEPTH

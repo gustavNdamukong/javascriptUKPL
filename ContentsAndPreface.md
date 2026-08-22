@@ -499,6 +499,9 @@ Chapter 17 - Object Oriented Programming (OOP)
 - Creating a custom method on an object
 - The call(), apply() and bind()
   methods of Function
+- Passing arguments when using call()
+  and apply()
+- The bind() function
 - OBJECTS IN DEPTH
 - Object literals
 - JavaScript objects vs object literals

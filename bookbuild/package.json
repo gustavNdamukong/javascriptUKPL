@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "description": "Build tooling for The JavaScript Blueprint. Not published.",
-  "comment": "These were installed with --no-save and no package.json, so the next --no-save install pruned whatever was not asked for - which is how marked disappeared mid-session and the build stopped dead. Listing them fixes that: npm install restores both.",
+  "comment": "These were installed with --no-save and no package.json, so the next --no-save install pruned whatever was not asked for - which is how marked disappeared mid-session and the build stopped dead. Listing them fixes that. marked is pinned EXACTLY, not with a caret: render.mjs escapes the text of an inline code span itself, and in marked 12 that text arrives already escaped, so `<p>` came out as literal &lt;p&gt; through the whole book. A caret range let npm choose 12 and silently broke every inline code span.",
   "dependencies": {
-    "marked": "^12.0.0",
+    "marked": "18.0.10",
     "pagedjs": "^0.4.3",
     "puppeteer-core": "^25.8.0"
   }
