@@ -93,7 +93,7 @@ for (const p of files) {
 // drift from the chapters. Replace it in the OUTPUT only - the markdown keeps
 // what the author wrote - with one generated from the headings themselves.
 const tocHtml =
-    '<div class="toc"><h1 id="contents">CONTENTS</h1><ul>' +
+    '<div class="toc"><h1 id="contents"><span class="runhead">CONTENTS</span></h1><ul>' +
     toc.filter(t => t.level <= 2 && t.id !== 'contents')
        .map(t => `<li class="lvl${t.level}${t.quiz ? ' quiz' : ''}">` +
                  `<a href="#${t.id}">${t.text}</a></li>`).join('') +
@@ -117,9 +117,20 @@ if (existsSync(join(BASE, 'Dedication.md'))) {
     console.log('dedication inserted');
 }
 
+// Anchored on the id, NOT on the heading's inner text. It used to match
+// `<h1...>CONTENTS</h1>` literally, which the .runhead span added above breaks:
+// the heading now renders as `<h1 id="contents"><span ...>CONTENTS</span></h1>`.
+// The match silently failed and the book shipped the hand-written contents -
+// the one with no page numbers - while this line printed `false` and nothing
+// else complained. Hence the assert.
 const before = body.length;
-body = body.replace(/<h1[^>]*>CONTENTS<\/h1>[\s\S]*?(?=<h1)/, tocHtml);
-console.log('hand-written CONTENTS replaced:', body.length !== before);
+body = body.replace(/<h1[^>]*id="contents"[^>]*>[\s\S]*?(?=<h1)/, tocHtml);
+if (body.length === before) {
+    console.error('FAILED to replace the hand-written CONTENTS - the print book '
+                + 'would have no page numbers in its contents. Refusing to build.');
+    process.exit(1);
+}
+console.log('hand-written CONTENTS replaced: true');
 
 // book.css comes from the REPO, not from a scratchpad. It used to be read from
 // SP, a temp directory belonging to a long-finished session, so every change

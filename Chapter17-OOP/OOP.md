@@ -1054,9 +1054,9 @@ I think you've got it now, so let's proceed.
 
 #### Passing arguments when using call() and apply()
   What if the method of the external class you are calling needs arguments to be passed in?
-These two functions do exactly the same thing. The only difference appears when the underlying method to be called needs arguments passed in. The difference between them then only lies in how the arguments are passed. 
+These two functions do exactly the same thing, with the only difference found in how their arguments are passed. 
   Let's see how you would pass arguments to the method you are calling on the other object, 
-if it requires arguments. That is why i created the multiply() method in the Car object, and made it accept two arguments for its parameters first and second. Here is the method again:
+if it requires arguments. We will use the multiply() method on the Car object which accepts two arguments for its parameters first and second. Here is the method again:
 
 ```
 function Car(name, fuel)
@@ -1101,9 +1101,9 @@ function Car(name, fuel)
 
 In that case call() always hands over the arguments you give it to the method that will be called - whatever it will be; which in this case is multiply() of car. To be precise about what happens: call() does set 'this' to bike, exactly as you asked it to. It is multiply() that never looks at 'this', so the setting makes no difference to the result. The function that runs is still the one you reached for, car's multiply().
 
-So, we now know that if an object's method does not use the 'this' keyword inside of itself, then there is no need to call it using call() or apply(), or bind(). We will learn about bind() in a second. Now that is out of the way, let us do the same thing, only this time we will actually call a multiply() method on the Motorbike object so that it is actually an external method call, and also, this time we will also use apply() instead of call(), so that we see that they are all the same, except for a systax difference when arguments need to be passed in. 
+So, we now know that if an object's method does not use the 'this' keyword inside of itself, there is no need to call it using call(), apply() or bind(). We will learn about bind() in a second. Now that is out of the way, let us do the same thing, only this time we will actually call a multiply() method on the Motorbike object so that it is actually an external method call, and also, this time we will also use apply() instead of call(), so that we see that they are all the same, except for a syntax difference when arguments need to be passed in. 
 
-Let's go ahead and create two new methods; one multiply() on Motorbike, and one resolve()  on the Car object. The multiply() on Motorbike will mirror the multiply() already in Car. However, let's make the Motorbike object's own multiply() do a division of its two arguments internally and return the results to make it clearly different from the multiplication result of Car.multiply(). Here is the final code of Car with its new resolve() method: 
+Create two new methods; one multiply() on Motorbike, and one resolve() on the Car object. The multiply() on Motorbike will mirror the multiply() already in Car. However, let's make the Motorbike object's own multiply() do a division of its two arguments internally and return the results to make it clearly different from the multiplication result of Car.multiply(). Here is the final code of Car with its new resolve() method: 
 
 ```
 function Car(name, fuel)
@@ -1154,8 +1154,8 @@ function Motorbike(name, fuel)
 }
 ```
 
-Notice how we have structured the code here. The multiply did not use 'this' as we know already, but we have made sure its new resolve() method uses 'this' to reference its own multiply() method. Then the new multiply() of the Motorbike class mirrors that of car in name, so that we can get the resolve() method to call either one based on the context we give it, and we will be able to tell from the output which method of which class was evoked 
-Here is a demonstration in code of how it works. Obviously, we need to start by building the objects, so let's do that:
+Notice how we have structured the code here. The multiply did not use 'this' as we know already, but we have made sure its new resolve() method uses 'this' to reference its own multiply() method. Then the new multiply() of the Motorbike class mirrors that of car in name, so that we can get the resolve() method to call either one based on the context we give it, and we will be able to tell from the output which method of which class was evoked. 
+Here is a demonstration of how it works in code. Obviously, we need to start by building the objects, so let's do that:
 
 ```
 let car = new Car('Mercedes', 'petrol');
@@ -1174,14 +1174,14 @@ The output is 4, and it is straight forward; Car's resolve() makes a direct call
 alert(car.resolve.call(bike, 2, 2)); 
 ```
 
-Here the output in the alert popup is 1, which is correct. Motorbike's multiply() is run since we used call(bike) and gave it the context of the bike object.
+Here the output in the alert popup is 1, which is correct. Motorbike's multiply() is run because we used call(bike) and gave it the context of bike.
 
   alert(car.resolve.apply(bike, [2, 2])); // with array
 
 Here the output in the alert popup is 1 which is also correct. Motorbike's multiply() is run since we used apply(bike) and gave it the context of the bike object.
 
-Notice the difference between how we pass arguments to call() and how we pass it apply().
-Both of them take the first argument to be the context of 'this'. As for the second parameter; while call() takes multiple arguments destined for the method to be called as comma-separated values from the second parameter, apply() takes an array of arguments as its second parameter. This is the only difference between them, otherwise they all work the same way.  
+Notice the difference between how we pass arguments to call() and how we pass it to apply().
+Both of them take the first argument to be the context of 'this'. While call() takes multiple arguments destined for the method to be called as comma-separated values from the second parameter onwards, apply() takes an array of arguments as its second parameter. This is the only difference between them, otherwise they all work the same way.  
 
 
 #### The bind() function
@@ -1236,9 +1236,7 @@ What if just like we did with call() and apply(), you want to use bind() to make
 
 This will display a popup that says 'Harley Davidson-petrol'
 
-Notice that unlike with the call() and apply() methods, when binding, we are kind of like creating a stand-alone function separate from the object it belongs to, which we can just call as a standalone whenever we need it, and it will automatically already know what context, and what arguments to use. For example when we just call:
-   		
-    getType();
+Notice that unlike with the call() and apply() methods, when binding, we are kind of like creating a stand-alone function separate from the object it belongs to, which we can just call as a standalone whenever we need it, and it will automatically already know what context, and what arguments to use. For example when we just called getType() above and did not have to do anything else.
 
   Let's create such a standalone function from the resolve() method of the Car object, then bind it to the Motorbike object so that it's the Motorbike method that will be called instead of a method of Car, just as we have seen being done using call() and apply() above. Let's name this function divide:
 
@@ -1983,7 +1981,7 @@ This can be useful if this child class has a method with the same name, but want
 ##### Function Constructors, object literals and inheritance
 
 In JavaScript, we know the old way of creating a class was via Function, so it evolved from function-based “classes” and object literals to the modern class syntax. The following questions which we have answered for regular classes can also be asked of the old-alternative ways to create classes;
-  -Can you instantiate or extend an object literal or function?
+
   -Can you instantiate or extend an object literal or Function?
   -If so, can you call the parent property or constructor of a parent
   from a child object literal or Function?

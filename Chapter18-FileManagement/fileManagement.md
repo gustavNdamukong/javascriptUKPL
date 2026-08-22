@@ -497,7 +497,7 @@ looks like this:
 			});
 
 First, to prepare the contents to be converted into a downloadable
-  file in the browser, we create a bob object from the contents.
+  file in the browser, we create a blob object from the contents.
 
 			const blob = new Blob([modifiedText], { type: 'text/plain' });
 
@@ -1903,7 +1903,7 @@ However, it’s important to understand the limitations of the FileReader API:
   - It has read-only access. It can read files, but cannot write or
     modify them on disk. This is a built-in security feature to
     protect users' local files from unauthorized changes.
-  - It is user-Driven. t only works after the user manually selects a
+  - It is user-driven. It only works after the user manually selects a
     file- there’s no way for JavaScript to access files silently or
     automatically.
   - It has no file system control. It cannot create, delete, or list files or
