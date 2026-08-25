@@ -613,6 +613,7 @@ Chapter 21 - Error Debugging and Testing
 - console.log()
 - The browser developer tools
 - Stopping code execution for debugging
+- Using the Browser Tools Network Tab
 - Throwing and handling exceptions
 - The throw statement
 - Custom exceptions

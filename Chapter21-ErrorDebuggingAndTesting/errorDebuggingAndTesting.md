@@ -11,6 +11,7 @@
   - console.log()
 - The browser developer tools
 - Stopping code execution for debugging
+- Using the Browser Tools Network Tab
 - Throwing and handling exceptions
   - The throw statement
     - Custom exceptions
@@ -388,6 +389,28 @@ Bonus tip:
   debugger
 
 
+#### Using the Browser Tools Network Tab
+  The Console tab shows you what your code said. The Network tab shows you what your page asked for, and what came back. Beginners rarely open it, which is a pity, because it answers one question the Console cannot: did that file even arrive?
+
+  Open your Developer Tools (F12, or right-click > "Inspect"), choose the Network tab, then reload the page. A list appears, with one row for every single thing the page asked for - your HTML, your CSS, your JavaScript files, every image, and later on, every call your code makes to a server. The column to watch is Status.
+
+  a) Checking that a file really loaded
+    A status of 200 means "here it is". A status of 404 means "there is nothing at that address", and that is nearly always a spelling mistake in a src or href, or a file whose name does not match what you typed.
+
+  This matters far more than it looks. When a JavaScript file fails to load, the browser does not stop and warn you in the middle of the page. It quietly runs none of it. Every button on the page dies at the same moment, and not one line of your code is at fault. It is easier still to hit this with a script marked type="module", because a module also refuses to run when you open the page straight from your hard drive rather than through a server such as Live Server.
+
+  So if you ever meet a page where nothing at all works, do not start reading your JavaScript. Open the Network tab and check that the script actually arrived. "Nothing works" almost always means "the file never loaded", not "my code is wrong".
+
+  b) Watching the requests your code sends out
+    The Network tab is not only for files. Every request your code makes to a server while the page is running - to fetch data, to submit a form, or to upload a file - appears as a new row the moment it happens. Click any row and you can read what you sent and what came back.
+
+  That is what makes it indispensable once you start talking to other computers. When we call APIs with fetch() in Chapter 22 (Extensions - APIs & Libraries), upload files in Chapter 18 (File Management), or send form data in Chapter 19 (Forms and Email), the Network tab is where you see whether your request ever left, what the server replied, and why it refused. The status code answers that at a glance: 200 when all is well, 404 when the thing you asked for does not exist, and 500 when the server itself broke.
+
+Bonus tip: a 404 is not a CORS error.
+  New coders mix these two up constantly, and they are completely different problems. A 404 means the file was not found, so the address is wrong. A CORS error means the file was found perfectly well, but another website refused to share it with your page.
+
+  Telling them apart is refreshingly easy: a CORS error always contains the word "CORS". If that word is not in the message, it is not a CORS problem, and you should go hunting for a wrong filename instead. We look at CORS properly in Chapter 22.
+
 ## Throwing and handling exceptions
   In the real world, things go wrong all the time—and programming is no different. Files might not load, users might type unexpected things, and network requests may fail. Vanilla JavaScript (i.e. JavaScript without any external libraries) gives us a way to catch and handle errors using what is known as a try…catch statement. This involves the throwing and handling of exceptions using try, catch, finally. This mechanism allows you to manage runtime errors gracefully. This means that-and this is the whole essence of exceptions, when errors occur in your code, instead of your software stalling and breaking up, which will annoy or frustrate your users, you can ‘catch’ these errors, so that you can deal with the error in a better way. Dealing with the error in a better or graceful way could mean, informing other parts of your code that use that functionality (function or service), so that they can offer the user an alternative result, or it could mean informing the developer (you or your team) of the issue in the code, so it can be fixed as soon as possible. Instead of your whole program crashing when something goes wrong, try...catch lets you:
 write some code to do something. If something goes wrong, catch the error, and handle it without breaking everything. Here is the syntax of try…catch:
@@ -417,8 +440,10 @@ Here is how it works:
 		}
 
 This works well for simple checks to prevent standard errors in your code. Exceptions are more powerful because they go deeper than that. There are errors that you either just may not be able to anticipate, or sections in your program that are mission-critical, meaning, your program will just not be able to work when such errors occur. Such an error, can be someone trying to access your banking software, and submitting a bank account number that does not match the password or date of birth they are using. For such errors, you want to definitely capture them when they occur and halt the script execution, then show the user a meaningful message, rather than letting them through. Another type of mission-critical error may be your bank’s server is down, and rather than let the application just crash and blackout-which will confuse or even upset your customers/users, you will want to always check if the server is up and running before trying to access it. If it is then found to be down, you can inform the users in a friendly way to try again later, and then inform your technical department immediately to fix the issue. These are situations where exceptions in programming come in. They really get into the engineering of a software application, and you can see how different they are to simple conditional statements. Your take-home key point here should be that conditional statements are for anticipating standard programming errors, while exceptions are for anticipating mission-critical errors in your application.
-  All programming languages have exception handling built right into them, and they let you create your own custom exceptions as per the needs of your software application. Speaking of objects, if you are unsure about objects and classes, do not worry, we learned all about them in Object-oriented programming (OOP) back in Chapter 12, so feel free to hop back there for a quick refresher before carrying on here.   
-  The way it works is, when creating a service or function, in parts where potential errors may occur (eg a mission-critical error), you will check for this situation so that if your code encounters such an error,  it should use a throw statement to create an exception. Then, in other parts of your code that make use of that service or function that will potentially throw an exception, you will call such services or functions within a try…catch block. Basically, within the try block, you place code to access the service/function, then in the catch block, which is where any exception that would be thrown by that service/function will be captured (caught) and made available to you, you will deal with (handle) the exception. This means that your application will run smoothly without unexpectedly stalling and confusing your users. Any potential issues will be captured in the catch block, so that you can deal with them in a manner befitting of a well-thought-through, and user-friendly application. JavaScript uses two types of block constructs to capture and deal with (handle) the thrown exceptions-more on this shortly. Here is an example:
+  All programming languages have exception handling built right into them, and they let you 
+create your own custom exceptions as per the needs of your software application. Speaking of objects, if you are unsure about objects and classes, do not worry, we learned all about them in Object-oriented programming (OOP) back in Chapter 12, so feel free to hop back there for a quick refresher before carrying on here.   
+  The way it works is, when creating a service or function, in parts where potential errors may 
+occur (eg a mission-critical error), you will check for this situation so that if your code encounters such an error,  it should use a throw statement to create an exception. Then, in other parts of your code that make use of that service or function that will potentially throw an exception, you will call such services or functions within a try…catch block. Basically, within the try block, you place code to access the service/function, then in the catch block, which is where any exception that would be thrown by that service/function will be captured (caught) and made available to you, you will deal with (handle) the exception. This means that your application will run smoothly without unexpectedly stalling and confusing your users. Any potential issues will be captured in the catch block, so that you can deal with them in a manner befitting of a well-thought-through, and user-friendly application. JavaScript uses two types of block constructs to capture and deal with (handle) the thrown exceptions-more on this shortly. Here is an example:
 
 		// create the service/function
 		function viewAccount(account, user_id) 
@@ -463,13 +488,16 @@ This works well for simple checks to prevent standard errors in your code. Excep
 			console.log("The viewAccount() was called");
 		}
 
-If the viewAccount() function determines the user to be the right owner of the account, the user gets their account details shown to them, if not an Error exception is thrown. The API code 401 refers to an unauthorised access attempt, which is usually due to invalid user credentials to access a resource. We will learn more about API response codes when we come to learn about APIs in Chapter 22 (Extensions). The Error exception is a JavaScript (in-built) exception. You pass to its constructor a string, which will be available to any code that catches this exception on its message property like so:
+If the viewAccount() function determines the user to be the right owner of the account, the 
+user gets their account details shown to them, if not an Error exception is thrown. The API code 401 refers to an unauthorised access attempt, which is usually due to invalid user credentials to access a resource. We will learn more about API response codes when we come to learn about APIs in Chapter 22 (Extensions). The Error exception is a JavaScript (in-built) exception. You pass to its constructor a string, which will be available to any code that catches this exception on its message property like so:
 
   error.message
 
  If no exception is thrown, then all is well, and the viewAccount() did not throw any exception. The code in the try {} block where this viewAccount() function is called will therefore work, while the code in the catch {} block will not be run. 
-  The finally {} block is optional, and you will rarely see it being used. But when it is used in code, the code in that block will always be run, regardless of whether an exception was thrown by the service or function. Use it therefore only when there is an action you want to take no matter the outcome of calling that function or service. 
-  Every programming language has built-in exceptions but you can write your own. Let’s start by looking at some of the exceptions provided to you by JavaScript. JavaScript has the following built-in error constructors:
+  The finally {} block is optional, and you will rarely see it being used. But when it is used in 
+code, the code in that block will always be run, regardless of whether an exception was thrown by the service or function. Use it therefore only when there is an action you want to take no matter the outcome of calling that function or service. 
+  Every programming language has built-in exceptions but you can write your own. Let’s start by 
+looking at some of the exceptions provided to you by JavaScript. JavaScript has the following built-in error constructors:
 
   - Error (for generic errors — the one used in the example above)
   - SyntaxError (for parsing errors)
