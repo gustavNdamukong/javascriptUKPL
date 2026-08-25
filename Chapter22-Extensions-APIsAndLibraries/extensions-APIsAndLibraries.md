@@ -1369,17 +1369,22 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
   - fetch() uses promises (cleaner code) but XMLHttpRequest does not
   - fetch() has less code, and is easier to write
-  - fetch() has built-in error handling while XMLHttpRequest  does not
+  - fetch() has built-in error handling while XMLHttpRequest does not
 
 
 
 
 ### Asynchronous programming
-  Asynchronous programming is when code runs but the rest of your program does not have to wait for it to finish. You can still interact with your application program in different ways while waiting for the result of the running code. There would naturally be some kind of code that listens for the event of the result of the asynchronous (background) task returning being completed. That listener will take some action based on that, even if that action is simply to display a notification on screen to inform the user of the background task’s completion.  
-  If a function is run synchronously-and this is the default behaviour, the code parser will wait at that line for it to run completely before moving on to the next line. Asynchronous is the opposite of that. If a function is run asynchronously, it means that the JavaScript parser will not stop at that line and wait for it to finish its job before proceeding. Rather, that function will simply be made to run in the background while the parser will carry on executing the rest of the lines of code after that line. JavaScript has some of its own (built-in) asynchronous functions, one of which you have seen above; the setTimeout() function. So in brief, an asynchronous function schedules a task to run later without blocking the execution of other code.
-   This is where callbacks come in handy, hence why they have always been used in JavaScript. A callback is usually a function (usually anonymous) to be run when a program has finished running. It is therefore ideal in asynchronous (background) programs. In fact, call backs was always the de-facto way to write these kind of programs.
-  ES6 (ECMAScript 2015) saw the introduction of promises which replaced callbacks. Then in 2017 came the even more refined way to do the same thing that Promises do, and that was async/await. Async/await, though not meant to replace Promises, was a different way to do what promises do. It deals with the response in such an elegant and seamless way that it looks more like synchronous programming. 
-  JavaScript has many built-in asynchronous functions that are useful to know. Here is a list of the important ones including with simple examples. You may not understand the examples now, but as we delve into those concepts immediately following below, all will be explained
+  Asynchronous programming is when code runs but the rest of your program does not have to wait 
+for it to finish. You can still interact with your application program in different ways while waiting for the result of the running code. There would naturally be some kind of code that listens for the event of the result of the asynchronous (background) task returning being completed. That listener will take some action based on that, even if that action is simply to display a notification on screen to inform the user of the background task’s completion.  
+  If a function is run synchronously-and this is the default behaviour, the code parser will 
+wait at that line for it to run completely before moving on to the next line. Asynchronous is the opposite of that. If a function is run asynchronously, it means that the JavaScript parser will not stop at that line and wait for it to finish its job before proceeding. Rather, that function will simply be made to run in the background while the parser will carry on executing the rest of the lines of code after that line. JavaScript has some of its own (built-in) asynchronous functions, one of which you have seen above; the setTimeout() function. So in brief, an asynchronous function schedules a task to run later without blocking the execution of other code.
+   This is where callbacks come in handy, hence why they have always been used in JavaScript. A 
+callback is usually a function (usually anonymous) to be run when a program has finished running. It is therefore ideal in asynchronous (background) programs. In fact, call backs was always the de-facto way to write these kind of programs.
+  ES6 (ECMAScript 2015) saw the introduction of promises which replaced callbacks. Then in 2017 
+came the even more refined way to do the same thing that Promises do, and that was async/await. Async/await, though not meant to replace Promises, was a different way to do what promises do. It deals with the response in such an elegant and seamless way that it looks more like synchronous programming. 
+  JavaScript has many built-in asynchronous functions that are useful to know. Here is a list of 
+the important ones with simple examples. You may not understand the examples now, but as we delve into those concepts immediately following below, all will be explained
 
 -1) setTimeout() – Runs a function after a delay (already 
 		mentioned).
@@ -1452,10 +1457,10 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
   }
   ```
 
-		getData();
+	getData();
 
 
-  Before we look at promises and async/await, it’s essential to understand the concept of a call back, which existed to solve more or less the same problem that they are solving.
+  Before we look at promises and async/await, it’s essential to understand the concept of a call back, which existed to solve more or less the same problem that promises are solving.
 
 ![Figure 22.1 — The same wait, written three ways](images/ch22-fig-01-three-async-styles.svg)
 
@@ -1513,7 +1518,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 
   You have here two functions, getPosts() that reads data from an array posts, and renders it as HTML list tags to display the posts. The other function, createPost() adds more data to the posts array.
-  If you ran the code now and looked in your HTML you would find that only post one and post two are displayed as `<li>` elements. Though we first of all call createPost() before we call getPosts(), you would think that we will get three tags displayed, but we only get two. The `<li>` element post three created by createPost() above did not appear because the code in createPost() runs in a setTimeout() function which ensures that its task is only executed after a two seconds delay. The issue is that setTimeout() is asynchronous, meaning getPosts() returns before it completes. This means that the next function we call, getPosts(), runs and fetches the current posts data before the additional post is created, hence, it only finds two items in the posts array.
+  If you ran the code now and looked in your HTML you would find that only post one and post two are displayed as `<li>` elements. Though we first of all call createPost() before we call getPosts(), you would think that we will get three <li> tags displayed, but we only get two. The `<li>` element post three created by createPost() above did not appear because the code in createPost() runs in a setTimeout() function which ensures that its task is only executed after a two seconds delay. The issue is that setTimeout() is asynchronous, meaning getPosts() returns before it completes. This means that the next function we call, getPosts(), runs and fetches the current posts data before the additional post is created, hence, it only finds two items in the posts array.
   To resolve this issue, you need to use callbacks, Promises, or async/await. Let’s see how a callback can fix the issue. We will modify the createPost() function to accept a callback function as its second argument. This callback function is getPosts() which should then be called by createPost() after it has finished doing its task of adding data to the posts array. This is to ensure that after updating the data in posts, the list of posts displayed on screen is refreshed by getPosts() to reflect that update. 
   Be sure to pass the getPosts() function then as the second argument to createPost() when you call it. The modified code will look like this:
 
@@ -1551,7 +1556,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
   Now when we call createPost() as we do above, because we pass it a callback, we get the three list items displayed correctly in the browser. It is crucial to understand why the callback solution works:
   - Note that earlier, we called both the createPost() and
   getPosts() functions separately, first to create a new post,
-  and then to fetch all the posts to upload the list in the UI
+  and then to fetch all the posts to update the list in the UI
   like so:
 
 		createPost( 
@@ -1560,7 +1565,7 @@ Some reasons why you may want to use fetch() over XMLHttpRequest are as follows:
 
 		ul.innerHTML = getPosts();
 
-  But that was because getPosts() was returning data (output), and we were using that to update the list in the UI outside of getPosts(). Well, we now know that it obviously did not work because getPosts() was returning posts data (output) which it was fetching before createPost() had done its job. This time we call both functions in one line, by calling createPost() and passing it getPosts() at the same time as a callback, then we call getPosts() one more time in the end just to get the initial, out-of-date posts, before the update happens in getPosts() thanks to the callback we are sending:
+  But that was because getPosts() was returning data (output), and we were using that to update the list in the UI outside of getPosts(). Well, we now know that it obviously did not work because getPosts() was returning posts data (output) which it was fetching before createPost() had done its job. This time we call both functions in one line, by calling createPost() and passing it getPosts() as a callback, then we call getPosts() one more time in the end just to get the initial, out-of-date posts, before the update happens in getPosts() thanks to the callback we are sending:
 
 		createPost( { title: 'post three', body: 'This 
 			is three'}, getPosts);
@@ -1576,7 +1581,7 @@ And not like so:
 
 	ul.innerHTML = getPosts(); 
 
-When getPosts() finishes its job, it is updating the UI update inside itself, because it has the updated post data from the delayed task of createPost(). This is the crucial part of how this code is made to work.
+When getPosts() finishes its job, it is updating the UI update inside itself, because having been passed as a callback into createPost(), it has the updated post data from the delayed task of createPost(). This is the crucial part of how this code is made to work.
 
 -We have now changed the code that calls getPosts() to be
   the callback that we pass to createPost(). That is why we
@@ -1611,8 +1616,9 @@ When getPosts() finishes its job, it is updating the UI update inside itself, be
 
 
 b) A promise
-To convert the above example to use a promise, we will leave the getPosts() function exactly the same as when using the callback function above, but we will modify the createPost() function to look like this:
+To convert the above example to use a promise, we will leave the getPosts() function exactly the same as when using the callback function above, but we will modify the createPost() function. The final code will look like this:
 
+	// keep the same
 	function getPosts()
 	{
     		let output = '';
@@ -1689,10 +1695,10 @@ Promise3 uses the setTimeout() function to call after 2 seconds, so the total am
 
   c) Async/Await
   
-  Async/await literally stands for asynchronous and await. You use them together on a block of code to get the desired result. Start by declaring it one space before the function keyword to mark that function so JavaScript knows that it should be run asynchronously. That is exactly its purpose; to allow you to create your custom asynchronous functions.
+  Async/await literally stands for asynchronous and await. You use them together on a block of code to get the desired result. Start by declaring it using the 'async' keyword one space before the 'function' keyword to mark that function so JavaScript knows that it should be run asynchronously. That is exactly its purpose, to allow you to create your custom asynchronous functions. For example:
 
 	async function myFunction() {
-		// await … for this code to be run before proceeding 
+		// await … means wait for this code to be run before proceeding 
 		await functionToCall(anyArguments);
 	}
 
@@ -1723,17 +1729,16 @@ Promise3 uses the setTimeout() function to call after 2 seconds, so the total am
 
 
 	function createPost(post)
-    	{
-        	// Make createPost() return a Promise
-        	return new Promise((resolve) => {
-            		setTimeout(() => {
-                		posts.push(post);
-                		// Resolves the promise
-                		// after pushing the post
-               	 		resolve();
-           	 	}, 2000);
-        	});
-    	}
+	{
+		// Make createPost() return a Promise
+		return new Promise((resolve) => {
+				setTimeout(() => {
+					posts.push(post);
+					// Resolves the promise after pushing the post
+					resolve();
+			}, 2000);
+		});
+	}
 
 
 	async function init() {
@@ -1741,14 +1746,14 @@ Promise3 uses the setTimeout() function to call after 2 seconds, so the total am
 			{ title: 'post three', body: 'This is three'}
 		);
 
-    		// Runs after createPost() is done
-    		getPosts(); 
+    	// Runs after createPost() is done
+    	getPosts(); 
 	}
 
 	init(); 
 
 
-  We're basically saying that we will wait (await) for the new post to be created, then (before we) call getPosts() to get the update. This makes for cleaner and more readable code, and hence it is said that async/await it is a more elegant way to do a promise. Notice however, that though we used async/await to call the createPost() function, we still use a promise within createPost() so it returns a promise
+  We're basically saying that we will wait (await) for the new post to be created, then (before we) call getPosts() to get the update. This makes for cleaner and more readable code, hence it is said that async/await is the more elegant way to do a promise. Notice however, that though we used async/await to call the createPost() function, we still use a promise within createPost() so it returns a promise
 
 	function createPost(post)
 	{
@@ -1757,8 +1762,9 @@ Promise3 uses the setTimeout() function to call after 2 seconds, so the total am
 		});
 	}
 
-This is because you cannot use pure async/await to resolve the issue without using a promise in combination with it. Async/await is built to work with Promises. If there’s no Promise, await does nothing.This is because async/await is just syntactic sugar over Promises, and so they only work with Promises. If a the function being called (like createPost() in our example) does not return a Promise, await has nothing to wait for, and execution therefore will therefore move forward immediately with no asynchrony.
-  The other thing to understand is that the line within createPost() that calls resolve() is so important. Calling resolve() ensures async/await works. It is the thing that makes a promise return itself. Any value to be returned by the function should be passed into resolve() as an argument eg:
+This is because you cannot use pure async/await to resolve the issue without using a promise in combination with it. Async/await is built to work with Promises. If there’s no Promise, await does nothing. This is because async/await is just syntactic sugar over Promises, and so they only work with Promises. If a the function being called (like createPost() in our example) does not return a Promise, await has nothing to wait for, and execution therefore will therefore move forward immediately with no asynchrony.
+  The other thing to understand is that the line within createPost() that calls resolve() is so 
+important. Calling resolve() ensures async/await works. It is the thing that makes a promise return itself. Any value to be returned by the function should be passed into resolve() as an argument eg:
 
 	resolve(arguments);
 
@@ -1767,7 +1773,8 @@ With that in place, only then will the await code that calls createPost()
   await createPost(...)
 
 be able to correctly pause execution until the Promise resolves. 
-  Here is a modified example of using async/await with promises , structured slightly differently to achieve the same thing. Hopefully you can read through the code and understand everything about it without my explanations. Read the inline comments as a guide.
+  Here is a modified example of using async/await with promises, structured slightly differently 
+to achieve the same thing. Hopefully by now, you can read through the code and understand everything about it without my explanation. Read the inline comments as a guide.
 
 	const posts = [
     		{ title: 'post one', body: 'This is one'},
@@ -1811,13 +1818,14 @@ be able to correctly pause execution until the Promise resolves.
 		let ul = document.querySelector("#gusUl");
     
 		// Wait for posts and update UI
-    		ul.innerHTML = await getPosts(); 
+    	ul.innerHTML = await getPosts(); 
 	}
 
 	updateUI();
 
-Let me point out that, as you can see, you may use await as often as needed whenever you have to wait for some asynchronous code to return data—just make sure that the function being awaited returns a Promise. On the asynchronous side, the resolve() function inside a Promise is key: it signals that the operation is complete. Without resolve(), the Promise remains pending indefinitely, causing the awaiting code to hang. Additionally, resolve(value) is how data is passed back from the Promise, so make sure to pass any return values as arguments to resolve(). For error handling, reject(error) can be used to signal a failure, which can then be caught with .catch() or a try...catch block. 
-  You should use a try-catch block when making a request to a promise and you expect it to send back an error (via its reject() function) if an error occurs. Here is an example of how to make a request to a promise using a try and catch to handle any returned errors:
+Let me point out that, as you can see, you may use await as often as needed whenever you have to wait for some asynchronous code to return data—just make sure that the function being awaited returns a Promise. On the asynchronous side, the resolve() function inside a Promise is key: it signals that the operation is complete. Without resolve(), the Promise remains pending indefinitely, causing the awaiting code to hang. Additionally, resolve(value) is how data is passed back from the Promise, so make sure to pass any return values as arguments to resolve(). For error handling, reject(error) can be used to signal a failure, which can then be caught with .catch() or a try...catch block on the calling side (the script that calls the promise function). 
+  You should use a try-catch block when making a request to a promise that you know may send 
+back an error (via its reject() function) if an error occurs. Here is an example of how to make a request to a promise using a try and catch to handle any returned errors:
 
 	function fetchData() {
     		return new Promise((resolve, reject) => {
@@ -1848,7 +1856,7 @@ Let me point out that, as you can see, you may use await as often as needed when
 
 
 
-  To reinforce the point, this is the reason why most modern API’s implement promises, so it will easier to consuming them using async/await. Here is an example of how to use async/await to consume an API using the fetch API of JavaScript. To use async with the fetch API, do it like so:
+  To reinforce the point, this is the reason why most modern API’s implement promises, to make them easier to consume using async/await. Here is an example of how to use async/await to consume an API using the fetch API of JavaScript. To use async with the fetch API, do it like so:
 
 Without async/await:
 
@@ -1885,7 +1893,7 @@ fetch API
 
 	await res.json();
 
-This is because .json() is a function that coverts the data into json format, and it might need time to do its work too. We therefore want to wait for that to happened before we use the data. 
+This is because .json() is a function that coverts the data into json format, and it might need time to do its work too. We therefore want to wait for that to happen before we use the data. 
 
 
 
