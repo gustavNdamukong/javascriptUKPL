@@ -179,7 +179,7 @@ questions.
 
    The line `let [key, value] = cookie.split("=")` is called destructuring: it takes the two
    items the split produced and puts them straight into two variables in one go. There is more
-   on it in Chapter 17.
+   on it in Chapter 12.
 
    Returning null when nothing matches is a deliberate choice. It gives the caller a clear
    "there was no such cookie" rather than leaving them with undefined.

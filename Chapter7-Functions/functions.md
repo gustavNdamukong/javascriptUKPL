@@ -500,7 +500,7 @@ We can shorten the syntax even further. If all we are returning in the function 
 
 
 ## Quick object literals from function arguments
-  You sometimes have a function in your code that simply needs to return an object literal from arguments passed to the function. If you do not know what object literals are, quickly hop over to Chapter 17 (Object Oriented Programming) and read about objects and object literals before hopping back here to continue. Here is an example of such a function. Since we are on the topic of functions, just for the purpose of better understanding of the differences, I will write three versions of the same function; one using the traditional function syntax, one in anonymous function syntax, and one in the arrow function syntax. The differences should be very subtle, and you should be able to distinguish between them by now:
+  You sometimes have a function in your code that simply needs to return an object literal from arguments passed to the function. If you do not know what object literals are, quickly hop over to Chapter 12 (Object Oriented Programming) and read about objects and object literals before hopping back here to continue. Here is an example of such a function. Since we are on the topic of functions, just for the purpose of better understanding of the differences, I will write three versions of the same function; one using the traditional function syntax, one in anonymous function syntax, and one in the arrow function syntax. The differences should be very subtle, and you should be able to distinguish between them by now:
 
 (These three are alternatives to each other, not three things
 to write out one after the other. Pick whichever you prefer.)

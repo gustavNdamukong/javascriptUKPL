@@ -1,5 +1,5 @@
 
-# Chapter 17 — OBJECT ORIENTED PROGRAMMING (OOP)
+# Chapter 12 — OBJECT ORIENTED PROGRAMMING (OOP)
   - Introduction
   - Relationship between the object data
   type and Object
@@ -325,9 +325,9 @@ yourself which of the two is meant. It will nearly always be obvious
 from whether it is written after a function name (Person.prototype) or
 fetched from an object (person1.__proto__).
 
-![Figure 17.1 — Two different things are called "prototype"](images/ch17-fig-01-two-prototypes.svg)
+![Figure 12.1 — Two different things are called "prototype"](images/ch12-fig-01-two-prototypes.svg)
 
-- Figure 17.1 — Two different things are called "prototype"*
+- Figure 12.1 — Two different things are called "prototype"*
 
 
 Such functions are special objects that you create as a developer so that other objects can inherit from. They are known as constructor functions. This distinction is very 	important to be understood as many developers get it confused. Very uniquely to JavaScript, the syntax of a regular function is very similar to a constructor function which is basically a class. The best way to get a grasp of this is to recognise that JavaScript is a unique language of its own, in terms of classes and objects, and agree with yourself not to try to compare it with any other language. Once you do that, you will find it becomes easier to put things into context and understand. Don't worry, by the end of this chapter you will have mastered the creation of objects in JavaScript. Even in JavaScript, regular functions and objects, as identical as they look, have their distinctions if only you are observant. I will proceed to show you now. To make it easier for you to see the visual differences, I will demonstrate with an object and a function below.
@@ -559,9 +559,9 @@ person1  →  Person.prototype  →  Object.prototype  →  null
   Notice that an object has exactly ONE prototype, never two. When you hear that a Date "inherits from both Date.prototype and Object.prototype", what is really meant is that both of them are in its chain — Date.prototype directly, and Object.prototype one step further up. That distinction matters, because inheritance in JavaScript is a single line of links, not a bundle of parents.
   This linking or association of objects, as we already know, is what we call the prototype chain, and it is how JavaScript answers every property lookup: it checks the object itself, then its prototype, then its prototype's prototype, until it either finds what you asked for or reaches null.
 
-![Figure 17.2 — The prototype chain: a single line of links](images/ch17-fig-02-prototype-chain.svg)
+![Figure 12.2 — The prototype chain: a single line of links](images/ch12-fig-02-prototype-chain.svg)
 
-- Figure 17.2 — The prototype chain: a single line of links*
+- Figure 12.2 — The prototype chain: a single line of links*
 
 
   iii) The new way to create objects and the prototype
@@ -1256,9 +1256,9 @@ This will display a popup with 2
 
 In a nutshell, the bind() function allows an object to borrow a method from another object without making a copy of that method. This is known as function borrowing in JavaScript, and it's very powerful because it broadens the capabilities of your classes and objects while promoting code reuse.
 
-![Figure 17.3 — Losing "this", and giving it back](images/ch17-fig-03-losing-this.svg)
+![Figure 12.3 — Losing "this", and giving it back](images/ch12-fig-03-losing-this.svg)
 
-*Figure 17.3 — Losing "this", and giving it back*
+*Figure 12.3 — Losing "this", and giving it back*
 
 
 ## OBJECTS IN DEPTH
@@ -1892,9 +1892,9 @@ keyword inside a subclass constructor. Overriding is when the child class define
   class (parent or child). Therefore, the class that the instance is created from 
   can be either a base class or a child class—it does not matter. 
 
-![Figure 17.4 — A child class is still a blueprint; an instance is a real thing](images/ch17-fig-04-class-vs-instance.svg)
+![Figure 12.4 — A child class is still a blueprint; an instance is a real thing](images/ch12-fig-04-class-vs-instance.svg)
 
-*Figure 17.4 — A child class is still a blueprint; an instance is a real thing*
+*Figure 12.4 — A child class is still a blueprint; an instance is a real thing*
 
 
 ##### Call parent constructor from child class

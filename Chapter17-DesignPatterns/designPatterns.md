@@ -1,5 +1,5 @@
 
-# Chapter 12 — DESIGN PATTERNS
+# Chapter 17 — DESIGN PATTERNS
 
 Design patterns are reusable solutions to 
   common software design problems. They 
@@ -38,9 +38,9 @@ creation.
     - COMMAND PATTERN
     - ITERATOR PATTERN
 
-![Figure 12.1 — The three families of design pattern](images/ch12-fig-01-three-groups.svg)
+![Figure 17.1 — The three families of design pattern](images/ch17-fig-01-three-groups.svg)
 
-- Figure 12.1 — The three families of design pattern*
+- Figure 17.1 — The three families of design pattern*
 
 
   These design patterns are global and

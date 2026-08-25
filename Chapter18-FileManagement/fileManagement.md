@@ -127,7 +127,7 @@ The following examples are carefully chosen to give you enough information on va
 				names and ages.</p>
         	</section>
             
-        	<script type="module" src="index.js" defer></script>
+        	<script type="module" src="index.js"></script>
     	</body>
 	</html>
 
@@ -657,7 +657,7 @@ c) Have an HTML file (e.g. index.html) with this code:
         	<br><br>
         	<div id="tableContainer"></div>
 
-		<script type="module" src="index.js" defer></script>
+		<script type="module" src="index.js"></script>
     	</body>
 	</html>  
 

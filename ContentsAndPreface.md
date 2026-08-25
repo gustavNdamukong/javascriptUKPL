@@ -19,12 +19,12 @@ Chapter 8 - Cookies
 Chapter 9 - Strings  
 Chapter 10 - Data Types  
 Chapter 11 - Data Structures  
-Chapter 12 - Design Patterns  
+Chapter 12 - Object Oriented Programming (OOP)  
 Chapter 13 - Databases and Storage  
 Chapter 14 - Dates and Time  
 Chapter 15 - DOM and URL Manipulation  
 Chapter 16 - The Canvas Element  
-Chapter 17 - Object Oriented Programming (OOP)  
+Chapter 17 - Design Patterns  
 Chapter 18 - File Management  
 Chapter 19 - Forms and Email  
 Chapter 20 - Images  
@@ -294,36 +294,80 @@ Chapter 11 - Data Structures
 - Trees (Binary Trees, AVL Trees, etc)
 - Collections
 
-Chapter 12 - Design Patterns
-  1) Creational Patterns
-  These are concerned with object
-  creation.
-
-- SINGLETON
-- FACTORY
-- ABSTRACT FACTORY
-- BUILDER
-- PROTOTYPE
-2) Structural Patterns
-  These patterns focus on the
-  composition (structure) of classes or
-  objects.
-
-- ADAPTER PATTERN
-- DECORATOR PATTERN
-- FACADE PATTERN
-- COMPOSITE PATTERN
-- PROXY PATTERN
-3) Behavioural Patterns
-  These patterns deal with object
-  interaction and responsibility
-  distribution.
-
-- OBSERVER PATTERN
-- STRATEGY PATTERN
-- TEMPLATE METHOD PATTERN
-- COMMAND PATTERN
-- ITERATOR PATTERN
+Chapter 12 - Object Oriented Programming (OOP)
+- Introduction
+- Relationship between the object data
+  type and Object
+- How to create an object
+- The Object Constructor
+- Object.prototype
+- Static Methods of Object
+- Understanding how to use the prototype
+  property
+- The traditional two ways of creating
+  an object and their prototypes
+- object initialisers (aka object
+  literals)
+- constructor functions
+- The new way to create objects and
+  the prototype
+- The Object.create() method
+- Objects and their prototypes
+- The constructor property
+- Handy properties and methods of Objects
+- The prototype property
+- The constructor property
+- isPrototypeOf() and the instanceof operator
+- getPrototypeOf()
+- The __proto__ property
+- The getOwnPropertyNames()
+- The hasOwnProperty() method (non-inherited)
+- Check all properties of an object (including inherited)
+- Creating a custom method on an object
+- The call(), apply() and bind()
+  methods of Function
+- Passing arguments when using call()
+  and apply()
+- The bind() function
+- OBJECTS IN DEPTH
+- Object literals
+- JavaScript objects vs object literals
+- Object literals vs constructor
+  function
+- Changing object literal values
+  on the fly
+- Restricting modification on objects
+- The difference between a JavaScript object and JSON
+- Converting a JavaScript object to
+  JSON
+- Converting JSON to a JavaScript
+  object
+- Destructuring of objects
+- Simplified object literal creation
+  from function arguments
+- Viewing the contents of an object
+- Classes
+- Class inheritance
+- difference between a child class and an instance
+- Call parent constructor from child class
+- Check if an object is an instance of a class
+- Function Constructors, object literals and inheritance
+- Function Constructors (Old Way of Creating
+  Classes)
+- Object literals
+- Class setters and getters
+- Sharing data between files
+- The difference between import and require
+- Exporting multiple functions or variables
+- Using a wildcard to import all from a file
+- Export fallback with export default
+- Other advanced OOP concepts
+- Static methods
+- Abstract classes
+- Interfaces
+- Dependency Injection (DI)
+- Private methods and properties
+  (Encapsulation)
 
 Chapter 13 - Databases and Storage
 - Introduction
@@ -467,80 +511,36 @@ Chapter 16 - The Canvas Element
 - A word about the shape we are really testing
 - The precise version, if you need it
 
-Chapter 17 - Object Oriented Programming (OOP)
-- Introduction
-- Relationship between the object data
-  type and Object
-- How to create an object
-- The Object Constructor
-- Object.prototype
-- Static Methods of Object
-- Understanding how to use the prototype
-  property
-- The traditional two ways of creating
-  an object and their prototypes
-- object initialisers (aka object
-  literals)
-- constructor functions
-- The new way to create objects and
-  the prototype
-- The Object.create() method
-- Objects and their prototypes
-- The constructor property
-- Handy properties and methods of Objects
-- The prototype property
-- The constructor property
-- isPrototypeOf() and the instanceof operator
-- getPrototypeOf()
-- The __proto__ property
-- The getOwnPropertyNames()
-- The hasOwnProperty() method (non-inherited)
-- Check all properties of an object (including inherited)
-- Creating a custom method on an object
-- The call(), apply() and bind()
-  methods of Function
-- Passing arguments when using call()
-  and apply()
-- The bind() function
-- OBJECTS IN DEPTH
-- Object literals
-- JavaScript objects vs object literals
-- Object literals vs constructor
-  function
-- Changing object literal values
-  on the fly
-- Restricting modification on objects
-- The difference between a JavaScript object and JSON
-- Converting a JavaScript object to
-  JSON
-- Converting JSON to a JavaScript
-  object
-- Destructuring of objects
-- Simplified object literal creation
-  from function arguments
-- Viewing the contents of an object
-- Classes
-- Class inheritance
-- difference between a child class and an instance
-- Call parent constructor from child class
-- Check if an object is an instance of a class
-- Function Constructors, object literals and inheritance
-- Function Constructors (Old Way of Creating
-  Classes)
-- Object literals
-- Class setters and getters
-- Sharing data between files
-- The difference between import and require
-- Exporting multiple functions or variables
-- Using a wildcard to import all from a file
-- Export fallback with export default
-- Other advanced OOP concepts
-- Static methods
-- Abstract classes
-- Interfaces
-- Dependency Injection (DI)
-- Private methods and properties
-  (Encapsulation)
+Chapter 17 - Design Patterns
+  1) Creational Patterns
+  These are concerned with object
+  creation.
+
+- SINGLETON
+- FACTORY
+- ABSTRACT FACTORY
+- BUILDER
+- PROTOTYPE
+2) Structural Patterns
+  These patterns focus on the
+  composition (structure) of classes or
+  objects.
+
+- ADAPTER PATTERN
+- DECORATOR PATTERN
+- FACADE PATTERN
+- COMPOSITE PATTERN
+- PROXY PATTERN
+3) Behavioural Patterns
+  These patterns deal with object
+  interaction and responsibility
+  distribution.
+
+- OBSERVER PATTERN
+- STRATEGY PATTERN
+- TEMPLATE METHOD PATTERN
+- COMMAND PATTERN
+- ITERATOR PATTERN
 
 Chapter 18 - File Management
 - The File Reader API

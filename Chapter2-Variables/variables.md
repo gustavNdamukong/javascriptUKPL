@@ -323,7 +323,7 @@ the for loop block.
 
 
 ##### Blocks are not objects
-  An object literal { key: value } is NOT a block—it’s just an object. Don’t worry, we will talk more on objects in Chapter 17 (Object Oriented Programming). Blocks are structural elements of JavaScript’s syntax, while objects are data structures. For example:
+  An object literal { key: value } is NOT a block—it’s just an object. Don’t worry, we will talk more on objects in Chapter 12 (Object Oriented Programming). Blocks are structural elements of JavaScript’s syntax, while objects are data structures. For example:
 
       let obj = {
            name: "Alice",
@@ -768,7 +768,7 @@ fetchPhotos();
 
 So, here are the take-away points of learning:
 
-- If you want to use import/export and keep code modular, use type="module" and export what you need. The import and export keywords are the commands modules use to share code between files: export in the file that owns the value, import in the file that needs it. Do not worry, we will cover modules and the importing and exporting of values between files in Chapter 17 (Object Oriented Programming), specifically under the sub-heading: 'Sharing data between files' from the 'Objects in depth' heading. 
+- If you want to use import/export and keep code modular, use type="module" and export what you need. The import and export keywords are the commands modules use to share code between files: export in the file that owns the value, import in the file that needs it. Do not worry, we will cover modules and the importing and exporting of values between files in Chapter 12 (Object Oriented Programming), specifically under the sub-heading: 'Sharing data between files' from the 'Objects in depth' heading. 
 
 - If you need HTML or other scripts to access your functions, attach them to window, or don't use type="module".
 

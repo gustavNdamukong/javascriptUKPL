@@ -413,7 +413,7 @@ Your index.html code, should look like this:
         		<canvas id="canvas"></canvas>
 
 
-  			<script type="module" src="index.js" defer></script>
+  			<script type="module" src="index.js"></script>
 		</body>
 		</html>
 
@@ -611,7 +611,7 @@ To give you a tip; in CSS, you can simulate a 3D flip (rotation) effect on an im
         		<canvas id="canvas"></canvas> 
 
 
-  			<script type="module" src="index.js" defer></script>
+  			<script type="module" src="index.js"></script>
 		</body>
 		</html>
 
@@ -773,7 +773,7 @@ From the previous example, it should be clear to you how that download code work
 			<canvas id="canvas"></canvas>
 
 
-  			<script type="module" src="index.js" defer></script>
+  			<script type="module" src="index.js"></script>
 		</body>
 		</html>
 
@@ -871,7 +871,7 @@ As with brightening up an image, let’s look an a code example that allows you 
 
 			<canvas id="canvas"></canvas>
 
-  			<script type="module" src="index.js" defer></script>
+  			<script type="module" src="index.js"></script>
 		</body>
 		</html>
 
@@ -967,7 +967,7 @@ As with brightening or adding contrast to an image, the following code example w
 
 			<canvas id="canvas"></canvas>
 
-  			<script type="module" src="index.js" defer></script>
+  			<script type="module" src="index.js"></script>
 		</body>
 		</html>
 
@@ -1147,7 +1147,7 @@ The following code is a working solution of all three filters. As always, the us
         		</div>
 
 
-  			<script type="module" src="index.js" defer></script>
+  			<script type="module" src="index.js"></script>
 		</body>
 		</html>
 

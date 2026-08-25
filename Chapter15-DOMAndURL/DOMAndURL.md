@@ -95,7 +95,7 @@
 The DOM is an abbreviation for Document Object Model. It refers to the concept that JavaScript sees everything on an HTML document as an object. These objects are known as elements and like any object in programming, they have properties. A property is basically a part of what makes an object, for example, a door is a property of a car, just like its engine, or a tyre. A person or user object will have the following properties: username, name, age, address, etc 
   So JavaScript regards a web page as an object (the document object), and all the elements on this document object are also objects themselves having their own properties. For example; a web document has a form element, an unordered list or ordered list, a div element etc. The div element (object) has properties like style, class, id etc. 
  
-  We will go in depth into, and learn all about objects and how they work, in Chapter 17 (Object Oriented Programming). Here we will look at how to use JavaScript to dynamically manipulate the DOM, which means we will learn how to create HTML elements, display/hide them on a web page (document), modify them, delete them, traverse (move) through them etc. If this sounds like fun, it’s because it really is. 
+  We went in depth into, and learned all about objects and how they work, back in Chapter 12 (Object Oriented Programming). Here we will look at how to use JavaScript to dynamically manipulate the DOM, which means we will learn how to create HTML elements, display/hide them on a web page (document), modify them, delete them, traverse (move) through them etc. If this sounds like fun, it’s because it really is. 
   The properties of HTML elements are all, but not limited to their attributes. For example, the following is an image HTML tag and it has three properties: src (which points to the path of the image to be displayed), and then the width and height of the image.
 
 	<img src="" width="100" height="200">
@@ -2565,7 +2565,7 @@ Object.assign(li, {
          	<div class='empty'></div>
          	<div class='empty'></div>
             
-        	<script type="module" src="index.js" defer></script>
+        	<script type="module" src="index.js"></script>
     	</body>
 	</html>
 
@@ -2707,7 +2707,7 @@ This makes your web page interactive-no page reloads, just drag, drop, and go.
 	<html>
    	 <body>
 
-        <script type="module" src="index.js" defer></script>
+        <script type="module" src="index.js"></script>
     	</body>
 	</html>
 

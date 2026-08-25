@@ -1944,7 +1944,7 @@ Here is another example of using Axios with async/await:
         <button onclick="fetchPhotos()">Fetch Photos</button>
         <pre id="output"></pre>
             
-        <script type="module" src="/index.js" defer></script>
+        <script type="module" src="/index.js"></script>
        
     </body>
 	</html>
