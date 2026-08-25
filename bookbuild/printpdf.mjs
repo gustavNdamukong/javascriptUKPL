@@ -27,9 +27,15 @@ if (!existsSync(PAGE)) {
 }
 
 const started = Date.now();
+// A persistent profile and a longer launch timeout. Chrome updating itself on
+// disk while an older copy is still running makes the first launch slow enough
+// to blow puppeteer's 30s default, which fails as an unhelpful "WS endpoint"
+// timeout rather than anything about Chrome.
 const browser = await puppeteer.launch({
     executablePath: CHROME,
     headless: 'new',
+    userDataDir: '/tmp/kdpsample/chromeprofile',
+    timeout: 120000,
     args: ['--no-sandbox', '--disable-gpu', '--font-render-hinting=none']
 });
 
