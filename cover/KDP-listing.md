@@ -89,6 +89,12 @@ O'Reilly-priced competition, and roughly triple the royalty of pricing it at $10
    chapter points readers elsewhere rather than teaching the subject, so listing it would
    promise something the book does not deliver. Keep it out of both the blurb and this
    description.
-3. **"It will make you an expert in it"** in the current back-cover copy is a promise a
-   reviewer can argue with. The description above drops it in favour of what the book
-   demonstrably does.
+3. ~~"It will make you an expert in it"~~ — **RESOLVED 2026-08-27.** Dropped from `CoverPrint.md`
+   in favour of "it will make you a better programmer in every language you pick up after it",
+   which the book can actually support. The **printed** back cover never carried the line: the
+   Canva design uses a condensed edit that already ended at "the fundamentals of programming
+   itself", so no cover rework was needed.
+
+⚠️ **`CoverPrint.md` and the printed back cover have diverged.** The file holds the long form;
+the cover carries a shorter edit of it. Editing this file does **not** change the printed cover —
+that lives in Canva. Check the artwork before assuming a copy change has shipped.
