@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2560" viewBox="0 0 1600 2560">
+  <defs>
+    <pattern id="grid" width="64" height="64" patternUnits="userSpaceOnUse">
+      <path d="M64 0 L0 0 0 64" fill="none" stroke="#FFFFFF" stroke-opacity="0.07" stroke-width="2"/>
+    </pattern>
+    <clipPath id="canvas"><rect x="0" y="0" width="1600" height="2560"/></clipPath>
+  </defs>
+
+  <!-- field -->
+  <rect width="1600" height="2560" fill="#4C2BAF"/>
+  <!-- blueprint grid, 64px squares = 25 x 40 exactly -->
+  <rect width="1600" height="2560" fill="url(#grid)"/>
+
+  <g clip-path="url(#canvas)">
+    <!-- ============ TOP BAND: behind the title. Only low-contrast violets here,
+         so white type keeps its contrast. No pale or blue shapes. ============ -->
+    <path d="M -60 120 C 130 40, 300 90, 320 250 C 340 410, 190 470, 60 430 C -70 390, -110 210, -60 120 Z"
+          fill="#32199B" fill-opacity="0.40"/>
+    <path d="M 1380 -40 C 1560 -60, 1680 80, 1650 250 C 1620 420, 1450 450, 1370 340 C 1290 230, 1300 -20, 1380 -40 Z"
+          fill="#5D31BD" fill-opacity="0.45"/>
+    <path d="M 980 620 C 1120 580, 1230 690, 1200 810 C 1170 930, 1020 950, 950 870 C 880 790, 900 650, 980 620 Z"
+          fill="#5D31BD" fill-opacity="0.32"/>
+    <path d="M 250 700 C 370 660, 470 760, 450 870 C 430 980, 300 1000, 230 930 C 160 860, 170 730, 250 700 Z"
+          fill="#32199B" fill-opacity="0.30"/>
+
+    <!-- ============ MIDDLE BAND: behind the squirrel. Richer shapes; the
+         illustration sits on top so contrast matters less. ============ -->
+    <path d="M -80 1180 C 90 1120, 250 1240, 230 1400 C 210 1560, 40 1620, -80 1540 Z"
+          fill="#DACEDE" fill-opacity="0.85"/>
+    <path d="M 1400 1300 C 1580 1250, 1700 1400, 1660 1570 C 1620 1740, 1440 1760, 1370 1630 C 1300 1500, 1320 1330, 1400 1300 Z"
+          fill="#DACEDE" fill-opacity="0.80"/>
+    <path d="M 620 1500 C 800 1450, 950 1600, 910 1760 C 870 1920, 680 1950, 590 1830 C 500 1710, 530 1540, 620 1500 Z"
+          fill="#32199B" fill-opacity="0.42"/>
+    <circle cx="1470" cy="1120" r="52" fill="#4788F9"/>
+    <circle cx="205"  cy="1830" r="38" fill="#4788F9"/>
+    <circle cx="1300" cy="1980" r="26" fill="#F0EDF5" fill-opacity="0.9"/>
+
+    <!-- ============ BOTTOM BAND: below the illustration, above and around the
+         author line. Pale mass kept to the outer corners. ============ -->
+    <path d="M -120 2180 C 80 2110, 300 2250, 280 2440 C 260 2630, 20 2700, -140 2600 Z"
+          fill="#DACEDE" fill-opacity="0.88"/>
+    <path d="M 1420 2320 C 1620 2260, 1760 2420, 1720 2600 C 1680 2780, 1460 2800, 1390 2650 C 1320 2500, 1340 2350, 1420 2320 Z"
+          fill="#DACEDE" fill-opacity="0.85"/>
+    <!-- These two sit ABOVE the author line, never inside it. A bright blue disc
+         behind white type measured 3.4:1, under the 4.5:1 readability floor. -->
+    <circle cx="238"  cy="2115" r="58" fill="#4788F9"/>
+    <circle cx="118"  cy="1962" r="28" fill="#F0EDF5" fill-opacity="0.95"/>
+    <path d="M 700 2440 C 840 2400, 960 2500, 940 2620 C 920 2740, 760 2760, 690 2660 C 620 2560, 640 2460, 700 2440 Z"
+          fill="#32199B" fill-opacity="0.38"/>
+  </g>
+</svg>
