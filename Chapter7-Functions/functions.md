@@ -480,7 +480,7 @@ out in full, you need the curly braces around it:
 
 #### Convert an anonymous function into an arrow function
 
-	An anonymous function can always be converted into an arrow function. Let’s convert the above anonymous function into an arrow function. To do so, simply replace ‘function()’ with ‘()  =>’:
+  An anonymous function can always be converted into an arrow function. Let’s convert the above anonymous function into an arrow function. To do so, simply replace ‘function()’ with ‘()  =>’:
 
 	let greet = function() {
 		return "Hello";
@@ -496,7 +496,7 @@ We can shorten the syntax even further. If all we are returning in the function 
 
 	let greet = () => "Hello";
 
-	You therefore see how short and concise our code can be as a result. Always remember that whatever comes after the arrow (=>) is automatically implied to be the return value of the function. What comes on the left side of the arrow will be any parameters—if applicable—with or without parentheses. 
+  You therefore see how short and concise our code can be as a result. Always remember that whatever comes after the arrow (=>) is automatically implied to be the return value of the function. What comes on the left side of the arrow will be any parameters—if applicable—with or without parentheses. 
 
 
 ## Quick object literals from function arguments
@@ -694,7 +694,7 @@ have a name:
 	// Output: 7
 	console.log(addThemUp(4, 3));
 
-	To convert it into an arrow function and yet keep the arguments being passed to it, instead of replacing function() with () => as before, we need to keep the arguments passed. The right way to do it is this:
+  To convert it into an arrow function and yet keep the arguments being passed to it, instead of replacing function() with () => as before, we need to keep the arguments passed. The right way to do it is this:
 
 	let addThemUp = (arg1, arg2) => arg1 + arg2;
 
@@ -723,9 +723,9 @@ The way map() works with its arguments, it uses an arrow function. It iterates o
 
 	num => num * 2
 
-	It is important to note that num on the left side of the arrow (num =>) is always the argument, and in this case, num represents a different number in the data array at each iteration, which it passes in to be processed by the function or expression on the right side of the arrow (=> num * 2). 
+  It is important to note that num on the left side of the arrow (num =>) is always the argument, and in this case, num represents a different number in the data array at each iteration, which it passes in to be processed by the function or expression on the right side of the arrow (=> num * 2). 
 
-	Note also that the name num is entirely your choice. It can be anything you like and the code will still work, so long as the name on the left of the arrow matches the one used in the expression on the right of it (=> num * 2). Therefore, in the above example, either of the following lines would work the same: 
+  Note also that the name num is entirely your choice. It can be anything you like and the code will still work, so long as the name on the left of the arrow matches the one used in the expression on the right of it (=> num * 2). Therefore, in the above example, either of the following lines would work the same: 
 
 	num => num * 2
 	dat => dat * 2
