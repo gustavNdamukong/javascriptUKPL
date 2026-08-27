@@ -18,7 +18,7 @@ characters are all that shows on a phone before "Read more", so the hook must la
 
 <h4>What is inside</h4>
 
-<p>Twenty-five chapters, over 200,000 words, and more than 700 pages covering:</p>
+<p>Twenty-five chapters, over 200,000 words, and more than 750 pages covering:</p>
 
 <ul>
 <li>The foundations — variables, constants, data types, strings, arrays and data structures</li>
@@ -33,7 +33,7 @@ characters are all that shows on a phone before "Read more", so the hook must la
 <h4>Built for learning, not just reading</h4>
 
 <ul>
-<li><b>559 questions and answers</b> — a quiz at the end of nearly every chapter, each with a clue so you can reason it out</li>
+<li><b>565 questions and answers</b> — a quiz at the end of every single chapter, each one carrying a clue so you can reason it out</li>
 <li><b>32 diagrams</b> drawn to explain the ideas that words alone struggle with</li>
 <li><b>Hundreds of runnable code examples</b>, written the long way on purpose — one step per line, with comments explaining not just what each line does but why it is there</li>
 </ul>
@@ -82,10 +82,13 @@ O'Reilly-priced competition, and roughly triple the royalty of pricing it at $10
 
 ## Still to settle
 
-1. **Chapter 25 has no quiz**, but `ContentsAndPreface.md` says "Every chapter ends with its
-   own Quiz". Add one, or soften the line. The description above says "nearly every chapter"
-   as a stopgap.
-2. **Asset Management is missing from the topic list** in the back-cover blurb.
+1. ~~Chapter 25 has no quiz~~ — **RESOLVED 2026-08-27.** A three-question quiz was added, so
+   all 25 chapters now have one and the book's own claim is true. Cost 2 pages (778 -> 780);
+   the cover uses 10.5% of KDP's tolerance, with 24 pages spare.
+2. ~~Asset Management missing from the topic list~~ — **deliberate (Gustav, 2026-08-27).** That
+   chapter points readers elsewhere rather than teaching the subject, so listing it would
+   promise something the book does not deliver. Keep it out of both the blurb and this
+   description.
 3. **"It will make you an expert in it"** in the current back-cover copy is a promise a
    reviewer can argue with. The description above drops it in favour of what the book
    demonstrably does.
