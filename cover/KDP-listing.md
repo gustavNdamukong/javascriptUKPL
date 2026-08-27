@@ -60,7 +60,7 @@ title does not contain.
 | 4 | `front end developer guide` | Job-title intent — people buy toward a role |
 | 5 | `self taught programmer reference` | The reader who keeps it on the desk |
 | 6 | `programming fundamentals explained simply` | Matches the book's actual promise |
-| 7 | `coding practice questions and answers` | The 559 Q&As, which competitors rarely have |
+| 7 | `coding practice questions and answers` | The 565 Q&As, which competitors rarely have |
 
 ---
 
@@ -74,7 +74,7 @@ title does not contain.
 
 ## Price
 
-The 70% royalty band is **$2.99–$9.99**; above it you drop to 35%. For a 778-page technical
+The 70% royalty band is **$2.99–$9.99**; above it you drop to 35%. For a 780-page technical
 book **$9.99** is the natural pick — top of the band, still an easy purchase against
 O'Reilly-priced competition, and roughly triple the royalty of pricing it at $10.99.
 
