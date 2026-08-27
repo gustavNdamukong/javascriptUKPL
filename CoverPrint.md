@@ -27,7 +27,8 @@ the way.
 And because these are not merely the features of one language but the key 
 fundamentals of programming itself—the thinking that underpins every language 
 you will ever pick up—working through this book from cover to cover will not 
-just teach you JavaScript. It will make you an expert in it.
+just teach you JavaScript. It will make you a better programmer in every 
+language you pick up after it.
 
 Whether you're learning JavaScript for the first time, brushing up on core 
 concepts, or looking for a rock-solid reference to keep within reach, this 
