@@ -2,8 +2,8 @@
 
 # Chapter 4 — CONSTANTS
 
-	   -Mutating a const array
-	   -Mutating a const object
+- Mutating a const array
+- Mutating a const object
 
 
 A constant is like a variable, but with one 

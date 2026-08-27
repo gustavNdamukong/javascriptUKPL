@@ -11,7 +11,7 @@
 
 
 
-  This is about the available templating engine(s) available for your programming language, and how it works with them.
+This is about the available templating engine(s) available for your programming language, and how it works with them.
 
 Introduction to Templates in JavaScript
 Templates in JavaScript help dynamically generate HTML content by injecting variables into a predefined structure. They make it easier to manage dynamic UI updates and are widely used in modern web development.

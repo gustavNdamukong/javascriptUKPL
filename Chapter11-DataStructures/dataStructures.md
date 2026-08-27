@@ -2,19 +2,19 @@
 # Chapter 11 — DATA STRUCTURES
 
     
-  Intro
-  Data Structures and Data Types
-  List of data structures
-  - Arrays
-  - Linked lists
-  - Stacks
-  - Queues
-  - Tuples
-  - Dictionaries (Maps/HashMaps)
-  - Sets
-  - Structs
-  - Trees (Binary Trees, AVL Trees, etc)
-  - Collections
+  - Intro
+  - Data Structures and Data Types
+  - List of data structures
+    - Arrays
+    - Linked lists
+    - Stacks
+    - Queues
+    - Tuples
+    - Dictionaries (Maps/HashMaps)
+    - Sets
+    - Structs
+    - Trees (Binary Trees, AVL Trees, etc)
+    - Collections
 
 
 

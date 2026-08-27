@@ -5,18 +5,18 @@
 # Chapter 6 — REGULAR EXPRESSIONS
 
     
-Intro
-Features
-Grouping
-Classes
-   Range
-   Negation
-Anchor characters
-Shorthand meta characters
-Quantifiers
-Modifiers
-   The difference between g and m
-Regular expressions in JavaScript
+- Intro
+- Features
+- Grouping
+- Classes
+  - Range
+  - Negation
+- Anchor characters
+- Shorthand meta characters
+- Quantifiers
+- Modifiers
+  - The difference between g and m
+- Regular expressions in JavaScript
 
 
 
