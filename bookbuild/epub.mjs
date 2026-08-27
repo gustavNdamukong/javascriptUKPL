@@ -33,6 +33,14 @@ const esc = s => s.replace(/&(?!#?\w+;)/g, '&amp;').replace(/</g, '&lt;').replac
 const markVerse = h => h.replace(/<p>((?:(?!<\/p>)[\s\S])*?<br\s*\/?>[\s\S]*?)<\/p>/g,
     '<p class="verse">$1</p>');
 
+// In the detailed CONTENTS each chapter is a bare paragraph, with its
+// sub-topics in a list beneath it. Unstyled, the chapter reads as one more
+// entry of the same weight as the topics under it. Class it so a reader can
+// see where one chapter ends and the next begins. Front matter only - a
+// chapter's own prose must never be caught by this.
+const markChapToc = h => h.replace(/<p>(Chapter \d+ - [^<]*)<\/p>/g,
+    '<p class="chaptoc">$1</p>');
+
 const slug = s => s.toLowerCase().replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60);
 
@@ -117,7 +125,16 @@ img { max-width: 100%; height: auto; display: block; margin: 1em auto 0.3em; }
 table { border-collapse: collapse; margin: 0.8em 0; font-size: 0.9em; }
 th, td { border: 1px solid rgba(128, 128, 128, 0.5); padding: 0.25em 0.5em; text-align: left; }
 th { background: rgba(128, 128, 128, 0.18); }
-p.verse { text-indent: 0; }
+/* Contents lists and other hard-broken paragraphs are set ragged-right. A
+   reader justifies body text by default, and a line ending in <br/> is not a
+   last line, so it gets stretched to the full measure - which turns the one
+   entry long enough to wrap into "Chapter    12". A list is not prose; do not
+   justify it. */
+p.verse { text-indent: 0; text-align: left; }
+
+/* The chapter rows of the detailed CONTENTS, so they read as headings above
+   their sub-topics rather than as another sibling entry. */
+.chaptoc { text-indent: 0; text-align: left; font-weight: bold; margin: 0.9em 0 0.15em; }
 
 /* front matter. An e-reader has no fixed page, but it honours a page break,
    which is what gives each of these a screen of its own. */
@@ -187,7 +204,7 @@ for (const f of files) {
     // XHTML must be well formed. Void elements need closing, and a bare
     // ampersand - legal in HTML, and common in prose like "HTMLCollections
     // & NodeLists" - is a parse error here.
-    const xhtml = markVerse(withIds)
+    const xhtml = markVerse(f.name === 'front' ? markChapToc(withIds) : withIds)
         .replace(/<(img|br|hr)([^>]*?)\s*\/?>/g, '<$1$2 />')
         .replace(/&nbsp;/g, '&#160;')
         .replace(/&(?!(?:[a-zA-Z][a-zA-Z0-9]*|#\d+|#x[0-9a-fA-F]+);)/g, '&amp;');
