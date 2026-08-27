@@ -130,8 +130,8 @@ operator
 - True array methods and associative arrays
 
 Chapter 4 - Constants
-    -Mutating a const array
-    -Mutating a const object
+- Mutating a const array
+- Mutating a const object
 
 Chapter 5 - Control Flow
 - OCLS (Operators, Conditionals, Loops, Switch)
@@ -182,18 +182,18 @@ c) Mutually Exclusive Conditions (More Than Two Choices)
 - Switch statement
 
 Chapter 6 - Regular Expressions
-  Intro
-  Features
-  Grouping
-  Classes
-  Range
-  Negation
-  Anchor characters
-  Shorthand meta characters
-  Quantifiers
-  Modifiers
-  The difference between g and m
-  Regular expressions in JavaScript
+- Intro
+- Features
+- Grouping
+- Classes
+- Range
+- Negation
+- Anchor characters
+- Shorthand meta characters
+- Quantifiers
+- Modifiers
+- The difference between g and m
+- Regular expressions in JavaScript
 
 Chapter 7 - Functions
   - Introduction
@@ -280,9 +280,9 @@ Chapter 10 - Data Types
   false
 
 Chapter 11 - Data Structures
-  Intro
-  Data Structures and Data Types
-  List of data structures
+- Intro
+- Data Structures and Data Types
+- List of data structures
 - Arrays
 - Linked lists
 - Stacks
